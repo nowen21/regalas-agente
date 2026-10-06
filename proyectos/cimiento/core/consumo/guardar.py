@@ -11,23 +11,30 @@ Claude Code lo reescribió: se lee desde el comienzo.
 
 **Todo o nada por archivo**: lo guardado y el avance van en una transacción.
 
+**Cada línea queda en la base, sin claves** (`EP-025·HU-025`): Claude Code
+borra los `.jsonl` a los 30 días, así que el texto se trae en la misma
+transacción que los conteos (análisis 1 del pendiente 124, acuerdo 5). Los
+conteos salen de la línea original; la base guarda la tapada.
+
 **La solicitud une la misma llamada** (`EP-025·HU-007`): la telemetría la
 traía antes, con la solicitud como mensaje, y el `.jsonl` le pone su
 `message.id`. La telemetría salió con la HU-012; lo que guardó se queda.
 """
 import glob
+import hashlib
 import json
 import os
 from functools import lru_cache
 
 from django.db import transaction
 
+from core.enganches.enmascarar import Enmascarador
 from core.proyectos.claude import proyectos_de_claude
 from core.proyectos.models import Proyecto
 
 from .lector import LectorDeClaudeCode
 from .models import (AvanceDeLectura, EjecucionDeEnganche, GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta,
-                     Llamada, Pedido)
+                     LineaDeSesion, Llamada, Pedido)
 from .trabajo import trabajo_de
 
 
@@ -74,7 +81,7 @@ class GuardadoDeConsumo:
 
     def leer_todo(self):
         """`{"llamadas", "enganches", "archivos", "leidos"}`: lo nuevo que quedó guardado."""
-        cuenta = {"llamadas": 0, "enganches": 0, "archivos": 0, "herramientas": 0, "leidos": 0}
+        cuenta = {"llamadas": 0, "enganches": 0, "archivos": 0, "herramientas": 0, "lineas": 0, "leidos": 0}
         for ruta in self.archivos():
             nuevo = self.leer_archivo(ruta)
             if nuevo is None:
@@ -97,10 +104,42 @@ class GuardadoDeConsumo:
         lectura = LectorDeClaudeCode(ruta, desde).leer(avance.pedido if desde else "")
         with transaction.atomic():
             nuevo = self.guardar(lectura, self.agente_de(ruta))
+            nuevo["lineas"] = self.guardar_lineas(ruta, lectura.crudas)
             avance.posicion, avance.tamano, avance.modificado = lectura.hasta, estado.st_size, estado.st_mtime
             avance.pedido = lectura.ultimo_pedido[:64]
             avance.save()
         return nuevo
+
+    def nombre_de(self, ruta):
+        """La ruta del `.jsonl` relativa a la carpeta de proyectos de Claude Code, con `/`."""
+        try:
+            return os.path.relpath(os.path.abspath(ruta), os.path.abspath(self.base)).replace(os.sep, "/")[:400]
+        except ValueError:                  # otra unidad
+            return os.path.basename(ruta)
+
+    def guardar_lineas(self, ruta, crudas):
+        """`EP-025·HU-025` · Cada línea con sus claves tapadas (`00·N6`). Cuántas nuevas.
+
+        Única por archivo y huella: leerla otra vez no la duplica, y si Claude Code
+        reescribe el archivo, la línea distinta en la misma posición también entra.
+        """
+        archivo = self.nombre_de(ruta)
+        filas, vistas = [], set()
+        for posicion, texto in crudas:
+            huella = hashlib.sha1(texto.encode("utf-8")).hexdigest()
+            if huella in vistas:
+                continue
+            vistas.add(huella)
+            tapado, tapadas = Enmascarador.enmascarar(texto)
+            filas.append(LineaDeSesion(proyecto=self.proyecto, archivo=archivo, huella=huella,
+                                       posicion=posicion, texto=tapado, tapadas=tapadas))
+        if not filas:
+            return 0
+        ya = set(LineaDeSesion.objects.filter(archivo=archivo, huella__in=[f.huella for f in filas])
+                 .values_list("huella", flat=True))
+        nuevas = [f for f in filas if f.huella not in ya]
+        LineaDeSesion.objects.bulk_create(nuevas, batch_size=500)
+        return len(nuevas)
 
     def guardar_pedidos(self, lectura):
         """`{identificador: Pedido}` de los mensajes de la lectura y de los que siguen de antes."""

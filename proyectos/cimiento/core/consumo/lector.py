@@ -131,6 +131,8 @@ class Lectura:
     rutas: dict = field(default_factory=dict)
     ultimo_pedido: str = ""
     hasta: int = 0
+    # `EP-025·HU-025` · `[(posición, texto)]` de las líneas leídas, sin tocar.
+    crudas: list = field(default_factory=list)
 
 
 def _texto(valor):
@@ -201,6 +203,9 @@ class LectorDeClaudeCode:
     def __init__(self, ruta, desde=0):
         self.ruta = ruta
         self.desde = desde
+        # `EP-025·HU-025` · `[(posición en bytes, texto)]` de cada línea completa,
+        # tal como está en el archivo: es lo que se guarda en la base.
+        self.crudas = []
 
     def lineas(self):
         """`(lineas_completas, hasta)`: la última sin salto queda fuera."""
@@ -214,6 +219,12 @@ class LectorDeClaudeCode:
         if corte < 0:
             return [], self.desde
         completas = crudo[:corte + 1]
+        self.crudas, posicion = [], self.desde
+        for linea in completas.split(b"\n")[:-1]:
+            texto = linea.rstrip(b"\r").decode("utf-8", "replace")
+            if texto.strip():
+                self.crudas.append((posicion, texto))
+            posicion += len(linea) + 1
         return completas.decode("utf-8", "replace").splitlines(), self.desde + len(completas)
 
     def leer(self, pedido=""):
@@ -222,6 +233,7 @@ class LectorDeClaudeCode:
         lineas, hasta = self.lineas()
         lectura = self.leer_lineas(lineas, pedido)
         lectura.hasta = hasta
+        lectura.crudas = self.crudas
         return lectura
 
     @staticmethod

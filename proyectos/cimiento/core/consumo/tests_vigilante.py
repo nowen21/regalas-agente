@@ -38,24 +38,21 @@ class ConCarpetas:
 
 
 class LoNuevoSeGuardaCuandoCambia(ConCarpetas, TestCase):
-    """CP-001, pasos 1 y 2."""
+    """CP-001, pasos 1 y 2; `EP-025·HU-025`, CP-004 y CP-005: cada aviso guarda en el acto."""
 
     def setUp(self):
         self.armar()
         self.vigilante = VigilanteDeConsumo(self.base)
         self.vigilante.leer_proyectos()
 
-    def test_guarda_el_archivo_que_cambio_sin_duplicar(self):
+    def test_cada_aviso_guarda_en_el_acto_sin_duplicar(self):
         escribir_jsonl(self.jsonl, muestra())
-        self.vigilante.avisar(self.jsonl)
-        self.vigilante.avisar(self.jsonl)
-        self.assertEqual(1, self.vigilante.guardar_lo_cambiado())
+        self.assertTrue(self.vigilante.avisar(self.jsonl))
         self.assertEqual(2, Llamada.objects.count())
-        self.vigilante.avisar(self.jsonl)
-        self.assertEqual(0, self.vigilante.guardar_lo_cambiado())
+        self.assertFalse(self.vigilante.avisar(self.jsonl))
+        self.assertEqual(2, Llamada.objects.count())
         escribir_jsonl(self.jsonl, [llamada("m-3")])
-        self.vigilante.avisar(self.jsonl)
-        self.vigilante.guardar_lo_cambiado()
+        self.assertTrue(self.vigilante.avisar(self.jsonl))
         self.assertEqual(3, Llamada.objects.count())
 
     def test_lo_de_un_proyecto_inactivo_o_ajeno_no_se_lee(self):
@@ -66,28 +63,45 @@ class LoNuevoSeGuardaCuandoCambia(ConCarpetas, TestCase):
         os.makedirs(os.path.dirname(ajeno))
         escribir_jsonl(ajeno, muestra())
         for ruta in (self.jsonl, ajeno, os.path.join(tempfile.gettempdir(), "x.jsonl"), self.jsonl + ".txt"):
-            self.vigilante.avisar(ruta)
-        self.assertEqual(0, self.vigilante.guardar_lo_cambiado())
+            self.assertFalse(self.vigilante.avisar(ruta))
         self.assertEqual(0, Llamada.objects.count())
+
+    def test_un_proyecto_nuevo_entra_con_su_primer_aviso(self):
+        """`EP-025·HU-025 · CP-005` · La lista se relee cuando llega una carpeta que no conoce."""
+        ruta = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, ruta, True)
+        nuevo = Proyecto.objects.create(nombre="dos", ruta=ruta)
+        self.assertNotIn(nuevo.carpeta_claude.lower(), self.vigilante.proyectos)
+        jsonl = os.path.join(self.base, nuevo.carpeta_claude, SESION + ".jsonl")
+        os.makedirs(os.path.dirname(jsonl))
+        escribir_jsonl(jsonl, muestra())
+        self.assertTrue(self.vigilante.avisar(jsonl))
+        self.assertEqual(2, Llamada.objects.filter(proyecto=nuevo).count())
 
     def test_un_archivo_que_falla_no_tumba_al_vigilante(self):
         """`EP-025·HU-015` · Lo que tumbó al vigilante al aplicar la migración `0004`."""
         escribir_jsonl(self.jsonl, muestra())
-        self.vigilante.avisar(self.jsonl)
         with mock.patch("core.consumo.vigilante.GuardadoDeConsumo.leer_archivo", side_effect=RuntimeError("columna")):
-            self.assertEqual(0, self.vigilante.guardar_lo_cambiado())
+            self.assertFalse(self.vigilante.avisar(self.jsonl))
         self.assertIn("columna", self.vigilante.ultimo_error)
-        self.vigilante.avisar(self.jsonl)
-        self.assertEqual(1, self.vigilante.guardar_lo_cambiado())
+        self.assertTrue(self.vigilante.avisar(self.jsonl))
 
     def test_al_arrancar_lee_lo_que_quedo(self):
         escribir_jsonl(self.jsonl, muestra())
         self.vigilante.arrancar()
         self.assertEqual(2, Llamada.objects.count())
 
+    def test_no_tiene_relojes(self):
+        """`EP-025·HU-025 · CP-004`, paso 4: ningún intervalo decide cuándo se guarda."""
+        import core.consumo.vigilante as modulo
+        with open(modulo.__file__, encoding="utf-8") as f:
+            fuente = f.read()
+        for reloj in ("sleep(", "CADA", "LISTA_CADA", "time.monotonic"):
+            self.assertNotIn(reloj, fuente)
+
 
 class ElVigilanteDeVerdad(ConCarpetas, TransactionTestCase):
-    """CP-001, paso 3: `watchdog` avisa y lo escrito llega en menos de 5 segundos."""
+    """CP-001, paso 3: `watchdog` avisa y lo escrito llega sin que nada lo pida."""
 
     serialized_rollback = True
 
@@ -95,13 +109,12 @@ class ElVigilanteDeVerdad(ConCarpetas, TransactionTestCase):
         self.armar()
 
     def test_lo_escrito_llega_solo(self):
-        sigue = threading.Event()
-        sigue.set()
+        parar = threading.Event()
         vigilante = VigilanteDeConsumo(self.base)
 
         def correr():
             try:
-                vigilante.correr(mientras=sigue.is_set)
+                vigilante.correr(parar)
             finally:
                 connection.close()
 
@@ -113,8 +126,9 @@ class ElVigilanteDeVerdad(ConCarpetas, TransactionTestCase):
         while time.monotonic() - inicio < 5 and Llamada.objects.count() < 2:
             time.sleep(0.25)
         llego = time.monotonic() - inicio
-        sigue.clear()
+        parar.set()
         hilo.join(10)
+        self.assertFalse(hilo.is_alive())
         self.assertEqual(2, Llamada.objects.count())
         self.assertLess(llego, 5)
 

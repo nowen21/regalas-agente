@@ -146,6 +146,7 @@ Una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-
 | [HU-022](HU-022-un-pendiente-cerrado-se-puede-reabrir/HU-022-un-pendiente-cerrado-se-puede-reabrir.md) | Un pendiente cerrado se puede reabrir | Should | N/A | N/A | Terminada |
 | [HU-023](HU-023-el-analisis-se-prende-desde-un-turno-anterior/HU-023-el-analisis-se-prende-desde-un-turno-anterior.md) | El análisis se prende desde un turno anterior | Should | N/A | N/A | Terminada |
 | [HU-024](HU-024-el-aviso-del-freno-dice-como-salir-sin-tocar-archivos/HU-024-el-aviso-del-freno-dice-como-salir-sin-tocar-archivos.md) | El aviso del freno dice cómo salir sin tocar archivos | Must | N/A | N/A | Terminada |
+| [HU-025](HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento/HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento.md) | Cada línea del `.jsonl` queda en la base en el momento | Must | N/A | N/A | En prueba |
 
 ## 10. Consideraciones técnicas
 

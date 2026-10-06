@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 55.2.0 — 2026-10-06
+
+**Cada línea que Claude Code escribe queda en la base de Cimiento en el momento, sin claves, y el vigilante deja de tener relojes.**
+
+**MENOR**: tabla nueva y un vigilante que guarda con cada aviso.
+
+**Lo que entra:**
+
+- Cimiento guarda cada línea de los `.jsonl` de los proyectos activos en `LineaDeSesion`, con las claves tapadas, en la misma transacción que los conteos (`EP-025·HU-025`). Una línea es única por archivo y huella: leer dos veces no duplica, y si Claude Code reescribe el archivo, las dos versiones se quedan.
+- `vigilar_consumo` guarda con cada aviso de Windows, sin la espera de 2 segundos, y relee la lista de proyectos cuando llega una carpeta que no conoce, no cada 60 segundos. Espera sin despertar y se detiene con `--parar`.
+- `leer_consumo --desde-cero` vuelve a leer todos los `.jsonl` sin duplicar, para traer lo que ya estaba.
+
+**Qué hace un proyecto al día:** en el ambiente de Cimiento, `manage.py migrate` (aplica `consumo.0005`), `manage.py leer_consumo --desde-cero` una vez, y reiniciar el vigilante con `vigilar_consumo --parar` y volver a arrancarlo.
+
+Sale del análisis 1 del pendiente 124, acuerdos 4, 5 y 6, por `EP-025·HU-025`.
+
+---
+
 ## 55.1.0 — 2026-10-06
 
 **Lo que la herramienta guarda afuera y no se deja corregir se trae a la base de datos del agente.**

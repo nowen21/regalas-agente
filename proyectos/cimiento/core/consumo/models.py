@@ -3,7 +3,8 @@
 
 Las llamadas traen tokens contados por Claude Code. Los enganches y los
 archivos leídos traen caracteres, y sus tokens son una estimación
-(`lector.CARACTERES_POR_TOKEN`). No se guarda texto.
+(`lector.CARACTERES_POR_TOKEN`). El texto de cada línea va aparte, en
+`LineaDeSesion`, con las claves tapadas (`EP-025·HU-025`).
 """
 from django.db import models
 
@@ -134,3 +135,27 @@ class AvanceDeLectura(models.Model):
     tamano = models.PositiveBigIntegerField(default=0)
     modificado = models.FloatField(default=0)
     actualizado = models.DateTimeField(auto_now=True)
+
+
+class LineaDeSesion(models.Model):
+    """`EP-025·HU-025` · Una línea de un `.jsonl` de Claude Code, con las claves tapadas.
+
+    Claude Code borra sus `.jsonl` a los 30 días y no deja escribirlos dentro del
+    proyecto, así que se traen a la base en cuanto aparecen (`01·C29`, análisis 1
+    del pendiente 124, acuerdo 5). **Es única por archivo y huella**, no por
+    posición: si Claude Code reescribe el archivo, la misma posición trae otra
+    línea y las dos se quedan.
+    """
+
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, related_name="lineas_de_sesion")
+    # Relativo a la carpeta de proyectos de Claude Code: `<carpeta>/<sesión>.jsonl`.
+    archivo = models.CharField(max_length=400)
+    huella = models.CharField(max_length=40)
+    posicion = models.PositiveBigIntegerField()
+    texto = models.TextField()
+    tapadas = models.PositiveIntegerField(default=0)
+    guardada = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["archivo", "huella"], name="una_linea_por_huella")]
+        indexes = [models.Index(fields=["archivo", "posicion"])]

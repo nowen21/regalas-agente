@@ -22,7 +22,7 @@ Las demás cuentas se crean con `python manage.py crear_cuenta --usuario «nombr
 
 Abrir en el navegador `http://127.0.0.1:«PUERTO del .env»/` y entrar con la cuenta. Si aparece el menú lateral con «Inicio» y la línea que dice a qué base está conectado, quedó. Si MariaDB está apagada, la página lo dice.
 
-**El gasto de tokens llega en vivo mientras Cimiento está prendido.** La instalación del estándar le dice a Claude Code que mande cada llamada a `http://127.0.0.1:«PUERTO del .env»/v1/logs`, así que Cimiento tiene que levantarse con `runserver` sin número, en ese puerto. Lo que llegue con Cimiento apagado lo recupera `python manage.py leer_consumo`, que la instalación programa una vez al día.
+**El gasto de tokens llega a la base en cuanto Claude Code lo escribe.** `python manage.py vigilar_consumo`, que la instalación arranca al iniciar sesión, recibe el aviso de Windows cada vez que cambia un `.jsonl` de `~/.claude/projects/` y guarda en ese momento cada línea nueva, con las claves tapadas, y sus conteos. Cimiento lee solo la base: Claude Code borra esos archivos a los 30 días. Lo escrito con el vigilante apagado lo trae al arrancar; para traer de nuevo todo lo que hay, `python manage.py leer_consumo --desde-cero`.
 
 ## Cómo está organizado
 
