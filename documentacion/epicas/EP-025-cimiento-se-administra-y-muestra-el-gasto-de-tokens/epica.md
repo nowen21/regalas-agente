@@ -146,7 +146,9 @@ Una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-
 | [HU-022](HU-022-un-pendiente-cerrado-se-puede-reabrir/HU-022-un-pendiente-cerrado-se-puede-reabrir.md) | Un pendiente cerrado se puede reabrir | Should | N/A | N/A | Terminada |
 | [HU-023](HU-023-el-analisis-se-prende-desde-un-turno-anterior/HU-023-el-analisis-se-prende-desde-un-turno-anterior.md) | El análisis se prende desde un turno anterior | Should | N/A | N/A | Terminada |
 | [HU-024](HU-024-el-aviso-del-freno-dice-como-salir-sin-tocar-archivos/HU-024-el-aviso-del-freno-dice-como-salir-sin-tocar-archivos.md) | El aviso del freno dice cómo salir sin tocar archivos | Must | N/A | N/A | Terminada |
-| [HU-025](HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento/HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento.md) | Cada línea del `.jsonl` queda en la base en el momento | Must | N/A | N/A | En prueba |
+| [HU-025](HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento/HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento.md) | Cada línea del `.jsonl` queda en la base en el momento | Must | N/A | N/A | En curso |
+| [HU-026](HU-026-la-pantalla-gasto-dice-primero-lo-importante/HU-026-la-pantalla-gasto-dice-primero-lo-importante.md) | La pantalla «Gasto» dice primero lo importante | Must | N/A | N/A | Terminada |
+| [HU-027](HU-027-la-pantalla-se-entera-en-el-momento/HU-027-la-pantalla-se-entera-en-el-momento.md) | La pantalla se entera en el momento de lo que guarda el vigilante | Must | N/A | N/A | En curso |
 
 ## 10. Consideraciones técnicas
 

@@ -1,0 +1,19 @@
+Cimiento local con MariaDB, sobre `ae82d18` con los cambios de la fase sin guardar
+`LaFranja.test_total_llamadas_cache_y_maximo` y `test_sin_cuenta_manda_a_entrar`
+Total 6.515, 2 llamadas, 77 % de caché, contexto máximo 6.200; sin cuenta manda a entrar
+`LaFranja.test_compara_con_el_tramo_anterior_a_la_misma_hora`, con llamadas ayer antes y después de las 12:00
+El tramo anterior contó solo la de antes (100); la variación sin tramo anterior no es número y dice «Sin gasto en el tramo anterior»
+`LasPestanas.test_cada_pestana_tiene_su_ruta_y_la_que_no_existe_da_404`
+Las cinco dieron 200 y `/gasto/pestana/otra/` dio 404
+`LasPestanas.test_donde_agrupa_con_porcentaje`
+«uno» 6.500 con 100 %, «dos» 15 con 0 %; `agrupar=modelo` agrupa por modelo y `agrupar=nada` cae en proyecto
+`LasPestanas.test_sin_repetidos` y `SeActualizaConElBoton.test_sin_intervalos_y_con_los_filtros`
+Sin `grafica-proyectos`, sin tabla por tipo de token y sin `every `; la franja escucha `actualizar from:body`
+Las siete vistas armadas con `RequestFactory` sobre la base real, en «7 días», «30 días» con un proyecto y «Hoy»
+Las 21 respondieron 200, la más lenta en 0,47 s; las gráficas de ApexCharts no se vieron en un navegador: queda para el usuario
+`LasPestanas.test_contexto_trae_promedio_maximo_y_limite_sin_marcar`
+«Revisando las reglas...» con 3 veces, promedio y máximo 100; el límite es el del proyecto; ninguna fila marcada
+CP-007 se hizo armando las vistas en el servidor y no en un navegador: las dos gráficas del Resumen y el botón ↻ quedan por ver con los ojos.
+Ninguno. Para cerrar se agregaron al plan, con aprobación del usuario, `tests_segunda_tanda.py` y `tests_tercera_tanda.py`, que pedían `/gasto/datos/`.
+Los tres criterios tienen sus casos aprobados y `core.consumo` pasa 64 de 64; lo único sin ver es el dibujo de las gráficas en un navegador.
+`core/consumo/tests_tablero.py`, `tests_segunda_tanda.py`, `tests_tercera_tanda.py` y la salida de §3

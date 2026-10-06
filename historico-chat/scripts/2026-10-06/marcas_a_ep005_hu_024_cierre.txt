@@ -1,0 +1,12 @@
+Lo que entra por `UserPromptSubmit` abriendo con `<task-notification>` o `<agent-message` queda en la transcripción como «Aviso del sistema», con su texto tapado y su hora. Los mensajes del usuario siguen como «Usuario».
+ninguno.
+ninguna.
+ninguno.
+Cumple
+Nada que hacer: el enganche del histórico lo hace en cada mensaje.
+Las marcas van en una sola tupla, `AVISOS_INTERNOS`
+Si Claude Code las cambia, se ajustan en un sitio y la fase B las toma
+S-322
+Los avisos que ya quedaron como «Usuario» antes de esta fase siguen así: no se borra lo registrado.
+Ninguno.
+No aplica.

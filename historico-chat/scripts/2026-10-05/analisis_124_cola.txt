@@ -1,0 +1,72 @@
+## Lo acordado
+
+Nada todavía.
+
+Siguen abiertas: la estructura de la pantalla; con qué se compara el período «Hoy»; si se marca lo que pasa el límite del proyecto; cada cuánto se refrescan las tablas; si va en EP-025 o en una épica nueva.
+
+---
+
+## Lo que aportó cada parte
+
+### Cimiento: las reglas que aplican y las que chocan
+
+`02·F0` y `02·F23`: el pedido base dice «implementa», pero lo construido sale de la HU y su fase, no de este análisis. `02·F8`: la fase toca solo los archivos que declara su plan. `00·ID7` y `00·ID9` rigen también los textos de la pantalla: títulos, notas y ayuda. Ninguna regla choca.
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| Total del período | `GastoDelPeriodo.totales()` ya lo calcula, pero la pantalla no lo muestra: las cuatro cifras son llamadas, entrada, caché releída y salida |
+| Período anterior | No existe. Sale de la misma consulta corrida sobre los días previos; no hay que guardar nada nuevo |
+| Porcentaje de caché | No existe; sale de dividir la caché releída entre el total, que ya están |
+| Tipos de token | Cuatro, contados: entrada nueva, escrita en caché, releída de caché y salida (`por_tipo_de_token`) |
+| Repetido | La gráfica «Por proyecto» y la tabla «Proyectos» salen de la misma lista (`por_proyecto`) |
+| Tablas por nivel | Palabra, trabajo, modelo y agente salen de la misma función `_por`, con las mismas columnas; proyecto casi igual. «Últimas sesiones» y «Últimos mensajes» van por fecha, no por gasto |
+| «Lo que corre sin tokens» | Lista todos los enganches que corrieron, también los que sí agregan tokens: no separa los que gastan de los que no |
+| Candidatos a automatizar | Dan veces y ahorro; el gasto actual no se muestra, pero sale del mismo dato (`caracteres`) |
+| Estimados | Enganches, archivos y herramientas se miden en caracteres y se pasan a tokens (`estimar_tokens`); llamadas y tipos de token se cuentan |
+| Límites del proyecto | Existen por enganche y por archivo, para cada mensaje ([presupuesto.py]({R}/proyectos/cimiento/core/enganches/presupuesto.py)); la pantalla no los usa |
+| Refresco | Una sola vista, `consumo:datos`, devuelve los 20 bloques cada 10 segundos y corre todas las consultas cada vez |
+| Herramientas de la pantalla | Tabler, que trae pestañas y barras de proporción, htmx y ApexCharts, ya cargados en [base.html]({R}/proyectos/cimiento/templates/base.html) |
+| Pruebas | [tests_tablero.py]({R}/proyectos/cimiento/core/consumo/tests_tablero.py) busca textos de la pantalla y el `hx-trigger="every 10s"`: cambian con ella |
+| Ayuda | [gasto.html]({R}/proyectos/cimiento/core/ayuda/templates/ayuda/secciones/gasto.html) describe la pantalla de hoy: «se actualizan solas cada 10 segundos» |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| Análisis 1 a 3 del [pendiente: el gasto no llega en vivo]({R}/historico-chat/resumenes/2026-10-04/pendientes/119-se-puede-ver-cuantos-tokens-se-gastan-donde-y-en-vivo/pendiente.md) | Definieron qué datos guarda y muestra el tablero y cómo llegan en vivo; este análisis no cambia esos datos, solo cómo se presentan |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | La pantalla es de Cimiento y los proyectos no la copian: versión MENOR según `20·M10`; `02·F22` no aplica |
+| Normas y leyes | Ninguna |
+| Herramientas | Solo lo que ya carga la pantalla: Tabler, htmx y ApexCharts, sin librerías nuevas |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| La ayuda describe la pantalla vieja | `core/ayuda/templates/ayuda/secciones/gasto.html` | La ayuda dice lo que ya no está | Por definir |
+| Las pruebas buscan la pantalla vieja | `core/consumo/tests_tablero.py` | Las pruebas fallan o prueban lo que ya no existe | Por definir |
+| Otras pantallas con todo al mismo peso | Inicio, Proyectos y Reglas de Cimiento | El mismo problema en otra pantalla | Por definir: falta revisarlas |
+
+---
+
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+Se escribe cuando haya acuerdos.
+
+## Lecciones aprendidas
+
+Se escriben al cerrar el análisis.
+
+## Lo que se tiene que hacer
+
+Cada fila sale de un punto de «Lo acordado»; todavía no hay ninguno.
+
+## Lo que aporta al análisis principal
+
+Se escribe al cerrar el análisis.

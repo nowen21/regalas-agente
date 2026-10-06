@@ -1,0 +1,67 @@
+## Lo acordado
+
+Nada todavía.
+
+Siguen abiertas: qué formas se suman; qué se hace con lo ya guardado; dónde va la HU.
+
+---
+
+## Lo que aportó cada parte
+
+### Cimiento: las reglas que aplican y las que chocan
+
+`00·N6`: ninguna clave se deja en un registro ni entra al control de versiones. `01·C29`, desde 55.1.0: lo que se trae a la base entra sin claves. `04·S4`: la lista de secretos que usa el validador. Ninguna regla choca.
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| Lista de formas de proveedor | `SEGUROS`, en [secretos.py]({R}/proyectos/cimiento/core/validadores/secretos.py): AWS, clave privada, Stripe, SendGrid, Slack, GitHub, GitLab y Google. No está Anthropic |
+| Asignación con comillas | `ASIGNA`, en el mismo archivo: pide un límite de palabra antes de `api_key`, así que `ANTHROPIC_API_KEY="…"` no entra |
+| Asignación sin comillas | `_ASIGNA_SIN_COMILLAS`, en [enmascarar.py]({R}/proyectos/cimiento/core/enganches/enmascarar.py): el mismo límite, el mismo hueco |
+| Quién usa la lista | El tapado (`Enmascarador`), y por él el guardado del gasto (`consumo/guardar.py`) y el histórico (`enganches/historico.py`); el validador de secretos (`validar.py secretos`), que corre también en el control de commits |
+| Lo ya guardado | Medido el 2026-10-06: en la base, 3 coincidencias de `sk-ant-` y 4 de `ANTHROPIC_API_KEY=`, todas la clave falsa que armó la prueba de EP-025·HU-025 al fallar; en `historico-chat/`, `documentacion/` y `analisis/`, ninguna. No hay claves reales en claro |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| Pendiente 84 | Ya amplió el tapado a la clave tecleada sin comillas; este análisis sigue esa línea con el nombre compuesto |
+| Resultado de EP-025·HU-025, DEF-01 | Es el hallazgo que abrió este análisis |
+| [Fixtures sin secretos literales]({R}/historico-chat/memory/fixtures-sin-secretos-literales.md) | Las pruebas arman la clave al correr; si no, GitHub bloquea el push |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | El validador de secretos corre en todos los proyectos: una forma nueva puede detener un commit que hoy pasa. Versión MENOR según `20·M10`, porque solo detecta más; `02·F22` no aplica |
+| Normas y leyes | Ninguna |
+| Herramientas | Claude Code guarda en el `.jsonl` lo que leen sus herramientas, incluido un `.env` |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| Clave de Anthropic en una línea de sesión | Base de Cimiento | Queda guardada en claro | Por definir |
+| Clave de Anthropic en el histórico | `historico-chat/` | Se versiona y no se borra | Por definir |
+| Clave de Anthropic en código o documentos | Control de commits de todo proyecto | Entra al repositorio | Por definir |
+| Variable con prefijo de otro proveedor | `OPENAI_API_KEY=`, `SEMANTIC_SCHOLAR_API_KEY=` y otras | Igual que Anthropic | Por definir |
+| La clave falsa de la prueba guardada en la base | 3 líneas de la sesión del 2026-10-05 | Ninguno: no es una clave real | Por definir |
+
+---
+
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+Se escribe cuando haya acuerdos.
+
+## Lecciones aprendidas
+
+Se escriben al cerrar el análisis.
+
+## Lo que se tiene que hacer
+
+Cada fila sale de un punto de «Lo acordado»; todavía no hay ninguno.
+
+## Lo que aporta al análisis principal
+
+Se escribe al cerrar el análisis.

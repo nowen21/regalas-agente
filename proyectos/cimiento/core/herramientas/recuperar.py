@@ -339,6 +339,11 @@ class RecuperadorDeReglas:
     def como_texto(self, mensaje, tope=TOPE, proyecto=None):
         """El bloque que se le inyecta al agente, o `""` si no hay reglas que dar.
         **Dice qué trae y por qué**: lo que no se explica no se puede auditar."""
+        # `EP-005·HU-024` · Un aviso interno de Claude Code no lo escribió el usuario:
+        # no se le aplican sus reglas ni el aviso de `01·C28`.
+        from core.enganches.historico import es_aviso_interno
+        if es_aviso_interno(mensaje):
+            return ""
         idx = self.indice()
         if not self.trae_palabra_clave(mensaje):
             # La regla que el mensaje cita llega igual: «00 id9» corrige la

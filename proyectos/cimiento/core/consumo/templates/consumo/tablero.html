@@ -4,7 +4,8 @@
 {% block cabecera %}Gasto de tokens{% endblock %}
 
 {% block contenido %}
-<form class="row g-2 mb-3" method="get">
+<form class="row g-2 mb-3 align-items-center" method="get">
+  <input type="hidden" name="pestana" value="{{ pestana }}">
   <div class="col-auto">
     <select class="form-select" name="proyecto" aria-label="Proyecto" onchange="this.form.submit()">
       <option value="">Todos los proyectos</option>
@@ -20,66 +21,84 @@
       {% endfor %}
     </select>
   </div>
-  <div class="col-auto align-self-center text-secondary">Se actualiza cada 10 segundos.</div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-outline-secondary" id="actualizar" title="Volver a pedir lo que se ve">↻ Actualizar</button>
+  </div>
 </form>
 
-<div class="row row-cards mb-3">
-  <div class="col-lg-6">
-    <div class="card">
-      <div class="card-header"><h3 class="card-title">Por proyecto</h3></div>
-      <div class="card-body"><div id="grafica-proyectos"></div></div>
-    </div>
-  </div>
-  <div class="col-lg-6">
-    <div class="card">
-      <div class="card-header"><h3 class="card-title">Por día</h3></div>
-      <div class="card-body"><div id="grafica-dias"></div></div>
-    </div>
-  </div>
-</div>
+{% include "consumo/_franja.html" %}
 
-<div id="datos"
-     hx-get="{% url 'consumo:datos' %}?dias={{ dias }}{% if proyecto %}&amp;proyecto={{ proyecto.pk }}{% endif %}"
-     hx-trigger="every 10s" hx-swap="innerHTML">
-  {% include "consumo/_datos.html" %}
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" id="pestanas">
+      {% for clave, nombre in pestanas %}
+      <li class="nav-item">
+        <a class="nav-link{% if clave == pestana %} active{% endif %}" href="?{{ consulta }}&amp;pestana={{ clave }}"
+           hx-get="{% url 'consumo:pestana' clave %}?{{ consulta }}" hx-target="#pestana"
+           hx-push-url="?{{ consulta }}&amp;pestana={{ clave }}">{{ nombre }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card-body" id="pestana"
+       hx-get="{% url 'consumo:pestana' pestana %}?{{ consulta }}" hx-trigger="load">
+    <div class="text-secondary">Cargando...</div>
+  </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var graficas = {};
+    var graficas = [];
 
-    function dibujar() {
-      var nodo = document.getElementById("datos-graficas");
-      if (!nodo || typeof ApexCharts === "undefined") { return; }
-      var datos = JSON.parse(nodo.textContent);
-      var series = {
-        proyectos: [{ name: "Tokens", data: datos.proyectos.totales }],
-        dias: [{ name: "Tokens", data: datos.dias.totales }]
-      };
-      if (graficas.proyectos) {
-        graficas.proyectos.updateOptions({ xaxis: { categories: datos.proyectos.nombres } }, false, false);
-        graficas.proyectos.updateSeries(series.proyectos);
-        graficas.dias.updateOptions({ xaxis: { categories: datos.dias.fechas } }, false, false);
-        graficas.dias.updateSeries(series.dias);
-        return;
-      }
-      var miles = function (valor) { return Math.round(valor).toLocaleString("es-CO"); };
-      graficas.proyectos = new ApexCharts(document.getElementById("grafica-proyectos"), {
-        chart: { type: "bar", height: 280, animations: { enabled: false } },
-        plotOptions: { bar: { horizontal: true } },
-        series: series.proyectos, xaxis: { categories: datos.proyectos.nombres, labels: { formatter: miles } },
-        dataLabels: { enabled: false }, tooltip: { y: { formatter: miles } }
+    // `EP-025·HU-026` · Nada se pide cada cierto tiempo: el botón avisa a lo que se ve.
+    document.getElementById("actualizar").addEventListener("click", function () {
+      document.body.dispatchEvent(new Event("actualizar"));
+    });
+
+    // `EP-025·HU-027` · Cada vez que el vigilante guarda algo, Cimiento avisa por SSE
+    // y se vuelve a pedir lo que se ve, que sale de la base.
+    if (typeof EventSource !== "undefined") {
+      new EventSource("{% url 'consumo:eventos' %}").addEventListener("gasto", function () {
+        document.body.dispatchEvent(new Event("actualizar"));
       });
-      graficas.dias = new ApexCharts(document.getElementById("grafica-dias"), {
-        chart: { type: "area", height: 280, animations: { enabled: false } },
-        series: series.dias, xaxis: { categories: datos.dias.fechas },
-        yaxis: { labels: { formatter: miles } }, dataLabels: { enabled: false }, tooltip: { y: { formatter: miles } }
-      });
-      graficas.proyectos.render();
-      graficas.dias.render();
     }
 
-    dibujar();
+    document.getElementById("pestanas").addEventListener("click", function (evento) {
+      var enlace = evento.target.closest("a.nav-link");
+      if (!enlace) { return; }
+      document.querySelectorAll("#pestanas a.nav-link").forEach(function (a) { a.classList.remove("active"); });
+      enlace.classList.add("active");
+    });
+
+    function dibujar() {
+      graficas.forEach(function (g) { g.destroy(); });
+      graficas = [];
+      var nodo = document.getElementById("datos-resumen");
+      if (!nodo || typeof ApexCharts === "undefined") { return; }
+      var datos = JSON.parse(nodo.textContent);
+      var miles = function (valor) { return Math.round(valor).toLocaleString("es-CO"); };
+      var dias = new ApexCharts(document.getElementById("grafica-dias"), {
+        chart: { type: "area", stacked: true, height: 260, animations: { enabled: false } },
+        series: [
+          { name: "Entrada nueva", data: datos.dias.entrada },
+          { name: "Escrita en caché", data: datos.dias.creada },
+          { name: "Releída de caché", data: datos.dias.leida },
+          { name: "Salida", data: datos.dias.salida }
+        ],
+        xaxis: { categories: datos.dias.fechas }, yaxis: { labels: { formatter: miles } },
+        dataLabels: { enabled: false }, tooltip: { y: { formatter: miles } }
+      });
+      var tipos = new ApexCharts(document.getElementById("grafica-tipos"), {
+        chart: { type: "donut", height: 260, animations: { enabled: false } },
+        series: datos.tipos.map(function (t) { return t.total; }),
+        labels: datos.tipos.map(function (t) { return t.nombre; }),
+        tooltip: { y: { formatter: miles } }, legend: { position: "bottom" }
+      });
+      dias.render();
+      tipos.render();
+      graficas = [dias, tipos];
+    }
+
     document.body.addEventListener("htmx:afterSwap", dibujar);
   });
 </script>

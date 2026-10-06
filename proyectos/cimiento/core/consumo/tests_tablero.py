@@ -1,5 +1,5 @@
-"""`EP-025·HU-008`: el tablero suma el gasto de todos los proyectos, se filtra,
-se actualiza solo y lee lo nuevo de los `.jsonl` al abrirse."""
+"""`EP-025·HU-008`: el tablero suma el gasto de todos los proyectos y se filtra.
+`EP-025·HU-026`: la franja de arriba y las cinco pestañas, sin intervalos."""
 import os
 import shutil
 import tempfile
@@ -84,9 +84,9 @@ class LaPaginaMuestraElGasto(ConGasto):
         self.entrar()
         respuesta = self.client.get("/gasto/")
         self.assertEqual(200, respuesta.status_code)
-        self.assertContains(respuesta, "1.210")
-        self.assertContains(respuesta, "5.000")
-        self.assertContains(respuesta, 'id="datos-graficas"')
+        self.assertContains(respuesta, "6.515")
+        self.assertContains(respuesta, 'id="franja"')
+        self.assertContains(respuesta, 'id="pestana"')
         self.assertContains(respuesta, "Gasto</span>")
 
     def test_sin_cuenta_manda_a_entrar(self):
@@ -106,7 +106,7 @@ class SeFiltra(ConGasto):
         self.entrar()
 
     def totales(self, consulta):
-        return self.client.get("/gasto/datos/" + consulta).context["totales"]
+        return self.client.get("/gasto/franja/" + consulta).context["franja"]
 
     def test_por_proyecto(self):
         self.assertEqual(1, self.totales(f"?proyecto={self.dos.pk}")["llamadas"])
@@ -120,20 +120,21 @@ class SeFiltra(ConGasto):
         self.assertEqual(2, self.totales("?dias=abc&proyecto=9999")["llamadas"])
 
 
-class SeActualizaSolo(ConGasto):
-    """CP-003."""
+class SeActualizaConElBoton(ConGasto):
+    """CP-003 de la HU-008, rehecho en la `HU-026`: nada se pide cada cierto tiempo."""
 
     def test_la_parte_que_se_recarga_trae_lo_nuevo(self):
         self.entrar()
-        antes = self.client.get("/gasto/datos/").context["totales"]["llamadas"]
+        antes = self.client.get("/gasto/franja/").context["franja"]["llamadas"]
         self.llamada(self.dos, "b-2", HOY, entrada=1, creada=0, leida=0, salida=1, sesion="s-2")
-        self.assertEqual(antes + 1, self.client.get("/gasto/datos/").context["totales"]["llamadas"])
+        self.assertEqual(antes + 1, self.client.get("/gasto/franja/").context["franja"]["llamadas"])
 
-    def test_la_pagina_pide_la_parte_cada_10_segundos(self):
+    def test_sin_intervalos_y_con_los_filtros(self):
         self.entrar()
         respuesta = self.client.get(f"/gasto/?proyecto={self.uno.pk}&dias=30")
-        self.assertContains(respuesta, 'hx-trigger="every 10s"')
-        self.assertContains(respuesta, f'hx-get="/gasto/datos/?dias=30&amp;proyecto={self.uno.pk}"')
+        self.assertNotContains(respuesta, "every ")
+        self.assertContains(respuesta, 'hx-trigger="actualizar from:body"')
+        self.assertContains(respuesta, f'hx-get="/gasto/franja/?dias=30&amp;proyecto={self.uno.pk}"')
 
     def test_al_abrir_no_lee_el_jsonl(self):
         """`EP-025·HU-011 · CP-003`: lo trae el vigilante; el tablero solo consulta la base."""
@@ -143,6 +144,76 @@ class SeActualizaSolo(ConGasto):
         self.entrar()
         with mock.patch("core.consumo.guardar.LectorDeClaudeCode") as lector:
             self.assertEqual(200, self.client.get("/gasto/").status_code)
-            self.client.get("/gasto/datos/")
+            self.client.get("/gasto/franja/")
+            self.client.get("/gasto/pestana/resumen/")
         lector.assert_not_called()
         self.assertFalse(Llamada.objects.filter(mensaje="m-1").exists())
+
+
+class LaFranja(ConGasto):
+    """`EP-025·HU-026` · CP-001 y CP-002."""
+
+    def setUp(self):
+        super().setUp()
+        self.entrar()
+
+    def test_total_llamadas_cache_y_maximo(self):
+        franja = self.client.get("/gasto/franja/").context["franja"]
+        self.assertEqual((6515, 2, 77, 6200), (franja["total"], franja["llamadas"], franja["cache_pct"], franja["maximo"]))
+        # El tramo anterior de 7 días trae la llamada de hace 10 días: 7 tokens.
+        self.assertEqual((7, round((6515 - 7) * 100 / 7)), (franja["anterior"], franja["variacion"]))
+        sin_antes = self.client.get(f"/gasto/franja/?proyecto={self.dos.pk}").context["franja"]
+        self.assertIsNone(sin_antes["variacion"])
+        self.assertContains(self.client.get(f"/gasto/franja/?proyecto={self.dos.pk}"), "Sin gasto en el tramo anterior")
+
+    def test_sin_cuenta_manda_a_entrar(self):
+        self.client.logout()
+        self.assertEqual(302, self.client.get("/gasto/franja/").status_code)
+
+    def test_compara_con_el_tramo_anterior_a_la_misma_hora(self):
+        ahora = timezone.localtime().replace(hour=12, minute=0, second=0, microsecond=0)
+        ayer = ahora - timedelta(days=1)
+        self.llamada(self.dos, "ayer-antes", ayer - timedelta(hours=1), entrada=100, creada=0, leida=0, salida=0)
+        self.llamada(self.dos, "ayer-despues", ayer + timedelta(hours=1), entrada=900, creada=0, leida=0, salida=0)
+        gasto = GastoDelPeriodo(1, self.dos, ahora=ahora)
+        self.assertEqual(100, gasto.anterior())
+        self.assertEqual(round((gasto.totales()["total"] - 100) * 100 / 100), gasto.franja()["variacion"])
+
+
+class LasPestanas(ConGasto):
+    """`EP-025·HU-026` · CP-003 a CP-006."""
+
+    def setUp(self):
+        super().setUp()
+        self.entrar()
+
+    def test_cada_pestana_tiene_su_ruta_y_la_que_no_existe_da_404(self):
+        for nombre in ("resumen", "donde", "contexto", "ahorro", "actividad"):
+            with self.subTest(pestana=nombre):
+                self.assertEqual(200, self.client.get("/gasto/pestana/%s/" % nombre).status_code)
+        self.assertEqual(404, self.client.get("/gasto/pestana/otra/").status_code)
+
+    def test_resumen_trae_sus_dos_graficas(self):
+        respuesta = self.client.get("/gasto/pestana/resumen/")
+        self.assertContains(respuesta, 'id="datos-resumen"')
+        self.assertEqual(4, len(respuesta.context["datos_graficas"]["tipos"]))
+        self.assertEqual(5000, respuesta.context["datos_graficas"]["dias"]["leida"][-1])
+
+    def test_donde_agrupa_con_porcentaje(self):
+        filas = self.client.get("/gasto/pestana/donde/?agrupar=proyecto").context["filas"]
+        self.assertEqual([("uno", 6500, 100), ("dos", 15, 0)], [(f["nombre"], f["total"], f["pct"]) for f in filas])
+        self.assertEqual("modelo", self.client.get("/gasto/pestana/donde/?agrupar=modelo").context["por"])
+        self.assertEqual("proyecto", self.client.get("/gasto/pestana/donde/?agrupar=nada").context["por"])
+
+    def test_sin_repetidos(self):
+        respuesta = self.client.get("/gasto/")
+        self.assertNotContains(respuesta, "grafica-proyectos")
+        # La tabla por tipo de token salió: los tipos solo van a la dona.
+        self.assertNotIn("tipos", self.client.get("/gasto/pestana/resumen/").context)
+
+    def test_contexto_trae_promedio_maximo_y_limite_sin_marcar(self):
+        contexto = self.client.get(f"/gasto/pestana/contexto/?proyecto={self.uno.pk}").context
+        self.assertEqual([("Revisando las reglas...", 3, 100, 100)],
+                         [(f["nombre"], f["veces"], f["promedio"], f["maximo"]) for f in contexto["enganches"]])
+        self.assertEqual(int(self.uno.ajuste("limite_enganche")), contexto["limite_enganche"])
+        self.assertNotContains(self.client.get("/gasto/pestana/contexto/"), "pasa el límite")

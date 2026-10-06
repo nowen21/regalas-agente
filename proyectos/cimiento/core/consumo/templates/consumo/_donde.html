@@ -1,0 +1,22 @@
+{% load gasto %}
+<div hx-get="{% url 'consumo:pestana' 'donde' %}?{{ consulta }}&amp;agrupar={{ por }}" hx-trigger="actualizar from:body" hx-swap="outerHTML">
+<div class="btn-group mb-3" role="group" aria-label="Agrupar por">
+  {% for clave, nombre in opciones %}
+  <button type="button" class="btn{% if clave == por %} btn-primary{% else %} btn-outline-primary{% endif %}"
+          hx-get="{% url 'consumo:pestana' 'donde' %}?{{ consulta }}&amp;agrupar={{ clave }}" hx-target="#pestana">{{ nombre }}</button>
+  {% endfor %}
+</div>
+<table class="table table-vcenter">
+  <thead><tr><th></th><th class="w-25"></th><th class="text-end">% del total</th><th class="text-end">Llamadas</th><th class="text-end">Tokens</th></tr></thead>
+  <tbody>
+    {% for fila in filas %}
+    <tr><td>{{ fila.nombre|truncatechars:60 }}</td>
+        <td><div class="progress progress-sm"><div class="progress-bar" style="width: {{ fila.pct }}%"></div></div></td>
+        <td class="text-end">{{ fila.pct }} %</td><td class="text-end">{{ fila.llamadas|miles }}</td>
+        <td class="text-end">{{ fila.total|miles }}</td></tr>
+    {% empty %}
+    <tr><td colspan="5" class="text-secondary">Sin gasto en el período.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>

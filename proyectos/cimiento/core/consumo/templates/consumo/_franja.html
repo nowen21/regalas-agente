@@ -1,0 +1,39 @@
+{% load gasto %}
+<div id="franja" class="row row-cards mb-3" hx-get="{% url 'consumo:franja' %}?{{ consulta }}"
+     hx-trigger="actualizar from:body" hx-swap="outerHTML">
+  <div class="col-sm-6 col-lg">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Total del período</div>
+      <div class="h1 mb-0" id="franja-total">{{ franja.total|miles }}</div>
+      {% if franja.variacion is None %}
+      <div class="text-secondary small">Sin gasto en el tramo anterior para comparar</div>
+      {% elif franja.variacion > 0 %}
+      <div class="text-danger small">▲ {{ franja.variacion }} % frente al tramo anterior, a la misma hora</div>
+      {% elif franja.variacion < 0 %}
+      <div class="text-success small">▼ {{ franja.variacion|cut:"-" }} % frente al tramo anterior, a la misma hora</div>
+      {% else %}
+      <div class="text-secondary small">Igual que el tramo anterior, a la misma hora</div>
+      {% endif %}
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-lg">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Llamadas</div>
+      <div class="h2 mb-0">{{ franja.llamadas|miles }}</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-lg">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Releído de caché</div>
+      <div class="h2 mb-0">{{ franja.cache_pct }} %</div>
+      <div class="text-secondary small">del total, lo más barato</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-lg">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Contexto más grande de una llamada</div>
+      <div class="h2 mb-0">{{ franja.maximo|miles }}</div>
+    </div></div>
+  </div>
+  <div class="col-12 text-secondary small" id="actualizado">Actualizado a las {{ actualizado|date:"H:i:s" }}</div>
+</div>

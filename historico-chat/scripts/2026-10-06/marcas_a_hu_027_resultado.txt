@@ -1,0 +1,13 @@
+Cimiento local con MariaDB, sobre `ae82d18` con los cambios de las fases sin guardar
+`ElAvisoDespiertaSinReloj`: un hilo espera, otro avisa; el flujo SSE tras un aviso; y la búsqueda de relojes en `avisos.py`, `vigilante.py` y `tablero.html`
+El que esperaba despertó con el número nuevo, el flujo trajo `event: gasto` y no hay `sleep(`, `every ` ni `setInterval`
+`ElVigilanteAvisa`: un `.jsonl` con gasto, el mismo sin nada nuevo, y un aviso a un puerto cerrado
+Avisó una vez y no la segunda; al puerto cerrado devolvió `False` en menos de 2,5 s
+`LasRutas.test_la_pantalla_escucha_los_eventos` y `test_los_eventos_piden_cuenta`; y con Cimiento prendido en el 8015, `curl` a `/gasto/eventos/` sin cuenta
+La página trae `new EventSource("/gasto/eventos/")`; los eventos dan 200 `text/event-stream` con cuenta y 302 sin ella, también en el Cimiento prendido
+`LasRutas.test_el_aviso_desde_esta_maquina_sin_cuenta` y `test_el_aviso_desde_otra_maquina_o_por_get_se_rechaza`; y `curl -X POST` al 8015
+204 desde 127.0.0.1 sin cuenta y el número subió; 403 desde 10.0.0.5, 405 por GET, sin cambio; el Cimiento prendido respondió 204
+No se vio en un navegador la franja cambiando sola con una sesión de Claude Code: pide entrar con una cuenta, y queda para el usuario.
+Ninguno.
+Los dos criterios tienen sus casos aprobados y `core.consumo` pasa 73 de 73; falta ver con los ojos la pantalla cambiando sola.
+`core/consumo/tests_en_vivo.py` y la salida de §3

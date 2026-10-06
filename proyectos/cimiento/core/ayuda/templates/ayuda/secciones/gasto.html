@@ -1,15 +1,17 @@
 <h4>Para qué sirve</h4>
-<p>Ver cuántos tokens se gastan, en qué proyecto, en qué sesión y por qué, y qué conviene pasar a un programa.</p>
+<p>Ver cuántos tokens se gastan, si es más o menos que antes, dónde se gastan y qué conviene pasar a un programa.</p>
 <h4>Dónde está</h4>
 <p>«Gasto» en el menú de la izquierda.</p>
 <h4>Qué hacer</h4>
 <ol>
   <li>Elegir el proyecto y el período.</li>
-  <li>Leer los totales, las gráficas y las tablas; se actualizan solas cada 10 segundos.</li>
-  <li>Mirar «Candidatos a automatizar» para decidir qué se vuelve un programa.</li>
+  <li>Leer la franja de arriba: el total del período, si sube o baja frente al tramo anterior a la misma hora, las llamadas, cuánto se releyó de caché y el contexto más grande.</li>
+  <li>Elegir una de las cinco pestañas: Resumen, Dónde se gasta, Contexto, Ahorro o Actividad.</li>
+  <li>En «Ahorro», mirar lo que gasta y se puede automatizar para decidir qué se vuelve un programa.</li>
+  <li>No hay que recargar: lo nuevo aparece solo. «↻ Actualizar» vuelve a pedirlo a mano; la hora de abajo de la franja dice cuándo se trajo.</li>
 </ol>
 <h4>Qué debe pasar</h4>
-<p>Lo que se hace en cualquier sesión aparece en segundos: lo guarda el vigilante del consumo.</p>
+<p>Lo que se hace en cualquier sesión queda en la base en cuanto Claude Code lo escribe: lo guarda el vigilante del consumo, que en ese momento le avisa a la pantalla, y la pantalla se actualiza sola.</p>
 <h4>Si algo falla</h4>
 <ul>
   <li>Si nada llega, el vigilante no corre: arrancarlo con <code>python manage.py vigilar_consumo</code> o con la instalación del estándar.</li>

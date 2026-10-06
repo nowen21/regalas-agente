@@ -1,0 +1,9 @@
+Cimiento local, sobre `ae82d18` con los cambios de las fases sin guardar
+`test_los_dos_avisos_quedan_como_aviso_del_sistema`: un `<task-notification>` y un `<agent-message`
+Los dos quedaron `### N · Aviso del sistema`, con su texto, y ninguno como «Usuario»
+`test_el_mensaje_del_usuario_sigue_igual` y `test_reconoce_solo_lo_que_abre_con_la_marca`
+«Hágalo» y un texto que nombra `<agent-message` en la mitad quedaron como «Usuario»; solo lo que abre con la marca es aviso
+Nada.
+Ninguno.
+El histórico firma los avisos con su remitente y sus pruebas pasan, 134 de 134 con las de `tests_sesion`.
+`core/enganches/tests_avisos_internos.py` y la salida de §3

@@ -1,0 +1,12 @@
+La pantalla «Gasto» muestra arriba la franja con el total del período y su variación frente al tramo anterior cortado a la misma hora, las llamadas, el % de caché releída y el contexto máximo. Debajo, cinco pestañas que se piden solo al abrirlas: Resumen, Dónde se gasta, Contexto, Ahorro y Actividad. Salen la gráfica «Por proyecto», la tabla por tipo de token y el refresco cada 10 segundos: se actualiza con el botón ↻ hasta la HU-027.
+ninguno.
+ninguna.
+`tests_segunda_tanda.py` y `tests_tercera_tanda.py`, que pedían `/gasto/datos/`; el usuario aprobó ampliar el plan el 2026-10-06 y quedaron en su tabla 2.1.
+Cumple
+«Gasto» en el menú de la izquierda. Las pestañas se recuerdan en la dirección con `?pestana=`, y «Dónde se gasta» con `&agrupar=`.
+La hora se muestra fija, «Actualizado a las HH:MM:SS»
+Contar segundos en la pantalla sería un reloj, y el acuerdo 4 los descarta
+Plan §2.6
+El dibujo de las gráficas y el botón ↻ no se vieron en un navegador; los ve el usuario al abrir la pantalla. La falta de matriz de dependencias completa dejó dos pruebas fuera del plan: lección S-320.
+Fila de la HU-026 en la épica.
+No aplica: llega con la actualización de Cimiento; basta recargar la pantalla.

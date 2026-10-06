@@ -14,8 +14,11 @@ pide sus tablas de zonas horarias, que WAMP no trae.
 from collections import OrderedDict
 from datetime import timedelta
 
-from django.db.models import Count, F, Max, Min, Sum
+from django.db.models import Avg, Count, F, Max, Min, Sum
 from django.utils import timezone
+
+from core.proyectos import ajustes
+from core.proyectos.models import AjusteBase
 
 from .lector import estimar_tokens
 from .models import EjecucionDeEnganche, GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta, Llamada, Pedido
@@ -43,6 +46,7 @@ class GastoDelPeriodo:
         ahora = timezone.localtime(ahora or timezone.now())
         hoy = ahora.replace(hour=0, minute=0, second=0, microsecond=0)
         self.desde = hoy - timedelta(days=self.dias - 1)
+        self.ahora = ahora
 
     def _filtrar(self, modelo):
         consulta = modelo.objects.filter(fecha__gte=self.desde)
@@ -180,16 +184,124 @@ class GastoDelPeriodo:
         def todas_menos_una(fila):
             return estimar_tokens(fila["c"] or 0) * (fila["veces"] - 1) // fila["veces"]
 
+        # `EP-025·HU-026` · `gasto`: lo que cuesta hoy; `ahorro`, lo que dejaría de costar.
         salida = [{"tipo": "Archivo leído", "nombre": fila["ruta"], "veces": fila["veces"],
-                   "ahorro": todas_menos_una(fila)} for fila in repetidos(GastoDeArchivo, "ruta")]
+                   "gasto": estimar_tokens(fila["c"] or 0), "ahorro": todas_menos_una(fila)}
+                  for fila in repetidos(GastoDeArchivo, "ruta")]
         mensajes = self._filtrar(Pedido).count()
         if mensajes:
             enganches = self._filtrar(GastoDeEnganche).filter(evento="UserPromptSubmit").values("nombre")
             for fila in enganches.annotate(veces=Count("id"), c=Sum("caracteres")):
                 if fila["veces"] >= self.EN_CADA_MENSAJE * mensajes:
                     salida.append({"tipo": "Enganche en cada mensaje", "nombre": fila["nombre"],
-                                   "veces": fila["veces"], "ahorro": estimar_tokens(fila["c"] or 0)})
+                                   "veces": fila["veces"], "gasto": estimar_tokens(fila["c"] or 0),
+                                   "ahorro": estimar_tokens(fila["c"] or 0)})
         comandos = self._filtrar(GastoDeHerramienta).exclude(orden="")
         salida += [{"tipo": "Comando repetido", "nombre": fila["orden"], "veces": fila["veces"],
-                    "ahorro": todas_menos_una(fila)} for fila in repetidos(GastoDeHerramienta, "orden", comandos)]
+                    "gasto": estimar_tokens(fila["c"] or 0), "ahorro": todas_menos_una(fila)}
+                   for fila in repetidos(GastoDeHerramienta, "orden", comandos)]
         return sorted(salida, key=lambda f: -f["ahorro"])[:CUANTOS * 2]
+
+    # ── `EP-025·HU-026` · La franja y las cinco pestañas ──────────────────
+
+    AGRUPAR = OrderedDict([
+        ("proyecto", ("Proyecto", "proyecto__nombre", {}, "(sin proyecto)")),
+        ("palabra", ("Palabra clave", "pedido__palabra", {"pedido__isnull": False}, "(sin palabra clave)")),
+        ("trabajo", ("Trabajo", "pedido__trabajo", {"pedido__isnull": False}, "(sin trabajo)")),
+        ("modelo", ("Modelo", "modelo", {}, "(sin modelo)")),
+        ("agente", ("Agente auxiliar", "agente", {"auxiliar": True}, "auxiliar")),
+    ])
+
+    def anterior(self):
+        """El gasto del tramo anterior, cortado a la misma hora (análisis 1 del pendiente 124, acuerdo 2)."""
+        consulta = Llamada.objects.filter(fecha__gte=self.desde - timedelta(days=self.dias),
+                                          fecha__lt=self.ahora - timedelta(days=self.dias))
+        if self.proyecto:
+            consulta = consulta.filter(proyecto=self.proyecto)
+        return consulta.aggregate(n=Sum(_TOTAL))["n"] or 0
+
+    def franja(self):
+        """Lo que va siempre arriba: total, variación, llamadas, % de caché releída y contexto máximo."""
+        totales = self.totales()
+        anterior = self.anterior()
+        total = totales["total"]
+        return {
+            "total": total, "anterior": anterior, "llamadas": totales["llamadas"],
+            "variacion": round((total - anterior) * 100 / anterior) if anterior else None,
+            "cache_pct": round(totales["cache"] * 100 / total) if total else 0,
+            "maximo": self.llamadas().aggregate(
+                m=Max(F("entrada") + F("cache_creada") + F("cache_leida")))["m"] or 0,
+        }
+
+    def por_dia_por_tipo(self):
+        """`{"fechas", "entrada", "creada", "leida", "salida"}`, un día por posición."""
+        dias = OrderedDict(((self.desde + timedelta(days=n)).date(), [0, 0, 0, 0]) for n in range(self.dias))
+        for fecha, entrada, creada, leida, salida in self.llamadas().values_list(
+                "fecha", "entrada", "cache_creada", "cache_leida", "salida").iterator():
+            dia = timezone.localtime(fecha).date()
+            if dia in dias:
+                for i, valor in enumerate((entrada, creada, leida, salida)):
+                    dias[dia][i] += valor
+        series = list(zip(*dias.values()))
+        return {"fechas": [d.strftime("%d/%m") for d in dias], "entrada": list(series[0]),
+                "creada": list(series[1]), "leida": list(series[2]), "salida": list(series[3])}
+
+    def agrupar(self, por="proyecto", cuantos=CUANTOS):
+        """`(por, filas)`: el gasto agrupado, con su porcentaje del total. Un `por` que no existe es «proyecto»."""
+        por = por if por in self.AGRUPAR else "proyecto"
+        _, campo, filtro, vacio = self.AGRUPAR[por]
+        filas = list(_sumas(self.llamadas().filter(**filtro).values(campo)).order_by("-total")[:cuantos])
+        total = self.totales()["total"] or 1
+        return por, [dict(f, nombre=f[campo] or vacio, pct=round((f["total"] or 0) * 100 / total)) for f in filas]
+
+    def limites(self):
+        """`(por enganche, por archivo)`: los del proyecto filtrado, o los comunes de Cimiento."""
+        if self.proyecto:
+            return int(self.proyecto.ajuste("limite_enganche")), int(self.proyecto.ajuste("limite_archivo"))
+        efectivos = ajustes.efectivos(dict(AjusteBase.objects.values_list("clave", "valor")))
+        return int(efectivos["limite_enganche"][0]), int(efectivos["limite_archivo"][0])
+
+    def _por_vez(self, modelo, campo):
+        filas = self._filtrar(modelo).values(campo).annotate(
+            veces=Count("id"), c=Sum("caracteres"), prom=Avg("caracteres"), mayor=Max("caracteres")
+        ).order_by("-c")[:CUANTOS]
+        return [{"nombre": f[campo] or "(sin nombre)", "veces": f["veces"], "tokens": estimar_tokens(f["c"] or 0),
+                 "promedio": estimar_tokens(int(f["prom"] or 0)), "maximo": estimar_tokens(f["mayor"] or 0)}
+                for f in filas]
+
+    def contexto_por_vez(self):
+        """Enganches y archivos con su promedio y su máximo por vez, junto al límite; no se marca nada
+        (análisis 1 del pendiente 124, acuerdo 3)."""
+        limite_enganche, limite_archivo = self.limites()
+        return {"resumen": self.contexto(), "enganches": self._por_vez(GastoDeEnganche, "nombre"),
+                "archivos": self._por_vez(GastoDeArchivo, "ruta"), "herramientas": self.por_herramienta(),
+                "limite_enganche": limite_enganche, "limite_archivo": limite_archivo}
+
+    def ahorro(self):
+        """Lo que no gasta, lo que gasta y lo que gasta y se puede automatizar."""
+        corridas = self.sin_tokens()
+        candidatos = self.candidatos()
+        return {"no_gasta": [f for f in corridas if not f["tokens"]], "gasta": [f for f in corridas if f["tokens"]],
+                "candidatos": candidatos, "ahorro_total": sum(f["ahorro"] for f in candidatos)}
+
+    PESTANAS = ("resumen", "donde", "contexto", "ahorro", "actividad")
+
+    def pestana(self, nombre, agrupar_por="proyecto"):
+        """Lo que necesita cada pestaña, y solo eso (RNF-01). Un nombre que no existe da `KeyError`."""
+        if nombre == "resumen":
+            ahorro = self.ahorro()
+            por, filas = self.agrupar("palabra" if self.proyecto else "proyecto", cuantos=5)
+            # `datos_graficas` va a `json_script`: lo dibuja ApexCharts.
+            return {"datos_graficas": {"dias": self.por_dia_por_tipo(), "tipos": self.por_tipo_de_token()},
+                    "candidatos": ahorro["candidatos"][:5], "ahorro_total": ahorro["ahorro_total"],
+                    "agrupado_por": self.AGRUPAR[por][0], "donde": filas}
+        if nombre == "donde":
+            por, filas = self.agrupar(agrupar_por)
+            return {"por": por, "opciones": [(k, v[0]) for k, v in self.AGRUPAR.items()], "filas": filas}
+        if nombre == "contexto":
+            return self.contexto_por_vez()
+        if nombre == "ahorro":
+            return self.ahorro()
+        if nombre == "actividad":
+            return {"sesiones": self.por_sesion(), "mensajes": self.ultimos_mensajes()}
+        raise KeyError(nombre)

@@ -1,0 +1,9 @@
+Cimiento local, sobre `ae82d18` con los cambios de las fases sin guardar
+`LaAyudaDeGasto.test_dice_que_se_actualiza_sola`
+La sección dice «lo nuevo aparece solo» y que la pantalla «se actualiza sola»
+`ElManualYSuCobertura.test_ninguna_pantalla_queda_sin_seccion`
+Ninguna ruta quedó sin sección: `consumo:aviso` y `consumo:eventos` están entre las que no son pantalla
+Nada.
+Ninguno.
+La ayuda describe la pantalla en vivo y `core.ayuda` pasa entera.
+`core/ayuda/tests_gasto.py`, `core/ayuda/tests.py` y la salida de §3

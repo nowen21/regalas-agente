@@ -1,0 +1,127 @@
+9. Épicas: los acuerdos 1 a 7 van a EP-025, que construyó la pantalla y el vigilante y sigue en curso; la parte de `01·C29` del acuerdo 5 va a EP-001, dueña del capítulo 01; el acuerdo 8 va a EP-005, cuya HU-001 es la transcripción de la sesión. No se abre épica nueva (turnos 32 y 33).
+
+Siguen abiertas: ninguna.
+
+---
+
+## Lo que aportó cada parte
+
+### Cimiento: las reglas que aplican y las que chocan
+
+`02·F0` y `02·F23`: el pedido base dice «implementa», pero lo construido sale de las HU y sus fases, no de este análisis. `02·F8`: cada fase toca solo los archivos que declara su plan. `00·ID7` y `00·ID9` rigen también los textos de la pantalla: títulos, notas y ayuda. `01·C29` choca con leer el gasto del almacén de Claude Code: se resuelve con el acuerdo 5 y el cambio de la regla (fila 12). `00·N6` rige lo que entra a la base: las claves se tapan antes de guardar (fila 6). `20·M10`: el cambio de `01·C29` sube versión.
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| Total del período | `GastoDelPeriodo.totales()` ya lo calcula, pero la pantalla no lo muestra: las cuatro cifras son llamadas, entrada, caché releída y salida |
+| Período anterior | No existe. Sale de la misma consulta corrida sobre el tramo anterior; no hay que guardar nada nuevo |
+| Porcentaje de caché | No existe; sale de dividir la caché releída entre el total, que ya están |
+| Tipos de token | Cuatro, contados: entrada nueva, escrita en caché, releída de caché y salida (`por_tipo_de_token`) |
+| Repetido | La gráfica «Por proyecto» y la tabla «Proyectos» salen de la misma lista (`por_proyecto`) |
+| Tablas por nivel | Palabra, trabajo, modelo y agente salen de la misma función `_por`, con las mismas columnas; proyecto casi igual. «Últimas sesiones» y «Últimos mensajes» van por fecha, no por gasto |
+| «Lo que corre sin tokens» | Lista todos los enganches que corrieron, también los que sí agregan tokens: no separa los que gastan de los que no |
+| Candidatos a automatizar | Dan veces y ahorro; el gasto actual no se muestra, pero sale del mismo dato (`caracteres`) |
+| Límites del proyecto | De fábrica, 2.000 por enganche y 10.000 por archivo ([0004_tres_capas.py]({R}/proyectos/cimiento/core/proyectos/migrations/0004_tres_capas.py)); no salen de un histórico |
+| Refresco de la pantalla | `hx-trigger="every 10s"` en [tablero.html]({R}/proyectos/cimiento/core/consumo/templates/consumo/tablero.html): una sola vista devuelve los 20 bloques y corre todas las consultas cada vez |
+| Vigilante | [vigilante.py]({R}/proyectos/cimiento/core/consumo/vigilante.py) recibe el aviso de Windows, pero guarda cada 2 segundos (`CADA`) y relee la lista de proyectos cada 60 (`LISTA_CADA`); el gasto de un proyecto recién registrado se ignora hasta esa relectura |
+| Lo que guarda la base | Solo conteos por llamada, enganche, archivo y herramienta; el contenido de cada línea del `.jsonl` no se guarda |
+| Lector | Solo toma líneas completas y recuerda hasta dónde leyó cada archivo: leer con cada aviso es seguro |
+| `.jsonl` | En `~/.claude/projects/<carpeta>/`, fuera del proyecto; Claude Code los borra a los 30 días (`cleanupPeriodDays`, no se puede apagar) y no deja escribirlos en otro sitio sin mover toda su configuración |
+| README de Cimiento | Dice que el gasto llega por la telemetría, que el análisis 2 del pendiente 119 quitó |
+| Histórico | [historico.py]({R}/proyectos/cimiento/core/enganches/historico.py) anota como «Usuario» todo lo que entra por `UserPromptSubmit`, también los avisos internos |
+| Herramientas de la pantalla | Tabler, htmx y ApexCharts, ya cargados en [base.html]({R}/proyectos/cimiento/templates/base.html); Django 5.2 con `runserver` |
+| Pruebas y ayuda | [tests_tablero.py]({R}/proyectos/cimiento/core/consumo/tests_tablero.py) busca el `every 10s`; [gasto.html]({R}/proyectos/cimiento/core/ayuda/templates/ayuda/secciones/gasto.html) dice «se actualizan solas cada 10 segundos» |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| Análisis 1 a 3 del [pendiente: el gasto no llega en vivo]({R}/historico-chat/resumenes/2026-10-04/pendientes/119-se-puede-ver-cuantos-tokens-se-gastan-donde-y-en-vivo/pendiente.md) | Definieron qué datos guarda y muestra el tablero. Confirman el acuerdo 4: el análisis 2, acuerdo 1, a propuesta del usuario, fijó guardar en el momento y no cada tantos segundos |
+| [HU-008 de EP-025]({R}/documentacion/epicas/EP-025-cimiento-se-administra-y-muestra-el-gasto-de-tokens/HU-008-el-gasto-se-ve-en-vivo-en-el-tablero/HU-008-el-gasto-se-ve-en-vivo-en-el-tablero.md) | Muestra el intento que falló: su criterio «a los 10 segundos aparece» no sale de ningún acuerdo y de ahí pasó al código. Este análisis lo tomó del código como si estuviera acordado (turnos 7 y 10) hasta que el usuario lo detectó (turno 11). Lo recogen los acuerdos 4 y 7 |
+| Señal S-308 | Los límites por proyecto son de fábrica; la recoge el acuerdo 3 |
+| Documentación de Claude Code | Sin forma de escribir los `.jsonl` dentro del proyecto, borrado a los 30 días y `transcript_path` en cada enganche; la recoge el acuerdo 5 |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | La pantalla y el vigilante son de Cimiento y sirven a todos los proyectos registrados. El cambio de `01·C29` llega a todos: versión MENOR según `20·M10`, porque amplía dónde puede vivir lo del proyecto sin exigir nada nuevo; `02·F22` no aplica |
+| Normas y leyes | Ninguna |
+| Herramientas | Claude Code decide dónde escribe el `.jsonl` y lo borra a los 30 días. htmx necesita su extensión SSE, que se sirve local como los demás archivos de `static/` |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| La ayuda describe la pantalla vieja | `core/ayuda/templates/ayuda/secciones/gasto.html` | La ayuda dice lo que ya no está | Fila 5 |
+| Las pruebas buscan la pantalla vieja | `core/consumo/tests_tablero.py` | Prueban lo que ya no existe | Filas 5 y 11 |
+| Un criterio cerrado contradice lo nuevo | CA-03 de la HU-008 de EP-025 («a los 10 segundos») | Dos documentos dicen cosas distintas | Fila 10: la HU-027 lo reemplaza y lo dice |
+| Otras pantallas con todo al mismo peso | Inicio, Proyectos, Reglas y Configuración de Cimiento | El mismo problema en otra pantalla | No hace falta: se revisaron y tienen de 2 a 3 tarjetas y a lo sumo una tabla |
+| Otro reloj en la cadena del gasto | Vigilante (2 y 60 segundos) | Lo «en vivo» llega con espera | Filas 7 y 8 |
+| Gasto de todos los proyectos fuera del proyecto | `~/.claude/projects/` de cada proyecto registrado | Se pierde a los 30 días e incumple `01·C29` | Filas 6 y 12 |
+| Avisos internos firmados como del usuario | Histórico y enganches de `UserPromptSubmit` de todos los proyectos | Mensajes falsos del usuario en la trazabilidad y reglas aplicadas a lo que no escribió | Fila 13 |
+| Otro reloj fuera del gasto | `AnalisisEnCurso.esperar`, en `core/enganches/analisis_en_curso.py`, revisa cada 0,25 s si el histórico ya anotó el turno | Espera por reloj, no por evento | No es del tema de este análisis: se anota como hallazgo en el resumen de la sesión al cerrarlo |
+
+---
+
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+### Hallazgo V2. La pantalla «Gasto» no dice por dónde empezar, y el gasto no llega en vivo ni queda dentro del proyecto
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | La pantalla «Gasto» pone 20 bloques seguidos con el mismo peso, sin el total del período, con datos repetidos y con lo que dice dónde ahorrar de último. Al revisarla se encontró que lo «en vivo» acordado se construyó con relojes que nadie acordó (la pantalla pregunta cada 10 segundos y el vigilante guarda cada 2), que el gasto se lee del almacén de Claude Code, fuera del proyecto y borrado a los 30 días, y que el histórico firma como del usuario los avisos internos de Claude Code |
+| Por qué importa | La pantalla sirve para decidir qué pasar a un programa y así no se ve; lo que se construye sin acuerdo se aparta de lo pedido; lo que vive afuera incumple `01·C29` y se pierde; y la trazabilidad atribuye al usuario mensajes que no escribió |
+
+### Pendiente V2. La pantalla «Gasto» no dice por dónde empezar, y el gasto no llega en vivo ni queda dentro del proyecto
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | El hallazgo V2, «La pantalla «Gasto» no dice por dónde empezar, y el gasto no llega en vivo ni queda dentro del proyecto» |
+| El problema | La pantalla no ordena lo que muestra: falta la cifra principal y su comparación, hay datos repetidos y lo del ahorro queda de último. La pantalla pregunta cada 10 segundos y el vigilante guarda cada 2 y relee los proyectos cada 60, cuando lo acordado es guardar y mostrar en el momento. El gasto se lee de `~/.claude/projects/` y la base guarda solo conteos. El histórico anota como «Usuario» los avisos `<task-notification>` y `<agent-message>` |
+| Por qué importa | Sin orden no se ve qué automatizar; con relojes, lo en vivo llega tarde y se aparta de lo acordado; lo que vive en el almacén de Claude Code incumple `01·C29` y desaparece a los 30 días; y la trazabilidad pone en boca del usuario lo que no dijo |
+
+### Épica y HU que salen del análisis
+
+Épicas existentes: EP-025 (Cimiento se administra y muestra el gasto de tokens), EP-001 (cuerpo de reglas heredable) y EP-005 (automatismos que no dependen de la memoria).
+
+| Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|---|
+| 1 | EP-001·HU-040 | `01·C29` reconoce la base de Cimiento como parte del proyecto | Leer el gasto de afuera incumple `01·C29`, y guardarlo en la base no estaba previsto por la regla | Ninguna | La regla tiene que permitirlo antes de construir lo que la usa | 12 |
+| 2 | EP-025·HU-025 | Cada línea del `.jsonl` queda en la base en el momento, con las claves tapadas | El gasto se lee de afuera, se pierde a los 30 días y el vigilante guarda con relojes | EP-001·HU-040 | Es la fuente de lo que muestran la pantalla y el aviso | 6, 7, 8, 9 |
+| 3 | EP-025·HU-026 | La pantalla «Gasto» dice primero lo importante | La pantalla no ordena lo que muestra | Ninguna | No depende de lo vivo; puede ir a la par de la 2 | 2, 3, 4, 5 |
+| 4 | EP-025·HU-027 | La pantalla se entera en el momento de lo que guarda el vigilante | La pantalla pregunta cada 10 segundos | EP-025·HU-025 y HU-026 | Necesita al vigilante que avisa y la pantalla con sus pestañas | 10, 11 |
+| 5 | EP-005·HU-024 | El histórico anota los avisos internos con su remitente | El histórico firma como del usuario los avisos internos | Ninguna | No depende de las demás | 13 |
+
+## Lecciones aprendidas
+
+| # | Lección | Tipo | Señal | Recomendación |
+|---|---|---|---|---|
+| 1 | Un intervalo entró al criterio de una HU sin acuerdo y el análisis siguiente lo tomó del código como acordado; antes de proponer sobre algo que existe, cotejar cada valor del código con los acuerdos | Falló | S-309 | Complementa R-6 |
+| 2 | Explicar con un ejemplo de la vida diaria destrabó las decisiones (el buzón de una ranura, el caso agro-system) | Funcionó | S-310 | Complementa R-10 |
+| 3 | Un límite de fábrica estuvo a punto de usarse como vara; antes de usar un umbral, verificar de dónde sale, y si no sale de datos, mostrar los datos | Falló | S-311 | Complementa R-2 |
+
+## Lo que se tiene que hacer
+
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
+|---|---|---|---|
+| 1 | Pasar el pendiente a su versión siguiente | `13·DOC26` | Este análisis, de una y sin fase: `historico-chat/resumenes/2026-10-05/pendientes/124-la-pantalla-gasto-no-dice-por-donde-empezar/pendiente.md`, hecho el 2026-10-05 |
+| 2 | Franja fija arriba (filtros, hora de la última actualización con su botón, total con variación, llamadas, % de caché releída, contexto máximo) y las cinco pestañas con su contenido; sale la gráfica «Por proyecto» y la tabla por tipo de token | 1 | EP-025·HU-026 |
+| 3 | La variación del total compara con el tramo anterior cortado a la misma hora | 2 | EP-025·HU-026 |
+| 4 | En Contexto, promedio y máximo por vez de cada enganche y archivo junto al límite del proyecto, sin marcar filas | 3 | EP-025·HU-026 |
+| 5 | La ayuda de «Gasto» y sus pruebas describen la pantalla nueva | 1 | EP-025·HU-026 |
+| 6 | El vigilante tapa las claves de cada línea nueva del `.jsonl`, la guarda completa en la base y de ella saca los conteos; Cimiento lee solo la base | 5 | EP-025·HU-025 |
+| 7 | El vigilante guarda con cada aviso de Windows, sin la espera de 2 segundos | 4 | EP-025·HU-025 |
+| 8 | Un `.jsonl` de una carpeta desconocida hace releer la lista de proyectos en ese momento; sale la relectura cada 60 segundos | 6 | EP-025·HU-025 |
+| 9 | El README de Cimiento dice que el gasto llega por el vigilante y se guarda en la base, sin telemetría | 5 | EP-025·HU-025 |
+| 10 | El vigilante avisa a Cimiento al guardar, Cimiento lo pasa por SSE a cada pantalla abierta y la pantalla relee la base con cada aviso; sale el `every 10s`, y la HU deja dicho que reemplaza el criterio de los 10 segundos de la HU-008 | 4, 7 | EP-025·HU-027 |
+| 11 | Prueba de la condición del usuario: con la pantalla abierta, una línea nueva en un `.jsonl` aparece sin recargar, tomada de la base y sin intervalo en el código | 7 | EP-025·HU-027 |
+| 12 | `01·C29` dice que lo del proyecto vive en el repositorio o en la base de Cimiento, con su checklist, CHANGELOG y versión | 5 | EP-001·HU-040 |
+| 13 | El histórico anota como «Aviso del sistema» lo que entra por `UserPromptSubmit` empezando con `<task-notification>` o `<agent-message`, y los enganches de reglas del usuario no se aplican a esos avisos | 8 | EP-005·HU-024 |
+
+## Lo que aporta al análisis principal
+
+**Resultado:** cambia lo que se construye.
+
+**Lo que suma al análisis principal:** el gasto de tokens se guarda completo en la base de Cimiento en el momento en que Claude Code lo escribe, y la pantalla «Gasto» lo muestra en cuanto llega, sin relojes, ordenada de lo principal al detalle.

@@ -1,0 +1,12 @@
+Cuando el vigilante guarda algo nuevo, avisa a Cimiento con un `POST` local; Cimiento pasa el aviso por SSE a cada pantalla «Gasto» abierta, y la pantalla vuelve a pedir la franja y la pestaña abierta, que salen de la base. No hay ningún intervalo; con Cimiento apagado el aviso se pierde sin daño.
+ninguno.
+ninguna.
+ninguno.
+Cumple
+«Gasto» se actualiza sola. El aviso es `POST /gasto/aviso/`, solo desde la misma máquina; los eventos, `GET /gasto/eventos/`, con cuenta.
+`EventSource` del navegador en vez de la extensión SSE de htmx
+No suma bibliotecas y reusa el evento `actualizar` de la HU-026
+S-321
+Ver con los ojos la franja cambiando sola: queda para el usuario. Una conexión de eventos que el navegador cierra queda esperando hasta el próximo aviso, y ahí termina.
+Fila de la HU-027 en la épica.
+Reiniciar Cimiento y el vigilante para que tomen el código nuevo.

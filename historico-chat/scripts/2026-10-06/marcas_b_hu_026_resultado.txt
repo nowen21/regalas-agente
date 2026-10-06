@@ -1,0 +1,7 @@
+Cimiento local, sobre `ae82d18` con los cambios de la fase sin guardar
+`LaAyudaDeGasto.test_nombra_la_franja_las_pestanas_y_el_boton`
+Nombra la franja, las cinco pestañas y «↻ Actualizar»; no dice «10 segundos»
+Nada.
+Ninguno. La prueba de cobertura de la ayuda pidió quitar `consumo:datos` y sumar `consumo:franja` y `consumo:pestana` en `secciones.py`, que se agregó al plan por servir a la fila 5 del análisis.
+La sección describe la pantalla nueva y `core.ayuda` pasa entera.
+`core/ayuda/tests_gasto.py` y la salida de §3

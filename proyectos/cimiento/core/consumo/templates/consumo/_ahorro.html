@@ -1,0 +1,45 @@
+{% load gasto %}
+<div hx-get="{% url 'consumo:pestana' 'ahorro' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML">
+<p class="text-secondary">Las cifras de esta pestaña son estimadas. Si un programa hiciera lo que se repite, se ahorrarían {{ ahorro_total|miles }} tokens.</p>
+<h3 class="card-title">Gasta y se puede automatizar</h3>
+<table class="table table-vcenter mb-4">
+  <thead><tr><th>Qué</th><th></th><th class="text-end">Veces</th><th class="text-end">Gasta hoy</th><th class="text-end">Se ahorrarían</th></tr></thead>
+  <tbody>
+    {% for fila in candidatos %}
+    <tr><td class="text-secondary">{{ fila.tipo }}</td><td>{{ fila.nombre|truncatechars:60 }}</td>
+        <td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.gasto|miles }}</td>
+        <td class="text-end">{{ fila.ahorro|miles }}</td></tr>
+    {% empty %}
+    <tr><td colspan="5" class="text-secondary">Nada se repite tanto en el período.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="row row-cards">
+  <div class="col-lg-6">
+    <h3 class="card-title">Gasta tokens</h3>
+    <table class="table table-vcenter">
+      <thead><tr><th>Enganche</th><th class="text-end">Corrió</th><th class="text-end">Tokens que agregó</th></tr></thead>
+      <tbody>
+        {% for fila in gasta %}
+        <tr><td>{{ fila.nombre|truncatechars:50 }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.tokens|miles }}</td></tr>
+        {% empty %}
+        <tr><td colspan="3" class="text-secondary">Ninguno en el período.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-6">
+    <h3 class="card-title">No gasta tokens</h3>
+    <table class="table table-vcenter">
+      <thead><tr><th>Enganche</th><th class="text-end">Corrió</th></tr></thead>
+      <tbody>
+        {% for fila in no_gasta %}
+        <tr><td>{{ fila.nombre|truncatechars:50 }}</td><td class="text-end">{{ fila.veces|miles }}</td></tr>
+        {% empty %}
+        <tr><td colspan="2" class="text-secondary">Ninguno en el período.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

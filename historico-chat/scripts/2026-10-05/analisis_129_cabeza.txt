@@ -1,0 +1,41 @@
+# Análisis 1: el tapado de claves no reconoce las de Anthropic
+
+> Este análisis se redacta aplicando estas reglas.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`]({R}/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`]({R}/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`]({R}/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`]({R}/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+
+> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo que obliga a tocar algo que el plan no declara, se abre `analisis-2.md`, que trata solo lo que falló y sus implicaciones sobre lo ya hecho.
+
+---
+
+## Recomendaciones
+
+Se leyeron las [recomendaciones de Cimiento]({R}/plantillas/recomendaciones-del-analisis.md); el proyecto no tiene `analisis/recomendaciones.md`.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| R-1 | Se revisó dónde más pasa: los cuatro usos del tapado y de la lista de secretos (guardado del gasto, histórico, validador de secretos y control de commits) |
+| R-2 | Se midió lo que ya está guardado antes de proponer: la base y el repositorio |
+| R-8 | Se buscaron claves sin mostrarlas: solo se contaron y se clasificaron |
+| R-10 | La explicación al usuario usa el ejemplo del tapador que conoce unas claves y otras no |
+| R-17 | Las respuestas se miden contra `00·ID9` |
+| Las demás | No aplican: no se crea regla (R-3, R-4), es el análisis 1 (R-6), no hay piloto (R-16) |
+
+---
+
+## Hallazgo
+
+### H-3 · El enmascarador no reconoce las claves de Anthropic
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al probar EP-025·HU-025, una línea con una clave `sk-ant-api03-…` y otra con `ANTHROPIC_API_KEY=…` quedaron en claro: el `Enmascarador` no conoce esas formas |
+| Por qué importa | Las líneas de los `.jsonl` entran a la base pasando por ese tapado, y el histórico también lo usa; una clave sin tapar queda guardada, contra `00·N6` |
+
+## Pendiente
+

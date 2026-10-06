@@ -23,6 +23,7 @@ from django.db import connections
 from core.proyectos.claude import proyectos_de_claude
 from core.proyectos.models import Proyecto
 
+from .avisos import avisar_a_cimiento
 from .guardar import GuardadoDeConsumo, leer_lo_nuevo
 
 
@@ -115,10 +116,19 @@ class VigilanteDeConsumo:
             # Un archivo que falla no tumba al vigilante (`EP-025·HU-015`): su
             # avance no se movió, así que el próximo cambio lo vuelve a intentar.
             try:
-                return GuardadoDeConsumo(proyecto, self.base).leer_archivo(os.path.abspath(ruta)) is not None
+                nuevo = GuardadoDeConsumo(proyecto, self.base).leer_archivo(os.path.abspath(ruta)) is not None
             except Exception as error:  # noqa: BLE001
                 self.ultimo_error = "%s: %s" % (os.path.basename(ruta), error)
                 return False
+        # `EP-025·HU-027` · Fuera del candado: Cimiento puede tardar, y el próximo aviso no espera.
+        if nuevo:
+            self.avisar_a_cimiento()
+        return nuevo
+
+    @staticmethod
+    def avisar_a_cimiento():
+        """Le dice a Cimiento que hay datos nuevos (`EP-025·HU-027`)."""
+        return avisar_a_cimiento()
 
     def arrancar(self):
         """Lo que quedó escrito con el vigilante apagado, y la lista de proyectos."""

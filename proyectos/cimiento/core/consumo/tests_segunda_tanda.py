@@ -188,7 +188,11 @@ class ElTableroMuestraLosSieteNiveles(ConProyecto):
     def test_la_pagina_las_muestra(self):
         cuenta = get_user_model().objects.create_user("c")
         self.client.force_login(cuenta)
-        respuesta_pagina = self.client.get("/gasto/datos/")
-        for texto in ("Por palabra clave", "Por trabajo", "Por modelo", "Por agente auxiliar", "Por tipo de token",
-                      "Por herramienta", "Lo que llena el contexto", "Últimos mensajes", "Analicemos"):
-            self.assertContains(respuesta_pagina, texto)
+        # `EP-025·HU-026` · Los niveles van en sus pestañas: «Dónde se gasta» los agrupa,
+        # «Contexto» trae las herramientas y «Actividad» los mensajes.
+        for agrupar, nombre in (("palabra", "Analicemos"), ("trabajo", "A-EP-025-HU-010-segunda-tanda"),
+                                ("modelo", "claude-haiku-4-5"), ("agente", "auxiliar")):
+            self.assertContains(self.client.get("/gasto/pestana/donde/?agrupar=" + agrupar), nombre)
+        self.assertContains(self.client.get("/gasto/pestana/contexto/"), "Por herramienta")
+        self.assertContains(self.client.get("/gasto/pestana/actividad/"), "Últimos mensajes")
+        self.assertContains(self.client.get("/gasto/pestana/resumen/"), "Por tipo de token")

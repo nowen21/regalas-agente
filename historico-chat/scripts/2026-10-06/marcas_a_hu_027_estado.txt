@@ -1,0 +1,6 @@
+Análisis 1 del pendiente 124
+Cumple
+2 de 2
+Ninguno
+EventSource del navegador en vez de la extensión SSE de htmx
+S-321

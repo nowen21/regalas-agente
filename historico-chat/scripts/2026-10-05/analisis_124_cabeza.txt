@@ -1,0 +1,45 @@
+# Análisis 1: la pantalla «Gasto» muestra todo con el mismo peso y no dice por dónde empezar
+
+> Este análisis se redacta aplicando estas reglas.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`]({R}/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`]({R}/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`]({R}/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`]({R}/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+
+> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo que obliga a tocar algo que el plan no declara, se abre `analisis-2.md`, que trata solo lo que falló y sus implicaciones sobre lo ya hecho.
+
+**Base del análisis:** el usuario dio como base el pedido [diseño del tablero de consumo de tokens]({R}/prompts/disenio-tablero-consumo-tokens.md) (turno 6). Ese pedido termina con «implementa el rediseño»; acá solo se analiza, y lo que se construya sale de las HU que deje este análisis (`02·F0`).
+
+---
+
+## Recomendaciones
+
+Se leyeron las [recomendaciones de Cimiento]({R}/plantillas/recomendaciones-del-analisis.md); el proyecto no tiene `analisis/recomendaciones.md`.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| R-1 | Se revisó dónde más pasa lo mismo: la ayuda de la pantalla, sus pruebas y las demás pantallas de Cimiento («Dónde más puede pasar») |
+| R-2 | Se leyó lo que existe antes de proponer: [tablero.py]({R}/proyectos/cimiento/core/consumo/tablero.py), [views.py]({R}/proyectos/cimiento/core/consumo/views.py), las dos plantillas, el modelo y la ayuda |
+| R-7 | Lo que el pedido base no trae, como marcar lo que pasa el límite del proyecto, se pregunta y no se agrega |
+| R-8 | «Analicemos» autoriza analizar: no se toca la pantalla ni el código |
+| R-9 | El hallazgo y el pendiente cambian en sus originales antes de aprobar, con la conversación prendida |
+| R-10 | La estructura propuesta se muestra con un dibujo de la pantalla en la conversación |
+| R-17 | Las respuestas se miden contra `00·ID9` antes de entregarlas |
+| Las demás | No aplican: no se crea ni cambia regla (R-3), no se exige campo nuevo (R-4), es el análisis 1 (R-6), no hay piloto (R-16) |
+
+---
+
+## Hallazgo
+
+### H-1 · La pantalla «Gasto» muestra todo con el mismo peso
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al revisar cómo se ve la pantalla «Gasto» de Cimiento, se encontró que pone 20 bloques seguidos (2 gráficas, 4 cifras, 13 tablas y una franja de contexto) sin orden de importancia: falta el total del período, hay datos repetidos y lo que dice dónde ahorrar queda de último |
+| Por qué importa | La pantalla sirve para decidir qué pasar a un programa, y así no se ve sin recorrer todas las tablas |
+
+## Pendiente
+

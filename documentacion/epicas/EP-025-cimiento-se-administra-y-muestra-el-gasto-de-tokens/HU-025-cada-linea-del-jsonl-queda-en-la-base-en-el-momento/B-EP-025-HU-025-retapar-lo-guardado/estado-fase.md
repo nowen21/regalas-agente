@@ -29,7 +29,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Hallazgos: los del cierre del plan |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `ae82d18` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.1 Veredicto de las pruebas

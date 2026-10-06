@@ -18,7 +18,8 @@ TITULOS = {s: t for s, t, _ in SECCIONES}
 _POR_VISTA = {v: s for s, _, vistas in SECCIONES for v in vistas}
 
 # Rutas con nombre que no son pantallas: no llevan sección.
-NO_SON_PANTALLAS = {"cuentas:salir", "consumo:datos", "proyectos:levantar",
+NO_SON_PANTALLAS = {"cuentas:salir", "consumo:franja", "consumo:pestana", "consumo:aviso", "consumo:eventos",
+                    "proyectos:levantar",
                     "ayuda:manual", "ayuda:pantalla", "ayuda:panel"}
 
 

@@ -1,0 +1,12 @@
+La ayuda de «Gasto» describe la franja, las cinco pestañas y el botón ↻, sin «cada 10 segundos». La lista de rutas que no son pantalla cambia `consumo:datos` por `consumo:franja` y `consumo:pestana`.
+ninguno.
+ninguna.
+ninguno; `secciones.py` se sumó a la tabla 2.1 antes de tocarlo.
+Cumple
+El botón «?» de la pantalla «Gasto» y el manual de Cimiento.
+Ninguna
+No hubo decisiones nuevas
+Ninguna
+Ninguna.
+Ninguno.
+No aplica.

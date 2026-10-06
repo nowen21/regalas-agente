@@ -1,0 +1,12 @@
+La ayuda de «Gasto» dice que lo nuevo aparece solo en cuanto el vigilante lo guarda, y que «↻ Actualizar» lo pide a mano. Las rutas del aviso y de los eventos quedan entre las que no son pantalla.
+ninguno.
+ninguna.
+ninguno.
+Cumple
+El botón «?» de la pantalla «Gasto» y el manual de Cimiento.
+Ninguna
+No hubo decisiones nuevas
+Ninguna
+Ninguna.
+Ninguno.
+No aplica.

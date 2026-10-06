@@ -1,0 +1,12 @@
+`RecuperadorDeReglas.como_texto` no devuelve nada ante un aviso interno de Claude Code: el agente ya no recibe reglas ni el aviso de `01·C28` por algo que el usuario no escribió.
+ninguno.
+ninguna.
+ninguno.
+Cumple
+Nada que hacer: lo aplica el enganche de reglas en cada mensaje.
+`recuperar.py` usa `es_aviso_interno` de `historico.py`
+Las marcas viven en un solo sitio
+S-322
+Ninguna.
+Ninguno.
+No aplica.

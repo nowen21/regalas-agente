@@ -114,8 +114,9 @@ class CandidatosAAutomatizar(TestCase):
         cuenta.groups.add(Group.objects.get(name=CONSULTA))
         self.client.force_login(cuenta)
         with mock.patch("core.consumo.tablero.timezone.now", return_value=AHORA):
-            respuesta = self.client.get("/gasto/datos/")
-        self.assertContains(respuesta, "Lo que corre sin tokens")
-        self.assertContains(respuesta, "Candidatos a automatizar")
+            # `EP-025·HU-026` · Las dos secciones van en la pestaña Ahorro.
+            respuesta = self.client.get("/gasto/pestana/ahorro/")
+        self.assertContains(respuesta, "No gasta tokens")
+        self.assertContains(respuesta, "Gasta y se puede automatizar")
         self.assertContains(respuesta, "git status")
         self.assertNotContains(respuesta, json.dumps("git status --short"))

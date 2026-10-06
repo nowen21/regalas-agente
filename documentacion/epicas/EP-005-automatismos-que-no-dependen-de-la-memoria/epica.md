@@ -156,6 +156,7 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-021](HU-021-las-pruebas-que-existen-se-corren/HU-021-las-pruebas-que-existen-se-corren.md) | Que las pruebas que ya existen se corran — 650 escritas que ningún comando ejecuta | Must | M |
 | [HU-022](HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md) | andamio.py impone un orden de trabajo incorrecto | Must | 3 pts |
 | [HU-023](HU-023-cada-tarea-sabe-que-reglas-le-aplican/HU-023-cada-tarea-sabe-que-reglas-le-aplican.md) | Cada tarea sabe qué reglas le aplican | Must | L |
+| [HU-024](HU-024-el-historico-anota-los-avisos-internos-con-su-remitente/HU-024-el-historico-anota-los-avisos-internos-con-su-remitente.md) | El histórico anota los avisos internos con su remitente | Must | En curso |
 
 ## 10. Consideraciones técnicas
 

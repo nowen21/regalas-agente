@@ -11,6 +11,54 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 55.6.0 — 2026-10-06
+
+**El histórico anota los avisos internos de Claude Code con su remitente.**
+
+**MENOR**: cambia cómo queda anotado lo que no escribió el usuario.
+
+**Lo que entra:**
+
+- Lo que entra por `UserPromptSubmit` abriendo con `<task-notification>` o `<agent-message` queda en la transcripción como «Aviso del sistema», no como «Usuario» (`EP-005·HU-024`).
+- El enganche de reglas no le aplica a esos avisos las reglas del usuario ni el aviso de `01·C28`.
+
+Sale del análisis 1 del pendiente 124, acuerdo 8.
+
+---
+
+## 55.5.0 — 2026-10-06
+
+**La pantalla «Gasto» se entera en el momento de lo que guarda el vigilante.**
+
+**MENOR**: la pantalla se actualiza sola, sin intervalos.
+
+**Lo que entra:**
+
+- Cuando el vigilante guarda algo nuevo, avisa a Cimiento con `POST /gasto/aviso/`, que solo se acepta desde la misma máquina; Cimiento pasa el aviso por SSE (`/gasto/eventos/`) a cada pantalla abierta, y esta vuelve a pedir la franja y la pestaña, que salen de la base (`EP-025·HU-027`). Reemplaza el criterio de los 10 segundos de la `HU-008`.
+- La ayuda de «Gasto» dice que lo nuevo aparece solo.
+
+**Qué hace un proyecto al día:** reiniciar Cimiento y el vigilante para que tomen el código nuevo.
+
+Sale del análisis 1 del pendiente 124, acuerdos 4 y 7.
+
+---
+
+## 55.4.0 — 2026-10-06
+
+**La pantalla «Gasto» dice primero lo importante.**
+
+**MENOR**: la pantalla cambia; ningún proyecto tiene que hacer nada.
+
+**Lo que entra:**
+
+- Arriba, siempre visibles, la franja con el total del período y su variación frente al tramo anterior cortado a la misma hora, las llamadas, el % de caché releída y el contexto máximo, con la hora de la última actualización y el botón ↻ (`EP-025·HU-026`).
+- Cinco pestañas que se piden solo al abrirlas: Resumen (gasto por día y tipo, dona por tipo, candidatos a automatizar y dónde se gasta más), Dónde se gasta (agrupado por proyecto, palabra, trabajo, modelo o agente, con % y barra), Contexto (promedio y máximo por vez junto al límite, sin marcar filas), Ahorro (lo que no gasta, lo que gasta y lo que se puede automatizar) y Actividad.
+- Salen la gráfica «Por proyecto», la tabla por tipo de token y el refresco cada 10 segundos.
+
+Sale del análisis 1 del pendiente 124, acuerdos 1 a 4.
+
+---
+
 ## 55.3.0 — 2026-10-06
 
 **El tapado de claves y el validador de secretos reconocen las claves de Anthropic y las variables de clave con prefijo.**

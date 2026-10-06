@@ -1,0 +1,7 @@
+Cimiento local, sobre `ae82d18` con los cambios de las fases sin guardar
+`LasReglasNoSeAplicanAlAviso`: un `<task-notification>`, un `<agent-message` y «hola»
+Los dos avisos devolvieron `""`; «hola» siguió trayendo el aviso de `01·C28`
+Nada.
+Ninguno.
+El enganche de reglas no le aplica nada a los avisos internos, y `tests_sesion` sigue en verde: 133 de 133.
+`core/herramientas/tests_avisos_internos.py` y la salida de §3

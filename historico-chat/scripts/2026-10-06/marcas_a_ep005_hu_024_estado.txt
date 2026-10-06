@@ -1,0 +1,6 @@
+Análisis 1 del pendiente 124
+Cumple
+1 de 1
+Ninguno
+Las marcas de aviso interno van en una sola tupla
+S-322

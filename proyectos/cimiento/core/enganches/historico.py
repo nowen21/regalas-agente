@@ -56,6 +56,17 @@ MARCA_NOMBRE = "<!-- nombre: preguntado -->"
 
 _NUMERO = re.compile(r"^### (\d+) · ", re.MULTILINE)
 
+# `EP-005·HU-024` · Lo que Claude Code mete por `UserPromptSubmit` sin que lo haya
+# escrito el usuario: el fin de algo que corría en segundo plano y el informe de
+# un agente auxiliar (análisis 1 del pendiente 124, acuerdo 8). Una sola lista: si
+# Claude Code cambia las marcas, se ajustan aquí y el enganche de reglas las toma.
+AVISOS_INTERNOS = ("<task-notification>", "<agent-message")
+
+
+def es_aviso_interno(mensaje):
+    """¿El mensaje es un aviso interno de Claude Code y no algo que escribió el usuario?"""
+    return (mensaje or "").lstrip().startswith(AVISOS_INTERNOS)
+
 # Una línea del índice, con su resumen de sesión al final si ya lo tiene:
 # `- [nombre.md](nombre.md) — de qué se trató. · [resumenes/AAAA-MM-DD/tema.md](…)`
 _LINEA = re.compile(
@@ -295,7 +306,9 @@ class Historico:
         # el archivo ya no se borra: la transcripción se versiona.
         mensaje, _tapadas = Enmascarador.enmascarar(mensaje)
         cita = "\n".join(f"> {l}" if l.strip() else ">" for l in mensaje.rstrip().splitlines())
-        self._anotar(ruta, f"\n### {numero} · Usuario — {_ahora()}\n{cita}\n")
+        # `EP-005·HU-024` · El aviso interno lleva su remitente: no lo escribió el usuario.
+        quien = "Aviso del sistema" if es_aviso_interno(mensaje) else "Usuario"
+        self._anotar(ruta, f"\n### {numero} · {quien} — {_ahora()}\n{cita}\n")
 
         # En cada mensaje, no solo al crear el archivo: si al crearlo no había
         # README, la sesión quedaría invisible. Es idempotente.
