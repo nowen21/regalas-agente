@@ -24,3 +24,4 @@ Del cierre, con `manage.py cerrar_fase`, de las fases `B` de `EP-025·HU-025`, `
 | [historico-chat/scripts/2026-10-06/marcas_b_hu_027_cierre.txt](marcas_b_hu_027_cierre.txt) | Valores de las marcas de b hu 027 cierre |
 | [historico-chat/scripts/2026-10-06/marcas_b_hu_027_estado.txt](marcas_b_hu_027_estado.txt) | Valores de las marcas de b hu 027 estado |
 | [historico-chat/scripts/2026-10-06/marcas_b_hu_027_resultado.txt](marcas_b_hu_027_resultado.txt) | Valores de las marcas de b hu 027 resultado |
+| [historico-chat/scripts/2026-10-06/preparar_solo_las_lineas_propias.py](preparar_solo_las_lineas_propias.py) | Preparó para el commit de la sesión `2026-10-05-reglas-de-cada-turno-sin-tokens` solo sus líneas de los índices que otras sesiones también cambiaron |
