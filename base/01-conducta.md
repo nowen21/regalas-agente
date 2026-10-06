@@ -1047,13 +1047,18 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.
 
 ## C29 · Guarda dentro del repositorio todo lo del agente y del proyecto
 
-Todo lo que pertenece al agente o al proyecto vive en el repositorio, y a su contenido se llega por un enlace. Si la herramienta guarda algo del proyecto afuera, se corrige en su origen y no se lee de allá. Leer afuera vale solo para lo que no es del proyecto; escribir afuera lo cubre [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas).
+Lo del agente o del proyecto vive en el repositorio o en la base de datos del agente, y se llega a él por un enlace. Lo que la herramienta guarda afuera se corrige en su origen; si no se deja, se trae a esa base en cuanto aparece, sin claves ([`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)), y se lee de allá. Escribir afuera lo cubre [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas).
 
 ```
 INCORRECTO: el arranque entrega las reglas enteras, la herramienta las guarda
             en su almacén de la sesión y el agente las lee de allá
 CORRECTO:   el arranque entrega enlaces a las reglas, y el agente las abre
             desde el repositorio
+
+INCORRECTO: el tablero del gasto lee los registros de sesión que la
+            herramienta guarda en su almacén y borra al mes
+CORRECTO:   en cuanto la herramienta escribe un registro, un proceso lo trae
+            a la base de datos del agente, y el tablero lee solo la base
 ```
 
 **Nadie la hace cumplir:** lo que la herramienta guarda por su cuenta no pasa por el repositorio, y ningún programa lo ve. Dos partes sí tienen quien las cuide: la memoria, que un enganche mueve al repositorio ([`C19`](#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)), y lo que escribe el agente, del que otro enganche avisa (`S9`).
@@ -1064,7 +1069,7 @@ CORRECTO:   el arranque entrega enlaces a las reglas, y el agente las abre
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v39.0.0**, el **2026-09-28**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v55.1.0**, el **2026-10-06**. La primera vez fue contra v39.0.0, el 2026-09-28.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -1076,13 +1081,15 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v39.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
+**Lo que cambió en v55.1.0.** La regla suma la base de datos del agente para lo que la herramienta guarda afuera y no se deja corregir en su origen. Sale del [análisis 1 del pendiente 124](../historico-chat/resumenes/2026-10-05/pendientes/124-la-pantalla-gasto-no-dice-por-donde-empezar/analisis-1.md), acuerdo 5, por [EP-001·HU-040](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-040-c29-reconoce-la-base-de-cimiento/HU-040-c29-reconoce-la-base-de-cimiento.md). **Fila 5:** dice «base de datos del agente», sin nombrar la plataforma ni el motor. **Fila 9:** sigue siendo una sola exigencia, que lo del proyecto quede adentro; la base es el segundo lugar donde puede estar. **Fila 11:** el tapado de claves se enlaza a `00·N6`, no se copia.
+
 **Fila 2 · se buscó por concepto y se leyó el capítulo entero.** Dos reglas cubren una parte y ninguna el principio: [`C19`](#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto) pide la memoria dentro del repositorio, y [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas) que el agente escriba solo dentro del proyecto. Ninguna cubre lo que la herramienta guarda por su cuenta.
 
 **Filas 14 y 15 · N/A:** no depende de ninguna regla. `C19` la extiende a ella, y no al revés.
 
 **Fila 16 · N/A:** no tiene excepción.
 
-**Fila 17 · el choque con `S9` quedó resuelto en el texto.** `S9` dice «Leer fuera sí». Esta regla dice que leer afuera vale solo para lo que no es del proyecto: las dos se cumplen a la vez, y `S9` no cambia. Su capítulo tiene su propia historia dueña.
+**Fila 17 · el choque con `S9` quedó resuelto en el texto.** `S9` dice «Leer fuera sí». Esta regla dice que lo del proyecto que quedó afuera se corrige en su origen o se trae a la base, y se lee de allá; leer afuera queda para lo que no es del proyecto y para traerlo: las dos se cumplen a la vez, y `S9` no cambia. Su capítulo tiene su propia historia dueña.
 
 **Fila 18 · no validable, y así queda registrada** en [validadores/reglas-validables.md](../validadores/reglas-validables.md): lo que la herramienta guarda por su cuenta no deja rastro en el repositorio.
 

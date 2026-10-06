@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 55.1.0 — 2026-10-06
+
+**Lo que la herramienta guarda afuera y no se deja corregir se trae a la base de datos del agente.**
+
+**MENOR**: amplía dónde puede vivir lo del proyecto; ningún proyecto tiene que hacer nada.
+
+**Lo que entra:**
+
+- `01·C29` dice que lo del agente o del proyecto vive en el repositorio o en la base de datos del agente. Si el origen no se deja cambiar, se trae a esa base en cuanto aparece, con las claves tapadas (`00·N6`), y se lee solo de allá. Es el caso de los registros de sesión que la herramienta escribe en su almacén y borra al mes.
+
+Sale del análisis 1 del pendiente 124, acuerdo 5, por `EP-001·HU-040`.
+
+---
+
 ## 55.0.0 — 2026-10-05
 
 **Lo que se construye para crear o cambiar algo trae la acción que lo deja como estaba.** ⚠ obliga a migrar

@@ -147,12 +147,17 @@ CORRECTO:   estado → diferencias (si las hay) → releer el bloque exacto → 
 Fuente: [01·C16](../01-conducta.md#c16--re-lee-justo-antes-de-editar--nunca-sobre-contexto-viejo)
 
 ## C29 · Guarda dentro del repositorio todo lo del agente y del proyecto
-Todo lo que pertenece al agente o al proyecto vive en el repositorio, y a su contenido se llega por un enlace. Si la herramienta guarda algo del proyecto afuera, se corrige en su origen y no se lee de allá. Leer afuera vale solo para lo que no es del proyecto; escribir afuera lo cubre [`04·S9`](../04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas).
+Lo del agente o del proyecto vive en el repositorio o en la base de datos del agente, y se llega a él por un enlace. Lo que la herramienta guarda afuera se corrige en su origen; si no se deja, se trae a esa base en cuanto aparece, sin claves ([`00·N6`](../00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)), y se lee de allá. Escribir afuera lo cubre [`04·S9`](../04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas).
 ```
 INCORRECTO: el arranque entrega las reglas enteras, la herramienta las guarda
             en su almacén de la sesión y el agente las lee de allá
 CORRECTO:   el arranque entrega enlaces a las reglas, y el agente las abre
             desde el repositorio
+
+INCORRECTO: el tablero del gasto lee los registros de sesión que la
+            herramienta guarda en su almacén y borra al mes
+CORRECTO:   en cuanto la herramienta escribe un registro, un proceso lo trae
+            a la base de datos del agente, y el tablero lee solo la base
 ```
 
 Fuente: [01·C29](../01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto)
@@ -414,12 +419,3 @@ CORRECTO:   try { ... } catch (e) { log.error(...); manejar o propagar }
 ```
 
 Fuente: [05·E1](../05-errores-y-logging.md#e1--no-te-tragues-los-errores-en-silencio)
-
-## E2 · Valida al entrar y aborta temprano
-Las precondiciones se comprueban **al principio**, y si algo falta se aborta ahí con un mensaje que diga qué falta. Fallar a mitad deja el estado a medias, y arreglarlo cuesta más que no haber empezado.
-```
-INCORRECTO: se recorre la lista, se procesan cuatro y al quinto falta un dato
-CORRECTO:   se comprueba que los cinco tengan el dato y, si no, no se procesa ninguno
-```
-
-Fuente: [05·E2](../05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano)

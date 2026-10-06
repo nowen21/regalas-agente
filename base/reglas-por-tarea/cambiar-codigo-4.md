@@ -2,6 +2,17 @@
 
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
+## F20 · Para y propón lo que descubras fuera del CA
+Lo que el agente descubra y «convendría» agregar —limpieza, validación extra, refactor colateral— **para** el trabajo, se **muestra** con su impacto y **espera** la decisión del usuario. Una pregunta pide explicación, no autoriza a editar. Las tres respuestas, en [`base.md`](../02-flujo-de-trabajo/base.md) (extiende [`02·F19`](../02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md)).
+```
+INCORRECTO: el agente ve código legacy que estorba y lo limpia de paso, y lo
+            cuenta al final como parte de la fase
+CORRECTO:   para, muestra qué observó y qué costaría, y espera el sí, el no o
+            el "después"
+```
+
+Fuente: [02·F20](../02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md#f20--para-y-propón-lo-que-descubras-fuera-del-ca)
+
 ## F30 · Toda acción trae su contraria
 Lo que crea o cambia algo se entrega con la acción que lo deja como estaba, como crear y quitar. Sin ella no está terminado; el plan la declara y lleva prueba ([`08·T1`](../08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba)).
 **Excepción:** lo que no tiene vuelta (condición) va sin contraria si el plan dice por qué (límite) y el usuario lo aprueba (autoriza).

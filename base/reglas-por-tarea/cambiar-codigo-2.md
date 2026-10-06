@@ -2,6 +2,15 @@
 
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
+## E2 · Valida al entrar y aborta temprano
+Las precondiciones se comprueban **al principio**, y si algo falta se aborta ahí con un mensaje que diga qué falta. Fallar a mitad deja el estado a medias, y arreglarlo cuesta más que no haber empezado.
+```
+INCORRECTO: se recorre la lista, se procesan cuatro y al quinto falta un dato
+CORRECTO:   se comprueba que los cinco tengan el dato y, si no, no se procesa ninguno
+```
+
+Fuente: [05·E2](../05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano)
+
 ## E6 · Lo que toca varios registros va en transacción
 La operación que deja **varios registros consistentes entre sí** se hace en una transacción: todo o nada. Si falla a la mitad, no queda la mitad (extiende [`05·E2`](../05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano)).
 ```
@@ -400,12 +409,3 @@ CORRECTO:   anularlo (con motivo, revirtiendo el efecto en transacción) y prese
 ```
 
 Fuente: [15·IM1](../15-registros-inmutables.md#im1--un-registro-materializado-es-inmutable)
-
-## IM2 · El registro tiene tres estados y solo uno es editable
-El registro pasa por **borrador**, que se edita; **materializado**, que ya no; y **anulado**, que revierte el efecto **conservando la fila**. Nada se borra para corregirlo: se anula y se rehace.
-```
-INCORRECTO: la factura salió mal, se edita el registro ya emitido
-CORRECTO:   se anula la emitida —queda su fila— y se emite otra
-```
-
-Fuente: [15·IM2](../15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable)

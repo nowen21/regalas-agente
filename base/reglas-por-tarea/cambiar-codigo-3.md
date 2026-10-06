@@ -2,6 +2,15 @@
 
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
+## IM2 · El registro tiene tres estados y solo uno es editable
+El registro pasa por **borrador**, que se edita; **materializado**, que ya no; y **anulado**, que revierte el efecto **conservando la fila**. Nada se borra para corregirlo: se anula y se rehace.
+```
+INCORRECTO: la factura salió mal, se edita el registro ya emitido
+CORRECTO:   se anula la emitida —queda su fila— y se emite otra
+```
+
+Fuente: [15·IM2](../15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable)
+
 ## IM3 · La anulación revierte todo o no revierte nada
 Anular comprueba primero que el estado lo permita, y después revierte **en una sola transacción** todos los efectos que el registro produjo — movimientos, saldos, derivados — junto con la marca de anulado. Si algo de la reversión falla, no queda nada a medias ([`05·E6`](../05-errores-y-logging.md#e6--lo-que-toca-varios-registros-va-en-transacción)).
 ```
@@ -364,14 +373,3 @@ CORRECTO:   busco X en la especificación → si no está: "no está en la espec
 ```
 
 Fuente: [02·F2](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md#f2--sin-especificación-acordada-no-hay-código)
-
-## F20 · Para y propón lo que descubras fuera del CA
-Lo que el agente descubra y «convendría» agregar —limpieza, validación extra, refactor colateral— **para** el trabajo, se **muestra** con su impacto y **espera** la decisión del usuario. Una pregunta pide explicación, no autoriza a editar. Las tres respuestas, en [`base.md`](../02-flujo-de-trabajo/base.md) (extiende [`02·F19`](../02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md)).
-```
-INCORRECTO: el agente ve código legacy que estorba y lo limpia de paso, y lo
-            cuenta al final como parte de la fase
-CORRECTO:   para, muestra qué observó y qué costaría, y espera el sí, el no o
-            el "después"
-```
-
-Fuente: [02·F20](../02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md#f20--para-y-propón-lo-que-descubras-fuera-del-ca)
