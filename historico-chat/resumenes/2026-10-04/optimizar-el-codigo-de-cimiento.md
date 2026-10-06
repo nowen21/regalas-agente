@@ -61,7 +61,7 @@ El punto de partida fue el inventario: Cimiento tiene 663 archivos `.py` propios
 |---|---|
 | Qué pasó | El 2026-10-04 10:17, el freno detuvo una orden de consola sobre `/tmp/f.txt`: queda fuera del proyecto (04·S9). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Pendiente | Ninguno, aprobado por el usuario el 2026-10-05: la escritura se rehízo dentro del repositorio, en `historico-chat/scripts/`, como pide `04·S9` |
 
 ### H-2 · El freno detuvo una orden de consola fuera del plan
 
@@ -69,7 +69,7 @@ El punto de partida fue el inventario: Cimiento tiene 663 archivos `.py` propios
 |---|---|
 | Qué pasó | El 2026-10-04 10:29, el freno detuvo una orden de consola sobre `$f`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Pendiente | Ninguno, aprobado por el usuario el 2026-10-05: el freno tomó la variable `$f` como ruta; lo trata el [pendiente 113: el freno toma texto de los comandos como rutas](pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md) |
 
 ### H-3 · Apareció `proyectos/cimiento/node_modules/` y el freno lo cuenta como cambio
 
@@ -87,9 +87,9 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☐ |
-| Todo pendiente enlazado existe | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo enlaza su pendiente | ☑ |
+| Todo pendiente enlazado existe | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
