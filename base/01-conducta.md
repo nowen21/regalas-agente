@@ -1037,7 +1037,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.
 
 **Fila 9 · una sola exigencia.** Que la palabra fije el máximo no es una segunda: es qué significa la palabra, y sin eso la regla se cumple pidiéndola y haciendo de más igual.
 
-**Fila 10 · la lista no cabe en el cuerpo**, y por eso vive en su anexo, que es lo que esa fila manda cuando algo no cabe. En el cuerpo queda la exigencia; en el anexo, las dieciocho palabras y qué autoriza cada una.
+**Fila 10 · la lista no cabe en el cuerpo**, y por eso vive en su anexo, que es lo que esa fila manda cuando algo no cabe. En el cuerpo queda la exigencia; en el anexo, las palabras y qué autoriza cada una.
 
 **Filas 14 y 15 · N/A:** no declara dependencia, por lo que dice la fila 2.
 

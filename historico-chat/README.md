@@ -196,7 +196,7 @@ La respuesta, tal como se dio.
 <!-- huella: 29387570ce96 · estandar 51.0.0 -->
 - [2026-08-28-sesion.md](2026-08-28-sesion.md) — sesión del 2026-08-28.
 - [2026-08-28-plantilla-manual-instalacion.md](2026-08-28-plantilla-manual-instalacion.md) — Se creó la plantilla base del manual de instalación y se adaptó a la norma de redacción del estándar. · [historico-chat/resumenes/2026-08-28/plantilla-manual-instalacion.md](resumenes/2026-08-28/plantilla-manual-instalacion.md)
-- [2026-08-31-sesion.md](2026-08-31-sesion.md) — sesión del 2026-08-31.
+- [2026-08-31-la-palabra-clave-que-dice-que-hacer.md](2026-08-31-la-palabra-clave-que-dice-que-hacer.md) — «Liste» y «OK» entran a la lista de palabras de 01·C28, sale la fila que no servía, y la versión queda en 56.2.0. · [historico-chat/resumenes/2026-08-31/la-palabra-clave-que-dice-que-hacer.md](resumenes/2026-08-31/la-palabra-clave-que-dice-que-hacer.md)
 - [2026-09-27-reglas-de-redaccion-y-orden-de-la-cadena.md](2026-09-27-reglas-de-redaccion-y-orden-de-la-cadena.md) — Nacen 00·ID11 (solo lo pertinente) y 00·ID12 (norma del español de Colombia); el andamio anota el pendiente antes que su HU; las plantillas toman el formato del plan de trabajo. · [historico-chat/resumenes/2026-09-27/reglas-de-redaccion-y-orden-de-la-cadena.md](resumenes/2026-09-27/reglas-de-redaccion-y-orden-de-la-cadena.md)
 - [2026-09-28-sesion.md](2026-09-28-sesion.md) — sesión del 2026-09-28.
 - [2026-09-30-sesion.md](2026-09-30-sesion.md) — sesión del 2026-09-30.

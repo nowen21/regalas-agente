@@ -22,6 +22,8 @@ La salida no es una segunda aprobación: es que el pedido diga qué se espera an
 | **Busque** | Encontrar algo y decir dónde está |
 | **Compare** | Poner dos cosas lado a lado |
 | **Verifique** | Correr las comprobaciones y reportar el resultado |
+| **Liste** | Listar lo que se indica |
+| **OK** | Se entiende la explicación |
 
 **Estas cambian el proyecto.**
 

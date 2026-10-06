@@ -11,6 +11,23 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 56.2.0 — 2026-10-06
+
+**«Liste» y «OK» entran a la lista de las palabras.**
+
+**MENOR**: suma dos palabras a la lista de `01·C28`; nadie tiene que hacer nada.
+
+**Lo que entra:**
+
+- La fila «Liste» en la tabla de las palabras que no tocan nada ([`palabras-clave.md`](base/01-conducta/palabras-clave.md)). Autoriza listar lo que se indique.
+- La fila «OK» en la misma tabla. Es el acuse de recibo de una explicación, y no autoriza ninguna acción.
+- En lugar de «OK» estaba la fila «¿La pregunta que se haga?», que el programa leía como una palabra literal y por eso nunca coincidía con nada. La pregunta escrita entre signos sigue sin contar como palabra: eso pide código y queda por fuera.
+- El sello del checklist de `01·C28` deja de decir cuántas palabras tiene el anexo, para que no se desactualice cada vez que entra una.
+
+Pedido del usuario en la sesión del 2026-08-31, [la palabra clave que dice qué hacer](historico-chat/2026-08-31-la-palabra-clave-que-dice-que-hacer.md).
+
+---
+
 ## 56.1.0 — 2026-10-06
 
 **«Respondo» contesta la pregunta del agente.**
