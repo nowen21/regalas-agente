@@ -42,6 +42,7 @@ La salida no es una segunda aprobación: es que el pedido diga qué se espera an
 | **Apruebo** | Firmar lo que estaba en borrador |
 | **Continúe** | Seguir con lo que se estaba haciendo |
 | **Pare** | Detenerse donde va |
+| **Respondo** | Contestar la pregunta que hizo el agente; autoriza justo lo que esa pregunta pedía decidir, y nada más |
 
 ## Cómo se usa
 

@@ -1,0 +1,39 @@
+# Análisis 1: responder una pregunta del agente no tiene palabra clave
+
+> Este análisis se redacta aplicando estas reglas.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`]({R}/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`]({R}/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`]({R}/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`]({R}/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+
+> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo que obliga a tocar algo que el plan no declara, se abre `analisis-2.md`.
+
+---
+
+## Recomendaciones
+
+Se leyeron las [recomendaciones de Cimiento]({R}/plantillas/recomendaciones-del-analisis.md); el proyecto no tiene `analisis/recomendaciones.md`.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| R-1 | Se revisó quién lee la lista: el enganche de reglas, el mapa de tareas y el guardado del gasto |
+| R-2 | Se leyó cómo se arma la lista: `RecuperadorDeReglas.palabras_de_la_lista` la toma de las tablas de `palabras-clave.md` |
+| R-17 | Las respuestas se miden contra `00·ID9` |
+| Las demás | No aplican: no se crea regla (R-3, R-4), es el análisis 1 (R-6), no hay piloto (R-16) |
+
+---
+
+## Hallazgo
+
+### H-5 · Responder una pregunta del agente no tiene palabra clave
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El usuario respondió «autorizo» a una pregunta del agente y el enganche de reglas lo tomó como mensaje sin palabra clave de `01·C28`: hubo que repetirlo con «Hágalo». El usuario aprobó sumar «Respondo» a la lista |
+| Por qué importa | Cada respuesta que no encaja cuesta un mensaje más, y obliga a usar palabras que autorizan más de lo que la respuesta quería |
+
+## Pendiente
+

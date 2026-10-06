@@ -1,0 +1,5 @@
+
+2. Tarea: «Respondo» no pide tarea propia, igual que «Pregunta»; trae solo las reglas de todo mensaje, y las de lo que se haga llegan con la acción (turnos {T1} y {T2}).
+3. Dónde: una fase nueva de EP-001·HU-036, la historia que creó `01·C28` y la lista (turnos {T1} y {T2}).
+
+Siguen abiertas: ninguna.

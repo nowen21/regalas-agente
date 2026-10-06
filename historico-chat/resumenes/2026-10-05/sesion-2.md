@@ -44,6 +44,29 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-05-sesion-2.md](..
 | Por qué importa | Para cerrar hay que desobedecer la plantilla, y el cierre falla sin decir que el problema es el formato |
 | Pendiente | [Pendiente 130](../../../documentacion/epicas/EP-025-cimiento-se-administra-y-muestra-el-gasto-de-tokens/HU-016-cerrar-y-reabrir-una-fase-y-separar-los-cambios-por-sesion-son-funcionalidades-de-cimiento/pendientes/130-la-matriz-de-la-plantilla-no-la-lee-cerrar-fase/pendiente.md) |
 
+### H-5 · Responder una pregunta del agente no tiene palabra clave
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El usuario respondió «autorizo» a una pregunta del agente y el enganche de reglas lo tomó como mensaje sin palabra clave de `01·C28`: hubo que repetirlo con «Hágalo». El usuario aprobó sumar «Respondo» a la lista |
+| Por qué importa | Cada respuesta que no encaja cuesta un mensaje más, y obliga a usar palabras que autorizan más de lo que la respuesta quería |
+| Pendiente | [Pendiente 131: responder una pregunta del agente no tiene palabra clave](../2026-10-06/pendientes/131-responder-una-pregunta-no-tiene-palabra-clave/pendiente.md) |
+
+---|---|
+| Qué pasó | El 2026-10-06 12:37, el freno detuvo una orden de consola sobre `$F/plan_trabajo.md`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
+---|---|
+| Qué pasó | El 2026-10-06 13:00, el freno detuvo una orden de consola sobre `$TEMP/msg131.txt`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
+---|---|
+| Qué pasó | El 2026-10-06 13:01, el freno detuvo una orden de consola sobre `prompts/disenio-tablero-consumo-tokens.md`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

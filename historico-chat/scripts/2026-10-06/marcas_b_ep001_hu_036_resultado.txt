@@ -1,0 +1,9 @@
+Cimiento local, sobre `592b426` con los cambios de la fase sin guardar
+`test_cp_001_respondo_esta_en_la_lista_y_no_recibe_el_aviso`
+La lista trae «Respondo», `palabra_clave` la devuelve y no llega el aviso de `01·C28`
+`test_cp_002_respondo_no_pide_tarea_propia`
+`tareas_del_mensaje("Respondo: la B")` da `{}`
+Nada.
+Ninguno.
+El enganche reconoce «Respondo» y no le asigna tarea; las dos pruebas de la fase pasan.
+`core/herramientas/tests_respondo.py` y la salida de §3

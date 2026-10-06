@@ -1,0 +1,61 @@
+## Lo acordado
+
+1. La palabra: «Respondo» entra a la tabla de las palabras que mandan sobre el trabajo mismo, en `palabras-clave.md`. Autoriza contestar la pregunta que hizo el agente y lo que esa pregunta pedía decidir, nada más. El usuario la aprobó en el turno 64, antes de prender el análisis.
+
+Siguen abiertas: si «Respondo» pide alguna tarea; dónde va la HU.
+
+---
+
+## Lo que aportó cada parte
+
+### Cimiento: las reglas que aplican y las que chocan
+
+`01·C28`: sin palabra, el agente no actúa; la lista vive en su anexo. `00·N1` y `01·C24`: solo la palabra del usuario aprueba; «Respondo» aprueba solo lo que la pregunta pedía. Ninguna regla choca.
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| La lista | Tres tablas en [palabras-clave.md]({R}/base/01-conducta/palabras-clave.md): las que no tocan nada, las que cambian el proyecto y las que mandan sobre el trabajo (Apruebo, Continúe, Pare) |
+| Quién la lee | `RecuperadorDeReglas.palabras_de_la_lista`, que toma toda fila de tabla con la palabra en negrita: sumar la fila basta, sin tocar código |
+| Las tareas | `base/tareas.md` dice qué palabras piden cada tarea; las que no piden ninguna dejan solo las de `siempre` |
+| La HU dueña | [EP-001·HU-036, el pedido dice qué se espera]({R}/documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/HU-036-el-pedido-dice-que-se-espera.md), que creó `01·C28` y la lista |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| H-5 de la sesión del 2026-10-05 | El caso de «autorizo», que abrió este pendiente |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | La lista llega a todos: versión MENOR según `20·M10`, porque suma una opción y no obliga a nada |
+| Normas y leyes | Ninguna |
+| Herramientas | Ninguna |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| Responder sin palabra en cualquier proyecto | Todo proyecto que hereda la lista | El mismo mensaje de más | Acuerdo 1: la lista es una sola |
+| «Respondo» tomado como permiso amplio | El agente | Que haga más de lo preguntado | Acuerdo 1: autoriza solo lo que la pregunta pedía |
+
+---
+
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+Se escribe cuando haya acuerdos.
+
+## Lecciones aprendidas
+
+Se escriben al cerrar el análisis.
+
+## Lo que se tiene que hacer
+
+Cada fila sale de un punto de «Lo acordado»; todavía faltan los acuerdos abiertos.
+
+## Lo que aporta al análisis principal
+
+Se escribe al cerrar el análisis.

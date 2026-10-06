@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Lista |
+| **Estado** | Terminada |
 ---
 
 ## 2. Narrativa
@@ -130,6 +130,7 @@ Y pide la palabra, con la lista
 | Fase | Qué hace | Estado |
 |---|---|---|
 | [A-EP-001-HU-036-la-palabra-clave-que-dice-que-hacer](A-EP-001-HU-036-la-palabra-clave-que-dice-que-hacer/README.md) | La regla, el anexo y el sello del checklist | En curso |
+| `B-EP-001-HU-036-respondo-contesta-la-pregunta` |  | (vacío) | [plan_trabajo.md](B-EP-001-HU-036-respondo-contesta-la-pregunta/plan_trabajo.md) | [plan_pruebas.md](B-EP-001-HU-036-respondo-contesta-la-pregunta/plan_pruebas.md) | [resultado_pruebas.md](B-EP-001-HU-036-respondo-contesta-la-pregunta/resultado_pruebas.md) | Terminada |
 
 ---
 

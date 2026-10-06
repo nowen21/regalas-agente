@@ -57,3 +57,4 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 - [historico-chat/resumenes/2026-10-01/](2026-10-01/) — sin escribir todavía.
 - [historico-chat/resumenes/2026-10-04/](2026-10-04/) — los pendientes 113 y 114 que reportó scilit; se resuelven en el análisis 1 del pendiente 110.
 - [historico-chat/resumenes/2026-10-05/](2026-10-05/) — sin escribir todavía.
+- [historico-chat/resumenes/2026-10-06/](2026-10-06/): solo el pendiente 131, del hallazgo H-5 de la sesión 2 del 2026-10-05.

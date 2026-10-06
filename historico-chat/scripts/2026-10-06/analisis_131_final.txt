@@ -1,0 +1,44 @@
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+### Hallazgo V2. Responder una pregunta del agente no tiene palabra clave
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El usuario respondió «autorizo» a una pregunta del agente y el enganche de reglas lo tomó como mensaje sin palabra clave de `01·C28`: hubo que repetirlo con «Hágalo». La lista no tiene una palabra para contestar lo que el agente pregunta |
+| Por qué importa | Cada respuesta que no encaja cuesta un mensaje más, y obliga a usar palabras que autorizan más de lo que la respuesta quería |
+
+### Pendiente V2. Responder una pregunta del agente no tiene palabra clave
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | El hallazgo V2, «Responder una pregunta del agente no tiene palabra clave» |
+| El problema | La lista de `01·C28` no tiene una palabra para contestar una pregunta del agente; la respuesta corta se toma como mensaje sin orden |
+| Por qué importa | Un mensaje de más por cada respuesta, y palabras que autorizan de más |
+
+### Épica y HU que salen del análisis
+
+Épica existente: EP-001 (cuerpo de reglas heredable).
+
+| Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|---|
+| 1 | EP-001·HU-036, fase nueva | «Respondo» contesta la pregunta del agente | La lista no tiene palabra para responder | Ninguna | Es la única | 2, 3 |
+
+## Lecciones aprendidas
+
+| # | Lección | Tipo | Señal | Recomendación |
+|---|---|---|---|---|
+| 1 | Leer cómo arma el programa la lista antes de proponer mostró que el cambio es solo una fila, sin código | Funcionó | S-323 | Complementa R-2 |
+
+## Lo que se tiene que hacer
+
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
+|---|---|---|---|
+| 1 | Pasar el pendiente a su versión siguiente | `13·DOC26` | Este análisis, de una y sin fase: `historico-chat/resumenes/2026-10-06/pendientes/131-responder-una-pregunta-no-tiene-palabra-clave/pendiente.md`, hecho el 2026-10-06 |
+| 2 | Sumar «Respondo» a la tabla de las que mandan sobre el trabajo, en `base/01-conducta/palabras-clave.md`, con su alcance | 1 | EP-001·HU-036, fase nueva |
+| 3 | Comprobar que el enganche de reglas reconoce «Respondo» y no le asigna tarea propia; CHANGELOG y versión MENOR | 1, 2 | EP-001·HU-036, fase nueva |
+
+## Lo que aporta al análisis principal
+
+**Resultado:** amplía.
+
+**Lo que suma al análisis principal:** la lista de palabras clave suma «Respondo», para contestar lo que el agente pregunta sin autorizar nada más.

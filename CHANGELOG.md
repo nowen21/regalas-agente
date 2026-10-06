@@ -11,6 +11,21 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 56.1.0 — 2026-10-06
+
+**«Respondo» contesta la pregunta del agente.**
+
+**MENOR**: suma una palabra a la lista de `01·C28`; nadie tiene que hacer nada.
+
+**Lo que entra:**
+
+- La fila «Respondo» en la tabla de las palabras que mandan sobre el trabajo ([`palabras-clave.md`](base/01-conducta/palabras-clave.md)). Autoriza justo lo que la pregunta pedía decidir, y nada más (`EP-001·HU-036`, fase B).
+- No pide tarea propia: trae solo las reglas de todo mensaje.
+
+Sale del análisis 1 del pendiente 131.
+
+---
+
 ## 56.0.0 — 2026-10-06
 
 **Todo cambio, del estándar o de un proyecto, sube su versión y deja su registro; el estándar pasa a vivir en la base del agente.**

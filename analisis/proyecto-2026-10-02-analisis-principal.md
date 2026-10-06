@@ -35,3 +35,4 @@ Cimiento es el estándar que hace que una IA que programa trabaje siempre igual 
 | 2026-10-05 | cambia lo que se construye | [Análisis 1 del pendiente 124](../historico-chat/resumenes/2026-10-05/pendientes/124-la-pantalla-gasto-no-dice-por-donde-empezar/analisis-1.md) |
 | 2026-10-06 | amplía | [Análisis 1 del pendiente 129](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/pendientes/129-el-enmascarador-no-reconoce-las-claves-de-anthropic/analisis-1.md) |
 | 2026-10-06 | modifica la idea y cambia lo que se construye | [Análisis 1 del pendiente 132](../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md) |
+| 2026-10-06 | amplía | [Análisis 1 del pendiente 131](../historico-chat/resumenes/2026-10-06/pendientes/131-responder-una-pregunta-no-tiene-palabra-clave/analisis-1.md) |

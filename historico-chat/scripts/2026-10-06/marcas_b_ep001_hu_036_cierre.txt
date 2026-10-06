@@ -1,0 +1,12 @@
+La tabla de las palabras que mandan sobre el trabajo, en `base/01-conducta/palabras-clave.md`, suma «Respondo»: contestar la pregunta del agente, y nada más. El enganche de reglas la reconoce sin tocar código y no le da tarea propia.
+ninguno.
+ninguna.
+ninguno.
+Cumple
+Abrir el mensaje con «Respondo» para contestar una pregunta del agente.
+Ninguna
+No hubo decisiones nuevas; las de la fase salen de los acuerdos del análisis 1 del pendiente 131
+Ninguna
+Ninguna.
+`README.md` de HU-036 con la fila de la fase B; CHANGELOG y `VERSION` en 56.1.0.
+No aplica.
