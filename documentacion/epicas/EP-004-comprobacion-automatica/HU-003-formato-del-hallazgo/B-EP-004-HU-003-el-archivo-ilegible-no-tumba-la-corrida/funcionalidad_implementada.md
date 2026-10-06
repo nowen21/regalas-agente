@@ -12,13 +12,13 @@
 
 | Ítem de la especificación | Categoría | Ubicación esperada | Estado | Evidencia |
 |---|---|---|---|---|
-| La lectura tolera ausente, sin permisos y mal codificado | código | [`validadores/comun.py`](../../../../../validadores/comun.py) | ✅ | `leer` con sus tres salidas |
+| La lectura tolera ausente, sin permisos y mal codificado | código | `validadores/comun.py` | ✅ | `leer` con sus tres salidas |
 | Quien lea puede saber que la lectura falló, sin cambiar la firma | código | el mismo | ✅ | el registro `ILEGIBLES` y la función `ilegibles()` |
 | La corrida reporta el archivo ilegible con su ruta | código | el mismo | ✅ | `reportar` los agrega solo, como AVISO |
 | La prueba que lo denunciaba queda destapada | prueba | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py) | ✅ | sin `expectedFailure`, y pasa |
 | Un caso nuevo: la corrida sigue y reporta lo demás | prueba | el mismo | ✅ | `test_errores_la_corrida_sigue_y_reporta_lo_demas` |
 | `pendientes.py` vuelve a usar la lectura común | código | [`validadores/pendientes.py`](../../../../../validadores/pendientes.py) | ✅ | su `_leer` es ahora `comun.leer` |
-| El contrato dice qué pasa con el archivo ilegible | doc | [`validadores/docs/comun.md`](../../../../../validadores/docs/comun.md) | ✅ | tabla de las tres salidas y el porqué |
+| El contrato dice qué pasa con el archivo ilegible | doc | `validadores/docs/comun.md` | ✅ | tabla de las tres salidas y el porqué |
 | El inventario de HU vuelve a estar al día | doc | `pendientes/48-inventario-hu.md` | ❌ | **no se toca:** el 48 es uno de los dos pendientes que el usuario excluyó |
 
 ## 2. Lo que cambia para un proyecto que hereda

@@ -48,7 +48,7 @@ Se anotan todos, resueltos y abiertos.
 
 ### H-3 · El validador de enlaces no conoce la excepción que la propia `DOC14` escribe
 
-- **Qué pasó:** [`13·DOC14`](../../../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) termina diciendo: *"No aplica a los nombres cortos usados como identificador en medio de una frase, cuando quien lee ya sabe dónde viven"*. [`validadores/enlaces.py`](../../../validadores/enlaces.py) no implementa esa salida: marca aviso también cuando el enlace apunta a un archivo de la misma carpeta. En esta fase salieron 22 avisos de ese tipo.
+- **Qué pasó:** [`13·DOC14`](../../../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) termina diciendo: *"No aplica a los nombres cortos usados como identificador en medio de una frase, cuando quien lee ya sabe dónde viven"*. `validadores/enlaces.py` no implementa esa salida: marca aviso también cuando el enlace apunta a un archivo de la misma carpeta. En esta fase salieron 22 avisos de ese tipo.
 - **Por qué importa:** obedecer al validador al pie de la letra obliga a escribir la ruta completa de 130 caracteres dentro de una frase, y eso choca con [`00·ID7`](../../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md). Un validador que contradice la excepción escrita de su propia regla enseña a ignorarlo, y un validador que se ignora no sirve para nada.
 - **Qué lo soluciona:**
 

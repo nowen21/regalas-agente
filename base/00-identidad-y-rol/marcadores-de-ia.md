@@ -141,7 +141,7 @@ La **norma del español**: ortografía, léxico, gramática y redacción. Escrib
 
 Hasta hoy la fila del punto medio decía *«separando frases o adornando títulos»*, y contaba los **1 599** que separan el número del capítulo de su nombre. Con eso, el propio índice de este anexo —`## 2 · Puntuación y tipografía`— era una marca de generación automática.
 
-**El código ya lo tenía decidido y no lo había implementado.** El comentario de [`validadores/marcas.py`](../../validadores/marcas.py) decía, desde que se escribió: *«el punto medio que no forma parte de una cita `NN·ID` **ni de un `A · B` de encabezado**: los dos son notación definida del estándar»* — y la expresión regular solo implementaba la primera mitad.
+**El código ya lo tenía decidido y no lo había implementado.** El comentario de `validadores/marcas.py` decía, desde que se escribió: *«el punto medio que no forma parte de una cita `NN·ID` **ni de un `A · B` de encabezado**: los dos son notación definida del estándar»* — y la expresión regular solo implementaba la primera mitad.
 
 **Dónde queda el límite.** Se exime **solo en la línea de un encabezado**. En prosa, un punto medio entre frases sigue siendo lo que este anexo llama adorno, y se cuenta.
 

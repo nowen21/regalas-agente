@@ -24,8 +24,7 @@ from datetime import datetime
 from ..comun import FALLA, Proyecto
 from ..enganches.recuerdos import CARPETA as CARPETA_RECUERDOS
 from ..enganches.recuerdos import Recuerdos
-from ..enganches.sesion import ArranqueDeSesion
-from ..herramientas.instalar import CONFIG_AGENTE, HOOKS_CLAUDE, IGNORADOS, Instalador
+from ..comun.enganches import CONFIG_AGENTE, HOOKS_CLAUDE, IGNORADOS
 from .version import VersionDelEstandar
 from .versiones import POR_ID, DocumentosHeredados, RegistroDeVersiones, Sello
 
@@ -51,6 +50,21 @@ def _leer(ruta):
     except OSError:
         return ""
 
+
+
+def _arranque():
+    """La revisión del arranque de la sesión, cargada al usarla: `sesion` usa los
+    validadores, y traerla arriba armaba otro ciclo (fila 23)."""
+    from ..enganches.sesion import ArranqueDeSesion
+    return ArranqueDeSesion
+
+
+def _instalador():
+    """La clase del instalador, cargada al usarla: el instalador importa los
+    validadores, y traerla arriba volvía a armar el ciclo (fila 23 del análisis
+    1 del pendiente 116)."""
+    from ..herramientas.instalar import Instalador
+    return Instalador
 
 class Punto:
     """Un componente del stack y cómo quedó al comprobarlo."""
@@ -129,7 +143,7 @@ class Checklist:
     # ── las comprobaciones, una por `id` de la plantilla ─────────────────
 
     def _f13(self):
-        return (Instalador.cumple_f13(self.proyecto),
+        return (_instalador().cumple_f13(self.proyecto),
                 "falta la carpeta `proyectos/` — el proyecto no está instalado")
 
     def _claude_md(self):
@@ -140,7 +154,7 @@ class Checklist:
         una sección no lo veía nadie. El sello compara la huella de la plantilla
         contra la que este `CLAUDE.md` declara haber seguido.
         """
-        arranque = ArranqueDeSesion(self.proyecto, estandar=self.estandar)
+        arranque = _arranque()(self.proyecto, estandar=self.estandar)
         fallas = [h for h in arranque.revisar_claude_md() if h.severidad == FALLA]
         if fallas:
             return False, fallas[0].mensaje
@@ -200,9 +214,9 @@ class Checklist:
         return RegistroDeVersiones(self.proyecto, self.estandar).revisar()
 
     def _enganches_git(self):
-        if not Instalador.repositorios_git(self.proyecto):
+        if not _instalador().repositorios_git(self.proyecto):
             return True, ""             # sin repos no hay enganche que poner
-        hallazgos = ArranqueDeSesion(self.proyecto, estandar=self.estandar).revisar_enganches(self.proyecto)
+        hallazgos = _arranque()(self.proyecto, estandar=self.estandar).revisar_enganches(self.proyecto)
         return not hallazgos, (hallazgos[0].mensaje if hallazgos else "")
 
     def _enganches_claude(self):
@@ -222,7 +236,7 @@ class Checklist:
 
         faltan = []
         for evento, _, guion, mensaje, args in HOOKS_CLAUDE:
-            esperado = Instalador.hook_claude(
+            esperado = _instalador().hook_claude(
                 self.estandar.replace("\\", "/"), self.proyecto.replace("\\", "/"),
                 guion, mensaje, args)["command"]
             if (evento, os.path.normcase(esperado)) not in puestos:
@@ -231,7 +245,7 @@ class Checklist:
 
     def _registro(self):
         esperado = os.path.normcase(self.proyecto)
-        for _, ruta in Instalador(self.estandar).proyectos_registrados():
+        for _, ruta in _instalador()(self.estandar).proyectos_registrados():
             if os.path.normcase(os.path.abspath(ruta)) == esperado:
                 return True, ""
         return False, "el proyecto no está en plantillas/proyectos.md del estándar"

@@ -18,7 +18,7 @@ from django.db.models import Count, F, Max, Min, Sum
 from django.utils import timezone
 
 from .lector import estimar_tokens
-from .models import GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta, Llamada, Pedido
+from .models import EjecucionDeEnganche, GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta, Llamada, Pedido
 
 PERIODOS = OrderedDict([(1, "Hoy"), (7, "7 días"), (30, "30 días")])
 PERIODO_POR_DEFECTO = 7
@@ -149,6 +149,7 @@ class GastoDelPeriodo:
                         ("Por modelo", self.por_modelo()), ("Por agente auxiliar", self.por_agente())],
             "tipos": self.por_tipo_de_token(), "herramientas": self.por_herramienta(),
             "contexto": self.contexto(), "mensajes": self.ultimos_mensajes(),
+            "sin_tokens": self.sin_tokens(), "candidatos": self.candidatos(),
             "graficas": {
                 "proyectos": {"nombres": [p["proyecto__nombre"] for p in proyectos],
                               "totales": [p["total"] or 0 for p in proyectos]},
@@ -156,3 +157,39 @@ class GastoDelPeriodo:
                          "totales": [total for _, total in dias]},
             },
         }
+
+    # ── `EP-025·HU-015` · Lo que corre sin tokens, y lo que conviene automatizar ──
+
+    REPETIDO = 3            # veces desde las que un archivo o un comando es candidato
+    EN_CADA_MENSAJE = 0.8   # parte de los mensajes del período en que un enganche agrega contexto
+
+    def sin_tokens(self):
+        """Cada enganche con cuántas veces corrió y cuántos tokens agregó: también el que no agrega."""
+        agregados = {fila["nombre"]: estimar_tokens(fila["c"] or 0) for fila in
+                     self._filtrar(GastoDeEnganche).values("nombre").annotate(c=Sum("caracteres"))}
+        filas = self._filtrar(EjecucionDeEnganche).values("nombre").annotate(veces=Count("id")).order_by("-veces")
+        return [{"nombre": f["nombre"] or "(sin nombre)", "veces": f["veces"], "tokens": agregados.get(f["nombre"], 0)}
+                for f in filas[:CUANTOS * 2]]
+
+    def candidatos(self):
+        """Lo que se repite, con los tokens que se ahorrarían si un programa lo hiciera."""
+        def repetidos(modelo, campo, consulta=None):
+            filas = (consulta if consulta is not None else self._filtrar(modelo)).values(campo)
+            return filas.annotate(veces=Count("id"), c=Sum("caracteres")).filter(veces__gte=self.REPETIDO)
+
+        def todas_menos_una(fila):
+            return estimar_tokens(fila["c"] or 0) * (fila["veces"] - 1) // fila["veces"]
+
+        salida = [{"tipo": "Archivo leído", "nombre": fila["ruta"], "veces": fila["veces"],
+                   "ahorro": todas_menos_una(fila)} for fila in repetidos(GastoDeArchivo, "ruta")]
+        mensajes = self._filtrar(Pedido).count()
+        if mensajes:
+            enganches = self._filtrar(GastoDeEnganche).filter(evento="UserPromptSubmit").values("nombre")
+            for fila in enganches.annotate(veces=Count("id"), c=Sum("caracteres")):
+                if fila["veces"] >= self.EN_CADA_MENSAJE * mensajes:
+                    salida.append({"tipo": "Enganche en cada mensaje", "nombre": fila["nombre"],
+                                   "veces": fila["veces"], "ahorro": estimar_tokens(fila["c"] or 0)})
+        comandos = self._filtrar(GastoDeHerramienta).exclude(orden="")
+        salida += [{"tipo": "Comando repetido", "nombre": fila["orden"], "veces": fila["veces"],
+                    "ahorro": todas_menos_una(fila)} for fila in repetidos(GastoDeHerramienta, "orden", comandos)]
+        return sorted(salida, key=lambda f: -f["ahorro"])[:CUANTOS * 2]

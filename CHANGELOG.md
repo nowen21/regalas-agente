@@ -11,6 +11,52 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 55.0.0 — 2026-10-05
+
+**Lo que se construye para crear o cambiar algo trae la acción que lo deja como estaba.** ⚠ obliga a migrar
+
+**MAYOR**: los planes nuevos de todo proyecto declaran la contraria de cada acción que agregan.
+
+**Lo que entra:**
+
+- `02·F30`, «Toda acción trae su contraria»: crear con quitar, instalar con desinstalar, cerrar con reabrir. Sin la contraria, lo construido no está terminado; lo que no tiene vuelta dice por qué en el plan y lo aprueba el usuario.
+- `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`: sección 2.8, con cada acción nueva, su contraria y la prueba que hace las dos.
+- Para Cimiento, `python validadores/andamio.py quitar «carpeta»` quita lo que el andamio creó (`EP-025·HU-020`), y `manage.py cerrar_fase`, `reabrir_fase` y `cambios_por_sesion` cierran y reabren una fase y separan lo de cada sesión antes de un commit (`EP-025·HU-016`).
+- Más contrarias: `cerrar.py reabrir` devuelve un pendiente de `hecho/` (`EP-025·HU-022`), e `instalar.py «ruta» --desinstalar` quita lo que puso la instalación y deja lo propio del proyecto (`EP-025·HU-021`).
+- «Analicemos: el pendiente N desde el turno T» prende el análisis desde un turno anterior, y el estado del análisis prendido vive en la base de Cimiento (`EP-025·HU-023`).
+- `manage.py vigilar_consumo` guarda el gasto en cuanto Claude Code escribe el `.jsonl`; la instalación lo arranca al iniciar sesión en vez de la lectura diaria, y «Gasto» ya no lee al abrirse (`EP-025·HU-011`). La telemetría se retira: sale `/v1/logs` y la instalación quita sus seis variables (`EP-025·HU-012`).
+- La configuración tiene tres capas: lo de fábrica, la base que cambia el usuario y lo de cada proyecto, más las suspensiones con fecha de vencimiento, todo desde las pantallas «Configuración» y «Suspensiones» (`EP-025·HU-013`). Mostrar las rutas en los avisos se cumple en todos los enganches (`EP-025·HU-014`).
+- El aviso del freno dice cómo salir; el freno lee el análisis de su propia sesión y sigue el `cd` de una orden (`EP-025·HU-024`).
+- «Gasto» guarda cada corrida de enganche con su orden, y muestra qué herramientas no gastan tokens y cuáles conviene volver programa (`EP-025·HU-015`). El freno avisa cuando un guion repite lo que ya hace una funcionalidad de Cimiento (`EP-025·HU-017`).
+- Cimiento trae su ayuda: un botón en cada pantalla, ayuda por campo y un manual (`EP-025·HU-018`).
+
+**Qué hace un proyecto al día:** en cada plan nuevo, llenar la sección 2.8. Las fases ya cerradas no se tocan. En el ambiente de Cimiento, `pip install -r requirements/lock.txt` (entra `watchdog`), `manage.py preparar_base` (aplica las migraciones) y correr la instalación del estándar.
+
+Sale de los análisis 2 y 3 del pendiente 119 por `EP-025`, HU-011 a 024.
+
+---
+
+## 54.4.0 — 2026-10-05
+
+**`validadores/` queda con las puertas: el código vive en `proyectos/cimiento/core/`.**
+
+**MENOR**: los comandos que las reglas, las plantillas y los proyectos llaman siguen en su ruta; ningún proyecto tiene que hacer nada.
+
+**Lo que entra:**
+
+- Se retiran 66 programas de `validadores/`, la suite `pruebas.py` y la carpeta `validadores/tests/`: su trabajo y sus pruebas están en `core/`, con su paridad.
+- Quedan las puertas `validar.py`, `instalar.py`, `andamio.py`, `cerrar.py`, `historico.py`, `mapa_tareas.py`, `respaldo.py` y `vigencia.py`, que le pasan la orden a `core/`; y los puentes de los enganches. Con `hook_md.py` ya en `core/` (`EP-025·HU-014`), se retiran también `comun.py`, `enlaces.py`, `marcas.py` y `sesiones.py`: 49 enlaces pasan a texto en 37 documentos.
+- `hook_historico.py` y `hook_analisis.py` usan `core/`. Los enganches leen `--raiz` y el archivo escrito con `raiz_pedida` y `archivo_editado` de `core/comun/consola.py`, en vez de traer cada uno su copia.
+- `validar.py internas` corre las pruebas del estándar con la batería de Cimiento (1.303), con el Python de su entorno si lo tiene.
+- `validar.py amarre` mira también `core/`, y el mapa de `anatomia/` se rehízo: 29 piezas amarradas de 111.
+- `python validadores/retirar.py <archivos> [--aplicar]`: retira archivos sin dejar enlaces rotos. Cada enlace que los nombraba pasa a texto simple y el archivo se borra en el mismo cambio; no toca transcripciones, palabras del usuario ni la conversación de un análisis. Con ella se retiraron las 46 fichas de `validadores/docs/`.
+- `instalar`, `checklist`, `sesion` y los validadores ya no se importan entre sí al cargar: el catálogo de los enganches vive en `core/comun/enganches.py`, con `hook_historico.py` marcado como el que ningún proyecto suspende.
+- Las reglas que nombraban un programa retirado (`00·N6`, `00·ID8`, `00·ID9`, `00·ID10`, `00·ID12`, `02·F8`, `02·F24`, `13·DOC26` y el molde de `20`) nombran su ruta en `core/`; la plantilla del resultado de pruebas usa `validar.py metareglas`, y el ejemplo de `CLAUDE.md.plantilla` y del prompt base nombra `core/validadores/enlaces.py`.
+
+**Qué hace un proyecto al día:** nada.
+
+Sale del análisis 1 del pendiente 116 (filas 4, 5, 21 y 22).
+
 ## 54.3.0 — 2026-10-05
 
 **Al escribir una regla llegan las que se le parecen por significado.**
@@ -2350,7 +2396,7 @@ Ahora el archivo de la misma carpeta se enlaza por su nombre. El de cualquier ot
 
 Se conserva, y no como excepción sino como lo que es: la manera en que este proyecto nombra las cosas. En medio de una frase sigue contando.
 
-**El detalle.** Del [pendiente 11](pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md). El [anexo de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) ya eximía la cita `NN·ID` por ser notación definida, y el separador de encabezado es la misma clase. **El código ya lo tenía decidido y no lo había implementado:** el comentario de [`marcas.py`](validadores/marcas.py) decía *«ni de un `A · B` de encabezado: los dos son notación definida»*, y la expresión regular solo cubría la primera mitad. El recuento baja de 16 477 a **15 485**; el punto medio, de 6 237 a **4 638**. Se exime solo en la línea de un encabezado. 6 casos nuevos.
+**El detalle.** Del [pendiente 11](pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md). El [anexo de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) ya eximía la cita `NN·ID` por ser notación definida, y el separador de encabezado es la misma clase. **El código ya lo tenía decidido y no lo había implementado:** el comentario de `marcas.py` decía *«ni de un `A · B` de encabezado: los dos son notación definida»*, y la expresión regular solo cubría la primera mitad. El recuento baja de 16 477 a **15 485**; el punto medio, de 6 237 a **4 638**. Se exime solo en la línea de un encabezado. 6 casos nuevos.
 
 ## 23.17.0 — 2026-08-18
 
@@ -2928,7 +2974,7 @@ Nace [`validadores/pendientes.py`](validadores/pendientes.py) con su subcomando 
 - **Una HU cuenta completa cuando todas sus fases tienen los cinco documentos**, no cuando alguna los tiene. Con dos fases y una a medias la historia no está terminada, y contarla completa escondería justo el trabajo que falta.
 - **La línea va después de los hallazgos y aparece aunque no haya ninguno:** es el resumen de cuánto falta, no un incumplimiento más.
 - **Cruza con el [pendiente 48](pendientes/48-inventario-hu.md)**, que lleva la misma cuenta a mano. Hay una prueba que compara los tres números: si se separan, una de las dos está mal y la suite lo dice.
-- Los tres bordes quedan definidos y escritos en [`validadores/docs/fases.md`](validadores/docs/fases.md): árbol sin `epicas/` calla, épica sin HU no aporta, y carpeta `HU-` sin su `.md` **cuenta como incompleta** — existe como trabajo aunque le falte el papel.
+- Los tres bordes quedan definidos y escritos en `validadores/docs/fases.md`: árbol sin `epicas/` calla, épica sin HU no aporta, y carpeta `HU-` sin su `.md` **cuenta como incompleta** — existe como trabajo aunque le falte el papel.
 
 ## 23.2.1 — 2026-08-17
 
@@ -3064,7 +3110,7 @@ El 2026-08-16 se escribió [`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-av
 
 **PARCHE** — el revisor de enlaces daba un veredicto distinto según desde dónde se lo corriera. No cambia qué se exige.
 
-**Un enlace bueno salía roto dentro de un proyecto.** [`validadores/enlaces.py`](validadores/enlaces.py) resolvía `«RUTA-ESTANDAR»` contra la carpeta que estaba revisando, dando por hecho que esa carpeta era el estándar. No lo es: los enganches corren el programa desde el estándar y le pasan el proyecto como `--raiz`, así que iba a buscar `«proyecto»/base/…`, una carpeta que ningún proyecto tiene — las reglas no se copian, se enganchan por su dirección completa. Dentro de un proyecto el marcador **no se resolvía bien nunca**, ni cuando estaba bien puesto.
+**Un enlace bueno salía roto dentro de un proyecto.** `validadores/enlaces.py` resolvía `«RUTA-ESTANDAR»` contra la carpeta que estaba revisando, dando por hecho que esa carpeta era el estándar. No lo es: los enganches corren el programa desde el estándar y le pasan el proyecto como `--raiz`, así que iba a buscar `«proyecto»/base/…`, una carpeta que ningún proyecto tiene — las reglas no se copian, se enganchan por su dirección completa. Dentro de un proyecto el marcador **no se resolvía bien nunca**, ni cuando estaba bien puesto.
 
 Es la otra mitad de lo que dejó la [20.0.1](#2001--2026-08-16), y se construyó en la fase [`A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar`](documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/).
 
@@ -3114,7 +3160,7 @@ Mientras el 42 no cierre, un proyecto viejo se repara a mano: reemplazar `«RUTA
 **Cada proyecto nacía con las citas a las reglas rotas.** Las plantillas citan sus reglas con enlace, como pide [`20·M15`](base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md), y el destino era relativo: `../base/…`. Dentro de este repositorio abre. Pero la plantilla no se queda acá: el instalador la copia dentro de un proyecto, y allá `../base/` es la carpeta que está **encima** del proyecto — nunca el estándar. Lo reportó `shopnest-mesa`, donde `hook_md.py` quedaba siempre en rojo por catorce enlaces muertos; un aviso que siempre suena se deja de leer, y por eso se perdieron fallas reales durante media sesión.
 
 - **Los 91 enlaces de las 22 plantillas pasan a `«RUTA-ESTANDAR»/base/…`.** El marcador ya existía y lo resuelve [`instalar.py · _rellenos()`](validadores/instalar.py) contra la carpeta donde corre el estándar. No está escrito a mano en ningún lado: si el estándar se muda, basta reinstalar desde la carpeta nueva.
-- **[`validadores/enlaces.py`](validadores/enlaces.py) aprende el marcador.** Sin esto el arreglo rompía la comprobación acá: 87 enlaces daban por rotos porque el marcador solo se llena al instalar. Ahora, sin llenar, se resuelve contra la raíz del repositorio.
+- **`validadores/enlaces.py` aprende el marcador.** Sin esto el arreglo rompía la comprobación acá: 87 enlaces daban por rotos porque el marcador solo se llena al instalar. Ahora, sin llenar, se resuelve contra la raíz del repositorio.
 - **El límite:** la ruta que entra al archivo es la de la máquina donde se instaló, y los documentos generados sí se versionan. En otra máquina ese enlace no abre. No empeora nada —hoy no abre en ninguna—, pero tampoco lo resuelve del todo.
 
 **Qué hacer para quedar al día:** volver a correr la instalación, y los enlaces quedan apuntando al estándar de esta máquina.

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block titulo %}Inicio{% endblock %} - Cimiento</title>
   <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+  <link rel="stylesheet" href="{% static 'ayuda/ayuda.css' %}">
 </head>
 <body>
   <div class="page">
@@ -27,6 +28,11 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'proyectos:configuracion' %}">
+                <span class="nav-link-title">Configuración</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'consumo:tablero' %}">
                 <span class="nav-link-title">Gasto</span>
               </a>
@@ -41,7 +47,10 @@
         <div class="container-xl d-flex align-items-center">
           <h2 class="page-title">{% block cabecera %}Cimiento{% endblock %}</h2>
           {% if user.is_authenticated %}
-          <form class="ms-auto d-flex align-items-center gap-2" method="post" action="{% url 'cuentas:salir' %}">
+          <button type="button" class="btn btn-outline-primary btn-sm ms-auto me-2 ayuda-boton" data-bs-toggle="offcanvas"
+            data-bs-target="#ayuda" aria-controls="ayuda"
+            data-ayuda-url="{% url 'ayuda:pantalla' %}?vista={{ request.resolver_match.view_name|urlencode }}">Ayuda</button>
+          <form class="d-flex align-items-center gap-2" method="post" action="{% url 'cuentas:salir' %}">
             {% csrf_token %}
             <span class="text-secondary">{{ user.get_username }}</span>
             <button class="btn btn-outline-secondary btn-sm" type="submit">Salir</button>
@@ -56,7 +65,20 @@
       </div>
     </div>
   </div>
+  {% if user.is_authenticated %}
+  <!-- `EP-025·HU-018` · El panel de ayuda: se llena con la sección de la pantalla actual -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ayuda" aria-labelledby="ayuda-titulo">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title" id="ayuda-titulo">Ayuda</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar la ayuda"></button>
+    </div>
+    <div class="offcanvas-body" id="ayuda-contenido">
+      <div class="text-secondary">Cargando la ayuda…</div>
+    </div>
+  </div>
+  {% endif %}
   <script src="{% static 'js/tabler.min.js' %}" defer></script>
+  <script src="{% static 'ayuda/ayuda.js' %}" defer></script>
   <script src="{% static 'htmx.min.js' %}" defer></script>
   <script src="{% static 'apexcharts.min.js' %}" defer></script>
 </body>

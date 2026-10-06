@@ -17,6 +17,15 @@
         <input class="form-check-input" type="checkbox" name="{{ campo.html_name }}" {% if campo.value %}checked{% endif %}>
         <span class="form-check-label">{{ campo.label }}</span>
       </label>
+      {% elif campo.field.widget.input_type == "select" %}
+      <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>
+      <select class="form-select{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}" name="{{ campo.html_name }}">
+        {% for valor, texto in campo.field.choices %}
+        <option value="{{ valor }}"{% if campo.value|stringformat:"s" == valor|stringformat:"s" %} selected{% endif %}>{{ texto }}</option>
+        {% endfor %}
+      </select>
+      {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+      {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
       {% else %}
       <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>
       <input class="form-control{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}"

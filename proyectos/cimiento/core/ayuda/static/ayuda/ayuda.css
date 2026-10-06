@@ -1,0 +1,110 @@
+/* `EP-025·HU-018` · La ayuda en cada campo y en cada pantalla, traída de scilit (EP-014 HU-005), sin la fuente de íconos. */
+:root {
+  --ayuda-oscuro: #062847;
+  --ayuda-medio: #3554a5;
+  --ayuda-claro: #eef4ff;
+  --ayuda-texto: #1f3a72;
+}
+
+/* El «?»: un círculo con el signo, hecho en CSS */
+.ayuda-icono {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.05rem; height: 1.05rem; border-radius: 50%;
+  background: var(--tblr-cyan, #17a2b8); color: #fff;
+  font-size: .7rem; font-weight: 700; line-height: 1; cursor: help; user-select: none;
+}
+.ayuda-icono:hover, .ayuda-icono:focus { background: var(--ayuda-oscuro); outline: none; }
+.ayuda-icono.ayuda-icono-falta { background: var(--tblr-red, #d63939); }
+
+.popover.ayuda-globo {
+  max-width: 360px; border: 0; border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .12); z-index: 1090;
+}
+.popover.ayuda-globo .popover-header {
+  background: var(--ayuda-oscuro); color: #fff; font-weight: 600;
+  border-radius: 10px 10px 0 0; border-bottom: 0;
+}
+.popover.ayuda-globo .popover-header::before { display: none; }
+.popover.ayuda-globo .popover-body { padding: .75rem .9rem; }
+.ayuda-globo-seccion + .ayuda-globo-seccion { margin-top: .6rem; }
+.ayuda-globo-encabezado { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--ayuda-texto); margin-bottom: .2rem; }
+.ayuda-globo-texto { font-size: .82rem; margin: 0; }
+.ayuda-globo-lista { font-size: .82rem; margin: 0; padding-left: 1.1rem; }
+.ayuda-globo-consejo {
+  margin-top: .7rem; padding: .5rem .6rem; font-size: .8rem;
+  background: #fff8e1; border-left: 3px solid #f59e0b; border-radius: 6px; color: #7c5700;
+}
+
+.tooltip .tooltip-inner { background: var(--ayuda-oscuro); text-align: left; max-width: 320px; font-size: .78rem; }
+
+.ayuda-pantalla-boton {
+  background: var(--ayuda-claro); color: var(--ayuda-texto); border: 0; border-radius: 999px;
+  padding: .3rem .85rem; font-weight: 600;
+}
+.ayuda-pantalla-boton:hover { background: #dce8ff; color: var(--ayuda-texto); }
+.ayuda-ventana-encabezado { background: var(--ayuda-medio); color: #fff; }
+.ayuda-ventana-encabezado .modal-title { color: #fff; }
+.ayuda-recuadro { border-radius: 8px; padding: .75rem .9rem; margin-top: .75rem; font-size: .9rem; }
+.ayuda-recuadro-ejemplo { background: var(--ayuda-claro); border: 1px solid #cfdcf3; color: var(--ayuda-texto); }
+.ayuda-recuadro-importa { background: #fff8e1; border: 1px solid #ffe082; color: #7c5700; }
+
+/* El mapa animado de «Cómo encaja en el sistema» */
+.mapa-lienzo { padding: 1rem; border-radius: 10px; background: #f7f9fc; border: 1px dashed #d0dcf0; }
+.mapa-paso { margin-bottom: .25rem; }
+.mapa-etiqueta {
+  display: inline-block; font-size: .65rem; font-weight: 700; padding: .1rem .45rem;
+  border-radius: 10px; margin-right: .35rem; color: #fff; background: #28a745; vertical-align: middle;
+}
+.mapa-etiqueta-aqui { background: #ffc107; color: #212529; }
+.mapa-titulo { font-size: .75rem; color: var(--tblr-secondary); }
+.mapa-aqui {
+  display: inline-block; padding: .5rem 1.2rem; border-radius: 8px; font-weight: 700; font-size: .95rem;
+  color: #fff; background: linear-gradient(135deg, #3554a5, #6982c2); box-shadow: 0 2px 6px rgba(53, 84, 165, .3);
+}
+.mapa-chip {
+  display: inline-block; padding: .35rem .7rem; border-radius: 8px; font-weight: 600; font-size: .78rem;
+  background: var(--ayuda-claro); border: 1px solid #cfdcf3; color: var(--ayuda-texto);
+}
+.mapa-chip-despues { background: #e6f7fa; border-color: #b7e0e7; color: #0e6b7b; }
+.mapa-num {
+  display: inline-block; width: 1.15rem; height: 1.15rem; line-height: 1.1rem; margin-right: .3rem;
+  border-radius: 50%; border: 1px solid #cfdcf3; background: #fff; font-size: .6rem; font-weight: 700; text-align: center;
+}
+.mapa-linea { display: inline-block; width: 28px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #3554a5, #6982c2); }
+.mapa-linea-despues { background: linear-gradient(90deg, #0e6b7b, #3fb0c1); }
+.mapa-flecha { color: var(--tblr-secondary); margin: .2rem 0; }
+.mapa-leyenda { margin-top: .75rem; font-size: .75rem; color: var(--tblr-secondary); }
+.mapa-leyenda-antes { color: var(--ayuda-texto); font-weight: 600; }
+.mapa-leyenda-aqui { color: #fff; background: #3554a5; padding: 0 .3rem; border-radius: 3px; font-weight: 600; }
+.mapa-leyenda-despues { color: #0e6b7b; font-weight: 600; }
+
+/* Cada elemento aparece en su turno (--turno), uno tras otro */
+.mapa-elemento { opacity: .2; }
+.mapa-animar .mapa-elemento { animation: mapaAparece .6s ease-out forwards; animation-delay: calc(var(--turno) * .35s); }
+.mapa-animar .mapa-linea.mapa-elemento { animation-name: mapaLinea; }
+.mapa-animar .mapa-paso-aqui .mapa-aqui { animation: mapaPulso 2.2s ease-in-out infinite; animation-delay: 1.5s; }
+@keyframes mapaAparece { 0% { opacity: .2; transform: scale(.95); } 60% { opacity: 1; transform: scale(1.04); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes mapaLinea { 0% { opacity: 0; width: 0; } 100% { opacity: 1; width: 28px; } }
+@keyframes mapaPulso { 0%, 100% { box-shadow: 0 2px 6px rgba(53, 84, 165, .3); } 50% { box-shadow: 0 4px 18px rgba(53, 84, 165, .75); } }
+@media (prefers-reduced-motion: reduce) {
+  .mapa-elemento { opacity: 1; }
+  .mapa-animar .mapa-elemento, .mapa-animar .mapa-paso-aqui .mapa-aqui { animation: none; }
+}
+
+/* «¿En qué otras pantallas se usa?» con su «¿Dónde está?» */
+.ayuda-donde-boton {
+  width: 24px; height: 24px; line-height: 1; background: var(--ayuda-claro); color: var(--ayuda-texto); border: 1px solid #cfdcf3;
+}
+.ayuda-ruta { padding: .75rem; border-radius: 8px; background: #343a40; color: #fff; }
+.ayuda-ruta-titulo { color: rgba(255, 255, 255, .75); }
+.ayuda-ruta-paso { display: flex; align-items: center; padding: .45rem .6rem; border-radius: 6px; background: rgba(255, 255, 255, .08); font-size: .85rem; }
+.ayuda-ruta-destino { background: #fff3cd; color: #212529; border-left: 4px solid #ffc107; font-weight: 700; }
+.ayuda-ruta-flecha { color: rgba(255, 255, 255, .5); }
+
+/* El manual se imprime sin el menú ni lo que solo sirve en pantalla */
+.manual-seccion { break-inside: avoid-page; }
+@media print {
+  aside.navbar, .no-imprimir, .ayuda-boton { display: none !important; }
+  .page-wrapper { margin: 0 !important; }
+  .manual-seccion { box-shadow: none; border: 0; }
+}

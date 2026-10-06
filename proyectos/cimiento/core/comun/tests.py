@@ -137,5 +137,26 @@ class LosEnganchesLeenLaRaizYElArchivoIgual(unittest.TestCase):
         self.assertEqual(archivo_editado(None), "")
 
 
+
+class ElCatalogoDeEnganchesNoArmaCiclos(unittest.TestCase):
+    """Análisis 1 del pendiente 116, fila 23: cada módulo carga solo, en un
+    proceso nuevo, sin depender de que otro se haya cargado antes."""
+
+    def test_cada_modulo_carga_por_su_cuenta(self):
+        import sys
+        cimiento = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        for modulo in ("core.herramientas.instalar", "core.enganches.sesion", "core.validadores.checklist",
+                       "core.validadores.herramientas", "core.validadores"):
+            corrida = subprocess.run([sys.executable, "-c", "import " + modulo], cwd=cimiento,
+                                     capture_output=True, text=True)
+            self.assertEqual(0, corrida.returncode, "%s no carga solo: %s" % (modulo, corrida.stderr[-300:]))
+
+    def test_el_instalador_y_el_catalogo_nombran_los_mismos_enganches(self):
+        from core.comun.enganches import ENGANCHES_GIT, HOOKS_CLAUDE, NO_SE_SUSPENDEN
+        from core.herramientas.instalar import HOOKS
+        self.assertEqual(ENGANCHES_GIT, tuple(nombre for nombre, _, _ in HOOKS))
+        guiones = {guion for _, _, guion, _, _ in HOOKS_CLAUDE}
+        self.assertTrue(set(NO_SE_SUSPENDEN) <= guiones)
+
 if __name__ == "__main__":
     unittest.main()

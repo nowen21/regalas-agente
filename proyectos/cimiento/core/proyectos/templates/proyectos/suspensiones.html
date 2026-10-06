@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load ayuda %}
+
+{% block titulo %}Suspensiones de {{ proyecto.nombre }}{% endblock %}
+{% block cabecera %}Suspensiones de {{ proyecto.nombre }}{% endblock %}
+
+{% block contenido %}
+{% ayuda_pantalla "suspensiones" %}
+{% for mensaje in messages %}
+<div class="alert alert-{% if mensaje.tags == 'error' %}danger{% else %}success{% endif %}" role="alert">{{ mensaje }}</div>
+{% endfor %}
+<p class="text-secondary">Una regla, o el freno entero, deja de frenar en este proyecto hasta que vence o se levanta. Lleva motivo y dura a lo sumo {{ dias }} días. El núcleo del estándar y el histórico no se suspenden.</p>
+
+<div class="card mb-3">
+  <table class="table card-table table-vcenter">
+    <thead>
+      <tr><th>Qué</th><th>Motivo</th><th>Vence</th><th>Quién</th><th>Estado</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for suspension in suspensiones %}
+      <tr>
+        <td>{% if suspension.tipo == "enganche" %}El freno entero{% else %}<code>{{ suspension.nombre }}</code>{% endif %}</td>
+        <td>{{ suspension.motivo }}</td>
+        <td>{{ suspension.vence|date:"Y-m-d H:i" }}</td>
+        <td>{{ suspension.creada_por.get_username|default:"(cuenta borrada)" }}</td>
+        <td>
+          {% if suspension.levantada %}Levantada el {{ suspension.levantada|date:"Y-m-d H:i" }} por {{ suspension.levantada_por.get_username|default:"(cuenta borrada)" }}
+          {% elif suspension.vence <= ahora %}Vencida
+          {% else %}Vigente{% endif %}
+        </td>
+        <td>
+          {% if puede_cambiar and not suspension.levantada and suspension.vence > ahora %}
+          <form method="post" action="{% url 'proyectos:levantar' proyecto.pk suspension.pk %}">
+            {% csrf_token %}
+            <button class="btn btn-outline-primary btn-sm" type="submit" {% ayuda_corta "Termina la suspensión ya; queda quién la levantó" %}>Levantar</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6" class="text-secondary">Este proyecto no ha tenido suspensiones.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if puede_cambiar %}
+<form class="card" method="post">
+  {% csrf_token %}
+  <div class="card-header"><h3 class="card-title">Suspender</h3></div>
+  <div class="card-body">
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endfor %}
+    <div class="mb-3">
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.tipo.id_for_label }}">Qué se suspende</label>{% ayuda_campo "suspension.tipo" %}</div>
+      <select class="form-select" id="{{ form.tipo.id_for_label }}" name="tipo">
+        {% for valor, texto in form.fields.tipo.choices %}
+        <option value="{{ valor }}"{% if form.tipo.value == valor %} selected{% endif %}>{{ texto }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>{% ayuda_campo "suspension.nombre" %}</div>
+      <input class="form-control" id="{{ form.nombre.id_for_label }}" name="nombre" value="{{ form.nombre.value|default_if_none:'' }}">
+    </div>
+    <div class="mb-3">
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.motivo.id_for_label }}">Motivo</label>{% ayuda_campo "suspension.motivo" %}</div>
+      <input class="form-control" id="{{ form.motivo.id_for_label }}" name="motivo" value="{{ form.motivo.value|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.vence.id_for_label }}">Vence</label>{% ayuda_campo "suspension.vence" %}</div>
+      <input class="form-control" id="{{ form.vence.id_for_label }}" name="vence" type="datetime-local" required>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary" type="submit">Suspender</button>
+  </div>
+</form>
+{% endif %}
+<p class="mt-3"><a href="{% url 'proyectos:lista' %}">Volver a los proyectos</a></p>
+{% endblock %}

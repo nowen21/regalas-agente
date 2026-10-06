@@ -31,7 +31,13 @@ EXENTOS = ("amarre.py",)
 # enganches que se mudaron al adaptador, y el mapa sonaría a mejora cuando lo
 # que hubo fue una mudanza.
 CARPETAS = (os.path.join("validadores"),
-            os.path.join("adaptadores", "claude-code"))
+            os.path.join("adaptadores", "claude-code"),
+            # Desde el 2026-10-05 el código vive en Cimiento (análisis 1 del
+            # pendiente 116, fila 21); `validadores/` quedó con las puertas.
+            os.path.join("proyectos", "cimiento", "core", "comun"),
+            os.path.join("proyectos", "cimiento", "core", "validadores"),
+            os.path.join("proyectos", "cimiento", "core", "enganches"),
+            os.path.join("proyectos", "cimiento", "core", "herramientas"))
 
 # `EP-005·HU-023` · Una línea que no dice nada más que nombres: la lista de libres.
 _SOLO_NOMBRES = re.compile(r"^(`[\w.]+`[\s·,.]*)+$")
@@ -56,7 +62,9 @@ class MapaDelAmarre(Validador):
             if not os.path.isdir(carpeta):
                 continue
             for nombre in sorted(os.listdir(carpeta)):
-                if nombre.endswith(".py") and nombre not in EXENTOS:
+                # Las pruebas no son piezas: prueban piezas.
+                if (nombre.endswith(".py") and nombre not in EXENTOS and nombre != "__init__.py"
+                        and not nombre.startswith(("test", "paridad"))):
                     salida[nombre] = len(MARCA.findall(self.archivos.leer(os.path.join(carpeta, nombre))))
         return salida
 
@@ -101,5 +109,5 @@ class MapaDelAmarre(Validador):
         if not encontradas:
             return ""
         amarradas = sum(1 for n in encontradas.values() if n > 0)
-        return ("Piezas de `validadores/`: %d · amarradas a la herramienta: %d · libres: %d"
+        return ("Piezas de código: %d · amarradas a la herramienta: %d · libres: %d"
                 % (len(encontradas), amarradas, len(encontradas) - amarradas))

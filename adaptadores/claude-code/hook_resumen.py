@@ -34,6 +34,7 @@ import sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
+from core.comun import Proyecto                                  # noqa: E402
 from core.comun.consola import entrada_json, preparar_salida     # noqa: E402
 from core.enganches.historico import CARPETA, INDICE             # noqa: E402
 from core.enganches.resumen import Resumen as R                  # noqa: E402
@@ -89,7 +90,8 @@ def inicio(raiz, sesion, estandar):
 
 def _arranque(raiz, ruta):
     """El mensaje de cuando el archivo ya está: dónde vive y qué sigue abierto."""
-    rel = os.path.relpath(ruta, raiz).replace("\\", "/")
+    # Como diga «Rutas en los avisos» del proyecto (`EP-025·HU-014`).
+    rel = Proyecto(raiz).mostrar(ruta)
     lineas = ["[LO QUE ESTA SESIÓN DEJA SE ESCRIBE EN SU RESUMEN]",
               f"El archivo ya está creado: `{rel}`. Se llena **en el momento en que "
               f"aparece cada hallazgo**, no al cerrar: un chat no tiene final "
@@ -98,7 +100,7 @@ def _arranque(raiz, ruta):
     p = R.proposito(raiz, ruta)
     if p:
         origen, hid, titulo, retoma = p
-        rel_o = os.path.relpath(origen, raiz).replace("\\", "/")
+        rel_o = Proyecto(raiz).mostrar(origen)
         lineas += ["",
                    f"**El propósito de esta sesión sigue abierto:** {hid} · {titulo}.",
                    f"Vive en `{rel_o}` y ahí se actualiza, no se copia acá.",
@@ -126,7 +128,7 @@ def aviso(raiz, sesion, estandar=""):
     if not pendientes:
         return ""
 
-    rel = os.path.relpath(ruta, raiz).replace("\\", "/")
+    rel = Proyecto(raiz).mostrar(ruta)
     for clave in pendientes:
         R.marcar_avisado(ruta, clave)
     if "molde" in pendientes:

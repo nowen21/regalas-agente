@@ -4,8 +4,9 @@
     python manage.py leer_consumo
     python manage.py leer_consumo --proyecto agente
 
-La instalación la programa una vez al día; el tablero la corre al abrirse
-(`EP-025·HU-008`). La suma del total es la de `presupuesto.py`.
+Lo de todos los días lo guarda `vigilar_consumo` en cuanto se escribe
+(`EP-025·HU-011`); esta orden lee de una vez lo que haga falta, por ejemplo
+después de borrar el avance de lectura. La suma del total es la de `presupuesto.py`.
 """
 from django.core.management.base import BaseCommand
 

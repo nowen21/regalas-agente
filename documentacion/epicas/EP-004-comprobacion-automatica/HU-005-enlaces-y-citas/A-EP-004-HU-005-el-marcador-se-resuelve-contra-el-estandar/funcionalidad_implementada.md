@@ -34,7 +34,7 @@ El módulo de comprobación **no tiene especificación**, así que se traza cont
 
 | Exigencia | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «un enlace roto se reporta» — y uno bueno no, mire quien mire | comprobación | [`validadores/enlaces.py`](../../../../../validadores/enlaces.py) · `ESTANDAR` y la rama del marcador en `validar_enlaces` | ✅ | CP-001, CP-002 y CP-003 del [`resultado_pruebas.md`](resultado_pruebas.md) |
+| «un enlace roto se reporta» — y uno bueno no, mire quien mire | comprobación | `validadores/enlaces.py` · `ESTANDAR` y la rama del marcador en `validar_enlaces` | ✅ | CP-001, CP-002 y CP-003 del [`resultado_pruebas.md`](resultado_pruebas.md) |
 | Que el veredicto no cambie sobre el propio estándar | no regresión | la misma | ✅ | Salida de `validar.py estandar` idéntica antes y después |
 | Que exista una prueba que lo fije | prueba | [`validadores/tests/test_enlaces_marcador.py`](../../../../../validadores/tests/test_enlaces_marcador.py) | ✅ | `Ran 12 tests · OK`, y se comprobó que se pone roja con el defecto puesto |
 

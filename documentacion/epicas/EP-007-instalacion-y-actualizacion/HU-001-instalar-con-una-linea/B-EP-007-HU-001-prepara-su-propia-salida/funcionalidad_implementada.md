@@ -33,7 +33,7 @@ Desde la línea de comandos no cambia nada: `main()` la sigue preparando, porque
 |---|---|
 | [`validadores/instalar.py`](../../../../../validadores/instalar.py) | Una línea al entrar a `instalar()` |
 | [`validadores/tests/test_instalar_reparar.py`](../../../../../validadores/tests/test_instalar_reparar.py) | La clase `PreparaSuPropiaSalida`, y se quitó el rodeo que la fase anterior había puesto |
-| [`validadores/docs/instalar.md`](../../../../../validadores/docs/instalar.md) | Dice que `instalar()` prepara su salida |
+| `validadores/docs/instalar.md` | Dice que `instalar()` prepara su salida |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · [`VERSION`](../../../../../VERSION) | La 21.2.1 |
 
 ---

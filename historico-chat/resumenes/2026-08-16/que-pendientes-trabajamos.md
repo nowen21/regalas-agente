@@ -76,7 +76,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendientes-
 
 ### H-5 · El validador de enlaces no era un programa que se pudiera correr
 
-- **Qué pasó:** durante toda la sesión el agente comprobó su trabajo con `python validadores/enlaces.py <archivos>` y reportó «sin roturas» tres veces. [`enlaces.py`](../../../validadores/enlaces.py) **no tiene `__main__`**: es una biblioteca. Correrlo así no comprueba nada y sale con código 0. El programa real es `validar.py estandar`, y al correrlo aparecieron 88 fallas.
+- **Qué pasó:** durante toda la sesión el agente comprobó su trabajo con `python validadores/enlaces.py <archivos>` y reportó «sin roturas» tres veces. `enlaces.py` **no tiene `__main__`**: es una biblioteca. Correrlo así no comprueba nada y sale con código 0. El programa real es `validar.py estandar`, y al correrlo aparecieron 88 fallas.
 - **Por qué importa:** un cero de un programa que no hizo nada se lee igual que un cero de uno que sí. El agente le dio al usuario tres confirmaciones vacías.
 - **Qué lo soluciona:** correr el punto de entrada, no el módulo. Los que tienen `__main__` son `validar.py`, `citas.py`, `historico.py`, `instalar.py`, `pruebas.py` y los `hook_*`.
 - **Qué se decidió:** queda anotado. Es candidato a que `enlaces.py` avise cuando se lo llama directo, en vez de salir en silencio.
@@ -88,13 +88,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendientes-
 
 ### H-6 · El pendiente 34 daba por bueno lo que había que comprobar
 
-- **Qué pasó:** se ejecutó el [34](../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md) — los enlaces de las plantillas pasan de `../base/…` a `«RUTA-ESTANDAR»/base/…`. Su paso 3 decía de [`enlaces.py`](../../../validadores/enlaces.py): *«en principio el validador la comprueba sin cambios; confirmarlo con una prueba»*. La prueba dijo que no: **87 enlaces quedaron dados por rotos**, porque dentro de este repositorio el marcador está sin llenar. Hubo que enseñárselo.
+- **Qué pasó:** se ejecutó el [34](../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md) — los enlaces de las plantillas pasan de `../base/…` a `«RUTA-ESTANDAR»/base/…`. Su paso 3 decía de `enlaces.py`: *«en principio el validador la comprueba sin cambios; confirmarlo con una prueba»*. La prueba dijo que no: **87 enlaces quedaron dados por rotos**, porque dentro de este repositorio el marcador está sin llenar. Hubo que enseñárselo.
 - **Por qué importa:** es lo mismo que el H-2 con el otro pendiente. Un pendiente escrito describe lo que alguien supone; recién al ejecutarlo se sabe. Dos de dos en esta sesión.
 - **Qué lo soluciona:** ya está — el validador resuelve el marcador contra la raíz del repositorio.
 - **Qué se decidió:** además, la cuenta del pendiente estaba vieja: eran **91** enlaces en **22** plantillas, no 77 en 21.
 - **Estado:** resuelto acá.
 - **Dispara:** el aviso a `shopnest-mesa`, **escrito el mismo día**: su pendiente 01 y la fila de su README dicen que la corrección está hecha, con qué opción se eligió y qué falta de su lado. Queda abierto allá hasta que corran el instalador y comprueben — el aviso no cierra el pendiente del proyecto, lo desbloquea. Lo mandó una persona acordándose, que es el paso 6 que el [36](../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) todavía no automatiza.
-- **Dónde queda:** [pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md](../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md), las 22 plantillas, [`enlaces.py`](../../../validadores/enlaces.py) y el [CHANGELOG](../../../CHANGELOG.md) 20.0.1.
+- **Dónde queda:** [pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md](../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md), las 22 plantillas, `enlaces.py` y el [CHANGELOG](../../../CHANGELOG.md) 20.0.1.
 - **Nace en:** 2026-08-16 · qué pendientes trabajamos.
 - **Cerrado en:** 2026-08-16 · qué pendientes trabajamos.
 - **Con qué se retoma:** —

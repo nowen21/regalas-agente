@@ -40,6 +40,7 @@ import sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
+from core.comun import Proyecto                                  # noqa: E402
 from core.comun.consola import preparar_salida, raiz_pedida                   # noqa: E402
 from core.enganches import historico, recuerdos                  # noqa: E402
 from core.enganches.cargador import Cargador                     # noqa: E402
@@ -69,15 +70,9 @@ def _ruta(modulo):
 
 
 def _relativo(ruta):
-    """Ruta relativa al estándar; absoluta si el archivo vive fuera de él. Es como
-    se nombraba cada hallazgo antes de pasar a `core`, y así se sigue nombrando."""
-    try:
-        rel = os.path.relpath(ruta, RAIZ).replace("\\", "/")
-    except ValueError:      # otra unidad en Windows
-        return ruta.replace("\\", "/")
-    if rel.startswith(".."):
-        return os.path.abspath(ruta).replace("\\", "/")
-    return rel
+    """Ruta relativa al estándar; absoluta si el archivo vive fuera de él, o si
+    «Rutas en los avisos» dice completas (`EP-025·HU-014`)."""
+    return Proyecto(RAIZ).mostrar(ruta)
 
 
 def _linea(h):

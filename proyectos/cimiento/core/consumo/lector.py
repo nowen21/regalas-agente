@@ -57,7 +57,7 @@ class Llamada:
     cache_leida: int
     salida: int
     auxiliar: bool = False
-    # `requestId` en el `.jsonl`, `request_id` en la telemetría (`EP-025·HU-007`).
+    # `requestId` del `.jsonl`: une la llamada con lo que guardó la telemetría hasta la HU-012.
     solicitud: str = ""
     # `EP-025·HU-010` · El `promptId` del mensaje del usuario que la originó.
     pedido: str = ""
@@ -94,6 +94,18 @@ class Herramienta:
     fecha: datetime
     nombre: str
     caracteres: int
+    # `EP-025·HU-015` · De un comando, solo el programa y su orden: nunca el comando.
+    orden: str = ""
+
+
+@dataclass
+class Ejecucion:
+    """`EP-025·HU-015` · Una corrida de un enganche, le entregue o no algo al modelo."""
+    sesion: str
+    identificador: str
+    fecha: datetime
+    nombre: str
+    evento: str
 
 
 @dataclass
@@ -113,6 +125,7 @@ class Lectura:
     archivos: list = field(default_factory=list)
     herramientas: list = field(default_factory=list)
     pedidos: list = field(default_factory=list)
+    ejecuciones: list = field(default_factory=list)
     # `{pedido: [ruta]}` de lo que leyó o escribió cada turno, también del que
     # empezó en una lectura anterior. De ahí sale el trabajo; no se guarda.
     rutas: dict = field(default_factory=dict)
@@ -134,6 +147,42 @@ def _titulo(texto):
     """`[LAS REGLAS DE CADA TURNO]` al comienzo del texto: así se presentan los enganches."""
     encontrado = _TITULO.match((texto or "").lstrip())
     return encontrado.group(1).strip() if encontrado else ""
+
+
+_PROGRAMA = re.compile(r"^(?:.*[\/])?([\w.+-]+?)(?:\.exe)?$", re.I)
+_CONSOLA = ("Bash", "PowerShell")
+_ORDEN = re.compile(r"^[\w.-]{1,40}(?:/[\w.-]{1,40})?$")
+
+
+def orden_de(comando):
+    """`EP-025·HU-015` · El programa y su orden: `git status`, `python manage.py`,
+    `python -m unittest`. Nunca el comando completo (`12`).
+
+    Se salta lo que va antes de la primera parte que hace algo (`cd`, variables)
+    y las rutas largas: una ruta con carpetas no es una orden.
+    """
+    for parte in re.split(r"&&|\|\||;|\n|\|", comando or ""):
+        palabras = parte.strip().split()
+        while palabras and re.match(r"^\w+=", palabras[0]):
+            palabras = palabras[1:]
+        if not palabras or palabras[0] in ("cd", "export", "set"):
+            continue
+        programa = _PROGRAMA.match(palabras[0].strip("\"'"))
+        nombre = (programa.group(1) if programa else palabras[0]).lower()
+        if nombre.startswith("python"):
+            nombre = "python"
+        resto = palabras[1:]
+        if resto[:1] == ["-m"] and len(resto) > 1:
+            return "%s -m %s" % (nombre, resto[1].strip("\"'"))[:120]
+        siguiente = next((p for p in resto if not p.startswith("-")), "")
+        if siguiente[:1] in ("\"", "'"):
+            siguiente = ""          # entre comillas es texto, no una orden
+        # Una palabra, o un archivo con a lo sumo una carpeta: lo demás puede
+        # ser texto o datos, y no se guarda.
+        if _ORDEN.match(siguiente):
+            return ("%s %s" % (nombre, siguiente.rsplit("/", 1)[-1]))[:120]
+        return nombre[:120]
+    return ""
 
 
 def _contexto_del_stdout(stdout):
@@ -240,6 +289,13 @@ class LectorDeClaudeCode:
                 self._resultado(dato, sesion, fecha, lecturas_pedidas, lectura.archivos, usos, lectura.herramientas)
             elif tipo == "attachment":
                 adjunto = dato.get("attachment") or {}
+                if adjunto.get("type") in ("hook_success", "hook_blocking_error"):
+                    # `EP-025·HU-015` · Cada corrida, entregue o no algo al modelo.
+                    bloqueo = adjunto.get("blockingError")
+                    nombre = adjunto.get("command") or (bloqueo.get("command") if isinstance(bloqueo, dict) else "")
+                    lectura.ejecuciones.append(Ejecucion(
+                        sesion=sesion, identificador=dato.get("uuid") or "", fecha=fecha,
+                        nombre=(nombre or adjunto.get("hookName") or "")[:200], evento=adjunto.get("hookEvent") or ""))
                 if adjunto.get("type") == "hook_success":
                     clave = (adjunto.get("toolUseID"), adjunto.get("hookName"))
                     exitos.setdefault(clave, []).append(adjunto)
@@ -259,7 +315,8 @@ class LectorDeClaudeCode:
                 continue
             entrada = bloque.get("input") if isinstance(bloque.get("input"), dict) else {}
             ruta = entrada.get("file_path") or entrada.get("notebook_path") or ""
-            usos[bloque.get("id")] = bloque.get("name") or ""
+            nombre = bloque.get("name") or ""
+            usos[bloque.get("id")] = (nombre, orden_de(entrada.get("command")) if nombre in _CONSOLA else "")
             if ruta and lectura.ultimo_pedido and not dato.get("isSidechain"):
                 lectura.rutas.setdefault(lectura.ultimo_pedido, []).append(ruta)
             if bloque.get("name") == "Read":
@@ -285,8 +342,9 @@ class LectorDeClaudeCode:
             identificador = bloque.get("tool_use_id")
             caracteres = len(_texto(bloque.get("content")))
             if identificador in usos:
+                nombre, orden = usos.pop(identificador)
                 herramientas.append(Herramienta(sesion=sesion, identificador=identificador, fecha=fecha,
-                                                nombre=usos.pop(identificador), caracteres=caracteres))
+                                                nombre=nombre, caracteres=caracteres, orden=orden))
             if identificador in lecturas_pedidas:
                 archivos.append(ArchivoLeido(sesion=sesion, identificador=identificador, fecha=fecha,
                                              ruta=lecturas_pedidas.pop(identificador), caracteres=caracteres))

@@ -7,7 +7,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo` |
-| **Módulo** | Comprobación automática — [`validadores/comun.py`](../../../../../validadores/comun.py) |
+| **Módulo** | Comprobación automática — `validadores/comun.py` |
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / exigencias cubiertas** | HU-003: CA-01, CA-02, CA-03 y sus dos transversales |
 | **Fecha de cierre** | 2026-08-17 · **Commit** pendiente de autorización |
@@ -16,7 +16,7 @@
 
 ## 1. Qué se implementó — resumen
 
-**Se escribió el contrato de la salida, que estaba en el código y en ningún documento.** Qué trae un hallazgo y qué hace cada severidad se deducía leyendo `comun.py`; ahora está en [`validadores/docs/comun.md`](../../../../../validadores/docs/comun.md), probado contra una corrida real de 207 hallazgos.
+**Se escribió el contrato de la salida, que estaba en el código y en ningún documento.** Qué trae un hallazgo y qué hace cada severidad se deducía leyendo `comun.py`; ahora está en `validadores/docs/comun.md`, probado contra una corrida real de 207 hallazgos.
 
 Y al escribir el caso del transversal que el plan no cubría, apareció el defecto.
 
@@ -26,10 +26,10 @@ Y al escribir el caso del transversal que el plan no cubría, apareció el defec
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| El hallazgo trae archivo, línea y regla | programa | [`comun.py`](../../../../../validadores/comun.py) · `Hallazgo` | ✅ Ya existía | CP-001 |
+| El hallazgo trae archivo, línea y regla | programa | `comun.py` · `Hallazgo` | ✅ Ya existía | CP-001 |
 | El de archivo entero deja la línea en 0 | programa | `Hallazgo.__str__` omite el número | ✅ Ya existía | CP-001 |
 | El aviso no detiene; la falla sí | programa | `comun.reportar` | ✅ Ya existía | CP-003, CP-004 |
-| **El contrato, escrito** | documentación | [`docs/comun.md`](../../../../../validadores/docs/comun.md) | ✅ **Escrito acá** | — |
+| **El contrato, escrito** | documentación | `docs/comun.md` | ✅ **Escrito acá** | — |
 | **Que el archivo ilegible no tumbe la corrida** | programa | `comun.leer` abre sin red | ❌ **No existe** | CP transversal |
 | Las cinco exigencias, con red | pruebas | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `FormatoDelHallazgo` | ✅ Escritas acá | 8 pruebas |
 

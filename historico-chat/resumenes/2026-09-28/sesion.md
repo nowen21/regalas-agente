@@ -11,7 +11,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 ### H-1 · Las reglas no llegan completas al agente
 
 - **Qué pasó:** el usuario preguntó por qué el agente recuerda las reglas un rato y después las olvida. Al arrancar la sesión, los enganches le entregaron al agente 79,7 KB. Claude Code guardó ese texto en un archivo aparte, fuera del repo, en su propio almacén de la sesión (`~/.claude/projects/<proyecto>/<id-de-sesión>/tool-results/hook-…-additionalContext.txt`), y en el contexto dejó solo los primeros 2 KB, que traen el comienzo del anexo `acciones-y-riesgo.md`. El resto de `00` y `01`, el índice de recuerdos y el del histórico no entraron. El agente tampoco abrió el archivo. Cuando la conversación se compacta, `SessionStart` vuelve a correr y vuelve a quedar cortado en 2 KB. Además, en una sesión larga el agente atiende más a lo reciente que a lo que se cargó al principio.
-- **Por qué importa:** el agente trabaja sin las reglas que el estándar da por cargadas. [validadores/docs/hook_sesion.md](../../../validadores/docs/hook_sesion.md) supone que el texto llega entero, y [notas/compactacion-mata-decisiones.md](../../../notas/compactacion-mata-decisiones.md) marca la reinyección tras compactar como resuelta (✅), y no lo está.
+- **Por qué importa:** el agente trabaja sin las reglas que el estándar da por cargadas. validadores/docs/hook_sesion.md supone que el texto llega entero, y [notas/compactacion-mata-decisiones.md](../../../notas/compactacion-mata-decisiones.md) marca la reinyección tras compactar como resuelta (✅), y no lo está.
 - **Qué lo soluciona:**
   **EP-? · HU nueva — Lo que carga el arranque cabe en el contexto**
   - **Como** agente que abre una sesión

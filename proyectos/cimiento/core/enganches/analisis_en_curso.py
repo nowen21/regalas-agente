@@ -25,6 +25,15 @@ que poder abrir otro análisis mientras uno se construye.
 El archivo único de antes (`analisis-en-curso.txt`) se sigue leyendo: es de la
 sesión cuya transcripción nombra, y quien no dice su sesión lo usa como siempre.
 
+**El estado vive en la base de Cimiento** (`EP-025·HU-023`) cuando el proyecto
+está registrado y la base responde: una fila por sesión. Si no, sigue en su
+archivo, porque pasar la conversación no se puede caer. Lo que quedó en archivo
+pasa solo a la base en la siguiente lectura, y el archivo se borra. Sin sesión
+se lee la fila más reciente, que es lo que leía el archivo único.
+
+**Se prende desde un turno anterior** con «Analicemos: el pendiente N desde el
+turno T» (`EP-025·HU-023`).
+
 **Lo que no hace, y se declara.** No copia el hallazgo ni el pendiente en el
 análisis nuevo, y no corrige las palabras copiadas: la conversación no se edita
 (análisis 1, conclusión 21).
@@ -36,6 +45,7 @@ import time
 import unicodedata
 
 from ..comun import Archivos, Proyecto
+from .niveles import BaseSinRespuesta
 from .origen import LectorDeAnalisis, OrigenDeCadaPunto
 
 ESTADO = os.path.join("historico-chat", ".estado", "analisis-en-curso.txt")
@@ -55,6 +65,7 @@ _APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
 _TURNO_APROBADO = re.compile(r"^> \*\*Aprobado\*\* .*?en el turno (\d+)", re.M)
 _TURNO = re.compile(r"^### (\d+) · Usuario", re.M)
 _PENDIENTE = re.compile(r"\bpendiente\s+(\d+)\b")
+_DESDE = re.compile(r"\bdesde el turno\s+(\d+)\b")
 _HU = re.compile(r"\bHU[- ]0*(\d+)\b")
 _EPICA = re.compile(r"\bEP-0*(\d+)\b")
 _RESULTADO = re.compile(r"^\*\*Resultado:\*\* *(\S.*?)\s*$", re.M)
@@ -77,16 +88,79 @@ def _escribir(ruta, texto):
         f.write(texto)
 
 
+# La base de cada proyecto, decidida una vez por proceso: un enganche crea
+# varios `AnalisisEnCurso` y no tiene por qué preguntar cada vez.
+_BASES = {}
+_PASADOS = set()
+
+
+def _base_de(raiz):
+    """El `EstadoEnBase` del proyecto si está registrado y la base responde, o None."""
+    clave = os.path.normcase(os.path.abspath(raiz))
+    if clave not in _BASES:
+        from .estado_en_base import EstadoEnBase
+        base = EstadoEnBase(raiz)
+        try:
+            _BASES[clave] = base if base.proyecto_id() else None
+        except BaseSinRespuesta:
+            _BASES[clave] = None
+    return _BASES[clave]
+
+
 class AnalisisEnCurso:
     """El análisis que recibe la conversación de una sesión, y sus tres controles.
 
     `transcripcion` es la de la sesión que llama. Sin ella se usa el archivo
-    único de antes, para quien todavía no dice de qué sesión viene.
+    único de antes, para quien todavía no dice de qué sesión viene. `base` es
+    dónde vive el estado: None lo decide (`_base_de`), False obliga al archivo.
     """
 
-    def __init__(self, raiz, transcripcion=""):
+    def __init__(self, raiz, transcripcion="", base=None):
         self.raiz = raiz
         self.transcripcion = os.path.normpath(os.path.abspath(transcripcion)) if transcripcion else ""
+        self._base = base
+
+    @property
+    def base(self):
+        if self._base is None:
+            self._base = _base_de(self.raiz) or False
+        return self._base or None
+
+    def _relativa(self, ruta):
+        return os.path.relpath(ruta, self.raiz).replace(os.sep, "/")
+
+    def _de_fila(self, dato):
+        pausas = []
+        for tramo in filter(None, (dato.get("pausas") or "").split(",")):
+            a, b = tramo.split("-")
+            pausas.append((int(a), int(b)))
+        return {"analisis": os.path.normpath(os.path.join(self.raiz, dato["analisis"])),
+                "transcripcion": os.path.normpath(os.path.join(self.raiz, dato["sesion"])),
+                "desde": dato["desde"], "pausa": dato.get("pausa"), "pausas": pausas}
+
+    def _a_fila(self, estado):
+        return {"sesion": self._relativa(estado["transcripcion"]), "analisis": self._relativa(estado["analisis"]),
+                "desde": estado["desde"], "pausa": estado.get("pausa"),
+                "pausas": ",".join("%d-%d" % p for p in estado.get("pausas") or [])}
+
+    def _archivos_de_estado(self):
+        rutas = [os.path.join(self.raiz, ESTADO)]
+        carpeta = os.path.join(self.raiz, ESTADOS)
+        if os.path.isdir(carpeta):
+            rutas += [os.path.join(carpeta, n) for n in sorted(os.listdir(carpeta)) if n.endswith(".txt")]
+        return rutas
+
+    def pasar_archivos_a_la_base(self):
+        """Lo que quedó en archivo pasa a la base y el archivo se borra. Una vez por proceso."""
+        clave = os.path.normcase(os.path.abspath(self.raiz))
+        if clave in _PASADOS or not self.base:
+            return
+        for ruta in self._archivos_de_estado():
+            estado = self._leer_archivo(ruta)
+            if estado:
+                self.base.guardar(self._a_fila(estado))
+                os.remove(ruta)
+        _PASADOS.add(clave)
 
     # ── el texto ──────────────────────────────────────────────────────────
 
@@ -141,17 +215,35 @@ class AnalisisEnCurso:
 
     def leer_estado(self):
         """`{analisis, transcripcion, desde, pausa, pausas}` con rutas absolutas, o None."""
+        if self.base:
+            try:
+                self.pasar_archivos_a_la_base()
+                dato = (self.base.leer(self._relativa(self.transcripcion)) if self.transcripcion
+                        else self.base.mas_reciente())
+                return self._de_fila(dato) if dato else None
+            except BaseSinRespuesta:
+                pass                        # sin base, el archivo: la conversación no se cae
         return self._leer_archivo(self.ruta_estado())
 
     def estados(self):
-        """Los estados de todas las sesiones: el archivo único y los de `ESTADOS/`."""
-        rutas = [os.path.join(self.raiz, ESTADO)]
-        carpeta = os.path.join(self.raiz, ESTADOS)
-        if os.path.isdir(carpeta):
-            rutas += [os.path.join(carpeta, n) for n in sorted(os.listdir(carpeta)) if n.endswith(".txt")]
-        return [e for e in map(self._leer_archivo, rutas) if e]
+        """Los estados de todas las sesiones: los de la base, o el archivo único y los de `ESTADOS/`."""
+        if self.base:
+            try:
+                self.pasar_archivos_a_la_base()
+                return [self._de_fila(d) for d in self.base.filas()]
+            except BaseSinRespuesta:
+                pass
+        return [e for e in map(self._leer_archivo, self._archivos_de_estado()) if e]
 
     def guardar_estado(self, estado):
+        if self.base:
+            try:
+                # Primero lo viejo: si no, el archivo de esta sesión pisaría lo nuevo al leerse.
+                self.pasar_archivos_a_la_base()
+                self.base.guardar(self._a_fila(estado))
+                return
+            except BaseSinRespuesta:
+                pass
         lineas = [
             "analisis=" + os.path.relpath(estado["analisis"], self.raiz).replace(os.sep, "/"),
             "transcripcion=" + os.path.relpath(estado["transcripcion"], self.raiz).replace(os.sep, "/"),
@@ -164,6 +256,14 @@ class AnalisisEnCurso:
         _escribir(self.ruta_estado(), "\n".join(lineas) + "\n")
 
     def borrar_estado(self):
+        if self.base:
+            try:
+                estado = self.leer_estado()
+                if estado:
+                    self.base.borrar(self._relativa(estado["transcripcion"]))
+                return
+            except BaseSinRespuesta:
+                pass
         ruta = self.ruta_estado()
         if os.path.isfile(ruta):
             os.remove(ruta)
@@ -308,8 +408,23 @@ class AnalisisEnCurso:
         m = _PENDIENTE.search(limpio.split("\n", 1)[0])
         return int(m.group(1)) if m else None
 
-    def prender(self, numero, transcripcion, turno):
-        """Prende el análisis del pendiente. Devuelve `(prendido, mensaje)`."""
+    @classmethod
+    def turno_pedido(cls, mensaje):
+        """El T de «Analicemos: el pendiente N desde el turno T», o None (`EP-025·HU-023`)."""
+        limpio = cls.limpio(mensaje)
+        if not limpio.startswith("analicemos"):
+            return None
+        m = _DESDE.search(limpio.split("\n", 1)[0])
+        return int(m.group(1)) if m else None
+
+    def prender(self, numero, transcripcion, turno, desde=None):
+        """Prende el análisis del pendiente. Devuelve `(prendido, mensaje)`.
+
+        Con `desde`, la conversación entra desde ese turno; si ya estaba
+        prendido, se corre hasta ahí (`EP-025·HU-023`).
+        """
+        if desde is not None and not 1 <= desde <= turno:
+            return False, "no se prende: el turno %d no existe, van del 1 al %d" % (desde, turno)
         carpeta = self.carpeta_del_pendiente(numero)
         if not carpeta:
             return False, "no hay una carpeta con el pendiente %d" % numero
@@ -328,15 +443,22 @@ class AnalisisEnCurso:
                            % os.path.relpath(estado["analisis"], self.raiz).replace(os.sep, "/"))
         if (estado and os.path.dirname(estado["analisis"]) == os.path.normpath(carpeta)
                 and not self.aprobado(estado["analisis"])):
+            cambio = False
             if estado.get("pausa"):
                 estado["pausas"].append((estado["pausa"], turno - 1))
                 estado["pausa"] = None
+                cambio = True
+            if desde is not None and desde != estado["desde"]:
+                estado["desde"] = desde
+                cambio = True
+            if cambio:
                 self.guardar_estado(estado)
-            return True, "sigue prendido"
+            return True, ("sigue prendido, desde el turno %d" % desde) if desde is not None else "sigue prendido"
         analisis = self.nuevo_analisis(carpeta)
+        inicio = desde if desde is not None else turno
         self.guardar_estado({"analisis": analisis, "transcripcion": transcripcion,
-                             "desde": turno, "pausa": None, "pausas": []})
-        return True, "prendido desde el turno %d" % turno
+                             "desde": inicio, "pausa": None, "pausas": []})
+        return True, "prendido desde el turno %d" % inicio
 
     def pausar(self, turno):
         estado = self.leer_estado()

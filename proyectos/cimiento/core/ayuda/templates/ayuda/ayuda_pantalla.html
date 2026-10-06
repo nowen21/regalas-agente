@@ -1,0 +1,70 @@
+{% if botones %}
+<div class="ayuda-pantalla d-flex flex-wrap gap-2 mb-3">
+  {% for b in botones %}
+  <button type="button" class="btn btn-sm ayuda-pantalla-boton" data-bs-toggle="modal" data-bs-target="#{{ b.id }}">{{ b.titulo }}</button>
+  {% endfor %}
+</div>
+
+{% for b in botones %}
+<div class="modal fade" id="{{ b.id }}" tabindex="-1" aria-labelledby="{{ b.id }}-titulo" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header ayuda-ventana-encabezado">
+        <h5 class="modal-title" id="{{ b.id }}-titulo">{{ b.titulo }}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        {% if b.mapa %}
+        {% include "ayuda/mapa.html" with mapa=b.mapa %}
+        {% elif b.pantallas %}
+        <p class="text-secondary">{{ b.texto }}</p>
+        <ul class="list-unstyled mb-0">
+          {% for p in b.pantallas %}
+          <li class="mb-2">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1"><strong>{{ p.nombre }}</strong> <span class="text-secondary">({{ p.detalle }})</span></div>
+              <button type="button" class="btn btn-sm rounded-circle p-0 ms-2 ayuda-donde-boton" data-bs-toggle="collapse"
+                data-bs-target="#{{ b.id }}-donde-{{ forloop.counter }}" aria-expanded="false" title="¿Dónde está?" aria-label="¿Dónde está {{ p.nombre }}?">?</button>
+            </div>
+            <div class="collapse" id="{{ b.id }}-donde-{{ forloop.counter }}">
+              <div class="ayuda-ruta mt-2">
+                <div class="small mb-2 ayuda-ruta-titulo">Seguir esta ruta en el menú de la izquierda:</div>
+                {% for nombre in p.ruta %}
+                {% if not forloop.first %}<div class="text-center ayuda-ruta-flecha">↓</div>{% endif %}
+                <div class="ayuda-ruta-paso{% if forloop.last %} ayuda-ruta-destino{% endif %}">{{ nombre }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>{{ b.texto }}</p>
+        {% if b.ejemplo %}
+        <div class="ayuda-recuadro ayuda-recuadro-ejemplo">
+          <div class="fw-semibold mb-1">Ejemplo de la vida real</div>
+          {{ b.ejemplo }}
+        </div>
+        {% endif %}
+        {% if b.por_que %}
+        <div class="ayuda-recuadro ayuda-recuadro-importa">
+          <div class="fw-semibold mb-1">Por qué importa hacerlo bien</div>
+          {{ b.por_que }}
+        </div>
+        {% endif %}
+        {% endif %}
+      </div>
+      <div class="modal-footer{% if b.mapa %} justify-content-between{% endif %}">
+        {% if b.mapa %}
+        <button type="button" class="btn" data-mapa-reiniciar>Reiniciar animación</button>
+        {% endif %}
+        <div class="d-flex gap-2">
+          <button type="button" class="btn" data-ayuda-manual="{% url 'ayuda:panel' clave %}">Ver en el manual</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}

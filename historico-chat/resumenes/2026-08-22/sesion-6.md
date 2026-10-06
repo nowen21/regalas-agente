@@ -387,7 +387,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Responde a:** —
 - **Dispara:** —
 - **Orden de resolución:** —
-- **Dónde queda:** `EXCLUIDAS_POR_RUTA` y `es_dato_de_la_plataforma` en [validadores/comun.py](../../../validadores/comun.py), y la señal `S-041`.
+- **Dónde queda:** `EXCLUIDAS_POR_RUTA` y `es_dato_de_la_plataforma` en validadores/comun.py, y la señal `S-041`.
 - **Nace en:** 2026-08-22 · sesion-6
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —

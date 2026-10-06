@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %}Manual de uso{% endblock %}
+{% block cabecera %}Manual de uso de Cimiento{% endblock %}
+
+{% block contenido %}
+<div class="d-flex justify-content-end mb-3 no-imprimir">
+  <button type="button" class="btn btn-primary" onclick="window.print()">Imprimir</button>
+</div>
+
+<div class="card card-body mb-3">
+  <table class="table table-sm mb-0">
+    <tr><th>Sistema</th><td>Cimiento</td></tr>
+    <tr><th>Versión del manual</th><td>1.0, del 2026-10-05</td></tr>
+    <tr><th>Para quién es</th><td>Quien administra los proyectos que usan el estándar del agente y mira lo que gastan</td></tr>
+  </table>
+</div>
+
+<div class="card card-body mb-3 no-imprimir">
+  <div class="card-title">Contenido</div>
+  <ol class="mb-0">
+    {% for s in secciones %}<li><a href="#{{ s.slug }}">{{ s.titulo }}</a></li>{% endfor %}
+  </ol>
+</div>
+
+{% for s in secciones %}
+<section class="card card-body mb-3 manual-seccion" id="{{ s.slug }}">
+  <h2 class="h3">{{ forloop.counter }}. {{ s.titulo }}</h2>
+  {% include s.plantilla %}
+</section>
+{% endfor %}
+{% endblock %}

@@ -189,3 +189,40 @@
     </div>
   </div>
 </div>
+
+<div class="row row-cards mt-1">
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Lo que corre sin tokens</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Enganche</th><th class="text-end">Corrió</th><th class="text-end">Tokens que agregó</th></tr></thead>
+          <tbody>
+            {% for fila in sin_tokens %}
+            <tr><td>{{ fila.nombre }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.tokens|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-secondary">Sin corridas de enganches en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Candidatos a automatizar</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Qué</th><th></th><th class="text-end">Veces</th><th class="text-end">Se ahorrarían (estimado)</th></tr></thead>
+          <tbody>
+            {% for fila in candidatos %}
+            <tr><td class="text-secondary">{{ fila.tipo }}</td><td>{{ fila.nombre }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.ahorro|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="4" class="text-secondary">Nada se repite tanto en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

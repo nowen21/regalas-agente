@@ -51,7 +51,8 @@ def main():
         datos = _entrada()
         if (datos.get("tool_name") or "") not in CONSOLA:
             return 0
-        freno = Freno(proyecto)
+        # `EP-025·HU-024` · Con su sesión, el freno lee el análisis prendido de ella.
+        freno = Freno(proyecto, sesion=datos.get("session_id") or "")
         # `EP-025·HU-005` · Con el nivel de cada regla: lo que frena bloquea, lo
         # que avisa solo se cuenta, lo apagado no aparece.
         fuera, avisan = freno.despues_por_nivel((datos.get("tool_input") or {}).get("command") or "")
@@ -64,7 +65,7 @@ def main():
                 avisos.append(Freno.aviso_sin_base(porque))
                 continue
             anotado = freno.anotar_hallazgo(sesion, "lo que escribió una orden de consola", ruta, porque)
-            avisos.append(Freno.aviso(porque, ruta, bool(anotado)))
+            avisos.append(Freno.aviso(porque, ruta, bool(anotado), salida=freno.salida(porque)))
         if avisos:
             print(json.dumps({"decision": "block", "reason": "\n\n".join(avisos)}, ensure_ascii=False))
             return 0

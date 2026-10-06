@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📄 **Retro-documentación** ([`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)). El programa existe y corre todos los días: [`validadores/fases.py`](../../../../../validadores/fases.py) comprueba nueve partes de [`02·F12`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) por `validar.py fases`, con su documentación en [`validadores/docs/fases.md`](../../../../../validadores/docs/fases.md). Sale de la fila de HU-006 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📄 **Retro-documentación** ([`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)). El programa existe y corre todos los días: [`validadores/fases.py`](../../../../../validadores/fases.py) comprueba nueve partes de [`02·F12`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) por `validar.py fases`, con su documentación en `validadores/docs/fases.md`. Sale de la fila de HU-006 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 

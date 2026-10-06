@@ -66,6 +66,46 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-04-sesion-3.md](..
 | Por qué importa | El gasto por enganche, que es lo que muestra qué automatizar, se veía incompleto: faltaban 1973 enganches (de 3850 a 5823) |
 | Lo corregido | En `lector.py`, dentro de la fase de la HU-009: el texto plano de un enganche en `UserPromptSubmit` y `SessionStart` cuenta, y un contexto sin `hook_success` al lado se nombra por su título entre corchetes. Los enganches guardados se volvieron a leer |
 
+### H-8 · El freno bloqueó una ruta que el análisis prendido permitía
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | La fila 4 del análisis 3 del pendiente 119 nombra `andamio.py` y `tests_andamio.py` «de una y sin fase». El freno dejó cambiar el primero y bloqueó dos veces crear el segundo, aunque `Freno.rutas_de_una` lo devolvía como permitido. Con «Corrija» entró, y con «Corrija» activo ya no se pudo reproducir. Aparte, al revisar un comando de Bash, el freno resuelve las rutas relativas contra la carpeta de trabajo de la sesión y no tiene en cuenta el `cd` del comando. Al construir la HU-016 bloqueó tres comandos de Bash por palabras que no son rutas: una variable (`$H`), la palabra «los» dentro de una expresión de `sed` y un archivo de un `for`; con Edit pasaron, porque las rutas sí estaban declaradas |
+| Por qué importa | El freno deja sin salida justo lo que el análisis aprobado manda hacer, y empuja a tocar archivos a mano (lo que trata el análisis 3) |
+| Estado | Causa encontrada el 2026-10-05 al construir la HU-023: `Freno.de_una()` y `Freno.analisis_prendido()` crean `AnalisisEnCurso(raiz)` sin la sesión, así que leen solo el archivo único `historico-chat/.estado/analisis-en-curso.txt`, que apunta al análisis 1 del pendiente 116 de otra sesión. El estado de esta sesión vivía en `analisis-en-curso/<sesión>.txt` y el freno no lo miraba: `andamio.py` pasó porque lo nombra el análisis del 116, y `tests_andamio.py` no. Corregido el 2026-10-05 en la HU-024 de EP-025 (fila 11 del análisis 3 del pendiente 119): el freno lee el análisis de su propia sesión y sigue el `cd` de una orden |
+
+### H-9 · Cambiar la consulta del freno antes de migrar lo deja sin base
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al construir la HU-013 de EP-025, `NivelesDelProyecto.todos()` pasó a leer también la tabla de suspensiones. El freno usa ese código en vivo, y la tabla todavía no existía en la base real: el freno respondió «sin base» y detuvo toda escritura. Se destrabó aplicando la migración, que era un paso del mismo plan |
+| Por qué importa | Cimiento se corrige con el mismo freno que lo vigila: un cambio de su esquema tiene que llegar a la base antes que el código que lo lee, o el freno se bloquea a sí mismo. Le pasa a cualquier fase que toque lo que el freno consulta |
+| Estado | Se resolvió en la fase. Para que no se repita, el aviso de base sin preparar ya dice qué correr (`manage.py preparar_base`, que aplica las migraciones) |
+
+### H-10 · El freno partió una orden por líneas antes de mirar las comillas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-05 18:30, el freno detuvo una orden `cd … && python -c "…"` como si escribiera en `proyectos/cimiento/0),`. La HU-024 de EP-025 hizo que, cuando una orden trae `cd`, el freno la parta por `&&`, `;` y saltos de línea antes de saber qué va entre comillas: un `v>0` dentro del código Python entre comillas le pareció una redirección |
+| Por qué importa | El freno detiene órdenes legítimas, que es lo que la HU-024 venía a quitar |
+| Estado | Corregido el 2026-10-05: se reabrió la fase de la HU-024 con `reabrir_fase`, la orden se parte solo por lo que queda fuera de las comillas, con su prueba, y se cerró otra vez con `cerrar_fase` |
+
+### H-11 · El freno le cobra a esta sesión lo que otra escribe al mismo tiempo
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-05 entre las 18:56 y las 18:58, otra sesión editaba `base/00-identidad-y-rol/marcadores-de-ia.md`, la regla `ID8`, los pendientes 91 y 92, seis de `pendientes/hecho/`, cuatro de `validadores/` y dos de `plantillas/`. Esta sesión corrió dos órdenes de consola que no escriben ahí (`cerrar_fase` y una lectura con `ls` y `grep`). Después de cada orden, el freno compara lo que cambió en el repositorio con el plan, le atribuyó a esta sesión los 17 archivos de la otra y escribió acá 17 hallazgos iguales (se cambiaron por este) |
+| Por qué importa | Con dos sesiones abiertas, cada orden de consola de una llena de hallazgos falsos el resumen de la otra y el aviso pide detener la ejecución por trabajo ajeno. Es el mismo caso de las sesiones paralelas que `cambios_por_sesion` resuelve para el commit, pero el freno no lo usa |
+| Pendiente | [Pendiente 123: el freno le cobra a una sesión lo que escribe otra](../2026-10-05/pendientes/123-el-freno-le-cobra-a-una-sesion-lo-que-escribe-otra/pendiente.md) |
+
+### H-12 · El agente quiso guardar una salida fuera del repositorio
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-05 19:32, al preparar el commit, el agente mandó la salida de `cambios_por_sesion` a un archivo de la carpeta temporal de la herramienta. El freno lo detuvo: queda fuera del proyecto (04·S9) |
+| Por qué importa | Lo que se guarda fuera del repositorio se pierde (`04·S9`) |
+| Estado | El freno acertó y no hay nada que corregir en el estándar: la salida se leyó directo en la consola |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -74,7 +114,7 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☑ H-2, H-4, H-5, H-6 y H-7 se corrigieron dentro de sus fases |
+| Todo hallazgo enlaza su pendiente | ☑ H-2, H-4 a H-10 se corrigieron dentro de sus fases |
 | Todo pendiente enlazado existe | ☑ |
 | Lo que se hizo está aprobado y guardado | ☐ |
 

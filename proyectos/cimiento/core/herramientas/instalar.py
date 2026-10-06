@@ -39,6 +39,8 @@ from datetime import datetime
 
 from ..comun import Proyecto
 from ..comun.consola import preparar_salida
+from ..comun.enganches import (CONFIG_AGENTE, ENGANCHES_GIT, HOOKS_CLAUDE,  # noqa: F401
+                                IGNORADOS, NO_SE_SUSPENDEN)
 from ..enganches.recuerdos import CARPETA as CARPETA_RECUERDOS
 from ..enganches.recuerdos import INDICE as INDICE_RECUERDOS
 from ..enganches.recuerdos import Recuerdos
@@ -175,92 +177,6 @@ HOOKS = [
      "Anota el hash en la fase que el commit cierra (EP-005·HU-019). Nunca falla."),
 ]
 
-# Enganches de Claude Code: (evento, matcher, guion, mensaje, argumentos).
-# `matcher` en None = el evento no filtra por herramienta (SessionStart).
-# `argumentos` deja que un mismo guion sirva a dos eventos con papeles distintos,
-# como el histórico: uno anota al usuario y el otro al agente.
-HOOKS_CLAUDE = [
-    ("PostToolUse", "Write|Edit", "hook_md.py",
-     "Revisando los enlaces del proyecto...", ""),
-    ("SessionStart", None, "hook_sesion.py",
-     "Revisando el estándar...", ""),
-    ("UserPromptSubmit", None, "hook_historico.py",
-     "Anotando en el histórico...", "--modo usuario"),
-    ("Stop", None, "hook_historico.py",
-     "Anotando en el histórico...", "--modo agente"),
-    # `EP-023 · HU-001 · fase B`: la conversación pasa sola al análisis
-    # prendido. Al cerrar el turno no hay enganche propio: la respuesta la pasa
-    # `hook_historico.py` apenas la escribe, porque dos enganches del mismo
-    # evento corren a la vez y el del análisis copiaba antes de que la
-    # respuesta existiera (H-9 de la sesión del 2026-10-01).
-    ("UserPromptSubmit", None, "hook_analisis.py",
-     "Revisando el análisis en curso...", "--modo mensaje"),
-    ("UserPromptSubmit", None, "hook_checklist.py",
-     "Revisando la instalación del agente...", ""),
-    # Al abrir la sesión no se cargan las reglas: la herramienta acepta 10.000
-    # caracteres por enganche (`EP-005 · HU-009 · CA-04`). Este enganche
-    # entrega con cada mensaje las reglas de las tareas que pide
-    # (`recuperar.py`), recuerda las de cada turno, y devuelve al turno
-    # siguiente la cuenta que `hook_redaccion.py` imprime donde nadie la ve.
-    ("UserPromptSubmit", None, "hook_reglas.py",
-     "Recordando las reglas de cada turno...", ""),
-    # `EP-023 · HU-002 · CA-04`: los acuerdos de la fase en curso y del
-    # análisis prendido llegan con cada mensaje, en un enganche propio porque
-    # el tope es por enganche y el de las reglas va casi lleno.
-    ("UserPromptSubmit", None, "hook_acuerdos.py",
-     "Trayendo los acuerdos de lo que se trabaja...", ""),
-    ("SessionStart", None, "hook_recuerdos.py",
-     "Recogiendo la memoria del agente...", ""),
-    ("PostToolUse", "Write|Edit", "hook_recuerdos.py",
-     "Recogiendo la memoria del agente...", ""),
-    ("SessionStart", None, "hook_resumen.py",
-     "Preparando el resumen de la sesión...", "--modo inicio"),
-    ("UserPromptSubmit", None, "hook_resumen.py",
-     "Revisando el resumen de la sesión...", "--modo aviso"),
-    ("UserPromptSubmit", None, "hook_senales.py",
-     "Revisando las señales del proyecto...", ""),
-    ("PostToolUse", "Write|Edit", "hook_relacionadas.py",
-     "Buscando las reglas relacionadas...", ""),
-    # `EP-005 · HU-020`: al terminar el turno, el registro anota lo que
-    # cambió, mire quien lo mire, para que la comprobación de sesiones no tenga
-    # el hueco por el que entraban líneas ajenas.
-    ("Stop", None, "hook_turno.py",
-     "Anotando lo que tocó este turno...", ""),
-    # `EP-005·HU-012`: al cerrar el turno, se mide como quedo escrito lo que
-    # el agente acaba de decir. Tres reglas del nucleo hablan de eso y ninguna
-    # tenia quien la hiciera cumplir. Mide y no detiene: cuando esto corre, el
-    # texto ya salio, asi que lo unico que se puede hacer es dejarlo a la vista.
-    ("Stop", None, "hook_redaccion.py",
-     "Midiendo como quedo escrito el turno...", ""),
-    ("Stop", None, "hook_presupuesto.py",
-     "Sumando el consumo de la sesión...", ""),
-    ("UserPromptSubmit", None, "hook_presupuesto.py",
-     "Midiendo el consumo de la sesión...", "--modo aviso"),
-    ("PostToolUse", "Write|Edit", "hook_checkpoint.py",
-     "Revisando el checkpoint de la fase...", ""),
-    ("PostToolUse", "Write|Edit", "hook_veredicto.py",
-     "Copiando el veredicto de la fase...", ""),
-    # `EP-005 · HU-018`: avisa si el archivo cayó fuera del proyecto. La regla
-    # ya existía (`04·S9`) y se incumplió cuatro días seguidos, porque la
-    # herramienta ofrece una carpeta temporal y la nombra como el sitio
-    # recomendado: el camino cómodo apunta al lado contrario.
-    ("PostToolUse", "Write|Edit", "hook_rutas.py",
-     "Mirando dónde quedó lo que se escribió...", ""),
-    # El portero (`EP-005 · HU-015`): lo que llega de afuera llega marcado.
-    # El filtro es regex; el programa vuelve a decidir por si deja pasar de más.
-    ("PostToolUse", "WebFetch|WebSearch|Read|mcp__.*", "hook_externo.py",
-     "Marcando lo que llegó de afuera...", ""),
-    # `EP-005 · HU-023 · RN-10`: ninguna escritura sale del proyecto. Obligar a
-    # leer las reglas antes de actuar se quitó el 2026-09-29: llenaba la
-    # conversación de lecturas y no hacía cumplir nada.
-    # `EP-023 · HU-007 · CA-02`: el freno corre antes de toda acción, sin filtro
-    # de herramienta, y después de cada orden de consola compara lo que cambió.
-    ("PreToolUse", None, "hook_antes.py",
-     "Revisando la acción contra el plan y lo autorizado...", "--modo accion"),
-    ("PostToolUse", "Bash|PowerShell", "hook_despues.py",
-     "Comparando lo que cambió con el plan...", ""),
-]
-
 # **Dónde vive el adaptador de esta herramienta.** `validadores/` es lo que sirve
 # con cualquier agente; esto existe porque esta herramienta lo llama. Cambiar la
 # ruta vence el enganche de todos los proyectos instalados, y el checklist lo
@@ -286,15 +202,6 @@ deja el hueco a la vista.
 # ya no va (`EP-023·HU-003`): cada pendiente vive dentro de lo que lo origina, y
 # la de la raíz queda como historia donde ya existe.
 CARPETAS_BASE = ["proyectos", "documentacion", "prompts"]
-
-# Los 4 archivos de configuración del proyecto. La lista vive acá porque es el
-# instalador quien los pone; el checklist la lee de acá (`20·M2`).
-CONFIG_AGENTE = ["stack.md", "dominio.md", "mapeo-nombres.md",
-                 "marco-normativo.md"]
-
-# Lo que no es del repositorio: configuración local y el estado de trabajo que
-# escriben los enganches. El checklist lee esta lista de acá (`20·M2`).
-IGNORADOS = ["CLAUDE.md", ".agente/", "historico-chat/.tocado/"]
 
 # Los ajustes del punto 5 del `CLAUDE.md` son del proyecto y no se tocan ni por
 # error; el resto tampoco se pisa a ciegas (ver `sincronizar_secciones`).
@@ -1142,47 +1049,82 @@ class Instalador:
                                  os.path.join(cimiento, ".venv", "bin", "python"))
                      if os.path.isfile(p)), None)
 
+    # La tarea diaria de antes (`EP-025·HU-006`): la reemplaza el vigilante, y la
+    # instalación la quita donde quedó puesta.
     TAREA_DE_CONSUMO = "Cimiento leer consumo"
+    VIGILANTE = "Cimiento vigilar consumo"
 
-    def programar_lectura(self, aplicar, ejecutar=subprocess.run, sistema=os.name):
-        """`EP-025·HU-006` · La lectura del consumo, una vez al día.
+    @staticmethod
+    def carpeta_de_inicio():
+        """La carpeta de inicio del usuario en Windows: lo que está ahí corre al iniciar sesión."""
+        return os.path.join(os.environ.get("APPDATA", ""), "Microsoft", "Windows", "Start Menu",
+                            "Programs", "Startup")
 
-        Claude Code borra sus registros a los 30 días: lo que no se lea antes se
-        pierde. En Windows queda una tarea programada; en otro sistema se dice
-        cómo programarla, porque escribir en el `crontab` de alguien es cambiar
-        la configuración de su máquina (`04·S9`).
+    @staticmethod
+    def sin_ventana(python):
+        """`pythonw` al lado de `python`, si existe: el vigilante corre sin ventana."""
+        pythonw = os.path.join(os.path.dirname(python), "pythonw.exe")
+        return pythonw if os.path.isfile(pythonw) else python
+
+    def programar_vigilante(self, aplicar, ejecutar=subprocess.run, sistema=os.name, inicio=None,
+                            lanzar=subprocess.Popen):
+        """`EP-025·HU-011` · El vigilante del consumo arranca al iniciar sesión, y ya.
+
+        Va en la carpeta de inicio del usuario y no en una tarea `ONLOGON`, que
+        pide permisos de administrador. Quita la tarea diaria de antes. En otro
+        sistema se dice cómo arrancarlo, porque escribir en la configuración de
+        la máquina de alguien no se hace solo (`04·S9`).
         """
         cimiento = os.path.join(self.estandar, "proyectos", "cimiento")
         manage = os.path.join(cimiento, "manage.py")
         if not os.path.isfile(manage):
             return []
         python = self.python_de_cimiento(cimiento)
-        orden = '"%s" "%s" leer_consumo' % (python or "python", manage)
         if sistema != "nt":
-            return ["OMITIDO: programar a mano, una vez al día, con cron: " + orden]
+            return ['OMITIDO: arrancar al iniciar sesión, a mano: "%s" "%s" vigilar_consumo'
+                    % (python or "python", manage)]
         if not aplicar:
-            return ["programar la lectura del consumo una vez al día (schtasks)"]
+            return ["poner el vigilante del consumo a arrancar al iniciar sesión, arrancarlo, "
+                    "y quitar la tarea diaria si estaba"]
         if python is None:
-            return ["OMITIDO: Cimiento no tiene su ambiente (.venv): la lectura del consumo no se programó"]
+            return ["OMITIDO: Cimiento no tiene su ambiente (.venv): el vigilante del consumo no se programó"]
 
         def correr(argumentos):
             return ejecutar(argumentos, capture_output=True, text=True, encoding="utf-8",
                             errors="replace", timeout=60)
 
+        pasos = []
         if correr(["schtasks", "/Query", "/TN", self.TAREA_DE_CONSUMO]).returncode == 0:
-            return ["la lectura del consumo ya estaba programada"]
-        r = correr(["schtasks", "/Create", "/SC", "DAILY", "/ST", "12:00", "/TN", self.TAREA_DE_CONSUMO,
-                    "/TR", orden, "/F"])
-        if r.returncode == 0:
-            return ["lectura del consumo programada una vez al día, a las 12:00"]
-        lineas = (r.stderr or r.stdout or "").strip().splitlines()
-        return ["OMITIDO: no se pudo programar la lectura del consumo: " + (lineas[-1] if lineas else "schtasks falló")]
+            correr(["schtasks", "/Delete", "/TN", self.TAREA_DE_CONSUMO, "/F"])
+            pasos.append("quitar la tarea diaria «%s»: la reemplaza el vigilante" % self.TAREA_DE_CONSUMO)
+        programa = self.sin_ventana(python)
+        archivo = os.path.join(inicio or self.carpeta_de_inicio(), self.VIGILANTE + ".cmd")
+        contenido = ('@echo off\r\nrem Lo escribio el instalador del estandar (EP-025 HU-011).\r\n'
+                     'start "" "%s" "%s" vigilar_consumo\r\n' % (programa, manage))
+        def puesto():
+            with open(archivo, encoding="ascii", errors="replace", newline="") as f:
+                return f.read()
+
+        if os.path.isfile(archivo) and puesto() == contenido:
+            pasos.append("el vigilante del consumo ya arrancaba al iniciar sesión")
+        else:
+            os.makedirs(os.path.dirname(archivo), exist_ok=True)
+            with open(archivo, "w", encoding="ascii", newline="") as f:
+                f.write(contenido)
+            pasos.append("el vigilante del consumo arranca al iniciar sesión")
+        # Si ya corre uno, el nuevo lo ve por su número y se va.
+        banderas = getattr(subprocess, "DETACHED_PROCESS", 0) | getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0)
+        lanzar([programa, manage, "vigilar_consumo"], cwd=cimiento, creationflags=banderas, close_fds=True,
+               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, stdin=subprocess.DEVNULL)
+        pasos.append("vigilante del consumo arrancado")
+        return pasos
 
     def telemetria(self):
-        """`{variable: valor}` que manda los eventos de Claude Code a Cimiento.
+        """`{variable: valor}` que ponía la instalación para la telemetría, hasta la HU-012.
 
-        La dirección usa el `PUERTO` del `.env` de Cimiento, el mismo con el que
-        `manage.py runserver` levanta sin decirle otro.
+        Se conserva para quitarlas donde quedaron (`EP-025·HU-012`): solo sale
+        la variable que tiene exactamente este valor. La dirección usaba el
+        `PUERTO` del `.env` de Cimiento.
         """
         from config import ambiente
         cimiento = os.path.join(self.estandar, "proyectos", "cimiento")
@@ -1196,35 +1138,36 @@ class Instalador:
             "OTEL_LOG_TOOL_DETAILS": "1",
         }
 
-    def activar_telemetria(self, aplicar, configuracion=None):
-        """`EP-025·HU-007` · Claude Code manda cada llamada a Cimiento, en vivo.
+    def retirar_telemetria(self, aplicar, configuracion=None):
+        """`EP-025·HU-012` · Quita de `~/.claude/settings.json` las variables de la telemetría.
 
-        Va en la configuración del usuario (`~/.claude/settings.json`): Claude
-        Code ignora estas variables en la de un repositorio. Solo se agregan las
-        que falten: una que el usuario ya tenga no se pisa.
+        La telemetría se retiró (análisis 2 del pendiente 119, acuerdo 2): el
+        gasto llega por el `.jsonl`, que guarda el vigilante. Sale solo la
+        variable que tiene el valor que puso la instalación; las demás del
+        usuario se quedan.
         """
-        if not os.path.isfile(os.path.join(self.estandar, "proyectos", "cimiento", "manage.py")):
-            return []
         configuracion = configuracion or os.path.join(os.path.expanduser("~"), ".claude", "settings.json")
-        datos = {}
-        if os.path.isfile(configuracion):
-            try:
-                datos = json.loads(_leer(configuracion) or "{}")
-            except ValueError:
-                return ["OMITIDO: ~/.claude/settings.json tiene JSON inválido; la telemetría no se activó"]
-        if not isinstance(datos, dict) or not isinstance(datos.get("env", {}), dict):
-            return ["OMITIDO: ~/.claude/settings.json no tiene la forma esperada; la telemetría no se activó"]
-        entorno = datos.get("env", {})
-        faltan = {clave: valor for clave, valor in self.telemetria().items() if clave not in entorno}
-        if not faltan:
-            return ["la telemetría hacia Cimiento ya estaba activa"]
+        if not os.path.isfile(configuracion):
+            return []
+        try:
+            datos = json.loads(_leer(configuracion) or "{}")
+        except ValueError:
+            return ["OMITIDO: ~/.claude/settings.json tiene JSON inválido; la telemetría no se quitó"]
+        entorno = datos.get("env") if isinstance(datos, dict) else None
+        if not isinstance(entorno, dict):
+            return []
+        propias = [c for c, v in self.telemetria().items() if entorno.get(c) == v]
+        if not propias:
+            return []
         if not aplicar:
-            return ["activar la telemetría hacia Cimiento en ~/.claude/settings.json"]
-        datos["env"] = {**entorno, **faltan}
-        os.makedirs(os.path.dirname(configuracion), exist_ok=True)
+            return [f"quitar {len(propias)} variable(s) de la telemetría de ~/.claude/settings.json"]
+        for clave in propias:
+            del entorno[clave]
+        if not entorno:
+            del datos["env"]
         with open(configuracion, "w", encoding="utf-8", newline="\n") as f:
             f.write(json.dumps(datos, indent=2, ensure_ascii=False) + "\n")
-        return [f"telemetría hacia Cimiento activada en ~/.claude/settings.json ({len(faltan)} variable(s)); "
+        return [f"quitar {len(propias)} variable(s) de la telemetría de ~/.claude/settings.json; "
                 "vale desde la próxima sesión de Claude Code"]
 
     def preparar_cimiento(self, aplicar, ejecutar=subprocess.run):
@@ -1327,7 +1270,7 @@ class Instalador:
             print("  · es la carpeta del propio estándar: se ponen los enganches, "
                   "el histórico y la memoria; nada de configuración de proyecto")
             for paso in (self.preparar_cimiento(aplicar) + self.asegurar_pymysql(aplicar)
-                         + self.programar_lectura(aplicar) + self.activar_telemetria(aplicar)):
+                         + self.programar_vigilante(aplicar) + self.retirar_telemetria(aplicar)):
                 print(f"  {marca} {paso}")
         else:
             for paso in self.instalar_estructura(ruta, aplicar):
@@ -1462,10 +1405,26 @@ def main(argv=None):
                    help="todos los proyectos de plantillas/proyectos.md")
     p.add_argument("--aplicar", action="store_true",
                    help="instalar de verdad (sin esto solo simula)")
+    p.add_argument("--desinstalar", action="store_true",
+                   help="la contraria: quita lo que puso la instalación y deja lo propio (EP-025·HU-021)")
     a = p.parse_args(argv)
 
     instalador = Instalador()
     registrados = instalador.proyectos_registrados()
+
+    if a.desinstalar:
+        if not a.ruta:
+            print("Indica la ruta del proyecto que se desinstala.")
+            return 1
+        from .desinstalar import Desinstalador
+        if not a.aplicar:
+            print("MODO SIMULACIÓN — no se modifica nada. Agrega --aplicar.")
+        print(f"\n— desinstalar\n  {os.path.abspath(a.ruta)}")
+        for paso in Desinstalador(instalador).desinstalar(a.ruta, a.aplicar):
+            print(f"  {'·' if a.aplicar else '(simulado)'} {paso}")
+        print("\nSe quedan CLAUDE.md, .agente/, historico-chat/, la memoria y documentacion/versiones/: "
+              "son del proyecto.")
+        return 0
 
     if a.todos:
         objetivos = registrados

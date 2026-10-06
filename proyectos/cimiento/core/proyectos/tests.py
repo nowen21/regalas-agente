@@ -9,7 +9,8 @@ from django.test import SimpleTestCase, TestCase
 
 from core.cuentas.permisos import ADMINISTRADOR, CONSULTA
 from core.proyectos.claude import carpeta_de_claude, nombre_de_carpeta
-from core.proyectos.models import LIMITE_ARCHIVO, LIMITE_ENGANCHE, Proyecto
+from core.proyectos.limites import LIMITE_ARCHIVO, LIMITE_ENGANCHE
+from core.proyectos.models import Proyecto
 
 
 class LaCarpetaDeClaudeSaleDeLaRuta(SimpleTestCase):
@@ -68,12 +69,12 @@ class UnAdministradorRegistra(ConCuentas):
 
     def test_sin_limites_quedan_los_de_por_defecto(self):
         proyecto = Proyecto.objects.create(nombre="x", ruta=self.ruta)
-        self.assertEqual((proyecto.limite_enganche, proyecto.limite_archivo), (2000, 10000))
+        self.assertEqual((proyecto.ajuste("limite_enganche"), proyecto.ajuste("limite_archivo")), (2000, 10000))
 
     def test_con_limites_escritos(self):
         self.registrar(limite_enganche=500, limite_archivo=700)
         proyecto = Proyecto.objects.get(nombre="agente")
-        self.assertEqual((proyecto.limite_enganche, proyecto.limite_archivo), (500, 700))
+        self.assertEqual((proyecto.ajuste("limite_enganche"), proyecto.ajuste("limite_archivo")), (500, 700))
 
 
 class LoQueNoValeNoSeGuarda(ConCuentas):

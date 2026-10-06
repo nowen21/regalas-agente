@@ -11,7 +11,7 @@ CORRECTO:   "La solución baja el flujo de 5 pasos a 3 y deja registro de cada
             paso."
 ```
 
-**Quién la hace cumplir:** `validadores/marcas.py`, que el enganche `.githooks/pre-commit` corre como trinquete: rechaza el commit que **suma** marcas nuevas. Y `adaptadores/claude-code/hook_redaccion.py`, que las cuenta sobre lo que el agente acaba de escribir.
+**Quién la hace cumplir:** `proyectos/cimiento/core/validadores/marcas.py`, que el enganche `.githooks/pre-commit` corre como trinquete: rechaza el commit que **suma** marcas nuevas. Y `adaptadores/claude-code/hook_redaccion.py`, que las cuenta sobre lo que el agente acaba de escribir.
 
 **Aplica a:** responder, escribir-documento
 

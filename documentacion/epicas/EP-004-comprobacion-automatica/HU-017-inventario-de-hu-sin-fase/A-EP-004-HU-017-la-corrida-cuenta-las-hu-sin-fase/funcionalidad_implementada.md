@@ -30,7 +30,7 @@ Antes, saber cuántas HU tenían su fase completa era abrir el [pendiente 48](..
 | La línea al final de la corrida | programa | `fases.py` · `linea_inventario()` y [`validar.py`](../../../../../validadores/validar.py) · `cmd_fases` | ✅ **Construido acá** | CP-001 |
 | Completa solo si **todas** sus fases lo están | programa | `inventario()` · el `all()` sobre las fases | ✅ **Construido acá** | CP-003 |
 | Los tres bordes | programa | `inventario()` | ✅ **Construido acá** | CP-004 |
-| Qué cuenta y qué se considera completa | documentación | [`docs/fases.md`](../../../../../validadores/docs/fases.md) | ✅ Escrito acá | — |
+| Qué cuenta y qué se considera completa | documentación | `docs/fases.md` | ✅ Escrito acá | — |
 | Las seis exigencias, con red | pruebas | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `InventarioDeHU` | ✅ Escritas acá | 11 pruebas |
 
 ### Criterios de aceptación

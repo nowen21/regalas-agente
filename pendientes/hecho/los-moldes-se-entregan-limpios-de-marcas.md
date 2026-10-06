@@ -31,7 +31,7 @@ El trinquete no lo cubre. Reparte así: en `base/` y `plantillas/` falla ante cu
 
 ## Qué falta
 
-Reescribir la prosa de los diez moldes quitando las tres marcas que exigen criterio. Va a mano y leyendo: el propio [`validadores/marcas.py`](../../validadores/marcas.py) explica por qué no está en su tabla de reemplazos, y es que quitarlas es reescribir la frase, y un programa que reescribe frases del estándar cambia lo que el estándar dice.
+Reescribir la prosa de los diez moldes quitando las tres marcas que exigen criterio. Va a mano y leyendo: el propio `validadores/marcas.py` explica por qué no está en su tabla de reemplazos, y es que quitarlas es reescribir la frase, y un programa que reescribe frases del estándar cambia lo que el estándar dice.
 
 Dos formas de cortarlo:
 

@@ -20,7 +20,7 @@ grep -rlP "\x01" --include=*.md .
 
 El primero que se vio es [`HU-003-version-adoptada-por-el-proyecto.md`](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md), en la fila de su fase `A`.
 
-**No lo cuenta nadie.** La sección 3 del anexo [`marcadores-de-ia.md`](../base/00-identidad-y-rol/marcadores-de-ia.md) lista siete caracteres invisibles (espacio duro, ancho cero, guion suave y compañía), y [`validadores/marcas.py`](../validadores/marcas.py) los cuenta y los limpia. `U+0001` no está en esa lista, ni ningún otro carácter de control.
+**No lo cuenta nadie.** La sección 3 del anexo [`marcadores-de-ia.md`](../base/00-identidad-y-rol/marcadores-de-ia.md) lista siete caracteres invisibles (espacio duro, ancho cero, guion suave y compañía), y `validadores/marcas.py` los cuenta y los limpia. `U+0001` no está en esa lista, ni ningún otro carácter de control.
 
 ## Por qué importa
 

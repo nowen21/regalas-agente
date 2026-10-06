@@ -163,7 +163,7 @@ Se contaron las carpetas `HU-` del árbol real **por fuera del programa**, recor
 |---|---|---|
 | EV-01 | Casos automatizados | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `InventarioDeHU`: 11 pruebas, en verde |
 | EV-02 | Lo construido | [`validadores/fases.py`](../../../../../validadores/fases.py) · `inventario()` y `linea_inventario()`; [`validadores/validar.py`](../../../../../validadores/validar.py) · `cmd_fases` |
-| EV-03 | Lo escrito | [`validadores/docs/fases.md`](../../../../../validadores/docs/fases.md), sección «El inventario de HU» |
+| EV-03 | Lo escrito | `validadores/docs/fases.md`, sección «El inventario de HU» |
 | EV-04 | Corrida completa | `python validadores/pruebas.py` — 300 pruebas, verde, 5 fallos esperados |
 
 ---

@@ -28,7 +28,7 @@ El entregable es un documento de referencia, no código. No hay nada que ejecuta
 | Prueba de ruptura | Buscar a propósito un término que no es del estándar, y comprobar que no está | Quien escribe | No |
 | Lectura por alguien ajeno | Que las definiciones las entienda quien no sabe del tema | Usuario | No |
 
-**Qué está automatizado y qué no.** Los enlaces los revisa [`validadores/enlaces.py`](../../../../../validadores/enlaces.py), que ya existe: eso cubre que ninguno esté roto. Lo que ningún programa puede decir es si la definición se entiende, si el término sobra o si falta uno. Eso se lee.
+**Qué está automatizado y qué no.** Los enlaces los revisa `validadores/enlaces.py`, que ya existe: eso cubre que ninguno esté roto. Lo que ningún programa puede decir es si la definición se entiende, si el término sobra o si falta uno. Eso se lee.
 
 ### 3.2 Tipos de prueba
 
@@ -58,7 +58,7 @@ El entregable es un documento de referencia, no código. No hay nada que ejecuta
 
 ### 3.5 Alcance de la corrida automatizada
 
-Solo [`validadores/enlaces.py`](../../../../../validadores/enlaces.py), sobre los archivos tocados en esta fase. No se corre la suite completa del repositorio: `02·F5` pide corrida quirúrgica, y ningún otro validador toca lo que esta fase escribe.
+Solo `validadores/enlaces.py`, sobre los archivos tocados en esta fase. No se corre la suite completa del repositorio: `02·F5` pide corrida quirúrgica, y ningún otro validador toca lo que esta fase escribe.
 
 ## 5. Matriz de trazabilidad
 

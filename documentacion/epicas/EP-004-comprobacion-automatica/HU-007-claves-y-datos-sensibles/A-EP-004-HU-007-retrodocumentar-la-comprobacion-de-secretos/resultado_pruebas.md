@@ -74,7 +74,7 @@ Se creó un repositorio temporal, se escribió un `.env` con una contraseña y s
 
 ### Detalle de CP-004 — La lista de lo que cuenta como ejemplo sale del programa
 
-**Estaba en dos expresiones regulares de `secretos.py` y en ningún documento**, así que nadie podía saber qué escribir para no disparar un falso positivo. Se leyó del programa y quedó escrita en [`validadores/docs/secretos.md`](../../../../../validadores/docs/secretos.md):
+**Estaba en dos expresiones regulares de `secretos.py` y en ningún documento**, así que nadie podía saber qué escribir para no disparar un falso positivo. Se leyó del programa y quedó escrita en `validadores/docs/secretos.md`:
 
 | Grupo | Cuántos | Cómo se reconoce |
 |---|---:|---|
@@ -104,7 +104,7 @@ Y con eso quedó escrito **cómo escribir un ejemplo que no dispare nada**, que 
 
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
-| D-01 | Baja | **Qué cuenta como ejemplo y qué como clave estaba solo en dos expresiones del código.** Nadie podía saber qué escribir para no disparar un falso positivo | **Corregido en esta fase**: escrito en [`validadores/docs/secretos.md`](../../../../../validadores/docs/secretos.md), que §2.1 del plan declara |
+| D-01 | Baja | **Qué cuenta como ejemplo y qué como clave estaba solo en dos expresiones del código.** Nadie podía saber qué escribir para no disparar un falso positivo | **Corregido en esta fase**: escrito en `validadores/docs/secretos.md`, que §2.1 del plan declara |
 | D-02 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los dos transversales**. Se probaron igual | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
 **Ninguno deja un criterio de aceptación en «No».**
@@ -154,7 +154,7 @@ Y con eso quedó escrito **cómo escribir un ejemplo que no dispare nada**, que 
 | ID | Tipo | Dónde está |
 |---|---|---|
 | EV-01 | Casos automatizados | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clases `ClavesYDatosSensibles` (8 pruebas nuevas) y `Secretos` (8, ya existentes) |
-| EV-02 | Qué cuenta como ejemplo | [`validadores/docs/secretos.md`](../../../../../validadores/docs/secretos.md), sección escrita en esta fase |
+| EV-02 | Qué cuenta como ejemplo | `validadores/docs/secretos.md`, sección escrita en esta fase |
 | EV-03 | Corrida completa | `python validadores/pruebas.py` — 289 pruebas, verde, 5 fallos esperados |
 
 ---

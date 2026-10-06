@@ -135,12 +135,14 @@ class SeActualizaSolo(ConGasto):
         self.assertContains(respuesta, 'hx-trigger="every 10s"')
         self.assertContains(respuesta, f'hx-get="/gasto/datos/?dias=30&amp;proyecto={self.uno.pk}"')
 
-    def test_al_abrir_lee_lo_nuevo_del_jsonl(self):
+    def test_al_abrir_no_lee_el_jsonl(self):
+        """`EP-025·HU-011 · CP-003`: lo trae el vigilante; el tablero solo consulta la base."""
         carpeta = os.path.join(self.base, self.uno.carpeta_claude)
         os.makedirs(carpeta)
         escribir_jsonl(os.path.join(carpeta, SESION + ".jsonl"), muestra())
         self.entrar()
-        self.client.get("/gasto/")
-        self.assertTrue(Llamada.objects.filter(mensaje="m-1").exists())
-        self.client.get("/gasto/datos/")
-        self.assertEqual(1, Llamada.objects.filter(mensaje="m-1").count())
+        with mock.patch("core.consumo.guardar.LectorDeClaudeCode") as lector:
+            self.assertEqual(200, self.client.get("/gasto/").status_code)
+            self.client.get("/gasto/datos/")
+        lector.assert_not_called()
+        self.assertFalse(Llamada.objects.filter(mensaje="m-1").exists())

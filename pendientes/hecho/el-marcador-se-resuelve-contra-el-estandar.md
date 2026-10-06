@@ -11,7 +11,7 @@
 
 ## El problema
 
-[`validadores/enlaces.py`](../../validadores/enlaces.py) resuelve `«RUTA-ESTANDAR»` contra `raiz` —la carpeta que está validando— dando por hecho que esa raíz **es** el estándar:
+`validadores/enlaces.py` resuelve `«RUTA-ESTANDAR»` contra `raiz` —la carpeta que está validando— dando por hecho que esa raíz **es** el estándar:
 
 ```python
 if ruta.startswith(MARCADOR_RAIZ):

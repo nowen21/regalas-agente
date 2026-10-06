@@ -22,11 +22,13 @@ desde su propia carpeta, y la fase vive cinco niveles más abajo.
     python andamio.py EP-001-… HU-003-… descripcion-de-la-fase
     python andamio.py hu EP-001-… descripcion-de-la-historia
     python andamio.py pendiente descripcion [--hu EP-001-…/HU-003-…]
+    python andamio.py quitar carpeta        (la contraria: `EP-025·HU-020`)
 """
 import argparse
 import datetime
 import os
 import re
+import shutil
 import sys
 
 if __name__ == "__main__" and not __package__:
@@ -53,6 +55,8 @@ DOCUMENTOS = [
 ]
 PLANTILLA_HU = os.path.join("plantillas", "ciclo-vida-proyectos", "04-HU.md")
 PLANTILLA_PENDIENTE = os.path.join("plantillas", "pendiente.md")
+# Donde queda lo que se quita cuando ya tenía trabajo (`EP-025·HU-020`).
+ARCHIVO = "_archivo"
 
 _CONSECUTIVO = re.compile(r"^([A-Z]{1,3})(?:-[A-Z]{1,3})?-EP-")
 _HU = re.compile(r"^HU-(\d+)-")
@@ -113,11 +117,13 @@ class Andamio:
         porque su letra solo vive dentro de su historia.
         """
         usadas = set()
-        if os.path.isdir(carpeta_epica):
-            for nombre in os.listdir(carpeta_epica):
-                m = _HU.match(nombre)
-                if m and os.path.isdir(os.path.join(carpeta_epica, nombre)):
-                    usadas.add(int(m.group(1)))
+        # Lo archivado sigue citado por su número: no se reusa (`EP-025·HU-020`).
+        for carpeta in (carpeta_epica, os.path.join(carpeta_epica, ARCHIVO)):
+            if os.path.isdir(carpeta):
+                for nombre in os.listdir(carpeta):
+                    m = _HU.match(nombre)
+                    if m and os.path.isdir(os.path.join(carpeta, nombre)):
+                        usadas.add(int(m.group(1)))
         return "HU-%03d" % (max(usadas) + 1 if usadas else 1)
 
     # ── el texto ──────────────────────────────────────────────────────────
@@ -214,8 +220,16 @@ class Andamio:
         consecutivo = self.siguiente_consecutivo(carpeta_hu)
         nombre = "%s-EP-%s-HU-%s-%s" % (consecutivo, num_ep.group(1), num_hu.group(1), descripcion)
         destino = os.path.join(carpeta_hu, nombre)
-        subs = self.sustituciones(consecutivo, epica, hu, descripcion, nombre)
         escritos = []
+        for archivo, texto in self.textos_de_fase(epica, hu, consecutivo, descripcion, destino).items():
+            escritos.append(archivo)
+            self._escribir(os.path.join(destino, archivo), texto, escribir)
+        return destino, escritos
+
+    def textos_de_fase(self, epica, hu, consecutivo, descripcion, destino):
+        """`{archivo: texto}` de los documentos que el andamio pone en una fase."""
+        subs = self.sustituciones(consecutivo, epica, hu, descripcion, os.path.basename(destino))
+        textos = {}
         for archivo, plantilla in DOCUMENTOS:
             origen = os.path.join(Proyecto.estandar(), plantilla)      # las plantillas son del estándar
             if not os.path.isfile(origen):
@@ -223,14 +237,28 @@ class Andamio:
             texto = self._leer(origen)
             for viejo, nuevo in subs.items():
                 texto = texto.replace(viejo, nuevo)
-            texto = self.reenlazar(texto, origen, destino)
-            escritos.append(archivo)
-            self._escribir(os.path.join(destino, archivo), texto, escribir)
-        return destino, escritos
+            textos[archivo] = self.reenlazar(texto, origen, destino)
+        return textos
 
-    def crear_hu(self, epica, descripcion, escribir=False):
+    @staticmethod
+    def hu_pedida(carpeta_epica, numero):
+        """`HU-016` si no existe ya una historia con ese número.
+
+        Análisis 3 del pendiente 119, acuerdo 4: el análisis que aprueba las
+        historias les da su número, y el andamio tiene que poder respetarlo. Sin
+        esto nació una HU-011 que el análisis llamaba HU-016, y no había cómo
+        quitarla.
+        """
+        hu_id = "HU-%03d" % int(numero)
+        if any(os.path.isdir(c) and any(n.startswith(hu_id + "-") for n in os.listdir(c))
+               for c in (carpeta_epica, os.path.join(carpeta_epica, ARCHIVO))):
+            raise ValueError("ya existe la %s en %s" % (hu_id, os.path.basename(carpeta_epica)))
+        return hu_id
+
+    def crear_hu(self, epica, descripcion, escribir=False, numero=None):
         """Crea la historia con su README y sus dos filas en la épica. Devuelve
-        `(ruta de la carpeta, [archivos escritos o tocados])`."""
+        `(ruta de la carpeta, [archivos escritos o tocados])`. Con `numero`, la
+        historia toma ese número; sin él, el siguiente al mayor."""
         carpeta_epica = os.path.join(self.raiz, CARPETA, epica)
         epica_md = os.path.join(carpeta_epica, "epica.md")
         if not os.path.isfile(epica_md):
@@ -238,22 +266,13 @@ class Andamio:
         origen = os.path.join(Proyecto.estandar(), PLANTILLA_HU)      # las plantillas son del estándar
         if not os.path.isfile(origen):
             raise ValueError("falta la plantilla %s" % PLANTILLA_HU)
-        hu_id = self.siguiente_hu(carpeta_epica)
+        hu_id = self.hu_pedida(carpeta_epica, numero) if numero else self.siguiente_hu(carpeta_epica)
         nombre = "%s-%s" % (hu_id, descripcion)
         destino = os.path.join(carpeta_epica, nombre)
-        # Primero se trasladan los enlaces de la plantilla y después se ponen los
-        # propios: al revés, el `../epica.md` recién puesto se trasladaría también.
-        texto = self.reenlazar(self._leer(origen), origen, destino)
-        texto = texto.replace("HU-000", hu_id)
-        texto = texto.replace("«Épica padre»", "[%s](../epica.md)" % self.titulo_de(epica_md))
         tocados = []
-        self._escribir(os.path.join(destino, nombre + ".md"), texto, escribir)
-        tocados.append(os.path.join(destino, nombre + ".md"))
-        readme = ("# %s\n\nContenido inmediato de esta carpeta.\n\n"
-                  "| Qué | De qué se trata |\n|---|---|\n"
-                  "| [%s.md](%s.md) | La historia de usuario: «…» |\n" % (nombre, nombre, nombre))
-        self._escribir(os.path.join(destino, "README.md"), readme, escribir)
-        tocados.append(os.path.join(destino, "README.md"))
+        for archivo, texto in self.textos_de_hu(epica_md, destino).items():
+            self._escribir(os.path.join(destino, archivo), texto, escribir)
+            tocados.append(os.path.join(destino, archivo))
         self.agregar_fila(epica_md, "| [%s](%s/%s.md) | «Título» | «Prioridad» | «Estimación» |"
                           % (hu_id, nombre, nombre), "## 9.", escribir)
         tocados.append(epica_md)
@@ -263,6 +282,25 @@ class Andamio:
                               % (CARPETA.replace(os.sep, "/"), epica, nombre, nombre), None, escribir)
             tocados.append(readme_epica)
         return destino, tocados
+
+    def textos_de_hu(self, epica_md, destino):
+        """`{archivo: texto}` de lo que el andamio pone en la carpeta de una HU."""
+        nombre = os.path.basename(destino)
+        hu_id = "HU-" + _HU.match(nombre).group(1)
+        origen = os.path.join(Proyecto.estandar(), PLANTILLA_HU)
+        # Primero se trasladan los enlaces de la plantilla y después se ponen los
+        # propios: al revés, el `../epica.md` recién puesto se trasladaría también.
+        texto = self.reenlazar(self._leer(origen), origen, destino)
+        texto = texto.replace("HU-000", hu_id)
+        texto = texto.replace("«Épica padre»", "[%s](../epica.md)" % self.titulo_de(epica_md))
+        readme = ("# %s\n\nContenido inmediato de esta carpeta.\n\n"
+                  "| Qué | De qué se trata |\n|---|---|\n"
+                  "| [%s.md](%s.md) | La historia de usuario: «…» |\n" % (nombre, nombre, nombre))
+        return {nombre + ".md": texto, "README.md": readme}
+
+    def texto_de_pendiente(self, carpeta):
+        origen = os.path.join(Proyecto.estandar(), PLANTILLA_PENDIENTE)
+        return self.reenlazar(self._leer(origen), origen, carpeta)
 
     def crear_pendiente(self, descripcion, hu_ref="", escribir=False, hoy=None):
         """Crea el pendiente en la forma nueva: una carpeta con su `pendiente.md`.
@@ -295,15 +333,106 @@ class Andamio:
         numero = Pendientes(self.raiz, self.archivos).proximo_libre()
         carpeta = os.path.join(dueno, PENDIENTES, "%03d-%s" % (numero, descripcion))
         destino = os.path.join(carpeta, "pendiente.md")
-        self._escribir(destino, self.reenlazar(self._leer(origen), origen, carpeta), escribir)
+        self._escribir(destino, self.texto_de_pendiente(carpeta), escribir)
         return destino, [destino]
+
+    # ── la contraria: quitar (`EP-025·HU-020`) ────────────────────────────
+
+    def _que_es(self, carpeta):
+        """`("hu" | "fase" | "pendiente", padre)`, o error si no lo creó el andamio."""
+        nombre, padre = os.path.basename(carpeta), os.path.dirname(carpeta)
+        if os.path.basename(padre) == PENDIENTES and os.path.isfile(os.path.join(carpeta, "pendiente.md")):
+            return "pendiente", padre
+        if _CONSECUTIVO.match(nombre) and _HU.match(os.path.basename(padre)):
+            return "fase", padre
+        if _HU.match(nombre) and os.path.isfile(os.path.join(padre, "epica.md")):
+            return "hu", padre
+        raise ValueError("no es una HU, una fase ni un pendiente del andamio: %s" % _mostrar(carpeta))
+
+    def _esperado(self, tipo, carpeta, padre):
+        """Lo que el andamio crearía hoy en `carpeta`, archivo por archivo."""
+        if tipo == "pendiente":
+            return {"pendiente.md": self.texto_de_pendiente(carpeta)}
+        if tipo == "hu":
+            return self.textos_de_hu(os.path.join(padre, "epica.md"), carpeta)
+        m = re.match(r"^([A-Z]{1,3})-EP-\d+-HU-\d+-(.+)$", os.path.basename(carpeta))
+        if not m:
+            return {}
+        epica = os.path.basename(os.path.dirname(padre))
+        return self.textos_de_fase(epica, os.path.basename(padre), m.group(1), m.group(2), carpeta)
+
+    def es_plantilla(self, tipo, carpeta, padre):
+        """¿Lo que hay es idéntico a lo que el andamio crearía, y nada más?
+
+        Se compara el texto entero y no los marcadores `«…»`: un marcador queda
+        aunque se haya escrito mucho alrededor.
+        """
+        esperado = self._esperado(tipo, carpeta, padre)
+        if not esperado or sorted(os.listdir(carpeta)) != sorted(esperado):
+            return False
+        return all(self._leer(os.path.join(carpeta, a)) == t for a, t in esperado.items())
+
+    @staticmethod
+    def _bajar_un_nivel(texto):
+        """Los enlaces que suben (`../`) suben uno más: la carpeta quedó dentro de `_archivo/`."""
+        return re.sub(r"\]\(\.\./", "](../../", texto)
+
+    def quitar(self, carpeta, escribir=False):
+        """Deshace lo que el andamio creó en `carpeta`. Devuelve `(qué hizo, [archivos tocados])`.
+
+        Lo que creó junto se quita junto (análisis 3 del pendiente 119, acuerdo 4).
+        Si sigue siendo la plantilla, se borra con sus filas. Si tiene trabajo, se
+        archiva en `_archivo/` de su misma carpeta padre y la fila apunta ahí con
+        «(archivada)»: nada se pierde y el número no se reusa. Una HU con fases
+        no se quita: primero se quitan sus fases.
+        """
+        carpeta = os.path.abspath(carpeta)
+        if not os.path.isdir(carpeta):
+            raise ValueError("no existe: %s" % _mostrar(carpeta))
+        tipo, padre = self._que_es(carpeta)
+        nombre = os.path.basename(carpeta)
+        if tipo == "hu" and any(_CONSECUTIVO.match(n) for n in os.listdir(carpeta)):
+            raise ValueError("la %s tiene fases: primero se quitan sus fases" % nombre)
+        plantilla = self.es_plantilla(tipo, carpeta, padre)
+        archivada = os.path.join(padre, ARCHIVO, nombre)
+        if not plantilla and os.path.exists(archivada):
+            raise ValueError("ya hay una archivada con ese nombre: %s" % _mostrar(archivada))
+        tocados = [carpeta]
+        if tipo == "hu":
+            filas = [(os.path.join(padre, "epica.md"), "](%s/%s.md)" % (nombre, nombre)),
+                     (os.path.join(padre, "README.md"), "](%s/)" % nombre)]
+            for archivo, marca in filas:
+                if not os.path.isfile(archivo):
+                    continue
+                lineas = self._leer(archivo).split("\n")
+                if plantilla:
+                    nuevas = [l for l in lineas if marca not in l]
+                else:
+                    nueva_marca = "](%s/%s (archivada)" % (ARCHIVO, marca[2:])
+                    nuevas = [l.replace(marca, nueva_marca, 1) for l in lineas]
+                if nuevas != lineas:
+                    tocados.append(archivo)
+                    self._escribir(archivo, "\n".join(nuevas), escribir)
+        if escribir:
+            if plantilla:
+                shutil.rmtree(carpeta)
+            else:
+                os.makedirs(os.path.dirname(archivada), exist_ok=True)
+                shutil.move(carpeta, archivada)
+                for raiz, _, archivos in os.walk(archivada):
+                    for a in archivos:
+                        if a.endswith(".md"):
+                            ruta = os.path.join(raiz, a)
+                            self._escribir(ruta, self._bajar_un_nivel(self._leer(ruta)), True)
+        accion = "borrada: era la plantilla" if plantilla else "archivada en %s" % _mostrar(archivada)
+        return "%s %s" % (tipo, accion), tocados
 
 
 def main(argv=None):
     """`09·12` · el andamio se pide, no se ejecuta solo."""
     preparar_salida()                   # imprime «·» y «…»: sin esto, mojibake
     argv = list(sys.argv[1:] if argv is None else argv)
-    modo = argv[0] if argv and argv[0] in ("hu", "pendiente") else "fase"
+    modo = argv[0] if argv and argv[0] in ("hu", "pendiente", "quitar") else "fase"
     p = argparse.ArgumentParser(
         description="Crea el esqueleto de una fase, una historia o un pendiente. "
                     "No escribe contenido: los marcadores «…» quedan para llenarse.")
@@ -311,6 +440,11 @@ def main(argv=None):
         p.add_argument("modo")
         p.add_argument("epica", help="carpeta de la épica, p. ej. EP-001-cuerpo-de-reglas")
         p.add_argument("descripcion", help="qué pide la historia, en minúsculas con guiones")
+        p.add_argument("--numero", type=int, default=None,
+                       help="el número que le dio el análisis; sin él, el siguiente al mayor")
+    elif modo == "quitar":
+        p.add_argument("modo")
+        p.add_argument("carpeta", help="la carpeta de la HU, la fase o el pendiente que creó el andamio")
     elif modo == "pendiente":
         p.add_argument("modo")
         p.add_argument("descripcion", help="qué falta, en minúsculas con guiones")
@@ -326,8 +460,18 @@ def main(argv=None):
     a = p.parse_args(argv)
 
     andamio = Andamio(a.raiz)
+    if modo == "quitar":
+        try:
+            accion, tocados = andamio.quitar(os.path.join(a.raiz, a.carpeta), a.aplicar)
+        except ValueError as e:
+            print("No se quita: %s" % e)
+            return 1
+        print("%s  (%s)" % (accion, "hecho" if a.aplicar else "simulado; agrega --aplicar"))
+        for e in tocados:
+            print("  · %s" % _mostrar(e))
+        return 0
     if modo == "hu":
-        destino, tocados = andamio.crear_hu(a.epica, a.descripcion, a.aplicar)
+        destino, tocados = andamio.crear_hu(a.epica, a.descripcion, a.aplicar, a.numero)
     elif modo == "pendiente":
         destino, tocados = andamio.crear_pendiente(a.descripcion, a.hu, a.aplicar)
     else:

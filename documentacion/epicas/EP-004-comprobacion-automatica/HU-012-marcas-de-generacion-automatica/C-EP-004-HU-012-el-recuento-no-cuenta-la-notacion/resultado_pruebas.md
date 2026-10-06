@@ -98,7 +98,7 @@ Se cumplió. Y con esto el [pendiente 78](../../../../../pendientes/hecho/los-mo
 | ID | Tipo | Dónde está |
 |---|---|---|
 | EV-01 | La clasificación | Este documento, §2 |
-| EV-02 | El código y los moldes | [`validadores/marcas.py`](../../../../../validadores/marcas.py) |
+| EV-02 | El código y los moldes | `validadores/marcas.py` |
 | EV-03 | La decisión escrita | [`marcadores-de-ia.md`](../../../../../base/00-identidad-y-rol/marcadores-de-ia.md) |
 | EV-04 | Las suites | 34 y 10 pruebas, en verde |
 

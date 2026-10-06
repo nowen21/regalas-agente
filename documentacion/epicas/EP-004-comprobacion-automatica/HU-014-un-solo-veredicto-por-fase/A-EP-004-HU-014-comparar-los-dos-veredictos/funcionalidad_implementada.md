@@ -33,7 +33,7 @@
 |---|---|
 | [`validadores/fases.py`](../../../../../validadores/fases.py) | `veredicto()` y sus ayudantes, llamados desde el recorrido de fases que ya existía |
 | [`validadores/tests/test_fases_veredicto.py`](../../../../../validadores/tests/test_fases_veredicto.py) | **Nuevo.** Cuatro casos |
-| [`validadores/docs/fases.md`](../../../../../validadores/docs/fases.md) | La comprobación nueva |
+| `validadores/docs/fases.md` | La comprobación nueva |
 | [`HU-014-un-solo-veredicto-por-fase.md`](../HU-014-un-solo-veredicto-por-fase.md) | La fase en §8 y la bitácora |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 23.1.0 |
 

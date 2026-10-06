@@ -35,9 +35,9 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
 from core.comun.consola import entrada_json, preparar_salida     # noqa: E402
-from core.consumo.lector import LectorDeClaudeCode, estimar_tokens  # noqa: E402
-from core.enganches.niveles import LimitesDelProyecto            # noqa: E402
+from core.consumo.lector import LectorDeClaudeCode               # noqa: E402
 from core.enganches.presupuesto import Presupuesto               # noqa: E402
+from core.enganches.presupuesto import aviso_de_limites as aviso_de_limites_en_core  # noqa: E402
 
 
 def consumos_de_transcripcion(ruta):
@@ -54,14 +54,8 @@ def consumos_de_transcripcion(ruta):
 
 
 def aviso_de_limites(ruta, raiz):
-    """`EP-025·HU-009` · Lo que en el turno anterior pasó el límite del proyecto, o ""."""
-    turno = LectorDeClaudeCode(ruta).turno_anterior()
-    limite_enganche, limite_archivo = LimitesDelProyecto(raiz, RAIZ).limites()
-    enganches = Presupuesto.pasados_del_limite(
-        ((e.nombre, estimar_tokens(e.caracteres)) for e in turno.enganches), limite_enganche)
-    archivos = Presupuesto.pasados_del_limite(
-        ((a.ruta, estimar_tokens(a.caracteres)) for a in turno.archivos), limite_archivo)
-    return Presupuesto.aviso_de_limites(enganches, archivos, limite_enganche, limite_archivo)
+    """El aviso por límite vive en `core/enganches/presupuesto.py` (`EP-025·HU-013`)."""
+    return aviso_de_limites_en_core(ruta, raiz, RAIZ)
 
 
 def main():

@@ -22,6 +22,9 @@ EXCLUIDAS = {".git", "__pycache__", ".venv", "venv", "node_modules", "vendor", "
 # Cimiento trajo de otros proyectos, con enlaces que resuelven allá.
 EXCLUIDAS_POR_RUTA = ("proyectos", "datos/proyectos")
 
+# `EP-025·HU-014` · «Rutas en los avisos» de cada proyecto, leído una vez por proceso.
+_RUTAS = {}
+
 # Lo que distingue la carpeta del estándar: su núcleo.
 _SENA_DEL_ESTANDAR = os.path.join("base", "00-nucleo-blindado.md")
 
@@ -89,8 +92,27 @@ class Proyecto:
 
     def mostrar(self, ruta):
         """Cómo se nombra una ruta en un reporte: desde la raíz si queda adentro,
-        completa si queda afuera."""
-        return self.relativa(ruta) or os.path.abspath(ruta).replace("\\", "/")
+        completa si queda afuera.
+
+        `EP-025·HU-014` · Si el ajuste «Rutas en los avisos» del proyecto dice
+        «completas», sale completa aunque quede adentro.
+        """
+        completa = os.path.abspath(ruta).replace("\\", "/")
+        relativa = self.relativa(ruta)
+        if relativa is None or self.rutas_en_avisos() == "completas":
+            return completa
+        return relativa
+
+    def rutas_en_avisos(self):
+        """El ajuste del proyecto, leído una vez por proceso. Si no se puede leer, «relativas»."""
+        clave = os.path.normcase(self.raiz)
+        if clave not in _RUTAS:
+            try:
+                from ..enganches.configuracion import ConfiguracionDelProyecto
+                _RUTAS[clave] = ConfiguracionDelProyecto(self.raiz).valor("rutas_en_avisos")
+            except Exception:  # noqa: BLE001  Mostrar una ruta no puede tumbar a quien la muestra.
+                _RUTAS[clave] = "relativas"
+        return _RUTAS[clave]
 
     def es_excluida(self, relativa):
         """¿Esta ruta (con `/`, desde la raíz) se salta por su ubicación?"""

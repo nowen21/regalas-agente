@@ -12,12 +12,12 @@
 
 | Ítem | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
-| Cada hallazgo dice a qué regla pertenece | código | [`validadores/comun.py`](../../../../../validadores/comun.py) | ✅ | `Hallazgo.regla`, deducida del mensaje que ya se escribe |
+| Cada hallazgo dice a qué regla pertenece | código | `validadores/comun.py` | ✅ | `Hallazgo.regla`, deducida del mensaje que ya se escribe |
 | La corrida deja el conteo | código | [`validadores/conteo.py`](../../../../../validadores/conteo.py) y `validar.py todo` | ✅ | el recuento se imprime y se anota |
 | El registro guarda solo el identificador y el número | código | el mismo | ✅ | `CP-002`: ni la clave, ni la ruta, ni el mensaje |
 | Vive fuera del control de versiones | doc | `.gitignore` | ✅ | `metricas/conteo-por-regla.jsonl`, con el motivo escrito |
 | Dos corridas se comparan | código | `conteo.comparar` | ✅ | `CP-003` |
-| El contrato dice qué se guarda y qué no | doc | [`validadores/docs/conteo.md`](../../../../../validadores/docs/conteo.md) | ✅ | con las dos tablas |
+| El contrato dice qué se guarda y qué no | doc | `validadores/docs/conteo.md` | ✅ | con las dos tablas |
 | Los casos | prueba | [`test_el_conteo_por_regla.py`](../../../../../validadores/tests/test_el_conteo_por_regla.py) | ✅ | once |
 
 ## 2. Lo que cambia para un proyecto que hereda

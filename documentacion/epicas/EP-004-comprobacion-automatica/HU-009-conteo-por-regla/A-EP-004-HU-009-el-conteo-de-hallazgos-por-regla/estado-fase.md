@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-004-HU-009-el-conteo-de-hallazgos-por-regla` |
-| **Módulo** | Comprobación automática — [`validadores/comun.py`](../../../../../validadores/comun.py) y [`validar.py`](../../../../../validadores/validar.py) |
+| **Módulo** | Comprobación automática — `validadores/comun.py` y [`validar.py`](../../../../../validadores/validar.py) |
 | **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-009](../HU-009-conteo-por-regla.md) · ✨ funcionalidad nueva. Fila de HU-009 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 

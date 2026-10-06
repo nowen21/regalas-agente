@@ -104,7 +104,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-el-torniquete-d
 
 ### H-7 · El validador de enlaces daba por rotos los enlaces con espacios
 
-- **Qué pasó:** una carpeta con espacios en el nombre rompía `test_el_estandar_no_tiene_enlaces_rotos`: los enlaces escriben el espacio como `%20` y [`enlaces.py`](../../../validadores/enlaces.py) no lo decodifica, así que los da por rotos aunque el archivo exista.
+- **Qué pasó:** una carpeta con espacios en el nombre rompía `test_el_estandar_no_tiene_enlaces_rotos`: los enlaces escriben el espacio como `%20` y `enlaces.py` no lo decodifica, así que los da por rotos aunque el archivo exista.
 - **Por qué importa:** un validador que reporta falso es peor que no tenerlo: enseña a ignorar sus fallas.
 - **Qué lo soluciona:** decodificar el destino antes de comprobarlo — una línea.
 - **Qué se decidió:** el agente lo reportó y preguntó si lo corregía. No hubo respuesta y la sesión siguió con otra cosa.

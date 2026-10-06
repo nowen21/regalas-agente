@@ -1,0 +1,14 @@
+<div class="ayuda-panel">
+  <h3 class="h3 mb-3">{{ titulo }}</h3>
+  <div class="mb-4">{% include plantilla %}</div>
+
+  <details class="mb-3">
+    <summary class="text-secondary">Otras secciones del manual</summary>
+    <ul class="list-unstyled mt-2">
+      {% for s in secciones %}
+      <li>{% if s.slug == actual %}<strong>{{ s.titulo }}</strong>{% else %}<a href="{% url 'ayuda:panel' s.slug %}" data-ayuda-enlace>{{ s.titulo }}</a>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </details>
+  <a href="{% url 'ayuda:manual' %}" target="_blank" class="btn btn-sm">Abrir el manual completo para imprimir</a>
+</div>

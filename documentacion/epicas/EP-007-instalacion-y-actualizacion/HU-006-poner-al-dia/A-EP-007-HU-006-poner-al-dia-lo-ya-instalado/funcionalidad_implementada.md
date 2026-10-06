@@ -35,7 +35,7 @@
 | [`plantillas/stack-instalacion.md`](../../../../../plantillas/stack-instalacion.md) | El texto de arreglo de la fila `versiones` |
 | [`validadores/tests/test_instalar_reparar.py`](../../../../../validadores/tests/test_instalar_reparar.py) | La suite de esta fase, 6 casos |
 | [`validadores/tests/test_instalar_marcadores.py`](../../../../../validadores/tests/test_instalar_marcadores.py) | Apunta el registro central a una copia desechable — ampliación del plan aprobada por el usuario |
-| [`validadores/docs/instalar.md`](../../../../../validadores/docs/instalar.md) | La función nueva, el motivo doble del registro y el orden de la instalación |
+| `validadores/docs/instalar.md` | La función nueva, el motivo doble del registro y el orden de la instalación |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · [`VERSION`](../../../../../VERSION) | La 21.2.0 |
 
 ---

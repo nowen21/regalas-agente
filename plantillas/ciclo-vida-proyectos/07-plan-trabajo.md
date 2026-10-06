@@ -144,6 +144,14 @@ Errores:  400 | 401 | 403 | 404 | 422
 |---|---|---|---|
 | 1 | | usuario / PO | Pendiente / Resuelta |
 
+### 2.8 La contraria de cada acción nueva  ·  [`02·F30`](../../base/02-flujo-de-trabajo/reglas/F30-toda-accion-trae-su-contraria.md)
+
+> Cada acción que esta fase agrega para crear o cambiar algo, con la que lo deja como estaba y la prueba que hace las dos. La que no tiene vuelta dice por qué. Si la fase no agrega acciones, se escribe «No aplica».
+
+| Acción nueva | Su contraria | Prueba |
+|---|---|---|
+| «crear X» | «quitar X» | «CP que crea, quita y compara» |
+
 ## 3. Desglose de tareas por criterio de aceptación
 
 > Divide el trabajo en tareas de 4 horas o menos, agrupadas por el CA que cumplen. «Depende de» ordena la ejecución y «Ev.» remite a la evidencia de la sección 5.

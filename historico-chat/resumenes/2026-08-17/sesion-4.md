@@ -248,7 +248,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### H-22 · Dieciséis mil marcas, y una fase que esperaba lo que ya estaba escrito
 
-**Qué se midió.** Nace [`validadores/marcas.py`](../../../validadores/marcas.py), el primer programa que comprueba si el estándar cumple su propia [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Era el paso 1 del [pendiente 11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado desde el 2026-08-10.
+**Qué se midió.** Nace `validadores/marcas.py`, el primer programa que comprueba si el estándar cumple su propia [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Era el paso 1 del [pendiente 11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado desde el 2026-08-10.
 
 **16 477 marcas en 820 archivos** fuera del histórico; **4 491 en `base/` y `plantillas/`**, que es lo que viaja a los proyectos. Las dos que pesan: raya larga 7 286, punto medio 6 237.
 
@@ -738,12 +738,12 @@ Al escribirle a `00·N1` su excepción en la forma de `M8`, marqué la fila 16 d
 
 **Qué pasó.** Limpiando las marcas de `00·ID8` en `base/` y `plantillas/`, el reemplazo automático iba a tocar dos cosas que no son adorno:
 
-- **`«…»`**, el marcador de relleno de las plantillas. [`flujo.py`](../../../validadores/flujo.py), [`comun.py`](../../../validadores/comun.py) y [`andamio.py`](../../../validadores/andamio.py) reconocen por él una celda **sin llenar**. Cambiarlo por `...` habría roto los tres, y en silencio: seguirían corriendo, dando por llena toda casilla vacía.
+- **`«…»`**, el marcador de relleno de las plantillas. [`flujo.py`](../../../validadores/flujo.py), `comun.py` y [`andamio.py`](../../../validadores/andamio.py) reconocen por él una celda **sin llenar**. Cambiarlo por `...` habría roto los tres, y en silencio: seguirían corriendo, dando por llena toda casilla vacía.
 - **El sello de las reglas.** Cambiar una semiraya por un guion cuenta como «el cuerpo cambió» para `metareglas._cambio_de_verdad`, y eso habría vencido de golpe el sello de **74 reglas**.
 
 **Es la segunda vez esta semana.** La primera fue el punto medio de los títulos: `09 · Control de versiones` parecía adorno y era notación de la casa. El programa lo contaba como marca hasta que alguien lo miró.
 
-**Dónde queda.** Las dos, arregladas: `_MARCADOR` exento en [`marcas.py`](../../../validadores/marcas.py), y `_cambio_de_verdad` normaliza la tipografía antes de comparar — **un sello responde por lo que la regla exige, no por cómo está compuesta**.
+**Dónde queda.** Las dos, arregladas: `_MARCADOR` exento en `marcas.py`, y `_cambio_de_verdad` normaliza la tipografía antes de comparar — **un sello responde por lo que la regla exige, no por cómo está compuesta**.
 
 **Lo que enseña.** Un carácter raro en este repositorio puede ser tres cosas: marca de generación automática, notación de la casa, o **entrada de otro programa**. Las tres se ven igual leyendo. La pregunta que las separa no es *«esto adorna?»* sino **«quién lee esto además de una persona?»** — y esa pregunta hay que hacérsela antes de un reemplazo en masa, no después.
 
@@ -793,7 +793,7 @@ Al escribirle a `00·N1` su excepción en la forma de `M8`, marqué la fila 16 d
 
 Las otras tres sí eran mías, y se reescribieron a mano en dos minutos. **Eso es exactamente el costo que el trinquete tiene que tener.**
 
-**Dónde queda.** El sello y el nombre de capítulo, eximidos en [`marcas.py`](../../../validadores/marcas.py). El recuento total baja de 15 936 a **14 101**.
+**Dónde queda.** El sello y el nombre de capítulo, eximidos en `marcas.py`. El recuento total baja de 15 936 a **14 101**.
 
 **Lo que enseña.** Un enganche que bloquea **se estrena contra su autor**, y ahí es donde se ve si el reparto está bien puesto. Si el primer rechazo hubiera sido todo ruido, el enganche se apagaba esa tarde. Cuatro de siete lo eran, y por eso hubo que arreglarlo antes de seguir — no después.
 

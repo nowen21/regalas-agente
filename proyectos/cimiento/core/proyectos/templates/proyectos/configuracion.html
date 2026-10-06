@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load ayuda %}
+
+{% block titulo %}Configuración{% endblock %}
+{% block cabecera %}Configuración de Cimiento{% endblock %}
+
+{% block contenido %}
+{% ayuda_pantalla "configuracion" %}
+{% for mensaje in messages %}
+<div class="alert alert-{% if mensaje.tags == 'error' %}danger{% else %}success{% endif %}" role="alert">{{ mensaje }}</div>
+{% endfor %}
+<form class="card" method="post">
+  {% csrf_token %}
+  <div class="card-body">
+    <p class="text-secondary">Lo que vale en todos los proyectos que no tienen su propio valor. Cada proyecto puede poner el suyo en «Proyectos» → «Editar».</p>
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endfor %}
+    {% for campo in form %}
+    <div class="mb-3">
+      <div class="d-flex align-items-center gap-1 mb-1">
+        <label class="form-label mb-0" for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+        {% with clave="configuracion."|add:campo.name %}{% ayuda_campo clave %}{% endwith %}
+      </div>
+      {% if campo.field.widget.input_type == "select" %}
+      <select class="form-select{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}" name="{{ campo.html_name }}"{% if not puede_cambiar %} disabled{% endif %}>
+        {% for valor, texto in campo.field.choices %}
+        <option value="{{ valor }}"{% if campo.value|stringformat:"s" == valor|stringformat:"s" %} selected{% endif %}>{{ texto }}</option>
+        {% endfor %}
+      </select>
+      {% else %}
+      <input class="form-control{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}"
+             name="{{ campo.html_name }}" value="{{ campo.value|default_if_none:'' }}" type="number" min="1"{% if not puede_cambiar %} disabled{% endif %}>
+      {% endif %}
+      {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+      {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if puede_cambiar %}
+  <div class="card-footer">
+    <button class="btn btn-primary" type="submit">Guardar</button>
+  </div>
+  {% endif %}
+</form>
+{% endblock %}

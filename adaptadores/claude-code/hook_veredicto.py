@@ -23,6 +23,7 @@ import sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
+from core.comun import Proyecto                                  # noqa: E402
 from core.comun.consola import archivo_editado, entrada_json, preparar_salida, raiz_pedida     # noqa: E402
 from core.enganches.veredicto import CopiaDelVeredicto           # noqa: E402
 
@@ -46,10 +47,8 @@ def main():
         return 0
 
     def rel(p):
-        try:
-            return os.path.relpath(p, raiz).replace("\\", "/")
-        except ValueError:
-            return p
+        # Como diga «Rutas en los avisos» del proyecto (`EP-025·HU-014`).
+        return Proyecto(raiz).mostrar(p)
     if tocados:
         print("[EL VEREDICTO DE LA FASE SE COPIÓ A] " + " · ".join(rel(t) for t in tocados))
     for a in avisos:

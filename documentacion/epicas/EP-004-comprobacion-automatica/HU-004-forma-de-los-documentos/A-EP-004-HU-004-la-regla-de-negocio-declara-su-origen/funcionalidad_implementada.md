@@ -31,7 +31,7 @@ Lo que **no** hace: comprobar que el identificador apunte a algo real. Eso es tr
 |---|---|
 | [`validadores/plantillas.py`](../../../../../validadores/plantillas.py) | `spec` en la tabla de moldes, y `reglas_sin_origen()` como cuarta comprobación |
 | [`validadores/tests/test_plantillas_origen_regla.py`](../../../../../validadores/tests/test_plantillas_origen_regla.py) | **Nuevo.** Tres casos, con las dos reglas reales del caso de `shopnest-mesa` |
-| [`validadores/docs/plantillas.md`](../../../../../validadores/docs/plantillas.md) | La cuarta comprobación, y por qué está atada a un molde concreto |
+| `validadores/docs/plantillas.md` | La cuarta comprobación, y por qué está atada a un molde concreto |
 | [`HU-004-forma-de-los-documentos.md`](../HU-004-forma-de-los-documentos.md) | El `CA-04`, la fase en §8 y la bitácora |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 22.1.0 |
 

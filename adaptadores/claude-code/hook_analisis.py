@@ -29,12 +29,11 @@ import os
 import sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path.insert(0, os.path.join(RAIZ, "validadores"))
 sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import historico                                    # noqa: E402
-from comun import preparar_salida                   # noqa: E402
+from core.comun.consola import preparar_salida                 # noqa: E402
 from core.enganches.analisis_en_curso import AnalisisEnCurso   # noqa: E402
+from core.enganches.historico import Historico                 # noqa: E402
 
 
 def opcion(argv, nombre, por_defecto=""):
@@ -61,14 +60,13 @@ def _avisar_lo_resuelto(raiz):
     """El aviso a los proyectos sale cuando el análisis aprobado cierra su reporte,
     si Cimiento ya lo comprobó en el proyecto (análisis 1 del pendiente 110,
     acuerdo 7). Solo desde el estándar."""
-    import comun
-    if os.path.normcase(os.path.abspath(raiz)) != os.path.normcase(os.path.abspath(comun.RAIZ)):
+    if os.path.normcase(os.path.abspath(raiz)) != os.path.normcase(os.path.abspath(RAIZ)):
         return ""
     try:
-        import aviso_resuelto
+        from core.enganches.aviso_resuelto import AvisoResuelto
         version_txt = os.path.join(raiz, "VERSION")
         version = open(version_txt, encoding="utf-8").read().strip() if os.path.isfile(version_txt) else ""
-        escritos, sin_entregar = aviso_resuelto.avisar(raiz, datetime.date.today().isoformat(), version)
+        escritos, sin_entregar = AvisoResuelto(raiz).avisar(datetime.date.today().isoformat(), version)
     except Exception as error:      # noqa: BLE001 — el aviso no puede tumbar la aprobación
         return "; el aviso de resuelto no salió: %s" % error
     partes = []
@@ -82,7 +80,7 @@ def _avisar_lo_resuelto(raiz):
 def mensaje(raiz, entrada):
     """Aplica la palabra del mensaje y devuelve el aviso para el agente."""
     texto = entrada.get("prompt", "") or ""
-    transcripcion = historico.archivo_de_sesion(raiz, entrada.get("session_id") or "")
+    transcripcion = Historico(raiz).archivo_de_sesion(entrada.get("session_id") or "")
     curso = AnalisisEnCurso(raiz, transcripcion)
     curso.esperar(transcripcion)
     turno = curso.ultimo_turno(transcripcion)
@@ -100,7 +98,7 @@ def mensaje(raiz, entrada):
 
     numero = curso.pendiente_pedido(texto)
     if numero is not None and transcripcion:
-        _, nota = curso.prender(numero, transcripcion, turno)
+        _, nota = curso.prender(numero, transcripcion, turno, curso.turno_pedido(texto))
     elif limpio.startswith("pare"):
         if curso.pausar(turno):
             nota = "pausado en el turno %d" % turno
@@ -121,7 +119,7 @@ def main():
     modo = opcion(sys.argv[1:], "--modo", "mensaje")
     try:
         if modo == "cierre":
-            transcripcion = historico.archivo_de_sesion(raiz, entrada.get("session_id") or "")
+            transcripcion = Historico(raiz).archivo_de_sesion(entrada.get("session_id") or "")
             AnalisisEnCurso(raiz, transcripcion).pasar()
             return 0
         texto = mensaje(raiz, entrada)

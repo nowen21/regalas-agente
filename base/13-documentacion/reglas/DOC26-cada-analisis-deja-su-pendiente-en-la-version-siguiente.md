@@ -29,7 +29,7 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A, **16**: no tiene excepción. Fila 4: va en el `13`, porque trata de un documento, el pendiente, y de cuándo se reescribe. Fila 6: `DOC26` es el siguiente consecutivo libre. Fila 9: la exigencia es una sola, pasar el pendiente a su versión siguiente al aprobar el análisis. Fila 17: complementa `DOC24`, que dice que el análisis aprobado no se reescribe; lo que se reescribe es el pendiente.
 
-**Validable:** `validadores/analisis_en_curso.py` no deja aprobar un análisis, desde el segundo, cuyo hallazgo falta en «De dónde sale» del pendiente.
+**Validable:** `proyectos/cimiento/core/enganches/analisis_en_curso.py` no deja aprobar un análisis, desde el segundo, cuyo hallazgo falta en «De dónde sale» del pendiente.
 
 Nace en `EP-023`, del análisis 14 del pendiente 103 (acuerdos 3 y 11). Pone en el estándar lo que acordó el análisis 11 (acuerdo 5): la plantilla del análisis lo citaba, y ese análisis solo existe en este repositorio.
 

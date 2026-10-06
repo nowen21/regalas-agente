@@ -11,7 +11,7 @@ CORRECTO:   qué quedó hecho y qué falta decidir, en pocas líneas, con el enl
             a los archivos donde está el detalle
 ```
 
-**Quién la hace cumplir:** `validadores/brevedad.py`, que mide cuánto ocupa cada respuesta, y `adaptadores/claude-code/hook_redaccion.py`, que lo dice al cerrar el turno. **Mide y no detiene:** cuando el enganche corre, el texto ya salió.
+**Quién la hace cumplir:** `proyectos/cimiento/core/validadores/brevedad.py`, que mide cuánto ocupa cada respuesta, y `adaptadores/claude-code/hook_redaccion.py`, que lo dice al cerrar el turno. **Mide y no detiene:** cuando el enganche corre, el texto ya salió.
 
 **Aplica a:** responder, escribir-documento
 

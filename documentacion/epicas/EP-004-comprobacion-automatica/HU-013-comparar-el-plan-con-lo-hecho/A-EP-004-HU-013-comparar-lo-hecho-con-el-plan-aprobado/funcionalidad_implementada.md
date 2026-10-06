@@ -20,7 +20,7 @@
 | Nunca detiene | código | el mismo | ✅ | `CP-005` |
 | `02·F8` pasa a validador escrito | doc | [`reglas-validables.md`](../../../../../validadores/reglas-validables.md) | ✅ | con lo que sigue siendo criterio, escrito |
 | El `CA-03` queda como criterio humano | doc | el mismo | ✅ | con su motivo |
-| El contrato | doc | [`docs/plan_vs_hecho.md`](../../../../../validadores/docs/plan_vs_hecho.md) | ✅ | qué compara y qué no |
+| El contrato | doc | `docs/plan_vs_hecho.md` | ✅ | qué compara y qué no |
 | Los casos | prueba | [`test_el_plan_contra_lo_hecho.py`](../../../../../validadores/tests/test_el_plan_contra_lo_hecho.py) | ✅ | once |
 
 ## 2. Lo que cambia para un proyecto que hereda

@@ -282,12 +282,12 @@ El mapa de arriba dice *dónde está*. Este dice *qué depende de qué*:
 
 | Componente | Lee / usa | Por qué importa |
 |---|---|---|
-| `validadores/plantillas.py` | `plantillas/*.md` | La norma no se duplica en el código: si cambia la plantilla, cambia la comprobación. |
-| `validadores/checklist.py` | `plantillas/stack-instalacion.md` | La lista de componentes vive en la plantilla, no en el código. Una prueba exige que coincidan. |
-| `validadores/cargador.py` | `base/*.md` | Le dice al agente, al abrir la sesión, cómo le llegan las reglas; si falta la estructura base, le da la regla que manda detenerse. |
-| `validadores/sesion.py` | `plantillas/CLAUDE.md.plantilla` | Avisa si el `CLAUDE.md` del proyecto quedó desfasado. |
+| `proyectos/cimiento/core/validadores/plantillas.py` | `plantillas/*.md` | La norma no se duplica en el código: si cambia la plantilla, cambia la comprobación. |
+| `proyectos/cimiento/core/validadores/checklist.py` | `plantillas/stack-instalacion.md` | La lista de componentes vive en la plantilla, no en el código. Una prueba exige que coincidan. |
+| `proyectos/cimiento/core/enganches/cargador.py` | `base/*.md` | Le dice al agente, al abrir la sesión, cómo le llegan las reglas; si falta la estructura base, le da la regla que manda detenerse. |
+| `proyectos/cimiento/core/enganches/sesion.py` | `plantillas/CLAUDE.md.plantilla` | Avisa si el `CLAUDE.md` del proyecto quedó desfasado. |
 | `validadores/instalar.py` | `plantillas/CLAUDE.md.plantilla` · `plantillas/stack-instalacion.md` · `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/proyectos.md` | Es lo que deja el agente instalado y operativo en otro proyecto, sin pasos manuales. |
-| `validadores/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |
+| `proyectos/cimiento/core/enganches/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |
 | `metricas/metricas.py` | `memoria/senales.db` | Solo agrega lo que ya se registró; no instrumenta nada nuevo. |
 | `interfaz/cimiento/visor/core.py` | `base/` · `skills/` · `plantillas/` · `notas/` · `senales.db` | Lee los archivos y la base **reales**, no una copia. |
 | `.githooks/commit-msg` | `validadores/validar.py commit` | El hook es una cáscara; la regla está en el validador. |

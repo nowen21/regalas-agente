@@ -10,13 +10,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-04-sesion-2.md](..
 
 ## Hallazgos de esta sesión
 
-### H-1 · Nadie ve cuántos tokens se gastan ni puede ajustar las reglas sin tocar código
+### H-1 · El gasto no llega en vivo, lo repetido no se automatiza, y lo que Cimiento hace no siempre se puede deshacer
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El usuario pidió ver cuántos tokens se gastan, dónde y en vivo, en todos los proyectos, para saber qué se puede pasar a un programa. Los datos existen: Claude Code anota cada llamada en los `.jsonl` de la sesión y puede mandarla por telemetría; en una sesión medida hubo 1012 llamadas y unos 450 000 tokens releídos por llamada. Pidió además administrar desde Cimiento qué tan rígida es cada regla en cada proyecto, porque hoy cada ajuste es un cambio de código |
-| Por qué importa | Lo que más gasta es el contexto que se relee en cada llamada, sobre todo lo que agregan los enganches; sin medirlo no se sabe qué automatizar primero. Y una regla fija en el código puede bloquear a Cimiento para corregirse, como pasó el 2026-10-04 |
-| Pendiente | [Pendiente 119: nadie ve cuántos tokens se gastan ni puede ajustar las reglas sin tocar código](pendientes/119-se-puede-ver-cuantos-tokens-se-gastan-donde-y-en-vivo/pendiente.md) |
+| Qué pasó | EP-025 dejó el gasto en la base y en un tablero, pero lo vivo depende de la telemetría y el `.jsonl` se lee al abrir el tablero y una vez al día; el tablero no separa lo automatizable; el cierre de cada fase se hizo con guiones casi iguales; y Cimiento no trae ayuda ni manual. Además, Cimiento crea sin poder deshacer: el andamio creó una HU con el número equivocado y no había cómo quitarla, y el freno, que bloqueó con razón, no ofrecía salida; el usuario tuvo que borrar la carpeta y editar el estado del análisis a mano |
+| Por qué importa | Sin ver el gasto en cuanto ocurre y sin separar lo automatizable, no se sabe qué pasar a un programa; y cada acción sin contraria y cada bloqueo sin salida terminan en el usuario tocando archivos, en Cimiento y en todo proyecto que lo herede |
+| Versión | 4, según el [análisis 3 del pendiente 119](pendientes/119-se-puede-ver-cuantos-tokens-se-gastan-donde-y-en-vivo/analisis-3.md); la 3 salió del análisis 2 y la 2, del análisis 1, que se construyó en EP-025 |
+| Pendiente | [Pendiente 119: el gasto no llega en vivo, lo repetido no se automatiza, y lo que Cimiento hace no siempre se puede deshacer](pendientes/119-se-puede-ver-cuantos-tokens-se-gastan-donde-y-en-vivo/pendiente.md) |
 
 ### H-2 · Un análisis abierto en una sesión bloqueaba a todas las demás
 

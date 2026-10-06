@@ -3075,3 +3075,867 @@ Eso sería una HU nueva. Le correspondería la EP-025, que es la épica de admin
 Recomiendo no hacerlo como opción: mostrar las rutas relativas sirve igual en todos los proyectos, y una opción que nadie cambia solo agrega mantenimiento. Si de todos modos lo quiere administrable, lo dejo anotado para la EP-025 y mientras tanto `hook_md.py` usa las rutas relativas.
 
 Sigue pendiente su respuesta sobre la fila 21: ¿la hago en los cuatro pasos que propuse?
+
+### 121 · Usuario — 2026-10-05 09:57:06
+> Hágalo y hook_md que funcione por interfaz, páselo a sesión que está trabajando la EP-025
+
+**Agente** — 2026-10-05 10:59:28
+<!-- agente: 26481279-53bd-4e69-9c45-e06c3dc08ee2 -->
+
+Primero le paso lo de `hook_md.py` a la sesión que trabaja la EP-025.
+
+Mensaje enviado a la sesión `agente-3b`. Sigo con el paso 1 de la fila 21: los 6 programas que nadie usa. Confirmo que tampoco los importan otros programas de `validadores/`.
+
+Los 6 solo los usa la suite vieja `pruebas.py`, y sus pruebas ya tienen equivalente en `core/`. Agrego al análisis las rutas que toca este paso, para que queden declaradas, y borro.
+
+Corrijo dos pruebas de la suite vieja que buscaban los programas solo en la carpeta antigua. Ahora los programas viven también en `core/`.
+
+Paso 2: conecto `hook_historico.py` y `hook_analisis.py` a `core/`. `core/` ya tiene las mismas funciones como métodos de `Historico` y `AvisoResuelto`.
+
+Ajusto la referencia del análisis, que aparece dos veces, y termino la prueba.
+
+Todos tienen equivalente con pruebas en `core/`. Reviso cómo corre `validar.py internas` las pruebas del estándar, porque hoy apunta a `validadores/tests/` y hay que agregarle las de `core/`.
+
+Antes de tocar `validar.py internas`, compruebo si `manage.py test` corre las pruebas de `core/`, porque esa sería la única batería que queda.
+
+Con el entorno del proyecto (`.venv`) sí corren; con el Python del sistema falta el conector de MySQL. Calculo cuáles pruebas viejas dependen de programas que se van a borrar.
+
+Escribo los 7 programas de entrada (`instalar`, `mapa_tareas`, `vigencia`, `respaldo`, `historico`, `andamio` y `cerrar`). Antes declaro en la fila 21 todas las rutas que este paso borra o cambia.
+
+Encontré un defecto en `core/`: `instalar` y `sesion` se importan mutuamente, y solo funciona si se carga primero el paquete de validadores. Lo busco para corregirlo en la raíz.
+
+Quedó igual que antes. Ahora ajusto el programa de entrada de `instalar`.
+
+Los 7 programas de entrada funcionan. Borro los 61 programas viejos, las pruebas viejas de `validadores/tests/` y la suite `pruebas.py`.
+
+Ahora `validar.py internas`. Las pruebas del estándar viven en `core/` y se corren con `manage.py test` usando el Python del entorno del proyecto. Reviso las pruebas que ya tiene el corredor.
+
+Agrego dos pruebas para lo nuevo del corredor.
+
+Corro la batería completa del estándar con `validar.py internas`.
+
+Corrieron 1.303 pruebas de Cimiento: 4 fallas y 1 error. Veo cuáles son.
+
+Las 5 fallas salen de borrar los programas viejos, y arreglarlas es justo el paso 4. Veo el detalle de cada una.
+
+Hay más trabajo del previsto en el paso 4. Mido cuántos enlaces quedaron rotos por el borrado.
+
+Solo hay un enlace roto, en un plan cerrado que apunta a `validadores/tests/`. Ahora reviso cómo declaran su programa las 4 reglas del núcleo.
+
+Reemplazo cada mención por la ruta nueva en `core/`. Primero declaro esos archivos en la fila 21.
+
+El estándar ya no tiene enlaces rotos y las reglas del núcleo nombran programas que existen. Falta el mapa de lo amarrado a la herramienta. Reviso cómo lo mide su validador.
+
+El mapa no ve `core/`, por eso los programas «desaparecen». Le agrego las carpetas de `core/`, sin las pruebas, y rehago el mapa con lo que hay hoy.
+
+Escribo el mapa nuevo con lo que hay hoy: 29 piezas amarradas de 111.
+
+Corrijo las marcas de redacción: quito los semáforos y cambio el punto medio por comas.
+
+Ya no quedan marcas. Ahora ajusto la prueba del mapa que borraba `validadores/citas.py` en su copia temporal.
+
+Las 42 pruebas pasan. Regenero las reglas por tarea, porque cambió el texto de algunas reglas, y reviso los sellos con `metareglas`.
+
+Los 4 avisos de `metareglas` ya estaban antes de este cambio. Reviso el README de `validadores/`, que seguramente describe programas que ya no están.
+
+`validadores/docs/` tiene una ficha por cada programa viejo. Rehacer esas 47 fichas es un trabajo aparte. Por ahora dejo en los dos README de la carpeta una nota que diga dónde vive hoy el código.
+
+Ahora la versión y el registro de cambios.
+
+Pasan las 1.303 pruebas. Ajusto el título de `internas`, que todavía dice `validadores/tests/`, y marco la fila 21 como hecha.
+
+Terminé la fila 21 del análisis 116 en los cuatro pasos aprobados, y le pasé `hook_md.py` a la sesión que trabaja la EP-025. Corrí las 1.303 pruebas de Cimiento y pasaron todas. Falta su aprobación para el commit.
+
+**Qué quedó hecho:**
+- **`hook_md.py`:** le mandé el encargo a la sesión `agente-3b`, que trabaja la EP-025. Va con el campo «Rutas en los avisos» que se cambiaría en la pantalla «Proyectos», y la forma de leerlo, que es la misma de los límites de tokens. Esta sesión no lo tocó.
+- **Paso 1:** borré los 6 programas viejos que nadie usaba.
+- **Paso 2:** `hook_historico.py` y `hook_analisis.py` ya usan `core/`.
+- **Paso 3:** borré 60 programas viejos más, la suite `pruebas.py` y la carpeta `validadores/tests/`. Cada programa borrado tiene su equivalente probado en `core/`. En `validadores/` quedaron:
+  - los 8 comandos que llaman las reglas, las plantillas y los proyectos: `validar`, `instalar`, `andamio`, `cerrar`, `historico`, `mapa_tareas`, `respaldo` y `vigencia`. Ahora solo le pasan la orden a `core/`;
+  - los puentes de los enganches;
+  - los 4 programas que todavía usa `hook_md.py`.
+- **`validar.py internas`:** ahora corre las pruebas de `core/` con el Python del entorno del proyecto (`.venv`). Con el Python del sistema faltaba el conector de MySQL.
+- **Paso 4:**
+  - Las 10 reglas y documentos de `base/` que nombraban un programa borrado ahora nombran su ruta en `core/`.
+  - El mapa de lo amarrado a la herramienta quedó rehecho: 29 piezas amarradas de 111.
+  - Corregí el único enlace roto.
+  - La versión queda en 54.4.0, con su entrada en el registro de cambios.
+
+**Lo que quedó pendiente:**
+- Las 47 fichas de `validadores/docs/` describen los programas viejos. Por ahora solo puse una nota en los dos README de la carpeta.
+- En el camino apareció un defecto en `core/`: `instalar` y `checklist` se importan entre sí, y solo funcionan si se cargan en cierto orden. Lo dejé resuelto en la puerta de `instalar.py`, pero la causa sigue en el código.
+- Una prueba de `TestPresupuesto`, de la suite vieja, ya fallaba antes de este cambio. Venía del último commit de la otra sesión, y la prueba se fue al borrar la suite.
+
+**Lo que falta, en orden:**
+1. Fila 22: cerrarla cuando la EP-025 conecte `hook_md.py`. Después se borran `comun.py`, `enlaces.py`, `marcas.py` y `sesiones.py`.
+2. Decisiones abiertas: dónde vive la configuración de los validadores, y qué se hace con `memoria/parecidas.py` y con `ambiente.py`.
+3. Aprobar el análisis 116.
+4. El commit, solo con su aprobación.
+
+### 122 · Usuario — 2026-10-05 11:25:07
+> pregunta: cómo así que aprobar el análisis 116 luego eso ya no estaba aprobado?
+
+**Agente** — 2026-10-05 11:25:34
+<!-- agente: 3daf2e4a-17da-4b04-b9d4-a04c85e4a377 -->
+
+No, el análisis 116 nunca quedó aprobado como un todo. Lo revisé y el archivo no tiene la línea «> **Aprobado**», y desde el turno 76 está en pausa.
+
+Lo que sí aprobó, por separado, fueron sus partes:
+- los planes de las HU-008, HU-026 y HU-027, uno por uno;
+- cada encargo hecho de una vez, sin fase, con «Hágalo»;
+- la reescritura de las filas 2, 4, 5 y 6 y del acuerdo 7.
+
+Con eso se pudo trabajar, pero el análisis sigue sin su aprobación general. Eso tiene dos efectos:
+- **Las reglas que salieron de la HU-008 (`02·F4` y `02·F25`) no se le aplican.** Esas reglas dicen que, si el análisis está aprobado, sus planes ya no piden aprobación aparte. Como este no lo está, cada plan le pidió su aprobación.
+- **No se puede cerrar.** Mientras no tenga la línea de aprobado, el análisis sigue prendido o en pausa y el aviso de «análisis en curso» seguirá saliendo en cada mensaje.
+
+Lo que propongo es aprobarlo cuando la fila 22 quede cerrada, es decir, cuando la sesión de la EP-025 conecte `hook_md.py`. Así queda aprobado con todo lo que dice ya hecho.
+
+### 123 · Usuario — 2026-10-05 11:30:24
+> pregunta de acá ya no queda nada más?
+
+**Agente** — 2026-10-05 11:30:38
+<!-- agente: ffa738da-8851-49c4-9cf7-1c479a8d0a65 -->
+
+Sí queda algo, pero poco. Del análisis 116 solo falta lo que depende de la otra sesión y lo que tiene que decidir usted:
+
+1. **Fila 22:** la sesión de la EP-025 tiene que conectar `hook_md.py` a `core/`. Cuando lo haga, borro los 4 programas viejos que todavía usa: `comun.py`, `enlaces.py`, `marcas.py` y `sesiones.py`.
+2. **Aprobar el análisis 116,** cuando la fila 22 esté cerrada.
+3. **El commit** de todo lo de esta sesión, cuando usted lo apruebe.
+
+Además quedan cosas que salieron en el camino y que el análisis no contempla, así que cada una tendría su propio pendiente:
+- **Las 47 fichas de `validadores/docs/`** describen los programas viejos. Hay que rehacerlas sobre `core/` o retirarlas.
+- **El ciclo entre `instalar` y `checklist`:** se importan entre sí. Hoy funciona porque la puerta de `instalar.py` los carga en el orden correcto, pero la causa sigue en `core/`.
+- **Tres decisiones abiertas:** dónde vive la configuración de los validadores, y qué se hace con `memoria/parecidas.py` y con `ambiente.py`.
+
+Ninguna de las tres frena el análisis 116.
+
+### 124 · Usuario — 2026-10-05 11:39:23
+> Pregunta debemos abrir el análisis 116?
+
+**Agente** — 2026-10-05 11:39:38
+<!-- agente: cb47f2d0-8a3c-4485-a66b-4d10703ed187 -->
+
+Sí, recomiendo retomarlo. El análisis 116 no está cerrado: está en pausa desde el turno 76, así que no hay que abrir uno nuevo, sino volver a prenderlo.
+
+Hay que retomarlo porque los tres asuntos que salieron en el camino son del mismo tema: el código de Cimiento en un solo lugar. Son estos:
+- rehacer o retirar las 47 fichas de `validadores/docs/`;
+- quitar el ciclo de importación entre `instalar` y `checklist`;
+- las decisiones sobre dónde vive la configuración de los validadores, y qué se hace con `memoria/parecidas.py` y con `ambiente.py`.
+
+Hay un recuerdo que lo pide así: mientras un análisis está abierto, lo que salga sobre su tema se trata en él, no como pendientes aparte.
+
+El camino sería este:
+1. Prenderlo de nuevo con «Analicemos».
+2. Agregar esos tres asuntos como filas nuevas de «Lo que se tiene que hacer», con la decisión que se tome sobre cada uno.
+3. Aprobarlo cuando la fila 22 de `hook_md.py` esté cerrada.
+
+Si en cambio se aprueba como está, esos tres asuntos quedarían sueltos, y habría que abrir un pendiente nuevo para ellos.
+
+### 125 · Usuario — 2026-10-05 11:40:16
+> pregunta: cómo se que se abre?
+
+**Agente** — 2026-10-05 11:40:46
+<!-- agente: cceaf91c-c511-4e75-92fe-42be4dc50fc5 -->
+
+Para retomarlo, el mensaje tiene que empezar con **«Analicemos: el pendiente 116»**. «Analicemos» solo, sin el número del pendiente, se queda en una conversación de chat y no prende nada.
+
+Hay tres señales de que quedó prendido:
+1. **El aviso de cada mensaje cambia.** Hoy dice «[ANÁLISIS EN CURSO] … está en pausa desde el turno 76». Prendido, deja de decir «en pausa».
+2. **La conversación se copia sola al análisis.** Cada mensaje y su respuesta aparecen como turnos nuevos (77, 78…) en la sección «Conversación» de `analisis-1.md`, debajo del turno 76.
+3. **Queda anotado en el estado de esta sesión,** en `historico-chat/.estado/analisis-en-curso/`.
+
+Para manejarlo después:
+- **«Pare»** lo vuelve a pausar. Los turnos que pasen en pausa no entran al análisis.
+- **«Apruebo el análisis»** lo cierra: queda la marca de aprobado con la fecha y el turno.
+
+### 126 · Usuario — 2026-10-05 11:41:02
+> Analicemos: el pendiente 116
+
+**Agente** — 2026-10-05 11:42:08
+<!-- agente: fd432654-7350-433f-9f2c-c19e6a2b05bc -->
+
+Retomo el análisis 116. Quedan cuatro asuntos por decidir. Para cada uno doy mi recomendación:
+
+| # | Asunto | Cómo está hoy | Recomendación |
+|---|---|---|---|
+| A | Las 47 fichas de `validadores/docs/` | Describen programas que ya no existen | Retirarlas (el historial de git las conserva) y dejar un README que remita a la documentación que va dentro de cada clase de `core/`. Rehacerlas duplicaría lo que el código ya explica |
+| B | El ciclo entre `instalar` y `checklist` | Se importan entre sí, y hoy funciona solo porque la puerta de `instalar.py` los carga en orden | Pasar las listas que comparten (`HOOKS`, `HOOKS_CLAUDE`, `CONFIG_AGENTE`, `IGNORADOS`) a un módulo propio en `core/comun/` que ambos importen. Así el ciclo desaparece en la causa |
+| C | `memoria/parecidas.py` | Esta duda era por el control de reglas parecidas de la plataforma vieja, que se perdió | Darla por cerrada: la HU-027 construyó `core/validadores/parecidas.py`. El `memoria/parecidas.py` que existe es otro: compara señales y sigue en uso |
+| D | `config/ambiente.py` | Se borró, Cimiento dejó de arrancar, y la sesión de la EP-025 lo restauró y lo commiteó (`2c3b67b`): lee el `.env` con los datos de MariaDB | Conservarlo: hoy es necesario para que Cimiento arranque |
+| E | Dónde vive la configuración de los validadores | Abierta desde la pregunta de si se pueden configurar por pantalla | Por proyecto, en la pantalla «Proyectos», con los valores del estándar por defecto, igual que los límites de tokens. Le correspondería a la EP-025, como `hook_md.py` |
+
+Si se aprueban así:
+- A y B entran como filas nuevas de «Lo que se tiene que hacer», para hacerlas de una vez, sin fase.
+- C y D quedan cerradas.
+- E pasa a la sesión de la EP-025.
+
+**¿Aprueba las cinco recomendaciones (A a E), o cambia alguna?**
+
+### 127 · Usuario — 2026-10-05 11:45:41
+> analicemos: pasar B a interfaz ?
+
+**Agente** — 2026-10-05 11:45:59
+<!-- agente: a1f50d7d-ba99-4bba-8148-c23776047228 -->
+
+Se puede, pero son dos cosas distintas y conviene separarlas.
+
+**1. El ciclo de importación.** Es un defecto del código: `instalar` y `checklist` se necesitan entre sí para arrancar. Aunque las listas se manejen después por pantalla, el código tiene que poder leerlas de un solo lugar, sin ese ciclo. Esto hay que hacerlo igual, y es pequeño.
+
+**2. Administrar las listas por pantalla.** Esas listas dicen qué enganches instala Cimiento en cada proyecto. Pasarlas a la pantalla «Proyectos» permitiría prender o apagar enganches por proyecto. Hay tres cosas que tener en cuenta:
+- **Algunos enganches no se pueden apagar.** El freno, el histórico de la conversación y el que tapa las claves cumplen reglas del núcleo. La EP-008 ya había decidido que «lo obligatorio no se apaga», así que la pantalla tendría que mostrarlos bloqueados.
+- **El instalador tiene que funcionar sin la base de datos.** Si no la encuentra, tiene que usar la lista del estándar, igual que hacen hoy los límites de tokens.
+- **Los cambios por pantalla no llegan solos al proyecto.** Lo que se cambie solo toma efecto cuando el instalador vuelve a correr en ese proyecto. La pantalla tendría que avisarlo, o correr el instalador.
+
+**Recomendación:**
+- B se queda como está, para hacerlo de una vez: las listas pasan a un módulo propio en `core/comun/` y el ciclo desaparece.
+- Elegir los enganches de cada proyecto por pantalla, con los obligatorios bloqueados, va como encargo aparte para la sesión de la EP-025, junto con E.
+
+**¿Aprueba separarlo así?**
+
+### 128 · Usuario — 2026-10-05 11:51:45
+> analicemos: 
+>
+> <pasted_content id="8b0b">
+> Cada proyecto debe saber qué tiene configurado de acuerdo con la configuración definida para ese proyecto en la interfaz.
+>
+> De esta manera, la configuración de los enganches no se asume ni se define de forma independiente en cada proyecto, sino que queda determinada por lo que se haya configurado en la interfaz de **Proyectos**. Los enganches obligatorios seguirán siendo los establecidos por Cimiento y no podrán desactivarse, mientras que los demás podrán configurarse según las necesidades de cada proyecto.
+>
+> Así, cada proyecto tiene claramente definida su propia configuración y puede saber qué enganches debe tener habilitados cuando se ejecute el instalador.
+> </pasted_content id="8b0b">
+
+**Agente** — 2026-10-05 11:52:02
+<!-- agente: d5917512-d4be-408f-b0a2-79262e8b4257 -->
+
+Entendido. Lo dejo como acuerdo del análisis con estas palabras:
+
+> **12.** Lo que tiene cada proyecto lo decide su configuración en la pantalla «Proyectos» de Cimiento, no el proyecto por su cuenta. Los enganches obligatorios los fija Cimiento y no se pueden apagar. Los demás se prenden o se apagan por proyecto, y el instalador pone en cada proyecto exactamente lo que esa configuración dice.
+
+Antes de escribirlo hay dos puntos que dependen de su decisión:
+
+**1. Cómo sabe el proyecto lo que tiene configurado.** Recomiendo que el instalador lea la configuración del proyecto en Cimiento y escriba en el proyecto dos cosas:
+- la configuración que la herramienta ejecuta (`.claude/settings.json`);
+- una copia legible en `.agente/enganches.md`, con qué está prendido, qué está apagado y la fecha.
+
+Así el proyecto tiene su configuración escrita y la puede consultar sin abrir Cimiento.
+
+**2. Qué pasa si Cimiento no responde al instalar.** Recomiendo que el instalador no adivine:
+- si el proyecto ya tiene `.agente/enganches.md`, conserva lo último que se instaló y avisa que no pudo leer Cimiento;
+- si es un proyecto nuevo y nunca se ha instalado, instala solo los enganches obligatorios y lo dice.
+
+Esto vale para los enganches. La misma regla serviría después para el resto de la configuración de los validadores, que es el asunto E.
+
+**Sobre B:** el ciclo de importación se corrige igual, y las listas pasan a un solo lugar del código. Esa lista queda como el catálogo de los enganches que existen, con su marca de obligatorio; qué tiene prendido cada proyecto ya no sale de ahí, sino de lo que diga la pantalla.
+
+**¿Aprueba el acuerdo 12 con esas dos recomendaciones?**
+
+### 129 · Usuario — 2026-10-05 12:03:20
+> analicemos:
+>
+> <pasted_content id="8b0b">
+> El instalador debe saber qué instalar en cada proyecto según lo que Cimiento tenga definido en su configuración para la instalación de proyectos. Sin embargo, **cada proyecto también debe conocer en todo momento qué tiene instalado y qué tiene configurado en Cimiento**, sin depender de tener que consultar la interfaz cada vez.
+>
+> Recuerde que hemos hablado de mantener un equilibrio entre la flexibilidad de Cimiento y la rigidez de los proyectos que lo implementan. Aunque debe existir una configuración base que establezca las reglas comunes, también debe ser posible realizar ajustes específicos en cada proyecto cuando sea necesario.
+>
+> Por ejemplo, en algún momento puedo necesitar deshabilitar temporalmente una regla que me está frenando mientras la corrijo. Ya nos ha ocurrido que varias reglas nos han impedido avanzar y ha sido necesario realizar cambios para continuar. Por eso, la configuración no debe convertirse en un bloqueo que impida corregir las propias reglas de Cimiento.
+>
+> La idea es que **Cimiento defina la configuración de cada proyecto, pero que cada proyecto tenga claridad sobre lo que tiene instalado y configurado, y que exista la flexibilidad necesaria para realizar ajustes sin afectar a los demás proyectos**. Así se mantiene una base común, sin perder la independencia que cada proyecto necesita para avanzar.
+> </pasted_content id="8b0b">
+
+**Agente** — 2026-10-05 12:03:40
+<!-- agente: c2ed16fd-7743-4890-8551-db733aa42968 -->
+
+Ajusto el acuerdo 12 con lo que plantea:
+
+> **12.** La configuración de cada proyecto se arma en tres capas:
+> 1. **La base de Cimiento**, común a todos. Incluye los enganches y las reglas obligatorias.
+> 2. **La configuración del proyecto**, en la pantalla «Proyectos»: prende o apaga lo que no es obligatorio.
+> 3. **Un ajuste temporal en el propio proyecto**, para suspender una regla o un enganche que está frenando el trabajo mientras se corrige. Lleva motivo y fecha de vencimiento, afecta solo a ese proyecto y Cimiento lo muestra.
+>
+> El proyecto siempre sabe qué tiene: Cimiento escribe en `.agente/configuracion.md` lo instalado, lo configurado y los ajustes vigentes. Lo escribe al instalar y cada vez que se guarda un cambio en la pantalla, así que nadie tiene que consultar la pantalla para saberlo. Ninguna configuración puede impedir corregir las reglas de Cimiento.
+
+Ya existe algo parecido para la capa 3: la palabra «Corrija» deja corregir las herramientas del proceso durante una respuesta, sin abrir análisis. El ajuste temporal sería esa misma idea, pero con plazo y escrita en el proyecto.
+
+**Lo único que falta decidir es qué se puede suspender en la capa 3.** Recomiendo:
+- **Nunca:** lo que protege algo que no se recupera. Es decir, tapar las claves (`00·N6`) y guardar el histórico de la conversación.
+- **Sí, con vencimiento:** todo lo demás, incluido el freno, que ya nos ha bloqueado arreglos varias veces.
+
+**¿Aprueba el acuerdo 12 con ese límite?**
+
+### 130 · Usuario — 2026-10-05 12:04:59
+> apruebo
+
+**Agente** — 2026-10-05 12:05:45
+<!-- agente: 93152cc6-baee-478d-8165-26cec775efb3 -->
+
+Escribo el acuerdo 12 en el análisis y las filas que salen de él.
+
+Le paso la fila 24 a la sesión de la EP-025.
+
+El acuerdo 12 quedó escrito en el análisis 116, con el límite aprobado: nunca se suspende tapar las claves ni el histórico de la conversación. De él salen dos filas nuevas:
+- **Fila 23:** pasar a `core/comun/enganches.py` la lista de enganches que existen, con la marca de cuáles son obligatorios. Así `instalar` y `checklist` ya no se importan entre sí. Se hace de una vez, sin fase.
+- **Fila 24:** construir las tres capas de configuración por proyecto. Se la pasé a la sesión de la EP-025 (`agente-3b`), junto con el encargo de `hook_md.py`, que queda como una opción más de la pantalla.
+
+**Siguen sin respuesta tres de las recomendaciones anteriores:**
+- **A:** retirar las 47 fichas de `validadores/docs/` y dejar un README que remita a `core/`.
+- **C:** dar por cerrada la duda de `memoria/parecidas.py`, porque el control de reglas parecidas ya lo construyó la HU-027.
+- **D:** conservar `config/ambiente.py`, porque Cimiento lo necesita para arrancar.
+
+**¿Aprueba A, C y D? Y para hacer la fila 23, ¿«Hágalo»?**
+
+### 131 · Usuario — 2026-10-05 12:07:25
+> apruebo
+
+**Agente** — 2026-10-05 12:33:57
+<!-- agente: 9ddba2f0-b7a8-47e2-b31c-2a0b77684dde -->
+
+Con «apruebo» quedan aprobados A, C y D, y la fila 23 se hace ya. Escribo los acuerdos en el análisis y después hago las filas.
+
+Antes de borrar reviso dos archivos de `validadores/docs/` que no parecen fichas: `reglas-validables.md` y `readme-fuente.md`.
+
+También son fichas, así que se retiran. Borro las 46 y reescribo el README de la carpeta.
+
+El freno no reconoce la carpeta como ruta declarada. La restauro nombrando cada archivo, que sí está declarado en la fila 25.
+
+Las 47 fichas volvieron y el estándar ya no tiene enlaces rotos. Mientras se decide qué hacer con A, sigo con la fila 23. Miro dónde están definidas las listas de enganches y quién las usa.
+
+El que tapa las claves es `hook_historico.py`, el mismo que guarda el histórico, así que es el que no se suspende. Escribo `core/comun/enganches.py`.
+
+Hay otro programa que importa `Instalador` al cargar: `validadores/herramientas.py`. Busco todos los que lo hacen.
+
+Queda otro ciclo, este entre `sesion` y `checklist`, que ya existía antes de este cambio. Lo corrijo igual: `checklist` carga `ArranqueDeSesion` en el momento de usarlo.
+
+Todos los módulos cargan ya en cualquier orden. Quito el arreglo provisional de la puerta de `instalar.py` y agrego pruebas que cargan cada módulo por separado.
+
+Pasan 702 pruebas. Corro la batería completa para confirmar que no se rompió nada más.
+
+Dos fallas. La primera es mía: el nuevo `enganches.py` nombra la herramienta y falta en el mapa. La agrego como amarrada y actualizo el recuento.
+
+Terminé la fila 23. La fila 25 la dejé deshecha, porque borrar las fichas rompía 36 enlaces.
+
+**Fila 23:**
+- La lista de enganches quedó en `core/comun/enganches.py`, con `hook_historico.py` marcado como el que no se suspende. Ese mismo enganche es el que tapa las claves.
+- Ya no hay ciclos de importación. Además del ciclo entre `instalar` y `checklist`, apareció otro que ya existía entre `sesion` y `checklist`. Ahora cada módulo carga por su cuenta, en cualquier orden, y una prueba lo comprueba.
+- Quité el arreglo provisional que tenía la puerta de `instalar.py`. El mapa de lo amarrado a la herramienta queda en 30 piezas de 112.
+- Pasan 1.305 pruebas, menos una, que no es de esta fila: `cada_subcomando_sigue_corriendo` falla por un enlace roto en el `epica.md` de la EP-025. Ese enlace apunta a una HU-011 que la otra sesión todavía no ha creado.
+
+**Fila 25 (las fichas):** al borrarlas quedaron rotos 36 enlaces:
+- 30 en fases cerradas de las EP-004, EP-005 y EP-007;
+- 4 en resúmenes de sesiones de agosto y septiembre;
+- 1 en `CHANGELOG.md`.
+
+Para arreglarlos habría que editar documentos que son historia, así que devolví las 47 fichas a su lugar. Hay dos caminos:
+1. **Conservar las fichas con un aviso al principio:** «describe el programa como era antes del 2026-10-05; hoy vive en `core/…`». No se toca ningún documento histórico. Es lo que recomiendo.
+2. **Borrarlas y cambiar los 36 enlaces por texto.** Así se editan 34 documentos cerrados.
+
+**¿Cuál camino toma para las fichas?**
+
+### 132 · Usuario — 2026-10-05 13:19:56
+> analicemos: 
+>
+> <pasted_content id="8b0b">
+> No entiendo las dos opciones ni cuál sería la afectación para **Cimiento o para los proyectos**.
+>
+> Si las fichas se están eliminando porque **ya no se necesitan y la información que contenían ahora está en `core/…`**, no entiendo por qué habría que conservarlas o modificar documentos históricos para mantener sus enlaces.
+>
+> Primero habría que aclarar qué problema real genera eliminar esas fichas y qué impacto tendría para Cimiento o para los proyectos que las implementan. Si no tienen ninguna utilidad actual y su información ya está ubicada donde corresponde, la eliminación debería poder hacerse sin generar una dependencia innecesaria de esos archivos históricos.
+>
+> La historia debe conservarse, pero eso no significa que tengamos que mantener archivos que ya no hacen parte de la estructura actual solo porque existen enlaces antiguos hacia ellos. Hay que diferenciar entre **preservar la historia** y **mantener archivos que ya no son necesarios**.
+> </pasted_content id="8b0b">
+
+**Agente** — 2026-10-05 13:20:18
+<!-- agente: 6b3da56d-9d47-4dbe-8dd1-2cfe819608cd -->
+
+Eliminar las fichas no afecta a Cimiento ni a los proyectos: nadie las usa para funcionar. El único problema real lo crea el revisor de enlaces del estándar, `validar.py estandar`.
+
+**Qué pasa al borrarlas.** Ese revisor encuentra 36 documentos viejos que enlazan a fichas que ya no existen y reporta cada enlace como falla. Ese revisor corre antes de cada `push` del estándar, así que con esas fallas el `push` se detiene. No pasa nada más: ningún proyecto lee esas fichas.
+
+**Por qué propuse conservarlas.** Lo hice solo para que el revisor no detuviera el `push`. Usted tiene razón en que eso mezcla dos cosas: conservar la historia no obliga a conservar los archivos que la historia enlaza.
+
+**Lo que recomiendo, siguiendo su criterio:**
+1. Borrar las 46 fichas.
+2. No tocar los documentos históricos: sus enlaces quedan como se escribieron, porque así eran ese día.
+3. Enseñarle al revisor de enlaces que un archivo se puede retirar a propósito. Habría una lista de rutas retiradas, con la fecha y el motivo. Un enlace a una ruta de esa lista se reporta como aviso («apunta a algo retirado el 2026-10-05») y no como falla. Un enlace roto que no esté en la lista sigue siendo falla.
+
+Lo mismo servirá la próxima vez que se retire algo, sin volver a editar la historia.
+
+**¿Aprueba hacerlo así?**
+
+### 133 · Usuario — 2026-10-05 13:26:42
+> analicemos: 
+>
+> <pasted_content id="8b0b">
+> Mi lógica humana me dice que, si un archivo se elimina porque ya no se necesita, **no debería quedar ningún enlace que lo siga referenciando**.
+>
+> Entiendo que esos enlaces hacen parte de documentos históricos y que no se quieren modificar porque representan cómo estaba el proyecto en ese momento. Pero, desde el punto de vista lógico, si el archivo ya no existe, mantener referencias hacia él significa dejar enlaces rotos.
+>
+> Por eso, antes de aprobar la solución de registrar las rutas como «retiradas» para que el revisor las ignore, considero que debemos analizar si realmente tiene sentido conservar esas referencias o si debemos buscar una forma de mantener la historia sin dejar enlaces hacia archivos que ya fueron eliminados.
+>
+> La idea no es conservar las fichas únicamente para satisfacer al revisor, sino que el revisor debería entender que esos archivos fueron retirados de manera intencional y, al mismo tiempo, debemos tener claro cómo se debe manejar la referencia histórica a algo que ya no existe.
+> </pasted_content id="8b0b">
+
+**Agente** — 2026-10-05 13:27:16
+<!-- agente: f73402ac-95e1-467d-9975-8474f2c857eb -->
+
+Su lógica es correcta: si un archivo se elimina, no debe quedar ningún enlace apuntando a él. Y hay una forma de cumplirla sin cambiar lo que dice la historia.
+
+**La historia es el texto, no el destino del enlace.** Lo que un documento viejo dice ("se documentó en la ficha de `hook_sesion`") se queda igual. Lo único que cambia es a dónde lleva el clic: ya no va al archivo borrado, sino a la versión que quedó guardada en git. El repositorio está en GitHub, así que cada ficha se puede enlazar tal como estaba en su último commit, por ejemplo:
+`https://github.com/nowen21/regalas-agente/blob/7e5d797/validadores/docs/hook_sesion.md`
+
+Ese enlace siempre funciona, porque esa versión no se borra nunca. Así:
+- El archivo deja de existir en el proyecto.
+- No queda ningún enlace roto.
+- Quien lee el documento viejo puede abrir la ficha exactamente como era ese día.
+
+**Para que no dependa de acordarse:** retirar un archivo sería una orden propia (`validar.py retirar <ruta>`, o una opción de `cerrar.py`, que ya arrastra las citas al cerrar un pendiente). Esa orden haría tres cosas:
+1. Busca todo enlace hacia el archivo.
+2. Cambia cada uno por el enlace a su última versión en git.
+3. Borra el archivo.
+
+Todo queda en el mismo cambio. Así el revisor de enlaces sigue siendo estricto: un enlace a algo que no existe es falla siempre, y no hace falta ninguna lista de excepciones.
+
+**Afectación:** para los proyectos es una orden nueva que les sirve igual cuando retiren algo. En Cimiento se cambian 36 enlaces en 34 documentos viejos, sin tocar su texto.
+
+**¿Aprueba manejarlo así: la orden de retirar y aplicarla a las fichas?**
+
+### 134 · Usuario — 2026-10-05 14:09:01
+> analicemos: pero para qué necesita la historia de algo que ya no está? por eso es historia
+
+**Agente** — 2026-10-05 14:09:18
+<!-- agente: 0f698c7a-8c65-4d6d-8612-e244437f0c0c -->
+
+De acuerdo. Si algo ya no está, no hace falta llevar al lector a la versión vieja. Basta con que el documento histórico siga diciendo lo que dijo, sin enlace.
+
+**Lo que propongo entonces:**
+- Al retirar un archivo, cada enlace que apunte a él se convierte en texto simple. Por ejemplo, `[la ficha de hook_sesion](../validadores/docs/hook_sesion.md)` queda como `la ficha de hook_sesion`.
+- El texto del documento no cambia, solo deja de ser un enlace.
+- El archivo se borra en ese mismo cambio.
+
+**La orden de retirar** hace eso sola: busca los enlaces al archivo, los convierte en texto y lo borra. Así no depende de que alguien se acuerde. El revisor de enlaces sigue igual de estricto, porque nunca queda un enlace a algo que no existe.
+
+**Para las fichas:**
+- se borran las 46;
+- los 36 enlaces de 34 documentos viejos pasan a texto simple;
+- el README de `validadores/docs/` se reemplaza por uno que remite a `core/`.
+
+**Para los proyectos:** les queda una orden nueva para retirar sus propios archivos de la misma forma.
+
+**¿Aprueba así?**
+
+### 135 · Usuario — 2026-10-05 14:14:46
+> apruebo
+
+**Agente** — 2026-10-05 14:29:17
+<!-- agente: d26a97e5-f61b-45ad-a97c-26fcf26aab48 -->
+
+Escribo el acuerdo en el análisis y construyo la orden de retirar. Primero miro qué ofrece `core/comun/markdown.py` para leer enlaces.
+
+Escribo `core/herramientas/retirar.py`. Usa las mismas exclusiones del revisor de enlaces: no toca transcripciones, palabras del usuario ni la conversación copiada en un análisis.
+
+Primero tengo que declarar las rutas en el análisis. Escribo el acuerdo 15 y la fila 26 con los archivos del programa.
+
+La simulación encuentra los mismos 36 enlaces del revisor, más los 47 del README de la carpeta, que igual se reescribe. Declaro esos documentos en la fila 25 y aplico.
+
+Ahora reescribo el README de `validadores/docs/`, que quedó con los nombres de las fichas sin enlace.
+
+Esa falla es el enlace de la EP-025 que todavía no existe; es de la otra sesión. Escribo las pruebas de la orden de retirar.
+
+El ejemplo de la documentación de `retirar.py` nombraba `hook_sesion.md`, y el contador lo tomó como amarre. Cambio el ejemplo por uno neutro.
+
+Corro la batería completa una vez más.
+
+Las fichas quedaron retiradas tal como se aprobó, y ya existe la orden para retirar archivos sin dejar enlaces rotos.
+
+**Lo hecho:**
+- **La orden de retirar:** `python validadores/retirar.py <archivos>` muestra qué cambiaría sin tocar nada; con `--aplicar` lo hace. Convierte en texto simple cada enlace que nombraba el archivo y lo borra en el mismo cambio. No toca las transcripciones, las palabras del usuario ni la conversación copiada en un análisis. Tiene 5 pruebas.
+- **Las fichas:** con esa orden se retiraron las 46 de `validadores/docs/`. Los 36 enlaces de los documentos viejos quedaron como texto, sin cambiar lo que dicen. El README de la carpeta ahora remite a `core/`.
+- **El análisis 116** tiene el acuerdo 15 escrito y las filas 23, 25 y 26 marcadas como hechas.
+- **El mapa** de lo que depende de la herramienta, el registro de cambios y el README de `validadores/` quedaron al día.
+
+**Pruebas:** corrieron 1.310 y fallaron 2:
+- `cada_subcomando_sigue_corriendo` falla por el enlace roto de la EP-025: su `epica.md` apunta a una HU-011 que esa sesión todavía no ha creado. No viene de este trabajo y lo resuelve esa sesión al crear la HU.
+- La segunda no está identificada. Revisé solo la primera y supuse que el conteo era una sola falla, pero el resumen dice «failures=1, errors=1». La segunda no la he revisado. Es lo próximo que hago antes de dar este trabajo por terminado.
+
+**Lo que falta, en orden:**
+1. Revisar esa segunda prueba que falla.
+2. Que la sesión de la EP-025 construya las filas 22 y 24: conectar `hook_md.py` y las tres capas de configuración por proyecto.
+3. Borrar `comun.py`, `enlaces.py`, `marcas.py` y `sesiones.py`, cuando `hook_md.py` ya no los use.
+4. Aprobar el análisis 116 con «Apruebo el análisis».
+5. El commit, solo con su aprobación.
+
+### 136 · Usuario — 2026-10-05 14:35:12
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\historico-chat\.estado\analisis-en-curso\2026-10-04-sesion-3.txt in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> Continúe
+
+**Agente** — 2026-10-05 14:45:06
+<!-- agente: 7b6098d5-396d-4061-892b-25f80692ccad -->
+
+Reviso qué pruebas fallan en la batería completa.
+
+Ya no falla ninguna prueba: corrieron las 1.310 de Cimiento y pasaron todas (4 se saltan porque el entorno del proyecto no tiene instalada la búsqueda por significado). El revisor de enlaces del estándar tampoco reporta nada.
+
+**Lo que dije en el informe anterior estaba mal.** No había una segunda prueba fallando. `validar.py internas` reportó una sola falla: la de los enlaces, que venía del `epica.md` de la EP-025. La sesión de la EP-025 ya creó su HU-011, así que ese enlace dejó de estar roto y esa prueba vuelve a pasar.
+
+**Lo que falta, en orden:**
+1. Que la sesión de la EP-025 construya las filas 22 y 24 del análisis 116: conectar `hook_md.py` a `core/` y las tres capas de configuración por proyecto.
+2. Cuando `hook_md.py` ya no los use, retirar con la orden nueva `comun.py`, `enlaces.py`, `marcas.py` y `sesiones.py`.
+3. Aprobar el análisis 116 con «Apruebo el análisis».
+4. El commit de todo lo de esta sesión, solo con su aprobación.
+
+### 137 · Usuario — 2026-10-05 15:50:21
+> pregunta: osea que cimiento se puede dividir en mini cimientos?
+
+**Agente** — 2026-10-05 15:50:37
+<!-- agente: 5cbf1fa9-a087-4cad-9066-008a09a5b079 -->
+
+No en el sentido de copias separadas. Cimiento sigue siendo uno solo, pero cada proyecto recibe su propia versión a la medida, armada a partir de él.
+
+Con el acuerdo 12, lo que tiene cada proyecto se arma en tres capas:
+1. **La base de Cimiento,** igual para todos. Incluye lo obligatorio.
+2. **La configuración de ese proyecto** en la pantalla «Proyectos»: qué se prende y qué se apaga.
+3. **Sus ajustes temporales,** con motivo y fecha de vencimiento.
+
+Cada proyecto se ve como un Cimiento propio, pero nada está copiado. Si se corrige una regla o un validador en Cimiento, todos los proyectos reciben el arreglo, cada uno con su configuración.
+
+Por eso conviene que no sean copias: si cada proyecto tuviera su propio Cimiento, un arreglo habría que hacerlo en cada uno, que es justo el problema que resolvió este análisis con el código repetido.
+
+Por dentro, Cimiento sí está dividido en partes con un trabajo cada una:
+- `core/comun/`, lo que todos comparten;
+- `core/validadores/`, las comprobaciones;
+- `core/enganches/`, lo que corre en cada mensaje;
+- `core/herramientas/`, las órdenes que se piden a mano.
+
+Esas partes no se reparten entre proyectos: todos usan las mismas.
+
+### 138 · Usuario — 2026-10-05 15:52:30
+> analicemos lo pregunto porque cuando las tereas sun muy grandes claude code dice que que tiene varios agentes trabajando entonce yo podría hacer lo mismo tener agentes que realicen tareas específicas?
+
+**Agente** — 2026-10-05 15:53:15
+<!-- agente: 3fa48059-4849-42e9-9273-02c6fd7ce82f -->
+
+Sí se puede, y una parte ya existe.
+
+**Lo que hace Claude Code.** Cuando una tarea es grande, la reparte entre subagentes. Cada subagente es otra instancia de Claude que recibe un encargo, lo hace con sus propias instrucciones y entrega el resultado al agente principal. En esta misma sesión lo usé para pasar los validadores a `core/`: hubo un agente por grupo (reglas, instalación, proceso, sesión y freno) trabajando al tiempo.
+
+**Lo que ya tiene el estándar.** La regla `00·ID6` define roles para cada etapa: Explorador, Diseñador, Planificador, Implementador, Verificador, Crítico y Orquestador. Esos roles ya están escritos como habilidades en `skills/`, por ejemplo `analizar-proyecto`, `implementar`, `revisar-critico` y `sdd-orchestrator`. Lo que no existe todavía son los agentes propios, es decir, archivos en `.claude/agents/` que convertirían cada rol en un agente fijo, con sus instrucciones, sus herramientas permitidas y su modelo.
+
+**Lo que se ganaría:**
+- Trabajo en paralelo en tareas grandes.
+- Cada agente con un encargo cerrado. Por ejemplo, un Crítico que solo revisa y no puede escribir.
+- El agente principal gasta menos memoria, porque no lee todos los archivos él mismo.
+
+**Lo que hay que cuidar:**
+- **Consumo.** Cada agente gasta por su cuenta, y esta sesión ya va en 5,4 millones de fichas.
+- **Reglas.** Cada agente tiene que recibir las mismas reglas. El freno y los demás enganches sí corren sobre lo que hace un subagente, pero las reglas que llegan con cada mensaje no le llegan automáticamente.
+- **Archivos.** Dos agentes no deben escribir el mismo archivo al tiempo.
+
+**Recomendación:** este tema no es del análisis 116, que trata del código repetido. Propongo anotarlo como un pendiente nuevo: «los roles del estándar como agentes de Claude Code», y analizarlo por aparte.
+
+**¿Lo anoto como pendiente nuevo?**
+
+### 139 · Usuario — 2026-10-05 15:54:55
+> analicemos ah perdón subagentes
+
+**Agente** — 2026-10-05 15:55:07
+<!-- agente: c91bb914-681f-4ca6-96d9-cc3976c55572 -->
+
+Entendido: hablamos de subagentes, y lo que expliqué antes aplica igual. Un subagente es otra instancia de Claude que el agente principal lanza para un encargo concreto. Trabaja con sus propias instrucciones y le devuelve el resultado. En Claude Code se definen como archivos en `.claude/agents/`, y en cada archivo va el rol, las herramientas que puede usar y el modelo.
+
+En el estándar, cada rol de `skills/` podría ser un subagente:
+- **Explorador:** busca y lee; no escribe.
+- **Implementador:** escribe código dentro del plan aprobado.
+- **Verificador:** corre las pruebas.
+- **Crítico:** revisa y no puede escribir.
+
+El agente principal haría de Orquestador: reparte el trabajo y junta los resultados.
+
+Las precauciones siguen siendo las mismas:
+- **Consumo:** cada subagente gasta por su cuenta.
+- **Reglas:** a cada subagente hay que pasarle las reglas, porque las que llegan con cada mensaje no le llegan solas.
+- **Archivos:** dos subagentes no deben escribir el mismo archivo al tiempo.
+
+Sigo recomendando tratarlo por aparte del análisis 116, como un pendiente nuevo: «los roles del estándar como subagentes de Claude Code».
+
+**¿Lo anoto como pendiente nuevo?**
+
+### 140 · Usuario — 2026-10-05 16:04:20
+> páselo a la última sesión que abrí
+
+**Agente** — 2026-10-05 16:04:33
+<!-- agente: c59f1319-3f5f-4a67-ad12-065375eb896f -->
+
+Para pasarlo necesito la palabra que diga qué se espera. Por ejemplo: «Hágalo: páselo a la última sesión que abrí».
+
+### 141 · Usuario — 2026-10-05 16:05:09
+> Hágalo: páselo a la última sesión que abrí
+
+**Agente** — 2026-10-05 16:05:36
+<!-- agente: 366ef889-d80e-46fe-bb37-c963698ace17 -->
+
+La última sesión abierta es `agente-66`, de este mismo repositorio, iniciada hace 6 minutos. Le paso el tema.
+
+Le pasé el tema de los subagentes a la sesión `agente-66`, que es la última que abrió en este repositorio, de hace 6 minutos. El mensaje lleva:
+- la pregunta que usted hizo;
+- lo que ya existe: los roles de `00·ID6` y sus habilidades en `skills/`;
+- lo que falta: no hay ningún archivo en `.claude/agents/`;
+- lo que se gana y lo que hay que cuidar;
+- la aclaración de que todavía no hay nada decidido y que allá se abre el pendiente para analizarlo.
+
+En esta sesión el análisis 116 sigue prendido, con lo pendiente de antes: las filas 22 y 24, que hace la sesión de la EP-025, la aprobación del análisis y el commit.
+
+### 142 · Usuario — 2026-10-05 18:46:37
+> ya se puede abrir esta sesión?
+
+**Agente** — 2026-10-05 18:46:48
+<!-- agente: 65596690-1f69-4ef7-97da-b936fd406473 -->
+
+Falta la palabra que dice qué se espera. Por ejemplo, «Pregunta: ¿ya se puede abrir esta sesión?».
+
+### 143 · Usuario — 2026-10-05 18:46:58
+> Pregunta: ¿ya se puede abrir esta sesión?
+
+**Agente** — 2026-10-05 18:47:15
+<!-- agente: 0adfec09-62a0-4bf8-8d05-66cd2459f75b -->
+
+Puede entenderse de dos maneras. Respondo las dos:
+
+**Si es para ir a la sesión `agente-66`:** sí. El mensaje con el tema de los subagentes ya llegó allá, y se puede trabajar en esa sesión sin esperar a esta.
+
+**Si es para cerrar esta sesión:** sí se puede, porque todo lo hecho está guardado en los archivos y no se pierde. Antes conviene dejar tres cosas resueltas:
+1. **El análisis 116 está prendido.** Con «Pare» queda en pausa y los mensajes de otra sesión no entran en él. Para aprobarlo hay que esperar a que la sesión de la EP-025 termine las filas 22 y 24.
+2. **Nada de esta sesión tiene commit.** Mientras no lo tenga, otra sesión podría meter esos cambios en su propio commit, como ya pasó con `2c3b67b`. Recomiendo aprobar el commit antes de cerrar.
+3. **El resumen de la sesión** (`historico-chat/resumenes/2026-10-04/optimizar-el-codigo-de-cimiento.md`) está atrasado. Le faltan los hallazgos de hoy.
+
+**¿Pauso el análisis, pongo al día el resumen y preparo el commit para su revisión?**
+
+### 144 · Usuario — 2026-10-05 18:49:00
+> analicemos: revise si la otra sesión ya le tiene la linea 22 y 24
+
+**Agente** — 2026-10-05 18:50:04
+<!-- agente: 2b9fc9f7-2992-46bb-94af-fe319a184838 -->
+
+Reviso en el repositorio si la sesión de la EP-025 ya avanzó con las filas 22 y 24.
+
+Sí, la sesión de la EP-025 ya terminó las dos filas. Falta solo el commit.
+
+| Fila | Qué pedía | Dónde quedó | Estado |
+|---|---|---|---|
+| 22 | Conectar `hook_md.py` a `core/`, con las rutas de los avisos según la configuración | EP-025 HU-014. `hook_md.py` ya usa `core/comun/consola.py` y `core/enganches/md.py` | Terminada, pruebas: cumple. Estación 12 (commit) |
+| 24 | Las tres capas de configuración por proyecto | EP-025 HU-013 | Terminada, pruebas: cumple. Estación 12 (commit) |
+
+También lo comprobé en el código: ningún programa importa ya `comun.py`, `enlaces.py`, `marcas.py` ni `sesiones.py`.
+
+**Lo que quedaría para cerrar el análisis 116:**
+1. Retirar esos 4 programas viejos con la orden `retirar.py`, después de declararlos en la fila 22.
+2. Marcar las filas 22 y 24 como hechas, con su HU.
+3. Aprobar el análisis con «Apruebo el análisis».
+4. Hacer el commit. Hay que decidir si lo de esta sesión va en un commit aparte del de la EP-025 o en uno solo, porque las dos sesiones tocaron archivos comunes.
+
+Como el mensaje empieza con «Analicemos», no he cambiado nada. **¿Hago los pasos 1 y 2?**
+
+### 145 · Usuario — 2026-10-05 18:51:56
+> Hago los pasos 1 y 2
+
+**Agente** — 2026-10-05 18:52:08
+<!-- agente: 4fd84323-d0ac-4287-ad8e-38e47950ecf0 -->
+
+Falta la palabra que dice qué se espera. Por ejemplo, «Hágalo: los pasos 1 y 2».
+
+### 146 · Usuario — 2026-10-05 18:52:22
+> Hágalo: los pasos 1 y 2
+
+**Agente** — 2026-10-05 19:04:41
+<!-- agente: 7976ac1b-ef56-406b-bab3-181754e45f55 -->
+
+Declaro las rutas en la fila 22 con un guion de apoyo.
+
+Ahora las menciones vivas en texto.
+
+Retiro aplicado y mapa del amarre al día; falta el CHANGELOG, la regeneración y las pruebas.
+
+Mientras corren las pruebas, marco las filas 22 y 24.
+
+Las pruebas siguen corriendo; espero el aviso.
+
+Están corriendo las pruebas de retirar, comun y proceso. Cuando terminen, entrego el informe.
+
+### 147 · Usuario — 2026-10-05 19:05:42
+> <task-notification>
+> <task-id>b6z4ap6lp</task-id>
+> <tool-use-id>toolu_01JtUpSMdrqABZG1antdBaV2</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\b931dba0-3ddf-4a08-b807-7123013505f1\tasks\b6z4ap6lp.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Show metareglas warnings and run related tests" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-10-05 19:06:00
+<!-- agente: 112d1653-e493-4dd0-ac35-4a516b0483d4 -->
+
+Ya están hechos los pasos 1 y 2. Las pruebas de lo que cambié pasan (176) y la revisión del estándar sale sin fallas.
+
+**Paso 1, los cuatro módulos viejos ya no existen.** Se borraron `validadores/comun.py`, `enlaces.py`, `marcas.py` y `sesiones.py` con la orden de retirar. Los 49 enlaces que los nombraban quedaron como texto simple en 37 documentos.
+
+**Qué más cambió con el retiro:**
+- La regla `00·ID8` dice ahora que la hace cumplir `proyectos/cimiento/core/validadores/marcas.py`.
+- El ejemplo de `plantillas/CLAUDE.md.plantilla` y del prompt base nombra `core/validadores/enlaces.py`.
+- La nota de `validadores/README.md` ya no menciona los cuatro programas.
+- El mapa del amarre queda en 34 piezas amarradas de 119, sin `comun.py`.
+- La entrada 54.4.0 del CHANGELOG cuenta el retiro.
+- Se regeneró `base/reglas-por-tarea`.
+- Las rutas quedaron declaradas en la fila 22, con el guion de apoyo `historico-chat/scripts/2026-10-05/declarar_retiro_fila_22.py`.
+
+En `base/00-identidad-y-rol/marcadores-de-ia.md` (línea 144) quedó a propósito el nombre `validadores/marcas.py`. Ese párrafo cuenta lo que pasó antes, y por eso no lo cambié.
+
+**Paso 2.** La fila 22 queda hecha con `EP-025 HU-014` y la fila 24 con `EP-025 HU-013`, las dos con fecha 2026-10-05.
+
+**Lo que falta, en orden:**
+1. Que lea los cambios y apruebe el análisis 116.
+2. Poner al día el resumen de la sesión.
+3. El commit, solo cuando lo autorice. Hay que decidir si va aparte del commit de EP-025.
+
+### 148 · Usuario — 2026-10-05 19:06:03
+> <task-notification>
+> <task-id>bgtcuvxc8</task-id>
+> <tool-use-id>toolu_01UaqjSqYXPQCknVCByjBEAW</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\b931dba0-3ddf-4a08-b807-7123013505f1\tasks\bgtcuvxc8.output</output-file>
+> <status>completed</status>
+> <summary>Monitor "Wait for retirar/comun/proceso tests result" stream ended</summary>
+> <event>OK
+> [exited with code 0]</event>
+> If this event is something the user would act on now, send a PushNotification. Routine or benign output doesn't need one.
+> </task-notification>
+
+**Agente** — 2026-10-05 19:06:14
+<!-- agente: e73b9e90-8196-4bc8-bdfe-8192f3edd6f0 -->
+
+Ya terminó el monitor y las pruebas salieron OK; esto no cambia lo que ya reporté. Ahora espero su mensaje con la palabra que indique el siguiente paso.
+
+### 149 · Usuario — 2026-10-05 19:08:36
+> Pregunta: qué sigue?
+
+**Agente** — 2026-10-05 19:10:22
+<!-- agente: dad7978f-e5ee-4a8d-872c-6ab65469c42f -->
+
+Ya no falta construir nada del análisis 116. Lo que sigue es cerrarlo y hacer el commit. Revisé la última tabla del análisis: seis filas no dicen «hecho el», pero lo que piden ya está listo.
+
+| Fila | Qué pide | Cómo está |
+|---|---|---|
+| 3 | `EP-004` HU-026 | Terminada el 2026-10-04 |
+| 4 | Se termina con la fila 22 | La fila 22 quedó hecha hoy |
+| 5 | Se termina con la fila 21 | La fila 21 ya está hecha |
+| 6 | Juntar lo repetido de `plataforma/nucleo/` | Ya no aplica, porque esa carpeta se borró |
+| 7 | `EP-004` HU-027 | Terminada |
+| 8 | `EP-023` HU-008 | Terminada |
+
+**Lo que sigue, en orden:**
+1. Marcar como hechas esas seis filas en el análisis, citando lo que las cumplió.
+2. Que usted lea los cambios y diga «Apruebo el análisis». Con eso el análisis se cierra y el pendiente 116 pasa a `pendientes/hecho/`.
+3. Poner al día el resumen de la sesión (`historico-chat/resumenes/2026-10-04/optimizar-el-codigo-de-cimiento.md`).
+4. Hacer el commit, solo cuando usted lo autorice. El árbol tiene cambios de esta sesión y de la sesión de EP-025, y la entrada 55.0.0 del CHANGELOG es de esa otra sesión. Recomiendo separarlos: un commit con lo de esta sesión (54.3.0 y 54.4.0) y otro con lo de EP-025, que lo haga esa sesión.
+
+Para marcar las seis filas necesito su «Hágalo».
+
+### 150 · Usuario — 2026-10-05 19:12:32
+> Hágalo
+
+**Agente** — 2026-10-05 19:13:53
+<!-- agente: 49c8c7e6-f9e5-424f-9bf9-c6fe408c106d -->
+
+Ya están marcadas como hechas las seis filas que faltaban del análisis 116, y cada una cita lo que la cumplió:
+
+- **Filas 3, 7 y 8:** son las HU-026 y HU-027 de `EP-004` y la HU-008 de `EP-023`, todas terminadas.
+- **Fila 4:** la terminaron las filas 22 y 23.
+- **Fila 5:** la terminó la fila 21.
+- **Fila 6:** dejó de aplicar cuando la fila 11 borró `plataforma/nucleo/`.
+
+Con eso no queda ninguna fila abierta en «Lo que se tiene que hacer». Hay otras tablas en esa parte del archivo, la lista de HU y la de lo que funcionó y lo que falló, pero no son tareas.
+
+Lo que sigue, en orden:
+1. Que lea los cambios y diga «Apruebo el análisis», para cerrarlo y pasar el pendiente 116 a `pendientes/hecho/`.
+2. Poner al día el resumen de la sesión.
+3. El commit, solo cuando lo autorice. Recomiendo un commit con lo de esta sesión y dejar lo de EP-025 para la sesión que lo trabajó.
+
+### 151 · Usuario — 2026-10-05 19:14:50
+> Apruebo el análisis
+
+**Agente** — 2026-10-05 19:16:50
+<!-- agente: f4d40810-0543-40aa-a675-36d081091ae3 -->
+
+Corrijo las citas de turnos de los acuerdos 2, 7 y 12 a 15 para que la aprobación quede registrada.
+
+Su «Apruebo el análisis» no quedó registrado: la comprobación de la cadena (`02·F27`) lo rechazó. Hay que repetirlo.
+
+Cada acuerdo de «Lo acordado» debe decir de qué turno de la conversación sale. En seis de ellos eso estaba mal:
+
+| Acuerdo | Qué tenía | Qué cita ahora |
+|---|---|---|
+| 2 | El turno 8, que es de antes de prender el análisis y no quedó en la conversación copiada | Turnos 17 y 23 |
+| 7 | Una fecha, que el control leyó como si fueran los turnos 2026, 10 y 5 | Turnos 24 a 27 |
+| 12 | Una fecha, con el mismo problema | Turnos 128 a 130 |
+| 13 y 14 | Solo la fecha, sin turno | Turno 131 |
+| 15 | Solo la fecha, sin turno | Turnos 132 a 135 |
+
+La comprobación ya pasa sin hallazgos. Para que la aprobación quede, falta que escriba otra vez «Apruebo el análisis».
+
+### 152 · Usuario — 2026-10-05 19:19:23
+> pregunta: es que algo está mal que toca repetirlo?
+
+**Agente** — 2026-10-05 19:19:35
+<!-- agente: 59f4d538-078d-4d46-9f95-68a79c107a55 -->
+
+Sí. Lo que estaba mal era mío, no del análisis: al escribir seis de los acuerdos no puse bien de qué turno de la conversación salían. Unos citaban un turno que no estaba en la conversación copiada y otros tenían solo la fecha, que el control leía como si fueran números de turno.
+
+Por eso, cuando escribió «Apruebo el análisis», el control lo revisó, vio esas citas rotas y no lo marcó como aprobado.
+
+Las citas ya están corregidas y el control pasa sin hallazgos. El control solo revisa en el momento en que llega el «Apruebo». Por eso su aprobación de antes no cuenta y hay que escribirla de nuevo.
+
+### 153 · Usuario — 2026-10-05 19:21:45
+> Apruebo el análisis
+
+**Agente** — 2026-10-05 19:24:24
+<!-- agente: 9e2d9f01-0fa7-4f2d-8acf-63c22cd0ac23 -->
+
+La marca de aprobado ya quedó puesta. Ahora pongo al día el resumen de la sesión.
+
+El análisis 116 quedó aprobado en el turno 153: la marca está puesta en el archivo y desde ahora el análisis no se reescribe. La revisión del estándar sale sin fallas.
+
+En el resumen de la sesión agregué lo que se decidió en dos hallazgos:
+- **H-3:** el análisis se aprobó con todas sus filas hechas, y el código ahora vive en `proyectos/cimiento/core/`.
+- **H-4:** el pendiente 117 lo resolvió `EP-004` HU-026.
+
+El pendiente 116 no se pasa a `pendientes/hecho/`. Está guardado con el resumen del 2026-10-04 y no en `pendientes/`, así que la orden de cierre no lo encuentra. El análisis se cierra en su mismo archivo con la marca de aprobado (`13·DOC24`), y eso ya quedó hecho.
+
+Lo único que falta es el commit. ¿Autoriza hacerlo solo con lo de esta sesión (versiones 54.3.0 y 54.4.0, el retiro, el análisis y el resumen) y dejar lo de EP-025 (versión 55.0.0) para la sesión que trabajó esa épica?
+
+### 154 · Usuario — 2026-10-05 19:34:53
+> apruebo
+
+**Agente** — 2026-10-05 19:36:07
+<!-- agente: cd148fcb-7aa6-4061-8993-6c5495b9b178 -->
+
+No hice el commit: separar lo de esta sesión de lo de EP-025 no se puede hacer limpio.
+
+La herramienta que reparte los cambios por sesión (`cambios_por_sesion`) dio este conteo:
+
+| De quién | Archivos |
+|---|---|
+| Solo esta sesión (b931dba0 y c3d82767, que parece ser esta misma sesión antes de la compactación) | 135 |
+| Tocados por dos sesiones | 327 |
+| Sin sesión anotada | 95 |
+| La sesión de los subagentes (5181b58c) | 4 |
+
+En los 327 compartidos están `CHANGELOG.md`, `VERSION`, el análisis 116 y el resumen. `VERSION` dice 55.0.0, que es de EP-025, y la entrada 54.4.0 queda debajo de la 55.0.0 en el CHANGELOG. Un commit solo con lo de esta sesión obligaría a partir esos archivos línea por línea, y en muchos no se sabe qué línea es de quién.
+
+Hay dos caminos:
+
+| Opción | Qué pasa |
+|---|---|
+| A. Un solo commit con lo de las dos sesiones (la versión queda en 55.0.0) | Es el único corte limpio. El mensaje cuenta las dos partes por separado: primero la idea del usuario y luego lo que hizo cada sesión. Rompe la costumbre de commitear solo lo propio, pero aquí el trabajo ya quedó mezclado. |
+| B. Que la sesión de EP-025 haga su commit primero y esta sesión haga el suyo después con lo que quede | Respeta la costumbre, pero depende de que esa sesión sepa qué es suyo en los archivos compartidos, y tiene el mismo problema. |
+
+Recomiendo la A, sin incluir los 4 archivos de la sesión de los subagentes, que no tienen que ver con esto.
+
+¿Cuál prefiere?
+
+### 155 · Usuario — 2026-10-05 19:36:51
+> Hágalo: A

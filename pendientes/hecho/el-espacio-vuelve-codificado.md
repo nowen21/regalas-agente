@@ -13,7 +13,7 @@
 
 `reescribir_salientes()` ([validadores/cerrar.py](../../validadores/cerrar.py), líneas 111-135) recalcula los enlaces de salida del archivo que se mueve: resuelve el destino con `unquote` (`_resuelve_a`, línea 75), calcula la ruta nueva con `os.path.relpath` (`_nuevo_destino`, línea 105) y la escribe **tal cual**, sin volver a codificar. Un destino que llegó como `../../../../../Ing.%20Jose/ia/agente/...` sale como `../../../../../Ing. Jose/ia/agente/...`.
 
-Y el validador no lo ve: `_ENLACE` en [validadores/comun.py](../../validadores/comun.py) (línea 29, `[^)\s]+`) corta el destino en el primer espacio, así que el enlace reescrito **deja de ser un enlace** para `validar.py estandar`. Se comprobó escribiendo un enlace a un archivo inexistente con espacio en la ruta: cero fallas.
+Y el validador no lo ve: `_ENLACE` en validadores/comun.py (línea 29, `[^)\s]+`) corta el destino en el primer espacio, así que el enlace reescrito **deja de ser un enlace** para `validar.py estandar`. Se comprobó escribiendo un enlace a un archivo inexistente con espacio en la ruta: cero fallas.
 
 Es el 33·1 visto del otro lado: aquel arregló la **lectura** (`unquote` antes de buscar); este es la **escritura**, que deshace lo que la lectura ya entiende.
 

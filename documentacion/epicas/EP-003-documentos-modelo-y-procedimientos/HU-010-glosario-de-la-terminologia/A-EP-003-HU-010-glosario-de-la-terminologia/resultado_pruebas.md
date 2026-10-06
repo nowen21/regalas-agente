@@ -102,7 +102,7 @@
 
 | # | Qué hacer | Qué tiene que pasar | Qué salió |
 |---|---|---|---|
-| 1 | Correr [validadores/enlaces.py](../../../../../validadores/enlaces.py) sobre los archivos tocados | Termina sin señalar enlaces rotos | Antes de corregir: 2 enlaces rotos y 24 avisos de `13·DOC14`. Después de corregir: 0 rotos, y solo los avisos de enlaces a la misma carpeta, que la propia `DOC14` exime |
+| 1 | Correr validadores/enlaces.py sobre los archivos tocados | Termina sin señalar enlaces rotos | Antes de corregir: 2 enlaces rotos y 24 avisos de `13·DOC14`. Después de corregir: 0 rotos, y solo los avisos de enlaces a la misma carpeta, que la propia `DOC14` exime |
 | 2 | Desde cada una de las tres puertas de entrada, seguir el enlace al glosario | Las tres llegan | Las tres llegan (§3, verificación 1) |
 | 3 | Romper a propósito un enlace del glosario | El archivo queda con un enlace que no resuelve | **No se hizo** |
 | 4 | Volver a correr el validador | Lo señala | No se hizo. Lo equivalente que sí quedó registrado: en la primera ejecución el validador señaló 2 enlaces rotos de verdad, así que estaba mirando |

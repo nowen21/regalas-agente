@@ -191,3 +191,4 @@ Modelo de datos afectado: `Llamada` suma el identificador de la solicitud (`requ
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-10-05 | Claude | Creación de la HU desde el análisis 1 del pendiente 119 |
+| 2026-10-05 | Claude | Queda sin efecto: la telemetría se retiró con la [HU-012](../HU-012-la-telemetria-se-retira/HU-012-la-telemetria-se-retira.md) (análisis 2 del pendiente 119, acuerdo 2); lo vivo llega por el vigilante de la [HU-011](../HU-011-el-gasto-llega-a-la-base-en-cuanto-claude-code-lo-escribe/HU-011-el-gasto-llega-a-la-base-en-cuanto-claude-code-lo-escribe.md). Lo que guardó se queda en la base |

@@ -492,9 +492,11 @@ class ElMapaDelAmarreNoEnvejece(Carpeta):
         self.assertFalse([h for h in MapaDelAmarre(self.raiz).validar() if "zzz_libre.py" in h.mensaje])
 
     def test_una_pieza_que_el_mapa_nombra_y_ya_no_existe_se_reporta(self):
-        os.remove(os.path.join(self.raiz, "validadores", "citas.py"))
+        # La copia temporal solo trae `validadores/`: lo que el mapa nombra de
+        # `core/` ya falta ahí. Se borra una puerta que sí se copió.
+        os.remove(os.path.join(self.raiz, "validadores", "vigencia.py"))
         avisos = [h for h in MapaDelAmarre(self.raiz).validar() if h.severidad == AVISO]
-        self.assertTrue([h for h in avisos if "citas.py" in h.mensaje])
+        self.assertTrue([h for h in avisos if "vigencia.py" in h.mensaje])
 
     def test_la_que_no_toca_la_herramienta_tambien_tiene_que_estar(self):
         self.pieza("zzz_libre.py", "# solo lee archivos\n")

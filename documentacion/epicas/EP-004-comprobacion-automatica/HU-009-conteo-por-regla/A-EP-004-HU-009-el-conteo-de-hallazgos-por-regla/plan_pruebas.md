@@ -44,7 +44,7 @@
 
 - **La prueba de privacidad usa una clave armada** — la única forma de comprobar que el registro no arrastra contenido es correrlo sobre algo que **no debería aparecer nunca**, y buscar esa cadena en el registro. La cadena se arma para la prueba y se borra.
 - **Baja medida, no supuesta** — el CA-03 se prueba con dos corridas y un arreglo real en medio. Que el conteo exista no prueba que sirva para comparar; que baje en la regla arreglada y **no en las otras**, sí.
-- **Suite completa antes y después** — el campo nuevo toca [`comun.py`](../../../../../validadores/comun.py), que usan los 24 subcomandos. La suite se corre entera en los dos momentos.
+- **Suite completa antes y después** — el campo nuevo toca `comun.py`, que usan los 24 subcomandos. La suite se corre entera en los dos momentos.
 - **El número decide, no puntúa** — el riesgo `R-01`: la advertencia se escribe en la documentación del conteo, donde la va a leer quien lo use, no solo en `metricas/`.
 
 ### 3.5 Alcance de la corrida

@@ -133,7 +133,7 @@ Dentro de un bloque cercado o de comillas invertidas no se toca nada: ahí la ma
 
 **El sello de una regla vencía por tipografía.** Cambiar una semiraya por un guion habría vencido de golpe el sello de **74 reglas**, y entonces la limpieza nunca se hace. El sello responde por lo que la regla *exige*, no por cómo está compuesta: `metareglas._cambio_de_verdad` ahora normaliza las dos partes antes de comparar.
 
-**El marcador `«…»` no es una marca: es notación de la casa.** [`flujo.py`](../../validadores/flujo.py), [`comun.py`](../../validadores/comun.py) y [`andamio.py`](../../validadores/andamio.py) reconocen por él una celda sin llenar. Limpiarlo habría roto los tres. Es el mismo argumento del punto medio de los títulos, y la segunda vez que aparece: **antes de tomar un carácter por adorno hay que preguntar quién lo lee.**
+**El marcador `«…»` no es una marca: es notación de la casa.** [`flujo.py`](../../validadores/flujo.py), `comun.py` y [`andamio.py`](../../validadores/andamio.py) reconocen por él una celda sin llenar. Limpiarlo habría roto los tres. Es el mismo argumento del punto medio de los títulos, y la segunda vez que aparece: **antes de tomar un carácter por adorno hay que preguntar quién lo lee.**
 
 ### Lo que queda, dicho claro
 

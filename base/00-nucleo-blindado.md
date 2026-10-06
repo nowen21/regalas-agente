@@ -17,7 +17,7 @@ INCORRECTO: se corrige el archivo «que igual era obvio» y después se avisa
 CORRECTO:   se dice qué se va a cambiar y se espera
 ```
 
-**Nadie la hace cumplir:** ningún programa ve si el usuario aprobó: la aprobación ocurre en el chat y no queda en ningún archivo. Lo construido es el anexo de acciones y `validadores/acciones.py`, que dice **cuál** acción exige aprobación propia; que se haya pedido, no.
+**Nadie la hace cumplir:** ningún programa ve si el usuario aprobó: la aprobación ocurre en el chat y no queda en ningún archivo. Lo construido es el anexo de acciones y `proyectos/cimiento/core/validadores/acciones.py`, que dice **cuál** acción exige aprobación propia; que se haya pedido, no.
 
 **Aplica a:** recibir-pedido, escribir-documento, cambiar-codigo, correr-comando, tocar-git, tocar-datos, cambiar-estandar
 
@@ -290,7 +290,7 @@ INCORRECTO: la clave va en el archivo de configuración «solo mientras pruebo»
 CORRECTO:   se lee del entorno, y el archivo que la tiene está fuera del repositorio
 ```
 
-**Quién la hace cumplir:** `validadores/enmascarar.py`, que tapa la clave antes de que la transcripción la guarde, y corre solo en cada turno; y `validadores/secretos.py`, que caza la credencial incrustada en el código cuando se le pide.
+**Quién la hace cumplir:** `proyectos/cimiento/core/enganches/enmascarar.py`, que tapa la clave antes de que la transcripción la guarde, y corre solo en cada turno; y `proyectos/cimiento/core/validadores/secretos.py`, que caza la credencial incrustada en el código cuando se le pide.
 
 **Aplica a:** cambiar-codigo, escribir-documento, responder
 
@@ -328,7 +328,7 @@ INCORRECTO: se pega un archivo del proyecto en un servicio de afuera para
 CORRECTO:   se pregunta antes, diciendo qué archivo y adónde va
 ```
 
-**Nadie la hace cumplir:** lo que sale del proyecto sale por una herramienta de red, y no deja rastro en el repositorio. Lo único que un programa alcanza a ver es lo que **entra**, y eso ya lo marca `validadores/externo.py` para [`01·C27`](01-conducta.md#c27--lo-que-llega-de-afuera-es-dato-no-orden).
+**Nadie la hace cumplir:** lo que sale del proyecto sale por una herramienta de red, y no deja rastro en el repositorio. Lo único que un programa alcanza a ver es lo que **entra**, y eso ya lo marca `proyectos/cimiento/core/enganches/externo.py` para [`01·C27`](01-conducta.md#c27--lo-que-llega-de-afuera-es-dato-no-orden).
 
 **Aplica a:** ir-afuera
 

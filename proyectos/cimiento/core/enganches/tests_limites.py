@@ -165,18 +165,23 @@ class CadaExcesoSeAvisaUnaVez(ConTranscripcion):
 
 
 class LosLimitesSonLosDelProyecto(unittest.TestCase):
-    """CP-003."""
+    """CP-003. Desde la `EP-025·HU-013` salen de los ajustes: proyecto, base, fábrica."""
 
-    def limites(self, filas=None, error=None):
+    def limites(self, base=(), propios=(), error=None, registrado=((1,),)):
+        from .configuracion import ConfiguracionDelProyecto
         limites = LimitesDelProyecto("C:/p", "C:/estandar", ajustes={"HOST": "h", "PORT": "1"})
-        with mock.patch.object(LimitesDelProyecto, "consultar", side_effect=error, return_value=filas):
+        with mock.patch.object(ConfiguracionDelProyecto, "consultar_juntas", side_effect=error,
+                               return_value=(registrado, base, propios)):
             return limites.limites()
 
-    def test_los_del_registro(self):
-        self.assertEqual((100, 500), self.limites(filas=((100, 500),)))
+    def test_los_del_proyecto(self):
+        self.assertEqual((100, 500), self.limites(propios=(("limite_enganche", "100"), ("limite_archivo", "500"))))
+
+    def test_sin_los_del_proyecto_los_de_la_base(self):
+        self.assertEqual((300, 10000), self.limites(base=(("limite_enganche", "300"),)))
 
     def test_sin_registro_los_de_por_defecto(self):
-        self.assertEqual((2000, 10000), self.limites(filas=()))
+        self.assertEqual((2000, 10000), self.limites(base=(("limite_enganche", "300"),), registrado=()))
 
     def test_sin_base_los_de_por_defecto(self):
         self.assertEqual((2000, 10000), self.limites(error=BaseSinRespuesta("MariaDB no responde")))

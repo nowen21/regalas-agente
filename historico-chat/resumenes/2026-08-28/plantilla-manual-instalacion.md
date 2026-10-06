@@ -87,7 +87,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
   - **Como** quien lee un documento del proyecto
   - **Quiero** que ningún carácter de control se cuele en un `.md`
   - **Para** que una tabla no se rompa sin que nadie lo vea
-  - **Contexto:** [`validadores/marcas.py`](../../../validadores/marcas.py) ya cuenta y limpia siete caracteres invisibles. `U+0001` no es uno de ellos, y hay 26 archivos con él.
+  - **Contexto:** `validadores/marcas.py` ya cuenta y limpia siete caracteres invisibles. `U+0001` no es uno de ellos, y hay 26 archivos con él.
 - **Qué se decidió:** No tocarlo en esta sesión. Son 26 archivos ajenos al trabajo de hoy, y arreglarlos de paso los metería en un commit que no habla de eso.
 - **Estado:** abierto
 - **Responde a:** —

@@ -17,7 +17,7 @@
 | Si no toca, se calla | código | el mismo | ✅ | `CP-003`, el caso que decide |
 | Corre en el momento de guardar | código | `validar.py versionado --preparados`, que ejecuta el `pre-commit` | ✅ | sin enganche nuevo: se suma al que ya existía |
 | Los casos que lo protegen | prueba | [`test_el_cambio_de_reglas_lleva_su_version.py`](../../../../../validadores/tests/test_el_cambio_de_reglas_lleva_su_version.py) | ✅ | siete, todos en verde |
-| El contrato dice qué exige y qué no | doc | [`validadores/docs/guardian_version.md`](../../../../../validadores/docs/guardian_version.md) | ✅ | con la tabla de cuándo se calla |
+| El contrato dice qué exige y qué no | doc | `validadores/docs/guardian_version.md` | ✅ | con la tabla de cuándo se calla |
 | El incremento de la especificación | doc | [`documentacion/automatismos/spec.md`](../../../../../documentacion/automatismos/spec.md) | ✅ | RN-57 a RN-61 y su fila de trazabilidad |
 | La fila del inventario de HU | doc | `pendientes/48-inventario-hu.md` | ❌ | **no se toca:** el 48 es uno de los dos que el usuario excluyó |
 

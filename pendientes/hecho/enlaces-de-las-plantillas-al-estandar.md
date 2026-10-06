@@ -36,7 +36,7 @@ Cada proyecto nacía con las citas rotas. En `shopnest-mesa` fueron catorce solo
 
 **2 · [`plantillas.py`](../../validadores/plantillas.py) no necesitó nada.** El pendiente pedía comprobar que no contara el `«…»` de un enlace como hueco sin llenar. No lo cuenta.
 
-**3 · [`enlaces.py`](../../validadores/enlaces.py) sí.** El pendiente decía «en principio el validador la comprueba sin cambios; confirmarlo con una prueba antes de darlo por hecho». La prueba dijo que no: **87 enlaces quedaron dados por rotos**, porque acá el marcador está sin llenar y no resuelve contra nada. Ahora el validador lo conoce — sin llenar, apunta a la raíz del repositorio.
+**3 · `enlaces.py` sí.** El pendiente decía «en principio el validador la comprueba sin cambios; confirmarlo con una prueba antes de darlo por hecho». La prueba dijo que no: **87 enlaces quedaron dados por rotos**, porque acá el marcador está sin llenar y no resuelve contra nada. Ahora el validador lo conoce — sin llenar, apunta a la raíz del repositorio.
 
 **4 · `CHANGELOG.md` y `VERSION`** — 20.0.1, PARCHE.
 

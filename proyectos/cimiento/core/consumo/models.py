@@ -95,6 +95,8 @@ class GastoDeHerramienta(models.Model):
     fecha = models.DateTimeField(null=True, db_index=True)
     nombre = models.CharField(max_length=100)
     caracteres = models.PositiveIntegerField(default=0)
+    # `EP-025·HU-015` · De un comando, solo el programa y su orden; nunca el comando.
+    orden = models.CharField(max_length=120, blank=True, default="")
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=["sesion", "identificador"], name="un_gasto_por_herramienta")]
@@ -102,6 +104,24 @@ class GastoDeHerramienta(models.Model):
     @property
     def tokens_estimados(self):
         return estimar_tokens(self.caracteres)
+
+
+class EjecucionDeEnganche(models.Model):
+    """`EP-025·HU-015` · Una corrida de un enganche, le entregue o no algo al modelo.
+
+    Va aparte de `GastoDeEnganche`: el que entrega JSON deja una corrida y un
+    contexto, y sumados en una tabla contaría dos veces.
+    """
+
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, related_name="ejecuciones_de_enganche")
+    sesion = models.CharField(max_length=64, db_index=True)
+    identificador = models.CharField(max_length=64)
+    fecha = models.DateTimeField(null=True, db_index=True)
+    nombre = models.CharField(max_length=200)
+    evento = models.CharField(max_length=50, blank=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["sesion", "identificador"], name="una_corrida_por_identificador")]
 
 
 class AvanceDeLectura(models.Model):

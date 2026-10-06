@@ -7,10 +7,10 @@ El agente lee el archivo de una tarea antes de hacerla, y lo lee con la herramie
 | `recibir-pedido` | 18 | [recibir-pedido.md](recibir-pedido.md) |
 | `responder` | 14 | [responder.md](responder.md) |
 | `escribir-documento` | 55 | [escribir-documento-1.md](escribir-documento-1.md), [escribir-documento-2.md](escribir-documento-2.md) |
-| `cambiar-codigo` | 127 | [cambiar-codigo-1.md](cambiar-codigo-1.md), [cambiar-codigo-2.md](cambiar-codigo-2.md), [cambiar-codigo-3.md](cambiar-codigo-3.md), [cambiar-codigo-4.md](cambiar-codigo-4.md) |
+| `cambiar-codigo` | 128 | [cambiar-codigo-1.md](cambiar-codigo-1.md), [cambiar-codigo-2.md](cambiar-codigo-2.md), [cambiar-codigo-3.md](cambiar-codigo-3.md), [cambiar-codigo-4.md](cambiar-codigo-4.md) |
 | `correr-comando` | 18 | [correr-comando.md](correr-comando.md) |
 | `tocar-git` | 18 | [tocar-git.md](tocar-git.md) |
 | `tocar-datos` | 18 | [tocar-datos.md](tocar-datos.md) |
 | `ir-afuera` | 5 | [ir-afuera.md](ir-afuera.md) |
 | `cambiar-estandar` | 25 | [cambiar-estandar.md](cambiar-estandar.md) |
-| `trabajar-cadena` | 45 | [trabajar-cadena-1.md](trabajar-cadena-1.md), [trabajar-cadena-2.md](trabajar-cadena-2.md) |
+| `trabajar-cadena` | 46 | [trabajar-cadena-1.md](trabajar-cadena-1.md), [trabajar-cadena-2.md](trabajar-cadena-2.md) |

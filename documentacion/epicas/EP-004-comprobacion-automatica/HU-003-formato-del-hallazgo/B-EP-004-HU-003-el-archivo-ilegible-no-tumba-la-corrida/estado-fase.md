@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `B-EP-004-HU-003-el-archivo-ilegible-no-tumba-la-corrida` |
-| **Módulo** | Comprobación automática — [`validadores/comun.py`](../../../../../validadores/comun.py) |
+| **Módulo** | Comprobación automática — `validadores/comun.py` |
 | **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-003](../HU-003-formato-del-hallazgo.md) · **defecto** de la fase [`A`](../A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md) |
 | **Última actualización** | 2026-08-17 |
 

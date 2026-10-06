@@ -19,6 +19,7 @@ El punto de partida fue el inventario: Cimiento tiene 663 archivos `.py` propios
 | Qué pasó | El inventario encontró la misma función copiada en muchos archivos (`_leer` en 13, `raiz_pedida` en 10, `dicho` en 9, `_entrada` en 8, `_git` en 6) y dos formas distintas de saber si una ruta queda dentro del proyecto. Cada vez que hizo falta algo se creó un archivo nuevo sin buscar si eso ya existía |
 | Por qué importa | Un arreglo llega a una sola copia: el commit `1295614` corrigió `/c/...` en `freno.py` y `rutas_fuera.py` siguió sin entenderlo |
 | Pendiente | [Pendiente 116: el código de Cimiento se repite en vez de reusarse](pendientes/116-el-codigo-de-cimiento-se-repite-en-vez-de-reusarse/pendiente.md) |
+| Qué se decidió | Su [análisis 1](pendientes/116-el-codigo-de-cimiento-se-repite-en-vez-de-reusarse/analisis-1.md) quedó aprobado el 2026-10-05, con todas sus filas hechas. El código vive en `proyectos/cimiento/core/`, con los validadores como clases; en `validadores/` quedan las puertas y los puentes de los enganches. Lo retirado se borró con `validadores/retirar.py`, que deja en texto simple los enlaces que lo nombraban |
 
 ### H-4 · Nada comprueba `07·Q4` al crear una función
 
@@ -27,6 +28,7 @@ El punto de partida fue el inventario: Cimiento tiene 663 archivos `.py` propios
 | Qué pasó | Ningún validador revisa si una función nueva ya existe en otro archivo, y por eso nacen las copias del H-3 |
 | Por qué importa | Si solo se juntan las copias de hoy, las nuevas siguen apareciendo |
 | Pendiente | [Pendiente 117: nada avisa cuando se crea una función que ya existe](pendientes/117-nada-avisa-cuando-se-crea-una-funcion-que-ya-existe/pendiente.md) |
+| Qué se decidió | Lo trató el análisis 1 del pendiente 116 y quedó hecho con `EP-004` HU-026; para las reglas, `EP-004` HU-027 avisa las parecidas al crear una |
 
 ### H-5 · El análisis del pendiente 110 no se cerraba nunca
 

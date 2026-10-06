@@ -29,7 +29,7 @@
 | El molde y el entorno no se reportan | programa | El mismo · `_MOLDE_EXACTO`, `_MOLDE_PREFIJO`, `_ENTORNO` | ✅ Ya existía | CP-003 |
 | El `.env` versionado se reporta | programa | [`versionado.py`](../../../../../validadores/versionado.py) | ✅ Ya existía | CP-002 |
 | Los tres bordes de archivo | programa | `secretos.validar`: `errors="replace"`, tope de 1 MB, `except OSError` | ✅ Ya existía | Transversal |
-| **Qué cuenta como ejemplo y qué como clave** | documentación | [`docs/secretos.md`](../../../../../validadores/docs/secretos.md) | ✅ **Escrito acá** | CP-004 |
+| **Qué cuenta como ejemplo y qué como clave** | documentación | `docs/secretos.md` | ✅ **Escrito acá** | CP-004 |
 | Las cinco exigencias, con red | pruebas | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `ClavesYDatosSensibles` | ✅ Escritas acá | 8 pruebas |
 
 ### Criterios de aceptación
@@ -62,7 +62,7 @@
 
 ## 4. Lo que quedó escrito
 
-Qué cuenta como ejemplo estaba en dos expresiones regulares. Ahora está en [`docs/secretos.md`](../../../../../validadores/docs/secretos.md): 15 moldes exactos, 9 prefijos, 6 formas de leer del entorno, los `.md` fuera a propósito, y los tres bordes.
+Qué cuenta como ejemplo estaba en dos expresiones regulares. Ahora está en `docs/secretos.md`: 15 moldes exactos, 9 prefijos, 6 formas de leer del entorno, los `.md` fuera a propósito, y los tres bordes.
 
 **Lo más útil de esa sección es la última línea:** cómo escribir un ejemplo que no dispare nada. Sin eso, quien redacta documentación o pruebas lo descubre a golpes — o peor, escribe torcido para callar al validador, que es la salida mala que el pendiente 55 ya describe para otro caso.
 

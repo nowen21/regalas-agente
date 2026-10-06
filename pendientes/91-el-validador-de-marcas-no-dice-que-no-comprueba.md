@@ -10,7 +10,7 @@
 
 ## El problema
 
-[`validadores/marcas.py`](../validadores/marcas.py) cuenta las marcas de las secciones 2 y 3 del anexo [`marcadores-de-ia.md`](../base/00-identidad-y-rol/marcadores-de-ia.md): la raya larga, el punto medio, los caracteres invisibles. De la sección 4 en adelante hace falta leer, y el propio anexo lo dice.
+`validadores/marcas.py` cuenta las marcas de las secciones 2 y 3 del anexo [`marcadores-de-ia.md`](../base/00-identidad-y-rol/marcadores-de-ia.md): la raya larga, el punto medio, los caracteres invisibles. De la sección 4 en adelante hace falta leer, y el propio anexo lo dice.
 
 **La salida no distingue las dos cosas.** Cuando el programa no encuentra nada imprime:
 

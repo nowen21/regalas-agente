@@ -111,7 +111,7 @@
 
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
-| D-01 | **Alta** | **La carpeta sola no sabe qué números están tomados**, porque al cerrarse un pendiente pierde el suyo. Una comprobación que solo mirara los archivos entregaría números ya usados | **Corregido en esta misma fase**, antes de cerrarla: el programa lee la carpeta **y** el índice. Escrito en [`docs/pendientes.md`](../../../../../validadores/docs/pendientes.md) |
+| D-01 | **Alta** | **La carpeta sola no sabe qué números están tomados**, porque al cerrarse un pendiente pierde el suyo. Una comprobación que solo mirara los archivos entregaría números ya usados | **Corregido en esta misma fase**, antes de cerrarla: el programa lee la carpeta **y** el índice. Escrito en `docs/pendientes.md` |
 | D-02 | Media | `comun.leer` revienta con un archivo que no existe, así que no se pudo usar para leer el índice de una carpeta que aún no lo tiene | Esquivado dentro de `pendientes.py`, con su propia lectura y el motivo escrito. El arreglo de fondo es `D-01` de la fase [`A-EP-004-HU-003`](../../HU-003-formato-del-hallazgo/A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md) |
 | D-03 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los tres transversales**. Se probaron igual | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
@@ -162,7 +162,7 @@
 |---|---|---|
 | EV-01 | Casos automatizados | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `NumeracionDePendientes`: 14 pruebas, en verde |
 | EV-02 | Lo construido | [`validadores/pendientes.py`](../../../../../validadores/pendientes.py) y el subcomando `pendientes` de [`validar.py`](../../../../../validadores/validar.py) |
-| EV-03 | Lo escrito | [`validadores/docs/pendientes.md`](../../../../../validadores/docs/pendientes.md) |
+| EV-03 | Lo escrito | `validadores/docs/pendientes.md` |
 | EV-04 | Corrida completa | `python validadores/pruebas.py` — 314 pruebas, verde, 5 fallos esperados |
 
 ---

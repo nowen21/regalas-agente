@@ -1188,6 +1188,21 @@ class LasPruebasQueExistenSeCorren(Temporal):
         self.assertEqual([FALLA], [h.severidad for h in hallazgos])
         self.assertIn("cero no es verde", hallazgos[0].mensaje)
 
+    def test_sin_la_carpeta_vieja_pero_con_cimiento_no_falta_nada(self):
+        """Fila 21 del análisis 1 del pendiente 116: las pruebas pasaron a `core/`."""
+        raiz = self.temporal()
+        escribir(os.path.join(raiz, PLATAFORMA, "manage.py"), "# un punto de entrada de mentiras\n")
+        resultado, hallazgos, corridos = PruebasDelEstandar(raiz).correr()
+        self.assertEqual((None, [], []), (resultado, hallazgos, corridos))
+
+    def test_cimiento_se_corre_con_el_python_de_su_entorno(self):
+        raiz = self.temporal()
+        pruebas = PruebasDelEstandar(raiz)
+        self.assertEqual(sys.executable, pruebas.python_de_la_plataforma())
+        propio = os.path.join(raiz, PLATAFORMA, ".venv", "Scripts", "python.exe")
+        escribir(propio, "")
+        self.assertEqual(propio, pruebas.python_de_la_plataforma())
+
     def _resumen(self, hallazgos):
         lineas = [h.mensaje for h in hallazgos if h.severidad == AVISO and "prueba(s) en" in h.mensaje]
         self.assertEqual(1, len(lineas))

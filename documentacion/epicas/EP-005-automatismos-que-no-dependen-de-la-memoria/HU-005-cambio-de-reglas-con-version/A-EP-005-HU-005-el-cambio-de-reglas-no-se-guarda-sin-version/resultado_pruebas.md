@@ -46,7 +46,7 @@ Se escribieron tres casos más de los que el plan pedía: el commit vacío, vari
 
 **[`validadores/guardian_version.py`](../../../../../validadores/guardian_version.py)**, dentro de `validar.py versionado --preparados`, que es lo que el `pre-commit` ya ejecuta. Mira qué archivos entran al commit: si alguno vive en `base/` o `plantillas/`, exige `VERSION` y `CHANGELOG.md` en el mismo commit.
 
-**Lo que no comprueba, y queda escrito** en [su contrato](../../../../../validadores/docs/guardian_version.md): si la entrada del registro dice la verdad, y si el tipo de versión es el correcto. Las dos exigen leer.
+**Lo que no comprueba, y queda escrito** en su contrato: si la entrada del registro dice la verdad, y si el tipo de versión es el correcto. Las dos exigen leer.
 
 ## 4. Defectos encontrados
 

@@ -14,7 +14,7 @@ import os
 import re
 
 from ..comun import AVISO, FALLA, Hallazgo, Markdown, Proyecto
-from ..herramientas.instalar import HOOKS, Instalador
+from ..comun.enganches import ENGANCHES_GIT
 from ..validadores.base import Validador
 from ..validadores.version import VersionDelEstandar
 
@@ -41,6 +41,13 @@ def _leer(ruta):
     except OSError:
         return ""
 
+
+
+def _instalador():
+    """La clase del instalador, cargada al usarla: traerla arriba armaba un
+    ciclo con los validadores (fila 23 del análisis 1 del pendiente 116)."""
+    from ..herramientas.instalar import Instalador
+    return Instalador
 
 class ArranqueDeSesion(Validador):
     """Las comprobaciones de arranque, en orden de precedencia.
@@ -99,10 +106,10 @@ class ArranqueDeSesion(Validador):
         hallazgos = []
         esperado = os.path.normcase(self.estandar.replace(os.sep, "/"))
 
-        for repo in Instalador.repositorios_git(proyecto):
+        for repo in _instalador().repositorios_git(proyecto):
             etiqueta = os.path.relpath(repo, proyecto).replace("\\", "/")
             donde = repo if etiqueta == "." else f"{etiqueta}/"
-            for nombre, _, _ in HOOKS:
+            for nombre in ENGANCHES_GIT:
                 archivo = os.path.join(repo, ".githooks", nombre)
                 if not os.path.isfile(archivo):
                     hallazgos.append(Hallazgo(
@@ -121,7 +128,7 @@ class ArranqueDeSesion(Validador):
     def validar(self):
         # F13 primero: sin la estructura base lo demás no tiene sentido todavía,
         # y si falta es que el proyecto nunca se instaló.
-        if not Instalador.cumple_f13(self.proyecto.raiz):
+        if not _instalador().cumple_f13(self.proyecto.raiz):
             return [Hallazgo(FALLA, self.proyecto.raiz, 0,
                              "falta la carpeta `proyectos/` (02·F13): este proyecto "
                              "no está instalado — correr validadores/instalar.py "

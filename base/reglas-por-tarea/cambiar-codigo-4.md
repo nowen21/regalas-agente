@@ -2,6 +2,18 @@
 
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
+## F30 · Toda acción trae su contraria
+Lo que crea o cambia algo se entrega con la acción que lo deja como estaba, como crear y quitar. Sin ella no está terminado; el plan la declara y lleva prueba ([`08·T1`](../08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba)).
+**Excepción:** lo que no tiene vuelta (condición) va sin contraria si el plan dice por qué (límite) y el usuario lo aprueba (autoriza).
+```
+INCORRECTO: la herramienta crea una carpeta y su fila en el índice; si se creó
+            mal, hay que borrar la carpeta y la fila a mano
+CORRECTO:   la misma herramienta trae «quitar», que borra las dos cosas juntas,
+            y su prueba crea, quita y deja el índice como estaba
+```
+
+Fuente: [02·F30](../02-flujo-de-trabajo/reglas/F30-toda-accion-trae-su-contraria.md#f30--toda-acción-trae-su-contraria)
+
 ## F4 · Todo plan lleva su plan de pruebas y su aprobación explícita
 Cada plan de trabajo se redacta junto a su plan de pruebas, se **presenta** y **no se toca código sin un OK explícito** del usuario ([`01·C17`](../01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada)); el plan que sale de un análisis aprobado que lo contempla ya lo tiene, y lo cita. Sin la HU que lo respalde, **PAUSAR y retroceder** (depende de [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)).
 ```

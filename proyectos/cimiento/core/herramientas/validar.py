@@ -609,7 +609,7 @@ class Consola:
             return self.reportar(PruebasDelEstandar(RAIZ, self.archivos).reclamo(),
                                  "¿Hace falta correr las pruebas del estándar?")
         return self.reportar(PruebasDelEstandar(RAIZ, self.archivos, solo=a.solo).validar(),
-                             "Pruebas del estándar · validadores/tests/")
+                             "Pruebas del estándar")
 
     # ── la instalación en un proyecto ─────────────────────────────────────
 

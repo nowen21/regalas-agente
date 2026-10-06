@@ -76,7 +76,8 @@ def accion(datos, proyecto):
     herramienta = datos.get("tool_name") or ""
     entrada = datos.get("tool_input") or {}
     cwd = datos.get("cwd") or proyecto
-    freno = Freno(proyecto)
+    # `EP-025·HU-024` · Con su sesión, el freno lee el análisis prendido de ella.
+    freno = Freno(proyecto, sesion=datos.get("session_id") or "")
     decision, porque, ruta = freno.revisar(herramienta, entrada, cwd)
     if decision == "pregunta":
         _decision("ask", "[EL FRENO PREGUNTA] " + porque[0].upper() + porque[1:] + ".")
@@ -90,7 +91,7 @@ def accion(datos, proyecto):
     elif decision == "detiene":
         que = ACCION.get(herramienta, "una acción")
         anotado = freno.anotar_hallazgo(datos.get("session_id") or "", que, ruta, porque)
-        razon = Freno.aviso(porque, ruta, bool(anotado), freno.analisis_prendido())
+        razon = Freno.aviso(porque, ruta, bool(anotado), freno.analisis_prendido(), freno.salida(porque))
         if "04·S9" in porque:
             razon += "\n" + GUION
         _decision("deny", razon)

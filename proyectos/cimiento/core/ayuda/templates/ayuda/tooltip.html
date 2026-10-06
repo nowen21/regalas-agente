@@ -1,0 +1,8 @@
+{% if texto %}<span class="ayuda-icono" role="button" tabindex="0"
+   data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top"
+   data-bs-html="true" data-bs-custom-class="ayuda-globo"
+   data-bs-title="{{ texto.titulo }}"
+   data-bs-content="{{ contenido }}"
+   aria-label="Ayuda: {{ texto.titulo }}">?</span>{% elif falta %}<span class="ayuda-icono ayuda-icono-falta"
+   data-bs-toggle="tooltip" title="Falta el texto de ayuda «{{ clave }}» en core/ayuda/textos.py"
+   aria-label="Falta el texto de ayuda">?</span>{% endif %}

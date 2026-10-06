@@ -156,9 +156,9 @@ Para que el agente arranque, el mensaje declara cuatro cosas ([`01·C21`](«RUTA
 
 | Campo | Ejemplo |
 |---|---|
-| **Sobre qué** | `en validadores/enlaces.py` |
+| **Sobre qué** | `en proyectos/cimiento/core/validadores/enlaces.py` |
 | **Qué quiere** | `solo responda`, `opine` o `hágalo` |
 | **Qué debe quedar hecho** | `que no queden enlaces rotos` |
 | **Qué no se toca** | `sin tocar los otros validadores` |
 
-El mensaje que solo pide información declara los dos primeros: *"¿qué hace validadores/enlaces.py? solo responda"*.
+El mensaje que solo pide información declara los dos primeros: *"¿qué hace proyectos/cimiento/core/validadores/enlaces.py? solo responda"*.

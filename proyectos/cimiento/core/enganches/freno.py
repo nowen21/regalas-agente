@@ -41,8 +41,9 @@ from ..comun import Archivos, Git, Proyecto
 from ..niveles.catalogo import es_del_nucleo
 from .acuerdos import Acuerdos
 from .analisis_en_curso import AnalisisEnCurso
+from . import guiones
 from .autorizado import Autorizaciones
-from .niveles import BaseSinRespuesta, NivelesDelProyecto
+from .niveles import TODAS, BaseSinRespuesta, NivelesDelProyecto
 from .origen import LectorDeAnalisis
 from .plan_vs_hecho import PlanDeTrabajo
 from .resumen import CARPETA as HISTORICO
@@ -54,6 +55,7 @@ SIN_BASE = ("%s. Sin la base no se sabe el nivel de cada regla, y no se deja mod
             "leer sigue permitido (análisis 1 del pendiente 119, acuerdo 15)")
 
 ESCRITURA = ("Write", "Edit", "MultiEdit", "NotebookEdit")
+GUION_PARECIDO = "se parece a"
 CONSOLA = ("Bash", "PowerShell")
 _PUBLICA = re.compile(
     r"^(?:Artifact|mcp__.+__(?:create|update|delete|batch|send|post|publish|upload|write|edit|comment)\w*)$",
@@ -100,10 +102,14 @@ _H = re.compile(r"^### H-(\d+)\b", re.M)
 class Freno:
     """Decide sobre cada acción del agente en un proyecto."""
 
-    def __init__(self, proyecto, archivos=None, niveles=None):
+    def __init__(self, proyecto, archivos=None, niveles=None, sesion=""):
         self.proyecto = proyecto if isinstance(proyecto, Proyecto) else Proyecto(proyecto)
         self.archivos = archivos or Archivos()
         self.niveles = niveles or NivelesDelProyecto(self.proyecto.raiz)
+        # `EP-025·HU-024` · La sesión que actúa: el análisis prendido que cuenta es
+        # el suyo, no el más reciente del proyecto (H-8 del 2026-10-04, sesión 3).
+        self.sesion = sesion or ""
+        self._estado = None
 
     @property
     def raiz(self):
@@ -126,9 +132,16 @@ class Freno:
                           if "/" in r or "." in r}
         return rutas
 
+    def estado_del_analisis(self):
+        """El análisis prendido de la sesión que actúa; sin sesión, el más reciente."""
+        if self._estado is None:
+            transcripcion = self.transcripcion_de(self.sesion) if self.sesion else ""
+            self._estado = AnalisisEnCurso(self.raiz, transcripcion).leer_estado() or {}
+        return self._estado or None
+
     def de_una(self):
         """Las rutas exactas que el análisis prendido manda hacer «de una y sin fase»."""
-        estado = AnalisisEnCurso(self.raiz).leer_estado()
+        estado = self.estado_del_analisis()
         if not estado or not os.path.isfile(estado["analisis"]):
             return set()
         return self.rutas_de_una(estado["analisis"], self.archivos)
@@ -296,9 +309,11 @@ class Freno:
 
     @staticmethod
     def nivel_para(regla, niveles):
+        """El nivel de la regla. El núcleo frena siempre, aunque el freno esté
+        suspendido (`EP-025·HU-013`); la suspensión del freno entero es `*`."""
         if not regla or es_del_nucleo(regla):
             return FRENA
-        return niveles.get(regla, FRENA)
+        return niveles.get(regla, niveles.get(TODAS, FRENA))
 
     def modifica(self, herramienta, entrada, cwd=None):
         """¿La acción escribe? La herramienta de escritura siempre; la consola, si
@@ -351,20 +366,88 @@ class Freno:
                 return ("deja", "", "")
             ruta_abs = Proyecto.ruta_real(ruta, cwd)
             porque = self.motivo(ruta_abs, self.permitido())
-            return ("detiene", porque, self.proyecto.relativa(ruta_abs) or ruta) if porque else ("deja", "", "")
+            if porque:
+                return ("detiene", porque, self.proyecto.relativa(ruta_abs) or ruta)
+            return self.guion_repetido(ruta_abs, entrada) or ("deja", "", "")
         if herramienta in CONSOLA:
             orden = entrada.get("command") or ""
             porque = self.nunca(orden, bool(entrada.get("run_in_background")), cwd)
             if porque:
                 return ("detiene", porque, "")
             lo_permitido = None
-            for ruta in self.destinos(orden):
+            for ruta, desde in self.destinos_con_carpeta(orden, cwd):
                 lo_permitido = lo_permitido or self.permitido()
-                ruta_abs = Proyecto.ruta_real(ruta, cwd)
+                ruta_abs = Proyecto.ruta_real(ruta, desde)
                 porque = self.motivo(ruta_abs, lo_permitido)
                 if porque:
                     return ("detiene", porque, self.proyecto.relativa(ruta_abs) or ruta)
         return ("deja", "", "")
+
+    def guion_repetido(self, ruta_abs, entrada):
+        """`EP-025·HU-017` · Un guion de apoyo que repite lo que Cimiento ya hace se
+        detiene; uno que se parece a otro anterior se avisa. Si no, None."""
+        rel = self.proyecto.relativa(ruta_abs) or ""
+        if not guiones.es_guion(rel) or "content" not in (entrada or {}):
+            return None
+        texto = entrada.get("content") or ""
+        hace = guiones.lo_hace_cimiento(texto)
+        if hace:
+            return ("detiene", "es un guion para %s, que Cimiento ya hace: se usa `%s`, como acordó "
+                               "el análisis 2 del pendiente 119 (04·S18)" % hace, rel)
+        anterior = guiones.parecido_a(self.raiz, rel, texto)
+        if anterior:
+            return ("avisa", "%s `%s`: la tarea se repite, y lo que se repite va como funcionalidad de "
+                             "Cimiento, no como otro guion (04·S18)" % (GUION_PARECIDO, anterior), rel)
+        return None
+
+    @staticmethod
+    def partes_fuera_de_comillas(orden):
+        """Las partes de una orden partida por `&&`, `||`, `;`, `|` y saltos de línea,
+        pero solo los que quedan fuera de las comillas: adentro es texto, como el
+        código de un `python -c "…"` (H-10 del resumen del 2026-10-04, sesión 3)."""
+        partes, actual, comilla, i = [], [], "", 0
+        while i < len(orden):
+            letra = orden[i]
+            if comilla:
+                actual.append(letra)
+                if letra == comilla:
+                    comilla = ""
+                i += 1
+                continue
+            if letra in "\"'":
+                comilla = letra
+            elif orden.startswith(("&&", "||"), i):
+                partes.append("".join(actual))
+                actual, i = [], i + 2
+                continue
+            elif letra in ";|\n":
+                partes.append("".join(actual))
+                actual, i = [], i + 1
+                continue
+            actual.append(letra)
+            i += 1
+        partes.append("".join(actual))
+        return [p.strip() for p in partes if p.strip()]
+
+    @classmethod
+    def destinos_con_carpeta(cls, orden, cwd):
+        """`[(ruta, carpeta desde la que se resuelve)]`: cada parte de la orden
+        resuelve sus rutas desde donde la dejó el `cd` anterior (`EP-025·HU-024`)."""
+        partes = cls.partes_fuera_de_comillas(cls.sin_heredoc(orden))
+        if not any(re.match(r"^cd(?:\s|$)", p) for p in partes):
+            # Sin `cd`, la orden entera como siempre: partirla antes podría cortar
+            # un texto entre comillas que lleva `;` o `&&`.
+            return [(ruta, cwd) for ruta in cls.destinos(orden)]
+        salida, carpeta = [], cwd
+        for parte in partes:
+            m = re.match(r"^cd(?:\s+(.+))?$", parte)
+            if m:
+                destino = (m.group(1) or "~").strip()
+                if destino != "-":
+                    carpeta = Proyecto.ruta_real(destino, carpeta)
+                continue
+            salida += [(ruta, carpeta) for ruta in cls.destinos(parte)]
+        return salida
 
     # ── después de actuar ─────────────────────────────────────────────────
 
@@ -460,13 +543,23 @@ class Freno:
             return ""
         for nombre in sorted(os.listdir(carpeta)):
             ruta = os.path.join(carpeta, nombre)
-            if nombre.endswith(".md") and os.path.isfile(ruta) and marca in self.archivos.leer(ruta):
+            if nombre.endswith(".md") and os.path.isfile(ruta) and marca in self._comienzo(ruta):
                 return ruta
         return ""
 
+    @staticmethod
+    def _comienzo(ruta):
+        """`EP-025·HU-024` · La marca de la sesión va en la primera línea: el freno
+        corre en cada acción y no lee transcripciones enteras para hallarla."""
+        try:
+            with open(ruta, encoding="utf-8", errors="replace") as f:
+                return f.read(512)
+        except OSError:
+            return ""
+
     def analisis_prendido(self):
         """`True` si hay un análisis que recibe la conversación y no se ha aprobado."""
-        estado = AnalisisEnCurso(self.raiz).leer_estado()
+        estado = self.estado_del_analisis()
         return bool(estado and os.path.isfile(estado["analisis"]) and not AnalisisEnCurso.aprobado(estado["analisis"]))
 
     def anotar_hallazgo(self, sesion, accion, ruta, porque, ahora=None):
@@ -504,6 +597,10 @@ class Freno:
     def aviso_de_nivel(porque, ruta):
         """El texto que recibe el agente cuando la regla está en «avisa»: pasó, y se avisa."""
         donde = " (`%s`)" % ruta if ruta else ""
+        if porque.startswith(GUION_PARECIDO):
+            # `EP-025·HU-017` · Lo parecido avisa siempre: no es el nivel de la regla.
+            return ("[EL FRENO AVISA%s]\n%s.\nNo se detiene: si la tarea es nueva, sigue; si se repite, "
+                    "se agrega a Cimiento." % (donde, porque[0].upper() + porque[1:]))
         return ("[EL FRENO AVISA%s]\n%s.\nLa regla está en «avisa» en este proyecto: la acción pasó. "
                 "Su nivel se cambia en Cimiento, en las reglas del proyecto." % (donde, porque[0].upper() + porque[1:]))
 
@@ -513,8 +610,9 @@ class Freno:
         return "[EL FRENO NO TIENE BASE DE DATOS]\n%s." % porque
 
     @staticmethod
-    def aviso(porque, ruta, anotado, prendido=False):
-        """El texto que recibe el agente cuando el freno detiene."""
+    def aviso(porque, ruta, anotado, prendido=False, salida=""):
+        """El texto que recibe el agente cuando el freno detiene. `salida`, si viene,
+        dice cómo salir sin tocar archivos (`EP-025·HU-024`)."""
         donde = " (`%s`)" % ruta if ruta else ""
         if prendido:
             cierre = ("Hay un análisis prendido: reportarlo en la conversación y resolverlo ahí; "
@@ -523,5 +621,33 @@ class Freno:
             cierre = "Quedó anotado en el resumen de la sesión." if anotado else "Anotarlo en el resumen de la sesión."
         return ("[EL FRENO DETUVO ESTA ACCIÓN%s]\n%s.\n"
                 "Es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, "
-                "acuerdos 18 y 44). %s"
-                % (donde, porque[0].upper() + porque[1:], cierre))
+                "acuerdos 18 y 44). %s%s"
+                % (donde, porque[0].upper() + porque[1:], cierre, ("\n" + salida) if salida else ""))
+
+    def salida(self, porque):
+        """`EP-025·HU-024` · Cómo salir sin tocar archivos ni código (análisis 3 del
+        pendiente 119, acuerdo 1): la herramienta que deshace, o la suspensión."""
+        regla = self.regla_de(porque)
+        deshacer = ("Si lo que estorba lo creó una herramienta y está mal, su contraria lo quita: "
+                    "`python validadores/andamio.py quitar «carpeta»`, `python validadores/cerrar.py reabrir «N»`, "
+                    "`manage.py reabrir_fase «fase»` o `python validadores/instalar.py «ruta» --desinstalar`.")
+        if regla and es_del_nucleo(regla):
+            return ("Cómo salir: %s `%s` es del núcleo y no se suspende; lo que falte se resuelve "
+                    "en la conversación con el usuario." % (deshacer, regla))
+        que = "`%s`" % regla if regla else "la regla"
+        return ("Cómo salir sin tocar archivos: %s Si la acción es legítima y el plan no la cubre, se le pide "
+                "al usuario suspender %s, o el freno entero, con motivo y vencimiento, en Cimiento: %s"
+                % (deshacer, que, self.direccion_de_suspensiones()))
+
+    def direccion_de_suspensiones(self):
+        """La pantalla «Suspensiones» del proyecto, con el puerto del `.env` de Cimiento."""
+        try:
+            from config.ambiente import leer
+            env = leer(os.path.join(Proyecto.estandar(), "proyectos", "cimiento", ".env"))
+            puerto = os.environ.get("PUERTO") or env.get("PUERTO") or "8000"
+            filas = self.niveles.consultar(
+                "SELECT id FROM proyectos_proyecto WHERE activo = 1 AND LOWER(ruta) = LOWER(%s)")
+        except Exception:  # noqa: BLE001  Sin base o sin `.env`, la dirección general.
+            return "«Proyectos» → «Suspensiones»"
+        camino = "/proyectos/%d/suspensiones/" % filas[0][0] if filas else "/proyectos/"
+        return "http://127.0.0.1:%s%s" % (puerto, camino)

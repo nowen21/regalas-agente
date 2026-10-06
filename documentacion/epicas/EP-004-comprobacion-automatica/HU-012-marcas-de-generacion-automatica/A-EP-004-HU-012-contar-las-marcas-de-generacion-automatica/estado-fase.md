@@ -37,7 +37,7 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Construido el 2026-08-18.** Era cierto que ningún programa las comprobaba: [`validadores/marcas.py`](../../../../../validadores/marcas.py) es el primero. El recuento dio **16 477 marcas en 820 archivos** fuera del histórico, y **4 491 en lo que se hereda**.
+**Construido el 2026-08-18.** Era cierto que ningún programa las comprobaba: `validadores/marcas.py` es el primero. El recuento dio **16 477 marcas en 820 archivos** fuera del histórico, y **4 491 en lo que se hereda**.
 
 
 ---

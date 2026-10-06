@@ -114,3 +114,21 @@ class Presupuesto:
             linea += ("\nAVISO: el consumo (%s) pasó el umbral (%s). No detiene "
                       "nada: es un número para mirar." % (f"{totales['total']:,}", f"{int(umbral):,}"))
         return linea
+
+
+def aviso_de_limites(ruta, raiz, estandar=None):
+    """`EP-025·HU-009` · Lo que en el turno anterior pasó el límite del proyecto, o "".
+
+    Vivía en `hook_presupuesto.py`; pasó a `core/` con la `EP-025·HU-013`
+    (análisis 2 del pendiente 119, punto 6), y lee los límites de los ajustes.
+    """
+    from ..consumo.lector import LectorDeClaudeCode, estimar_tokens
+    from .niveles import LimitesDelProyecto
+
+    turno = LectorDeClaudeCode(ruta).turno_anterior()
+    limite_enganche, limite_archivo = LimitesDelProyecto(raiz, estandar).limites()
+    enganches = Presupuesto.pasados_del_limite(
+        ((e.nombre, estimar_tokens(e.caracteres)) for e in turno.enganches), limite_enganche)
+    archivos = Presupuesto.pasados_del_limite(
+        ((a.ruta, estimar_tokens(a.caracteres)) for a in turno.archivos), limite_archivo)
+    return Presupuesto.aviso_de_limites(enganches, archivos, limite_enganche, limite_archivo)

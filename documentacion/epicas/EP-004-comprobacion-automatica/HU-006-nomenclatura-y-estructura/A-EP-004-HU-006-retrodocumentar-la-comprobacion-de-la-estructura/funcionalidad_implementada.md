@@ -29,7 +29,7 @@
 | `F12.5` · consecutivo sin huecos ni repetidos | programa | El mismo | ✅ Ya existía | CP-002 |
 | `F12.13` · los cinco documentos, **nombrando cuáles faltan** | programa | El mismo | ✅ Ya existía | CP-003 |
 | Los tres bordes vacíos | programa | El mismo | ✅ Ya existía | Transversal |
-| **Qué se comprueba de `F12` y qué no** | documentación | [`docs/fases.md`](../../../../../validadores/docs/fases.md) | ✅ **Escrito acá** | — |
+| **Qué se comprueba de `F12` y qué no** | documentación | `docs/fases.md` | ✅ **Escrito acá** | — |
 | Los cinco casos, con red | pruebas | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `EstructuraYNomenclatura` | ✅ Escritas acá | 5 pruebas |
 
 ### Criterios de aceptación
@@ -60,7 +60,7 @@
 
 ## 4. Lo que quedó escrito, y por qué importa
 
-Hasta hoy, qué comprueba `fases.py` de `F12` se sabía leyendo el programa. Ahora está en [`docs/fases.md`](../../../../../validadores/docs/fases.md), y lo que más valor tiene es **la lista de lo que no comprueba, con el motivo**:
+Hasta hoy, qué comprueba `fases.py` de `F12` se sabía leyendo el programa. Ahora está en `docs/fases.md`, y lo que más valor tiene es **la lista de lo que no comprueba, con el motivo**:
 
 | No se comprueba | Por qué |
 |---|---|

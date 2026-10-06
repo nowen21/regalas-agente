@@ -1,0 +1,31 @@
+<div class="mapa mapa-animar">
+  <div class="mapa-lienzo text-center">
+    {% for paso in mapa %}
+    <div class="mapa-paso mapa-paso-{{ paso.tipo }} mapa-elemento" style="--turno: {{ paso.turno }}">
+      <div class="mb-1">
+        <span class="mapa-etiqueta mapa-etiqueta-{{ paso.tipo }}">{{ paso.etiqueta }}</span>
+        <span class="mapa-titulo">{{ paso.titulo }}</span>
+      </div>
+      {% if paso.pantalla %}
+      <div class="mb-2"><span class="mapa-aqui">Aquí está: {{ paso.pantalla }}</span></div>
+      {% endif %}
+      <div class="d-inline-flex align-items-center flex-wrap justify-content-center gap-1">
+        {% for sub in paso.subpasos %}
+        {% if not forloop.first %}<span class="mapa-linea mapa-linea-{{ paso.tipo }} mapa-elemento" style="--turno: {{ sub.turno }}"></span>{% endif %}
+        <span class="mapa-chip mapa-chip-{{ paso.tipo }} mapa-elemento" style="--turno: {{ sub.turno }}">
+          <span class="mapa-num">{{ sub.num }}</span>{{ sub.texto }}
+        </span>
+        {% endfor %}
+      </div>
+    </div>
+    {% if paso.flecha is not None %}
+    <div class="mapa-flecha mapa-elemento" style="--turno: {{ paso.flecha }}">↓</div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="mapa-leyenda">
+    <span class="mapa-leyenda-antes">Azul</span>: se necesita antes.
+    <span class="mapa-leyenda-aqui">Morado</span>: donde está.
+    <span class="mapa-leyenda-despues">Turquesa</span>: lo que sigue.
+  </div>
+</div>

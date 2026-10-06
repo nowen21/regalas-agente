@@ -29,11 +29,14 @@
           <td>{{ proyecto.nombre }}</td>
           <td class="text-secondary">{{ proyecto.ruta }}</td>
           <td class="text-secondary">{{ proyecto.carpeta_claude }}</td>
-          <td class="text-end">{{ proyecto.limite_enganche }}</td>
-          <td class="text-end">{{ proyecto.limite_archivo }}</td>
+          {% with ajustes=proyecto.ajustes %}
+          <td class="text-end">{{ ajustes.limite_enganche.0 }}</td>
+          <td class="text-end">{{ ajustes.limite_archivo.0 }}</td>
+          {% endwith %}
           <td>{% if proyecto.activo %}Activo{% else %}Inactivo{% endif %}</td>
           <td class="text-nowrap">
-            <a href="{% url 'niveles:reglas' proyecto.pk %}">Reglas</a>
+            <a href="{% url 'niveles:reglas' proyecto.pk %}">Reglas</a> ·
+            <a href="{% url 'proyectos:suspensiones' proyecto.pk %}">Suspensiones</a>
             {% if puede_cambiar %} · <a href="{% url 'proyectos:editar' proyecto.pk %}">Editar</a>{% endif %}
           </td>
         </tr>

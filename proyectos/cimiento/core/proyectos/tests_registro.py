@@ -43,14 +43,14 @@ class LosProyectosQueExistenEntran(ConCarpetas):
         uno = Proyecto.objects.get(nombre="Uno · módulo")
         self.assertEqual(uno.ruta, self.uno)
         self.assertTrue(uno.carpeta_claude)
-        self.assertEqual(uno.limite_enganche, 2000)
+        self.assertEqual(uno.ajuste("limite_enganche"), 2000)
 
     def test_repetir_no_duplica_ni_pisa(self):
         md = self.md([("Uno", self.uno)])
         registro.traer_de_proyectos_md(Proyecto, md)
-        Proyecto.objects.filter(nombre="Uno").update(limite_archivo=5)
+        Proyecto.objects.filter(nombre="Uno").update(nombre="Uno editado")
         self.assertEqual(registro.traer_de_proyectos_md(Proyecto, self.md([("Uno", self.uno.upper())])), [])
-        self.assertEqual(Proyecto.objects.get().limite_archivo, 5)
+        self.assertEqual(Proyecto.objects.get().nombre, "Uno editado")
 
     def test_la_carpeta_temporal_no_entra(self):
         temporal = tempfile.mkdtemp()

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "core.proyectos",
     "core.niveles",
     "core.consumo",
+    "core.ayuda",
 ]
 
 MIDDLEWARE = [

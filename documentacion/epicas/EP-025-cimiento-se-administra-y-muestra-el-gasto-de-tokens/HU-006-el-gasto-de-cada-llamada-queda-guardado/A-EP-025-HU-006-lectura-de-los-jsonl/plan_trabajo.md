@@ -94,7 +94,7 @@ Ninguno.
 | Tokens estimados de enganches y archivos: caracteres entre 3,5, en una sola constante | Contar con un tokenizador | Claude Code no da esos tokens y el tokenizador no es público; queda marcado como estimación | Propuesta del agente |
 | El avance se guarda por archivo en bytes; la última línea sin salto no se cuenta como leída | Releer todo | Claude Code puede estar escribiendo esa línea | Acuerdo 9 |
 | No se guarda texto: solo tamaños, nombres y rutas | Guardar los mensajes | Privacidad (capítulo `12`) y tamaño | Acuerdo 8 |
-| Programar con `schtasks` en Windows; en otro sistema se dice cómo hacerlo | Un proceso que quede corriendo | La instalación no deja procesos vivos (`04·S10`) | Punto 6 |
+| Programar con `schtasks` en Windows; en otro sistema se dice cómo hacerlo | Un proceso que quede corriendo | Una lectura al día bastaba para no perder lo que Claude Code borra a los 30 días; un proceso que queda corriendo tiene que guardar su número para cerrarlo por él (`04·S10`). Corregida el 2026-10-05 (análisis 2 del pendiente 119, fila 15): antes decía que `04·S10` prohíbe dejar procesos vivos, y no lo dice; la HU-011 reemplazó esta tarea por un vigilante | Punto 6 |
 
 ### 2.7 Dudas por resolver antes de codificar
 

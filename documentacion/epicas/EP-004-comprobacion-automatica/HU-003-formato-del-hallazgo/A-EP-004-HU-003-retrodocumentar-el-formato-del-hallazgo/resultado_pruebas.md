@@ -101,7 +101,7 @@
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
 | D-01 | **Alta** | **Un `.md` que no se puede decodificar tumba la corrida entera.** `comun.leer` abre sin red; el `UnicodeDecodeError` sube hasta arriba y la corrida termina en 1 **sin una sola línea de salida útil**, perdiendo todos los hallazgos ya encontrados. Se comprobó corriendo `validar.py estandar` sobre un árbol con un archivo mal codificado | Probado con fallo esperado en [`validadores/pruebas.py`](../../../../../validadores/pruebas.py). El arreglo toca `comun.py`, que §2.1 del [plan aprobado](plan_trabajo.md) no declara. Se propone |
-| D-02 | Baja | **El contrato de la salida estaba en el código y no estaba escrito.** Qué trae un hallazgo y qué hace cada severidad se deducía leyendo `comun.py` | **Corregido en esta fase**: escrito en [`validadores/docs/comun.md`](../../../../../validadores/docs/comun.md), que §2.1 del plan sí declara |
+| D-02 | Baja | **El contrato de la salida estaba en el código y no estaba escrito.** Qué trae un hallazgo y qué hace cada severidad se deducía leyendo `comun.py` | **Corregido en esta fase**: escrito en `validadores/docs/comun.md`, que §2.1 del plan sí declara |
 | D-03 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los dos transversales** de la HU. Se probaron igual, y por eso apareció `D-01` | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
 **`D-01` es el que deja un criterio en «No»**, y no lo habría encontrado nadie: es justo el transversal al que el plan no le escribió caso.
@@ -153,7 +153,7 @@ Lo que no cumple es el **transversal de errores**: un archivo que no se puede le
 |---|---|---|
 | EV-01 | Casos automatizados | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `FormatoDelHallazgo`: 8 pruebas — 7 en verde y 1 como fallo esperado, que es `D-01` |
 | EV-02 | Arreglos reales | Los cinco defectos de `validar.py estandar` corregidos esta sesión, dos de ellos usados como caso |
-| EV-03 | El contrato escrito | [`validadores/docs/comun.md`](../../../../../validadores/docs/comun.md), sección «El contrato de la salida» |
+| EV-03 | El contrato escrito | `validadores/docs/comun.md`, sección «El contrato de la salida» |
 | EV-04 | Corrida completa | `python validadores/pruebas.py` — 276 pruebas, verde, 5 fallos esperados |
 
 ---

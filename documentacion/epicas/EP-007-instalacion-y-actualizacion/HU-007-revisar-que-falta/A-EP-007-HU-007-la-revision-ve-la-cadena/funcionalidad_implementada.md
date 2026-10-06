@@ -33,7 +33,7 @@ Un proyecto sin planteamiento dice ahora «13 de 14» y nombra qué le falta, en
 | [`validadores/checklist.py`](../../../../../validadores/checklist.py) | `_cadena()` y su entrada en el mapa de comprobaciones |
 | [`validadores/tests/test_checklist_cadena.py`](../../../../../validadores/tests/test_checklist_cadena.py) | **Nuevo.** Tres casos |
 | [`validadores/tests/test_instalar_reparar.py`](../../../../../validadores/tests/test_instalar_reparar.py) | Ampliación de plan: su `CP-004` exigía cero faltantes después de instalar |
-| [`validadores/docs/checklist.md`](../../../../../validadores/docs/checklist.md) | El punto nuevo y por qué existe |
+| `validadores/docs/checklist.md` | El punto nuevo y por qué existe |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 23.0.0 |
 
 ---

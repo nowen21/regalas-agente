@@ -41,7 +41,7 @@ La fila **16** es N/A: no tiene excepción. Que el proyecto pueda seguir trabaja
 
 La fila **17** resuelve un choque que estaba abierto y conviene dejarlo dicho: [`02·F20`](F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda parar y proponer lo que se descubre fuera del criterio de aceptación, y **no decía qué hacer cuando lo descubierto es del estándar y no del proyecto**. Ahí `F20` para y esta dice a dónde va lo que se propuso. Era el hueco anotado en el punto 8 del [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
-**Validable a medias:** desde la 45.0.0 nadie escribe «Proyecto de origen»: el enlace de «De dónde sale» ya dice de qué proyecto viene, y el estado del de acá lo calcula `validadores/pendientes.py` siguiendo ese enlace (análisis 1 del pendiente 103, conclusión 36).
+**Validable a medias:** desde la 45.0.0 nadie escribe «Proyecto de origen»: el enlace de «De dónde sale» ya dice de qué proyecto viene, y el estado del de acá lo calcula `proyectos/cimiento/core/validadores/pendientes.py` siguiendo ese enlace (análisis 1 del pendiente 103, conclusión 36).
 
 Lo que **no** puede ver ningún programa de acá: el pendiente del otro lado cuando vive en un repositorio que no está en esta máquina. Queda dicho para que nadie lo dé por cubierto.
 

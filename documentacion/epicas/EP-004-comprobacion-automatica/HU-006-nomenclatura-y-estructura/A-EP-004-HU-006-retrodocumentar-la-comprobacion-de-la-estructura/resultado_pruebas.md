@@ -109,7 +109,7 @@ Ya estaba cubierto por la clase `Fases`, y se comprobó que sigue en pie:
 
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
-| D-01 | Baja | **Qué parte de `F12` se comprueba y qué parte no estaba repartido entre el código y las pruebas**, y en ningún documento | **Corregido en esta fase**: escrito en [`validadores/docs/fases.md`](../../../../../validadores/docs/fases.md), que §2.1 del plan declara |
+| D-01 | Baja | **Qué parte de `F12` se comprueba y qué parte no estaba repartido entre el código y las pruebas**, y en ningún documento | **Corregido en esta fase**: escrito en `validadores/docs/fases.md`, que §2.1 del plan declara |
 | D-02 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los dos transversales**. Se probaron igual | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
 **Ninguno deja un criterio de aceptación en «No».**
@@ -159,7 +159,7 @@ Ya estaba cubierto por la clase `Fases`, y se comprobó que sigue en pie:
 | ID | Tipo | Dónde está |
 |---|---|---|
 | EV-01 | Casos automatizados | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clases `EstructuraYNomenclatura` (5 pruebas nuevas) y `Fases` (11, ya existentes) |
-| EV-02 | Lo que se comprueba y lo que no | [`validadores/docs/fases.md`](../../../../../validadores/docs/fases.md), sección escrita en esta fase |
+| EV-02 | Lo que se comprueba y lo que no | `validadores/docs/fases.md`, sección escrita en esta fase |
 | EV-03 | Línea base | §3, con los tres momentos y su fecha |
 | EV-04 | Corrida completa | `python validadores/pruebas.py` — 281 pruebas, verde, 5 fallos esperados |
 

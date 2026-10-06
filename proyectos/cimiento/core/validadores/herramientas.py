@@ -21,7 +21,6 @@ import shutil
 import subprocess
 
 from ..comun import AVISO, FALLA, Git, Hallazgo
-from ..herramientas.instalar import Instalador
 from .base import Validador
 
 # Manifiesto versionado y su ecosistema. Un proyecto puede tener varios.
@@ -118,6 +117,9 @@ class HerramientaDelEcosistema(Validador):
 
     def validar(self):
         raiz = self.proyecto.raiz
+        # Aquí y no arriba: el instalador importa los validadores (fila 23
+        # del análisis 1 del pendiente 116).
+        from ..herramientas.instalar import Instalador
         repos = Instalador.repositorios_git(raiz)
         if not repos:
             return [Hallazgo(AVISO, raiz, 0, "no hay repositorios git que revisar")]

@@ -51,7 +51,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-un-pendiente-no
 
 ### H-3 · El marcador nunca se resuelve bien dentro de un proyecto
 
-- **Qué pasó:** [`enlaces.py`](../../../validadores/enlaces.py) resuelve `«RUTA-ESTANDAR»` contra la raíz que está validando, dando por hecho que esa raíz es el estándar. Los enganches lo corren como `python "<estandar>/validadores/<guion>" --raiz "<proyecto>"`, así que dentro de un proyecto busca `<proyecto>/base/…`, que nunca existe.
+- **Qué pasó:** `enlaces.py` resuelve `«RUTA-ESTANDAR»` contra la raíz que está validando, dando por hecho que esa raíz es el estándar. Los enganches lo corren como `python "<estandar>/validadores/<guion>" --raiz "<proyecto>"`, así que dentro de un proyecto busca `<proyecto>/base/…`, que nunca existe.
 - **Por qué importa:** el proyecto que reportó el defecto creyó que el revisor callaba; no calla, pero tampoco acierta. Y el arreglo del H-2 no lo cubre: mañana se escapa otro marcador y vuelve a fallar en silencio.
 - **Qué lo soluciona:**
   **EP-004 · HU-005 — fase nueva: el marcador se resuelve contra el estándar**

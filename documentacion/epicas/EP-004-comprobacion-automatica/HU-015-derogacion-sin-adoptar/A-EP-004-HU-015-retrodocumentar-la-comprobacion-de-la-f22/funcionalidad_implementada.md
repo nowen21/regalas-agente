@@ -33,7 +33,7 @@ Lo que quedó comprobado, contra las derogaciones reales del estándar:
 | Archivo | Qué |
 |---|---|
 | [`validadores/tests/test_version_derogaciones.py`](../../../../../validadores/tests/test_version_derogaciones.py) | **Nuevo.** Cuatro casos, uno por criterio más los transversales |
-| [`validadores/docs/version.md`](../../../../../validadores/docs/version.md) | Dice que las tres funciones están bajo prueba, y por qué unos casos usan datos reales y otro inventados |
+| `validadores/docs/version.md` | Dice que las tres funciones están bajo prueba, y por qué unos casos usan datos reales y otro inventados |
 | [`HU-015-derogacion-sin-adoptar.md`](../HU-015-derogacion-sin-adoptar.md) | §8 con la fase, tareas, `DoD`, estado y bitácora |
 | [`pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md`](../../../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md) | El pendiente 38, cerrado |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 21.3.1 |

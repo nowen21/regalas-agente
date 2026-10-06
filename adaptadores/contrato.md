@@ -67,4 +67,4 @@ Un adaptador nuevo llena la columna de su herramienta: las capas 3 y 4 ya las ti
 
 > **`validadores/` es lo que sirve con cualquier agente. `adaptadores/` es lo que existe porque una herramienta concreta lo llama.**
 
-Un programa nuevo que nombre la herramienta y viva en `validadores/` es un error, y [`validar.py amarre`](../validadores/amarre.py) lo reporta.
+Un programa nuevo que nombre la herramienta y viva en `validadores/` es un error, y [`validar.py amarre`](../proyectos/cimiento/core/validadores/amarre.py) lo reporta.

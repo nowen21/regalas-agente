@@ -16,7 +16,7 @@
 | **Horizonte** | N/A |
 | **Product Owner** | Ing. José Dúmar Jiménez Ruíz |
 | **Tech Lead / Arquitecto** | N/A |
-| **Estado** | Terminada |
+| **Estado** | En curso |
 
 ## 2. Resumen ejecutivo
 
@@ -132,6 +132,20 @@ Una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-
 | [HU-008](HU-008-el-gasto-se-ve-en-vivo-en-el-tablero/HU-008-el-gasto-se-ve-en-vivo-en-el-tablero.md) | El gasto se ve en vivo en el tablero | Must | N/A | N/A | Terminada |
 | [HU-009](HU-009-se-avisa-cuando-un-enganche-o-un-archivo-pesa-demasiado/HU-009-se-avisa-cuando-un-enganche-o-un-archivo-pesa-demasiado.md) | Se avisa cuando un enganche o un archivo pesa demasiado | Should | N/A | N/A | Terminada |
 | [HU-010](HU-010-el-gasto-se-ve-por-los-demas-niveles/HU-010-el-gasto-se-ve-por-los-demas-niveles.md) | El gasto se ve por los demás niveles | Could | N/A | N/A | Terminada |
+| [HU-011](HU-011-el-gasto-llega-a-la-base-en-cuanto-claude-code-lo-escribe/HU-011-el-gasto-llega-a-la-base-en-cuanto-claude-code-lo-escribe.md) | El gasto llega a la base en cuanto Claude Code lo escribe | Must | N/A | N/A | Terminada |
+| [HU-012](HU-012-la-telemetria-se-retira/HU-012-la-telemetria-se-retira.md) | La telemetría se retira | Must | N/A | N/A | Terminada |
+| [HU-013](HU-013-cada-proyecto-tiene-su-configuracion-en-tres-capas/HU-013-cada-proyecto-tiene-su-configuracion-en-tres-capas.md) | Cada proyecto tiene su configuración en tres capas | Must | N/A | N/A | Terminada |
+| [HU-014](HU-014-los-avisos-muestran-las-rutas-como-lo-diga-la-configuracion/HU-014-los-avisos-muestran-las-rutas-como-lo-diga-la-configuracion.md) | Los avisos muestran las rutas como lo diga la configuración | Should | N/A | N/A | Terminada |
+| [HU-015](HU-015-se-ve-lo-que-corre-sin-tokens-y-lo-que-conviene-automatizar/HU-015-se-ve-lo-que-corre-sin-tokens-y-lo-que-conviene-automatizar.md) | Se ve lo que corre sin tokens y lo que conviene automatizar | Should | N/A | N/A | Terminada |
+| [HU-016](HU-016-cerrar-y-reabrir-una-fase-y-separar-los-cambios-por-sesion-son-funcionalidades-de-cimiento/HU-016-cerrar-y-reabrir-una-fase-y-separar-los-cambios-por-sesion-son-funcionalidades-de-cimiento.md) | Cerrar y reabrir una fase, y separar los cambios por sesión, son funcionalidades de Cimiento | Must | N/A | N/A | Terminada |
+| [HU-017](HU-017-el-freno-no-deja-escribir-un-guion-para-lo-que-cimiento-ya-hace/HU-017-el-freno-no-deja-escribir-un-guion-para-lo-que-cimiento-ya-hace.md) | El freno no deja escribir un guion para lo que Cimiento ya hace | Should | N/A | N/A | Terminada |
+| [HU-018](HU-018-cimiento-trae-su-ayuda-y-su-manual/HU-018-cimiento-trae-su-ayuda-y-su-manual.md) | Cimiento trae su ayuda y su manual | Should | N/A | N/A | Terminada |
+| [HU-019](HU-019-toda-accion-trae-su-contraria/HU-019-toda-accion-trae-su-contraria.md) | Toda acción trae su contraria | Must | N/A | N/A | Terminada |
+| [HU-020](HU-020-lo-que-crea-el-andamio-se-puede-quitar/HU-020-lo-que-crea-el-andamio-se-puede-quitar.md) | Lo que crea el andamio se puede quitar | Must | N/A | N/A | Terminada |
+| [HU-021](HU-021-el-estandar-se-puede-desinstalar-de-un-proyecto/HU-021-el-estandar-se-puede-desinstalar-de-un-proyecto.md) | El estándar se puede desinstalar de un proyecto | Should | N/A | N/A | Terminada |
+| [HU-022](HU-022-un-pendiente-cerrado-se-puede-reabrir/HU-022-un-pendiente-cerrado-se-puede-reabrir.md) | Un pendiente cerrado se puede reabrir | Should | N/A | N/A | Terminada |
+| [HU-023](HU-023-el-analisis-se-prende-desde-un-turno-anterior/HU-023-el-analisis-se-prende-desde-un-turno-anterior.md) | El análisis se prende desde un turno anterior | Should | N/A | N/A | Terminada |
+| [HU-024](HU-024-el-aviso-del-freno-dice-como-salir-sin-tocar-archivos/HU-024-el-aviso-del-freno-dice-como-salir-sin-tocar-archivos.md) | El aviso del freno dice cómo salir sin tocar archivos | Must | N/A | N/A | Terminada |
 
 ## 10. Consideraciones técnicas
 
@@ -211,6 +225,20 @@ Ninguna aparte: las decisiones están en «Lo acordado» del análisis 1 del pen
 | 8 | HU-008 | HU-006, HU-007 | Necesita datos y la llegada en vivo | Terminada |
 | 9 | HU-009 | HU-003, HU-006 | Usa los límites del registro y los datos guardados | Terminada |
 | 10 | HU-010 | HU-008 | Amplía lo que ya funciona | Terminada |
+| 11 | HU-020 | Ninguna | Sin quitar, cada error del andamio se arregla a mano | Terminada |
+| 12 | HU-016 | Ninguna | Cerrar fases es lo que más se repite | Terminada |
+| 13 | HU-019 | HU-020 | La regla general, con el andamio de primer ejemplo | Terminada |
+| 14 | HU-022 | HU-019 | Contraria de cerrar un pendiente | Terminada |
+| 15 | HU-023 | Ninguna | Contraria de olvidar prender el análisis | Terminada |
+| 16 | HU-021 | HU-019 | Contraria de instalar | Terminada |
+| 17 | HU-011 | HU-006 | El tablero deja de leer los `.jsonl` | Terminada |
+| 18 | HU-012 | HU-011 | Se retira cuando el gasto ya llega solo | Terminada |
+| 19 | HU-013 | HU-003 | La configuración por proyecto en la base | Terminada |
+| 20 | HU-014 | HU-013 | Lee la configuración | Terminada |
+| 21 | HU-024 | HU-013 | La salida del freno usa la suspensión | Terminada |
+| 22 | HU-015 | HU-011 | Mide lo que corre | Terminada |
+| 23 | HU-017 | HU-016 | Necesita las funcionalidades que reemplazan guiones | Terminada |
+| 24 | HU-018 | HU-001 | Las pantallas existen | Terminada |
 
 ## 16. Estrategia de entrega
 

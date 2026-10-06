@@ -14,13 +14,11 @@ from django.contrib.auth import get_user_model
 from django.test import SimpleTestCase, TestCase
 from django.utils import timezone
 
-from core.consumo.guardar import GuardadoDeConsumo, GuardadoDeTelemetria
+from core.consumo.guardar import GuardadoDeConsumo
 from core.consumo.lector import LectorDeClaudeCode
 from core.consumo.models import GastoDeHerramienta, Llamada, Pedido
 from core.consumo.tablero import GastoDelPeriodo
-from core.consumo.telemetria import EventosDeTelemetria
 from core.consumo.tests import escribir_jsonl
-from core.consumo.tests_telemetria import envio
 from core.consumo.trabajo import trabajo_de, trabajo_de_la_ruta
 from core.herramientas.recuperar import RecuperadorDeReglas
 from core.proyectos.models import Proyecto
@@ -159,20 +157,6 @@ class ElGastoQuedaPorHerramientaYAgente(ConProyecto):
         self.assertEqual((True, "Explore", None), (auxiliar_guardado.auxiliar, auxiliar_guardado.agente,
                                                    auxiliar_guardado.pedido))
         self.assertFalse(Pedido.objects.filter(identificador="p-x").exists())
-
-    def test_la_telemetria_guarda_la_herramienta_y_une_el_mensaje(self):
-        escribir_jsonl(self.jsonl, primera_parte())
-        self.leer()
-        cuerpo = envio({"event.name": "claude_code.api_request", "request_id": "r-9", "prompt.id": "p-2",
-                        "model": "m", "input_tokens": 1, "output_tokens": 1},
-                       {"event.name": "claude_code.tool_result", "tool_name": "Bash", "tool_use_id": "u-9",
-                        "tool_result_size_bytes": 300}, sesion=SESION)
-        eventos = EventosDeTelemetria(cuerpo)
-        llamadas, archivos = eventos.leer()
-        GuardadoDeTelemetria(self.base).guardar(llamadas, archivos, eventos.herramientas())
-        self.assertEqual("p-2", Llamada.objects.get(solicitud="r-9").pedido.identificador)
-        self.assertEqual(("Bash", 300), GastoDeHerramienta.objects.values_list("nombre", "caracteres").get(
-            identificador="u-9"))
 
 
 class ElTableroMuestraLosSieteNiveles(ConProyecto):

@@ -16,6 +16,10 @@ escribir mal un comando.
 
     python cerrar.py 53 --como ningun-validador-termina-en-silencio --fecha 2026-08-17
     python cerrar.py 53 --como ningun-validador-termina-en-silencio --fecha 2026-08-17 --aplicar
+
+**Su contraria** (`02·F30`) lo devuelve de `hecho/`, con sus citas y su fila:
+
+    python cerrar.py reabrir 53 --motivo "volvió a fallar" --fecha 2026-10-05 --aplicar
 """
 import argparse
 import os
@@ -44,6 +48,13 @@ CARPETA_AVISOS = "pendientes"
 # la forma: el número tachado, la prioridad vacía y la marca de hecho.
 _FILA_ABIERTA = re.compile(
     r"(?m)^\|\s*(?P<num>\d+)\s*\|\s*(?P<p>[^|]*)\|\s*\[(?P<titulo>[^\]]+)\]\((?P<destino>hecho/[^)]+)\)\s*\|(?P<resto>.*)$")
+
+# La fila ya hecha, para reabrirla (`EP-025·HU-022`): el destino puede ser
+# `hecho/x.md` o, después de mover, la ruta nueva.
+_FILA_HECHA = re.compile(
+    r"(?m)^\|\s*~~(?P<num>\d+)~~\s*\|\s*(?P<p>[^|]*)\|\s*\*\*hecho\*\*\s*→\s*"
+    r"\[(?P<titulo>[^\]]+)\]\((?P<destino>[^)]+)\)\s*\|(?P<resto>.*)$")
+_ESTADO_HECHO = re.compile(r"(?i)(\*\*Estado:\*\*\s*)\**hecho\**")
 
 _ORIGEN = re.compile(r"(?im)^\|\s*\*\*Proyecto de origen\*\*\s*\|(.*?)\|\s*$")
 _A_QUIEN = re.compile(r"(?im)^\|\s*\*\*A qui[eé]n avisar al cerrar\*\*\s*\|(.*?)\|\s*$")
@@ -202,6 +213,57 @@ class CerradorDePendientes:
             return True
         return False
 
+    # ── la contraria: reabrir (`EP-025·HU-022`) ──────────────────────────
+
+    def indice(self):
+        return os.path.join(self.raiz, PENDIENTES, "README.md")
+
+    def fila_cerrada(self, numero):
+        """La fila hecha de ese número en el índice, o None."""
+        if not os.path.isfile(self.indice()):
+            return None
+        for m in _FILA_HECHA.finditer(self._leer(self.indice())):
+            if int(m.group("num")) == int(numero):
+                return m
+        return None
+
+    def reabrir(self, numero, motivo, fecha, escribir=False):
+        """Devuelve el pendiente de `hecho/` a `pendientes/`, con sus enlaces y su fila.
+
+        Es la contraria de `cerrar` (`02·F30`). El nombre original no quedó
+        guardado al cerrar, así que vuelve como `«número»-«nombre en hecho».md`.
+        El aviso de vuelta que se mandó al cerrar no se deshace: ya pudo leerse.
+        Devuelve `(origen, destino, [(archivo, cuántos enlaces)])`.
+        """
+        if not (motivo or "").strip():
+            sys.exit("reabrir pide el motivo")
+        fila = self.fila_cerrada(numero)
+        if not fila:
+            sys.exit(f"el pendiente {numero} no aparece cerrado en {_mostrar(self.indice())}")
+        origen = self.resuelve_a(self.indice(), fila.group("destino"))
+        if not origen or not os.path.isfile(origen):
+            sys.exit(f"la fila del {numero} apunta a {fila.group('destino')}, que no existe")
+        destino = os.path.join(self.raiz, PENDIENTES, "%02d-%s" % (int(numero), os.path.basename(origen)))
+        resultado = self.mover(origen, destino, escribir)
+        if escribir:
+            self.fila_reabierta(numero)
+            texto = _ESTADO_HECHO.sub(r"\g<1>reabierto", self._leer(destino))
+            titulo, _, resto = texto.partition("\n")
+            marca = "> **Reabierto** el %s: %s." % (fecha, motivo.strip().rstrip("."))
+            _escribir(destino, titulo + "\n\n" + marca + "\n" + resto)
+        return resultado
+
+    def fila_reabierta(self, numero):
+        """`| ~~64~~ | — | **hecho** → [t](64-x.md) | …` vuelve a `| 64 | — | [t](64-x.md) | …`."""
+        m = self.fila_cerrada(numero)
+        if not m:
+            return False
+        texto = self._leer(self.indice())
+        nueva = "| %s | %s | [%s](%s) |%s" % (m.group("num"), m.group("p").strip() or "—", m.group("titulo"),
+                                              m.group("destino"), m.group("resto"))
+        _escribir(self.indice(), texto[:m.start()] + nueva + texto[m.end():])
+        return True
+
     def mover(self, origen, destino, escribir=False):
         """Mueve un `.md` y arrastra todo lo que lo citaba, en los dos sentidos.
 
@@ -343,8 +405,30 @@ class CerradorDePendientes:
             return []
 
 
+def reabrir(argv):
+    """`cerrar.py reabrir «número» --motivo «…» --fecha «…» [--aplicar]` (`EP-025·HU-022`)."""
+    p = argparse.ArgumentParser(description="Reabre un pendiente cerrado: lo devuelve de hecho/ con sus citas.")
+    p.add_argument("modo")
+    p.add_argument("numero", help="el número del pendiente, p. ej. 53")
+    p.add_argument("--motivo", required=True, help="por qué se reabre")
+    p.add_argument("--fecha", required=True, help="la fecha de hoy (AAAA-MM-DD)")
+    p.add_argument("--raiz", default=Proyecto.estandar())
+    p.add_argument("--aplicar", action="store_true", help="escribe de verdad; sin esto solo simula")
+    a = p.parse_args(argv)
+    origen, destino, tocados = CerradorDePendientes(a.raiz).reabrir(a.numero, a.motivo, a.fecha, a.aplicar)
+    print(f"{_mostrar(origen)}\n  -> {_mostrar(destino)}\n")
+    for archivo, cuenta in tocados:
+        print(f"  {cuenta:>3} enlace(s)  {_mostrar(archivo)}")
+    print(f"\nLa fila del índice vuelve a abierta{'' if a.aplicar else ' (simulado; agrega --aplicar)'}.")
+    print("El aviso de vuelta que se mandó al cerrar, si lo hubo, no se deshace: ya pudo leerse.")
+    return 0
+
+
 def main(argv=None):
     preparar_salida()
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "reabrir":
+        return reabrir(argv)
     p = argparse.ArgumentParser(description="Cierra un pendiente moviéndolo a hecho/ sin romper sus citas.")
     p.add_argument("numero", help="el número del pendiente, p. ej. 53")
     p.add_argument("--como", required=True, help="nombre del archivo en hecho/, sin la extensión")

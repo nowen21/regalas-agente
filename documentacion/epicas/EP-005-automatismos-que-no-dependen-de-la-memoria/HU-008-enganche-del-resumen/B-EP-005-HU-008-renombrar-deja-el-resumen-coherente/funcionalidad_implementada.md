@@ -33,7 +33,7 @@ Si el resumen no se puede leer o escribir, el renombrado sigue: es el mismo crit
 |---|---|
 | [`validadores/historico.py`](../../../../../validadores/historico.py) | La constante `HACIA_HISTORICO` y la función `_reenlazar()`, llamada desde `_mover_resumen()` |
 | [`validadores/tests/test_historico_renombrar.py`](../../../../../validadores/tests/test_historico_renombrar.py) | **Nuevo.** La primera suite de pruebas de `historico.py`: tres casos |
-| [`validadores/docs/historico.md`](../../../../../validadores/docs/historico.md) | `renombrar()`, `_mover_resumen()`, `_reenlazar()` y las dos constantes |
+| `validadores/docs/historico.md` | `renombrar()`, `_mover_resumen()`, `_reenlazar()` y las dos constantes |
 | [`HU-008-enganche-del-resumen.md`](../HU-008-enganche-del-resumen.md) | El `CA-04`, la tarea técnica, la fase en §8 y la bitácora |
 | [`pendientes/hecho/renombrar-deja-el-resumen-coherente.md`](../../../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) | El pendiente 35, cerrado |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 21.3.0 |

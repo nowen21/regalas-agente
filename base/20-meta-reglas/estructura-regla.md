@@ -239,12 +239,12 @@ callarse, porque entonces la regla que manda y la que solo está escrita se leen
 igual. **Y no vale «nadie» sin motivo**: una casilla marcada no es una decisión.
 
 **Medir sin bloquear cuenta**, si la medición queda a la vista de quien revisa.
-Es lo que hacen [`brevedad.py`](../../validadores/brevedad.py) y
-[`redaccion.py`](../../validadores/redaccion.py) sobre lo que el agente acaba de
+Es lo que hacen [`brevedad.py`](../../proyectos/cimiento/core/validadores/brevedad.py) y
+[`redaccion.py`](../../proyectos/cimiento/core/validadores/redaccion.py) sobre lo que el agente acaba de
 escribir: cuando el enganche corre, el texto ya salió y no hay nada que
 bloquear.
 
-Lo comprueba [`validadores/ejecutable.py`](../../validadores/ejecutable.py), y
+Lo comprueba [`proyectos/cimiento/core/validadores/ejecutable.py`](../../proyectos/cimiento/core/validadores/ejecutable.py), y
 el `pre-push` no deja publicar una regla del núcleo que no lo diga. Lo que **no**
 comprueba es que la pieza de verdad la ejecute: eso se lee.
 
@@ -261,7 +261,7 @@ pide es la que los autoriza, y lo dice en una línea que va **justo después de
 
 Cada ruta va entre comillas invertidas, desde la raíz del proyecto; `*` vale por
 un tramo del nombre y `**` por cualquier cantidad de carpetas. La lee
-[`validadores/autorizado.py`](../../validadores/autorizado.py), y con ella el
+[`proyectos/cimiento/core/enganches/autorizado.py`](../../proyectos/cimiento/core/enganches/autorizado.py), y con ella el
 `pre-commit` y el freno dejan pasar lo que una regla ya autoriza (análisis 1 del
 pendiente 103, conclusión 46). La regla propia de un proyecto usa la misma línea
 en `.agente/reglas-proyecto.md`.

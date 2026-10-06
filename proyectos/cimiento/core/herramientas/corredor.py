@@ -119,6 +119,11 @@ class PruebasDelEstandar(Validador):
         archivo; sin ella van todos."""
         carpeta = self.carpeta()
         hallazgos = []
+        if not os.path.isdir(carpeta) and self.hay_plataforma():
+            # Desde el 2026-10-05 las pruebas del estándar viven en `core/` y las
+            # corre la batería de Cimiento (análisis 1 del pendiente 116, fila 21):
+            # sin la carpeta vieja no falta nada.
+            return (None, [], [])
         if not os.path.isdir(carpeta):
             return (None, [Hallazgo(FALLA, carpeta, 0,
                                     "no existe la carpeta de pruebas — no se "
@@ -188,7 +193,19 @@ class PruebasDelEstandar(Validador):
         lineas = [l.strip() for l in (traza or "").splitlines() if l.strip()]
         return lineas[-1][:160] if lineas else "sin detalle"
 
-    def correr_la_plataforma(self):
+    def hay_plataforma(self):
+        return os.path.isfile(os.path.join(self.plataforma(), "manage.py"))
+
+    def python_de_la_plataforma(self):
+        """El Python del entorno de Cimiento si lo tiene, que es el que trae el
+        conector de su base; si no, el que corre esto."""
+        for partes in (("Scripts", "python.exe"), ("bin", "python")):
+            ruta = os.path.join(self.plataforma(), ".venv", *partes)
+            if os.path.isfile(ruta):
+                return ruta
+        return sys.executable
+
+    def correr_la_plataforma(self, etiquetas=None):
         """`(hallazgos, cuantas)` de la batería de Cimiento.
 
         **Se le pide por su punto de entrada**, que es como se corre de verdad:
@@ -204,7 +221,7 @@ class PruebasDelEstandar(Validador):
                               "su batería. No es lo mismo que estar en verde")], 0)
         try:
             corrida = subprocess.run(
-                [sys.executable, "manage.py", "test", "--verbosity", "1"],
+                [self.python_de_la_plataforma(), "manage.py", "test", "--verbosity", "1"] + list(etiquetas or []),
                 cwd=carpeta, capture_output=True, text=True, encoding="utf-8",
                 errors="replace", timeout=900)
         except (OSError, subprocess.SubprocessError) as falla:
@@ -243,6 +260,17 @@ class PruebasDelEstandar(Validador):
         if not self.solo:
             de_la_plataforma, cuantas_alla = self.correr_la_plataforma()
             hallazgos += de_la_plataforma
+        elif resultado is None and self.hay_plataforma():
+            # Sin la carpeta vieja, lo que se pide son pruebas de `core/`, por
+            # su nombre de módulo: `core.validadores.tests_parecidas`.
+            de_la_plataforma, cuantas_alla = self.correr_la_plataforma(self.solo)
+            hallazgos += de_la_plataforma
+
+        if resultado is None and self.hay_plataforma():
+            if not self.solo:
+                self.sellar(len([h for h in hallazgos if h.severidad == FALLA]))
+            hallazgos.append(Hallazgo(AVISO, self.plataforma(), 0,
+                                      "%d prueba(s) de Cimiento" % cuantas_alla))
 
         if resultado is not None:
             # Se sella la corrida entera, con su resultado; un subconjunto no:

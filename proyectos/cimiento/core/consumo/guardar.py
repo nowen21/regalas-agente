@@ -11,25 +11,23 @@ Claude Code lo reescribió: se lee desde el comienzo.
 
 **Todo o nada por archivo**: lo guardado y el avance van en una transacción.
 
-**La misma llamada por dos caminos** (`EP-025·HU-007`): la telemetría la trae
-antes, con la solicitud como mensaje. Cuando el `.jsonl` la encuentra por la
-solicitud, le pone su `message.id`; si llega primero el `.jsonl`, la
-telemetría la reconoce y no la repite.
+**La solicitud une la misma llamada** (`EP-025·HU-007`): la telemetría la
+traía antes, con la solicitud como mensaje, y el `.jsonl` le pone su
+`message.id`. La telemetría salió con la HU-012; lo que guardó se queda.
 """
 import glob
 import json
 import os
-import re
 from functools import lru_cache
 
-from django.db import IntegrityError, transaction
+from django.db import transaction
 
 from core.proyectos.claude import proyectos_de_claude
 from core.proyectos.models import Proyecto
 
 from .lector import LectorDeClaudeCode
-from .models import (AvanceDeLectura, GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta, Llamada,
-                     Pedido)
+from .models import (AvanceDeLectura, EjecucionDeEnganche, GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta,
+                     Llamada, Pedido)
 from .trabajo import trabajo_de
 
 
@@ -130,12 +128,18 @@ class GuardadoDeConsumo:
         herramientas = sum(GastoDeHerramienta.objects.update_or_create(
             sesion=h.sesion, identificador=h.identificador,
             defaults={"proyecto": self.proyecto, "fecha": h.fecha, "nombre": h.nombre[:100],
-                      "caracteres": h.caracteres})[1] for h in lectura.herramientas)
+                      "caracteres": h.caracteres, "orden": h.orden[:120]})[1] for h in lectura.herramientas)
+        # `EP-025·HU-015` · Cada corrida de un enganche, le entregue o no algo al modelo.
+        for e in lectura.ejecuciones:
+            EjecucionDeEnganche.objects.get_or_create(
+                sesion=e.sesion, identificador=e.identificador,
+                defaults={"proyecto": self.proyecto, "fecha": e.fecha, "nombre": e.nombre[:200],
+                          "evento": e.evento[:50]})
         enganches = sum(GastoDeEnganche.objects.get_or_create(
             sesion=e.sesion, identificador=e.identificador,
             defaults={"proyecto": self.proyecto, "fecha": e.fecha, "nombre": e.nombre[:200],
                       "evento": e.evento[:50], "caracteres": e.caracteres})[1] for e in lectura.enganches)
-        # Si la telemetría lo trajo antes, venía en bytes: el `.jsonl` lo deja en caracteres.
+        # Si la telemetría lo trajo antes (hasta la HU-012), venía en bytes: el `.jsonl` lo deja en caracteres.
         archivos = sum(GastoDeArchivo.objects.update_or_create(
             sesion=a.sesion, identificador=a.identificador,
             defaults={"proyecto": self.proyecto, "fecha": a.fecha, "ruta": a.ruta[:500],
@@ -157,7 +161,7 @@ _DATOS = ("fecha", "modelo", "entrada", "cache_creada", "cache_leida", "salida",
 
 
 def guardar_llamada(proyecto, llamada, extra=None):
-    """Guarda una llamada de cualquiera de los dos caminos. `True` si es nueva.
+    """Guarda una llamada. `True` si es nueva. Si la telemetría ya la había guardado, la completa.
     `extra`: su mensaje y su agente (`EP-025·HU-010`); un mensaje vacío no pisa el que tenga."""
     datos = {campo: getattr(llamada, campo) for campo in _DATOS}
     datos.update({clave: valor for clave, valor in (extra or {}).items() if valor or clave == "agente"})
@@ -174,64 +178,3 @@ def guardar_llamada(proyecto, llamada, extra=None):
         sesion=llamada.sesion, mensaje=llamada.mensaje,
         defaults={"proyecto": proyecto, "solicitud": llamada.solicitud or None, **datos})
     return creada
-
-
-class GuardadoDeTelemetria:
-    """`EP-025·HU-007` · Guarda lo que llegó por telemetría, en las tablas de la HU-006.
-
-    El evento no dice el proyecto: sale de la sesión, buscando su `.jsonl` en
-    la carpeta de Claude Code de cada proyecto activo. Un evento de una sesión
-    sin proyecto se descarta; si después se registra el proyecto, la lectura
-    del `.jsonl` lo trae.
-    """
-
-    _SESION = re.compile(r"^[A-Za-z0-9-]{1,64}$")
-
-    def __init__(self, base=None):
-        self.base = base or proyectos_de_claude()
-        self._proyectos = {}
-
-    def proyecto_de(self, sesion):
-        if sesion not in self._proyectos:
-            self._proyectos[sesion] = None
-            if self._SESION.match(sesion or ""):
-                self._proyectos[sesion] = next(
-                    (p for p in Proyecto.objects.filter(activo=True)
-                     if os.path.isfile(os.path.join(self.base, p.carpeta_claude, sesion + ".jsonl"))), None)
-        return self._proyectos[sesion]
-
-    def guardar(self, llamadas, archivos, herramientas=()):
-        """`{"llamadas", "archivos", "herramientas", "descartados"}`: lo nuevo que quedó guardado."""
-        cuenta = {"llamadas": 0, "archivos": 0, "herramientas": 0, "descartados": 0}
-        for llamada in llamadas:
-            proyecto = self.proyecto_de(llamada.sesion)
-            if proyecto is None:
-                cuenta["descartados"] += 1
-                continue
-            # El mensaje solo se une si ya lo trajo el `.jsonl`: la telemetría no trae su texto.
-            pedido = Pedido.objects.filter(sesion=llamada.sesion, identificador=llamada.pedido).first() \
-                if llamada.pedido else None
-            try:
-                with transaction.atomic():
-                    cuenta["llamadas"] += guardar_llamada(proyecto, llamada, {"pedido": pedido})
-            except IntegrityError:
-                pass  # La guardó al mismo tiempo la lectura del `.jsonl`.
-        for herramienta in herramientas:
-            proyecto = self.proyecto_de(herramienta.sesion)
-            if proyecto is None:
-                cuenta["descartados"] += 1
-                continue
-            cuenta["herramientas"] += GastoDeHerramienta.objects.get_or_create(
-                sesion=herramienta.sesion, identificador=herramienta.identificador,
-                defaults={"proyecto": proyecto, "fecha": herramienta.fecha, "nombre": herramienta.nombre[:100],
-                          "caracteres": herramienta.caracteres})[1]
-        for archivo in archivos:
-            proyecto = self.proyecto_de(archivo.sesion)
-            if proyecto is None:
-                cuenta["descartados"] += 1
-                continue
-            cuenta["archivos"] += GastoDeArchivo.objects.get_or_create(
-                sesion=archivo.sesion, identificador=archivo.identificador,
-                defaults={"proyecto": proyecto, "fecha": archivo.fecha, "ruta": archivo.ruta[:500],
-                          "caracteres": archivo.caracteres})[1]
-        return cuenta

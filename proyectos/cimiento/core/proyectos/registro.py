@@ -69,6 +69,20 @@ def traer_de_proyectos_md(modelo, ruta_md):
     return creados
 
 
+def dar_de_baja(modelo, ruta):
+    """`EP-025·HU-021` · Desactiva el proyecto de esa carpeta. `True` si estaba activo.
+
+    No se borra: su gasto y sus niveles siguen siendo su historia. Lo vuelve a
+    activar `reactivar`, que es lo que hace `registrar` con una carpeta conocida.
+    """
+    return bool(modelo.objects.filter(ruta__iexact=os.path.abspath(ruta), activo=True).update(activo=False))
+
+
+def reactivar(modelo, ruta):
+    """La contraria de `dar_de_baja`. `True` si estaba inactivo."""
+    return bool(modelo.objects.filter(ruta__iexact=os.path.abspath(ruta), activo=False).update(activo=True))
+
+
 def registrar(modelo, nombre, ruta):
     """Alta de un proyecto desde el instalador. `True` si se creó.
 

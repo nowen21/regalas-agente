@@ -29,7 +29,7 @@
 | Cruzar la carpeta con el índice | programa | El mismo | ✅ **Construido acá** | CP-003 |
 | **Leer también los números que solo viven en el índice** | programa | El mismo · `numeros_del_indice()` | ✅ **Construido acá** | El hallazgo |
 | Su punto de entrada | programa | [`validar.py`](../../../../../validadores/validar.py) · `cmd_pendientes` | ✅ **Construido acá** | CP-001 |
-| Qué mira y qué no | documentación | [`docs/pendientes.md`](../../../../../validadores/docs/pendientes.md) | ✅ Escrito acá | — |
+| Qué mira y qué no | documentación | `docs/pendientes.md` | ✅ Escrito acá | — |
 | Las seis exigencias, con red | pruebas | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `NumeracionDePendientes` | ✅ Escritas acá | 14 pruebas |
 
 ### Criterios de aceptación

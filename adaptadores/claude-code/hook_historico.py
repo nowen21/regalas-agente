@@ -29,15 +29,15 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
-# dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
-# acá sólo está lo que habla con esta herramienta.
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir dónde están
+# los módulos que usa: el trabajo es agnóstico y sigue allá; acá sólo está lo
+# que habla con esta herramienta.
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+    "proyectos", "cimiento"))
 
-import historico                        # noqa: E402
-from comun import preparar_salida       # noqa: E402
+from core.comun.consola import preparar_salida     # noqa: E402
+from core.enganches.historico import Historico     # noqa: E402
 
 
 def opcion(argv, nombre, por_defecto=""):
@@ -80,7 +80,7 @@ def main():
 
     try:
         if modo == "agente":
-            historico.anotar_agente(raiz, sesion, datos.get("transcript_path", ""))
+            Historico(raiz).anotar_agente(sesion, datos.get("transcript_path", ""))
             # La respuesta pasa al análisis prendido aquí mismo, después de
             # escribirla: si lo hiciera otro enganche del mismo evento, correría
             # antes de que la respuesta existiera (H-9 de la sesión del
@@ -89,12 +89,12 @@ def main():
                 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
                     os.path.abspath(__file__)))), "proyectos", "cimiento"))
                 from core.enganches.analisis_en_curso import AnalisisEnCurso
-                AnalisisEnCurso(raiz, historico.archivo_de_sesion(raiz, sesion)).pasar()
+                AnalisisEnCurso(raiz, Historico(raiz).archivo_de_sesion(sesion)).pasar()
             except Exception as e:       # noqa: BLE001 — nunca romper la sesión
                 print(f"No se pasó la respuesta al análisis: {e}", file=sys.stderr)
         else:
-            ruta = historico.anotar_usuario(raiz, sesion, datos.get("prompt", ""))
-            aviso = historico.aviso_de_nombre(ruta)
+            ruta = Historico(raiz).anotar_usuario(sesion, datos.get("prompt", ""))
+            aviso = Historico.aviso_de_nombre(ruta)
             if aviso:
                 print(aviso)
     except Exception as e:               # noqa: BLE001 — nunca romper la sesión

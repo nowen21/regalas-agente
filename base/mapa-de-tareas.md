@@ -227,6 +227,7 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`02·F19`](02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md#f19--implementa-literal-el-criterio-de-aceptación): Implementa literal el criterio de aceptación
 - [`02·F2`](02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md#f2--sin-especificación-acordada-no-hay-código): Sin especificación acordada no hay código
 - [`02·F20`](02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md#f20--para-y-propón-lo-que-descubras-fuera-del-ca): Para y propón lo que descubras fuera del CA
+- [`02·F30`](02-flujo-de-trabajo/reglas/F30-toda-accion-trae-su-contraria.md#f30--toda-acción-trae-su-contraria): Toda acción trae su contraria
 - [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita): Todo plan lleva su plan de pruebas y su aprobación explícita
 - [`02·F8`](02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara): Edita solo los archivos que el plan aprobado declara
 
@@ -361,6 +362,7 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`02·F28`](02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden): El cambio se aplica donde nace y baja en orden
 - [`02·F29`](02-flujo-de-trabajo/reglas/F29-el-reporte-de-un-proyecto-se-corrige-para-todos.md#f29--el-reporte-de-un-proyecto-se-corrige-para-todos): El reporte de un proyecto se corrige para todos
 - [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md#f3--ejecuta-seguido-el-plan-aprobado): Ejecuta seguido el plan aprobado
+- [`02·F30`](02-flujo-de-trabajo/reglas/F30-toda-accion-trae-su-contraria.md#f30--toda-acción-trae-su-contraria): Toda acción trae su contraria
 - [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita): Todo plan lleva su plan de pruebas y su aprobación explícita
 - [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca): Corre solo las suites que la fase toca
 - [`02·F8`](02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara): Edita solo los archivos que el plan aprobado declara

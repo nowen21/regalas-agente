@@ -96,7 +96,7 @@ Se cumplió tal como estaba escrito. El plan de esta fase sí se escribió antes
 
 | ID | Tipo | Dónde está |
 |---|---|---|
-| EV-01 | El módulo y el subcomando | [`validadores/sesiones.py`](../../../../../validadores/sesiones.py) |
+| EV-01 | El módulo y el subcomando | `validadores/sesiones.py` |
 | EV-02 | El cableado | [`adaptadores/claude-code/hook_md.py`](../../../../../adaptadores/claude-code/hook_md.py), [`validadores/instalar.py`](../../../../../validadores/instalar.py), `.gitignore` |
 | EV-03 | Las pruebas | [`test_dos_sesiones_no_se_pisan.py`](../../../../../validadores/tests/test_dos_sesiones_no_se_pisan.py), 10 en verde |
 

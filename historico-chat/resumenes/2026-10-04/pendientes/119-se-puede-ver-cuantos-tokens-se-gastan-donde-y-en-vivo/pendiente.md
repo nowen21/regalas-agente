@@ -1,15 +1,15 @@
-# Pendiente: nadie ve cuántos tokens se gastan ni puede ajustar las reglas sin tocar código
+# Pendiente: el gasto no llega en vivo, lo repetido no se automatiza, y lo que Cimiento hace no siempre se puede deshacer
 
 | | |
 |---|---|
-| **De dónde sale** | [H-1 · Nadie ve cuántos tokens se gastan ni puede ajustar las reglas sin tocar código](../../sesion-2.md), en el resumen de la sesión del 2026-10-04, versión 2 según el [análisis 1](analisis-1.md) |
+| **De dónde sale** | [H-1 · El gasto no llega en vivo, lo repetido no se automatiza, y lo que Cimiento hace no siempre se puede deshacer](../../sesion-2.md), en el resumen de la sesión del 2026-10-04, versión 4 según el [análisis 3](analisis-3.md). La versión 3 salió del [análisis 2](analisis-2.md); la 2, del [análisis 1](analisis-1.md), se construyó en EP-025 (HU-001 a HU-010) |
 
 ## El problema
 
-Cimiento no tiene administración ni muestra el gasto de tokens. Falta correr sobre MariaDB `cimiento`, con pantallas propias y entrada con usuario; registrar los proyectos; fijar por proyecto el nivel de cada regla (frena, avisa o apagada) y que el freno lo lea de la base; guardar el gasto por proyecto, sesión, enganche, archivo leído y los demás niveles; verlo en vivo, y avisar cuando un enganche o un archivo pasa de su límite.
+Falta un proceso que guarde el gasto en cuanto Claude Code lo escribe, con el tablero leyendo solo la base y sin telemetría; ver lo que corre sin tokens y lo que podría automatizarse; cerrar y reabrir fases y separar los cambios por sesión como funcionalidades de Cimiento; y la ayuda y el manual de Cimiento.
 
-Los datos del gasto ya existen: Claude Code anota cada llamada en los `.jsonl` de `~/.claude/projects/<proyecto>/` y puede mandarla por telemetría. En la sesión `b931dba0`, medida el 2026-10-04, hubo 1012 llamadas y unos 450 000 tokens releídos por llamada.
+A eso se suma: la regla de que toda acción trae su contraria; quitar lo que crea el andamio, desinstalar, reabrir pendientes y prender un análisis desde un turno anterior; la configuración en tres capas con la suspensión temporal desde la interfaz, todo en la base; y que el aviso del freno diga la salida.
 
 ## Por qué importa
 
-Sin medir no se sabe qué automatizar primero, y Claude Code borra los `.jsonl` a los 30 días. Sin niveles por proyecto, cada ajuste de una regla es un cambio de código que afecta a todos, y una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-04.
+Lo que se repite sin automatizar gasta tokens que un programa ahorraría, y sin el gasto en vivo no se ve dónde. Sin contrarias ni salida prevista, los bloqueos se resuelven tocando archivos a mano.

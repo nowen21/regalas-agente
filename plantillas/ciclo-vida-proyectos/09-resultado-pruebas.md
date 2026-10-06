@@ -82,7 +82,7 @@ proyecto la cumple a su modo. El ejemplo es lo que fija cuál es la correcta.
 |---|---|---|---|
 | 1 | Situarse en el repositorio del estándar, en la rama `fase-a-q9` | `git status` no muestra cambios pendientes | Sin cambios pendientes, sobre el commit `6391e79` |
 | 2 | Contar los archivos de `base/07-calidad-de-codigo/reglas/` | Queda el número de partida | 8 archivos |
-| 3 | Correr `python validadores/metareglas.py base/07-calidad-de-codigo/` antes de tocar nada | Pasa sin hallazgos, así lo que falle después lo causó la regla nueva | `0 hallazgos · 8 reglas revisadas` |
+| 3 | Correr `python validadores/validar.py metareglas` antes de tocar nada | Pasa sin hallazgos, así lo que falle después lo causó la regla nueva | `0 hallazgos · 8 reglas revisadas` |
 | 4 | Crear `base/07-calidad-de-codigo/reglas/Q9-una-prueba-por-comportamiento.md` con su exigencia y **sin** el bloque de ejemplo | El archivo queda escrito | Quedó, 14 líneas |
 | 5 | Correr el mismo comando del paso 3 | Falla, nombra el archivo y cita `20·M5` | `Q9 · falta el ejemplo INCORRECTO/CORRECTO (20·M5)` |
 | 6 | Agregar a `Q9` un caso INCORRECTO y uno CORRECTO | El archivo queda con los dos casos | Quedó, 22 líneas |

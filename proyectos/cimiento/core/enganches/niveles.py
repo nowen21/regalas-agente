@@ -14,6 +14,10 @@ inactivo, tiene todas sus reglas en «frena»: lo que pasaba antes.
 **Sin base no hay niveles**, y entonces el freno no deja modificar nada
 (análisis 1 del pendiente 119, acuerdo 15). `BaseSinRespuesta` trae el mensaje
 que se le da al agente.
+
+**Lo suspendido queda «apagada» mientras dure** (`EP-025·HU-013`): la regla
+suspendida con su ID, y el freno entero con `*`. El núcleo sigue en «frena»: lo
+decide `Freno.nivel_para`.
 """
 import os
 
@@ -25,6 +29,13 @@ SIN_TABLA = 1146
 _CONSULTA = ("SELECT n.regla, n.nivel FROM niveles_nivelderegla n "
              "JOIN proyectos_proyecto p ON p.id = n.proyecto_id "
              "WHERE p.activo = 1 AND LOWER(p.ruta) = LOWER(%s)")
+
+# `EP-025·HU-013` · Las suspensiones vigentes, en la misma lectura que los niveles.
+_SUSPENDIDAS = ("SELECT s.tipo, s.nombre FROM proyectos_suspension s "
+                "JOIN proyectos_proyecto p ON p.id = s.proyecto_id "
+                "WHERE p.activo = 1 AND LOWER(p.ruta) = LOWER(%s) "
+                "AND s.levantada IS NULL AND s.vence > UTC_TIMESTAMP()")
+TODAS = "*"
 
 
 class BaseSinRespuesta(Exception):
@@ -69,8 +80,12 @@ class NivelesDelProyecto:
             return f"la base «{a['NAME']}» en {donde} no está preparada: correr python manage.py preparar_base en proyectos/cimiento/"
         return f"MariaDB respondió en {donde} con el error {codigo}"
 
-    def consultar(self, consulta):
-        """Las filas de `consulta`, con la ruta del proyecto como único parámetro."""
+    def consultar(self, consulta, parametros=None):
+        """Las filas de `consulta`. Sin `parametros`, la ruta del proyecto es el único."""
+        return self.consultar_juntas((consulta, parametros))[0]
+
+    def consultar_juntas(self, *consultas):
+        """Las filas de cada `(consulta, parámetros)`, en una sola conexión."""
         try:
             import pymysql
         except ImportError:
@@ -82,38 +97,38 @@ class NivelesDelProyecto:
                                        password=a["PASSWORD"], database=a["NAME"],
                                        charset="utf8mb4", connect_timeout=2)
             try:
+                salida = []
                 with conexion.cursor() as cursor:
-                    cursor.execute(consulta, [self.raiz])
-                    return cursor.fetchall()
+                    for consulta, parametros in consultas:
+                        cursor.execute(consulta, [self.raiz] if parametros is None else parametros)
+                        salida.append(cursor.fetchall())
+                return salida
             finally:
                 conexion.close()
         except pymysql.MySQLError as error:
             raise BaseSinRespuesta(self.explicar(error)) from None
 
     def todos(self):
-        """`{regla: nivel}` de las reglas cambiadas en el proyecto. Una sola consulta."""
+        """`{regla: nivel}` de las reglas cambiadas en el proyecto, con lo suspendido en «apagada»."""
         if self._niveles is None:
-            self._niveles = dict(self.consultar(_CONSULTA))
+            filas, suspendidas = self.consultar_juntas((_CONSULTA, None), (_SUSPENDIDAS, None))
+            niveles = dict(filas)
+            for tipo, nombre in suspendidas:
+                niveles[TODAS if tipo == "enganche" else nombre] = "apagada"
+            self._niveles = niveles
         return self._niveles
-
-
-_LIMITES = ("SELECT limite_enganche, limite_archivo FROM proyectos_proyecto "
-            "WHERE activo = 1 AND LOWER(ruta) = LOWER(%s)")
 
 
 class LimitesDelProyecto(NivelesDelProyecto):
     """`EP-025·HU-009` · Desde cuántos tokens se avisa un enganche o un archivo.
 
-    Misma conexión que los niveles. Sin registro o sin base se usan los de por
-    defecto: el aviso es informativo y no debe callarse.
+    Desde la `EP-025·HU-013` son ajustes: el del proyecto, si no el de la base
+    de Cimiento, si no el de fábrica. Sin registro o sin base, el de fábrica: el
+    aviso es informativo y no debe callarse.
     """
 
     def limites(self):
         """`(por enganche, por archivo)`."""
-        from ..proyectos.limites import LIMITE_ARCHIVO, LIMITE_ENGANCHE
-
-        try:
-            filas = self.consultar(_LIMITES)
-        except BaseSinRespuesta:
-            filas = ()
-        return tuple(filas[0]) if filas else (LIMITE_ENGANCHE, LIMITE_ARCHIVO)
+        from .configuracion import ConfiguracionDelProyecto
+        configuracion = ConfiguracionDelProyecto(self.raiz, self.estandar, self._ajustes)
+        return configuracion.valor("limite_enganche"), configuracion.valor("limite_archivo")

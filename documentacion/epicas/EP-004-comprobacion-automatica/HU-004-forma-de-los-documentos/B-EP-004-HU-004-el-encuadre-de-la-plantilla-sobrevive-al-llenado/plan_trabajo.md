@@ -53,7 +53,7 @@
 3. El encabezado del módulo declara que la plantilla es la fuente de verdad y que **nada se codifica** en el validador. La RN-01 de la HU dice lo mismo. El diseño de esta fase se ata a eso.
 4. En `plantillas/ciclo-vida-proyectos/01-planteamiento.md`, entre el H1 y el primer `---` hay dos cosas: el recuadro de instrucciones, que son líneas de cita `>`, y una línea suelta en negrita que es el encuadre. Esa línea cita cuatro reglas.
 5. En `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`, en ese mismo lugar hay una línea fija equivalente que **no cita ninguna regla**. Sirve de contraejemplo: lo que se le exige al documento tiene que salir de su plantilla, no de una idea fija del programa.
-6. Las pruebas de los validadores viven en [`validadores/tests/`](../../../../../validadores/tests/), un archivo por tema, y se corren con `python -m pytest validadores/tests`.
+6. Las pruebas de los validadores viven en `validadores/tests/` (la carpeta se retiró el 2026-10-05: las pruebas pasaron a `proyectos/cimiento/core/`), un archivo por tema, y se corren con `python -m pytest validadores/tests`.
 
 ### 2.1 Archivos que se crean o modifican  ·  Q9
 

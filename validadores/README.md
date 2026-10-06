@@ -1,5 +1,7 @@
 # Validadores del estándar
 
+> **Desde el 2026-10-05 el código vive en [`proyectos/cimiento/core/`](../proyectos/cimiento/core/)** (análisis 1 del pendiente 116, fila 21). En esta carpeta quedaron las puertas que las reglas, las plantillas y los proyectos instalados llaman por su ruta (`validar.py`, `instalar.py`, `andamio.py`, `cerrar.py`, `historico.py`, `mapa_tareas.py`, `respaldo.py`, `retirar.py`, `vigencia.py`) y los puentes de los enganches. Lo que sigue describe la carpeta como era antes del traslado.
+
 Comprueban **lo que se puede comprobar sin criterio**. Cierran la brecha entre "el estándar dice" y "el estándar se cumple" — pendiente [01](../pendientes/hecho/validadores-de-codigo-de-proyecto.md).
 
 Solo biblioteca estándar de Python 3.11+. Sin dependencias, sin instalación.
@@ -49,7 +51,7 @@ python validadores/validar.py internas --reclamo    # no corre: dice si hace fal
 
 | Archivo | Comprueba | Contra |
 |---|---|---|
-| [enlaces.py](enlaces.py) | Enlaces `.md` rotos; índices que no listan todos sus archivos | El disco |
+| enlaces.py | Enlaces `.md` rotos; índices que no listan todos sus archivos | El disco |
 | [plantillas.py](plantillas.py) | Marcadores sin llenar, notas de plantilla sin borrar, secciones ausentes | `plantillas/*.md` |
 | [commits.py](commits.py) | Asunto con contenido, línea en blanco antes del cuerpo, rastros de herramienta | [`base/09-git.md`](../base/09-git.md) · G2 |
 | [fases.py](fases.py) | Jerarquía y nomenclatura épica→HU→fase; consecutivo sin huecos; los 4 documentos | `02·F12` (`F12.1/2/3/4/5/6/7/11/12/13`) |

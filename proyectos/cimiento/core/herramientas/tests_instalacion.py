@@ -1989,54 +1989,66 @@ class PrepararCimiento(unittest.TestCase):
         pymysql.assert_not_called()
 
 
-class LaLecturaDelConsumoQuedaProgramada(unittest.TestCase):
-    """`EP-025·HU-006 · CP-004`: la instalación programa `leer_consumo` una vez al día."""
+class ElVigilanteArrancaAlIniciarSesion(unittest.TestCase):
+    """`EP-025·HU-011 · CP-002`: la instalación pone el vigilante a arrancar al
+    iniciar sesión, lo arranca y quita la tarea diaria de antes."""
 
     def setUp(self):
         self.estandar = carpeta(self)
         self.cimiento = os.path.join(self.estandar, "proyectos", "cimiento")
         escribir(os.path.join(self.cimiento, "manage.py"), "")
         escribir(os.path.join(self.cimiento, ".venv", "Scripts", "python.exe"), "")
-        self.ordenes = []
+        escribir(os.path.join(self.cimiento, ".venv", "Scripts", "pythonw.exe"), "")
+        self.inicio = carpeta(self)
+        self.ordenes, self.lanzados = [], []
 
-    def ejecutar(self, existe=False, crea=True):
+    def ejecutar(self, diaria=False):
         def falso(orden, **_):
             self.ordenes.append(orden)
-            codigo = 0 if ("/Query" in orden and existe) or ("/Create" in orden and crea) else 1
-            corrida = Corrida(codigo, "")
-            corrida.stderr = "" if codigo == 0 else "ERROR: acceso denegado"
-            return corrida
+            return Corrida(0 if ("/Query" in orden and diaria) or "/Delete" in orden else 1, "")
         return falso
 
     def programar(self, aplicar=True, sistema="nt", **kwargs):
-        return Instalador(self.estandar).programar_lectura(aplicar, ejecutar=self.ejecutar(**kwargs), sistema=sistema)
+        return Instalador(self.estandar).programar_vigilante(
+            aplicar, ejecutar=self.ejecutar(**kwargs), sistema=sistema, inicio=self.inicio,
+            lanzar=lambda orden, **_: self.lanzados.append(orden))
+
+    def archivo(self):
+        return os.path.join(self.inicio, Instalador.VIGILANTE + ".cmd")
 
     def test_en_simulacion_lo_anuncia(self):
-        self.assertIn("programar la lectura", self.programar(aplicar=False)[0])
-        self.assertEqual(self.ordenes, [])
+        self.assertIn("arrancar al iniciar sesión", self.programar(aplicar=False)[0])
+        self.assertEqual((self.ordenes, self.lanzados), ([], []))
+        self.assertFalse(os.path.exists(self.archivo()))
 
-    def test_crea_la_tarea_con_la_orden_de_cimiento(self):
-        self.assertIn("programada una vez al día", self.programar()[0])
-        crear = self.ordenes[-1]
-        self.assertEqual(crear[:3], ["schtasks", "/Create", "/SC"])
-        self.assertIn("leer_consumo", crear[crear.index("/TR") + 1])
+    def test_queda_en_la_carpeta_de_inicio_y_arranca(self):
+        pasos = self.programar()
+        self.assertIn("el vigilante del consumo arranca al iniciar sesión", pasos)
+        texto = leer(self.archivo())
+        self.assertIn("pythonw.exe", texto)
+        self.assertIn("vigilar_consumo", texto)
+        self.assertEqual(1, len(self.lanzados))
+        self.assertEqual("vigilar_consumo", self.lanzados[0][-1])
 
-    def test_si_ya_estaba_no_la_crea_otra_vez(self):
-        self.assertEqual(["la lectura del consumo ya estaba programada"], self.programar(existe=True))
-        self.assertEqual(1, len(self.ordenes))
+    def test_quita_la_tarea_diaria_de_antes(self):
+        pasos = self.programar(diaria=True)
+        self.assertTrue(any("quitar la tarea diaria" in p for p in pasos))
+        self.assertIn("/Delete", self.ordenes[-1])
 
-    def test_si_falla_queda_dicho(self):
-        self.assertIn("OMITIDO: no se pudo programar", self.programar(crea=False)[0])
+    def test_la_segunda_vez_ya_estaba(self):
+        self.programar()
+        self.assertIn("el vigilante del consumo ya arrancaba al iniciar sesión", self.programar())
 
     def test_fuera_de_windows_dice_como_hacerlo(self):
         pasos = self.programar(sistema="posix")
-        self.assertTrue(pasos[0].startswith("OMITIDO: programar a mano"))
-        self.assertIn("leer_consumo", pasos[0])
-        self.assertEqual(self.ordenes, [])
+        self.assertTrue(pasos[0].startswith("OMITIDO: arrancar al iniciar sesión"))
+        self.assertIn("vigilar_consumo", pasos[0])
+        self.assertEqual((self.ordenes, self.lanzados), ([], []))
 
 
-class ActivarLaTelemetria(unittest.TestCase):
-    """`EP-025·HU-007 · CP-004`: la instalación manda la telemetría de Claude Code a Cimiento."""
+class LaTelemetriaSeRetira(unittest.TestCase):
+    """`EP-025·HU-012 · CP-002`: la instalación quita las seis variables que ponía,
+    solo con el valor que les ponía, y deja lo demás del usuario."""
 
     def setUp(self):
         self.estandar = carpeta(self)
@@ -2044,46 +2056,40 @@ class ActivarLaTelemetria(unittest.TestCase):
         escribir(os.path.join(self.cimiento, "manage.py"), "")
         escribir(os.path.join(self.cimiento, ".env"), "PUERTO=8015\n")
         self.configuracion = os.path.join(carpeta(self), ".claude", "settings.json")
+        self.instalador = Instalador(self.estandar)
 
-    def activar(self, aplicar=True):
-        return Instalador(self.estandar).activar_telemetria(aplicar, configuracion=self.configuracion)
+    def retirar(self, aplicar=True):
+        return self.instalador.retirar_telemetria(aplicar, configuracion=self.configuracion)
 
     def leer(self):
         with io.open(self.configuracion, encoding="utf-8") as f:
             return json.load(f)
 
-    def test_sin_env_quedan_las_variables_y_lo_demas_sigue(self):
-        escribir(self.configuracion, json.dumps({"permissions": {"allow": ["Bash(ls)"]}}))
-        self.assertIn("telemetría hacia Cimiento activada", self.activar()[0])
-        datos = self.leer()
-        self.assertEqual({"allow": ["Bash(ls)"]}, datos["permissions"])
-        self.assertEqual("1", datos["env"]["CLAUDE_CODE_ENABLE_TELEMETRY"])
-        self.assertEqual("http/json", datos["env"]["OTEL_EXPORTER_OTLP_PROTOCOL"])
-        self.assertEqual("http://127.0.0.1:8015/v1/logs", datos["env"]["OTEL_EXPORTER_OTLP_LOGS_ENDPOINT"])
+    def test_salen_las_seis_y_lo_demas_sigue(self):
+        entorno = dict(self.instalador.telemetria(), OTEL_LOGS_EXPORTER="console", OTRA="1")
+        escribir(self.configuracion, json.dumps({"env": entorno, "permissions": {"allow": ["Bash(ls)"]}}))
+        self.assertIn("quitar 5 variable(s)", self.retirar()[0])
+        self.assertEqual({"env": {"OTEL_LOGS_EXPORTER": "console", "OTRA": "1"},
+                          "permissions": {"allow": ["Bash(ls)"]}}, self.leer())
 
-    def test_no_pisa_lo_que_el_usuario_ya_tenia(self):
-        escribir(self.configuracion, json.dumps({"env": {"OTEL_LOGS_EXPORTER": "console"}}))
-        self.activar()
-        self.assertEqual("console", self.leer()["env"]["OTEL_LOGS_EXPORTER"])
+    def test_sin_nada_mas_se_va_el_env(self):
+        escribir(self.configuracion, json.dumps({"env": self.instalador.telemetria(), "tema": "x"}))
+        self.retirar()
+        self.assertEqual({"tema": "x"}, self.leer())
 
-    def test_otra_vez_no_cambia_nada(self):
-        self.activar()
-        antes = self.leer()
-        self.assertEqual(["la telemetría hacia Cimiento ya estaba activa"], self.activar())
-        self.assertEqual(antes, self.leer())
+    def test_otra_vez_no_hay_nada(self):
+        escribir(self.configuracion, json.dumps({"env": self.instalador.telemetria()}))
+        self.retirar()
+        self.assertEqual([], self.retirar())
 
     def test_en_simulacion_lo_anuncia_y_no_escribe(self):
-        self.assertIn("activar la telemetría", self.activar(aplicar=False)[0])
-        self.assertFalse(os.path.exists(self.configuracion))
-
-    def test_sin_puerto_declarado_usa_el_8000(self):
-        os.remove(os.path.join(self.cimiento, ".env"))
-        self.activar()
-        self.assertEqual("http://127.0.0.1:8000/v1/logs", self.leer()["env"]["OTEL_EXPORTER_OTLP_LOGS_ENDPOINT"])
+        escribir(self.configuracion, json.dumps({"env": self.instalador.telemetria()}))
+        self.assertIn("quitar 6 variable(s)", self.retirar(aplicar=False)[0])
+        self.assertEqual(self.instalador.telemetria(), self.leer()["env"])
 
     def test_json_invalido_no_se_toca(self):
         escribir(self.configuracion, "{roto")
-        self.assertTrue(self.activar()[0].startswith("OMITIDO"))
+        self.assertTrue(self.retirar()[0].startswith("OMITIDO"))
         with io.open(self.configuracion, encoding="utf-8") as f:
             self.assertEqual("{roto", f.read())
 

@@ -10,7 +10,7 @@ CORRECTO:   "Abrir la terminal y escribir el comando. El servidor pide la
             contraseña."
 ```
 
-**Quién la hace cumplir:** `validadores/redaccion.py`, que cuenta el trato directo sobre lo que el agente acaba de escribir, y `adaptadores/claude-code/hook_redaccion.py`, que lo deja a la vista al cerrar el turno. La variedad del idioma no se cuenta: se lee.
+**Quién la hace cumplir:** `proyectos/cimiento/core/validadores/redaccion.py`, que cuenta el trato directo sobre lo que el agente acaba de escribir, y `adaptadores/claude-code/hook_redaccion.py`, que lo deja a la vista al cerrar el turno. La variedad del idioma no se cuenta: se lee.
 
 **Aplica a:** responder, escribir-documento
 
