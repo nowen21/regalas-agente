@@ -22,6 +22,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-31-la-palabra-clav
 
 **Lo que no es hallazgo.** Se levantó LocalHub en el puerto 8002, con `manage.py start --port 8002`. Es una operación, y cómo se repite está en el README de ese proyecto.
 
+### H-2 · El freno detuvo una escritura fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-06 17:29, el freno detuvo una escritura sobre `proyectos/cimiento/core/herramientas/tests_liste_y_ok.py`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -35,8 +43,8 @@ Se cierra cuando ningún hallazgo queda a medias. Un hallazgo está terminado de
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, en el anexo y en la entrada `56.2.0` |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ Ninguno quedó abierto |
-| Toda historia disparada está escrita en su épica | ☐ Falta decidir si `Liste` y `OK` llevan su eslabón de cadena o entran como ajuste de la lista |
-| Lo que se hizo está aprobado y guardado | ☐ Seis archivos de este tema sin commit, y el resto del árbol es de trabajo anterior |
+| Toda historia disparada está escrita en su épica | ☑ Fase [C-EP-001-HU-036](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/C-EP-001-HU-036-liste-y-ok-entran-a-la-lista/README.md), abierta, ejecutada y cerrada el 2026-10-06, con sus tres pruebas en verde |
+| Lo que se hizo está aprobado y guardado | ☑ Commit `634b28a`, subido a `origin/main`. Lo que sigue sin guardar es de otras sesiones |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

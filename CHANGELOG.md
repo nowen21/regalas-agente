@@ -11,11 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 56.2.1 — 2026-10-06
+
+La lista de palabras ahora dice que «ok» no autoriza ninguna acción. Antes decía «se entiende la explicación», que habla de quien escribe y no de lo que el agente queda autorizado a hacer, y así podía leerse como permiso para seguir con lo que venía.
+
+**PARCHE**: la redacción de una celda; lo que se exige no cambia.
+
+**Lo que entra:**
+
+- La celda de «OK» en [`palabras-clave.md`](base/01-conducta/palabras-clave.md) dice «Nada: es el acuse de recibo de una explicación», como las demás de esa tabla, que nombran lo autorizado.
+- Las pruebas de las dos palabras nuevas, en `proyectos/cimiento/core/herramientas/tests_liste_y_ok.py`, y la fase que las documenta ([`EP-001·HU-036`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/C-EP-001-HU-036-liste-y-ok-entran-a-la-lista/README.md), fase C).
+
+---
+
 ## 56.2.0 — 2026-10-06
 
-**«Liste» y «OK» entran a la lista de las palabras.**
+Escribirle «ok» al agente ahora alcanza para decirle que la explicación se entendió, y él no pide nada más. Antes contestaba pidiendo una de las palabras con que se le dice qué se espera, porque «ok» no era ninguna de ellas.
 
-**MENOR**: suma dos palabras a la lista de `01·C28`; nadie tiene que hacer nada.
+**MENOR**: nadie tiene que hacer nada.
 
 **Lo que entra:**
 

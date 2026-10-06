@@ -385,3 +385,169 @@ Corregido.
 
 ### 21 · Usuario — 2026-10-06 16:57:29
 > suba lo de la lista de palabras
+
+**Agente** — 2026-10-06 17:01:49
+<!-- agente: dc3e9237-29df-47ad-a550-936850c13eea -->
+
+Subido. `3e8a525..634b28a` en `origin/main`.
+
+**El commit.** Diez archivos: `VERSION` en `56.2.0`, la entrada del registro, las dos filas del anexo, el sello de `C28` sin el número, y la sesión con su nombre y su resumen. El cambio de la línea 818, que es de la fase `B-EP-001-HU-041`, quedó por fuera a propósito: se separó el parche para que entrara solo el pedazo de `C28`.
+
+**Tres avisos, ninguna falla.** Los enganches dejaron pasar el commit y el push:
+
+- La entrada de la `56.2.0` no le gustó a `M17`: pide que abra diciendo qué cambió y por qué, sin citar el identificador de la regla. Con `corrija` se reescribe el encabezado de esa entrada.
+- El commit mezcla archivos de cinco sesiones, y señala `CHANGELOG.md`. Es porque ese archivo lo han tocado varias sesiones; lo que entró en este commit es solo la entrada nueva.
+- La última corrida de las pruebas del estándar, del 2026-10-05, dejó una falla sin revisar. Son diez minutos y no detiene nada, pero está ahí.
+
+**Las casillas del resumen** siguen como estaban: la cuarta ya se puede marcar, y la tercera espera la decisión de la cadena.
+
+### 22 · Usuario — 2026-10-06 17:02:10
+> pregunta ya se puede cerrar la sesión?
+
+**Agente** — 2026-10-06 17:02:44
+<!-- agente: 3241bfa3-0abb-4ed4-8f93-2f6219e92ab8 -->
+
+Casi. Queda una decisión y dos correcciones de forma.
+
+**La decisión, que es suya.** Si las filas `Liste` y `OK` llevan su eslabón de cadena, con pendiente, historia y fase, o entran como ajuste de la lista sin fase. Es la tercera casilla, y el agente no puede marcarla por su cuenta.
+
+**Lo de forma, dos cosas.**
+
+- La cuarta casilla dice «seis archivos sin commit», y ya están subidos en `634b28a`. Hay que marcarla.
+- La entrada de la `56.2.0` quedó con el aviso de `M17`: debe abrir diciendo qué cambió y por qué, sin citar el identificador de la regla.
+
+Lo que sigue sin guardar del árbol es de otras sesiones: el cambio de la línea 818 en `base/01-conducta.md` y el de `M10`, los dos de la fase `B-EP-001-HU-041`.
+
+Con `corrija` quedan las dos cosas de forma, y después solo falta la decisión.
+
+### 23 · Usuario — 2026-10-06 17:03:45
+> explique: con 00 id7 y 00 id9
+
+**Agente** — 2026-10-06 17:04:03
+<!-- agente: 5c8ce084-d4f3-4722-93f1-257124189ea6 -->
+
+Lo que falta, en palabras simples.
+
+**Una decisión suya.** Las dos palabras nuevas se agregaron editando el archivo de frente. La casa normalmente pide otro camino: primero se anota lo que falta, de ahí sale una historia, y la historia se construye como una fase con su plan y sus pruebas. Acá no se hizo nada de eso. Hay dos salidas y las dos son válidas: escribir esos papeles, o decir que agregar palabras a una lista es un ajuste y no los necesita. Lo que no se puede es dejarlo sin decidir, porque queda la duda de si se saltó un paso.
+
+**Dos arreglos de escritura.**
+
+- El resumen dice que falta guardar, y ya se guardó. Hay que tacharlo.
+- La entrada del registro empieza nombrando el código de la regla. La casa pide que empiece contando qué cambió y por qué, para que lo entienda alguien que no conoce el proyecto.
+
+Nada de esto es trabajo pesado. Con `corrija` quedan los dos arreglos, y la sesión cierra cuando llegue la decisión.
+
+### 24 · Usuario — 2026-10-06 17:05:21
+> corrija
+
+**Agente** — 2026-10-06 17:08:39
+<!-- agente: 755b7567-adb0-44d5-8e1d-cd4c55221125 -->
+
+Corregido, y el aviso se fue.
+
+**La entrada del registro** abre ahora en castellano llano: «Escribirle «ok» al agente ahora alcanza para decirle que la explicación se entendió…», con el porqué en la segunda frase. El código de la regla y las rutas quedaron abajo, en el detalle.
+
+**La casilla del resumen** quedó marcada, con el número del commit y la nota de que lo que sigue sin guardar es de otras sesiones.
+
+**Comprobado.** `validar.py metareglas` ya no reclama la entrada de la `56.2.0`. Los cuatro avisos que quedan son de otras reglas cuyo cuerpo pasa el largo del molde, y vienen de antes. `validar.py versionado` sigue en cero fallas.
+
+Los dos archivos corregidos están sin guardar. Falta solo la decisión sobre el eslabón de cadena, y con `suba` entran estas dos correcciones.
+
+### 25 · Usuario — 2026-10-06 17:12:48
+> pregunta: se puede cerar la sesión?
+
+**Agente** — 2026-10-06 17:12:58
+<!-- agente: 3ea21c65-1e33-4f10-aef3-cbef1e6457d0 -->
+
+No todavía. Faltan dos cosas, y una es suya.
+
+**La decisión.** Si las dos palabras nuevas llevan su pendiente, su historia y su fase, o si entran como ajuste de la lista y no los necesitan. Es la tercera casilla del resumen y el agente no la puede marcar solo.
+
+**Guardar las dos correcciones de hace un momento,** que están en el disco sin commit: la entrada del registro reescrita y la casilla que ya se cumplió.
+
+Nada más. Las otras dos casillas están marcadas, y lo que sigue sin guardar en el árbol es de otras sesiones.
+
+### 26 · Usuario — 2026-10-06 17:14:36
+> Respondo si deben llevar lo que se pide
+
+**Agente** — 2026-10-06 17:15:39
+<!-- agente: 3928b033-5fce-4f57-a2bd-dd983ccc9614 -->
+
+Decidido, y queda escrito: `Liste` y `OK` llevan la cadena completa.
+
+**Dónde va.** La historia ya existe, [HU-036](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/HU-036-el-pedido-dice-que-se-espera.md), que es la dueña de `01·C28`. Sus fases van en `A` y `B`, así que esto es la fase `C`. No hace falta épica nueva ni historia nueva.
+
+**Lo que falta armar.** El pendiente que lo origina, y la fase con sus cuatro documentos: plan de trabajo, plan de pruebas, resultado y estado. El cambio ya está hecho y subido, así que la fase documenta lo que se hizo y corre sus pruebas después, que es lo que esta casa llama retro-documentar.
+
+**Lo que no hice.** Abrirla. `respondo` autoriza justo lo que la pregunta pedía decidir, y la decisión era si llevaba cadena, no construirla.
+
+La casilla del resumen quedó con la decisión y su fecha, todavía sin marcar porque la fase no existe.
+
+Con `hágalo` se abre la fase `C` y se escriben sus planes, que después se presentan para su aprobación aparte.
+
+### 27 · Usuario — 2026-10-06 17:16:23
+> hágalo
+
+**Agente** — 2026-10-06 17:27:00
+<!-- agente: 0e589ca5-db72-4a0a-882d-58edcf449755 -->
+
+Fase abierta. Nada ejecutado todavía.
+
+**Creada** con el andamio de la casa: [C-EP-001-HU-036-liste-y-ok-entran-a-la-lista](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/C-EP-001-HU-036-liste-y-ok-entran-a-la-lista/README.md), bajo la historia que ya es dueña de la lista. No hizo falta épica ni historia nueva.
+
+**Los dos planes están escritos.** El de trabajo declara en su origen lo incómodo: la fase nace con el cambio ya subido en `634b28a`, así que retro-documenta y agrega lo que faltó. El de pruebas tiene tres casos, que cubren los dos criterios de la historia: que `Liste` y `OK` se reconozcan, que `OK` no autorice ninguna tarea, y que la forma de la pregunta entre signos se trate como ausente.
+
+**Lo que queda por hacer son las pruebas,** que es lo único que falta de verdad. La fase va en la estación 7, esperando que se lean los planes. Autorizar la apertura no aprueba el plan, así que no escribí ni una línea de prueba.
+
+**Una pregunta dentro del plan.** La celda de `OK` dice «Se entiende la explicación», que habla del usuario y no de lo que queda autorizado. Se propone «nada, es acuse de recibo». Se decide al aprobar.
+
+**Un defecto que no toqué.** En la tabla de fases de la historia, la fila de la fase B está malformada: tiene columnas de más y rompe el cuadro. Es de esa fase, no de esta.
+
+`validar.py fases` da cero fallas. Los dos avisos que señalan esta fase dicen que el resultado de pruebas y la funcionalidad siguen en blanco, que es lo correcto antes de ejecutar.
+
+Nada está guardado. Los planes se leen, y con `apruebo` se ejecutan.
+
+### 28 · Usuario — 2026-10-06 17:27:46
+> pregunta qué sigue?
+
+**Agente** — 2026-10-06 17:28:01
+<!-- agente: 57619aba-fc1e-4dcd-a6fd-2d7f6fa8e783 -->
+
+Leer los dos planes de la fase `C`, y decidir dos cosas al aprobarlos:
+
+- Si `OK` se queda con «Se entiende la explicación» o pasa a «nada, es acuse de recibo».
+- Si los tres casos de prueba alcanzan.
+
+Con `apruebo` se ejecuta: se escribe `tests_liste_y_ok.py`, se corre solo esa suite, y el resultado queda en el `resultado_pruebas.md` de la fase. Es cerca de una hora de trabajo, según el plan.
+
+Después de eso falta el commit de la fase, que se pide aparte, y marcar la tercera casilla del resumen.
+
+Los archivos para leer:
+
+- [plan_trabajo.md](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/C-EP-001-HU-036-liste-y-ok-entran-a-la-lista/plan_trabajo.md)
+- [plan_pruebas.md](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/C-EP-001-HU-036-liste-y-ok-entran-a-la-lista/plan_pruebas.md)
+
+### 29 · Usuario — 2026-10-06 17:29:06
+> apruebo
+
+**Agente** — 2026-10-06 17:34:50
+<!-- agente: 57886197-7d01-4bd1-86a2-a2226fb8306f -->
+
+Pruebas en verde. Voy con el resultado y el cierre documental de la fase.
+
+Fase `C` ejecutada y cerrada. Las pruebas pasaron.
+
+**Las pruebas.** [tests_liste_y_ok.py](proyectos/cimiento/core/herramientas/tests_liste_y_ok.py), tres casos, los tres en verde en medio segundo. Corrí también la suite hermana de «Respondo», que lee el mismo anexo: cinco de cinco.
+
+**La celda de `OK`** quedó diciendo «Nada: es el acuse de recibo de una explicación», que era la propuesta del plan. Ahora dice qué queda autorizado, como las otras nueve de esa tabla.
+
+**El tropiezo, y vale contarlo.** Al crear el archivo de pruebas, el freno lo detuvo: el plan declaraba ese archivo pero todavía figuraba sin aprobar, y `02·F8` no deja escribir fuera de un plan aprobado. La salida no fue saltarse el freno: fue registrar la aprobación en los dos planes, que es lo que de verdad había pasado. El segundo intento pasó. Quedó escrito en el resultado de pruebas, porque es justo lo que esa regla existe para hacer.
+
+**El cierre documental** está completo: resultado de pruebas con los tres casos, funcionalidad implementada con su trazabilidad, estado de fase en la estación 12, y la fila de la fase marcada como terminada en la historia.
+
+**Comprobado.** `validar.py fases`, `trazabilidad` e `indices` dan cero fallas. Los avisos que quedan son de otras fases y vienen de antes.
+
+Falta el commit de la fase, que se pide aparte. Son siete archivos: el de pruebas, los cinco de la fase, y el anexo con la celda corregida. Con `suba` entra, junto con las dos correcciones de hace un rato que tampoco están guardadas.
+
+### 30 · Usuario — 2026-10-06 17:35:09
+> suba

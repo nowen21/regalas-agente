@@ -131,6 +131,7 @@ Y pide la palabra, con la lista
 |---|---|---|
 | [A-EP-001-HU-036-la-palabra-clave-que-dice-que-hacer](A-EP-001-HU-036-la-palabra-clave-que-dice-que-hacer/README.md) | La regla, el anexo y el sello del checklist | En curso |
 | `B-EP-001-HU-036-respondo-contesta-la-pregunta` |  | (vacío) | [plan_trabajo.md](B-EP-001-HU-036-respondo-contesta-la-pregunta/plan_trabajo.md) | [plan_pruebas.md](B-EP-001-HU-036-respondo-contesta-la-pregunta/plan_pruebas.md) | [resultado_pruebas.md](B-EP-001-HU-036-respondo-contesta-la-pregunta/resultado_pruebas.md) | Terminada |
+| [C-EP-001-HU-036-liste-y-ok-entran-a-la-lista](C-EP-001-HU-036-liste-y-ok-entran-a-la-lista/README.md) | Suma `Liste` y `OK` a la lista, y saca la fila que no funcionaba | Terminada |
 
 ---
 
@@ -180,3 +181,4 @@ Y pide la palabra, con la lista
 | Fecha | Qué pasó |
 |---|---|
 | 2026-08-24 | Nace del reclamo del usuario: el agente cambió un encabezado que solo se había ofrecido cambiar. Se acuerda la lista de dieciocho palabras |
+| 2026-10-06 | Entran «Liste» y «OK», sale la fila de la pregunta entre signos, y el sello de la regla deja de contar cuántas palabras hay. La fase C se abre después de que el cambio ya estaba subido, y lo declara |
