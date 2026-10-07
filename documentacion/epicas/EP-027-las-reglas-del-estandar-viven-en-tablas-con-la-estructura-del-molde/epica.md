@@ -128,7 +128,7 @@ Ninguno.
 | [HU-001](HU-001-las-reglas-tienen-sus-tablas-con-las-casillas-del-molde/HU-001-las-reglas-tienen-sus-tablas-con-las-casillas-del-molde.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
 | [HU-002](HU-002-las-269-reglas-pasan-a-las-tablas-sin-perder-nada/HU-002-las-269-reglas-pasan-a-las-tablas-sin-perder-nada.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
 | [HU-003](HU-003-el-texto-que-recibe-el-agente-se-arma-desde-las-tablas/HU-003-el-texto-que-recibe-el-agente-se-arma-desde-las-tablas.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-004](HU-004-la-pantalla-lista-las-reglas-por-capitulo-con-sus-relaciones-y-enlaces-que-abren/HU-004-la-pantalla-lista-las-reglas-por-capitulo-con-sus-relaciones-y-enlaces-que-abren.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
+| [HU-004](HU-004-la-pantalla-lista-las-reglas-por-capitulo-con-sus-relaciones-y-enlaces-que-abren/HU-004-la-pantalla-lista-las-reglas-por-capitulo-con-sus-relaciones-y-enlaces-que-abren.md) | La pantalla lista las reglas por capítulo, con sus relaciones y enlaces que abren | Must | M | No aplica | Terminada |
 | [HU-005](HU-005-las-propuestas-la-historia-y-la-memoria-muestran-nombres-legibles/HU-005-las-propuestas-la-historia-y-la-memoria-muestran-nombres-legibles.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
 | [HU-006](HU-006-las-reglas-de-cada-proyecto-viven-en-la-misma-tabla/HU-006-las-reglas-de-cada-proyecto-viven-en-la-misma-tabla.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
 | [HU-007](HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas/HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas.md) | «Título» | «Prioridad» | «Estimación» | «…» | Terminada |
@@ -199,7 +199,7 @@ N/A.
 | 2 | HU-001 | HU-007 | Es donde se guarda todo lo demás | Pendiente |
 | 3 | HU-002 | HU-001 | Sin las reglas en las tablas no hay qué leer ni mostrar | Pendiente |
 | 4 | HU-003 | HU-002 | Necesita las reglas en las tablas | Pendiente |
-| 5 | HU-004 | HU-002 | Necesita las reglas en las tablas | Pendiente |
+| 5 | HU-004 | Ninguna | Se adelantó a pedido del usuario (2026-10-07): lee el texto de hoy, y cuando la HU-003 lo arme desde las tablas, la página lo muestra igual | Terminada |
 | 6 | HU-005 | HU-002 | Necesita el título de cada regla | Pendiente |
 | 7 | HU-006 | HU-003 | Se leen igual que las del estándar | Pendiente |
 

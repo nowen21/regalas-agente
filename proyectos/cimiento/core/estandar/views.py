@@ -5,10 +5,9 @@ Toda cuenta mira; solo el grupo administrador cambia, quita o aprueba (RNF-01).
 Cada envío que cambia algo trae las dos preguntas: el middleware fija con ellas
 el tipo de la versión, y la historia guarda el cambio (HU-001, HU-002).
 """
-from collections import OrderedDict
-
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.safestring import mark_safe
 from django.views import View
 
 from core.cuentas.permisos import es_administrador
@@ -18,6 +17,7 @@ from core.proyectos.models import Proyecto
 
 from . import cambios
 from .models import PENDIENTE, Documento, Propuesta, Recuerdo
+from .presentar import Ficha, Estandar
 
 
 def _sin_permiso(peticion):
@@ -25,30 +25,36 @@ def _sin_permiso(peticion):
 
 
 class Lista(View):
+    """`EP-027·HU-004` · El estándar por capítulo, con el código y el nombre de cada regla."""
 
     def get(self, peticion):
         buscar = peticion.GET.get("q", "").strip()
-        documentos = Documento.objects.only("id", "ruta", "actualizado")
+        estandar = Estandar(Documento.objects.all())
+        capitulos = estandar.capitulos()
         if buscar:
-            documentos = documentos.filter(contenido__icontains=buscar) | Documento.objects.filter(
-                ruta__icontains=buscar).only("id", "ruta", "actualizado")
-        grupos = OrderedDict()
-        for d in documentos.order_by("ruta"):
-            partes = d.ruta.split("/")
-            grupos.setdefault("/".join(partes[:2]) if len(partes) > 2 else partes[0], []).append(d)
+            hallados = set(Documento.objects.filter(contenido__icontains=buscar).values_list("pk", flat=True))
+            for c in capitulos:
+                c["renglones"] = [r for r in c["renglones"] if r["pk"] in hallados]
+            capitulos = [c for c in capitulos if c["renglones"]]
         return render(peticion, "estandar/lista.html", {
-            "grupos": grupos, "buscar": buscar, "version": actual(ESTANDAR),
+            "capitulos": capitulos, "buscar": buscar, "version": actual(ESTANDAR),
             "pendientes": Propuesta.objects.filter(estado=PENDIENTE).count(),
             "proyectos": Proyecto.objects.filter(activo=True),
             "puede_cambiar": es_administrador(peticion.user)})
 
 
 class VerDocumento(View):
+    """`EP-027·HU-004` · El documento como página, con sus relaciones; quien
+    administra cambia el texto en su propia pestaña."""
 
     def get(self, peticion, pk):
         documento = get_object_or_404(Documento, pk=pk)
+        estandar = Estandar(Documento.objects.all())
+        ficha = estandar.por_pk[documento.pk]
         return render(peticion, "estandar/documento.html", {
-            "documento": documento, "puede_cambiar": es_administrador(peticion.user), "nuevo": False})
+            "documento": documento, "ficha": ficha, "pagina": mark_safe(estandar.html(ficha)),
+            "relaciones": estandar.relaciones(ficha), "capitulo": estandar.capitulo_de(ficha),
+            "puede_cambiar": es_administrador(peticion.user), "nuevo": False})
 
     def post(self, peticion, pk):
         if not es_administrador(peticion.user):
@@ -84,9 +90,9 @@ class QuitarDocumento(View):
         if not es_administrador(peticion.user):
             return _sin_permiso(peticion)
         documento = get_object_or_404(Documento, pk=pk)
-        ruta = documento.ruta
+        titulo = Ficha(documento).titulo
         cambios.quitar_documento(documento)
-        messages.success(peticion, "Se quitó %s; queda en la historia." % ruta)
+        messages.success(peticion, "Se quitó «%s»; queda en la historia." % titulo)
         return redirect("estandar:lista")
 
 

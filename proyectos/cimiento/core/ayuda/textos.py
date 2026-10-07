@@ -167,6 +167,11 @@ CAMPOS.update({
     "gasto.dias": _campo("¿Qué período?", "Cuántos días hacia atrás se cuentan.", "«7 días» muestra la última semana."),
     "documento.ruta": _campo("¿Qué ruta?", "Dónde queda el documento dentro del estándar. Empieza por base/ y termina en .md.",
                              "base/17-guia-de-pantallas.md"),
+    "documento.relaciones": _campo("¿Qué son las relaciones?",
+                                   "Las otras reglas que tienen que ver con esta, en tres grupos: de cuáles depende "
+                                   "(lo que la regla declara con «extiende», «depende de» o «deroga»), cuáles nombra "
+                                   "en su texto y cuáles la nombran a ella.",
+                                   "F1 depende de F2: para cumplir F1 también se cumple F2."),
     "documento.texto": _campo("¿Qué texto?", "El contenido completo del documento, como queda después del cambio.",
                               consejo="El cambio no se guarda de una vez: queda como propuesta para aprobar."),
     "git.asunto": _campo("¿Qué asunto?", "Una línea que dice qué cambió, como la verá quien lea la historia de git.",
@@ -210,12 +215,12 @@ def _pantalla(texto, ejemplo):
 PANTALLAS.update({
     "gasto": _pantalla("Ver cuántos tokens se gastan, en qué proyecto y en qué, en vivo.",
                        "Se escoge un proyecto y «7 días» para ver qué enganche gastó más la última semana."),
-    "documento": _pantalla("Leer un documento del estándar y proponer un cambio.",
-                           "Se corrige una palabra de una regla y se guarda: queda como propuesta en «Propuestas por aprobar»."),
+    "documento": _pantalla("Leer una regla o un documento del estándar, ver con qué reglas se relaciona y, quien administra, cambiar su texto.",
+                           "Se abre F8, se lee su ejemplo y, en «Relaciones», se pulsa la regla de la que depende para leerla."),
     "git": _pantalla("Guardar en git lo que cambió en Cimiento, separado por sesión, y subirlo si se quiere.",
                      "Al terminar una tarea, se escribe el asunto y la idea, y se pulsa el botón de la sesión."),
-    "estandar": _pantalla("Ver todos los documentos del estándar y buscar en ellos.",
-                          "Se busca «F8» para encontrar la regla y los documentos que la nombran."),
+    "estandar": _pantalla("Ver las reglas del estándar por capítulo, con su código y su nombre, y buscar en ellas.",
+                          "Se abre el capítulo «02 · Flujo de trabajo» y se pulsa «F8» para leer la regla."),
     "recuerdo": _pantalla("Leer o proponer un recuerdo de la memoria del agente.",
                           "Se escribe cómo quiere el usuario que se trabaje; queda como propuesta para aprobar."),
     "reportes": _pantalla("Atender lo que los proyectos encontraron mal en el estándar.",

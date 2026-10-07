@@ -1,33 +1,63 @@
 {% extends "base.html" %}
-{% load ayuda %}
+{% load ayuda static %}
 {% block titulo %}Estándar{% endblock %}
-{% block cabecera %}Estándar{% endblock %}
+{% block cabecera %}Reglas del estándar{% endblock %}
 {% block contenido %}
+<link rel="stylesheet" href="{% static 'estandar.css' %}">
 {% ayuda_pantalla "estandar" %}
 {% include "estandar/_mensajes.html" %}
-<p class="text-secondary">El estándar va en la <strong>{{ version }}</strong> y vive en esta base: se cambia aquí y cada cambio queda en la historia.
-  <a href="{% url 'estandar:propuestas' %}">Propuestas</a>{% if pendientes %} <span class="badge bg-yellow-lt">{{ pendientes }} por aprobar</span>{% endif %}
-  · <a href="{% url 'historia:versiones' %}?proyecto=estandar">Versiones</a>
-  · <a href="{% url 'estandar:git' %}">Subir a git</a>
-  · <a href="{% url 'estandar:reportes' %}">Reportes</a>
-  · <a href="{% url 'estandar:vista_previa' %}">Vista previa</a>
-  {% if puede_cambiar %} · <a href="{% url 'estandar:nuevo' %}">Documento nuevo</a>{% endif %}</p>
-<form method="get" class="d-flex gap-2 mb-3">
-  <input class="form-control form-control-sm w-auto" name="q" value="{{ buscar }}" placeholder="Buscar en el estándar">{% ayuda_campo "estandar.buscar" %}
-  <button class="btn btn-sm btn-outline-primary" type="submit">Buscar</button>
-</form>
-<div class="row">
+<div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+  <div class="text-secondary me-auto">El estándar va en la <strong>{{ version }}</strong>. Cada regla está en su capítulo; ábrala para leerla.</div>
+  <div class="btn-list">
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'estandar:propuestas' %}">Propuestas{% if pendientes %} <span class="badge bg-yellow-lt ms-1">{{ pendientes }} por aprobar</span>{% endif %}</a>
+    <a class="btn btn-outline-secondary btn-sm" href="{% url 'historia:versiones' %}?proyecto=estandar">Versiones</a>
+    <a class="btn btn-outline-secondary btn-sm" href="{% url 'estandar:vista_previa' %}">Vista previa</a>
+    {% if puede_cambiar %}<a class="btn btn-primary btn-sm" href="{% url 'estandar:nuevo' %}">Documento nuevo</a>{% endif %}
+  </div>
+</div>
+<div class="row g-3">
   <div class="col-lg-8">
-    {% for grupo, documentos in grupos.items %}
-    <div class="card mb-3">
-      <div class="card-header"><h3 class="card-title">{{ grupo }}</h3></div>
-      <div class="list-group list-group-flush">
-        {% for d in documentos %}<a class="list-group-item list-group-item-action" href="{% url 'estandar:documento' d.pk %}">{{ d.ruta }}</a>{% endfor %}
+    <form method="get" class="card card-body mb-3">
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="q">Buscar en el estándar</label>{% ayuda_campo "estandar.buscar" %}</div>
+      <div class="input-group">
+        <input class="form-control" id="q" name="q" value="{{ buscar }}" placeholder="Una palabra o una frase, por ejemplo: commit">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+        {% if buscar %}<a class="btn btn-outline-secondary" href="{% url 'estandar:lista' %}">Ver todo</a>{% endif %}
       </div>
+      {% if buscar %}<div class="form-hint mt-2">Se muestran solo las reglas y documentos que dicen «{{ buscar }}».</div>{% endif %}
+    </form>
+    {% if capitulos %}
+    <div class="accordion" id="capitulos">
+      {% for c in capitulos %}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="cab-{{ forloop.counter }}">
+          <button class="accordion-button{% if not buscar %} collapsed{% endif %}" type="button" data-bs-toggle="collapse"
+            data-bs-target="#cap-{{ forloop.counter }}" aria-expanded="{% if buscar %}true{% else %}false{% endif %}" aria-controls="cap-{{ forloop.counter }}">
+            <span class="me-auto">{{ c.nombre }}</span>
+            {% if c.reglas %}<span class="badge bg-blue-lt me-3">{{ c.reglas|length }} regla{{ c.reglas|length|pluralize }}</span>{% endif %}
+          </button>
+        </h2>
+        <div id="cap-{{ forloop.counter }}" class="accordion-collapse collapse{% if buscar %} show{% endif %}" aria-labelledby="cab-{{ forloop.counter }}">
+          <div class="list-group list-group-flush">
+            {% for r in c.renglones %}
+            <a class="list-group-item list-group-item-action d-flex align-items-center gap-2" href="{{ r.url }}">
+              {% if r.codigo %}<span class="badge bg-blue-lt font-monospace codigo-regla">{{ r.codigo }}</span>{% else %}<span class="codigo-regla text-secondary text-center" aria-hidden="true">·</span>{% endif %}
+              <span class="{% if r.derogada %}text-secondary{% endif %}">{{ r.nombre }}</span>
+              {% if r.derogada %}<span class="badge bg-secondary-lt ms-auto">Derogada</span>{% endif %}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
-    {% empty %}
-    <p class="text-secondary">Nada coincide.</p>
-    {% endfor %}
+    {% else %}
+    <div class="empty">
+      <p class="empty-title">Nada dice «{{ buscar }}»</p>
+      <p class="empty-subtitle text-secondary">Pruebe con otra palabra, o vea el estándar completo.</p>
+      <div class="empty-action"><a class="btn btn-primary" href="{% url 'estandar:lista' %}">Ver todo el estándar</a></div>
+    </div>
+    {% endif %}
   </div>
   <div class="col-lg-4">
     <div class="card">

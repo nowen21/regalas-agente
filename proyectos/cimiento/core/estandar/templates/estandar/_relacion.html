@@ -1,0 +1,6 @@
+{% comment %}`EP-027·HU-004` · Un renglón del espacio de relaciones: código, nombre y, si es dependencia, su tipo.{% endcomment %}
+<a class="list-group-item list-group-item-action px-0 d-flex align-items-center gap-2" href="{{ r.url }}">
+  {% if r.codigo %}<span class="badge bg-blue-lt font-monospace codigo-regla">{{ r.codigo }}</span>{% endif %}
+  <span class="flex-fill">{{ r.nombre }}</span>
+  {% if tipo %}<span class="badge bg-purple-lt">{{ tipo }}</span>{% endif %}
+</a>

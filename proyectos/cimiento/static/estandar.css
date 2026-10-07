@@ -1,0 +1,7 @@
+/* EP-027·HU-004 · Lo que Tabler no trae para leer el estándar como página. */
+.codigo-regla { min-width: 3.75rem; display: inline-block; }
+.ejemplo-texto { white-space: pre-wrap; font-family: var(--tblr-font-monospace); font-size: .8125rem; }
+.pagina-estandar { max-width: 52rem; line-height: 1.6; }
+.pagina-estandar [id] { scroll-margin-top: 1rem; }
+.pagina-estandar .table td, .pagina-estandar .table th { white-space: normal; }
+.pagina-estandar :target { background: var(--tblr-yellow-lt); border-radius: var(--tblr-border-radius); }

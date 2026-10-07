@@ -1,33 +1,110 @@
 {% extends "base.html" %}
-{% load ayuda %}
-{% block titulo %}{% if nuevo %}Documento nuevo{% else %}{{ documento.ruta }}{% endif %}{% endblock %}
-{% block cabecera %}{% if nuevo %}Documento nuevo del estándar{% else %}{{ documento.ruta }}{% endif %}{% endblock %}
+{% load ayuda static %}
+{% block titulo %}{% if nuevo %}Documento nuevo{% else %}{{ ficha.titulo }}{% endif %}{% endblock %}
+{% block cabecera %}{% if nuevo %}Documento nuevo del estándar{% else %}{% if ficha.codigo %}<span class="badge bg-blue-lt font-monospace me-2">{{ ficha.codigo }}</span>{% endif %}{{ ficha.nombre }}{% endif %}{% endblock %}
 {% block contenido %}
+<link rel="stylesheet" href="{% static 'estandar.css' %}">
 {% ayuda_pantalla "documento" %}
 {% include "estandar/_mensajes.html" %}
-<p><a href="{% url 'estandar:lista' %}">Volver al estándar</a>{% if documento %} · <a href="{% url 'historia:lista' %}?tabla=estandar.documento">Historia</a>{% endif %}</p>
-{% if puede_cambiar %}
+<ol class="breadcrumb mb-3" aria-label="Dónde está">
+  <li class="breadcrumb-item"><a href="{% url 'estandar:lista' %}">Estándar</a></li>
+  {% if capitulo and not capitulo.es_el_mismo %}<li class="breadcrumb-item"><a href="{{ capitulo.url }}">{{ capitulo.nombre }}</a></li>{% endif %}
+  <li class="breadcrumb-item active" aria-current="page">{% if nuevo %}Documento nuevo{% elif ficha.codigo %}{{ ficha.codigo }}{% else %}{{ ficha.titulo }}{% endif %}</li>
+</ol>
+{% if nuevo %}
 <form method="post" class="card">
   {% csrf_token %}
   <div class="card-body">
-    {% if nuevo %}
-    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="ruta">Ruta</label>{% ayuda_campo "documento.ruta" %}</div>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label required mb-0" for="ruta">Dónde queda</label>{% ayuda_campo "documento.ruta" %}</div>
     <input class="form-control mb-3" id="ruta" name="ruta" placeholder="base/…/archivo.md" required>
-    {% endif %}
     <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="contenido">Texto</label>{% ayuda_campo "documento.texto" %}</div>
-    <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="28">{% if documento %}{{ documento.contenido }}{% endif %}</textarea>
+    <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="28"></textarea>
   </div>
   <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>
-  <div class="card-footer"><button class="btn btn-primary" type="submit">Guardar</button></div>
+  <div class="card-footer d-flex gap-2"><button class="btn btn-primary" type="submit">Crear documento</button><a class="btn btn-link" href="{% url 'estandar:lista' %}">Volver</a></div>
 </form>
-{% if documento %}
-<form method="post" action="{% url 'estandar:quitar' documento.pk %}" class="card mt-3">
-  {% csrf_token %}
-  <div class="card-body">{% include "historia/_tipo_de_version.html" %}</div>
-  <div class="card-footer"><button class="btn btn-outline-danger" type="submit">Quitar este documento</button></div>
-</form>
-{% endif %}
 {% else %}
-<pre class="card card-body" style="white-space: pre-wrap">{{ documento.contenido }}</pre>
+{% if ficha.derogada %}<div class="alert alert-warning"><strong>Esta regla ya no rige.</strong> Se conserva para que lo que la cita la siga encontrando; abajo dice cuál la reemplaza.</div>{% endif %}
+<div class="row g-3">
+  <div class="col-lg-8">
+    <div class="card">
+      {% if puede_cambiar %}
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+          <li class="nav-item" role="presentation"><a href="#leer" class="nav-link active" data-bs-toggle="tab" role="tab" aria-selected="true">Leer</a></li>
+          <li class="nav-item" role="presentation"><a href="#cambiar" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Cambiar el texto</a></li>
+        </ul>
+      </div>
+      {% endif %}
+      <div class="tab-content">
+        <div class="tab-pane active show" id="leer" role="tabpanel">
+          <div class="card-body pagina-estandar">{{ pagina }}</div>
+        </div>
+        {% if puede_cambiar %}
+        <div class="tab-pane" id="cambiar" role="tabpanel">
+          <form method="post">
+            {% csrf_token %}
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="contenido">Texto</label>{% ayuda_campo "documento.texto" %}</div>
+              <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="28">{{ documento.contenido }}</textarea>
+            </div>
+            <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>
+            <div class="card-footer"><button class="btn btn-primary" type="submit">Guardar cambios</button></div>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card mb-3">
+      <div class="card-header"><h3 class="card-title">Relaciones</h3>{% ayuda_campo "documento.relaciones" %}</div>
+      <div class="card-body">
+        <h4 class="subheader mb-2">De qué depende</h4>
+        {% if relaciones.dependencias %}
+        <div class="list-group list-group-flush mb-3">
+          {% for r in relaciones.dependencias %}{% include "estandar/_relacion.html" with r=r tipo=r.tipo %}{% endfor %}
+        </div>
+        {% else %}<p class="text-secondary">No declara dependencias.</p>{% endif %}
+        <h4 class="subheader mb-2">Reglas que nombra</h4>
+        {% if relaciones.nombra %}
+        <div class="list-group list-group-flush mb-3">
+          {% for r in relaciones.nombra %}{% include "estandar/_relacion.html" with r=r %}{% endfor %}
+        </div>
+        {% else %}<p class="text-secondary">No nombra otras reglas.</p>{% endif %}
+        <h4 class="subheader mb-2">La nombran</h4>
+        {% if relaciones.la_nombran %}
+        <div class="list-group list-group-flush">
+          {% for r in relaciones.la_nombran %}{% include "estandar/_relacion.html" with r=r %}{% endfor %}
+        </div>
+        {% else %}<p class="text-secondary mb-0">Ningún documento la nombra.</p>{% endif %}
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <a class="btn btn-outline-secondary w-100 mb-2" href="{% url 'historia:lista' %}?tabla=estandar.documento">Ver la historia de cambios</a>
+        {% if puede_cambiar %}
+        <button class="btn btn-outline-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#quitar">Quitar este documento</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% if puede_cambiar %}
+<div class="modal fade" id="quitar" tabindex="-1" aria-labelledby="quitar-titulo" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="post" action="{% url 'estandar:quitar' documento.pk %}" class="modal-content">
+      {% csrf_token %}
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-header"><h5 class="modal-title" id="quitar-titulo">¿Quitar «{{ ficha.titulo }}»?</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body">
+        <p>El documento sale del estándar. Su texto queda en la historia de cambios y se puede devolver desde ahí.</p>
+        {% include "historia/_tipo_de_version.html" %}
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-link" data-bs-dismiss="modal">Volver</button><button class="btn btn-danger" type="submit">Quitar documento</button></div>
+    </form>
+  </div>
+</div>
+{% endif %}
 {% endif %}
 {% endblock %}

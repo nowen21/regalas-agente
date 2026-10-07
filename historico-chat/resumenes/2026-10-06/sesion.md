@@ -162,6 +162,30 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | No hace falta: el plan de la fase no traía la versión en su línea de aprobación, y sin ella el freno no lo da por aprobado. Se agregó («con la versión 57.0.0») y la escritura pasó |
 
+### H-20 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 13:49, el freno detuvo una orden de consola sobre `$F`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | [113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md): el freno tomó una variable de la terminal como ruta. El cambio se hizo con el editor |
+
+### H-21 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 14:00, el freno detuvo una orden de consola sobre `C:/Users/user/AppData/Local/Temp/claude/c--Ing--Jose-ia-agente/dad10286-79ce-4758-a237-c9cfbabca21d/scratchpad/ids.py`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Ninguno: el freno acertó. El agente puso un guion de apoyo fuera del repositorio, contra `04·S18`; el cambio se hizo con el editor |
+
+### H-22 · `cerrar_fase` dejó fuera un criterio y anotó la versión vieja
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al cerrar la fase `A-EP-027-HU-004-el-estandar-se-lee-como-pagina`, el resultado de pruebas salió sin el CA-02, cuya fila de la matriz tiene dos casos, y con la versión 56.8.0 del archivo quieto. Se corrigió a mano |
+| Por qué importa | El resultado dice que la fase cumple con menos criterios de los que tiene la HU |
+| Pendiente | [139](../2026-10-07/pendientes/139-cerrar-fase-pierde-el-ca-con-dos-casos-y-anota-la-version-vieja/pendiente.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
