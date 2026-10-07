@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e9c0e72` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 Las puertas 2 a 7 las aprobó el análisis 1 del pendiente 132, que nombra esta HU.

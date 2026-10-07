@@ -818,7 +818,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v56.
 | D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 19 ✅, 0 ❌, 1 N/A.** N/A: la fila 16, porque no tiene excepción.
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A: la fila 16, porque no tiene excepción.
 
 **Lo que cambió en v56.0.0.** La memoria del proyecto vive en la base de datos del agente, y en `historico-chat/memory/` mientras no la tenga. Sale del [análisis 1 del pendiente 132](../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md), acuerdo 17, por [EP-001·HU-041](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar/HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar.md). **Fila 5:** dice «base de datos del agente», sin nombrar la plataforma. **Fila 8:** el título y el ancla se conservan porque los citan otras reglas y documentos; según `C29`, la base del agente es parte del proyecto. **Fila 10:** el cuerpo se reescribió para caber.
 

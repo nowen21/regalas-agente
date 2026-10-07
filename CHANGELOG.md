@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 56.2.2 — 2026-10-06
+
+Los totales del sello de `20·M10` y de `01·C19` vuelven al formato del checklist. La 56.0.0 los escribió con comas, y con comas el validador de meta-reglas no los compara con la tabla del sello.
+
+**PARCHE**: no cambia lo que se exige.
+
+Sale del análisis 1 del pendiente 132 (`EP-001·HU-041`, fase B).
+
+---
+
 ## 56.2.1 — 2026-10-06
 
 La lista de palabras ahora dice que «ok» no autoriza ninguna acción. Antes decía «se entiende la explicación», que habla de quien escribe y no de lo que el agente queda autorizado a hacer, y así podía leerse como permiso para seguir con lo que venía.

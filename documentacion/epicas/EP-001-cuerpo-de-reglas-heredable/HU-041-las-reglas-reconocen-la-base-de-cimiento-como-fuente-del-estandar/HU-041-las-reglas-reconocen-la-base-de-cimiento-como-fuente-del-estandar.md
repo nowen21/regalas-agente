@@ -15,7 +15,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | El agente |
-| **Estado** | En prueba |
+| **Estado** | Terminada |
 
 ---
 
@@ -144,6 +144,7 @@ Aprobado cuando los tres pasos dan lo esperado.
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-001-HU-041-las-reglas-nombran-la-base`](A-EP-001-HU-041-las-reglas-nombran-la-base/) | CA-01, CA-02, CA-03 | | [plan_trabajo](A-EP-001-HU-041-las-reglas-nombran-la-base/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-041-las-reglas-nombran-la-base/plan_pruebas.md) | [resultado](A-EP-001-HU-041-las-reglas-nombran-la-base/resultado_pruebas.md) · **Cumple** | Cumple, falta el commit |
+| `B-EP-001-HU-041-los-totales-del-sello-se-leen` |  | (vacío) | [plan_trabajo.md](B-EP-001-HU-041-los-totales-del-sello-se-leen/plan_trabajo.md) | [plan_pruebas.md](B-EP-001-HU-041-los-totales-del-sello-se-leen/plan_pruebas.md) | [resultado_pruebas.md](B-EP-001-HU-041-los-totales-del-sello-se-leen/resultado_pruebas.md) | Terminada |
 
 ---
 
