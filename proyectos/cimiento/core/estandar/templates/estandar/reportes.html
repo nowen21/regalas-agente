@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load ayuda %}
 {% block titulo %}Reportes{% endblock %}
 {% block cabecera %}Reportes de los proyectos{% endblock %}
 {% block contenido %}
+{% ayuda_pantalla "reportes" %}
 {% include "estandar/_mensajes.html" %}
 <p class="text-secondary">Lo que los proyectos encuentran mal en el estándar. La versión sube cuando se corrige, no cuando llega el reporte. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
 {% for r in abiertos %}
@@ -13,14 +15,14 @@
   <div class="card-footer">
     <form method="post" action="{% url 'estandar:resolver_reporte' r.pk %}" class="d-flex gap-2 mb-2">
       {% csrf_token %}
-      <select class="form-select form-select-sm w-auto" name="version" required>
+      {% ayuda_campo "reporte.version" %}<select class="form-select form-select-sm w-auto" name="version" required>
         {% for v in versiones %}<option value="{{ v.pk }}">{{ v.numero }} · {{ v.resumen|truncatechars:60 }}</option>{% endfor %}
       </select>
       <button class="btn btn-sm btn-primary" type="submit">Corregido en esta versión</button>
     </form>
     <form method="post" action="{% url 'estandar:resolver_reporte' r.pk %}" class="d-flex gap-2">
       {% csrf_token %}
-      <input class="form-control form-control-sm" name="motivo" placeholder="Por qué se descarta" required>
+      <input class="form-control form-control-sm" name="motivo" placeholder="Por qué se descarta" required>{% ayuda_campo "reporte.motivo" %}
       <button class="btn btn-sm btn-outline-secondary" type="submit" name="descartar" value="1">Descartar</button>
     </form>
   </div>
@@ -34,13 +36,13 @@
   {% csrf_token %}
   <div class="card-header"><h3 class="card-title">Reporte nuevo</h3></div>
   <div class="card-body">
-    <label class="form-label" for="proyecto">Proyecto</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="proyecto">Proyecto</label>{% ayuda_campo "reporte.proyecto" %}</div>
     <select class="form-select mb-2" id="proyecto" name="proyecto" required>{% for p in proyectos %}<option value="{{ p.pk }}">{{ p.nombre }}</option>{% endfor %}</select>
-    <label class="form-label" for="titulo">Qué pasa</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="titulo">Qué pasa</label>{% ayuda_campo "reporte.titulo" %}</div>
     <input class="form-control mb-2" id="titulo" name="titulo" required>
-    <label class="form-label" for="regla">La regla que toca, si hay una</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="regla">La regla que toca, si hay una</label>{% ayuda_campo "reporte.regla" %}</div>
     <input class="form-control mb-2" id="regla" name="regla" placeholder="02·F8">
-    <label class="form-label" for="texto">Detalle</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="texto">Detalle</label>{% ayuda_campo "reporte.texto" %}</div>
     <textarea class="form-control" id="texto" name="texto" rows="4"></textarea>
   </div>
   <div class="card-footer"><button class="btn btn-primary" type="submit">Reportar</button></div>
@@ -48,11 +50,14 @@
 {% endif %}
 {% if resueltos %}
 <h3 class="mt-4">Resueltos</h3>
-<div class="card"><table class="table card-table">
-  <thead><tr><th>#</th><th>Proyecto</th><th>Qué</th><th>Cómo quedó</th><th>Quién</th><th>Avisado</th></tr></thead>
-  <tbody>{% for r in resueltos %}<tr><td>{{ r.pk }}</td><td>{{ r.proyecto }}</td><td>{{ r.titulo }}</td>
-    <td>{% if r.corregido_en %}Corregido en la {{ r.corregido_en.numero }}{% else %}Descartado: {{ r.motivo }}{% endif %}</td>
-    <td>{{ r.resuelto_por.get_username|default:"" }}</td><td>{% if r.avisado %}Sí{% else %}No{% endif %}</td></tr>{% endfor %}</tbody>
+<div class="card" id="tabla-reportes" data-tabla-avanzada data-por-pagina="10"><div class="table-responsive"><table class="table card-table table-vcenter">
+  <thead><tr><th><button type="button" class="table-sort" data-sort="t-proyecto">Proyecto</button></th><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th><th><button type="button" class="table-sort" data-sort="t-como">Cómo quedó</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th><th><button type="button" class="table-sort" data-sort="t-avisado">Avisado</button></th></tr>
+  <tr><th><select class="form-select form-select-sm" aria-label="Filtrar por proyecto" data-filtro="t-proyecto" data-exacto><option value="">Todos</option></select></th><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo reportado" data-filtro="t-que"></th><th></th><th></th><th></th></tr></thead>
+  <tbody class="table-tbody">{% for r in resueltos %}<tr><td class="t-proyecto">{{ r.proyecto }}</td><td class="t-que">{{ r.titulo }}</td>
+    <td class="t-como">{% if r.corregido_en %}Corregido en la {{ r.corregido_en.numero }}{% else %}Descartado: {{ r.motivo }}{% endif %}</td>
+    <td class="t-quien">{{ r.resuelto_por.get_username|default:"" }}</td><td class="t-avisado">{% if r.avisado %}Sí{% else %}No{% endif %}</td></tr>{% endfor %}</tbody>
 </table></div>
+<div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún reporte coincide con los filtros.</div>
+{% include "includes/tabla_pie.html" with tabla="tabla-reportes" %}</div>
 {% endif %}
 {% endblock %}

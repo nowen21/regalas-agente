@@ -129,7 +129,6 @@ Cambia el comportamiento por defecto de una regla `01`-`22`. Los valores de abaj
 - **Idioma de respuestas y textos:** español
 - **Patrón opt-in `15` (registros inmutables):** no
 - **Patrón opt-in `16` (cumplimiento normativo):** no
-- **Patrón opt-in `17` (interfaz / UI):** no
 - **Patrón opt-in `18` (despliegue e infraestructura):** no
 - **Patrón opt-in `19` (observabilidad y operación):** no
 - **Patrón opt-in `21` (automatización de procesos):** no

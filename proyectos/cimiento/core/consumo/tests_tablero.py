@@ -87,7 +87,7 @@ class LaPaginaMuestraElGasto(ConGasto):
         self.assertContains(respuesta, "6.515")
         self.assertContains(respuesta, 'id="franja"')
         self.assertContains(respuesta, 'id="pestana"')
-        self.assertContains(respuesta, "Gasto</span>")
+        self.assertContains(respuesta, "Gasto de tokens</span>")    # el menú de EP-028·HU-003
 
     def test_sin_cuenta_manda_a_entrar(self):
         respuesta = self.client.get("/gasto/")

@@ -1,0 +1,2 @@
+{% load ayuda %}{% comment %}`EP-028·HU-005` · El «?» de un campo del formulario del proyecto: los datos del proyecto
+tienen su clave «proyecto.*» y sus ajustes la de «configuracion.*», la misma de «Configuración».{% endcomment %}{% if campo.name == "nombre" or campo.name == "ruta" or campo.name == "activo" %}{% with clave="proyecto."|add:campo.name %}{% ayuda_campo clave %}{% endwith %}{% else %}{% with clave="configuracion."|add:campo.name %}{% ayuda_campo clave %}{% endwith %}{% endif %}

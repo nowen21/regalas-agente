@@ -136,8 +136,10 @@ class RecuperadorDeReglas:
         efectivos = configuracion.efectivos()
         if configuracion.registrado:
             return opt_in.apagados_segun(efectivos)
+        # `EP-028·HU-001` · Solo cuentan los capítulos que siguen siendo opt-in:
+        # un `CLAUDE.md` viejo dice «no» en el 17, que ya rige siempre.
         return frozenset(c for c, prendido in opt_in.del_claude_md(proyecto, archivos or Archivos()).items()
-                         if not prendido)
+                         if not prendido and c in opt_in.CAPITULOS_OPT_IN)
 
     # ── las reglas y las palabras ─────────────────────────────────────────
 

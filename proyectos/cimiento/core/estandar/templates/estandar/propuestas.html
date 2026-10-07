@@ -1,39 +1,84 @@
 {% extends "base.html" %}
-{% block titulo %}Propuestas{% endblock %}
-{% block cabecera %}Propuestas{% endblock %}
+{% load ayuda %}
+{% comment %}`EP-028·HU-004` · Cada propuesta dice qué cambia, se aprueba con las preguntas de versión
+claras y se rechaza con su motivo (`17·I7`; guía de diseño de pantallas §5, §8 y §11), con las
+tarjetas, alertas y el colapso de Tabler.{% endcomment %}
+{% block titulo %}Propuestas por aprobar{% endblock %}
+{% block cabecera %}Propuestas por aprobar{% endblock %}
 {% block contenido %}
+{% ayuda_pantalla "propuestas" %}
 {% include "estandar/_mensajes.html" %}
-<p class="text-secondary">Lo que proponen el agente o un programa. Nada cambia hasta que se aprueba aquí. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
+<div class="alert alert-info" role="alert">
+  <div class="fw-bold">Qué hacer aquí</div>
+  Lo que proponen el agente o un programa no cambia nada hasta que se aprueba aquí. En cada propuesta:
+  leer qué cambia, responder las dos preguntas de versión y pulsar <strong>Aprobar</strong>; o escribir
+  por qué no y pulsar <strong>Rechazar</strong>.
+</div>
 {% for p in pendientes %}
 <div class="card mb-3">
-  <div class="card-header"><h3 class="card-title">#{{ p.pk }} · {{ p.get_accion_display }} {{ p.destino }}</h3>
-    <span class="ms-auto text-secondary">{{ p.quien }}, {{ p.fecha|date:"Y-m-d H:i" }}</span></div>
+  <div class="card-header">
+    <div>
+      <h3 class="card-title">{{ p.get_accion_display }}: {{ p.destino }}</h3>
+      <div class="text-secondary small">Propuesta {{ p.pk }} · la hizo {{ p.quien }} el {{ p.fecha|date:"Y-m-d H:i" }}</div>
+    </div>
+  </div>
   <div class="card-body">
-    <p>{{ p.motivo }}</p>
-    {% if p.accion != "quitar" %}<pre style="white-space: pre-wrap; max-height: 24rem; overflow: auto">{{ p.contenido }}</pre>{% endif %}
+    {% if p.motivo %}<p><strong>Por qué:</strong> {{ p.motivo }}</p>{% endif %}
+    <h4 class="mb-2">Qué cambia</h4>
+    {% if p.cambia %}
+    <pre class="border rounded p-2 mb-2" style="white-space: pre-wrap; max-height: 24rem; overflow: auto">{% for tipo, linea in p.cambia %}{% if tipo == "sale" %}<span class="text-danger">− {{ linea }}</span>
+{% elif tipo == "entra" %}<span class="text-success">+ {{ linea }}</span>
+{% elif tipo == "salto" %}<span class="text-secondary">{{ linea }}</span>
+{% else %}  {{ linea }}
+{% endif %}{% endfor %}</pre>
+    <div class="form-hint mb-2">En rojo con «−» lo que sale; en verde con «+» lo que entra.</div>
+    {% else %}
+    <p class="text-secondary">No cambia ninguna línea.</p>
+    {% endif %}
+    {% if p.accion != "quitar" %}
+    <a class="small" data-bs-toggle="collapse" href="#texto-{{ p.pk }}" role="button" aria-expanded="false" aria-controls="texto-{{ p.pk }}">Ver el texto completo como queda</a>
+    <pre class="collapse border rounded p-2 mt-2" id="texto-{{ p.pk }}" style="white-space: pre-wrap; max-height: 24rem; overflow: auto">{{ p.contenido }}</pre>
+    {% endif %}
   </div>
   {% if puede_cambiar %}
   <div class="card-footer">
     <form method="post" action="{% url 'estandar:aprobar' p.pk %}">
       {% csrf_token %}
       {% include "historia/_tipo_de_version.html" %}
-      <button class="btn btn-primary" type="submit">Aprobar</button>
+      <button class="btn btn-primary" type="submit">Aprobar la propuesta {{ p.pk }}</button>
     </form>
-    <form method="post" action="{% url 'estandar:rechazar' p.pk %}" class="mt-2">
+    <form method="post" action="{% url 'estandar:rechazar' p.pk %}" class="mt-3">
       {% csrf_token %}
-      <button class="btn btn-outline-secondary" type="submit">Rechazar</button>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0 required" for="rechazo-{{ p.pk }}">Si no se aprueba, por qué</label>{% ayuda_campo "propuesta.rechazo" %}</div>
+      <div class="d-flex gap-2">
+        <input class="form-control" id="rechazo-{{ p.pk }}" name="motivo_rechazo" required placeholder="Por ejemplo: el texto repite lo que ya dice otra regla">
+        <button class="btn btn-outline-danger" type="submit">Rechazar</button>
+      </div>
     </form>
   </div>
   {% endif %}
 </div>
 {% empty %}
-<p class="text-secondary">No hay propuestas por aprobar.</p>
+<div class="card">
+  <div class="empty py-4">
+    <p class="empty-title">No hay propuestas por aprobar</p>
+    <p class="empty-subtitle text-secondary">Cuando el agente proponga un cambio al estándar o a la memoria, aparece aquí y el inicio lo avisa.</p>
+  </div>
+</div>
 {% endfor %}
 {% if resueltas %}
-<h3 class="mt-4">Resueltas</h3>
-<div class="card"><table class="table card-table">
-  <thead><tr><th>#</th><th>Qué</th><th>Quién propuso</th><th>Estado</th><th>Quién resolvió</th><th>Cuándo</th></tr></thead>
-  <tbody>{% for p in resueltas %}<tr><td>{{ p.pk }}</td><td>{{ p.get_accion_display }} {{ p.destino }}</td><td>{{ p.quien }}</td><td>{{ p.get_estado_display }}</td><td>{{ p.resuelta_por.get_username|default:"" }}</td><td>{{ p.resuelta|date:"Y-m-d H:i" }}</td></tr>{% endfor %}</tbody>
+<h3 class="mt-4">Ya resueltas</h3>
+<div class="card" id="tabla-propuestas" data-tabla-avanzada data-por-pagina="10"><div class="table-responsive"><table class="table table-vcenter card-table">
+  <thead><tr><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién propuso</button></th><th><button type="button" class="table-sort" data-sort="t-estado">Cómo quedó</button></th><th><button type="button" class="table-sort" data-sort="t-resolvio">Quién resolvió</button></th><th><button type="button" class="table-sort" data-sort="t-cuando">Cuándo</button></th></tr>
+  <tr><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo propuesto" data-filtro="t-que"></th><th></th><th><select class="form-select form-select-sm" aria-label="Filtrar por cómo quedó" data-filtro="t-estado" data-exacto><option value="">Todas</option></select></th><th></th><th></th></tr></thead>
+  <tbody class="table-tbody">{% for p in resueltas %}<tr>
+    <td class="t-que">{{ p.get_accion_display }}: {{ p.destino }}</td><td class="t-quien">{{ p.quien }}</td>
+    <td><span class="badge t-estado {% if p.estado == 'aprobada' %}bg-green-lt{% else %}bg-red-lt{% endif %}">{{ p.get_estado_display }}</span>
+      {% if p.motivo_rechazo %}<div class="text-secondary small">{{ p.motivo_rechazo }}</div>{% endif %}</td>
+    <td class="t-resolvio">{{ p.resuelta_por.get_username|default:"" }}</td><td class="t-cuando">{{ p.resuelta|date:"Y-m-d H:i" }}</td>
+  </tr>{% endfor %}</tbody>
 </table></div>
+<div class="card-body text-secondary" data-sin-coincidencias hidden>Ninguna propuesta coincide con los filtros.</div>
+{% include "includes/tabla_pie.html" with tabla="tabla-propuestas" %}</div>
 {% endif %}
 {% endblock %}

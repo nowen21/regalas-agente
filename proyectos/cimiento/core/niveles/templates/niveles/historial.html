@@ -5,24 +5,42 @@
 
 {% block contenido %}
 <div class="card">
+  {% if cambios %}
+  {% comment %}`EP-028·HU-006` · Tabla avanzada de Tabler: ordena, filtra y pagina (guía §6).{% endcomment %}
+  <div id="tabla-historial" data-tabla-avanzada data-por-pagina="20">
+  <div class="table-responsive">
   <table class="table card-table table-vcenter">
     <thead>
-      <tr><th>Fecha</th><th>Regla</th><th>Antes</th><th>Ahora</th><th>Cuenta</th></tr>
+      <tr><th><button type="button" class="table-sort" data-sort="t-fecha">Fecha</button></th>
+        <th><button type="button" class="table-sort" data-sort="t-regla">Regla</button></th>
+        <th><button type="button" class="table-sort" data-sort="t-antes">Antes</button></th>
+        <th><button type="button" class="table-sort" data-sort="t-ahora">Ahora</button></th>
+        <th><button type="button" class="table-sort" data-sort="t-cuenta">Cuenta</button></th></tr>
+      <tr><th></th>
+        <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por regla" data-filtro="t-regla"></th>
+        <th></th>
+        <th><select class="form-select form-select-sm" aria-label="Filtrar por nivel" data-filtro="t-ahora" data-exacto><option value="">Todos</option></select></th>
+        <th><select class="form-select form-select-sm" aria-label="Filtrar por cuenta" data-filtro="t-cuenta" data-exacto><option value="">Todas</option></select></th></tr>
     </thead>
-    <tbody>
+    <tbody class="table-tbody">
       {% for cambio in cambios %}
       <tr>
-        <td>{{ cambio.fecha|date:"Y-m-d H:i" }}</td>
-        <td><code>{{ cambio.regla }}</code></td>
-        <td>{{ cambio.get_anterior_display }}</td>
-        <td>{{ cambio.get_nuevo_display }}</td>
-        <td>{{ cambio.cuenta.get_username|default:"(cuenta borrada)" }}</td>
+        <td class="t-fecha">{{ cambio.fecha|date:"Y-m-d H:i" }}</td>
+        <td class="t-regla"><code>{{ cambio.regla }}</code></td>
+        <td class="t-antes">{{ cambio.get_anterior_display }}</td>
+        <td class="t-ahora">{{ cambio.get_nuevo_display }}</td>
+        <td class="t-cuenta">{{ cambio.cuenta.get_username|default:"(cuenta borrada)" }}</td>
       </tr>
-      {% empty %}
-      <tr><td colspan="5" class="text-secondary">Ningún nivel ha cambiado en este proyecto.</td></tr>
       {% endfor %}
     </tbody>
   </table>
+  </div>
+  <div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún cambio coincide con los filtros.</div>
+  {% include "includes/tabla_pie.html" with tabla="tabla-historial" por_pagina="20" %}
+  </div>
+  {% else %}
+  <div class="empty py-4"><p class="empty-title">Ningún nivel ha cambiado en este proyecto</p></div>
+  {% endif %}
 </div>
 <p class="mt-3"><a href="{% url 'niveles:reglas' proyecto.pk %}">Volver a las reglas</a></p>
 {% endblock %}

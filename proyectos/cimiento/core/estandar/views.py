@@ -130,8 +130,12 @@ class VerRecuerdo(View):
 class Propuestas(View):
 
     def get(self, peticion):
+        # `EP-028·HU-004` · Cada pendiente con lo que cambia (guía de diseño de pantallas, §11).
+        pendientes = list(Propuesta.objects.filter(estado=PENDIENTE).select_related("proyecto"))
+        for propuesta in pendientes:
+            propuesta.cambia = cambios.que_cambia(propuesta)
         return render(peticion, "estandar/propuestas.html", {
-            "pendientes": Propuesta.objects.filter(estado=PENDIENTE).select_related("proyecto"),
+            "pendientes": pendientes,
             "resueltas": Propuesta.objects.exclude(estado=PENDIENTE).select_related("proyecto", "resuelta_por")[:50],
             "puede_cambiar": es_administrador(peticion.user)})
 
@@ -147,7 +151,11 @@ class Resolver(View):
             if self.aprobar:
                 cambios.aplicar(propuesta, peticion.user)
             else:
-                cambios.rechazar(propuesta, peticion.user)
+                motivo = peticion.POST.get("motivo_rechazo", "").strip()
+                if not motivo:
+                    messages.error(peticion, "Para rechazar la propuesta %d hay que escribir por qué." % propuesta.pk)
+                    return redirect("estandar:propuestas")
+                cambios.rechazar(propuesta, peticion.user, motivo)
         except cambios.CambioInvalido as razon:
             messages.error(peticion, "No se resolvió: %s." % razon)
         else:

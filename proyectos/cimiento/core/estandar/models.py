@@ -64,6 +64,8 @@ class Propuesta(models.Model):
     resuelta_por = models.ForeignKey("auth.User", null=True, blank=True, on_delete=models.SET_NULL,
                                      related_name="propuestas_resueltas")
     resuelta = models.DateTimeField(null=True, blank=True)
+    # `EP-028·HU-004` · Rechazar pide el motivo (guía de diseño de pantallas, §11).
+    motivo_rechazo = models.TextField(blank=True, default="")
 
     class Meta:
         ordering = ["-fecha", "-id"]

@@ -1,36 +1,44 @@
 {% extends "base.html" %}
+{% load ayuda %}
 
 {% block titulo %}Versiones{% endblock %}
 {% block cabecera %}Versiones{% endblock %}
 
 {% block contenido %}
+{% ayuda_pantalla "versiones" %}
 <p class="text-secondary">El estándar va en la <strong>{{ estandar }}</strong>. Cada proyecto lleva su propia versión.
   <a href="{% url 'historia:lista' %}">Volver a la historia</a></p>
 <form method="get" class="d-flex gap-2 mb-3">
-  <select class="form-select form-select-sm w-auto" name="proyecto">
+  {% ayuda_campo "versiones.proyecto" %}<select class="form-select form-select-sm w-auto" name="proyecto">
     <option value="">Todas</option>
     <option value="estandar"{% if proyecto == "estandar" %} selected{% endif %}>Solo el estándar</option>
   </select>
   <button class="btn btn-sm btn-outline-primary" type="submit">Filtrar</button>
 </form>
 <div class="card">
+  {% comment %}`EP-028·HU-006` · Ordena y filtra lo que se ve; la base ya pagina (guía §6).{% endcomment %}
+  <div id="tabla-versiones" data-tabla-avanzada data-por-pagina="0">
+  <div class="table-responsive">
   <table class="table card-table table-vcenter">
-    <thead><tr><th>De</th><th>Versión</th><th>Tipo</th><th>Fecha</th><th>Quién</th><th>Por qué</th><th>Cambios</th></tr></thead>
-    <tbody>
+    <thead><tr><th><button type="button" class="table-sort" data-sort="t-de">De</button></th><th><button type="button" class="table-sort" data-sort="t-numero">Versión</button></th><th><button type="button" class="table-sort" data-sort="t-tipo">Tipo</button></th><th><button type="button" class="table-sort" data-sort="t-fecha">Fecha</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th><th><button type="button" class="table-sort" data-sort="t-motivo">Por qué</button></th><th>Cambios</th></tr>
+      <tr><th></th><th></th><th><select class="form-select form-select-sm" aria-label="Filtrar por tipo" data-filtro="t-tipo" data-exacto><option value="">Todos</option></select></th><th></th><th></th><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por motivo" data-filtro="t-motivo"></th><th></th></tr></thead>
+    <tbody class="table-tbody">
       {% for version in pagina %}
       <tr>
-        <td>{% if version.proyecto %}{{ version.proyecto }}{% else %}Estándar{% endif %}</td>
-        <td><strong>{{ version.numero }}</strong></td>
-        <td>{{ version.get_tipo_display }}</td>
-        <td>{{ version.fecha|date:"Y-m-d H:i" }}</td>
-        <td>{% if version.cuenta %}{{ version.cuenta.get_username }}{% else %}{{ version.quien }}{% endif %}</td>
-        <td>{{ version.resumen }}</td>
+        <td class="t-de">{% if version.proyecto %}{{ version.proyecto }}{% else %}Estándar{% endif %}</td>
+        <td class="t-numero"><strong>{{ version.numero }}</strong></td>
+        <td class="t-tipo">{{ version.get_tipo_display }}</td>
+        <td class="t-fecha">{{ version.fecha|date:"Y-m-d H:i" }}</td>
+        <td class="t-quien">{% if version.cuenta %}{{ version.cuenta.get_username }}{% else %}{{ version.quien }}{% endif %}</td>
+        <td class="t-motivo">{{ version.resumen }}</td>
         <td>{% for cambio in version.cambios.all %}<div><small>#{{ cambio.pk }} {{ cambio.get_accion_display }} {{ cambio.tabla }} {{ cambio.fila }}</small></div>{% endfor %}</td>
       </tr>
-      {% empty %}
-      <tr><td colspan="7" class="text-secondary">Todavía no hay versiones guardadas.</td></tr>
       {% endfor %}
     </tbody>
   </table>
+  </div>
+  {% if not pagina %}<div class="empty py-4"><p class="empty-title">Todavía no hay versiones guardadas</p></div>{% endif %}
+  <div class="card-body text-secondary" data-sin-coincidencias hidden>Ninguna versión de esta página coincide con los filtros.</div>
+  </div>
 </div>
 {% endblock %}

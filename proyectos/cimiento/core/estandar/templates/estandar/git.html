@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load ayuda %}
 {% block titulo %}Subir a git{% endblock %}
 {% block cabecera %}Subir a git{% endblock %}
 {% block contenido %}
+{% ayuda_pantalla "git" %}
 {% include "estandar/_mensajes.html" %}
 <p class="text-secondary">Lo que cambió cada sesión y todavía no está guardado. El commit lleva solo lo de una sesión; lo que tocaron dos se nombra aparte. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
 {% for sesion, archivos in propios %}
@@ -13,13 +15,13 @@
     <form method="post">
       {% csrf_token %}
       <input type="hidden" name="sesion" value="{{ sesion }}">
-      <label class="form-label" for="asunto-{{ forloop.counter }}">Asunto</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="asunto-{{ forloop.counter }}">Asunto</label>{% ayuda_campo "git.asunto" %}</div>
       <input class="form-control mb-2" id="asunto-{{ forloop.counter }}" name="asunto" required>
-      <label class="form-label" for="idea-{{ forloop.counter }}">La idea del usuario</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="idea-{{ forloop.counter }}">La idea del usuario</label>{% ayuda_campo "git.idea" %}</div>
       <textarea class="form-control mb-2" id="idea-{{ forloop.counter }}" name="idea" rows="3"></textarea>
-      <label class="form-label" for="hecho-{{ forloop.counter }}">Lo que hizo el agente</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="hecho-{{ forloop.counter }}">Lo que hizo el agente</label>{% ayuda_campo "git.hecho" %}</div>
       <textarea class="form-control mb-2" id="hecho-{{ forloop.counter }}" name="hecho" rows="3"></textarea>
-      <label class="form-check mb-2"><input class="form-check-input" type="checkbox" name="subir" value="1"> Subir también</label>
+      <label class="form-check mb-2"><input class="form-check-input" type="checkbox" name="subir" value="1"> Subir también {% ayuda_campo "git.subir" %}</label>
       <button class="btn btn-primary" type="submit">Hacer el commit</button>
     </form>
     {% endif %}

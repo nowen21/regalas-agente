@@ -10,41 +10,58 @@
     <a class="btn btn-primary" href="{% url 'proyectos:registrar' %}">Registrar</a>
   </div>
   {% endif %}
-  <div class="table-responsive">
-    <table class="table card-table table-vcenter">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Ruta</th>
-          <th>Carpeta de Claude Code</th>
-          <th class="text-end">Límite por enganche</th>
-          <th class="text-end">Límite por archivo</th>
-          <th>Estado</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for proyecto in proyectos %}
-        <tr>
-          <td>{{ proyecto.nombre }}</td>
-          <td class="text-secondary">{{ proyecto.ruta }}</td>
-          <td class="text-secondary">{{ proyecto.carpeta_claude }}</td>
-          {% with ajustes=proyecto.ajustes %}
-          <td class="text-end">{{ ajustes.limite_enganche.0 }}</td>
-          <td class="text-end">{{ ajustes.limite_archivo.0 }}</td>
-          {% endwith %}
-          <td>{% if proyecto.activo %}Activo{% else %}Inactivo{% endif %}</td>
-          <td class="text-nowrap">
-            <a href="{% url 'niveles:reglas' proyecto.pk %}">Reglas</a> ·
-            <a href="{% url 'proyectos:suspensiones' proyecto.pk %}">Suspensiones</a>
-            {% if puede_cambiar %} · <a href="{% url 'proyectos:editar' proyecto.pk %}">Editar</a>{% endif %}
-          </td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="7" class="text-secondary">Todavía no hay proyectos registrados.</td></tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  {% if proyectos %}
+  {% comment %}`EP-028·HU-006` · Tabla avanzada de Tabler: ordena, filtra y pagina (guía §6).{% endcomment %}
+  <div id="tabla-proyectos" data-tabla-avanzada data-por-pagina="10">
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter">
+        <thead>
+          <tr>
+            <th><button type="button" class="table-sort" data-sort="t-nombre">Nombre</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-ruta">Ruta</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-carpeta">Carpeta de Claude Code</button></th>
+            <th class="text-end"><button type="button" class="table-sort" data-sort="t-enganche">Límite por enganche</button></th>
+            <th class="text-end"><button type="button" class="table-sort" data-sort="t-archivo">Límite por archivo</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-estado">Estado</button></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por nombre" data-filtro="t-nombre"></th>
+            <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por ruta" data-filtro="t-ruta"></th>
+            <th></th><th></th><th></th>
+            <th><select class="form-select form-select-sm" aria-label="Filtrar por estado" data-filtro="t-estado" data-exacto><option value="">Todos</option></select></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="table-tbody">
+          {% for proyecto in proyectos %}
+          <tr>
+            <td class="t-nombre">{{ proyecto.nombre }}</td>
+            <td class="text-secondary t-ruta">{{ proyecto.ruta }}</td>
+            <td class="text-secondary t-carpeta">{{ proyecto.carpeta_claude }}</td>
+            {% with ajustes=proyecto.ajustes %}
+            <td class="text-end t-enganche">{{ ajustes.limite_enganche.0 }}</td>
+            <td class="text-end t-archivo">{{ ajustes.limite_archivo.0 }}</td>
+            {% endwith %}
+            <td class="t-estado">{% if proyecto.activo %}Activo{% else %}Inactivo{% endif %}</td>
+            <td class="text-nowrap">
+              <a href="{% url 'niveles:reglas' proyecto.pk %}">Reglas</a> ·
+              <a href="{% url 'proyectos:suspensiones' proyecto.pk %}">Suspensiones</a>
+              {% if puede_cambiar %} · <a href="{% url 'proyectos:editar' proyecto.pk %}">Editar</a>{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún proyecto coincide con los filtros.</div>
+    {% include "includes/tabla_pie.html" with tabla="tabla-proyectos" %}
   </div>
+  {% else %}
+  <div class="empty py-4">
+    <p class="empty-title">Todavía no hay proyectos registrados</p>
+    <p class="empty-subtitle text-secondary">Se registra uno con «Registrar un proyecto», en el menú «Proyectos».</p>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

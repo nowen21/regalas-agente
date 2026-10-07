@@ -35,10 +35,11 @@ AJUSTES = {
 
 # `EP-026·HU-009` · Los capítulos opt-in se prenden por proyecto, como un ajuste
 # más (análisis 1 del pendiente 132, acuerdo 10). De fábrica, apagados: un patrón
-# opt-in se enciende cuando el proyecto lo necesita, no antes.
+# opt-in se enciende cuando el proyecto lo necesita, no antes. El 17 ya no es
+# opt-in: rige para todo proyecto con pantallas (`EP-028·HU-001`).
 SI, NO = "sí", "no"
 CAPITULOS_OPT_IN = {
-    "15": "registros inmutables", "16": "cumplimiento normativo", "17": "interfaz / UI",
+    "15": "registros inmutables", "16": "cumplimiento normativo",
     "18": "despliegue e infraestructura", "19": "observabilidad y operación",
     "21": "automatización de procesos", "22": "sistemas que aprenden de datos"}
 

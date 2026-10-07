@@ -98,6 +98,70 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 | Por qué importa | El día del paso habrían dejado de llegar reglas sin que nadie lo decidiera |
 | Pendiente | No hace falta: se corrigió en la misma fase. Lo que el `CLAUDE.md` no nombra pasa en «sí» (señal S-343) |
 
+### H-12 · Las reglas del estándar se guardan como texto entero, y la pantalla no puede mostrarlas por su nombre ni relacionarlas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | La pantalla «Estándar» lista los documentos por la ruta del `.md`. Al analizarlo salió que la causa es más honda: cada regla se guarda como un texto entero, sin casillas, y de ahí no se sacan su nombre, sus relaciones ni sus tareas sin leer el texto |
+| Por qué importa | Quien administra el estándar no reconoce las reglas ni puede seguir sus relaciones, y cada pantalla o programa que necesita una parte de la regla tiene que buscarla dentro del texto |
+| Pendiente | [136](pendientes/136-el-estandar-en-la-pantalla-se-lista-por-ruta-y-no-por-titulo/pendiente.md); el usuario pidió abrir su análisis |
+
+### H-13 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 08:23, el freno detuvo una orden de consola sobre `documentacion/epicas/EP-027-las-reglas-del-estandar-viven-en-tablas-con-la-estructura-del-molde/HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas/sección`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). La «ruta» era la palabra «sección» del texto que se reemplazaba |
+| Por qué importa | El freno detiene lo que sí está en el plan cuando lee texto como ruta |
+| Pendiente | No hace falta uno nuevo: es el caso del [pendiente 113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md), el freno toma texto de los comandos como rutas |
+
+### H-14 · Las pantallas no orientan al usuario, y el estándar no tiene guía ni regla que lo exija
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al ir a aprobar las propuestas de la EP-027·HU-007, el usuario no encontró el camino. El análisis mostró que pasa en todo Cimiento y que el estándar no tiene una guía de diseño de pantallas ni una regla obligatoria que exija que la pantalla oriente sola |
+| Por qué importa | Cimiento es la línea base de los demás proyectos: si no orienta a su usuario, no puede exigírselo a los demás |
+| Pendiente | [137](../2026-10-07/pendientes/137-las-pantallas-de-cimiento-no-orientan-al-usuario/pendiente.md), con la regla que lo exija y una guía de diseño de pantallas |
+
+### H-15 · El usuario tuvo que avisar en el chat que ya había aprobado las propuestas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 el usuario aprobó en la pantalla las propuestas 1 a 6, y el agente no se enteró hasta que se lo dijo en el chat |
+| Por qué importa | La pantalla es donde se autoriza todo; repetirlo en el chat duplica cada aprobación y detiene el trabajo |
+| Pendiente | [138](../2026-10-07/pendientes/138-el-agente-no-se-entera-de-lo-que-se-aprueba-en-la-pantalla/pendiente.md) |
+
+### H-16 · El freno detuvo una escritura fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 11:43, el freno detuvo una escritura sobre `historico-chat/scripts/2026-10-07/cierre_ep028_hu001.py`: es un guion para cerrar o reabrir una fase, que Cimiento ya hace: se usa `manage.py cerrar_fase «fase» (o reabrir_fase)`, como acordó el análisis 2 del pendiente 119 (04·S18). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el agente llenó las marcas del cierre con el editor, que es lo que corresponde; el guion sobraba |
+
+### H-17 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 11:43, el freno detuvo una orden de consola sobre `proyectos/cimiento/$F/estado-fase.md`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta uno nuevo: es el caso del [pendiente 113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md); el freno no reconoce una variable del comando como la ruta que nombra |
+
+### H-18 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 11:48, el freno detuvo una orden de consola sobre `$(ls -d documentacion/epicas/EP-028-*/HU-002-*/A-EP-028-HU-002-la-guia)/propuestas`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta uno nuevo: es el caso del [pendiente 113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md); el freno no reconoce una ruta escrita con una variable |
+
+### H-19 · El freno detuvo una escritura fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 11:50, el freno detuvo una escritura sobre `documentacion/epicas/EP-028-las-pantallas-orientan-al-usuario-sin-que-conozca-como-esta-armado-el-sistema/HU-002-el-estandar-tiene-su-guia-de-diseno-de-pantallas/A-EP-028-HU-002-la-guia/propuestas/guia-de-pantallas.txt`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el plan de la fase no traía la versión en su línea de aprobación, y sin ella el freno no lo da por aprobado. Se agregó («con la versión 57.0.0») y la escritura pasó |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -108,7 +172,8 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 |---|---|
 | Todo hallazgo enlaza su pendiente | ☑ H-1 enlaza el pendiente 132 |
 | Todo pendiente enlazado existe | ☑ |
-| Lo que se hizo está aprobado y guardado | ☐ El análisis está aprobado y en `592b426`; la construcción de EP-026 sigue abierta |
+| Todo hallazgo enlaza su pendiente, o se resolvió en su fase | ☑ H-11 se corrigió en la HU-009 |
+| Lo que se hizo está aprobado y guardado | ☑ El análisis está en `592b426`; la EP-026 terminada, en `9ae058e` y `041984a`. El push de `041984a` quedó sin hacer: la herramienta no lo dejó correr |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 

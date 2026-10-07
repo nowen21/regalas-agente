@@ -1,18 +1,20 @@
 {% extends "base.html" %}
+{% load ayuda %}
 {% block titulo %}Vista previa{% endblock %}
 {% block cabecera %}Vista previa de las reglas{% endblock %}
 {% block contenido %}
+{% ayuda_pantalla "vista_previa" %}
 <p class="text-secondary">Muestra las reglas que le llegarían al agente con un mensaje, en un proyecto. No guarda nada. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
 <form method="get" class="card mb-3">
   <div class="card-body">
     <div class="mb-3">
-      <label class="form-label" for="proyecto">Proyecto</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="proyecto">Proyecto</label>{% ayuda_campo "vista_previa.proyecto" %}</div>
       <select class="form-select" id="proyecto" name="proyecto" required>
         {% for p in proyectos %}<option value="{{ p.pk }}"{% if p == proyecto %} selected{% endif %}>{{ p.nombre }}</option>{% endfor %}
       </select>
     </div>
     <div class="mb-3">
-      <label class="form-label" for="mensaje">Mensaje</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="mensaje">Mensaje</label>{% ayuda_campo "vista_previa.mensaje" %}</div>
       <textarea class="form-control" id="mensaje" name="mensaje" rows="3" placeholder="Hágalo: corrija el plan de la fase">{{ mensaje }}</textarea>
     </div>
   </div>

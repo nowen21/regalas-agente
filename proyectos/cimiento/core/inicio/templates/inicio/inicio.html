@@ -1,9 +1,80 @@
 {% extends "base.html" %}
+{% comment %}`EP-028·HU-003` · El inicio dice primero lo que espera una decisión y después lleva a
+cada tarea (`17·I7`; guía de diseño de pantallas §4 y §7), con las tarjetas y el bloque vacío de Tabler.{% endcomment %}
+
+{% block cabecera %}Inicio{% endblock %}
 
 {% block contenido %}
-<div class="card">
-  <div class="card-body">
-    <p class="mb-0">Base de datos: {{ base.nombre }}, en MariaDB {{ version }}</p>
+<h3 class="mb-3">Lo que espera una decisión</h3>
+{% if pendientes.total %}
+<div class="row row-cards mb-4">
+  {% if pendientes.propuestas %}
+  <div class="col-sm-6 col-lg-4">
+    <a class="card card-link" href="{% url 'estandar:propuestas' %}">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <span class="badge bg-red text-red-fg me-3 fs-3">{{ pendientes.propuestas }}</span>
+          <div>
+            <div class="fw-bold">{% if pendientes.propuestas == 1 %}Propuesta por aprobar{% else %}Propuestas por aprobar{% endif %}</div>
+            <div class="text-secondary">Cambios al estándar o a la memoria que esperan su aprobación</div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endif %}
+  {% if pendientes.reportes %}
+  <div class="col-sm-6 col-lg-4">
+    <a class="card card-link" href="{% url 'estandar:reportes' %}">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <span class="badge bg-red text-red-fg me-3 fs-3">{{ pendientes.reportes }}</span>
+          <div>
+            <div class="fw-bold">{% if pendientes.reportes == 1 %}Reporte abierto{% else %}Reportes abiertos{% endif %}</div>
+            <div class="text-secondary">Lo que los proyectos encontraron mal en el estándar</div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% else %}
+<div class="card mb-4">
+  <div class="empty py-4">
+    <p class="empty-title">No hay nada esperando una decisión</p>
+    <p class="empty-subtitle text-secondary">Cuando el agente proponga un cambio o un proyecto reporte algo, aparece aquí.</p>
   </div>
 </div>
+{% endif %}
+
+<h3 class="mb-3">Qué se puede hacer</h3>
+<div class="row row-cards">
+  <div class="col-sm-6 col-lg-3">
+    <a class="card card-link" href="{% url 'proyectos:lista' %}"><div class="card-body">
+      <div class="fw-bold">Administrar los proyectos</div>
+      <div class="text-secondary">Registrarlos, ajustar su configuración y sus reglas</div>
+    </div></a>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <a class="card card-link" href="{% url 'estandar:lista' %}"><div class="card-body">
+      <div class="fw-bold">Ver o cambiar el estándar</div>
+      <div class="text-secondary">Las reglas, sus propuestas y la vista previa</div>
+    </div></a>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <a class="card card-link" href="{% url 'consumo:tablero' %}"><div class="card-body">
+      <div class="fw-bold">Ver el gasto de tokens</div>
+      <div class="text-secondary">Cuánto se gasta, dónde y en vivo</div>
+    </div></a>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <a class="card card-link" href="{% url 'historia:lista' %}"><div class="card-body">
+      <div class="fw-bold">Ver la historia de los cambios</div>
+      <div class="text-secondary">Quién cambió qué, cuándo, y deshacerlo</div>
+    </div></a>
+  </div>
+</div>
+
+<p class="text-secondary small mt-4 mb-0">Base de datos: {{ base.nombre }}, en MariaDB {{ version }}</p>
 {% endblock %}

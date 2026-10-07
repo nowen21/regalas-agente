@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load ayuda %}
 {% block titulo %}{% if recuerdo %}{{ recuerdo.nombre }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
 {% block cabecera %}{{ proyecto.nombre }} · {% if recuerdo %}{{ recuerdo.nombre }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
 {% block contenido %}
+{% ayuda_pantalla "recuerdo" %}
 {% include "estandar/_mensajes.html" %}
 <p><a href="{% url 'estandar:memoria' proyecto.pk %}">Volver a la memoria</a></p>
 {% if puede_cambiar %}
@@ -9,10 +11,10 @@
   {% csrf_token %}
   <div class="card-body">
     {% if not recuerdo %}
-    <label class="form-label" for="nombre">Nombre</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="nombre">Nombre</label>{% ayuda_campo "recuerdo.nombre" %}</div>
     <input class="form-control mb-3" id="nombre" name="nombre" placeholder="como-se-llama.md" required>
     {% endif %}
-    <label class="form-label" for="contenido">Texto</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="contenido">Texto</label>{% ayuda_campo "recuerdo.texto" %}</div>
     <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="18">{% if recuerdo %}{{ recuerdo.contenido }}{% endif %}</textarea>
   </div>
   <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>

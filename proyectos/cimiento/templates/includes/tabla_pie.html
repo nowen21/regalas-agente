@@ -1,0 +1,16 @@
+{% comment %}`EP-028·HU-006` · El pie de toda tabla avanzada: cuántas filas por página y las páginas
+(guía de diseño de pantallas §6). Uso: {% include "includes/tabla_pie.html" with tabla="id-de-la-caja" %}{% endcomment %}
+<div class="card-footer d-flex align-items-center">
+  <div class="dropdown" data-tabla="{{ tabla }}">
+    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <span id="{{ tabla }}-filas" class="me-1">{{ por_pagina|default:"10" }}</span><span>filas por página</span>
+    </button>
+    <div class="dropdown-menu">
+      <button type="button" class="dropdown-item" data-filas="10">10 filas por página</button>
+      <button type="button" class="dropdown-item" data-filas="20">20 filas por página</button>
+      <button type="button" class="dropdown-item" data-filas="50">50 filas por página</button>
+      <button type="button" class="dropdown-item" data-filas="100">100 filas por página</button>
+    </div>
+  </div>
+  <ul class="pagination m-0 ms-auto"></ul>
+</div>

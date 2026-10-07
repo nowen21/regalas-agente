@@ -123,7 +123,7 @@ class LasPropuestas(ConEstandar):
         self.assertIn("Una línea propuesta.", self.doc("base/tareas.md").contenido)
 
         otra = self.proponer("texto que no va\n", "no va")
-        self.client.post("/estandar/propuestas/%d/rechazar/" % otra.pk)
+        self.client.post("/estandar/propuestas/%d/rechazar/" % otra.pk, {"motivo_rechazo": "no va"})   # EP-028·HU-004
         otra.refresh_from_db()
         self.assertEqual(RECHAZADA, otra.estado)
         self.assertNotIn("texto que no va", self.doc("base/tareas.md").contenido)

@@ -116,10 +116,43 @@ def aplicar(propuesta, cuenta, raiz=None):
         _resolver(propuesta, cuenta, APROBADA)
 
 
-def rechazar(propuesta, cuenta):
+def rechazar(propuesta, cuenta, motivo=""):
     if propuesta.estado != PENDIENTE:
         raise CambioInvalido("la propuesta ya está %s" % propuesta.get_estado_display().lower())
+    propuesta.motivo_rechazo = (motivo or "").strip()
     _resolver(propuesta, cuenta, RECHAZADA)
+
+
+def actual_de(propuesta):
+    """El texto que hay hoy en el lugar que la propuesta cambia; "" si es nuevo."""
+    if propuesta.objeto == DOCUMENTO:
+        documento = Documento.objects.filter(ruta=propuesta.ruta).only("contenido").first()
+        return documento.contenido if documento else ""
+    recuerdo = Recuerdo.objects.filter(proyecto=propuesta.proyecto, nombre=propuesta.nombre).only("contenido").first()
+    return recuerdo.contenido if recuerdo else ""
+
+
+def que_cambia(propuesta, contexto=2):
+    """`EP-028·HU-004` · Lo que la propuesta quita y agrega, línea por línea, con
+    `contexto` líneas de alrededor: `[(tipo, texto)]`, con tipo «sale», «entra»,
+    «igual» o «salto». Lo calcula `difflib`, que trae Python."""
+    import difflib
+
+    antes = actual_de(propuesta).splitlines()
+    despues = [] if propuesta.accion == QUITAR else propuesta.contenido.splitlines()
+    salida = []
+    for linea in difflib.unified_diff(antes, despues, lineterm="", n=contexto):
+        if linea.startswith(("---", "+++")):
+            continue
+        if linea.startswith("@@"):
+            salida.append(("salto", "…"))
+        elif linea.startswith("-"):
+            salida.append(("sale", linea[1:]))
+        elif linea.startswith("+"):
+            salida.append(("entra", linea[1:]))
+        else:
+            salida.append(("igual", linea[1:]))
+    return salida
 
 
 def _resolver(propuesta, cuenta, estado):

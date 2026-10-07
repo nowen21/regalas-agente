@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load ayuda %}
 {% block titulo %}{% if nuevo %}Documento nuevo{% else %}{{ documento.ruta }}{% endif %}{% endblock %}
 {% block cabecera %}{% if nuevo %}Documento nuevo del estándar{% else %}{{ documento.ruta }}{% endif %}{% endblock %}
 {% block contenido %}
+{% ayuda_pantalla "documento" %}
 {% include "estandar/_mensajes.html" %}
 <p><a href="{% url 'estandar:lista' %}">Volver al estándar</a>{% if documento %} · <a href="{% url 'historia:lista' %}?tabla=estandar.documento">Historia</a>{% endif %}</p>
 {% if puede_cambiar %}
@@ -9,10 +11,10 @@
   {% csrf_token %}
   <div class="card-body">
     {% if nuevo %}
-    <label class="form-label" for="ruta">Ruta</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="ruta">Ruta</label>{% ayuda_campo "documento.ruta" %}</div>
     <input class="form-control mb-3" id="ruta" name="ruta" placeholder="base/…/archivo.md" required>
     {% endif %}
-    <label class="form-label" for="contenido">Texto</label>
+    <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="contenido">Texto</label>{% ayuda_campo "documento.texto" %}</div>
     <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="28">{% if documento %}{{ documento.contenido }}{% endif %}</textarea>
   </div>
   <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>

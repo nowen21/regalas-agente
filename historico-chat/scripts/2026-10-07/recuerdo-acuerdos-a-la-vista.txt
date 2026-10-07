@@ -1,0 +1,9 @@
+# Lo acordado se anota en el turno y se muestra en la respuesta
+
+En un análisis, cada vez que el usuario acuerda algo, en ese mismo turno se escribe en «Lo acordado» del análisis y la respuesta muestra la lista de acuerdos como queda: uno por tema, con el turno, y el acuerdo nuevo reemplaza al anterior del mismo tema.
+
+**Por qué:** el 2026-10-07, en el análisis del pendiente 137, el usuario lo pidió así: *«a medida que vayamos acordando deben quedar en los acuerdos y mostrar lo que ha acordado»*. Antes, en el análisis del pendiente 136, los acuerdos se escribieron al final, mezclados y con lecturas del agente, y hubo que revisarlos cinco veces.
+
+**Cómo se aplica:** respuesta del usuario que decide algo → se escribe en «Lo acordado» antes de responder → la respuesta cierra con «Lo acordado hasta ahora» y lo que sigue abierto. Lo que no respondió no se anota como acuerdo.
+
+Relacionado: R-18 de las recomendaciones del análisis.

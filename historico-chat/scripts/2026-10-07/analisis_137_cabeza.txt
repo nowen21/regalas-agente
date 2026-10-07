@@ -1,0 +1,36 @@
+# Análisis 1: las pantallas de Cimiento dan por hecho que el usuario sabe dónde están las cosas
+
+---
+
+## Recomendaciones
+
+Se leyeron las [recomendaciones de Cimiento](../../../../../plantillas/recomendaciones-del-analisis.md); el proyecto no tiene `analisis/recomendaciones.md`.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| R-1 | Se revisaron las 15 pantallas con formulario y las 14 tablas de Cimiento, no solo «Propuestas» («Dónde más puede pasar») |
+| R-2 | Se leyó lo que existe: el capítulo `17`, la plantilla `15-diseno-de-interfaz.md`, la ayuda de la EP-025·HU-018 y los patrones de Scilit |
+| R-3 | Las reglas que cambian (`17`, regla nueva) pasan su checklist en la HU que las cambia |
+| R-7 | Lo que nadie pidió se preguntó: dónde rige la regla (turno 87) |
+| R-8 | «Analicemos» autoriza analizar: no se tocó código ni reglas |
+| R-17 | Las respuestas se midieron contra `00·ID9` |
+| R-18 | «Lo acordado» se escribió en el turno de cada acuerdo, uno por tema |
+| Las demás | No aplican: no se exige campo nuevo en plantillas (R-4), es el análisis 1 (R-6), no hay piloto (R-16) |
+
+---
+
+## Hallazgo
+
+### H-14 · Las pantallas de Cimiento dan por hecho que el usuario sabe dónde están las cosas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al ir a aprobar las propuestas de la EP-027·HU-007, el usuario no encontró el camino: «Propuestas» no está en el menú, no muestra qué cambió y las preguntas del tipo de versión no se entienden. Los formularios casi no tienen el «?» de ayuda y las tablas no se ordenan ni se filtran como en Scilit. El agente también dio por hecho, en el chat, que el usuario sabía llegar |
+| Por qué importa | Cimiento es la línea base de los demás proyectos: si no orienta a su usuario, no puede exigírselo a los demás |
+
+## Pendiente
+
+**Pendiente: las pantallas de Cimiento no orientan al usuario.** Las pantallas suponen que quien las usa conoce cómo está armado Cimiento: «Propuestas», «Reportes», «Vista previa» y «Subir a git» no están en el menú; «Propuestas» no muestra qué cambió; las preguntas del tipo de versión no se entienden; casi ningún formulario tiene su «?»; ninguna tabla se ordena, se filtra ni se pagina; y no hay guía de diseño de pantallas ni regla que exija que la pantalla oriente sola. Importa porque Cimiento es la línea base que siguen los demás proyectos.
+
+---
+

@@ -1,19 +1,52 @@
-{% comment %}`EP-026·HU-002` · Las dos preguntas que fijan el tipo de la versión que sube este envío (`20·M10`).{% endcomment %}
-<fieldset class="border rounded p-3 mb-3">
+{% load ayuda %}{% comment %}`EP-026·HU-002` · Las dos preguntas que fijan el tipo de la versión que sube este envío (`20·M10`).
+`EP-028·HU-004` · Escritas para quien no conoce `20·M10`, con su «?» y el tipo que resulta a la vista
+(guía de diseño de pantallas §5). Los nombres de los campos no cambian: los lee el middleware.{% endcomment %}
+<fieldset class="border rounded p-3 mb-3 tipo-de-version">
   <legend class="fs-5 float-none w-auto px-2 mb-0">Este cambio sube una versión</legend>
   <div class="mb-2">
-    <div class="form-label">¿Un proyecto que hoy cumple deja de cumplir con este cambio?</div>
+    <div class="d-flex align-items-center gap-1">
+      <div class="form-label mb-0">¿Algún proyecto tiene que cambiar algo para seguir cumpliendo el estándar?</div>{% ayuda_campo "version.obliga" %}
+    </div>
     <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_obliga" value="si" required> Sí</label>
     <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_obliga" value="no" required> No</label>
   </div>
-  <div class="mb-2">
-    <div class="form-label">¿Se agrega algo que nadie está obligado a usar?</div>
+  <div class="mb-2 pregunta-agrega">
+    <div class="d-flex align-items-center gap-1">
+      <div class="form-label mb-0">¿El cambio agrega algo nuevo que un proyecto puede usar si quiere?</div>{% ayuda_campo "version.agrega" %}
+    </div>
     <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_agrega" value="si" required> Sí</label>
     <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_agrega" value="no" required> No</label>
   </div>
-  <div class="form-hint mb-2">Sí a la primera: MAYOR. No y sí: MENOR. No y no: PARCHE.</div>
+  <div class="form-hint mb-2 resultado-version" aria-live="polite">Responda las preguntas y aquí aparece el tipo de versión.</div>
   {% if not sin_motivo %}
-  <label class="form-label" for="version_motivo">Por qué</label>
-  <textarea class="form-control" id="version_motivo" name="version_motivo" rows="2"></textarea>
+  <label class="form-label" for="version_motivo">Por qué se hace el cambio</label>
+  <textarea class="form-control" id="version_motivo" name="version_motivo" rows="2" placeholder="Por ejemplo: lo pidió el usuario en el análisis del pendiente 137"></textarea>
   {% endif %}
 </fieldset>
+<script>
+(function () {
+  if (window.tipoDeVersionListo) { return; }
+  window.tipoDeVersionListo = true;
+  const TEXTOS = {
+    MAYOR: "Será una versión MAYOR: los proyectos tienen que hacer algo para seguir cumpliendo.",
+    MENOR: "Será una versión MENOR: se agrega algo nuevo que nadie está obligado a usar.",
+    PARCHE: "Será un PARCHE: solo se corrige o se aclara, sin cambiar lo que se exige."
+  };
+  function actualizar(caja) {
+    const obliga = caja.querySelector('input[name="version_obliga"]:checked');
+    const agrega = caja.querySelector('input[name="version_agrega"]:checked');
+    const segunda = caja.querySelector('.pregunta-agrega');
+    const mayor = obliga && obliga.value === 'si';
+    segunda.hidden = mayor;
+    segunda.querySelectorAll('input').forEach(i => { i.required = !mayor; });
+    let tipo = null;
+    if (mayor) { tipo = 'MAYOR'; }
+    else if (obliga && agrega) { tipo = agrega.value === 'si' ? 'MENOR' : 'PARCHE'; }
+    if (tipo) { caja.querySelector('.resultado-version').textContent = TEXTOS[tipo]; }
+  }
+  document.addEventListener('change', e => {
+    const caja = e.target.closest('.tipo-de-version');
+    if (caja) { actualizar(caja); }
+  });
+})();
+</script>

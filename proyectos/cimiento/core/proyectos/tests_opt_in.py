@@ -82,7 +82,7 @@ class ElClaudeMdPasaALaBase(TestCase):
 
     def test_pasa_una_vez_sin_pisar(self):
         proyecto = Proyecto.objects.create(nombre="uno", ruta=_carpeta(self, CLAUDE_MD))
-        self.assertEqual(7, pasar_a_la_base(Proyecto, AjusteDelProyecto))
+        self.assertEqual(6, pasar_a_la_base(Proyecto, AjusteDelProyecto))    # el 17 ya no es opt-in (EP-028·HU-001)
         guardados = dict(proyecto.ajustes_propios.values_list("clave", "valor"))
         self.assertEqual("no", guardados["opt_in_15"])
         self.assertEqual("sí", guardados["opt_in_18"])

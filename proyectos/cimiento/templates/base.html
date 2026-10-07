@@ -17,36 +17,67 @@
         <div class="navbar-collapse">
           <ul class="navbar-nav pt-lg-3">
             {% block menu %}
-            <li class="nav-item">
+            {% comment %}`EP-028·HU-003` · El menú se arma por lo que se quiere hacer, con los submenús
+            del navbar de Tabler; marca dónde se está y cuenta lo que espera una decisión (`17·I7`,
+            guía de diseño de pantallas §4).{% endcomment %}
+            {% with app=request.resolver_match.app_name vista=request.resolver_match.view_name %}
+            <li class="nav-item{% if vista == 'inicio:inicio' %} active{% endif %}">
               <a class="nav-link" href="{% url 'inicio:inicio' %}">
                 <span class="nav-link-title">Inicio</span>
+                {% if pendientes.total %}<span class="badge badge-sm bg-red text-red-fg ms-auto" title="Esperan una decisión">{{ pendientes.total }}</span>{% endif %}
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'proyectos:lista' %}">
+            <li class="nav-item dropdown{% if app == 'proyectos' or app == 'niveles' %} active{% endif %}">
+              <a class="nav-link dropdown-toggle{% if app == 'proyectos' or app == 'niveles' %} show{% endif %}" href="#menu-proyectos"
+                 data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                 aria-expanded="{% if app == 'proyectos' or app == 'niveles' %}true{% else %}false{% endif %}">
                 <span class="nav-link-title">Proyectos</span>
               </a>
+              <div class="dropdown-menu{% if app == 'proyectos' or app == 'niveles' %} show{% endif %}">
+                <a class="dropdown-item{% if vista == 'proyectos:lista' %} active{% endif %}" href="{% url 'proyectos:lista' %}">Todos los proyectos</a>
+                {% if administra %}<a class="dropdown-item{% if vista == 'proyectos:registrar' %} active{% endif %}" href="{% url 'proyectos:registrar' %}">Registrar un proyecto</a>{% endif %}
+                <a class="dropdown-item{% if vista == 'proyectos:configuracion' %} active{% endif %}" href="{% url 'proyectos:configuracion' %}">Configuración común</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'proyectos:configuracion' %}">
-                <span class="nav-link-title">Configuración</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'consumo:tablero' %}">
-                <span class="nav-link-title">Gasto</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'estandar:lista' %}">
+            <li class="nav-item dropdown{% if app == 'estandar' %} active{% endif %}">
+              <a class="nav-link dropdown-toggle{% if app == 'estandar' %} show{% endif %}" href="#menu-estandar"
+                 data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                 aria-expanded="{% if app == 'estandar' %}true{% else %}false{% endif %}">
                 <span class="nav-link-title">Estándar</span>
+                {% if pendientes.total %}<span class="badge badge-sm bg-red text-red-fg ms-auto">{{ pendientes.total }}</span>{% endif %}
+              </a>
+              <div class="dropdown-menu{% if app == 'estandar' %} show{% endif %}">
+                <a class="dropdown-item{% if vista == 'estandar:lista' or vista == 'estandar:documento' %} active{% endif %}" href="{% url 'estandar:lista' %}">Reglas y documentos</a>
+                <a class="dropdown-item{% if vista == 'estandar:propuestas' %} active{% endif %}" href="{% url 'estandar:propuestas' %}">Propuestas por aprobar
+                  {% if pendientes.propuestas %}<span class="badge badge-sm bg-red text-red-fg ms-auto">{{ pendientes.propuestas }}</span>{% endif %}</a>
+                <a class="dropdown-item{% if vista == 'estandar:reportes' %} active{% endif %}" href="{% url 'estandar:reportes' %}">Reportes de los proyectos
+                  {% if pendientes.reportes %}<span class="badge badge-sm bg-red text-red-fg ms-auto">{{ pendientes.reportes }}</span>{% endif %}</a>
+                <a class="dropdown-item{% if vista == 'estandar:vista_previa' %} active{% endif %}" href="{% url 'estandar:vista_previa' %}">Vista previa de las reglas</a>
+                <a class="dropdown-item{% if vista == 'estandar:git' %} active{% endif %}" href="{% url 'estandar:git' %}">Subir los cambios a git</a>
+              </div>
+            </li>
+            <li class="nav-item{% if app == 'consumo' %} active{% endif %}">
+              <a class="nav-link" href="{% url 'consumo:tablero' %}">
+                <span class="nav-link-title">Gasto de tokens</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'historia:lista' %}">
+            <li class="nav-item dropdown{% if app == 'historia' %} active{% endif %}">
+              <a class="nav-link dropdown-toggle{% if app == 'historia' %} show{% endif %}" href="#menu-historia"
+                 data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                 aria-expanded="{% if app == 'historia' %}true{% else %}false{% endif %}">
                 <span class="nav-link-title">Historia</span>
               </a>
+              <div class="dropdown-menu{% if app == 'historia' %} show{% endif %}">
+                <a class="dropdown-item{% if vista == 'historia:lista' %} active{% endif %}" href="{% url 'historia:lista' %}">Cambios</a>
+                <a class="dropdown-item{% if vista == 'historia:versiones' %} active{% endif %}" href="{% url 'historia:versiones' %}">Versiones</a>
+              </div>
             </li>
+            <li class="nav-item{% if app == 'ayuda' %} active{% endif %}">
+              <a class="nav-link" href="{% url 'ayuda:manual' %}">
+                <span class="nav-link-title">Manual de ayuda</span>
+              </a>
+            </li>
+            {% endwith %}
             {% endblock %}
           </ul>
         </div>
@@ -88,6 +119,8 @@
   </div>
   {% endif %}
   <script src="{% static 'js/tabler.min.js' %}" defer></script>
+  <script src="{% static 'libs/list.js/dist/list.min.js' %}" defer></script>
+  <script src="{% static 'tablas.js' %}" defer></script>
   <script src="{% static 'ayuda/ayuda.js' %}" defer></script>
   <script src="{% static 'htmx.min.js' %}" defer></script>
   <script src="{% static 'apexcharts.min.js' %}" defer></script>

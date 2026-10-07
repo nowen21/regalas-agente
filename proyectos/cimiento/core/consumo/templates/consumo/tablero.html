@@ -1,25 +1,27 @@
 {% extends "base.html" %}
+{% load ayuda %}
 
 {% block titulo %}Gasto{% endblock %}
 {% block cabecera %}Gasto de tokens{% endblock %}
 
 {% block contenido %}
+{% ayuda_pantalla "gasto" %}
 <form class="row g-2 mb-3 align-items-center" method="get">
   <input type="hidden" name="pestana" value="{{ pestana }}">
   <div class="col-auto">
-    <select class="form-select" name="proyecto" aria-label="Proyecto" onchange="this.form.submit()">
+    <div class="d-flex align-items-center gap-1"><select class="form-select" name="proyecto" aria-label="Proyecto" onchange="this.form.submit()">
       <option value="">Todos los proyectos</option>
       {% for uno in todos_los_proyectos %}
       <option value="{{ uno.pk }}"{% if proyecto and proyecto.pk == uno.pk %} selected{% endif %}>{{ uno.nombre }}</option>
       {% endfor %}
-    </select>
+    </select>{% ayuda_campo "gasto.proyecto" %}</div>
   </div>
   <div class="col-auto">
-    <select class="form-select" name="dias" aria-label="Período" onchange="this.form.submit()">
+    <div class="d-flex align-items-center gap-1"><select class="form-select" name="dias" aria-label="Período" onchange="this.form.submit()">
       {% for valor, nombre in periodos.items %}
       <option value="{{ valor }}"{% if valor == dias %} selected{% endif %}>{{ nombre }}</option>
       {% endfor %}
-    </select>
+    </select>{% ayuda_campo "gasto.dias" %}</div>
   </div>
   <div class="col-auto">
     <button type="button" class="btn btn-outline-secondary" id="actualizar" title="Volver a pedir lo que se ve">↻ Actualizar</button>

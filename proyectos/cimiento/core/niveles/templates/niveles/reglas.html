@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load ayuda %}
 
 {% block titulo %}Reglas de {{ proyecto.nombre }}{% endblock %}
 {% block cabecera %}Reglas de {{ proyecto.nombre }}{% endblock %}
 
 {% block contenido %}
+{% ayuda_pantalla "reglas" %}
 {% for mensaje in messages %}
 <div class="alert {% if mensaje.level_tag == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="alert">{{ mensaje }}</div>
 {% endfor %}
@@ -16,7 +18,7 @@
   {% csrf_token %}
   {% for capitulo, filas in capitulos %}
   <div class="card mb-3">
-    <div class="card-header"><h3 class="card-title">Capítulo {{ capitulo }}</h3></div>
+    <div class="card-header"><h3 class="card-title">Capítulo {{ capitulo }}</h3><span class="ms-auto d-flex align-items-center gap-1 text-secondary">Nivel {% ayuda_campo "nivel.regla" %}</span></div>
     <table class="table card-table table-vcenter">
       <tbody>
         {% for regla, nivel in filas %}

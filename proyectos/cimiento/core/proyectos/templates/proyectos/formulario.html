@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load ayuda %}
 
 {% block titulo %}{{ titulo }}{% endblock %}
 {% block cabecera %}{{ titulo }}{% endblock %}
 
 {% block contenido %}
+{% ayuda_pantalla "proyecto" %}
 <form class="card" method="post">
   {% csrf_token %}
   <div class="card-body">
@@ -15,10 +17,10 @@
       {% if campo.field.widget.input_type == "checkbox" %}
       <label class="form-check">
         <input class="form-check-input" type="checkbox" name="{{ campo.html_name }}" {% if campo.value %}checked{% endif %}>
-        <span class="form-check-label">{{ campo.label }}</span>
+        <span class="form-check-label">{{ campo.label }}</span> {% include "proyectos/_ayuda_del_campo.html" %}
       </label>
       {% elif campo.field.widget.input_type == "select" %}
-      <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>{% include "proyectos/_ayuda_del_campo.html" %}</div>
       <select class="form-select{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}" name="{{ campo.html_name }}">
         {% for valor, texto in campo.field.choices %}
         <option value="{{ valor }}"{% if campo.value|stringformat:"s" == valor|stringformat:"s" %} selected{% endif %}>{{ texto }}</option>
@@ -27,7 +29,7 @@
       {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
       {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
       {% else %}
-      <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>
+      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>{% include "proyectos/_ayuda_del_campo.html" %}</div>
       <input class="form-control{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}"
              name="{{ campo.html_name }}" value="{{ campo.value|default_if_none:'' }}"
              type="{{ campo.field.widget.input_type }}"{% if campo.field.required %} required{% endif %}>

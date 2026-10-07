@@ -1,0 +1,105 @@
+## Lo que aportó cada parte
+
+### Cimiento: las reglas que aplican y las que chocan
+
+Aplican `17·I4` (texto para el usuario, no jerga), `17·I5` (consistencia con el sistema de diseño, que hasta hoy ningún proyecto declara), `20·M3` (la guía se inspira en Tabler y AdminLTE sin atarse a ellas) y `20·M10` (todo cambio sube versión).
+
+Choca el encabezado del capítulo `17`, marcado `[CAPA 2 · opt-in]`: el punto 2 de «Lo acordado» lo vuelve obligatorio para todo proyecto con pantallas. Se resuelve en el punto 2 de «Lo que se tiene que hacer».
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| Menú | Inicio, Proyectos, Configuración, Gasto, Estándar, Historia ([base.html](../../../../../proyectos/cimiento/templates/base.html)); «Propuestas», «Reportes», «Vista previa» y «Subir a git» solo se alcanzan por enlaces dentro de «Estándar» |
+| Propuestas | Documento entero sin marcar lo que cambió, una por una, sin motivo al rechazar ([propuestas.html](../../../../../proyectos/cimiento/core/estandar/templates/estandar/propuestas.html)) |
+| Preguntas de versión | Dos preguntas sin «?» ni ejemplo ([_tipo_de_version.html](../../../../../proyectos/cimiento/core/historia/templates/historia/_tipo_de_version.html)) |
+| Ayuda | Funciona el botón «Ayuda» de cada pantalla; el «?» por campo y los botones de pantalla solo están en «Configuración» y «Suspensiones» (EP-025·HU-018) |
+| Tablas | 14, ninguna se ordena, filtra ni pagina; Tabler, que ya usa Cimiento, trae el patrón |
+| Guía de diseño | No existe; la plantilla `15-diseno-de-interfaz.md` no la reemplaza: es el mapa de pantallas de cada proyecto |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| EP-025·HU-018 | Confirma: ya pedía ayuda en cada campo y en cada pantalla; los formularios nacidos después no la recibieron. Lo recoge el punto 1 de «Lo acordado» |
+| EP-014 de Scilit | Confirma: la ayuda y las tablas que funcionan salieron de ahí |
+| S-347 y S-348 | Lecciones de este análisis |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | Versión `MAYOR` según `20·M10`: el capítulo `17` pasa a regir a todo proyecto con pantallas. No aplica `02·F22`: no se deroga ninguna regla |
+| Normas y leyes | Ninguna |
+| Herramientas | Cimiento usa Tabler; la guía toma de Tabler y AdminLTE la inspiración. Mostrar lo que cambió se hace con `difflib`, que trae Python: sin dependencias nuevas |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| Pantalla sin entrada en el menú | «Propuestas», «Reportes», «Vista previa», «Subir a git», «Versiones» | El usuario no la encuentra | Punto 5 |
+| Lo que espera una decisión no se ve | Propuestas y reportes abiertos | Se quedan sin atender | Punto 5 |
+| Formulario sin «?» | 13 de 15 formularios | Se llena adivinando | Punto 8 |
+| Tabla sin orden ni filtro | 14 tablas | Lo que se busca no se encuentra | Punto 9 |
+| El ajuste `opt_in_17` | Configuración de cada proyecto (EP-026·HU-009) | Deja apagar un capítulo que ya no es opcional | Punto 2 |
+| Scilit y los demás proyectos con pantallas | Cada proyecto | Siguen sin guía ni regla | Puntos 3 y 4: rigen para todos |
+| El agente pide algo en la pantalla | Chat | Da por hecho que el usuario sabe llegar | S-348 |
+
+---
+
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+### Hallazgo V2. Las pantallas no orientan al usuario, y el estándar no tiene guía ni regla que lo exija
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al ir a aprobar las propuestas de la EP-027·HU-007, el usuario no encontró el camino. El análisis mostró que pasa en todo Cimiento y que el estándar no tiene una guía de diseño de pantallas ni una regla obligatoria que exija que la pantalla oriente sola |
+| Por qué importa | Cimiento es la línea base de los demás proyectos: si no orienta a su usuario, no puede exigírselo a los demás |
+
+### Pendiente V2. Las pantallas orientan al usuario sin que tenga que conocer cómo está armado el sistema
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | Hallazgo V2: las pantallas no orientan al usuario, y el estándar no tiene guía ni regla que lo exija |
+| El problema | El capítulo `17` es opt-in y no exige que la pantalla oriente; no hay guía de diseño de pantallas; y Cimiento tiene pantallas fuera del menú, propuestas que no muestran qué cambió, preguntas que no se entienden, formularios sin ayuda y tablas sin orden ni filtro |
+| Por qué importa | Lo que no se encuentra no se usa, y la línea base no puede exigir lo que ella misma no cumple |
+
+### Épica y HU que salen del análisis
+
+Épica nueva: **EP-028, las pantallas orientan al usuario sin que tenga que conocer cómo está armado el sistema**.
+
+| Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|---|
+| 1 | EP-028·HU-001 | El capítulo 17 rige para todo proyecto con pantallas y exige que la pantalla oriente sola | El capítulo es opt-in y no lo exige | Ninguna | La regla tiene que existir antes de lo que la cumple | 2, 3 |
+| 2 | EP-028·HU-002 | El estándar tiene su guía de diseño de pantallas | No hay guía | EP-028·HU-001 | Las pantallas se arreglan siguiendo la guía | 4 |
+| 3 | EP-028·HU-003 | El menú se arma por tareas y el inicio muestra lo que espera una decisión | Pantallas fuera del menú | EP-028·HU-002 | Sigue la guía | 5 |
+| 4 | EP-028·HU-004 | Las propuestas muestran qué cambió, se aprueban juntas y las preguntas de versión se entienden | La pantalla de propuestas | EP-028·HU-002 | Sigue la guía | 6, 7 |
+| 5 | EP-028·HU-005 | Cada formulario trae su ayuda | Formularios sin «?» | EP-028·HU-002 | Sigue la guía | 8 |
+| 6 | EP-028·HU-006 | Las tablas se ordenan, se filtran y se paginan | Tablas sin orden ni filtro | EP-028·HU-002 | Sigue la guía | 9 |
+
+## Lecciones aprendidas
+
+| # | Lección | Tipo | Señal | Recomendación |
+|---|---|---|---|---|
+| 1 | Se responde a lo que el usuario dijo, no a lo que el agente supone que dijo | Falló | S-347 | Complementa R-8 |
+| 2 | Lo que se le pide hacer al usuario en la pantalla va con el camino desde el menú | Falló | S-348 | Complementa R-10 |
+
+## Lo que se tiene que hacer
+
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
+|---|---|---|---|
+| 1 | Pasar el pendiente a su versión siguiente y el hallazgo a su V2 | `13·DOC26` | Este análisis, de una y sin fase: `historico-chat/resumenes/2026-10-07/pendientes/137-las-pantallas-de-cimiento-no-orientan-al-usuario/pendiente.md` y `historico-chat/resumenes/2026-10-06/sesion.md` |
+| 2 | El capítulo `17` deja de ser opt-in y rige para todo proyecto con pantallas; sale el ajuste `opt_in_17` | 2 | EP-028·HU-001 |
+| 3 | Regla nueva del capítulo `17`: la pantalla orienta sola, sin que el usuario conozca cómo está armado el sistema | 2 | EP-028·HU-001 |
+| 4 | Guía de diseño de pantallas, documento único del estándar, inspirada en Tabler y AdminLTE: menú, inicio, encabezado de pantalla, formularios y ayudas, tablas, listas por revisar, mensajes y pantallas vacías | 1, 3 | EP-028·HU-002 |
+| 5 | Cimiento: menú por tareas con toda pantalla alcanzable, e inicio con lo que espera una decisión | 1 | EP-028·HU-003 |
+| 6 | «Propuestas» muestra lo que cambió, deja aprobar varias juntas y pide el motivo al rechazar | 1 | EP-028·HU-004 |
+| 7 | Las preguntas del tipo de versión se escriben para quien no conoce `20·M10`, con su «?» y el resultado a la vista | 1 | EP-028·HU-004 |
+| 8 | Todo formulario de Cimiento trae el «?» de cada campo y los botones de ayuda de su pantalla | 1 | EP-028·HU-005 |
+| 9 | Las tablas de Cimiento se ordenan, se filtran y se paginan | 1, 3 | EP-028·HU-006 |
+
+## Lo que aporta al análisis principal
+
+**Resultado:** amplía la idea y cambia lo que se construye.
+
+**Lo que suma al análisis principal:** las pantallas de todo proyecto orientan a su usuario sin que tenga que conocer cómo está armado el sistema: el capítulo de interfaz rige para todo proyecto con pantallas, el estándar trae una guía de diseño de pantallas inspirada en Tabler y AdminLTE, y Cimiento es el primero que la cumple.

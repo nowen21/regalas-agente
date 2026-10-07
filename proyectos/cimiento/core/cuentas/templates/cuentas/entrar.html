@@ -1,3 +1,4 @@
+{% load ayuda %}
 {% load static %}<!doctype html>
 <html lang="es-CO">
 <head>
@@ -18,11 +19,11 @@
           <div class="alert alert-danger" role="alert">El usuario o la contraseña no son correctos.</div>
           {% endif %}
           <div class="mb-3">
-            <label class="form-label" for="id_username">Usuario</label>
+            <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="id_username">Usuario</label>{% ayuda_campo "entrar.usuario" %}</div>
             <input class="form-control" type="text" name="username" id="id_username" autocomplete="username" required autofocus>
           </div>
           <div class="mb-3">
-            <label class="form-label" for="id_password">Contraseña</label>
+            <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="id_password">Contraseña</label>{% ayuda_campo "entrar.clave" %}</div>
             <input class="form-control" type="password" name="password" id="id_password" autocomplete="current-password" required>
           </div>
           <input type="hidden" name="next" value="{{ next }}">
