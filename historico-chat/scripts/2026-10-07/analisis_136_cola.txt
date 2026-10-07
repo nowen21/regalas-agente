@@ -1,0 +1,113 @@
+## Lo que aportó cada parte
+
+### Cimiento: las reglas que aplican y las que chocan
+
+Aplican `20·M4` (el código no cambia nunca: es la llave de la regla en la tabla), `20·M5` (las casillas salen del molde), `20·M7` (solo tres dependencias), `20·M8` (la excepción tiene condición, límite y quién la autoriza), `20·M11` (nada se borra: las notas con fecha pasan a la historia) y `20·M10` (todo cambio sube versión).
+
+Chocan, y se resuelven en el punto 12 de «Lo que se tiene que hacer»:
+
+- `20·M5` describe la regla como texto con un encabezado `## <PREFIJO><n> · <título>`; con la tabla, el encabezado se arma desde las casillas.
+- `20·M9` manda a registrar si una regla es validable en `validadores/reglas-validables.md`; con la tabla, es una casilla.
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| Documentos del estándar | 152 en `estandar_documento`, cada uno con `ruta` y `contenido` ([estandar/models.py](../../../../../proyectos/cimiento/core/estandar/models.py)) |
+| Reglas | 269, 11 derogadas: 94 con archivo propio (capítulos 00, 02, 13 y 20) y 175 dentro del archivo de su capítulo |
+| Enlaces dentro del texto | 2.697 enlaces a archivos `.md` que no se pueden abrir |
+| Lectura de las reglas | `CuerpoDeReglas` y `RecuperadorDeReglas` leen el texto por ruta; el freno lee «Autoriza escribir»; `ver_estandar` recibe una ruta |
+| Tareas | `mapa-de-tareas.md` y las copias de `reglas-por-tarea/` |
+| Reglas de cada proyecto | Cada proyecto las escribe en su `reglas-proyecto.md` |
+| Pantalla | Lista por ruta ([lista.html](../../../../../proyectos/cimiento/core/estandar/templates/estandar/lista.html)) y texto plano |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| Análisis 1 del pendiente 132 | Confirma: el estándar vive en la base y se administra desde la pantalla; este análisis lo lleva de documentos enteros a casillas (puntos 1 y 2 de «Lo acordado») |
+| Análisis 1 del pendiente 132, acuerdo 5 | Confirma: las plantillas siguen en archivos; no entran a la tabla |
+| S-344 y S-345 | Lecciones de este análisis |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | Versión `MAYOR` según `20·M10`: sus reglas propias dejan de leerse de `reglas-proyecto.md` y pasan a la tabla. No aplica `02·F22`: no se deroga ninguna regla |
+| Normas y leyes | Ninguna |
+| Herramientas | Sin la librería `markdown` (punto 3 de «Lo acordado»): los enlaces se convierten con código propio. Los enganches entregan hasta 10 KB por mensaje: el texto armado desde las tablas tiene que medir lo mismo que hoy |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| Ruta en vez de nombre | Propuestas | No se sabe qué regla se propone cambiar | Punto 9 |
+| Número de fila en vez de nombre | Historia | No se sabe qué regla cambió | Punto 9 |
+| Nombre de archivo en vez de nombre | Memoria | El recuerdo no se reconoce | Punto 10 |
+| `ver_estandar <ruta>` | Arranque y reglas de cada mensaje | El agente pide una ruta que ya no existe | Punto 5: `ver_estandar` recibe el código |
+| Reglas de cada proyecto | `reglas-proyecto.md` de cada proyecto | Quedan en archivos, fuera de la pantalla | Punto 11 |
+| Reportes | Casilla «regla» del reporte | Ninguno: guarda el código, que ya se lee | No hace falta |
+| Plantillas | `plantillas/` | Ninguno | No hace falta: siguen en archivos (análisis 1 del pendiente 132, acuerdo 5) |
+
+---
+
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+### Hallazgo V2. Las reglas del estándar se guardan como texto entero, y la pantalla no puede mostrarlas por su nombre ni relacionarlas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | La pantalla «Estándar» lista los documentos por la ruta del `.md`. Al analizarlo salió que la causa es más honda: cada regla se guarda como un texto entero, sin casillas, y de ahí no se sacan su nombre, sus relaciones ni sus tareas sin leer el texto |
+| Por qué importa | Quien administra el estándar no reconoce las reglas ni puede seguir sus relaciones, y cada pantalla o programa que necesita una parte de la regla tiene que buscarla dentro del texto |
+
+### Pendiente V2. Las reglas del estándar viven en tablas con la estructura del molde
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | Hallazgo V2: las reglas del estándar se guardan como texto entero, y la pantalla no puede mostrarlas por su nombre ni relacionarlas |
+| El problema | Las 269 reglas están en 152 documentos de texto. La pantalla las lista por ruta, sus 2.697 enlaces no abren, las propuestas, la historia y la memoria muestran rutas o números, y las reglas de cada proyecto siguen en archivos |
+| Por qué importa | Sin casillas no se puede mostrar, buscar ni relacionar una regla por lo que es |
+
+### Épica y HU que salen del análisis
+
+Épica nueva: **EP-027, las reglas del estándar viven en tablas con la estructura del molde**.
+
+| Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|---|
+| 1 | EP-027·HU-007 | Las reglas `20·M5` y `20·M9` dicen que la regla vive en casillas | El molde y la validación hablan de archivos | Ninguna | La regla tiene que permitirlo antes de construir lo que la usa | 12 |
+| 2 | EP-027·HU-001 | Las reglas tienen sus tablas, con las casillas del molde | La regla es un texto entero | EP-027·HU-007 | Es donde se guarda todo lo demás | 2 |
+| 3 | EP-027·HU-002 | Las 269 reglas pasan a las tablas sin perder nada | Las reglas siguen en documentos | EP-027·HU-001 | Sin las reglas en las tablas no hay qué leer ni mostrar | 3, 4 |
+| 4 | EP-027·HU-003 | El texto que recibe el agente se arma desde las tablas | Los enganches, el freno y `ver_estandar` leen documentos | EP-027·HU-002 | Necesita las reglas en las tablas | 5, 6 |
+| 5 | EP-027·HU-004 | La pantalla lista las reglas por capítulo, con sus relaciones y enlaces que abren | La lista va por ruta y los enlaces no abren | EP-027·HU-002 | Necesita las reglas en las tablas | 7, 8 |
+| 6 | EP-027·HU-005 | Las propuestas, la historia y la memoria muestran nombres legibles | Muestran rutas, números de fila y nombres de archivo | EP-027·HU-002 | Necesita el título de cada regla | 9, 10 |
+| 7 | EP-027·HU-006 | Las reglas de cada proyecto viven en la misma tabla | Siguen en `reglas-proyecto.md` | EP-027·HU-003 | Se leen igual que las del estándar | 11 |
+
+## Lecciones aprendidas
+
+| # | Lección | Tipo | Señal | Recomendación |
+|---|---|---|---|---|
+| 1 | «Lo acordado» se escribe en el turno en que se acuerda, uno por tema, con lo que el usuario respondió y nada más | Falló | S-344 | Nueva R-18 |
+| 2 | Antes de proponer cómo guardar algo del estándar se lee su definición | Falló | S-345 | Complementa R-2 |
+
+## Lo que se tiene que hacer
+
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
+|---|---|---|---|
+| 1 | Pasar el pendiente a su versión siguiente y el hallazgo a su V2 | `13·DOC26` | Este análisis, de una y sin fase: `historico-chat/resumenes/2026-10-06/pendientes/136-el-estandar-en-la-pantalla-se-lista-por-ruta-y-no-por-titulo/pendiente.md` y `historico-chat/resumenes/2026-10-06/sesion.md`, hecho el 2026-10-07 |
+| 2 | Tablas de capítulo, regla, dependencia (extiende, depende de, deroga), tarea y sello, con las casillas del molde y la observación del sello | 1 | EP-027·HU-001 |
+| 3 | Pasar las 269 reglas a las tablas, con una prueba de que no se pierde nada; las notas con fecha van a la historia de cambios | 1 | EP-027·HU-002 |
+| 4 | Pasar a la tabla de tareas lo que dice `mapa-de-tareas.md` | 1 | EP-027·HU-002 |
+| 5 | El texto que reciben el agente, el freno y `ver_estandar` se arma desde las tablas, con la forma de hoy; `ver_estandar` recibe el código de la regla | 2 | EP-027·HU-003 |
+| 6 | `reglas-por-tarea/` deja de guardarse y se arma desde las tablas | 1 | EP-027·HU-003 |
+| 7 | La lista del estándar se agrupa por capítulo y no muestra la ruta | 3 | EP-027·HU-004 |
+| 8 | La página de cada regla muestra, separadas, sus dependencias y las reglas que nombra su texto; los enlaces abren la regla, con código propio | 3 | EP-027·HU-004 |
+| 9 | Las propuestas y la historia muestran el nombre de la regla | 4 | EP-027·HU-005 |
+| 10 | Los recuerdos se muestran con su nombre | 4 | EP-027·HU-005 |
+| 11 | Las reglas de cada proyecto pasan a la misma tabla, con su proyecto | 1 | EP-027·HU-006 |
+| 12 | Corregir `20·M5` y `20·M9` para que hablen de casillas y no de archivos | 5 | EP-027·HU-007 |
+
+## Lo que aporta al análisis principal
+
+**Resultado:** amplía la idea y cambia lo que se construye.
+
+**Lo que suma al análisis principal:** las reglas del estándar ya no se guardan como texto entero: cada una vive en una tabla con las casillas de su molde, sus relaciones y sus tareas, y la pantalla las muestra por su nombre, agrupadas por capítulo y enlazadas entre sí; el agente sigue recibiendo el mismo texto, armado desde esas tablas.

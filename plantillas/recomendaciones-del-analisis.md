@@ -42,3 +42,4 @@ Arrancan con las 36 lecciones de los análisis 1 a 8 del pendiente 103, juntando
 | R-15 | Detener la ejecución en cuanto aparece un hallazgo, antes de tocar otro archivo | El hallazgo atendido a tiempo no deja trabajo a medias | Análisis 2, lección 3; análisis 5, lección 2; análisis 6, lección 2 |
 | R-16 | Corregir dentro del piloto lo que falla de su propia herramienta | Lo que falla en el piloto vuelve a fallar en todos los análisis siguientes | Análisis 8, lección 3 |
 | R-17 | Medir la respuesta contra `00·ID9` antes de entregarla | Medida después, el usuario tiene que pedir una y otra vez que se acorte | Análisis 8, lección 5 |
+| R-18 | Escribir «Lo acordado» en el turno en que se acuerda: uno por tema, el más nuevo reemplaza al anterior, y solo con lo que el usuario respondió | Escrito al final, mezcla acuerdos viejos con nuevos y lecturas del agente, y el usuario tiene que pedir que se revise una y otra vez | Análisis 1 del pendiente 136, lección 1 |
