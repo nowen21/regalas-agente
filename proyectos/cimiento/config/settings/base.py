@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     "core.niveles",
     "core.consumo",
     "core.ayuda",
+    "core.historia",
+    "core.estandar",
 ]
 
 MIDDLEWARE = [
@@ -44,6 +46,8 @@ MIDDLEWARE = [
     # su error saldría como una página 500 en vez de decir qué hacer.
     "core.inicio.middleware.BaseApagada",
     "django.contrib.auth.middleware.LoginRequiredMiddleware",
+    # `EP-026·HU-001` · Lo que se guarda en la petición queda a nombre de su cuenta.
+    "core.historia.middleware.CuentaDeLaPeticion",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]

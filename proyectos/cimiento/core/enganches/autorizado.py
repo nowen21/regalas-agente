@@ -105,20 +105,22 @@ class Autorizaciones:
     def de_la_base(self, estandar=None, proyecto=None):
         """`[(regla, [rutas])]` de toda regla vigente de `base/` que autoriza escribir."""
         raiz = estandar or Proyecto.estandar()
-        base = os.path.join(raiz, "base")
         apagados = RecuperadorDeReglas.opt_in_apagados(proyecto, self.archivos) if proyecto else frozenset()
+        # `EP-026·HU-004` · Del estándar en la base. Sin base no se autoriza nada,
+        # y el freno ya no deja modificar (análisis 1 del pendiente 132, acuerdo 9).
+        from ..estandar.en_base import fuente, recorrer
+        from .niveles import BaseSinRespuesta
+        try:
+            lector = fuente(raiz, self.archivos)
+        except BaseSinRespuesta:
+            return []
         salida = []
-        for actual, carpetas, archivos in os.walk(base):
-            # Las reglas por tarea son copias de las del capítulo: se leen una vez.
-            carpetas[:] = sorted(c for c in carpetas if c != "reglas-por-tarea")
-            for nombre in sorted(archivos):
-                if not nombre.endswith(".md"):
-                    continue
-                archivo = os.path.join(actual, nombre)
-                for titulo, encabezado, rutas in self.lineas(self.archivos.leer(archivo)):
-                    regla = self.id_de(titulo, archivo, raiz)
-                    if self.vigente(encabezado, regla.split("·")[0], apagados):
-                        salida.append((regla, rutas))
+        # Las reglas por tarea son copias de las del capítulo: se leen una vez.
+        for archivo in recorrer(lector, raiz, "base", excluir={"reglas-por-tarea"}):
+            for titulo, encabezado, rutas in self.lineas(lector.leer(archivo)):
+                regla = self.id_de(titulo, archivo, raiz)
+                if self.vigente(encabezado, regla.split("·")[0], apagados):
+                    salida.append((regla, rutas))
         return salida
 
     def del_proyecto(self, proyecto):

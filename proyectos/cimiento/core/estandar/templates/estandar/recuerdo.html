@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}{% if recuerdo %}{{ recuerdo.nombre }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
+{% block cabecera %}{{ proyecto.nombre }} · {% if recuerdo %}{{ recuerdo.nombre }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
+{% block contenido %}
+{% include "estandar/_mensajes.html" %}
+<p><a href="{% url 'estandar:memoria' proyecto.pk %}">Volver a la memoria</a></p>
+{% if puede_cambiar %}
+<form method="post" class="card">
+  {% csrf_token %}
+  <div class="card-body">
+    {% if not recuerdo %}
+    <label class="form-label" for="nombre">Nombre</label>
+    <input class="form-control mb-3" id="nombre" name="nombre" placeholder="como-se-llama.md" required>
+    {% endif %}
+    <label class="form-label" for="contenido">Texto</label>
+    <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="18">{% if recuerdo %}{{ recuerdo.contenido }}{% endif %}</textarea>
+  </div>
+  <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>
+  <div class="card-footer d-flex gap-2">
+    <button class="btn btn-primary" type="submit">Guardar</button>
+    {% if recuerdo %}<button class="btn btn-outline-danger" type="submit" name="quitar" value="1">Quitar</button>{% endif %}
+  </div>
+</form>
+{% else %}
+<pre class="card card-body" style="white-space: pre-wrap">{{ recuerdo.contenido }}</pre>
+{% endif %}
+{% endblock %}

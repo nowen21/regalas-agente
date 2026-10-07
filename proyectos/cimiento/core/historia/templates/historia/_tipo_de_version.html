@@ -1,0 +1,19 @@
+{% comment %}`EP-026·HU-002` · Las dos preguntas que fijan el tipo de la versión que sube este envío (`20·M10`).{% endcomment %}
+<fieldset class="border rounded p-3 mb-3">
+  <legend class="fs-5 float-none w-auto px-2 mb-0">Este cambio sube una versión</legend>
+  <div class="mb-2">
+    <div class="form-label">¿Un proyecto que hoy cumple deja de cumplir con este cambio?</div>
+    <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_obliga" value="si" required> Sí</label>
+    <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_obliga" value="no" required> No</label>
+  </div>
+  <div class="mb-2">
+    <div class="form-label">¿Se agrega algo que nadie está obligado a usar?</div>
+    <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_agrega" value="si" required> Sí</label>
+    <label class="form-check form-check-inline"><input class="form-check-input" type="radio" name="version_agrega" value="no" required> No</label>
+  </div>
+  <div class="form-hint mb-2">Sí a la primera: MAYOR. No y sí: MENOR. No y no: PARCHE.</div>
+  {% if not sin_motivo %}
+  <label class="form-label" for="version_motivo">Por qué</label>
+  <textarea class="form-control" id="version_motivo" name="version_motivo" rows="2"></textarea>
+  {% endif %}
+</fieldset>

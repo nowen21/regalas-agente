@@ -26,10 +26,14 @@ class Cargador:
     GATE = GATE
 
     @staticmethod
-    def reglas(base):
+    def reglas(base, lector=None):
         """`[(ruta relativa, ruta)]` de todos los `.md` bajo `base/`, en orden de
         precedencia. El alfabético de la ruta relativa ya lo es: `00` antes que
-        `01`, y el índice de un capítulo antes que sus reglas."""
+        `01`, y el índice de un capítulo antes que sus reglas. Con el lector del
+        estándar en la base (`EP-026·HU-004`), de la base."""
+        if lector is not None and hasattr(lector, "recorrer"):
+            rutas = lector.recorrer("base", EXCLUIDAS)
+            return sorted((os.path.relpath(r, base).replace(os.sep, "/"), r) for r in rutas)
         salida = []
         for carpeta, subcarpetas, archivos in os.walk(base):
             subcarpetas[:] = [s for s in subcarpetas if s not in EXCLUIDAS]
@@ -40,7 +44,7 @@ class Cargador:
         return sorted(salida)
 
     @staticmethod
-    def _solo_gate(base, reglas_encontradas):
+    def _solo_gate(base, reglas_encontradas, lector=None):
         """`F13` no pasa: se carga el gate y nada más. Cargar las reglas de
         trabajo invitaría a trabajar sobre una estructura que el propio
         estándar manda detener."""
@@ -51,7 +55,7 @@ class Cargador:
                     "No continuar con nada: ni crear el espacio, ni adecuar el "
                     "proyecto por iniciativa propia. Mostrar la orientación de "
                     "F13 que sigue y detenerse.\n\n"
-                    f"<<< base/{rel} >>>\n{Archivos().leer(ruta)}")
+                    f"<<< base/{rel} >>>\n{(lector or Archivos()).leer(ruta)}")
         return ""
 
     @staticmethod
@@ -75,13 +79,21 @@ class Cargador:
         """`(texto, avisos)` para el arranque. `avisos` queda vacío: se conserva
         por quien ya lo desempaca. Sin `base/` o sin reglas no entrega nada."""
         base = os.path.join(estandar, "base")
-        if not os.path.isdir(base):
+        # `EP-026·HU-004` · Del estándar en la base; sin base, se dice y no se trabaja.
+        from ..estandar.en_base import fuente
+        from .niveles import BaseSinRespuesta
+        try:
+            lector = fuente(estandar)
+        except BaseSinRespuesta as error:
+            return ("[SIN BASE NO HAY REGLAS]\nLa base de Cimiento no responde (%s). "
+                    "No hacer nada que cambie el proyecto hasta que responda." % error), []
+        if not hasattr(lector, "recorrer") and not os.path.isdir(base):
             return "", []
-        encontradas = cls.reglas(base)
+        encontradas = cls.reglas(base, lector)
         if not encontradas:
             return "", []
         if not gate_ok:
-            return cls._solo_gate(base, encontradas), []
+            return cls._solo_gate(base, encontradas, lector), []
         return cls.instruccion(estandar), []
 
     @classmethod

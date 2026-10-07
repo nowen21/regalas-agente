@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block titulo %}Memoria de {{ proyecto.nombre }}{% endblock %}
+{% block cabecera %}Memoria de {{ proyecto.nombre }}{% endblock %}
+{% block contenido %}
+{% include "estandar/_mensajes.html" %}
+<p class="text-secondary">Cómo pide el usuario que se trabaje en este proyecto. El proyecto va en la <strong>{{ version }}</strong>.
+  <a href="{% url 'estandar:lista' %}">Volver al estándar</a>{% if puede_cambiar %} · <a href="{% url 'estandar:recuerdo_nuevo' proyecto.pk %}">Recuerdo nuevo</a>{% endif %}</p>
+<div class="card">
+  <div class="list-group list-group-flush">
+    {% for r in recuerdos %}<a class="list-group-item list-group-item-action" href="{% url 'estandar:recuerdo' proyecto.pk r.pk %}">{{ r.nombre }}</a>
+    {% empty %}<div class="list-group-item text-secondary">Este proyecto no tiene recuerdos.</div>{% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -59,6 +59,12 @@ PALABRAS = "base/01-conducta/palabras-clave.md"
 # formas después de la coma («**Hágalo**, aplique»).
 _FILA_PALABRA = re.compile(r"^\|\s*\*\*([^*]+)\*\*([^|]*)\|")
 
+# `EP-026·HU-004` · Sin base no hay estándar: no se trabaja (acuerdo 9).
+SIN_BASE = ("[SIN BASE NO HAY REGLAS: NO SE TRABAJA]\n"
+            "La base de Cimiento no responde (%s), y de ella salen las reglas. No hacer "
+            "nada que cambie el proyecto: decirle al usuario, en una línea, que la base no "
+            "responde y que hay que prenderla. El freno no deja modificar mientras tanto.")
+
 _ENCABEZADO = ("[REGLAS QUE PIDE ESTA SOLICITUD, RECUPERADAS Y OBLIGATORIAS]\n"
                "Rigen esta respuesta. Ante cualquier "
                "choque gana el núcleo, y el desempate es el de `20·M6`.\n")
@@ -69,7 +75,18 @@ class RecuperadorDeReglas:
 
     def __init__(self, raiz=None, archivos=None):
         self.raiz = raiz or Proyecto.estandar()
-        self.archivos = archivos or Archivos()
+        # `EP-026·HU-004` · El estándar se lee de la base. Sin base no hay reglas
+        # que dar, y `como_texto` lo dice (análisis 1 del pendiente 132, acuerdo 9).
+        self.sin_base = ""
+        if archivos is None:
+            from ..enganches.niveles import BaseSinRespuesta
+            from ..estandar.en_base import fuente
+            try:
+                archivos = fuente(self.raiz)
+            except BaseSinRespuesta as error:
+                self.sin_base = str(error)
+                archivos = Archivos()
+        self.archivos = archivos
         self.mapa = MapaDeTareas(self.raiz, self.archivos)
         self._capitulos = {}
 
@@ -344,6 +361,8 @@ class RecuperadorDeReglas:
         from core.enganches.historico import es_aviso_interno
         if es_aviso_interno(mensaje):
             return ""
+        if self.sin_base:
+            return SIN_BASE % self.sin_base
         idx = self.indice()
         if not self.trae_palabra_clave(mensaje):
             # La regla que el mensaje cita llega igual: «00 id9» corrige la

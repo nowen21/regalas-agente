@@ -31,6 +31,7 @@ import os
 import re
 
 from ..comun import AVISO, FALLA, Archivos, Git, Hallazgo, Markdown, Proyecto
+from ..comun.proyecto import EXCLUIDAS
 from .base import Validador
 from .marcas import Marcas
 
@@ -154,11 +155,19 @@ class CuerpoDeReglas:
                 and os.path.isfile(os.path.join(raiz, "VERSION")))
 
     @staticmethod
+    def _recorrer(proyecto, archivos):
+        """Los `.md` de `base/`: del lector si sabe recorrer (el estándar en la base,
+        `EP-026·HU-004`); si no, del disco."""
+        if hasattr(archivos, "recorrer"):
+            return archivos.recorrer(BASE, EXCLUIDAS)
+        return proyecto.recorrer_md(BASE)
+
+    @staticmethod
     def _definidas_arriba(proyecto, archivos):
         """Los IDs definidos con `#` o `##`, en una pasada previa: en el orden del
         árbol, el anexo que **nombra** a `M19` se lee antes que su archivo."""
         arriba = set()
-        for archivo in proyecto.recorrer_md(BASE):
+        for archivo in CuerpoDeReglas._recorrer(proyecto, archivos):
             for _, linea in Markdown.lineas_utiles(archivos.leer(archivo)):
                 m = _REGLA.match(linea)
                 if not m or len(m.group(1)) > 2:
@@ -179,7 +188,7 @@ class CuerpoDeReglas:
         archivos = archivos or Archivos()
         salida = []
         arriba = cls._definidas_arriba(proyecto, archivos)
-        for archivo in proyecto.recorrer_md(BASE):
+        for archivo in cls._recorrer(proyecto, archivos):
             texto = archivos.leer(archivo)
             actual, en_ejemplo = None, False
             for n, linea in Markdown.lineas_utiles(texto):

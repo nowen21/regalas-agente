@@ -8,6 +8,8 @@ freno en cada acción. Usa la conexión de `NivelesDelProyecto`.
 su archivo, y lo decide `AnalisisEnCurso`. Así una carpeta temporal de una
 prueba nunca escribe en la base real.
 """
+import json
+
 from .niveles import BaseSinRespuesta, NivelesDelProyecto
 
 _PROYECTO = "SELECT id FROM proyectos_proyecto WHERE activo = 1 AND LOWER(ruta) = LOWER(%s)"
@@ -74,8 +76,44 @@ class EstadoEnBase(NivelesDelProyecto):
                               [self.proyecto_id()])
         return [self._dato(f) for f in filas]
 
+    # ── `EP-026·HU-001` · lo que se escribe acá también queda en la historia ──
+
+    def _fila(self, sesion):
+        filas = self.ejecutar("SELECT id, analisis, desde, pausa, pausas FROM %s WHERE proyecto_id = %%s AND sesion = %%s"
+                              % _TABLA, [self.proyecto_id(), sesion])
+        if not filas:
+            return None, None
+        id_, analisis, desde, pausa, pausas = filas[0]
+        return id_, {"sesion": sesion, "analisis": analisis, "desde": int(desde),
+                     "pausa": int(pausa) if pausa is not None else None, "pausas": pausas or ""}
+
+    def _anotar(self, fila, accion, antes, despues):
+        """Escribe el cambio en `historia_cambio`, a nombre del agente. Sin la tabla
+        (Cimiento sin migrar) no se anota: el estado del análisis no se puede caer."""
+        if accion == "cambiar":
+            cambiados = sorted(k for k in despues if despues[k] != antes.get(k))
+            if not cambiados:
+                return
+            antes = {k: antes.get(k) for k in cambiados}
+            despues = {k: despues[k] for k in cambiados}
+        try:
+            self.ejecutar(
+                "INSERT INTO historia_cambio (fecha, quien, tabla, fila, accion, antes, despues, motivo) "
+                "VALUES (UTC_TIMESTAMP(6), 'agente', 'proyectos.analisisprendido', %s, %s, %s, %s, '')",
+                [str(fila), accion, json.dumps(antes) if antes is not None else None,
+                 json.dumps(despues) if despues is not None else None], escribir=True)
+        except BaseSinRespuesta:
+            pass
+
     def guardar(self, dato):
-        """Escribe la fila de `dato["sesion"]`: la crea o la cambia."""
+        """Escribe la fila de `dato["sesion"]`: la crea o la cambia, y anota el cambio."""
+        _, antes = self._fila(dato["sesion"])
+        self._escribir(dato)
+        id_, despues = self._fila(dato["sesion"])
+        if id_ is not None:
+            self._anotar(id_, "cambiar" if antes else "crear", antes, despues)
+
+    def _escribir(self, dato):
         self.ejecutar(
             "INSERT INTO %s (proyecto_id, sesion, analisis, desde, pausa, pausas, actualizado) "
             "VALUES (%%s, %%s, %%s, %%s, %%s, %%s, UTC_TIMESTAMP(6)) ON DUPLICATE KEY UPDATE "
@@ -85,5 +123,8 @@ class EstadoEnBase(NivelesDelProyecto):
              dato.get("pausas") or ""], escribir=True)
 
     def borrar(self, sesion):
+        id_, antes = self._fila(sesion)
         self.ejecutar("DELETE FROM %s WHERE proyecto_id = %%s AND sesion = %%s" % _TABLA,
                       [self.proyecto_id(), sesion], escribir=True)
+        if id_ is not None:
+            self._anotar(id_, "borrar", antes, None)

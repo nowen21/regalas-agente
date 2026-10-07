@@ -271,10 +271,12 @@ class MapaDeTareas:
     def archivos_de(self, tarea):
         """Las rutas absolutas de los archivos de una tarea, como están escritos."""
         carpeta = self._ruta(POR_TAREA)
-        if os.path.isfile(os.path.join(carpeta, "%s.md" % tarea)):
+        # `EP-026·HU-004` · El lector sabe si el documento existe, en el disco o en la base.
+        existe = getattr(self.archivos, "existe", os.path.isfile)
+        if existe(os.path.join(carpeta, "%s.md" % tarea)):
             return [os.path.join(carpeta, "%s.md" % tarea)]
         salida, i = [], 1
-        while os.path.isfile(os.path.join(carpeta, "%s-%d.md" % (tarea, i))):
+        while existe(os.path.join(carpeta, "%s-%d.md" % (tarea, i))):
             salida.append(os.path.join(carpeta, "%s-%d.md" % (tarea, i)))
             i += 1
         return salida

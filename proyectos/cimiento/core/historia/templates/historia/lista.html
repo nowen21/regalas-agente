@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block titulo %}Historia{% endblock %}
+{% block cabecera %}Historia{% endblock %}
+
+{% block contenido %}
+{% for mensaje in messages %}
+<div class="alert {% if mensaje.level_tag == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="alert">{{ mensaje }}</div>
+{% endfor %}
+<p class="text-secondary">Todo lo que cambia en Cimiento: quién, cuándo, cómo estaba, cómo quedó y por qué.
+  <a href="{% url 'historia:versiones' %}">Versiones</a></p>
+<form method="get" class="d-flex gap-2 mb-3">
+  <select class="form-select form-select-sm w-auto" name="tabla">
+    <option value="">Todas las tablas</option>
+    {% for t in tablas %}<option value="{{ t }}"{% if t == tabla %} selected{% endif %}>{{ t }}</option>{% endfor %}
+  </select>
+  <select class="form-select form-select-sm w-auto" name="accion">
+    <option value="">Todas las acciones</option>
+    {% for codigo, nombre in acciones %}<option value="{{ codigo }}"{% if codigo == accion %} selected{% endif %}>{{ nombre }}</option>{% endfor %}
+  </select>
+  <button class="btn btn-sm btn-outline-primary" type="submit">Filtrar</button>
+</form>
+<div class="card">
+  <table class="table card-table table-vcenter">
+    <thead>
+      <tr><th>#</th><th>Fecha</th><th>Quién</th><th>Tabla</th><th>Fila</th><th>Acción</th><th>Antes</th><th>Después</th><th>Por qué</th><th>Versión</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for cambio in pagina %}
+      <tr>
+        <td>{{ cambio.pk }}</td>
+        <td>{{ cambio.fecha|date:"Y-m-d H:i" }}</td>
+        <td>{{ cambio.quien_lo_hizo }}</td>
+        <td><code>{{ cambio.tabla }}</code></td>
+        <td>{{ cambio.fila }}</td>
+        <td>{{ cambio.get_accion_display }}</td>
+        <td><small>{{ cambio.antes|default_if_none:"" }}</small></td>
+        <td><small>{{ cambio.despues|default_if_none:"" }}</small></td>
+        <td>{{ cambio.motivo }}{% if cambio.deshace %} <span class="text-secondary">(deshace el {{ cambio.deshace.pk }})</span>{% endif %}</td>
+        <td>{% if cambio.version %}{{ cambio.version }}{% endif %}</td>
+        <td>
+          {% if puede_deshacer %}
+          <form method="post" action="{% url 'historia:deshacer' cambio.pk %}">
+            {% csrf_token %}
+            <button class="btn btn-sm btn-outline-secondary" type="submit">Deshacer</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="11" class="text-secondary">Todavía no hay cambios.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if pagina.has_other_pages %}
+<p class="mt-3">
+  {% if pagina.has_previous %}<a href="?pagina={{ pagina.previous_page_number }}&tabla={{ tabla }}&accion={{ accion }}">Anteriores</a>{% endif %}
+  Página {{ pagina.number }} de {{ pagina.paginator.num_pages }}
+  {% if pagina.has_next %}<a href="?pagina={{ pagina.next_page_number }}&tabla={{ tabla }}&accion={{ accion }}">Siguientes</a>{% endif %}
+</p>
+{% endif %}
+{% endblock %}

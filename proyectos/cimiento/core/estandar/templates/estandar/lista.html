@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}Estándar{% endblock %}
+{% block cabecera %}Estándar{% endblock %}
+{% block contenido %}
+{% include "estandar/_mensajes.html" %}
+<p class="text-secondary">El estándar va en la <strong>{{ version }}</strong> y vive en esta base: se cambia aquí y cada cambio queda en la historia.
+  <a href="{% url 'estandar:propuestas' %}">Propuestas</a>{% if pendientes %} <span class="badge bg-yellow-lt">{{ pendientes }} por aprobar</span>{% endif %}
+  · <a href="{% url 'historia:versiones' %}?proyecto=estandar">Versiones</a>
+  {% if puede_cambiar %} · <a href="{% url 'estandar:nuevo' %}">Documento nuevo</a>{% endif %}</p>
+<form method="get" class="d-flex gap-2 mb-3">
+  <input class="form-control form-control-sm w-auto" name="q" value="{{ buscar }}" placeholder="Buscar en el estándar">
+  <button class="btn btn-sm btn-outline-primary" type="submit">Buscar</button>
+</form>
+<div class="row">
+  <div class="col-lg-8">
+    {% for grupo, documentos in grupos.items %}
+    <div class="card mb-3">
+      <div class="card-header"><h3 class="card-title">{{ grupo }}</h3></div>
+      <div class="list-group list-group-flush">
+        {% for d in documentos %}<a class="list-group-item list-group-item-action" href="{% url 'estandar:documento' d.pk %}">{{ d.ruta }}</a>{% endfor %}
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-secondary">Nada coincide.</p>
+    {% endfor %}
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Memoria de cada proyecto</h3></div>
+      <div class="list-group list-group-flush">
+        {% for p in proyectos %}<a class="list-group-item list-group-item-action" href="{% url 'estandar:memoria' p.pk %}">{{ p.nombre }}</a>{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

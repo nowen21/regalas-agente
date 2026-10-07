@@ -145,6 +145,27 @@ class Recuerdos:
                               f"— el nombre ya estaba ocupado; revisar cuál manda")
         return salida
 
+    _CONSULTA = ("SELECT r.contenido FROM estandar_recuerdo r JOIN proyectos_proyecto p ON p.id = r.proyecto_id "
+                 "WHERE p.activo = 1 AND LOWER(p.ruta) = LOWER(%s) AND r.nombre = %s")
+
+    def desde_la_base(self, ajustes=None):
+        """`EP-026·HU-005` · `(índice, orden para leer un recuerdo)` si la memoria del
+        proyecto está en la base de Cimiento; si no, None y se lee la carpeta."""
+        from .niveles import BaseSinRespuesta, NivelesDelProyecto
+
+        try:
+            filas = NivelesDelProyecto(self.proyecto, ajustes=ajustes).consultar(self._CONSULTA,
+                                                                              [self.proyecto, INDICE])
+        except BaseSinRespuesta:
+            return None
+        if not filas:
+            return None
+        from ..comun import Proyecto
+
+        manage = os.path.join(Proyecto.estandar() or "", "proyectos", "cimiento", "manage.py").replace(os.sep, "/")
+        orden = 'python "%s" ver_recuerdo --proyecto "%s"' % (manage, self.proyecto.replace(os.sep, "/"))
+        return filas[0][0], orden
+
     def contexto(self, tope=None):
         """El índice de la memoria, para inyectarlo al abrir la sesión: la
         herramienta solo carga sola lo que guarda ella, y ahí ya no hay nada.
@@ -153,23 +174,35 @@ class Recuerdos:
         si no cabe entero van solo las filas, y si tampoco, las primeras que
         quepan con la ruta del índice. Nunca se corta una fila a la mitad.
         """
-        archivo = self.ruta_indice()
-        if not os.path.isfile(archivo):
-            return ""
-        try:
-            with open(archivo, encoding="utf-8", errors="replace") as f:
-                texto = f.read()
-        except OSError:
-            return ""
-
         ruta = CARPETA.replace(os.sep, "/")
-        cabeza = ("[MEMORIA DEL AGENTE — ÍNDICE, OBLIGATORIA]\n"
-                  "Es cómo pide el usuario que se trabaje en este proyecto, y rige "
-                  "esta sesión completa. Antes de tocar un tema que aparezca abajo, "
-                  "leer con Read el archivo del recuerdo: el índice dice de qué "
-                  "trata, no qué exige.\n"
-                  f"Un recuerdo nuevo se escribe en `{ruta}/`, nunca en el almacén de "
-                  "la herramienta (`01·C19`).\n\n")
+        en_base = self.desde_la_base()
+        if en_base is not None:
+            # `EP-026·HU-005` · La memoria vive en la base de Cimiento (`01·C19`).
+            texto, orden = en_base
+            cabeza = ("[MEMORIA DEL AGENTE — ÍNDICE, OBLIGATORIA]\n"
+                      "Es cómo pide el usuario que se trabaje en este proyecto, y rige "
+                      "esta sesión completa. Vive en la base de Cimiento. Antes de tocar "
+                      "un tema que aparezca abajo, leer el recuerdo con "
+                      f"`{orden} <nombre.md>`: el índice dice de qué trata, no qué exige.\n"
+                      "Un recuerdo nuevo se propone con `manage.py proponer --proyecto … "
+                      "--recuerdo …` y se aprueba en la pantalla, nunca en el almacén de "
+                      "la herramienta (`01·C19`).\n\n")
+        else:
+            archivo = self.ruta_indice()
+            if not os.path.isfile(archivo):
+                return ""
+            try:
+                with open(archivo, encoding="utf-8", errors="replace") as f:
+                    texto = f.read()
+            except OSError:
+                return ""
+            cabeza = ("[MEMORIA DEL AGENTE — ÍNDICE, OBLIGATORIA]\n"
+                      "Es cómo pide el usuario que se trabaje en este proyecto, y rige "
+                      "esta sesión completa. Antes de tocar un tema que aparezca abajo, "
+                      "leer con Read el archivo del recuerdo: el índice dice de qué "
+                      "trata, no qué exige.\n"
+                      f"Un recuerdo nuevo se escribe en `{ruta}/`, nunca en el almacén de "
+                      "la herramienta (`01·C19`).\n\n")
         entero = f"{cabeza}<<< {ruta}/{INDICE} >>>\n{texto}"
         if tope is None or len(entero) <= tope:
             return entero

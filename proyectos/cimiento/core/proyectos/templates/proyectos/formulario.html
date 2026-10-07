@@ -37,6 +37,7 @@
     </div>
     {% endfor %}
   </div>
+  <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>
   <div class="card-footer d-flex gap-2">
     <button class="btn btn-primary" type="submit">Guardar</button>
     <a class="btn btn-link" href="{% url 'proyectos:lista' %}">Volver</a>

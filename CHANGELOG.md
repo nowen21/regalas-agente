@@ -11,6 +11,61 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 56.8.0 — 2026-10-06
+
+El estándar y la memoria de cada proyecto se cambian desde la pantalla «Estándar» de Cimiento, y lo que propone el agente espera allí hasta que se aprueba.
+
+**MENOR**: suma pantallas y órdenes; nadie tiene que hacer nada.
+
+- Cada cambio hace las dos preguntas, queda en la historia y sube su versión; el mapa de tareas y las reglas por tarea se vuelven a armar en la base (`EP-026·HU-005`).
+- El agente propone con `manage.py proponer` y lee con `ver_estandar` y `ver_recuerdo`; el arranque toma la memoria de la base.
+
+---
+
+## 56.7.0 — 2026-10-06
+
+Las reglas que llegan con cada mensaje, lo que el freno deja escribir y el arranque de sesión salen de la base de Cimiento, no de los archivos de `base/`.
+
+**MENOR**: los proyectos no hacen nada; sin base, el enganche lo dice y el freno no deja modificar.
+
+- `sincronizar_estandar` pone la base al día con lo guardado en git (`EP-026·HU-004`).
+
+---
+
+## 56.6.0 — 2026-10-06
+
+El estándar entra a la base de Cimiento: cada archivo de `base/` como documento, y la memoria de cada proyecto registrado como recuerdos.
+
+**MENOR**: se importa una vez, con `manage.py importar_estandar` (`EP-026·HU-003`).
+
+---
+
+## 56.5.0 — 2026-10-06
+
+La base de Cimiento se copia sola cada día en la carpeta hermana `cimiento-copias`, comprimida y sin las sesiones del navegador; se guardan las últimas 7.
+
+**MENOR**: la lanza el inicio de sesión; `probar_copia` comprueba que se restaura (`EP-026·HU-010`).
+
+---
+
+## 56.4.0 — 2026-10-06
+
+Todo cambio de configuración sube una versión: la del proyecto si es solo suya, la del estándar si es de todos. Dos preguntas al guardar fijan MAYOR, MENOR o PARCHE.
+
+**MENOR**: los formularios suman las dos preguntas; «Historia» → «Versiones» las muestra (`EP-026·HU-002`).
+
+---
+
+## 56.3.0 — 2026-10-06
+
+Todo lo que cambia en la base de Cimiento queda en una sola historia: quién, cuándo, cómo estaba, cómo quedó y por qué, y se puede deshacer.
+
+**MENOR**: pantalla «Historia»; el gasto no entra porque cada línea ya es su historia (`EP-026·HU-001`).
+
+Las seis entradas de la 56.3.0 a la 56.8.0 salen del análisis 1 del pendiente 132 y van en un solo commit: las fases se construyeron una encima de otra y comparten archivos.
+
+---
+
 ## 56.2.2 — 2026-10-06
 
 Los totales del sello de `20·M10` y de `01·C19` vuelven al formato del checklist. La 56.0.0 los escribió con comas, y con comas el validador de meta-reglas no los compara con la tabla del sello.

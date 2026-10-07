@@ -73,6 +73,7 @@
       <input class="form-control" id="{{ form.vence.id_for_label }}" name="vence" type="datetime-local" required>
     </div>
   </div>
+  <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" with sin_motivo=True %}</div>
   <div class="card-footer">
     <button class="btn btn-primary" type="submit">Suspender</button>
   </div>

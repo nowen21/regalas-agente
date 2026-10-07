@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Propuestas{% endblock %}
+{% block cabecera %}Propuestas{% endblock %}
+{% block contenido %}
+{% include "estandar/_mensajes.html" %}
+<p class="text-secondary">Lo que proponen el agente o un programa. Nada cambia hasta que se aprueba aquí. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
+{% for p in pendientes %}
+<div class="card mb-3">
+  <div class="card-header"><h3 class="card-title">#{{ p.pk }} · {{ p.get_accion_display }} {{ p.destino }}</h3>
+    <span class="ms-auto text-secondary">{{ p.quien }}, {{ p.fecha|date:"Y-m-d H:i" }}</span></div>
+  <div class="card-body">
+    <p>{{ p.motivo }}</p>
+    {% if p.accion != "quitar" %}<pre style="white-space: pre-wrap; max-height: 24rem; overflow: auto">{{ p.contenido }}</pre>{% endif %}
+  </div>
+  {% if puede_cambiar %}
+  <div class="card-footer">
+    <form method="post" action="{% url 'estandar:aprobar' p.pk %}">
+      {% csrf_token %}
+      {% include "historia/_tipo_de_version.html" %}
+      <button class="btn btn-primary" type="submit">Aprobar</button>
+    </form>
+    <form method="post" action="{% url 'estandar:rechazar' p.pk %}" class="mt-2">
+      {% csrf_token %}
+      <button class="btn btn-outline-secondary" type="submit">Rechazar</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+{% empty %}
+<p class="text-secondary">No hay propuestas por aprobar.</p>
+{% endfor %}
+{% if resueltas %}
+<h3 class="mt-4">Resueltas</h3>
+<div class="card"><table class="table card-table">
+  <thead><tr><th>#</th><th>Qué</th><th>Quién propuso</th><th>Estado</th><th>Quién resolvió</th><th>Cuándo</th></tr></thead>
+  <tbody>{% for p in resueltas %}<tr><td>{{ p.pk }}</td><td>{{ p.get_accion_display }} {{ p.destino }}</td><td>{{ p.quien }}</td><td>{{ p.get_estado_display }}</td><td>{{ p.resuelta_por.get_username|default:"" }}</td><td>{{ p.resuelta|date:"Y-m-d H:i" }}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endblock %}

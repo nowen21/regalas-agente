@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo %}Versiones{% endblock %}
+{% block cabecera %}Versiones{% endblock %}
+
+{% block contenido %}
+<p class="text-secondary">El estándar va en la <strong>{{ estandar }}</strong>. Cada proyecto lleva su propia versión.
+  <a href="{% url 'historia:lista' %}">Volver a la historia</a></p>
+<form method="get" class="d-flex gap-2 mb-3">
+  <select class="form-select form-select-sm w-auto" name="proyecto">
+    <option value="">Todas</option>
+    <option value="estandar"{% if proyecto == "estandar" %} selected{% endif %}>Solo el estándar</option>
+  </select>
+  <button class="btn btn-sm btn-outline-primary" type="submit">Filtrar</button>
+</form>
+<div class="card">
+  <table class="table card-table table-vcenter">
+    <thead><tr><th>De</th><th>Versión</th><th>Tipo</th><th>Fecha</th><th>Quién</th><th>Por qué</th><th>Cambios</th></tr></thead>
+    <tbody>
+      {% for version in pagina %}
+      <tr>
+        <td>{% if version.proyecto %}{{ version.proyecto }}{% else %}Estándar{% endif %}</td>
+        <td><strong>{{ version.numero }}</strong></td>
+        <td>{{ version.get_tipo_display }}</td>
+        <td>{{ version.fecha|date:"Y-m-d H:i" }}</td>
+        <td>{% if version.cuenta %}{{ version.cuenta.get_username }}{% else %}{{ version.quien }}{% endif %}</td>
+        <td>{{ version.resumen }}</td>
+        <td>{% for cambio in version.cambios.all %}<div><small>#{{ cambio.pk }} {{ cambio.get_accion_display }} {{ cambio.tabla }} {{ cambio.fila }}</small></div>{% endfor %}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="7" class="text-secondary">Todavía no hay versiones guardadas.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

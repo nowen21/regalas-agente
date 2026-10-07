@@ -47,6 +47,7 @@ from core.enganches.cargador import Cargador                     # noqa: E402
 from core.enganches.historico import Historico                   # noqa: E402
 from core.enganches.recuerdos import Recuerdos                   # noqa: E402
 from core.enganches.sesion import ArranqueDeSesion               # noqa: E402
+from core.historia import copia                                  # noqa: E402
 from core.herramientas.instalar import Instalador                # noqa: E402
 
 # El tope del canal, **en caracteres**. Lo que un enganche entregue por encima
@@ -116,27 +117,41 @@ def _del_proyecto(proyecto, disponible):
     return "\n\n".join(partes), avisos
 
 
+def _copia_del_dia():
+    """`EP-026·HU-010` · Lanza en segundo plano la copia de hoy de la base, si
+    falta, y devuelve el aviso si la última falló. Nunca rompe el arranque."""
+    try:
+        return copia.lanzar_si_falta(RAIZ)
+    except Exception as e:      # noqa: BLE001 — nunca romper el arranque
+        return f"No se pudo revisar la copia de la base: {e}"
+
+
+def _con(aviso, resumen):
+    return "\n".join(p for p in (aviso, resumen) if p)
+
+
 def main():
     preparar_salida()
     proyecto = raiz_pedida(sys.argv[1:], os.getcwd())
+    aviso = _copia_del_dia()
 
     # El propio estándar no se revisa a sí mismo como si fuera un proyecto,
     # y no se le aplica el gate `F13`, que es para proyectos.
     if os.path.normcase(proyecto) == os.path.normcase(RAIZ):
-        _responder("", [], _reglas(True), proyecto)
+        _responder(aviso, [], _reglas(True), proyecto)
         return 0
 
     try:
         hallazgos = ArranqueDeSesion(proyecto, estandar=RAIZ).revisar()
     except Exception as e:      # noqa: BLE001 — nunca romper el arranque
-        _responder(f"No se pudo revisar el arranque del estándar: {e}", [],
+        _responder(_con(aviso, f"No se pudo revisar el arranque del estándar: {e}"), [],
                    "", proyecto)
         return 0
 
     # Lo de las reglas va aunque la revisión encuentre fallas: un CLAUDE.md
     # desactualizado no es motivo para trabajar sin saber cómo llegan. La
     # excepción es F13, que es un gate — ahí `cargador` decide qué dar.
-    _responder(ArranqueDeSesion.resumen(proyecto, hallazgos), hallazgos,
+    _responder(_con(aviso, ArranqueDeSesion.resumen(proyecto, hallazgos)), hallazgos,
                _reglas(Instalador.cumple_f13(proyecto)), proyecto)
     return 0
 
