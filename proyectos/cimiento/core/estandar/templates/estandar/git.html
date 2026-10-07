@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Subir a git{% endblock %}
+{% block cabecera %}Subir a git{% endblock %}
+{% block contenido %}
+{% include "estandar/_mensajes.html" %}
+<p class="text-secondary">Lo que cambió cada sesión y todavía no está guardado. El commit lleva solo lo de una sesión; lo que tocaron dos se nombra aparte. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
+{% for sesion, archivos in propios %}
+<div class="card mb-3">
+  <div class="card-header"><h3 class="card-title">Sesión {{ sesion|slice:":8" }} · {{ archivos|length }} archivo(s)</h3></div>
+  <div class="card-body">
+    <ul class="mb-3">{% for a in archivos %}<li><code>{{ a }}</code></li>{% endfor %}</ul>
+    {% if puede_cambiar %}
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="sesion" value="{{ sesion }}">
+      <label class="form-label" for="asunto-{{ forloop.counter }}">Asunto</label>
+      <input class="form-control mb-2" id="asunto-{{ forloop.counter }}" name="asunto" required>
+      <label class="form-label" for="idea-{{ forloop.counter }}">La idea del usuario</label>
+      <textarea class="form-control mb-2" id="idea-{{ forloop.counter }}" name="idea" rows="3"></textarea>
+      <label class="form-label" for="hecho-{{ forloop.counter }}">Lo que hizo el agente</label>
+      <textarea class="form-control mb-2" id="hecho-{{ forloop.counter }}" name="hecho" rows="3"></textarea>
+      <label class="form-check mb-2"><input class="form-check-input" type="checkbox" name="subir" value="1"> Subir también</label>
+      <button class="btn btn-primary" type="submit">Hacer el commit</button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% empty %}
+<p class="text-secondary">Ninguna sesión tiene cambios propios sin guardar.</p>
+{% endfor %}
+{% if compartidos %}
+<div class="card mb-3"><div class="card-header"><h3 class="card-title">Los tocaron dos sesiones</h3></div>
+  <div class="card-body"><ul>{% for a in compartidos %}<li><code>{{ a }}</code></li>{% endfor %}</ul></div></div>
+{% endif %}
+{% if sin_sesion %}
+<div class="card"><div class="card-header"><h3 class="card-title">Sin sesión</h3></div>
+  <div class="card-body"><ul>{% for a in sin_sesion %}<li><code>{{ a }}</code></li>{% endfor %}</ul></div></div>
+{% endif %}
+{% endblock %}

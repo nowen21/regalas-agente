@@ -13,6 +13,10 @@ urlpatterns = [
     path("memoria/<int:proyecto>/nuevo/", views.VerRecuerdo.as_view(), name="recuerdo_nuevo"),
     path("memoria/<int:proyecto>/<int:pk>/", views.VerRecuerdo.as_view(), name="recuerdo"),
     path("propuestas/", views.Propuestas.as_view(), name="propuestas"),
+    path("git/", views.SubirAGit.as_view(), name="git"),
+    path("vista-previa/", views.VistaPrevia.as_view(), name="vista_previa"),
+    path("reportes/", views.Reportes.as_view(), name="reportes"),
+    path("reportes/<int:pk>/resolver/", views.ResolverReporte.as_view(), name="resolver_reporte"),
     path("propuestas/<int:pk>/aprobar/", views.Resolver.as_view(aprobar=True), name="aprobar"),
     path("propuestas/<int:pk>/rechazar/", views.Resolver.as_view(aprobar=False), name="rechazar"),
 ]

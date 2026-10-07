@@ -14,6 +14,7 @@ PANTALLAS: la ayuda de los botones debajo del título de una pantalla.
     donde_mas  texto y pantallas: nombre, detalle y ruta en el menú.
     como_encaja mapa: pasos antes, aquí y después.
 """
+from core.proyectos.ajustes import CAPITULOS_OPT_IN
 
 CAMPOS = {
     "configuracion.rutas_en_avisos": {
@@ -71,6 +72,18 @@ CAMPOS = {
         "consejo": "Se puede terminar antes con «Levantar».",
     },
 }
+
+# `EP-026·HU-009` · Un globo por capítulo opt-in, todos con el mismo molde.
+for _capitulo, _tema in CAPITULOS_OPT_IN.items():
+    CAMPOS["configuracion.opt_in_%s" % _capitulo] = {
+        "titulo": "¿Qué es el patrón opt-in %s?" % _capitulo,
+        "secciones": [
+            ("¿Qué es?", "Las reglas del capítulo %s, de %s. Rigen en el proyecto solo si está en «Sí»." % (_capitulo, _tema)),
+            ("Ejemplo", "Con «Sí», un mensaje que pide algo de ese tema trae sus reglas; con «No», no las trae."),
+        ],
+        "consejo": "Vacío, vale el de la configuración de Cimiento, y si tampoco tiene, el de fábrica: «No». "
+                   "La vista previa del estándar muestra cuáles tiene prendidos cada proyecto.",
+    }
 
 PANTALLAS = {
     "configuracion": {

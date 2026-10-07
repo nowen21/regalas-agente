@@ -43,6 +43,40 @@ class VersionDelCambio(Validador):
         self.origen = ruta_mostrada or (proyecto if isinstance(proyecto, str) else self.proyecto.raiz)
         self.preparados = preparados
 
+    def _congelada(self):
+        """`EP-026·HU-006` · ¿El estándar de este repositorio está congelado?"""
+        from ..estandar import congelado
+
+        return congelado.congelada(self.proyecto.raiz)
+
+    def _con_el_estandar_congelado(self, preparados):
+        """`EP-026·HU-006` · `base/`, `VERSION` y `CHANGELOG.md` no entran; `plantillas/`
+        entra si el estándar tiene una versión en la base después del último commit."""
+        from ..enganches.niveles import BaseSinRespuesta
+        from ..estandar import congelado
+
+        salida = []
+        quietos = sorted(a for a in preparados if congelado.quieto(a))
+        if quietos:
+            salida.append(Hallazgo(FALLA, self.origen, 0, "este commit trae `%s`, y %s" % (quietos[0],
+                                                                                         congelado.MOTIVO)))
+        plantillas = sorted(a for a in preparados if a.startswith("plantillas/"))
+        if plantillas:
+            ultimo = Git(self.proyecto.raiz).correr("log", "-1", "--format=%ct").strip()
+            try:
+                fecha = congelado.ultima_version_del_estandar(self.proyecto.raiz)
+            except BaseSinRespuesta as error:
+                fecha, ultimo = None, ultimo or "0"
+                salida.append(Hallazgo(FALLA, self.origen, 0, "sin base no se sabe la versión del estándar: %s"
+                                       % error))
+                return salida
+            if fecha is None or (ultimo and fecha.timestamp() <= int(ultimo)):
+                salida.append(Hallazgo(
+                    FALLA, self.origen, 0,
+                    "este commit cambia `%s` y el estándar no tiene una versión nueva en la base: registrarla "
+                    "con `manage.py registrar_version` (20·M10)" % plantillas[0]))
+        return salida
+
     @staticmethod
     def _normalizar(rutas):
         return {r.replace("\\", "/") for r in rutas}
@@ -59,6 +93,9 @@ class VersionDelCambio(Validador):
             preparados = Git(self.proyecto.raiz).preparados()
         preparados = self._normalizar(preparados)
 
+        congelada = self._congelada()
+        if congelada:
+            return self._con_el_estandar_congelado(preparados)
         tocadas = self.reglas_tocadas(preparados)
         if not tocadas:
             return []

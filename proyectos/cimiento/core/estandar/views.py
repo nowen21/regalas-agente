@@ -153,3 +153,130 @@ class Resolver(View):
         else:
             messages.success(peticion, "Propuesta %d %s." % (propuesta.pk, "aprobada" if self.aprobar else "rechazada"))
         return redirect("estandar:propuestas")
+
+
+def raiz_del_repositorio():
+    """`EP-026·HU-007` · El repositorio donde vive Cimiento. Las pruebas lo cambian."""
+    from core.comun import Proyecto as Carpeta
+
+    return Carpeta.estandar()
+
+
+class SubirAGit(View):
+    """`EP-026·HU-007` · Lo que cambió cada sesión, y el botón que hace su commit."""
+
+    def get(self, peticion):
+        from core.herramientas.cambios import CambiosPorSesion
+
+        try:
+            propios, compartidos, sin_sesion = CambiosPorSesion(raiz_del_repositorio()).repartir()
+        except ValueError as error:
+            messages.error(peticion, str(error))
+            propios, compartidos, sin_sesion = {}, [], []
+        return render(peticion, "estandar/git.html", {
+            "propios": sorted(propios.items()), "compartidos": compartidos, "sin_sesion": sin_sesion,
+            "puede_cambiar": es_administrador(peticion.user)})
+
+    def post(self, peticion):
+        from .subir import SinSubir, guardar
+
+        if not es_administrador(peticion.user):
+            return _sin_permiso(peticion)
+        p = peticion.POST
+        try:
+            hash_, subido = guardar(raiz_del_repositorio(), p.get("sesion", ""), p.get("asunto", ""),
+                                    p.get("idea", ""), p.get("hecho", ""), subir=bool(p.get("subir")))
+        except SinSubir as razon:
+            messages.error(peticion, "Sin subir: %s" % razon)
+        else:
+            messages.success(peticion, "Commit %s hecho%s." % (hash_, " y subido" if subido else ""))
+        return redirect("estandar:git")
+
+
+class Reportes(View):
+    """`EP-026·HU-008` · Lo que reportan los proyectos, y cómo quedó."""
+
+    def get(self, peticion):
+        from core.historia.models import Version
+
+        from .models import ABIERTO, Reporte
+
+        return render(peticion, "estandar/reportes.html", {
+            "abiertos": Reporte.objects.filter(estado=ABIERTO).select_related("proyecto"),
+            "resueltos": Reporte.objects.exclude(estado=ABIERTO).select_related(
+                "proyecto", "corregido_en", "resuelto_por")[:50],
+            "versiones": Version.objects.filter(ambito=ESTANDAR).order_by("-id")[:30],
+            "proyectos": Proyecto.objects.filter(activo=True),
+            "puede_cambiar": es_administrador(peticion.user)})
+
+    def post(self, peticion):
+        from .models import Reporte
+
+        if not es_administrador(peticion.user):
+            return _sin_permiso(peticion)
+        proyecto = get_object_or_404(Proyecto, pk=peticion.POST.get("proyecto") or 0)
+        titulo = peticion.POST.get("titulo", "").strip()
+        if not titulo:
+            messages.error(peticion, "El reporte necesita su título.")
+            return redirect("estandar:reportes")
+        Reporte.objects.create(proyecto=proyecto, titulo=titulo, texto=peticion.POST.get("texto", ""),
+                               regla=peticion.POST.get("regla", "").strip(), quien=peticion.user.get_username())
+        messages.success(peticion, "Reporte guardado.")
+        return redirect("estandar:reportes")
+
+
+class ResolverReporte(View):
+    """`EP-026·HU-008` · Corregido, con la versión del estándar que lo corrigió, o descartado con su motivo."""
+
+    def post(self, peticion, pk):
+        from django.utils import timezone
+
+        from core.historia.models import Version
+
+        from .models import ABIERTO, CORREGIDO, DESCARTADO, Reporte
+
+        if not es_administrador(peticion.user):
+            return _sin_permiso(peticion)
+        reporte = get_object_or_404(Reporte, pk=pk)
+        if reporte.estado != ABIERTO:
+            messages.error(peticion, "Ese reporte ya está %s." % reporte.get_estado_display().lower())
+            return redirect("estandar:reportes")
+        if peticion.POST.get("descartar"):
+            motivo = peticion.POST.get("motivo", "").strip()
+            if not motivo:
+                messages.error(peticion, "Descartar pide el motivo.")
+                return redirect("estandar:reportes")
+            reporte.estado, reporte.motivo = DESCARTADO, motivo
+        else:
+            version = get_object_or_404(Version, pk=peticion.POST.get("version") or 0, ambito=ESTANDAR)
+            if version.fecha < reporte.fecha:
+                messages.error(peticion, "La versión que corrige es posterior al reporte.")
+                return redirect("estandar:reportes")
+            reporte.estado, reporte.corregido_en = CORREGIDO, version
+        reporte.resuelto_por, reporte.resuelto = peticion.user, timezone.now()
+        reporte.save()
+        messages.success(peticion, "Reporte %d %s." % (reporte.pk, reporte.get_estado_display().lower()))
+        return redirect("estandar:reportes")
+
+
+class VistaPrevia(View):
+    """`EP-026·HU-009` · Qué reglas le llegarían al agente con un mensaje, en un
+    proyecto. Solo muestra: no guarda nada ni deja historia (acuerdo 21)."""
+
+    def get(self, peticion):
+        from core.herramientas.recuperar import RecuperadorDeReglas
+        from core.proyectos.ajustes import CAPITULOS_OPT_IN, SI, clave_opt_in
+
+        proyectos = Proyecto.objects.filter(activo=True).order_by("nombre")
+        proyecto = proyectos.filter(pk=peticion.GET.get("proyecto") or 0).first()
+        mensaje = peticion.GET.get("mensaje", "")
+        bloque, opt_in = None, []
+        if proyecto:
+            ajustes = proyecto.ajustes()
+            opt_in = [(c, tema, ajustes[clave_opt_in(c)][0] == SI) for c, tema in CAPITULOS_OPT_IN.items()]
+            if mensaje.strip():
+                bloque = RecuperadorDeReglas().como_texto(mensaje, proyecto=proyecto.ruta) or \
+                    "Con este mensaje no llega ninguna regla."
+        return render(peticion, "estandar/vista_previa.html", {
+            "proyectos": proyectos, "proyecto": proyecto, "mensaje": mensaje, "bloque": bloque,
+            "opt_in": opt_in})

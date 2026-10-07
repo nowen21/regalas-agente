@@ -126,6 +126,16 @@ def _copia_del_dia():
         return f"No se pudo revisar la copia de la base: {e}"
 
 
+def _reportes(proyecto):
+    """`EP-026·HU-008` · Cómo quedaron los reportes que este proyecto hizo al
+    estándar, una sola vez. Nunca rompe el arranque."""
+    try:
+        from core.estandar.avisos import de_los_reportes
+        return de_los_reportes(proyecto)
+    except Exception as e:      # noqa: BLE001 — nunca romper el arranque
+        return f"No se pudo revisar los reportes al estándar: {e}"
+
+
 def _con(aviso, resumen):
     return "\n".join(p for p in (aviso, resumen) if p)
 
@@ -133,7 +143,7 @@ def _con(aviso, resumen):
 def main():
     preparar_salida()
     proyecto = raiz_pedida(sys.argv[1:], os.getcwd())
-    aviso = _copia_del_dia()
+    aviso = _con(_copia_del_dia(), _reportes(proyecto))
 
     # El propio estándar no se revisa a sí mismo como si fuera un proyecto,
     # y no se le aplica el gate `F13`, que es para proyectos.

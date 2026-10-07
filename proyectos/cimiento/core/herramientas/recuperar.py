@@ -38,10 +38,6 @@ TOPE = 10 * 1024 - 1536
 # solo si existe en el índice, que es lo que descarta un `B2C` o un `PPT`.
 _CITA = re.compile(r"(?:(\d{2})·)?\b([A-Z]{1,4}\d+(?:\.\d+)?)\b")
 
-# Los capítulos opt-in rigen solo si el proyecto los encendió en el punto 5.1 de
-# su `CLAUDE.md`: ofrecer una regla de uno apagado es peor que no ofrecer ninguna.
-_OPT_IN = re.compile(r"Patr[oó]n opt-in\s*`?(\d{2})`?[^:]*:\**\s*(.+)")
-
 # La marca del encabezado no hace falta en el bloque de todo mensaje.
 _MARCA = re.compile(r"\s*(`\[[^\]]+\]`|\*opt-in\*)\s*$")
 
@@ -125,28 +121,23 @@ class RecuperadorDeReglas:
     # ── el proyecto ───────────────────────────────────────────────────────
 
     @classmethod
-    def opt_in_apagados(cls, proyecto, archivos=None):
-        """Los capítulos opt-in que este proyecto dejó en `no`, leídos de su
-        `CLAUDE.md`. Sin proyecto o sin archivo no se apaga nada: se prefiere
-        ofrecer de más antes que callar una regla que sí rige."""
+    def opt_in_apagados(cls, proyecto, archivos=None, configuracion=None):
+        """Los capítulos opt-in que este proyecto tiene apagados.
+
+        `EP-026·HU-009` · De la base de Cimiento, si lo tiene registrado. Si no, o
+        si no responde, de su `CLAUDE.md`. Sin proyecto o sin archivo no se apaga
+        nada: se prefiere ofrecer de más antes que callar una regla que sí rige."""
         if not proyecto:
             return frozenset()
-        ruta = os.path.join(proyecto, "CLAUDE.md")
-        if not os.path.isfile(ruta):
-            return frozenset()
-        try:
-            texto = (archivos or Archivos()).leer(ruta)
-        except Exception:                     # noqa: BLE001: nunca romper el turno
-            return frozenset()
-        apagados = set()
-        for linea in texto.splitlines():
-            m = _OPT_IN.search(linea)
-            if not m:
-                continue
-            valor = cls.limpio(m.group(2)).strip(" *`.«»")
-            if not valor.startswith("si"):
-                apagados.add(m.group(1))
-        return frozenset(apagados)
+        from ..enganches.configuracion import ConfiguracionDelProyecto
+        from ..proyectos import opt_in
+
+        configuracion = configuracion or ConfiguracionDelProyecto(proyecto)
+        efectivos = configuracion.efectivos()
+        if configuracion.registrado:
+            return opt_in.apagados_segun(efectivos)
+        return frozenset(c for c, prendido in opt_in.del_claude_md(proyecto, archivos or Archivos()).items()
+                         if not prendido)
 
     # ── las reglas y las palabras ─────────────────────────────────────────
 
@@ -318,11 +309,19 @@ class RecuperadorDeReglas:
                 salida.append(os.path.relpath(ruta, self.raiz).replace(os.sep, "/"))
         return salida
 
+    def _donde(self, rutas):
+        """`EP-026·HU-006` · Dónde leer las reglas completas: con el estándar en la
+        base, con `ver_estandar`; los archivos de `base/` quedaron quietos."""
+        texto = ", ".join(rutas)
+        if hasattr(self.archivos, "recorrer"):
+            return texto + "; se leen de la base con `manage.py ver_estandar <ruta>`"
+        return texto
+
     def bloque_descartadas(self, ids, idx, tareas=()):
         """Las que no cupieron, y el archivo donde están completas."""
         if not ids:
             return ""
-        donde = ", ".join(self.archivos_de_tareas(tareas)) or "base/reglas-por-tarea/"
+        donde = self._donde(self.archivos_de_tareas(tareas) or ["base/reglas-por-tarea/"])
         return ("[DE LAS TAREAS DE ESTE MENSAJE, NO CUPIERON: están completas en "
                 + donde + "]\n  "
                 + ", ".join("%s·%s" % (self.capitulo(idx[i]), i) for i in ids) + "\n")
@@ -332,7 +331,7 @@ class RecuperadorDeReglas:
         una, que la dice el mapa: así el bloque deja lugar a las de la tarea."""
         if not fijas:
             return ""
-        donde = ", ".join(self.archivos_de_tareas(self.mapa.siempre()))
+        donde = self._donde(self.archivos_de_tareas(self.mapa.siempre()))
         lineas = ["[LAS QUE RIGEN TODO MENSAJE: completas en %s]" % donde]
         for id in fijas:
             regla = idx[id]

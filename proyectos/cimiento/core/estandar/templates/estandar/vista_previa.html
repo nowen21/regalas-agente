@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}Vista previa{% endblock %}
+{% block cabecera %}Vista previa de las reglas{% endblock %}
+{% block contenido %}
+<p class="text-secondary">Muestra las reglas que le llegarían al agente con un mensaje, en un proyecto. No guarda nada. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
+<form method="get" class="card mb-3">
+  <div class="card-body">
+    <div class="mb-3">
+      <label class="form-label" for="proyecto">Proyecto</label>
+      <select class="form-select" id="proyecto" name="proyecto" required>
+        {% for p in proyectos %}<option value="{{ p.pk }}"{% if p == proyecto %} selected{% endif %}>{{ p.nombre }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="mensaje">Mensaje</label>
+      <textarea class="form-control" id="mensaje" name="mensaje" rows="3" placeholder="Hágalo: corrija el plan de la fase">{{ mensaje }}</textarea>
+    </div>
+  </div>
+  <div class="card-footer"><button class="btn btn-primary" type="submit">Ver las reglas</button></div>
+</form>
+{% if proyecto %}
+<div class="card mb-3">
+  <div class="card-header"><h3 class="card-title">Capítulos opt-in de {{ proyecto.nombre }}</h3>
+    <a class="ms-auto" href="{% url 'proyectos:editar' proyecto.pk %}">Prender o apagar</a></div>
+  <div class="card-body">
+    {% for capitulo, tema, prendido in opt_in %}
+    <span class="badge {% if prendido %}bg-green-lt{% else %}bg-secondary-lt{% endif %} me-1">{{ capitulo }} · {{ tema }}: {% if prendido %}sí{% else %}no{% endif %}</span>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% if bloque %}
+<div class="card">
+  <div class="card-header"><h3 class="card-title">Lo que le llegaría al agente</h3></div>
+  <div class="card-body"><pre style="white-space: pre-wrap">{{ bloque }}</pre></div>
+</div>
+{% endif %}
+{% endblock %}

@@ -73,8 +73,13 @@ class LeerDeLaBase(TestCase):
     def test_cp003_las_mismas_reglas(self):
         desde_base = RecuperadorDeReglas(self.raiz, self.lector())
         desde_disco = RecuperadorDeReglas(self.raiz, Archivos())
+        aviso = "; se leen de la base con `manage.py ver_estandar <ruta>`"
         for mensaje in MENSAJES:
-            self.assertEqual(desde_disco.como_texto(mensaje), desde_base.como_texto(mensaje), mensaje)
+            # `EP-026·HU-006` · El texto de la base dice además cómo leer las reglas completas.
+            # Sin tope: el aviso ocupa bytes y con el tope de siempre caben otras reglas.
+            sin_tope = 10 ** 7
+            self.assertEqual(desde_disco.como_texto(mensaje, tope=sin_tope),
+                             desde_base.como_texto(mensaje, tope=sin_tope).replace(aviso, ""), mensaje)
 
 
 class SincronizarConGit(TestCase):

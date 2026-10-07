@@ -1,15 +1,4 @@
-# HU-008 · «Es el mismo del pendiente que genera la HU»
-
-> Plantilla general de Historia de Usuario. Elimine las secciones que no apliquen y las notas entre paréntesis.
->
-> Toda HU creada con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
->
-> | Regla | Qué exige |
-> |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+# HU-008 · Lo que un proyecto reporta llega al estándar como pendiente
 
 ---
 
@@ -18,247 +7,174 @@
 | Campo | Valor |
 |---|---|
 | **ID** | HU-008 |
-| **Épica / Feature** | [EP-026 · El estándar vive en la base de Cimiento y cada cambio queda versionado](../epica.md) |
-| **Módulo / Componente** | «Módulo del sistema» |
-| **Tipo** | Funcional / Técnica / Spike / Bug |
-| **Prioridad** | Must / Should / Could / Won't (MoSCoW) |
-| **Estimación** | «Story points» |
-| **Sprint** | «Sprint asignado» |
-| **Solicitante** | «Product Owner / área usuaria» |
-| **Responsable** | «Dev asignado» |
-| **Estado** | Uno de [los estados del glosario](../../../../base/glosario.md#5--en-qué-estado-está-algo): Pendiente, Lista, En curso, En prueba o Terminada |
+| **Épica / Feature** | [EP-026 — El estándar vive en la base de Cimiento y cada cambio queda versionado](../epica.md) |
+| **Módulo / Componente** | `proyectos/cimiento/core/estandar/` y el aviso de versión |
+| **Tipo** | Funcional |
+| **Prioridad** | Should |
+| **Estimación** | M |
+| **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
+| **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
+| **Responsable** | El agente |
+| **Estado** | Terminada |
 
 ---
 
 ## 2. Narrativa
 
-- **Como** «rol específico, evite "usuario" genérico»
-- **Quiero** «acción o capacidad concreta»
-- **Para** «beneficio de negocio medible»
-
-> Las tres van como lista. Sin el guion, Markdown las une en un solo párrafo corrido y la narrativa deja de leerse de un vistazo.
+- **Como** quien trabaja en un proyecto que hereda el estándar
+- **Quiero** reportar al estándar lo que encuentro mal en él, y enterarme cuando se corrige
+- **Para** que la corrección llegue a todos los proyectos con su versión
 
 ---
 
 ## 3. Contexto y descripción
 
-«Si la HU sale directo de un pendiente: el problema del pendiente, tal cual está. Si sale de una épica: la parte del problema de la épica que le toca a esta HU, con el enlace a la épica.»
+El reporte es hoy un archivo suelto hecho con una plantilla. Sale del [análisis 1 del pendiente 132](../../../../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md), acuerdos 13 y 14, punto 14 de «Lo que se tiene que hacer».
 
 ### 3.1 Reglas de negocio
-> Una regla de negocio son las condiciones que deben cumplirse siempre dentro de la historia de usuario. Define qué es válido y qué no.
-
-> Crear las N que sean necesarias para que la HU quede completa y clara
 
 | ID | Regla |
 |---|---|
-| RN-01 | «Regla que debe cumplirse siempre» |
-| RN-02 | |
+| RN-01 | Un proyecto reporta desde la pantalla o con `manage.py reportar`; el reporte queda abierto, con su historia y sin subir versión (acuerdo 13) |
+| RN-02 | Se marca corregido con la versión del estándar que lo corrigió: la versión sube cuando Cimiento corrige, no cuando llega el reporte (acuerdo 13) |
+| RN-03 | El proyecto que reportó recibe el aviso al abrir su sesión siguiente, una sola vez |
+| RN-04 | Con el estándar en la base, el aviso de versión atrasada compara con la versión de la base, no con `VERSION` (acuerdo 14) |
 
 ### 3.2 Supuestos
-> Son condiciones que la historia de usuario da por ciertas al momento de iniciar, sin necesidad de verificarlas.
-- «Lo que se asume verdadero al iniciar»
+
+- El proyecto que reporta está registrado en Cimiento.
 
 ### 3.3 Fuera de alcance
-> Es lo que la historia de usuario no incluye, aunque alguien podría esperar que sí. Se especifica para evitar que se considere incompleta por no contemplarlo o que alguien lo agregue por su cuenta.
-- «Lo que explícitamente NO incluye esta HU»
+
+- Corregir el estándar: se hace en la pantalla (HU-005).
 
 ---
 
 ## 4. Criterios de aceptación
-> Los criterios de aceptación establecen cómo se determina que la historia de usuario cumple con lo solicitado. Cada criterio describe, en formato Gherkin. Cubra: camino feliz, casos borde, errores y validaciones.
->
-> **Cada CA lleva, debajo de su Gherkin, un apartado `Cómo validarlo`** que describe de forma **clara, detallada y secuencial** cómo verificar el CA. **No asume** que quien valida conoce el sistema, la ubicación de la funcionalidad ni dónde se evidencia el resultado. Los pasos guían al validador **de principio a fin**, indicando cuando corresponda:
-> - **Dónde** ingresar / desde qué módulo, pantalla o funcionalidad iniciar.
-> - **Qué acción** realizar y con qué datos o condiciones.
-> - **Qué resultado** debe observarse después de cada acción.
-> - **Dónde verificar** la evidencia de que el comportamiento esperado se cumplió.
-> - **Qué condición** determina que el CA está aprobado.
->
-> Cada paso es **verificable** y con resultado esperado claro. El CA se aprueba **solo** cuando **todos** sus pasos se ejecutan satisfactoriamente. **Prohibido** lenguaje ambiguo ("verificar que funcione correctamente", "comprobar que se procese", "validar que aparezca") sin indicar exactamente **cómo, dónde y qué** comprobar.
->
-> Crear los N que sean necesarios para que la HU quede completa y clara
 
-### CA-01 · «Nombre del escenario: camino feliz»
+### CA-01 · Reportar
 
-**Sale de:** «análisis N, punto M: el punto de "Lo que se tiene que hacer" del que sale este criterio»
+**Sale de:** análisis 1 del pendiente 132, punto 14 de «Lo que se tiene que hacer»
 
 ```gherkin
-Dado que «precondición»
-Cuando «acción del usuario»
-Entonces «resultado observable»
-Y «efecto secundario verificable»
+Dado un proyecto registrado
+Cuando reporta con manage.py reportar o desde la pantalla
+Entonces el reporte queda abierto en «Estándar» → «Reportes», con su historia
+Y la versión del estándar no cambia
 ```
 
-**Cómo validarlo:**
-1. «Dónde iniciar (módulo / pantalla / URL / menú)»: ...
-2. «Qué acción realizar y con qué datos/condiciones»: ... → resultado esperado: ...
-3. «Dónde verificar la evidencia del resultado»: ...
-- **Aprobado cuando:** «condición concreta y observable».
+**Cómo validarlo:** correr `manage.py test core.estandar` → resultado esperado: el caso pasa.
 
-### CA-02 · «Nombre del escenario: validación / error»
+### CA-02 · Corregir con su versión
 
-**Sale de:** «análisis N, punto M: el punto de "Lo que se tiene que hacer" del que sale este criterio»
+**Sale de:** análisis 1 del pendiente 132, acuerdo 13
 
 ```gherkin
-Dado que «precondición»
-Cuando «acción inválida»
-Entonces «mensaje o comportamiento esperado»
-Y «el estado del sistema no cambia»
+Dado un reporte abierto y una versión del estándar posterior a él
+Cuando el administrador lo marca corregido con esa versión
+Entonces el reporte queda corregido y apunta a esa versión
 ```
 
-**Cómo validarlo:**
-1. «Dónde iniciar (módulo / pantalla / URL / menú)»: ...
-2. «Qué acción inválida realizar y con qué datos»: ... → resultado esperado: «mensaje/comportamiento» ...
-3. «Dónde verificar que el estado NO cambió»: ...
-- **Aprobado cuando:** «condición concreta y observable».
+**Cómo validarlo:** correr `manage.py test core.estandar` → resultado esperado: el caso pasa.
 
-### CA-03 · «Nombre del escenario: caso borde»
+### CA-03 · El proyecto se entera
 
-**Sale de:** «análisis N, punto M: el punto de "Lo que se tiene que hacer" del que sale este criterio»
+**Sale de:** RN-03
 
 ```gherkin
-Dado que «condición límite»
-Cuando «acción»
-Entonces «resultado esperado»
+Dado un reporte corregido y sin avisar
+Cuando el proyecto que lo hizo abre una sesión
+Entonces el arranque dice que su reporte quedó corregido y en qué versión
+Y en la sesión siguiente ya no lo dice
 ```
 
-**Cómo validarlo:**
-1. «Dónde iniciar (módulo / pantalla / URL / menú)»: ...
-2. «Qué acción realizar en la condición límite y con qué datos»: ... → resultado esperado: ...
-3. «Dónde verificar la evidencia del resultado»: ...
-- **Aprobado cuando:** «condición concreta y observable».
+**Cómo validarlo:** correr `manage.py test core.estandar` → resultado esperado: el caso pasa.
 
-### Criterios de aceptación transversales
-> Los criterios transversales son condiciones de calidad que pueden aplicarse a diferentes historias de usuario, independientemente del tema o funcionalidad que trate cada una.
-> Calidad que aplica a casi toda HU (no son de negocio). **Marque los que apliquen** y elimine el resto, una HU de solo lectura no necesita atomicidad de escritura, etc. Se verifican como los CA funcionales.
+### CA-04 · El aviso de versión mira la base
 
-- [ ] Validación: toda entrada obligatoria se valida; un dato inválido se rechaza con mensaje claro y **el estado no cambia** (`04`, `03`).
-- [ ] Límites: vacío, nulo, mínimo, máximo y duplicado tienen comportamiento definido (`08`).
-- [ ] Autorización: solo quien tiene permiso ejecuta la acción; sin permiso se deniega **sin filtrar datos ni su existencia**, y no se elude cambiando parámetros/ruta (`04`).
-- [ ] Errores: un fallo previsto da mensaje accionable **sin exponer detalles internos**; el sistema queda consistente, sin datos a medias (`05`, [`00·N3`](../../../../base/00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)).
-- [ ] Atomicidad: las operaciones que escriben son todo-o-nada (`03`).
-- [ ] Idempotencia: reintentar o doble-enviar **no duplica** efectos ([`03·D6`](../../../../base/03-datos.md#d6--concurrencia-e-idempotencia)).
-- [ ] Privacidad: datos personales/sensibles no se exponen ni se registran en claro; se tratan según `marco-normativo` (`12`, [`00·N4`](../../../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
-- [ ] Auditoría: las acciones relevantes quedan registradas (quién, qué, cuándo) (`05`, `15`).
-- [ ] Rendimiento: responde dentro del umbral acordado con un **volumen realista** (`06`).
-- [ ] No regresión: lo existente sigue funcionando; la suite relacionada queda verde (`08`, [`02·F5`](../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)).
+**Sale de:** acuerdo 14
+
+```gherkin
+Dado el estándar congelado en la versión X de la base
+Cuando un proyecto declara una versión anterior
+Entonces el aviso de versión atrasada dice X, y acepta como existentes las versiones de la base
+```
+
+**Cómo validarlo:** correr `manage.py test core.estandar` → resultado esperado: el caso pasa.
 
 ---
 
 ## 5. Requisitos no funcionales
-> Los requisitos no funcionales no definen qué hace la HU, sino cómo debe quedar lo que se entrega, estableciendo las condiciones de calidad que debe cumplir.
-
-> **Cada requisito lleva su identificador `RNF-0N`**, igual que los criterios de aceptación. Sin número no se puede citar desde el plan ni desde las pruebas, y termina verificándose "de vista".
 
 | ID | Categoría | Requisito |
 |---|---|---|
-| RNF-01 | **Rendimiento** | «p. ej. respuesta < 2 s con 500 registros» |
-| RNF-02 | **Seguridad** | «autenticación, autorización, roles con acceso» |
-| RNF-03 | **Auditoría** | «eventos a registrar en bitácora» |
-| RNF-04 | **Accesibilidad** | «nivel WCAG aplicable» |
-| RNF-05 | **Compatibilidad** | «navegadores, dispositivos, versiones» |
-| RNF-06 | **Trazabilidad** | «norma o requisito legal asociado» |
+| RNF-01 | **Trazabilidad** | El reporte guarda quién lo hizo, quién lo resolvió y con qué versión |
 
 ---
 
 ## 6. Diseño y referencias
-> Diseño y referencias reúne los documentos y referencias que deben consultarse para construir la HU.
-- **Mockup / Prototipo:** «enlace»
-- **Documento funcional:** «enlace»
-- **Contrato de API:** «endpoint, método, request/response»
-- **Modelo de datos afectado:** «tablas o entidades»
+
+| Qué | Dónde |
+|---|---|
+| Documento funcional | [Análisis 1 del pendiente 132](../../../../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md) |
+| Modelo de datos afectado | Tabla nueva `estandar_reporte` |
 
 ---
 
 ## 7. Tareas técnicas derivadas
-> Las tareas técnicas son las actividades concretas que deben realizarse para cumplir con la HU.
 
-- [ ] «Backend» ...
-- [ ] «Frontend» ...
-- [ ] «Base de datos» ...
-- [ ] «Pruebas» ...
-- [ ] «Documentación» ...
+- [ ] Modelo, pantalla y orden `reportar`.
+- [ ] Aviso al proyecto al corregir.
+- [ ] El aviso de versión mira la base.
 
 ---
 
 ## 8. Fases que la implementan
-> **Fases que la implementan** relaciona la HU con las fases del trabajo necesarias para construirla.
-
-> **Trazabilidad hacia abajo.** Se completa **a medida** que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe **en los dos lados**: la fase declara qué CA cubre (`plan_trabajo` §0) y aquí se nombra la fase con sus documentos. Una fase pertenece a **una sola** HU (`02·F12.1`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| `A-EP-000-HU-008-«slug»` | CA-01, CA-02 | (vacío) | «enlace» | «enlace» | «enlace · cuando se ejecute» | Sin empezar / En curso / Cerrada |
-| `B-EP-000-HU-008-«slug»` | CA-03 | CA-01 | «enlace» | «enlace» | «enlace» | Sin empezar |
-
-**La columna «Depende de» se llena solo cuando hay dependencia**, y se llena con **criterios, no con fases**: un CA que no se puede comprobar mientras otro no esté cumplido. Una historia con criterios independientes la deja vacía y no paga nada por tenerla. Sirve para no ordenar las fases al revés y descubrirlo al probar.
-
-**Qué documento responde qué**, para no buscar en el que no es:
-
-| Pregunta | Documento |
-|---|---|
-| Qué se pide y cuándo se da por aceptado | Esta HU |
-| Qué se va a hacer, en qué orden y sobre qué archivos | `plan_trabajo.md` de la fase |
-| Con qué casos se comprueba cada CA | `plan_pruebas.md` de la fase |
-| Qué se ejecutó, con qué resultado, y si el CA quedó cumplido | `resultado_pruebas.md` de la fase |
-| En qué estación va y qué la tiene detenida | `estado-fase.md` de la fase |
-| Qué quedó hecho al final | `funcionalidad_implementada.md` de la fase |
+| `A-EP-026-HU-008-los-reportes` |  | (vacío) | [plan_trabajo.md](A-EP-026-HU-008-los-reportes/plan_trabajo.md) | [plan_pruebas.md](A-EP-026-HU-008-los-reportes/plan_pruebas.md) | [resultado_pruebas.md](A-EP-026-HU-008-los-reportes/resultado_pruebas.md) | Terminada |
 
 ---
 
 ## 9. Dependencias y riesgos
-> **Dependencias y riesgo** identifica dos aspectos:
-> - Dependencia: aquello que debe existir previamente para poder construir la HU, como otra HU, un servicio o una funcionalidad.
-> - Riesgo: aquello que podría afectar la construcción o el funcionamiento de la HU, junto con su mitigación, es decir, las acciones previstas para reducir o evitar ese riesgo.
 
 | Tipo | Descripción | Impacto |
 |---|---|---|
-| Dependencia | «HU o servicio previo requerido» | Alto / Medio / Bajo |
-| Riesgo | «Riesgo identificado» | «Mitigación» |
+| Dependencia | HU-002, HU-005 y HU-006 | Terminadas |
 
 ---
 
 ## 10. Precondiciones  (Definition of Ready - DoR)
-> La **Definition of Ready (DoR)** es la lista de condiciones que debe cumplir una HU para estar **lista para iniciar su construcción**. Si alguna de estas condiciones no se cumple, la historia todavía no está lista para pasar a su fase de implementación.
 
-- [ ] Narrativa clara con rol, acción y beneficio
-- [ ] Criterios de aceptación definidos y testeables
-- [ ] Reglas de negocio documentadas
-- [ ] Diseño / mockup disponible
-- [ ] Dependencias identificadas y desbloqueadas
-- [ ] Estimada por el equipo
-- [ ] Cumple criterios INVEST
+- [x] Narrativa clara con rol, acción y beneficio
+- [x] Criterios de aceptación definidos y testeables
+- [x] Reglas de negocio documentadas
+- [x] Dependencias identificadas y desbloqueadas
+- [x] Cumple criterios INVEST
 
 ## 11. Poscondiciones (Definition of Done - DoD)
-> La **Definition of Done (DoD)** es la lista de condiciones que deben cumplirse para dar una HU por **terminada**. La **DoR** establece cuándo la historia está lista para comenzar, mientras que la **DoD** establece cuándo puede considerarse finalizada. Mientras exista alguna condición pendiente, la HU no debe cerrarse.
-- [ ] Código implementado y en rama principal
-- [ ] Pruebas unitarias e integración pasando
-- [ ] Code review aprobado
+
 - [ ] Todos los criterios de aceptación verificados
-- [ ] Requisitos no funcionales validados
-- [ ] Documentación técnica y de usuario actualizada
-- [ ] Desplegada en ambiente de pruebas
-- [ ] Aceptada por el Product Owner
+- [ ] Documentación actualizada
 
 ---
 
 ## 12. Validación INVEST
-> **INVEST** es un criterio de seis condiciones que permite evaluar si una HU está correctamente planteada y dividida.
 
 | Criterio | ✅ | Observación |
 |---|:--:|---|
-| **I**ndependiente | ☐ | |
-| **N**egociable | ☐ | |
-| **V**aliosa | ☐ | |
-| **E**stimable | ☐ | |
-| **S**mall (pequeña) | ☐ | |
-| **T**esteable | ☐ | |
+| **I**ndependiente | Sí | |
+| **N**egociable | Sí | |
+| **V**aliosa | Sí | Lo que un proyecto encuentra se corrige para todos |
+| **E**stimable | Sí | |
+| **S**mall (pequeña) | Sí | |
+| **T**esteable | Sí | Pruebas de Django |
 
 ---
 
 ## 13. Bitácora
-> La **bitácora** es el registro de los cambios realizados a la **HU**. Cada fila indica la fecha, quién realizó el cambio y qué se modificó, permitiendo conocer cómo llegó la historia a su versión actual sin necesidad de revisar el historial de **Git**.
 
 | Fecha | Autor | Cambio |
 |---|---|---|
-| AAAA-MM-DD | «Nombre» | Creación de la HU |
+| 2026-10-06 | El agente | Creación de la HU, desde el análisis 1 del pendiente 132 |

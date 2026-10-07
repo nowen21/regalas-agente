@@ -33,6 +33,25 @@ AJUSTES = {
         "Tokens que puede ocupar un archivo leído antes de avisar."),
 }
 
+# `EP-026·HU-009` · Los capítulos opt-in se prenden por proyecto, como un ajuste
+# más (análisis 1 del pendiente 132, acuerdo 10). De fábrica, apagados: un patrón
+# opt-in se enciende cuando el proyecto lo necesita, no antes.
+SI, NO = "sí", "no"
+CAPITULOS_OPT_IN = {
+    "15": "registros inmutables", "16": "cumplimiento normativo", "17": "interfaz / UI",
+    "18": "despliegue e infraestructura", "19": "observabilidad y operación",
+    "21": "automatización de procesos", "22": "sistemas que aprenden de datos"}
+
+
+def clave_opt_in(capitulo):
+    return "opt_in_%s" % capitulo
+
+
+for _capitulo, _tema in CAPITULOS_OPT_IN.items():
+    AJUSTES[clave_opt_in(_capitulo)] = Ajuste(
+        "Patrón opt-in %s (%s)" % (_capitulo, _tema), (SI, NO), NO,
+        "Si las reglas del capítulo %s rigen en el proyecto." % _capitulo)
+
 # Lo que se suspende como «el freno»: los dos enganches que detienen acciones.
 FRENO = "freno"
 ENGANCHES_DEL_FRENO = ("hook_antes.py", "hook_despues.py")

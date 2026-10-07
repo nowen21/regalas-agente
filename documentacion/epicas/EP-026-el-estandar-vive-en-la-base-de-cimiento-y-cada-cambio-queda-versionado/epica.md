@@ -16,7 +16,7 @@
 | **Horizonte** | N/A |
 | **Product Owner** | Ing. José Dúmar Jiménez Ruíz |
 | **Tech Lead / Arquitecto** | N/A |
-| **Estado** | En curso |
+| **Estado** | Terminada |
 
 ## 2. Resumen ejecutivo
 
@@ -131,10 +131,10 @@ Ninguno.
 | [HU-003](HU-003-el-estandar-55-1-0-entra-a-la-base/HU-003-el-estandar-55-1-0-entra-a-la-base.md) | El estándar 55.1.0 entra a la base | Must | N/A | N/A | Terminada |
 | [HU-004](HU-004-los-enganches-leen-el-estandar-de-la-base/HU-004-los-enganches-leen-el-estandar-de-la-base.md) | Los enganches leen el estándar de la base | Must | N/A | N/A | Terminada |
 | [HU-005](HU-005-el-estandar-se-administra-y-se-autoriza-desde-la-pantalla/HU-005-el-estandar-se-administra-y-se-autoriza-desde-la-pantalla.md) | El estándar se administra y se autoriza desde la pantalla | Must | N/A | N/A | Terminada |
-| [HU-006](HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0/HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0.md) | Los archivos de `base/` quedan quietos en la versión 55.1.0 | Must | N/A | N/A | Propuesta |
-| [HU-007](HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento/HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento.md) | Un botón de la pantalla guarda en git lo que cambió en Cimiento | Must | N/A | N/A | Propuesta |
-| [HU-008](HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente/HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente.md) | Lo que un proyecto reporta llega al estándar como pendiente | Should | N/A | N/A | Propuesta |
-| [HU-009](HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in/HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in.md) | La pantalla muestra qué reglas llegarían con un mensaje y prende los capítulos opt-in | Should | N/A | N/A | Propuesta |
+| [HU-006](HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0/HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0.md) | Los archivos de `base/` quedan quietos en la versión 55.1.0 | Must | N/A | N/A | Terminada |
+| [HU-007](HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento/HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento.md) | Un botón de la pantalla guarda en git lo que cambió en Cimiento | Must | N/A | N/A | Terminada |
+| [HU-008](HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente/HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente.md) | Lo que un proyecto reporta llega al estándar como pendiente | Should | N/A | N/A | Terminada |
+| [HU-009](HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in/HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in.md) | La pantalla muestra qué reglas llegarían con un mensaje y prende los capítulos opt-in | Should | N/A | N/A | Terminada |
 | [HU-010](HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente/HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente.md) | La base se copia sola en una carpeta hermana de `agente` | Must | N/A | N/A | Terminada |
 
 ## 10. Consideraciones técnicas
@@ -178,7 +178,7 @@ N/A.
 
 | ID | Dependencia | Tipo | Responsable | Fecha requerida | Estado |
 |---|---|---|---|---|---|
-| DEP-01 | EP-001·HU-041: las reglas reconocen la base como fuente del estándar | Interna | Agente | Antes de HU-003 | Bloqueante |
+| DEP-01 | EP-001·HU-041: las reglas reconocen la base como fuente del estándar | Interna | Agente | Antes de HU-003 | Resuelta |
 
 ## 13. Riesgos
 
@@ -199,17 +199,17 @@ N/A.
 
 | Orden | HU | Depende de | Por qué en ese orden | Estado |
 |---|---|---|---|---|
-| 1 | EP-001·HU-041 | Ninguna | La regla tiene que permitirlo antes de construir lo que la usa | Propuesta |
+| 1 | EP-001·HU-041 | Ninguna | La regla tiene que permitirlo antes de construir lo que la usa | Terminada |
 | 2 | HU-001 | Ninguna | Es el registro que usan todas las demás | Terminada |
 | 3 | HU-002 | HU-001 | La versión sube con cada cambio registrado | Terminada |
 | 4 | HU-010 | HU-001 | Protege la historia apenas empieza a guardarse | Terminada |
 | 5 | HU-003 | EP-001·HU-041, HU-002 | Sin el estándar en la base no hay qué administrar ni qué leer | Terminada |
 | 6 | HU-004 | HU-003 | Necesita el estándar en la base | Terminada |
 | 7 | HU-005 | HU-003 | Necesita el estándar en la base y el registro | Terminada |
-| 8 | HU-006 | HU-003 | Se congelan cuando el estándar ya está en la base | Propuesta |
-| 9 | HU-007 | HU-005 | Se aprueba desde la pantalla | Propuesta |
-| 10 | HU-008 | HU-002, HU-005 | Necesita las dos versiones y la pantalla | Propuesta |
-| 11 | HU-009 | HU-004 | Usa la lectura desde la base | Propuesta |
+| 8 | HU-006 | HU-003 | Se congelan cuando el estándar ya está en la base | Terminada |
+| 9 | HU-007 | HU-005 | Se aprueba desde la pantalla | Terminada |
+| 10 | HU-008 | HU-002, HU-005 | Necesita las dos versiones y la pantalla | Terminada |
+| 11 | HU-009 | HU-004 | Usa la lectura desde la base | Terminada |
 
 ## 16. Estrategia de entrega
 
@@ -248,3 +248,4 @@ N/A.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-10-06 | Agente | Creación de la épica desde el análisis aprobado |
+| 2026-10-06 | Agente | Terminadas las diez HU y la EP-001·HU-041: la épica queda terminada |

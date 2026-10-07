@@ -6,6 +6,9 @@
 <p class="text-secondary">El estándar va en la <strong>{{ version }}</strong> y vive en esta base: se cambia aquí y cada cambio queda en la historia.
   <a href="{% url 'estandar:propuestas' %}">Propuestas</a>{% if pendientes %} <span class="badge bg-yellow-lt">{{ pendientes }} por aprobar</span>{% endif %}
   · <a href="{% url 'historia:versiones' %}?proyecto=estandar">Versiones</a>
+  · <a href="{% url 'estandar:git' %}">Subir a git</a>
+  · <a href="{% url 'estandar:reportes' %}">Reportes</a>
+  · <a href="{% url 'estandar:vista_previa' %}">Vista previa</a>
   {% if puede_cambiar %} · <a href="{% url 'estandar:nuevo' %}">Documento nuevo</a>{% endif %}</p>
 <form method="get" class="d-flex gap-2 mb-3">
   <input class="form-control form-control-sm w-auto" name="q" value="{{ buscar }}" placeholder="Buscar en el estándar">

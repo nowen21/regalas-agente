@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ `validar.py fases` sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ El freno detuvo un intento fuera de plan; quedó en el resultado |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y bitácora |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `8ec2ebf` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 **La fase arranca con el cambio ya subido.** El anexo, el sello de `C28`, el registro y la versión quedaron en el commit `634b28a`, antes de que la fase existiera. Lo que le falta a esta fase son las pruebas y los índices, no el cambio. El plan de trabajo lo declara en su ORIGEN.

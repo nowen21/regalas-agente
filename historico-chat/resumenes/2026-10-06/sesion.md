@@ -74,6 +74,30 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 | Por qué importa | El plan tiene que nombrar todo archivo antes de escribirlo |
 | Pendiente | No hace falta: se sumó al plan de la fase, dentro del alcance de la HU-005, y la orden se volvió a correr |
 
+### H-9 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-06 20:14, el freno detuvo una orden de consola sobre una orden: corre en segundo plano y deja su salida fuera del proyecto (04·S9). El agente quiso correr la regresión de la HU-006 en segundo plano, primero con la salida a la carpeta temporal y después sin ella |
+| Por qué importa | En segundo plano la herramienta guarda la salida fuera del proyecto |
+| Pendiente | No hace falta: la regresión se corrió en primer plano |
+
+### H-10 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-06 20:14, el freno detuvo la segunda forma de la misma orden de H-9 |
+| Por qué importa | El mismo de H-9 |
+| Pendiente | No hace falta: lo resuelve lo mismo que H-9 |
+
+### H-11 · Pasar los opt-in a la base apagaba los capítulos que el `CLAUDE.md` no nombra
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al migrar la base real en la HU-009, el estándar mismo quedó con los siete capítulos opt-in apagados: su `CLAUDE.md` no los nombra, y antes eso significaba que regían |
+| Por qué importa | El día del paso habrían dejado de llegar reglas sin que nadie lo decidiera |
+| Pendiente | No hace falta: se corrigió en la misma fase. Lo que el `CLAUDE.md` no nombra pasa en «sí» (señal S-343) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

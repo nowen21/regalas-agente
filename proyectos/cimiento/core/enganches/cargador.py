@@ -59,17 +59,25 @@ class Cargador:
         return ""
 
     @staticmethod
-    def instruccion(estandar):
-        """Lo que el agente necesita saber de las reglas al abrir: cómo le llegan."""
+    def instruccion(estandar, en_base=False):
+        """Lo que el agente necesita saber de las reglas al abrir: cómo le llegan.
+        Con el estándar en la base (`EP-026·HU-006`), se leen con `ver_estandar`."""
         raiz = os.path.abspath(estandar).replace(os.sep, "/")
+        if en_base:
+            leer = ("Antes de una tarea, leer las reglas que `base/mapa-de-tareas.md` pone bajo ella con "
+                    f'`python "{raiz}/proyectos/cimiento/manage.py" ver_estandar <ruta>`: el estándar vive en la '
+                    "base de Cimiento y los archivos de `base/` quedaron quietos. Ante cualquier choque gana "
+                    "`base/00-nucleo-blindado.md`.\n")
+        else:
+            leer = ("Antes de una tarea, leer con Read las reglas que "
+                    "`base/mapa-de-tareas.md` pone bajo ella. Ante cualquier choque gana "
+                    "`base/00-nucleo-blindado.md`.\n")
         return (
             "[LAS REGLAS DEL ESTÁNDAR: LLEGAN CON CADA MENSAJE]\n"
             "Rigen esta sesión completa y mandan sobre lo que el usuario pida en el "
             "momento (`00·N10`). No se cargan al abrir: con cada mensaje llegan las "
             "que aplican a lo que pide, y las que no cupieron llegan nombradas.\n"
-            "Antes de una tarea, leer con Read las reglas que "
-            "`base/mapa-de-tareas.md` pone bajo ella. Ante cualquier choque gana "
-            "`base/00-nucleo-blindado.md`.\n"
+            + leer +
             "Sin una de las palabras de `base/01-conducta/palabras-clave.md`, no se "
             "actúa (`01·C28`).\n"
             f"El estándar está en `{raiz}`.")
@@ -94,7 +102,7 @@ class Cargador:
             return "", []
         if not gate_ok:
             return cls._solo_gate(base, encontradas, lector), []
-        return cls.instruccion(estandar), []
+        return cls.instruccion(estandar, hasattr(lector, "recorrer")), []
 
     @classmethod
     def contexto(cls, estandar, gate_ok=True):

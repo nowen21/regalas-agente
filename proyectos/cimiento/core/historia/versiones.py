@@ -44,7 +44,9 @@ def tipo_de(obliga, agrega):
 
 
 # `EP-026·HU-005` · Una propuesta tiene historia, pero no cambia nada hasta aprobarse.
-SIN_VERSION = {"estandar.propuesta"}
+SIN_VERSION = {"estandar.propuesta",
+               # `EP-026·HU-008` · El reporte no sube versión: la sube la corrección.
+               "estandar.reporte"}
 
 
 def ambito_de(tabla, fila, datos):

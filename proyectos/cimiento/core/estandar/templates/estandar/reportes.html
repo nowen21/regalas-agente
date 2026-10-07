@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block titulo %}Reportes{% endblock %}
+{% block cabecera %}Reportes de los proyectos{% endblock %}
+{% block contenido %}
+{% include "estandar/_mensajes.html" %}
+<p class="text-secondary">Lo que los proyectos encuentran mal en el estándar. La versión sube cuando se corrige, no cuando llega el reporte. <a href="{% url 'estandar:lista' %}">Volver al estándar</a></p>
+{% for r in abiertos %}
+<div class="card mb-3">
+  <div class="card-header"><h3 class="card-title">#{{ r.pk }} · {{ r.titulo }}</h3>
+    <span class="ms-auto text-secondary">{{ r.proyecto }}{% if r.regla %} · {{ r.regla }}{% endif %} · {{ r.fecha|date:"Y-m-d H:i" }}</span></div>
+  <div class="card-body"><p style="white-space: pre-wrap">{{ r.texto }}</p></div>
+  {% if puede_cambiar %}
+  <div class="card-footer">
+    <form method="post" action="{% url 'estandar:resolver_reporte' r.pk %}" class="d-flex gap-2 mb-2">
+      {% csrf_token %}
+      <select class="form-select form-select-sm w-auto" name="version" required>
+        {% for v in versiones %}<option value="{{ v.pk }}">{{ v.numero }} · {{ v.resumen|truncatechars:60 }}</option>{% endfor %}
+      </select>
+      <button class="btn btn-sm btn-primary" type="submit">Corregido en esta versión</button>
+    </form>
+    <form method="post" action="{% url 'estandar:resolver_reporte' r.pk %}" class="d-flex gap-2">
+      {% csrf_token %}
+      <input class="form-control form-control-sm" name="motivo" placeholder="Por qué se descarta" required>
+      <button class="btn btn-sm btn-outline-secondary" type="submit" name="descartar" value="1">Descartar</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+{% empty %}
+<p class="text-secondary">No hay reportes abiertos.</p>
+{% endfor %}
+{% if puede_cambiar %}
+<form method="post" class="card mb-3">
+  {% csrf_token %}
+  <div class="card-header"><h3 class="card-title">Reporte nuevo</h3></div>
+  <div class="card-body">
+    <label class="form-label" for="proyecto">Proyecto</label>
+    <select class="form-select mb-2" id="proyecto" name="proyecto" required>{% for p in proyectos %}<option value="{{ p.pk }}">{{ p.nombre }}</option>{% endfor %}</select>
+    <label class="form-label" for="titulo">Qué pasa</label>
+    <input class="form-control mb-2" id="titulo" name="titulo" required>
+    <label class="form-label" for="regla">La regla que toca, si hay una</label>
+    <input class="form-control mb-2" id="regla" name="regla" placeholder="02·F8">
+    <label class="form-label" for="texto">Detalle</label>
+    <textarea class="form-control" id="texto" name="texto" rows="4"></textarea>
+  </div>
+  <div class="card-footer"><button class="btn btn-primary" type="submit">Reportar</button></div>
+</form>
+{% endif %}
+{% if resueltos %}
+<h3 class="mt-4">Resueltos</h3>
+<div class="card"><table class="table card-table">
+  <thead><tr><th>#</th><th>Proyecto</th><th>Qué</th><th>Cómo quedó</th><th>Quién</th><th>Avisado</th></tr></thead>
+  <tbody>{% for r in resueltos %}<tr><td>{{ r.pk }}</td><td>{{ r.proyecto }}</td><td>{{ r.titulo }}</td>
+    <td>{% if r.corregido_en %}Corregido en la {{ r.corregido_en.numero }}{% else %}Descartado: {{ r.motivo }}{% endif %}</td>
+    <td>{{ r.resuelto_por.get_username|default:"" }}</td><td>{% if r.avisado %}Sí{% else %}No{% endif %}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endblock %}

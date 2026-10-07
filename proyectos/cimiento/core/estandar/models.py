@@ -73,3 +73,36 @@ class Propuesta(models.Model):
 
     def __str__(self):
         return "%s %s %s" % (self.get_estado_display(), self.accion, self.destino())
+
+
+ABIERTO, CORREGIDO, DESCARTADO = "abierto", "corregido", "descartado"
+ESTADOS_DEL_REPORTE = [(ABIERTO, "Abierto"), (CORREGIDO, "Corregido"), (DESCARTADO, "Descartado")]
+
+
+class Reporte(models.Model):
+    """`EP-026·HU-008` · Lo que un proyecto encuentra mal en el estándar.
+
+    No sube versión al llegar: la sube la corrección, y el reporte apunta a la
+    versión que lo corrigió (análisis 1 del pendiente 132, acuerdo 13).
+    """
+
+    proyecto = models.ForeignKey("proyectos.Proyecto", on_delete=models.PROTECT, related_name="reportes")
+    titulo = models.CharField(max_length=200)
+    texto = models.TextField(blank=True, default="")
+    regla = models.CharField(max_length=20, blank=True, default="", help_text="la regla que toca, como 02·F8")
+    quien = models.CharField(max_length=100)
+    fecha = models.DateTimeField(auto_now_add=True)
+    estado = models.CharField(max_length=10, choices=ESTADOS_DEL_REPORTE, default=ABIERTO)
+    corregido_en = models.ForeignKey("historia.Version", null=True, blank=True, on_delete=models.PROTECT,
+                                     related_name="reportes_corregidos")
+    motivo = models.TextField(blank=True, default="", help_text="por qué se descartó")
+    resuelto_por = models.ForeignKey("auth.User", null=True, blank=True, on_delete=models.SET_NULL,
+                                     related_name="reportes_resueltos")
+    resuelto = models.DateTimeField(null=True, blank=True)
+    avisado = models.BooleanField(default=False, help_text="el proyecto ya se enteró de cómo quedó")
+
+    class Meta:
+        ordering = ["-fecha", "-id"]
+
+    def __str__(self):
+        return "%s · %s" % (self.proyecto, self.titulo)

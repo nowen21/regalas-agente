@@ -52,6 +52,19 @@ def _leer(ruta):
         return ""
 
 
+def _de_la_base(estandar):
+    """`EP-026·HU-008` · Las versiones del estándar en la base si está congelado; si no, o sin base, []."""
+    from ..enganches.niveles import BaseSinRespuesta
+    from ..estandar import congelado
+
+    if not estandar or not congelado.congelada(estandar):
+        return []
+    try:
+        return congelado.versiones_en_la_base(estandar)
+    except BaseSinRespuesta:
+        return []
+
+
 def _tupla(v):
     return tuple(int(x) for x in v.split("."))
 
@@ -71,8 +84,13 @@ class VersionDelEstandar(Validador):
 
     @staticmethod
     def vigente(estandar=None):
-        """La versión del estándar (primer renglón de `VERSION`), o None."""
-        cabeza = _leer(os.path.join(estandar or Proyecto.estandar(), "VERSION")).strip().splitlines()
+        """La versión del estándar (primer renglón de `VERSION`), o None. Con el
+        estándar congelado (`EP-026·HU-008`), la última de la base."""
+        estandar = estandar or Proyecto.estandar()
+        en_base = _de_la_base(estandar)
+        if en_base:
+            return en_base[0]
+        cabeza = _leer(os.path.join(estandar, "VERSION")).strip().splitlines()
         return cabeza[0].strip() if cabeza else None
 
     def version_estandar(self):
@@ -85,9 +103,11 @@ class VersionDelEstandar(Validador):
         sino si el número que un proyecto declara existió alguna vez.
         """
         ruta = os.path.join(self.estandar, "CHANGELOG.md")
+        # `EP-026·HU-008` · Con el estándar congelado, también las de la base.
+        en_base = set(_de_la_base(self.estandar))
         if not os.path.isfile(ruta):
-            return set()
-        return set(_ENTRADA_DEL_REGISTRO.findall(_leer(ruta)))
+            return en_base
+        return set(_ENTRADA_DEL_REGISTRO.findall(_leer(ruta))) | en_base
 
     def derogaciones(self, base=None):
         """Las reglas derogadas: `[(versión, regla, reemplazo)]`.

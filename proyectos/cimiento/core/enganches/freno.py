@@ -165,6 +165,11 @@ class Freno:
             return "queda fuera del proyecto (04·S9)"
         if rel == ".git" or rel.startswith(".git/"):
             return None             # lo de git lo escribe git
+        # `EP-026·HU-006` · Con el estándar congelado, `base/`, `VERSION` y
+        # `CHANGELOG.md` no se escriben: el estándar se cambia en la base.
+        from ..estandar import congelado
+        if congelado.quieto(rel) and congelado.congelada(self.raiz):
+            return congelado.MOTIVO
         if Autorizaciones.quien_autoriza(rel, lo_permitido["reglas"]) or rel in lo_permitido["de_una"]:
             return None
         if lo_permitido.get("corrija") and rel.startswith(HERRAMIENTAS):

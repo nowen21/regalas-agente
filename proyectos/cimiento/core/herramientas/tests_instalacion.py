@@ -366,7 +366,11 @@ class NumeroDeVersion(unittest.TestCase):
     def test_el_numero_tiene_tres_partes_y_sale_de_version(self):
         crudo = leer(os.path.join(ESTANDAR, "VERSION")).strip()
         self.assertRegex(crudo, r"^\d+\.\d+\.\d+$")
-        self.assertEqual(VersionDelEstandar.vigente(ESTANDAR), crudo)
+        vigente = VersionDelEstandar.vigente(ESTANDAR)
+        self.assertRegex(vigente, r"^\d+\.\d+\.\d+$")
+        # `EP-026·HU-008` · Con el estándar congelado, la vigente sale de la base y
+        # `VERSION` quedó quieta: nunca por encima de la vigente.
+        self.assertGreaterEqual(tuple(int(p) for p in vigente.split(".")), tuple(int(p) for p in crudo.split(".")))
 
     def test_la_version_del_archivo_es_la_ultima_del_registro(self):
         crudo = leer(os.path.join(ESTANDAR, "VERSION")).strip()
@@ -1915,7 +1919,8 @@ class NoPisarLoEscrito(ProyectoConGit):
         donde = os.path.join(raiz, "documentacion", "versiones")
         registros = [n for n in os.listdir(donde) if n != "README.md"]
         self.assertTrue(registros)
-        self.assertIn(leer(os.path.join(ESTANDAR, "VERSION")).strip(), leer(os.path.join(donde, registros[0])))
+        # `EP-026·HU-008` · La vigente: la de la base si el estándar está congelado.
+        self.assertIn(VersionDelEstandar.vigente(ESTANDAR), leer(os.path.join(donde, registros[0])))
 
 
 # ── preparar Cimiento (EP-025·HU-001) ────────────────────────────────────

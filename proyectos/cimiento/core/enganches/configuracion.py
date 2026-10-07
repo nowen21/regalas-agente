@@ -25,6 +25,9 @@ class ConfiguracionDelProyecto(NivelesDelProyecto):
     def __init__(self, raiz, estandar=None, ajustes=None):
         super().__init__(raiz, estandar, ajustes)
         self._efectivos = None
+        # `EP-026·HU-009` · Si la base respondió y conoce el proyecto: sin eso, lo
+        # que vale es de fábrica y quien lo lea puede preferir otra fuente.
+        self.registrado = False
 
     def efectivos(self):
         """`{clave: (valor, capa)}`."""
@@ -34,6 +37,7 @@ class ConfiguracionDelProyecto(NivelesDelProyecto):
                                                                   (_DEL_PROYECTO, None))
             except BaseSinRespuesta:
                 registrado, base, propios = (), (), ()
+            self.registrado = bool(registrado)
             self._efectivos = catalogo.efectivos(dict(base), dict(propios)) if registrado \
                 else catalogo.efectivos()
         return self._efectivos
