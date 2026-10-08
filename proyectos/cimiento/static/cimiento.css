@@ -1,0 +1,13 @@
+/* EP-028·HU-007 · Lo poco que ni Bootstrap 5 ni AdminLTE 4 traen. Lo demás es de la plantilla. */
+
+/* El campo obligatorio lleva su asterisco junto a la etiqueta (guía de diseño de pantallas §5). */
+.form-label.required::after { content: " *"; color: var(--bs-danger); }
+
+/* El botón de ordenar de las tablas (List.js, `static/tablas.js`): se ve como el título de la columna. */
+.table-sort { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; white-space: nowrap; }
+.table-sort::after { content: " \F127"; font-family: "bootstrap-icons"; font-size: .7em; opacity: .4; }
+.table-sort.asc::after { content: " \F235"; opacity: 1; }
+.table-sort.desc::after { content: " \F229"; opacity: 1; }
+
+/* La columna que solo ocupa lo que necesita. */
+.w-1 { width: 1%; white-space: nowrap; }

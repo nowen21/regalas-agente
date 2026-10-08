@@ -5,7 +5,10 @@ Toda cuenta mira; solo el grupo administrador cambia, quita o aprueba (RNF-01).
 Cada envío que cambia algo trae las dos preguntas: el middleware fija con ellas
 el tipo de la versión, y la historia guarda el cambio (HU-001, HU-002).
 """
+from collections import OrderedDict
+
 from django.contrib import messages
+from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.safestring import mark_safe
 from django.views import View
@@ -15,9 +18,10 @@ from core.historia.models import ESTANDAR
 from core.historia.versiones import actual
 from core.proyectos.models import Proyecto
 
-from . import cambios
-from .models import PENDIENTE, Documento, Propuesta, Recuerdo
-from .presentar import Ficha, Estandar
+from . import cambios, molde
+from .models import PENDIENTE, Documento, Propuesta, Recuerdo, Regla
+from .presentar import Estandar, Ficha, Pagina
+from .reglas import casillas_de
 
 
 def _sin_permiso(peticion):
@@ -39,7 +43,8 @@ class Lista(View):
         return render(peticion, "estandar/lista.html", {
             "capitulos": capitulos, "buscar": buscar, "version": actual(ESTANDAR),
             "pendientes": Propuesta.objects.filter(estado=PENDIENTE).count(),
-            "proyectos": Proyecto.objects.filter(activo=True),
+            "proyectos": Proyecto.objects.filter(activo=True).annotate(
+                cuantas_reglas=Count("reglas", filter=Q(reglas__apartada=False))),
             "puede_cambiar": es_administrador(peticion.user)})
 
 
@@ -294,3 +299,33 @@ class VistaPrevia(View):
         return render(peticion, "estandar/vista_previa.html", {
             "proyectos": proyectos, "proyecto": proyecto, "mensaje": mensaje, "bloque": bloque,
             "opt_in": opt_in})
+
+
+class ReglasDelProyecto(View):
+    """`EP-027·HU-006` · Las reglas propias de un proyecto, desde la tabla. Quien
+    administra las cambia sobre el texto de todas, que pasa a la tabla al guardar."""
+
+    def get(self, peticion, pk):
+        from .reglas import texto_del_proyecto
+
+        proyecto = get_object_or_404(Proyecto, pk=pk)
+        reglas = Regla.objects.filter(proyecto=proyecto, apartada=False).order_by("orden", "pk")
+        pagina = Pagina(Estandar([]), "")
+        grupos = OrderedDict()
+        for regla in reglas:
+            grupos.setdefault(regla.grupo, []).append(
+                {"regla": regla, "html": mark_safe(pagina.armar(molde.armar(casillas_de(regla)), saltar_titulo=True))})
+        return render(peticion, "estandar/reglas_del_proyecto.html", {
+            "proyecto": proyecto, "grupos": grupos, "texto": texto_del_proyecto(proyecto),
+            "version": actual("proyecto", proyecto.pk), "puede_cambiar": es_administrador(peticion.user)})
+
+    def post(self, peticion, pk):
+        from .reglas import guardar_reglas_del_proyecto
+
+        if not es_administrador(peticion.user):
+            return _sin_permiso(peticion)
+        proyecto = get_object_or_404(Proyecto, pk=pk)
+        reglas = guardar_reglas_del_proyecto(proyecto, peticion.POST.get("contenido", ""))
+        messages.success(peticion, "Reglas guardadas: %d. El proyecto va en la %s." % (
+            len(reglas), actual("proyecto", proyecto.pk)))
+        return redirect("estandar:reglas_del_proyecto", pk=pk)

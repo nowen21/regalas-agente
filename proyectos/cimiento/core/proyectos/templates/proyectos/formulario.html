@@ -27,14 +27,14 @@
         {% endfor %}
       </select>
       {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
-      {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
+      {% if campo.help_text %}<div class="form-text">{{ campo.help_text }}</div>{% endif %}
       {% else %}
       <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>{% include "proyectos/_ayuda_del_campo.html" %}</div>
       <input class="form-control{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}"
              name="{{ campo.html_name }}" value="{{ campo.value|default_if_none:'' }}"
              type="{{ campo.field.widget.input_type }}"{% if campo.field.required %} required{% endif %}>
       {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
-      {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
+      {% if campo.help_text %}<div class="form-text">{{ campo.help_text }}</div>{% endif %}
       {% endif %}
     </div>
     {% endfor %}

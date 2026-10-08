@@ -20,6 +20,7 @@ from core.historia.registro import en_version, quien_y_por_que
 from core.proyectos.models import Proyecto
 
 from .models import Documento, Recuerdo
+from .reglas import pasar_y_armar, soltar_reglas
 
 BASE = "base"
 MEMORIA = os.path.join("historico-chat", "memory")
@@ -89,7 +90,7 @@ def sincronizar(raiz=None, tipo=None, motivo=""):
     motivo = motivo or "La base toma lo guardado en git de base/ (EP-026·HU-004)"
     with transaction.atomic(), quien_y_por_que(quien="sincronizar_estandar", motivo=motivo, tipo=tipo):
         for ruta in nuevos:
-            Documento.objects.create(ruta=ruta, contenido=en_git[ruta])
+            pasar_y_armar(Documento.objects.create(ruta=ruta, contenido=en_git[ruta]))
         for ruta in cambiados:
             documento = en_base[ruta]
             texto = en_git[ruta]
@@ -97,7 +98,9 @@ def sincronizar(raiz=None, tipo=None, motivo=""):
                 texto = texto.replace("\n", "\r\n")
             documento.contenido = texto
             documento.save()
+            pasar_y_armar(documento)
         for ruta in quitados:
+            soltar_reglas(en_base[ruta])
             en_base[ruta].delete()
     from .en_base import olvidar
 

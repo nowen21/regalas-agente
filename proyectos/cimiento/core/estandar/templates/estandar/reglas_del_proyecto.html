@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load ayuda static %}
+{% block titulo %}Reglas de {{ proyecto.nombre }}{% endblock %}
+{% block cabecera %}Reglas de {{ proyecto.nombre }}{% endblock %}
+{% block contenido %}
+<link rel="stylesheet" href="{% static 'estandar.css' %}">
+{% ayuda_pantalla "reglas_del_proyecto" %}
+{% include "estandar/_mensajes.html" %}
+<ol class="breadcrumb mb-3" aria-label="Dónde está">
+  <li class="breadcrumb-item"><a href="{% url 'estandar:lista' %}">Estándar</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Reglas de {{ proyecto.nombre }}</li>
+</ol>
+<p class="text-secondary">Las reglas que solo valen para este proyecto. El agente del proyecto las recibe de aquí. El proyecto va en la <strong>{{ version }}</strong>.</p>
+<div class="card">
+  {% if puede_cambiar %}
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+      <li class="nav-item" role="presentation"><a href="#leer" class="nav-link active" data-bs-toggle="tab" role="tab" aria-selected="true">Leer</a></li>
+      <li class="nav-item" role="presentation"><a href="#cambiar" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Cambiar el texto</a></li>
+    </ul>
+  </div>
+  {% endif %}
+  <div class="tab-content">
+    <div class="tab-pane active show" id="leer" role="tabpanel">
+      {% for grupo, reglas in grupos.items %}
+      {% if grupo %}<div class="card-header"><h3 class="card-title">{{ grupo }}</h3></div>{% endif %}
+      <div class="accordion accordion-flush" id="grupo-{{ forloop.counter }}">
+        {% for r in reglas %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="cab-{{ r.regla.pk }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#regla-{{ r.regla.pk }}" aria-expanded="false" aria-controls="regla-{{ r.regla.pk }}">
+              <span class="badge bg-primary-subtle text-primary-emphasis font-monospace codigo-regla me-2">{{ r.regla.codigo }}</span>{{ r.regla.titulo }}
+            </button>
+          </h2>
+          <div id="regla-{{ r.regla.pk }}" class="accordion-collapse collapse" aria-labelledby="cab-{{ r.regla.pk }}">
+            <div class="accordion-body pagina-estandar">{{ r.html }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% empty %}
+      <div class="text-center py-5">
+        <p class="fs-5 fw-semibold mb-1">Este proyecto no tiene reglas propias</p>
+        <p class="text-secondary mb-0 text-secondary">Rige solo el estándar.{% if puede_cambiar %} Para agregar una, escribirla en «Cambiar el texto».{% endif %}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% if puede_cambiar %}
+    <div class="tab-pane" id="cambiar" role="tabpanel">
+      <form method="post">
+        {% csrf_token %}
+        <div class="card-body">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="contenido">Texto de las reglas</label>{% ayuda_campo "reglas_del_proyecto.texto" %}</div>
+          <textarea class="form-control font-monospace" id="contenido" name="contenido" rows="28">{{ texto }}</textarea>
+        </div>
+        <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" %}</div>
+        <div class="card-footer"><button class="btn btn-primary" type="submit">Guardar cambios</button></div>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

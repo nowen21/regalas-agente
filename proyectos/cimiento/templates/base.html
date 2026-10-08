@@ -4,107 +4,117 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block titulo %}Inicio{% endblock %} - Cimiento</title>
-  <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+  {% comment %}`EP-028·HU-007` · La plantilla de Cimiento es AdminLTE 4, sobre Bootstrap 5, con Bootstrap Icons.{% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'cimiento.css' %}">
   <link rel="stylesheet" href="{% static 'ayuda/ayuda.css' %}">
 </head>
-<body>
-  <div class="page">
-    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <div class="app-wrapper">
+    <nav class="app-header navbar navbar-expand bg-body d-print-none">
       <div class="container-fluid">
-        <h1 class="navbar-brand navbar-brand-autodark">
-          <a href="{% url 'inicio:inicio' %}">Cimiento</a>
-        </h1>
-        <div class="navbar-collapse">
-          <ul class="navbar-nav pt-lg-3">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button" aria-label="Mostrar u ocultar el menú"><i class="bi bi-list" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div class="ms-auto d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-outline-primary btn-sm ayuda-boton" data-bs-toggle="offcanvas"
+            data-bs-target="#ayuda" aria-controls="ayuda"
+            data-ayuda-url="{% url 'ayuda:pantalla' %}?vista={{ request.resolver_match.view_name|urlencode }}"><i class="bi bi-question-circle me-1" aria-hidden="true"></i>Ayuda</button>
+          <form class="d-flex align-items-center gap-2" method="post" action="{% url 'cuentas:salir' %}">
+            {% csrf_token %}
+            <span class="text-secondary"><i class="bi bi-person-circle me-1" aria-hidden="true"></i>{{ user.get_username }}</span>
+            <button class="btn btn-outline-secondary btn-sm" type="submit"><i class="bi bi-box-arrow-right me-1" aria-hidden="true"></i>Salir</button>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </nav>
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+      <div class="sidebar-brand">
+        <a href="{% url 'inicio:inicio' %}" class="brand-link"><i class="bi bi-bricks brand-image fs-4 me-2" aria-hidden="true"></i><span class="brand-text fw-light">Cimiento</span></a>
+      </div>
+      <div class="sidebar-wrapper">
+        <nav class="mt-2" aria-label="Menú de Cimiento">
+          <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" data-accordion="false">
             {% block menu %}
-            {% comment %}`EP-028·HU-003` · El menú se arma por lo que se quiere hacer, con los submenús
-            del navbar de Tabler; marca dónde se está y cuenta lo que espera una decisión (`17·I7`,
-            guía de diseño de pantallas §4).{% endcomment %}
+            {% comment %}`EP-028·HU-003` · El menú se arma por lo que se quiere hacer, con sus submenús;
+            marca dónde se está y cuenta lo que espera una decisión (`17·I7`, guía de diseño de pantallas §4).
+            `EP-028·HU-007` · Es el menú lateral de AdminLTE: cada entrada y cada ítem lleva su ícono.{% endcomment %}
             {% with app=request.resolver_match.app_name vista=request.resolver_match.view_name %}
-            <li class="nav-item{% if vista == 'inicio:inicio' %} active{% endif %}">
-              <a class="nav-link" href="{% url 'inicio:inicio' %}">
-                <span class="nav-link-title">Inicio</span>
-                {% if pendientes.total %}<span class="badge badge-sm bg-red text-red-fg ms-auto" title="Esperan una decisión">{{ pendientes.total }}</span>{% endif %}
+            <li class="nav-item">
+              <a class="nav-link{% if vista == 'inicio:inicio' %} active{% endif %}" href="{% url 'inicio:inicio' %}">
+                <i class="nav-icon bi bi-house" aria-hidden="true"></i>
+                <p>Inicio{% if pendientes.total %} <span class="nav-badge badge text-bg-danger me-3" title="Esperan una decisión">{{ pendientes.total }}</span>{% endif %}</p>
               </a>
             </li>
-            <li class="nav-item dropdown{% if app == 'proyectos' or app == 'niveles' %} active{% endif %}">
-              <a class="nav-link dropdown-toggle{% if app == 'proyectos' or app == 'niveles' %} show{% endif %}" href="#menu-proyectos"
-                 data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                 aria-expanded="{% if app == 'proyectos' or app == 'niveles' %}true{% else %}false{% endif %}">
-                <span class="nav-link-title">Proyectos</span>
+            <li class="nav-item{% if app == 'proyectos' or app == 'niveles' %} menu-open{% endif %}">
+              <a class="nav-link{% if app == 'proyectos' or app == 'niveles' %} active{% endif %}" href="#">
+                <i class="nav-icon bi bi-folder2" aria-hidden="true"></i>
+                <p>Proyectos<i class="nav-arrow bi bi-chevron-right" aria-hidden="true"></i></p>
               </a>
-              <div class="dropdown-menu{% if app == 'proyectos' or app == 'niveles' %} show{% endif %}">
-                <a class="dropdown-item{% if vista == 'proyectos:lista' %} active{% endif %}" href="{% url 'proyectos:lista' %}">Todos los proyectos</a>
-                {% if administra %}<a class="dropdown-item{% if vista == 'proyectos:registrar' %} active{% endif %}" href="{% url 'proyectos:registrar' %}">Registrar un proyecto</a>{% endif %}
-                <a class="dropdown-item{% if vista == 'proyectos:configuracion' %} active{% endif %}" href="{% url 'proyectos:configuracion' %}">Configuración común</a>
-              </div>
+              <ul class="nav nav-treeview">
+                <li class="nav-item"><a class="nav-link{% if vista == 'proyectos:lista' %} active{% endif %}" href="{% url 'proyectos:lista' %}"><i class="nav-icon bi bi-list-ul" aria-hidden="true"></i><p>Todos los proyectos</p></a></li>
+                {% if administra %}<li class="nav-item"><a class="nav-link{% if vista == 'proyectos:registrar' %} active{% endif %}" href="{% url 'proyectos:registrar' %}"><i class="nav-icon bi bi-plus-circle" aria-hidden="true"></i><p>Registrar un proyecto</p></a></li>{% endif %}
+                <li class="nav-item"><a class="nav-link{% if vista == 'proyectos:configuracion' %} active{% endif %}" href="{% url 'proyectos:configuracion' %}"><i class="nav-icon bi bi-gear" aria-hidden="true"></i><p>Configuración común</p></a></li>
+              </ul>
             </li>
-            <li class="nav-item dropdown{% if app == 'estandar' %} active{% endif %}">
-              <a class="nav-link dropdown-toggle{% if app == 'estandar' %} show{% endif %}" href="#menu-estandar"
-                 data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                 aria-expanded="{% if app == 'estandar' %}true{% else %}false{% endif %}">
-                <span class="nav-link-title">Estándar</span>
-                {% if pendientes.total %}<span class="badge badge-sm bg-red text-red-fg ms-auto">{{ pendientes.total }}</span>{% endif %}
+            <li class="nav-item{% if app == 'estandar' %} menu-open{% endif %}">
+              <a class="nav-link{% if app == 'estandar' %} active{% endif %}" href="#">
+                <i class="nav-icon bi bi-journal-bookmark" aria-hidden="true"></i>
+                <p>Estándar{% if pendientes.total %} <span class="nav-badge badge text-bg-danger me-3">{{ pendientes.total }}</span>{% endif %}<i class="nav-arrow bi bi-chevron-right" aria-hidden="true"></i></p>
               </a>
-              <div class="dropdown-menu{% if app == 'estandar' %} show{% endif %}">
-                <a class="dropdown-item{% if vista == 'estandar:lista' or vista == 'estandar:documento' %} active{% endif %}" href="{% url 'estandar:lista' %}">Reglas y documentos</a>
-                <a class="dropdown-item{% if vista == 'estandar:propuestas' %} active{% endif %}" href="{% url 'estandar:propuestas' %}">Propuestas por aprobar
-                  {% if pendientes.propuestas %}<span class="badge badge-sm bg-red text-red-fg ms-auto">{{ pendientes.propuestas }}</span>{% endif %}</a>
-                <a class="dropdown-item{% if vista == 'estandar:reportes' %} active{% endif %}" href="{% url 'estandar:reportes' %}">Reportes de los proyectos
-                  {% if pendientes.reportes %}<span class="badge badge-sm bg-red text-red-fg ms-auto">{{ pendientes.reportes }}</span>{% endif %}</a>
-                <a class="dropdown-item{% if vista == 'estandar:vista_previa' %} active{% endif %}" href="{% url 'estandar:vista_previa' %}">Vista previa de las reglas</a>
-                <a class="dropdown-item{% if vista == 'estandar:git' %} active{% endif %}" href="{% url 'estandar:git' %}">Subir los cambios a git</a>
-              </div>
+              <ul class="nav nav-treeview">
+                <li class="nav-item"><a class="nav-link{% if vista == 'estandar:lista' or vista == 'estandar:documento' %} active{% endif %}" href="{% url 'estandar:lista' %}"><i class="nav-icon bi bi-book" aria-hidden="true"></i><p>Reglas y documentos</p></a></li>
+                <li class="nav-item"><a class="nav-link{% if vista == 'estandar:propuestas' %} active{% endif %}" href="{% url 'estandar:propuestas' %}"><i class="nav-icon bi bi-clipboard-check" aria-hidden="true"></i><p>Propuestas por aprobar{% if pendientes.propuestas %} <span class="nav-badge badge text-bg-danger me-3">{{ pendientes.propuestas }}</span>{% endif %}</p></a></li>
+                <li class="nav-item"><a class="nav-link{% if vista == 'estandar:reportes' %} active{% endif %}" href="{% url 'estandar:reportes' %}"><i class="nav-icon bi bi-flag" aria-hidden="true"></i><p>Reportes de los proyectos{% if pendientes.reportes %} <span class="nav-badge badge text-bg-danger me-3">{{ pendientes.reportes }}</span>{% endif %}</p></a></li>
+                <li class="nav-item"><a class="nav-link{% if vista == 'estandar:vista_previa' %} active{% endif %}" href="{% url 'estandar:vista_previa' %}"><i class="nav-icon bi bi-eye" aria-hidden="true"></i><p>Vista previa de las reglas</p></a></li>
+                <li class="nav-item"><a class="nav-link{% if vista == 'estandar:git' %} active{% endif %}" href="{% url 'estandar:git' %}"><i class="nav-icon bi bi-git" aria-hidden="true"></i><p>Subir los cambios a git</p></a></li>
+              </ul>
             </li>
-            <li class="nav-item{% if app == 'consumo' %} active{% endif %}">
-              <a class="nav-link" href="{% url 'consumo:tablero' %}">
-                <span class="nav-link-title">Gasto de tokens</span>
+            <li class="nav-item">
+              <a class="nav-link{% if app == 'consumo' %} active{% endif %}" href="{% url 'consumo:tablero' %}">
+                <i class="nav-icon bi bi-bar-chart" aria-hidden="true"></i>
+                <p>Gasto de tokens</p>
               </a>
             </li>
-            <li class="nav-item dropdown{% if app == 'historia' %} active{% endif %}">
-              <a class="nav-link dropdown-toggle{% if app == 'historia' %} show{% endif %}" href="#menu-historia"
-                 data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                 aria-expanded="{% if app == 'historia' %}true{% else %}false{% endif %}">
-                <span class="nav-link-title">Historia</span>
+            <li class="nav-item{% if app == 'historia' %} menu-open{% endif %}">
+              <a class="nav-link{% if app == 'historia' %} active{% endif %}" href="#">
+                <i class="nav-icon bi bi-clock-history" aria-hidden="true"></i>
+                <p>Historia<i class="nav-arrow bi bi-chevron-right" aria-hidden="true"></i></p>
               </a>
-              <div class="dropdown-menu{% if app == 'historia' %} show{% endif %}">
-                <a class="dropdown-item{% if vista == 'historia:lista' %} active{% endif %}" href="{% url 'historia:lista' %}">Cambios</a>
-                <a class="dropdown-item{% if vista == 'historia:versiones' %} active{% endif %}" href="{% url 'historia:versiones' %}">Versiones</a>
-              </div>
+              <ul class="nav nav-treeview">
+                <li class="nav-item"><a class="nav-link{% if vista == 'historia:lista' %} active{% endif %}" href="{% url 'historia:lista' %}"><i class="nav-icon bi bi-list-ul" aria-hidden="true"></i><p>Cambios</p></a></li>
+                <li class="nav-item"><a class="nav-link{% if vista == 'historia:versiones' %} active{% endif %}" href="{% url 'historia:versiones' %}"><i class="nav-icon bi bi-tag" aria-hidden="true"></i><p>Versiones</p></a></li>
+              </ul>
             </li>
-            <li class="nav-item{% if app == 'ayuda' %} active{% endif %}">
-              <a class="nav-link" href="{% url 'ayuda:manual' %}">
-                <span class="nav-link-title">Manual de ayuda</span>
+            <li class="nav-item">
+              <a class="nav-link{% if app == 'ayuda' %} active{% endif %}" href="{% url 'ayuda:manual' %}">
+                <i class="nav-icon bi bi-question-circle" aria-hidden="true"></i>
+                <p>Manual de ayuda</p>
               </a>
             </li>
             {% endwith %}
             {% endblock %}
           </ul>
-        </div>
+        </nav>
       </div>
     </aside>
-    <div class="page-wrapper">
-      <header class="page-header d-print-none">
-        <div class="container-xl d-flex align-items-center">
-          <h2 class="page-title">{% block cabecera %}Cimiento{% endblock %}</h2>
-          {% if user.is_authenticated %}
-          <button type="button" class="btn btn-outline-primary btn-sm ms-auto me-2 ayuda-boton" data-bs-toggle="offcanvas"
-            data-bs-target="#ayuda" aria-controls="ayuda"
-            data-ayuda-url="{% url 'ayuda:pantalla' %}?vista={{ request.resolver_match.view_name|urlencode }}">Ayuda</button>
-          <form class="d-flex align-items-center gap-2" method="post" action="{% url 'cuentas:salir' %}">
-            {% csrf_token %}
-            <span class="text-secondary">{{ user.get_username }}</span>
-            <button class="btn btn-outline-secondary btn-sm" type="submit">Salir</button>
-          </form>
-          {% endif %}
+    <main class="app-main">
+      <div class="app-content-header">
+        <div class="container-fluid">
+          <h3 class="mb-0">{% block cabecera %}Cimiento{% endblock %}</h3>
         </div>
-      </header>
-      <div class="page-body">
-        <div class="container-xl">
+      </div>
+      <div class="app-content">
+        <div class="container-fluid">
           {% block contenido %}{% endblock %}
         </div>
       </div>
-    </div>
+    </main>
   </div>
   {% if user.is_authenticated %}
   <!-- `EP-025·HU-018` · El panel de ayuda: se llena con la sección de la pantalla actual -->
@@ -118,8 +128,9 @@
     </div>
   </div>
   {% endif %}
-  <script src="{% static 'js/tabler.min.js' %}" defer></script>
-  <script src="{% static 'libs/list.js/dist/list.min.js' %}" defer></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
+  <script src="{% static 'js/adminlte.min.js' %}" defer></script>
+  <script src="{% static 'list.js' %}" defer></script>
   <script src="{% static 'tablas.js' %}" defer></script>
   <script src="{% static 'ayuda/ayuda.js' %}" defer></script>
   <script src="{% static 'htmx.min.js' %}" defer></script>

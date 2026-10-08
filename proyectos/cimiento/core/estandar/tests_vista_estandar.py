@@ -36,14 +36,14 @@ class LaListaVaPorCapitulo(ConEstandar):
 class ElDocumentoSeLeeComoPagina(ConEstandar):
     """CP-002."""
 
-    def test_ejemplo_en_tarjetas_tabla_de_tabler_y_sin_marcas(self):
+    def test_ejemplo_en_tarjetas_tabla_de_la_plantilla_y_sin_marcas(self):
         html = self.client.get("/estandar/documento/%d/" % self.doc(F1).pk).content.decode()
         pagina = html[html.index("pagina-estandar"):html.index('id="cambiar"')]
         self.assertIn("Incorrecto", pagina)
         self.assertIn("Correcto", pagina)
-        self.assertIn("border-danger", pagina)
-        self.assertIn("border-success", pagina)
-        self.assertIn('<table class="table table-vcenter card-table">', pagina)
+        self.assertIn("card-danger", pagina)
+        self.assertIn("card-success", pagina)
+        self.assertIn('<table class="table align-middle mb-0">', pagina)
         for marca in ("|---|", "```", "**", "\n## ", "\n### "):
             self.assertNotIn(marca, pagina)
         self.assertNotIn("<pre", pagina)

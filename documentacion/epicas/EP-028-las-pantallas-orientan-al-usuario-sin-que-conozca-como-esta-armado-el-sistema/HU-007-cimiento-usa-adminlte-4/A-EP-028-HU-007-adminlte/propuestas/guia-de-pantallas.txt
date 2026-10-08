@@ -1,0 +1,142 @@
+# 17 · Guía de diseño de pantallas
+
+> **De dónde sale.** Las reglas del capítulo [`17`](17-interfaz.md) dicen **qué** exige una pantalla. Esta guía dice **cómo** se cumple, parte por parte, para que nadie tenga que inventar una pantalla desde cero. Sale del análisis 1 del pendiente 137 y del encargo `prompts/prompt-guia-estilo.md`. Rige igual para todos los proyectos con pantallas.
+>
+> **La regla de oro.** Antes de crear un componente, un estilo o un patrón, se busca en la **plantilla de interfaz instalada** en el proyecto ([`17·I5`](17-interfaz.md#i5--consistencia-con-el-sistema-de-diseño)). La plantilla ya trae botones, tablas, formularios, menús, avisos y estados resueltos: se usan, no se rehacen. Lo que la plantilla no trae se crea una sola vez y se agrega a esta guía.
+>
+> **Cómo leerla.** Cada sección dice primero **qué se exige**, sin importar la plantilla, y después **cómo se hace con Tabler**, que es el ejemplo de referencia. Un proyecto con otra plantilla busca en la suya el recurso que hace lo mismo: Cimiento usa AdminLTE 4, sobre Bootstrap 5.
+
+---
+
+## 1. Fundamentos visuales
+
+**Qué se exige.** Los colores, las letras, los espacios, los bordes y las sombras salen de la plantilla instalada, no de valores sueltos en cada pantalla. Cada color tiene un oficio y se usa solo para ese oficio:
+
+| Oficio | Para qué |
+|---|---|
+| Principal | La acción principal y lo que está seleccionado |
+| Éxito | Algo salió bien |
+| Advertencia | Algo pide atención pero no se rompió |
+| Peligro | Un error, o una acción que no se puede deshacer |
+| Información | Una ayuda o un dato extra |
+| Neutro | Lo secundario: fechas, notas, textos de apoyo |
+
+**Cómo con Tabler.** Las variables y clases de color de Tabler (`primary`, `success`, `warning`, `danger`, `info`, `secondary`) y sus versiones suaves (`bg-*-lt`). Los tamaños de letra y los espacios, con sus clases (`h1` a `h4`, `mb-3`, `p-3`, `gap-2`). La rejilla, con `row` y `col-*`. Ningún `style="…"` con colores o medidas propias.
+
+## 2. Jerarquía visual
+
+**Qué se exige.** En cada pantalla se ve primero lo importante y la acción siguiente. Hay **una sola** acción principal por pantalla o por tarjeta; las demás se ven como secundarias. Las advertencias, los errores y las confirmaciones se distinguen por color **y** por texto o icono, nunca solo por color ([`17·I3`](17-interfaz.md#i3--accesibilidad-mínima)).
+
+**Cómo con Tabler.** El encabezado de página (`page-header`) con su antetítulo (`page-pretitle`), título (`page-title`) y las acciones a la derecha (`btn-list`). Botón principal `btn btn-primary`; secundarios `btn btn-outline-*` o `btn-link`. Lo complementario en `text-secondary` o `form-hint`.
+
+## 3. Componentes
+
+**Qué se exige.** Cada necesidad se resuelve siempre con el mismo componente. Antes de usar uno se responde: cuándo usarlo, cuándo no, qué variantes tiene, cómo se comporta, sus estados y su accesibilidad. No se crean dos componentes distintos para el mismo problema.
+
+**Cómo con Tabler.**
+
+| Necesidad | Componente de Tabler | Cuándo no |
+|---|---|---|
+| Agrupar información | Tarjeta `card` con `card-header`, `card-body`, `card-footer` | Para un solo dato suelto |
+| Una acción | Botón `btn` | Para ir a otra página: enlace |
+| Escoger de una lista | `form-select`; con muchas opciones o búsqueda, Tom Select | Para dos opciones: radios |
+| Fechas | `form-control` con Litepicker | |
+| Avisar algo en la pantalla | Alerta `alert` | Para algo que el usuario debe confirmar: modal |
+| Confirmar antes de algo que no se deshace | Modal `modal` | Para avisos que no piden decisión |
+| Contar algo pendiente | Insignia `badge` | Como botón |
+| Estado de un registro | Insignia o punto de estado `status-dot` con su texto | Solo el color, sin texto |
+| Pasos de un proceso | `steps` | Para menos de tres pasos |
+| Ayuda de un campo | El «?» con su globo (`tooltip`/`popover`) | Para instrucciones largas: el panel de ayuda |
+| Contenido extra a un lado | Panel lateral `offcanvas` | Para lo que se necesita siempre a la vista |
+| Separar contenido de una misma pantalla | Pestañas `nav-tabs` | Para pantallas distintas |
+| Cargar | `spinner-border`, o bloques `placeholder` | |
+| Avance de un proceso | Barra `progress` | |
+| Archivos | Dropzone | |
+| Gráficas | ApexCharts | Para dos o tres números: tarjetas |
+
+## 4. Navegación
+
+**Qué se exige** ([`17·I7`](17-interfaz.md#i7--la-pantalla-orienta-sola)). En toda pantalla el usuario sabe dónde está, de dónde viene, qué puede hacer, cómo volver y cómo seguir. Toda función se alcanza desde el menú o desde la pantalla que la pide; ninguna se esconde en un enlace dentro de un párrafo. El menú se organiza por lo que la persona quiere hacer, no por cómo está armado el sistema por dentro. El inicio muestra lo que espera una decisión.
+
+**Cómo con Tabler.** Menú superior o lateral (`navbar`) con sus submenús (`dropdown`); la entrada activa marcada (`active`). Rastro de migas (`breadcrumb`) cuando hay más de dos niveles. En el inicio, tarjetas con contador (`badge`) que llevan a lo pendiente. Un recorrido guiado de la primera vez, con Driver.js, cuando la pantalla tiene varios pasos.
+
+## 5. Formularios
+
+**Qué se exige** ([`17·I2`](17-interfaz.md#i2--feedback-de-validación-claro)). Cada campo tiene su etiqueta, su ayuda y su mensaje de error al lado. Los obligatorios se marcan. Se agrupan los campos que van juntos. Se pide **solo** lo que el usuario tiene que dar: lo que el sistema puede saber, calcular o deducir, no se le pregunta. Las preguntas se escriben para quien no conoce el sistema, con un ejemplo. Una acción principal («Guardar») y una secundaria («Volver»).
+
+**Cómo con Tabler.** `form-label` (con `required` para los obligatorios), `form-control` / `form-select`, `form-hint` para la ayuda corta, `is-invalid` con `invalid-feedback` para el error, el «?» con su globo para la explicación. Grupos con `fieldset` o tarjetas. Botones en el `card-footer`.
+
+## 6. Tablas y presentación de información
+
+**Qué se exige.** Una tabla deja **ordenar** pulsando el título de la columna, **filtrar** debajo de cada columna, **buscar**, y **partir en páginas** escogiendo cuántas filas ver. Muestra solo las columnas que le sirven al usuario: nada técnico (rutas internas, números de fila, claves). Las acciones de cada fila van al final, siempre en el mismo sitio. Sin datos, la tabla dice por qué y qué hacer.
+
+**Cómo con Tabler.** `table table-vcenter card-table` dentro de una tarjeta, con List.js para ordenar, filtrar y paginar (botones `table-sort` en los títulos, la paginación `pagination` en el `card-footer`, el selector de filas por página). Acciones de la fila en un `dropdown` o un `btn-list` al final. En pantallas pequeñas, `table-responsive` o `table-mobile-md`.
+
+## 7. Estados del sistema
+
+**Qué se exige** ([`17·I1`](17-interfaz.md#i1--toda-vista-resuelve-sus-tres-estados)). Todo lo que depende de datos o de un proceso tiene previstos sus estados: al empezar, cargando, con datos, sin datos, éxito, advertencia, error y, si aplica, deshabilitado. El usuario nunca queda frente a una pantalla sin saber qué pasa.
+
+**Cómo con Tabler.** Sin datos: el bloque `empty` con su ícono, título, explicación y la acción que lo llena. Cargando: `spinner-border` o `placeholder`. Éxito, advertencia y error: `alert` en la pantalla, o un aviso que se cierra solo (`toast`) para lo que no pide decisión. Deshabilitado: `disabled`, con el porqué en su globo.
+
+## 8. Lenguaje de interfaz
+
+**Qué se exige** ([`17·I4`](17-interfaz.md#i4--texto-para-el-usuario-no-jerga)). Palabras sencillas, desde lo que la persona necesita. Cada mensaje dice qué pasó y, solo si hace falta, qué hacer. No se le pasan al usuario los problemas internos del sistema. Los botones dicen lo que hacen: «Aprobar propuesta», «Guardar cambios», no «Aceptar», «Procesar» ni «Ejecutar».
+
+**Cómo con Tabler.** No depende de la plantilla: se aplica a todo texto, también a los de la ayuda.
+
+## 9. Accesibilidad
+
+**Qué se exige** ([`17·I3`](17-interfaz.md#i3--accesibilidad-mínima)). Contraste suficiente, letra legible, todo se usa con el teclado y el foco se ve, cada campo tiene su etiqueta, la estructura usa los elementos correctos (títulos, listas, tablas), ningún estado se distingue solo por color, y los botones y enlaces tienen un tamaño cómodo. Se diseña así desde el principio, no se arregla después.
+
+**Cómo con Tabler.** Los componentes de Tabler ya traen foco visible, contraste y roles; se conservan sin taparlos. `aria-label` en los botones que solo tienen ícono, `visually-hidden` para el texto que lee un lector de pantalla.
+
+## 10. Pantallas de distintos tamaños
+
+**Qué se exige** ([`17·I6`](17-interfaz.md#i6--funciona-en-los-tamaños-de-pantalla-que-el-proyecto-soporta)). La pantalla se usa bien en escritorio, portátil, tableta y celular, en los tamaños que el proyecto soporta. No basta con achicar: se reorganiza lo que haga falta para que siga siendo fácil de usar.
+
+**Cómo con Tabler.** La rejilla `row`/`col-*` con sus cortes (`sm`, `md`, `lg`, `xl`), el menú que se pliega (`navbar-toggler`), y las tablas que pasan a tarjetas en celular (`table-mobile-md`).
+
+## 11. Patrones de interacción
+
+**Qué se exige.** Las acciones de siempre se comportan igual en todo el sistema:
+
+| Acción | Cómo se comporta |
+|---|---|
+| Crear | Botón principal arriba a la derecha de la lista; abre el formulario |
+| Editar | Desde la fila o desde la página del registro; el formulario vuelve con los datos |
+| Eliminar o deshacer algo que no se recupera | Pide confirmación en un modal, que dice qué se pierde |
+| Guardar | Avisa que se guardó y lleva a donde el usuario sigue |
+| Cancelar o volver | Sin perder lo que había, sin preguntar si no hay cambios |
+| Buscar y filtrar | Encima o dentro de la tabla, con efecto inmediato |
+| Aprobar o rechazar | Muestra qué cambia; rechazar pide el motivo |
+| Un proceso que tarda | Muestra que está trabajando y cuánto falta, si se sabe |
+| Un error | Dice qué pasó y qué hacer, sin datos técnicos |
+
+**Cómo con Tabler.** Modales `modal` para confirmar, avisos `toast` o `alert` para el resultado, `btn-list` para agrupar las acciones.
+
+## 12. Reutilización y consistencia
+
+**Qué se exige** ([`17·I5`](17-interfaz.md#i5--consistencia-con-el-sistema-de-diseño)). Antes de crear algo, se busca primero en la plantilla instalada y después en lo que el proyecto ya tiene. No se duplica un componente con diferencias pequeñas. Una misma necesidad se resuelve igual en todas las pantallas.
+
+**Cómo con Tabler.** La documentación de Tabler y sus ejemplos son la primera consulta. Lo que el proyecto arma encima (por ejemplo, el «?» de ayuda o el pie común de las tablas) va en una plantilla parcial que todas las pantallas incluyen, nunca copiado en cada una.
+
+## 13. Documentación
+
+**Qué se exige.** Esta guía es la documentación: dice qué componente usar, cuándo, cómo, qué variantes existen y qué evitar. Cada proyecto anota en su capa 3 cuál es su plantilla instalada y, si arma algo propio, en qué plantilla parcial vive.
+
+**En Cimiento.** AdminLTE 4.10.0, sobre Bootstrap 5.3.8, con Bootstrap Icons, List.js, htmx y ApexCharts instalados; lo poco que la plantilla no trae vive en `static/cimiento.css`, y la ayuda, en `core/ayuda/`.
+
+## 14. Cómo crece esta guía
+
+**Qué se exige.** La guía es la única referencia de diseño de pantallas. Cuando aparece una necesidad que no está:
+
+1. se busca primero si se resuelve con lo que ya hay;
+2. si de verdad pide algo nuevo, se define de forma general, para que sirva a cualquier pantalla;
+3. se agrega a esta guía;
+4. y desde ahí se usa.
+
+Una necesidad que se repite no se resuelve dentro de una sola pantalla.
+
+---
+
+**Inspiración:** las plantillas Tabler (tabler.io/admin-template) y AdminLTE (adminlte.io/themes/v4). Sirven de ejemplo; la guía no se ata a ninguna.

@@ -10,6 +10,7 @@ urlpatterns = [
     path("documento/<int:pk>/", views.VerDocumento.as_view(), name="documento"),
     path("documento/<int:pk>/quitar/", views.QuitarDocumento.as_view(), name="quitar"),
     path("memoria/<int:proyecto>/", views.Memoria.as_view(), name="memoria"),
+    path("proyecto/<int:pk>/reglas/", views.ReglasDelProyecto.as_view(), name="reglas_del_proyecto"),
     path("memoria/<int:proyecto>/nuevo/", views.VerRecuerdo.as_view(), name="recuerdo_nuevo"),
     path("memoria/<int:proyecto>/<int:pk>/", views.VerRecuerdo.as_view(), name="recuerdo"),
     path("propuestas/", views.Propuestas.as_view(), name="propuestas"),

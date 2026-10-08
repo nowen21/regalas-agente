@@ -6,7 +6,7 @@
           hx-get="{% url 'consumo:pestana' 'donde' %}?{{ consulta }}&amp;agrupar={{ clave }}" hx-target="#pestana">{{ nombre }}</button>
   {% endfor %}
 </div>
-<table class="table table-vcenter">
+<table class="table align-middle">
   <thead><tr><th></th><th class="w-25"></th><th class="text-end">% del total</th><th class="text-end">Llamadas</th><th class="text-end">Tokens</th></tr></thead>
   <tbody>
     {% for fila in filas %}

@@ -15,6 +15,7 @@ SECCIONES = [
     ("historia", "Historia de los cambios", ("historia:lista", "historia:versiones")),
     ("estandar", "El estándar y la memoria", ("estandar:lista", "estandar:documento", "estandar:nuevo",
                                               "estandar:memoria", "estandar:recuerdo", "estandar:recuerdo_nuevo",
+                                              "estandar:reglas_del_proyecto",
                                               "estandar:propuestas", "estandar:git",
                                               "estandar:reportes", "estandar:vista_previa")),
 ]

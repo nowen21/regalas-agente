@@ -1,9 +1,9 @@
 {% load gasto %}
 <div hx-get="{% url 'consumo:pestana' 'actividad' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML">
-<div class="row row-cards">
+<div class="row g-3">
   <div class="col-lg-5">
     <h3 class="card-title">Últimas sesiones</h3>
-    <table class="table table-vcenter">
+    <table class="table align-middle">
       <thead><tr><th>Sesión</th><th>Proyecto</th><th>Última llamada</th><th class="text-end">Tokens</th></tr></thead>
       <tbody>
         {% for fila in sesiones %}
@@ -17,7 +17,7 @@
   </div>
   <div class="col-lg-7">
     <h3 class="card-title">Últimos mensajes</h3>
-    <table class="table table-vcenter">
+    <table class="table align-middle">
       <thead><tr><th>Cuándo</th><th>Proyecto</th><th>Palabra clave</th><th>Trabajo</th><th class="text-end">Tokens</th></tr></thead>
       <tbody>
         {% for fila in mensajes %}

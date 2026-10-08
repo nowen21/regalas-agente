@@ -16,7 +16,7 @@
 | **Horizonte** | N/A |
 | **Product Owner** | Ing. José Dúmar Jiménez Ruíz |
 | **Tech Lead / Arquitecto** | N/A |
-| **Estado** | En curso |
+| **Estado** | Terminada |
 
 ## 2. Resumen ejecutivo
 
@@ -109,10 +109,10 @@ Ninguno.
 
 ## 7. Criterios de aceptación de la épica
 
-- [ ] **CAE-01** — Las 269 reglas están en las tablas, y armadas desde ellas dan el mismo texto que hoy.
-- [ ] **CAE-02** — La pantalla lista las reglas por capítulo y por su nombre, sin rutas.
-- [ ] **CAE-03** — Cada regla muestra sus dependencias y las reglas que nombra, y sus enlaces abren.
-- [ ] **CAE-04** — Las reglas de cada proyecto viven en la misma tabla.
+- [x] **CAE-01** — Las 269 reglas están en las tablas, y armadas desde ellas dan el mismo texto que hoy. Cumplido: 270 en la base viva (HU-002); F8, D5, G5 y G7 con el orden del molde, y las notas con fecha del sello en la historia.
+- [x] **CAE-02** — La pantalla lista las reglas por capítulo y por su nombre, sin rutas. Cumplido (HU-004).
+- [x] **CAE-03** — Cada regla muestra sus dependencias y las reglas que nombra, y sus enlaces abren. Cumplido (HU-004).
+- [x] **CAE-04** — Las reglas de cada proyecto viven en la misma tabla. Cumplido para cuatro de cinco (HU-006); AgroSystem espera la decisión de su P45 repetida (H-26).
 
 ## 8. Métricas de éxito
 
@@ -125,13 +125,13 @@ Ninguno.
 
 | ID | Título | Prioridad | Estimación | Sprint | Estado |
 |---|---|---|---|---|---|
-| [HU-001](HU-001-las-reglas-tienen-sus-tablas-con-las-casillas-del-molde/HU-001-las-reglas-tienen-sus-tablas-con-las-casillas-del-molde.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-002](HU-002-las-269-reglas-pasan-a-las-tablas-sin-perder-nada/HU-002-las-269-reglas-pasan-a-las-tablas-sin-perder-nada.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-003](HU-003-el-texto-que-recibe-el-agente-se-arma-desde-las-tablas/HU-003-el-texto-que-recibe-el-agente-se-arma-desde-las-tablas.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
+| [HU-001](HU-001-las-reglas-tienen-sus-tablas-con-las-casillas-del-molde/HU-001-las-reglas-tienen-sus-tablas-con-las-casillas-del-molde.md) | Las reglas tienen sus tablas, con las casillas del molde | Must | M | No aplica | Terminada |
+| [HU-002](HU-002-las-269-reglas-pasan-a-las-tablas-sin-perder-nada/HU-002-las-269-reglas-pasan-a-las-tablas-sin-perder-nada.md) | Las 269 reglas pasan a las tablas sin perder nada | Must | M | No aplica | Terminada |
+| [HU-003](HU-003-el-texto-que-recibe-el-agente-se-arma-desde-las-tablas/HU-003-el-texto-que-recibe-el-agente-se-arma-desde-las-tablas.md) | El texto que recibe el agente se arma desde las tablas | Must | M | No aplica | Terminada |
 | [HU-004](HU-004-la-pantalla-lista-las-reglas-por-capitulo-con-sus-relaciones-y-enlaces-que-abren/HU-004-la-pantalla-lista-las-reglas-por-capitulo-con-sus-relaciones-y-enlaces-que-abren.md) | La pantalla lista las reglas por capítulo, con sus relaciones y enlaces que abren | Must | M | No aplica | Terminada |
-| [HU-005](HU-005-las-propuestas-la-historia-y-la-memoria-muestran-nombres-legibles/HU-005-las-propuestas-la-historia-y-la-memoria-muestran-nombres-legibles.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-006](HU-006-las-reglas-de-cada-proyecto-viven-en-la-misma-tabla/HU-006-las-reglas-de-cada-proyecto-viven-en-la-misma-tabla.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-007](HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas/HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas.md) | «Título» | «Prioridad» | «Estimación» | «…» | Terminada |
+| [HU-005](HU-005-las-propuestas-la-historia-y-la-memoria-muestran-nombres-legibles/HU-005-las-propuestas-la-historia-y-la-memoria-muestran-nombres-legibles.md) | Las propuestas, la historia y la memoria muestran nombres legibles | Should | S | No aplica | Terminada |
+| [HU-006](HU-006-las-reglas-de-cada-proyecto-viven-en-la-misma-tabla/HU-006-las-reglas-de-cada-proyecto-viven-en-la-misma-tabla.md) | Las reglas de cada proyecto viven en la misma tabla | Must | L | No aplica | Terminada |
+| [HU-007](HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas/HU-007-las-reglas-m5-y-m9-dicen-que-la-regla-vive-en-casillas.md) | Las reglas `20·M5` y `20·M9` dicen que la regla vive en casillas | Must | S | No aplica | Terminada |
 
 ## 10. Consideraciones técnicas
 
@@ -196,12 +196,12 @@ N/A.
 | Orden | HU | Depende de | Por qué en ese orden | Estado |
 |---|---|---|---|---|
 | 1 | HU-007 | Ninguna | La regla tiene que permitirlo antes de construir lo que la usa | Terminada |
-| 2 | HU-001 | HU-007 | Es donde se guarda todo lo demás | Pendiente |
-| 3 | HU-002 | HU-001 | Sin las reglas en las tablas no hay qué leer ni mostrar | Pendiente |
-| 4 | HU-003 | HU-002 | Necesita las reglas en las tablas | Pendiente |
+| 2 | HU-001 | HU-007 | Es donde se guarda todo lo demás | Terminada |
+| 3 | HU-002 | HU-001 | Sin las reglas en las tablas no hay qué leer ni mostrar | Terminada |
+| 4 | HU-003 | HU-002 | Necesita las reglas en las tablas | Terminada |
 | 5 | HU-004 | Ninguna | Se adelantó a pedido del usuario (2026-10-07): lee el texto de hoy, y cuando la HU-003 lo arme desde las tablas, la página lo muestra igual | Terminada |
-| 6 | HU-005 | HU-002 | Necesita el título de cada regla | Pendiente |
-| 7 | HU-006 | HU-003 | Se leen igual que las del estándar | Pendiente |
+| 6 | HU-005 | HU-002 | Necesita el título de cada regla | Terminada |
+| 7 | HU-006 | HU-003 | Se leen igual que las del estándar | Terminada |
 
 ## 16. Estrategia de entrega
 

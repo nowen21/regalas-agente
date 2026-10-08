@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sin base de datos - Cimiento</title>
-  <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+  {% comment %}`EP-028·HU-007` · Con la página suelta de AdminLTE 4.{% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-icons.min.css' %}">
 </head>
-<body>
-  <div class="page page-center">
-    <div class="container container-tight py-4">
-      <h1 class="text-center mb-4">Cimiento</h1>
-      <div class="alert alert-danger" role="alert">
-        <h4 class="alert-title">Cimiento no puede usar su base de datos</h4>
-        <p class="mb-0">{{ mensaje }}</p>
-      </div>
+<body class="login-page bg-body-secondary">
+  <div class="login-box" style="width: 32rem; max-width: 100%">
+    <div class="login-logo"><i class="bi bi-bricks me-2" aria-hidden="true"></i><b>Cimiento</b></div>
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading"><i class="bi bi-database-x me-2" aria-hidden="true"></i>Cimiento no puede usar su base de datos</h4>
+      <p class="mb-0">{{ mensaje }}</p>
     </div>
   </div>
 </body>

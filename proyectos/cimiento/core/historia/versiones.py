@@ -49,10 +49,28 @@ SIN_VERSION = {"estandar.propuesta",
                "estandar.reporte"}
 
 
+# `EP-027·HU-006` · La regla es del proyecto si trae proyecto, y del estándar si no.
+# Su tarea y su dependencia siguen a su regla.
+DEL_PROYECTO_SI_LO_TRAE = {"estandar.regla": "proyecto_id"}
+DE_UNA_REGLA = {"estandar.reglatarea", "estandar.dependencia"}
+
+
+def _proyecto_de_la_regla(regla_id):
+    from django.apps import apps
+
+    return apps.get_model("estandar", "Regla").objects.filter(pk=regla_id).values_list(
+        "proyecto_id", flat=True).first()
+
+
 def ambito_de(tabla, fila, datos):
     """`(ámbito, id del proyecto)`, o `None` si la tabla no lleva versión."""
     if tabla in SIN_VERSION:
         return None
+    if tabla in DEL_PROYECTO_SI_LO_TRAE or tabla in DE_UNA_REGLA:
+        datos = datos or {}
+        proyecto = (datos.get(DEL_PROYECTO_SI_LO_TRAE[tabla]) if tabla in DEL_PROYECTO_SI_LO_TRAE
+                    else _proyecto_de_la_regla(datos.get("regla_id")))
+        return (PROYECTO, int(proyecto)) if proyecto else (ESTANDAR, None)
     if tabla not in VERSIONADAS:
         return (ESTANDAR, None) if tabla.split(".")[0] in APPS_DEL_ESTANDAR else None
     campo = VERSIONADAS[tabla]

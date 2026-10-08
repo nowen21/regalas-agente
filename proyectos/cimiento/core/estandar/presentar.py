@@ -349,7 +349,7 @@ class Pagina:
     @staticmethod
     def aplica_a(tareas):
         """La línea «Aplica a» de `20·M5`: las tareas como insignias."""
-        insignias = "".join('<span class="badge bg-azure-lt">%s</span>' % escape(t.strip())
+        insignias = "".join('<span class="badge bg-info-subtle text-info-emphasis">%s</span>' % escape(t.strip())
                             for t in tareas.split(",") if t.strip())
         return ('<div class="d-flex flex-wrap align-items-center gap-1 my-3">'
                 '<span class="text-secondary me-1">Aplica a</span>%s</div>' % insignias)
@@ -360,9 +360,9 @@ class Pagina:
         estado = "NO CUMPLE" if "NO CUMPLE" in titulo.upper() else ("CUMPLE" if "CUMPLE" in titulo.upper() else "")
         ancla_ = self._id(titulo)
         id_ = "sello-%s" % ancla_
-        insignia = ('<span class="badge bg-%s-lt ms-2">%s</span>' % (_ESTADOS[estado], estado.capitalize())
+        insignia = ('<span class="badge bg-%s-subtle text-%s-emphasis ms-2">%s</span>' % (_ESTADOS[estado], _ESTADOS[estado], estado.capitalize())
                     if estado else "")
-        return ('<div class="card card-sm my-3" id="%s"><div class="card-header">'
+        return ('<div class="card my-3" id="%s"><div class="card-header">'
                 '<a class="card-title text-reset d-flex align-items-center w-100" data-bs-toggle="collapse" '
                 'href="#%s-cuerpo" role="button" aria-expanded="false" aria-controls="%s-cuerpo">'
                 'Sello del checklist%s<span class="ms-auto text-secondary small">Ver el detalle</span></a></div>'
@@ -373,11 +373,11 @@ class Pagina:
         id_ = self._id(texto)
         marcas = _MARCA.findall(texto)
         limpio = _MARCA.sub("", texto)
-        insignias = "".join(' <span class="badge bg-secondary-lt ms-1">%s</span>' % escape(m) for m in marcas)
+        insignias = "".join(' <span class="badge bg-secondary-subtle text-secondary-emphasis ms-1">%s</span>' % escape(m) for m in marcas)
         regla = _REGLA.match(_sin_marcas(limpio)) if nivel == 2 else None
         etiqueta = "h%d" % min(nivel + 1, 6)
         if regla:
-            return ('<%s id="%s" class="mt-5 mb-3 pt-3 border-top"><span class="badge bg-blue-lt me-2">%s</span>%s%s</%s>'
+            return ('<%s id="%s" class="mt-5 mb-3 pt-3 border-top"><span class="badge bg-primary-subtle text-primary-emphasis me-2">%s</span>%s%s</%s>'
                     % (etiqueta, id_, escape(regla.group(1)), self.linea(regla.group(2)), insignias, etiqueta))
         return '<%s id="%s" class="mt-4 mb-2">%s%s</%s>' % (etiqueta, id_, self.linea(limpio), insignias, etiqueta)
 
@@ -406,10 +406,9 @@ class Pagina:
             color, rotulo, signo = ("success", "Correcto", "✓") if bien else ("danger", "Incorrecto", "✗")
             cuerpo = escape("\n".join(l.strip() for l in texto).strip())
             tarjetas.append(
-                '<div class="col-md-6"><div class="card card-sm h-100 border-%s">'
-                '<div class="card-status-top bg-%s"></div>'
+                '<div class="col-md-6"><div class="card card-outline card-%s h-100">'
                 '<div class="card-body"><div class="text-%s fw-bold mb-1"><span aria-hidden="true">%s</span> %s</div>'
-                '<div class="ejemplo-texto">%s</div></div></div></div>' % (color, color, color, signo, rotulo, cuerpo))
+                '<div class="ejemplo-texto">%s</div></div></div></div>' % (color, color, signo, rotulo, cuerpo))
         return '<div class="row g-2 my-3">%s</div>' % "".join(tarjetas)
 
     @staticmethod
@@ -439,13 +438,13 @@ class Pagina:
     def celda(self, texto):
         estado = _ESTADOS.get(_sin_marcas(texto).upper())
         if estado:
-            return '<span class="badge bg-%s-lt">%s</span>' % (estado, escape(_sin_marcas(texto)))
+            return '<span class="badge bg-%s-subtle text-%s-emphasis">%s</span>' % (estado, estado, escape(_sin_marcas(texto)))
         return self.linea(texto)
 
     def tabla(self, cabecera, filas):
         titulos = "".join("<th>%s</th>" % self.linea(c) for c in self.celdas(cabecera))
         cuerpo = "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % self.celda(c) for c in self.celdas(f)) for f in filas)
-        return ('<div class="card my-3"><div class="table-responsive"><table class="table table-vcenter card-table">'
+        return ('<div class="card my-3"><div class="table-responsive"><table class="table align-middle mb-0">'
                 '<thead><tr>%s</tr></thead><tbody>%s</tbody></table></div></div>' % (titulos, cuerpo))
 
     def lista(self, lineas):
@@ -475,3 +474,32 @@ class Pagina:
             i += 1
         etiqueta = "ol" if ordenada else "ul"
         return "<%s>%s</%s>" % (etiqueta, "".join(partes), etiqueta), i
+
+
+# --- EP-027·HU-005 · Nombres legibles -----------------------------------------
+
+def _con_espacios(nombre):
+    nombre = re.sub(r"\.md$", "", nombre or "")
+    nombre = re.sub(r"[-_]+", " ", nombre).strip()
+    return nombre[:1].upper() + nombre[1:]
+
+
+def recuerdo_legible(nombre, texto):
+    """`(nombre, descripción)` de un recuerdo: el título de su texto o, si no
+    tiene, su nombre con espacios; la descripción, la de su bloque de arriba."""
+    texto = (texto or "").replace("\r\n", "\n")
+    arriba, cuerpo = {}, texto
+    if texto.startswith("---\n"):
+        fin = texto.find("\n---", 4)
+        if fin > 0:
+            for linea in texto[4:fin].split("\n"):
+                clave, _, valor = linea.partition(":")
+                arriba[clave.strip()] = valor.strip()
+            cuerpo = texto[fin + 4:]
+    titulo = leer_titulo(cuerpo)[0]
+    return titulo or _con_espacios(arriba.get("name") or nombre), arriba.get("description", "")
+
+
+def titulo_de_texto(texto, ruta):
+    """El título de un documento desde su texto, o su nombre de archivo con espacios."""
+    return leer_titulo(texto or "")[0] or _con_espacios(posixpath.basename(ruta or ""))

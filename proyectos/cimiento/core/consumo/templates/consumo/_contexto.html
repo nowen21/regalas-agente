@@ -6,10 +6,10 @@
   <div class="col-sm-4"><div class="text-secondary">Archivos leídos</div><div class="h3 mb-0">{{ resumen.archivos|miles }}</div></div>
   <div class="col-sm-4"><div class="text-secondary">Otras herramientas</div><div class="h3 mb-0">{{ resumen.otras|miles }}</div></div>
 </div>
-<div class="row row-cards">
+<div class="row g-3">
   <div class="col-lg-6">
     <h3 class="card-title">Enganches · límite {{ limite_enganche|miles }} por vez</h3>
-    <table class="table table-vcenter">
+    <table class="table align-middle">
       <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Promedio</th><th class="text-end">Máximo</th><th class="text-end">Total</th></tr></thead>
       <tbody>
         {% for fila in enganches %}
@@ -24,7 +24,7 @@
   </div>
   <div class="col-lg-6">
     <h3 class="card-title">Archivos leídos · límite {{ limite_archivo|miles }} por vez</h3>
-    <table class="table table-vcenter">
+    <table class="table align-middle">
       <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Promedio</th><th class="text-end">Máximo</th><th class="text-end">Total</th></tr></thead>
       <tbody>
         {% for fila in archivos %}
@@ -39,7 +39,7 @@
   </div>
   <div class="col-lg-6">
     <h3 class="card-title">Por herramienta</h3>
-    <table class="table table-vcenter">
+    <table class="table align-middle">
       <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Resultado</th></tr></thead>
       <tbody>
         {% for fila in herramientas %}

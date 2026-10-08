@@ -46,7 +46,7 @@ class LasListas(TestCase):
         self.assertIn('data-filtro="t-nombre"', pagina)
         self.assertIn('class="table-tbody"', pagina)
         self.assertIn("filas por página", pagina)
-        self.assertIn("libs/list.js/dist/list.min.js", pagina)
+        self.assertIn("list.js", pagina)
 
 
 class UnSoloCodigo(TestCase):
@@ -61,5 +61,5 @@ class UnSoloCodigo(TestCase):
             self.assertEqual(pagina, 'includes/tabla_pie.html' in texto, rel)
         self.assertIn("new List(", _leer(CIMIENTO, "static", "tablas.js"))
         base = _leer(CIMIENTO, "templates", "base.html")
-        self.assertIn("libs/list.js/dist/list.min.js", base)
+        self.assertIn("list.js", base)
         self.assertIn("tablas.js", base)

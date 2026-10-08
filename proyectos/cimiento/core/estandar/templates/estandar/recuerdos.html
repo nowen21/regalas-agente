@@ -7,7 +7,8 @@
   <a href="{% url 'estandar:lista' %}">Volver al estándar</a>{% if puede_cambiar %} · <a href="{% url 'estandar:recuerdo_nuevo' proyecto.pk %}">Recuerdo nuevo</a>{% endif %}</p>
 <div class="card">
   <div class="list-group list-group-flush">
-    {% for r in recuerdos %}<a class="list-group-item list-group-item-action" href="{% url 'estandar:recuerdo' proyecto.pk r.pk %}">{{ r.nombre }}</a>
+    {% for r in recuerdos %}<a class="list-group-item list-group-item-action" href="{% url 'estandar:recuerdo' proyecto.pk r.pk %}">
+      <div>{{ r.nombre_legible }}</div>{% if r.descripcion %}<div class="text-secondary small">{{ r.descripcion|truncatechars:160 }}</div>{% endif %}</a>
     {% empty %}<div class="list-group-item text-secondary">Este proyecto no tiene recuerdos.</div>{% endfor %}
   </div>
 </div>

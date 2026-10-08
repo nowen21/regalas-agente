@@ -51,7 +51,7 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
 ### 2.1 Configuración del agente — LOCAL, se ignora
 
 - **Ruta:** `./.agente/`
-- Contiene los 4 archivos de configuración: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md` (y opcionalmente `reglas-proyecto.md`, ver 5.2). El instalador los deja puestos desde las plantillas centrales; el agente los llena con lo que deduce del proyecto (ver punto 3).
+- Contiene los 4 archivos de configuración: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. Las reglas propias del proyecto no van aquí si el proyecto está registrado en Cimiento: viven allá (ver 5.2). El instalador los deja puestos desde las plantillas centrales; el agente los llena con lo que deduce del proyecto (ver punto 3).
 - Ahí mismo quedan dos archivos que **no se editan a mano**, porque los escribe el estándar:
   - `stack-instalacion.md` — la lista de todo lo que este proyecto debe tener para que el agente esté completo. Es copia de la del estándar; si allá cambia, acá se avisa.
   - `INSTALACION-INCOMPLETA.md` — **solo existe si falta algo.** Mientras esté, el agente no está completo y lo dice en cada mensaje, con qué falta y cómo se arregla. Cuando ya no falta nada, desaparece solo.
@@ -90,7 +90,7 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
 1. **Instalar o actualizar el entorno** — correr el comando de la sección **Instalación**. Es idempotente y no pregunta: si ya está todo, no toca nada; si falta o quedó viejo algo, lo deja al día y lo dice.
 2. **Obedecer las reglas base** de la ruta de `base` del punto 1. No se cargan todas al abrir: con cada mensaje llegan las de las tareas que pide su palabra clave de `01·C28`. Si el mensaje no trae la palabra, el agente no actúa: la recuerda y espera. Las reglas de cada tarea están completas en [`base/reglas-por-tarea/`](«RUTA-ESTANDAR»/base/reglas-por-tarea/README.md). Qué reglas tiene cada tarea lo dice [`base/mapa-de-tareas.md`](«RUTA-ESTANDAR»/base/mapa-de-tareas.md). El archivo `00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
 3. **Leer los 4 archivos de `./.agente/`** y trabajar según lo que declaran. **No sobrescribirlos** (guardan datos del proyecto). Lo que esté sin llenar, completarlo **deduciéndolo del proyecto** (lenguaje, dependencias, estructura de carpetas). Lo que no se pueda deducir —reglas de negocio, sector, normas— se deja marcado como pendiente de confirmar y **no detiene el trabajo**: se pregunta cuando el trabajo lo necesite, no al arrancar. No inventar datos.
-4. **Si existe `./.agente/reglas-proyecto.md`,** leerlo y aplicarlo (reglas propias del proyecto — ver punto 5.2).
+4. **Aplicar las reglas propias del proyecto** (punto 5.2). Si el proyecto está registrado en Cimiento, llegan como índice al abrir la sesión, y cada una se lee entera con el comando que trae ese índice. Si no está registrado, se leen en `./.agente/reglas-proyecto.md`, si existe.
 5. **Aplicar los ajustes** del punto 5.1.
 6. **Comprobar el desfase de versión** — correr desde la carpeta del estándar:
 
@@ -143,11 +143,11 @@ Cambia el comportamiento por defecto de una regla `01`-`22`. Los valores de abaj
 
 Reglas que la base **no** cubre (una convención del equipo, una regla del negocio, un patrón propio):
 
-1. Crear el archivo `./.agente/reglas-proyecto.md` (desde la plantilla `plantillas/reglas-proyecto.md`).
-2. Escribir ahí cada regla nueva, numerada y con un ejemplo si ayuda.
-3. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`19`), que siguen mandando.
+1. **Si el proyecto está registrado en Cimiento,** sus reglas viven en la tabla de reglas de Cimiento: se escriben y se cambian en Cimiento, menú Estándar, opción Reglas y documentos, tarjeta Reglas de cada proyecto, y quedan con su historia y su versión. No se crea ningún archivo.
+2. **Si no está registrado,** se crea `./.agente/reglas-proyecto.md` desde la plantilla `plantillas/reglas-proyecto.md`. Cuando el proyecto se registre, `manage.py pasar_reglas_proyecto --borrar`, con `--proyecto` y la carpeta del proyecto, lleva sus reglas a Cimiento.
+3. Cada regla va numerada `P1`, `P2`... y con un ejemplo si ayuda. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`19`), que siguen mandando.
 
-- **Reglas propias de este proyecto:** ninguna por ahora — ver `./.agente/reglas-proyecto.md` si se crea.
+- **Reglas propias de este proyecto:** ninguna por ahora. Si el proyecto está registrado, se ven en Cimiento; si no, en `./.agente/reglas-proyecto.md` si se crea.
 
 ## 6. Cómo pedirle trabajo al agente
 

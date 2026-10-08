@@ -50,7 +50,7 @@
 {% endif %}
 {% if resueltos %}
 <h3 class="mt-4">Resueltos</h3>
-<div class="card" id="tabla-reportes" data-tabla-avanzada data-por-pagina="10"><div class="table-responsive"><table class="table card-table table-vcenter">
+<div class="card" id="tabla-reportes" data-tabla-avanzada data-por-pagina="10"><div class="table-responsive"><table class="table mb-0 align-middle">
   <thead><tr><th><button type="button" class="table-sort" data-sort="t-proyecto">Proyecto</button></th><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th><th><button type="button" class="table-sort" data-sort="t-como">Cómo quedó</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th><th><button type="button" class="table-sort" data-sort="t-avisado">Avisado</button></th></tr>
   <tr><th><select class="form-select form-select-sm" aria-label="Filtrar por proyecto" data-filtro="t-proyecto" data-exacto><option value="">Todos</option></select></th><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo reportado" data-filtro="t-que"></th><th></th><th></th><th></th></tr></thead>
   <tbody class="table-tbody">{% for r in resueltos %}<tr><td class="t-proyecto">{{ r.proyecto }}</td><td class="t-que">{{ r.titulo }}</td>

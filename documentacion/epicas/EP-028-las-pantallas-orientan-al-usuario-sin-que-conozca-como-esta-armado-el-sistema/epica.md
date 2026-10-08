@@ -98,6 +98,7 @@ Lo que no se encuentra no se usa, y la línea base no puede exigir lo que ella m
 | [HU-004](HU-004-la-pantalla-de-propuestas-y-las-preguntas-de-version-se-entienden/HU-004-la-pantalla-de-propuestas-y-las-preguntas-de-version-se-entienden.md) | «Título» | «Prioridad» | «Estimación» | «…» | Terminada |
 | [HU-005](HU-005-cada-formulario-de-cimiento-trae-su-ayuda/HU-005-cada-formulario-de-cimiento-trae-su-ayuda.md) | «Título» | «Prioridad» | «Estimación» | «…» | Terminada |
 | [HU-006](HU-006-las-tablas-de-cimiento-usan-los-recursos-de-tablas-de-la-plantilla/HU-006-las-tablas-de-cimiento-usan-los-recursos-de-tablas-de-la-plantilla.md) | «Título» | «Prioridad» | «Estimación» | «…» | Terminada |
+| [HU-007](HU-007-cimiento-usa-adminlte-4/HU-007-cimiento-usa-adminlte-4.md) | «Título» | «Prioridad» | «Estimación» | «…» | Terminada |
 
 ## 10. Consideraciones técnicas
 

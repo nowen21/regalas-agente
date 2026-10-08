@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% comment %}`EP-028·HU-003` · El inicio dice primero lo que espera una decisión y después lleva a
-cada tarea (`17·I7`; guía de diseño de pantallas §4 y §7), con las tarjetas y el bloque vacío de Tabler.{% endcomment %}
+cada tarea (`17·I7`; guía de diseño de pantallas §4 y §7), con las tarjetas y el bloque vacío de la plantilla.{% endcomment %}
 
 {% block cabecera %}Inicio{% endblock %}
 
 {% block contenido %}
 <h3 class="mb-3">Lo que espera una decisión</h3>
 {% if pendientes.total %}
-<div class="row row-cards mb-4">
+<div class="row g-3 mb-4">
   {% if pendientes.propuestas %}
   <div class="col-sm-6 col-lg-4">
     <a class="card card-link" href="{% url 'estandar:propuestas' %}">
       <div class="card-body">
         <div class="d-flex align-items-center">
-          <span class="badge bg-red text-red-fg me-3 fs-3">{{ pendientes.propuestas }}</span>
+          <span class="badge text-bg-danger me-3 fs-3">{{ pendientes.propuestas }}</span>
           <div>
             <div class="fw-bold">{% if pendientes.propuestas == 1 %}Propuesta por aprobar{% else %}Propuestas por aprobar{% endif %}</div>
             <div class="text-secondary">Cambios al estándar o a la memoria que esperan su aprobación</div>
@@ -28,7 +28,7 @@ cada tarea (`17·I7`; guía de diseño de pantallas §4 y §7), con las tarjetas
     <a class="card card-link" href="{% url 'estandar:reportes' %}">
       <div class="card-body">
         <div class="d-flex align-items-center">
-          <span class="badge bg-red text-red-fg me-3 fs-3">{{ pendientes.reportes }}</span>
+          <span class="badge text-bg-danger me-3 fs-3">{{ pendientes.reportes }}</span>
           <div>
             <div class="fw-bold">{% if pendientes.reportes == 1 %}Reporte abierto{% else %}Reportes abiertos{% endif %}</div>
             <div class="text-secondary">Lo que los proyectos encontraron mal en el estándar</div>
@@ -41,15 +41,15 @@ cada tarea (`17·I7`; guía de diseño de pantallas §4 y §7), con las tarjetas
 </div>
 {% else %}
 <div class="card mb-4">
-  <div class="empty py-4">
-    <p class="empty-title">No hay nada esperando una decisión</p>
-    <p class="empty-subtitle text-secondary">Cuando el agente proponga un cambio o un proyecto reporte algo, aparece aquí.</p>
+  <div class="text-center py-5 py-4">
+    <p class="fs-5 fw-semibold mb-1">No hay nada esperando una decisión</p>
+    <p class="text-secondary mb-0 text-secondary">Cuando el agente proponga un cambio o un proyecto reporte algo, aparece aquí.</p>
   </div>
 </div>
 {% endif %}
 
 <h3 class="mb-3">Qué se puede hacer</h3>
-<div class="row row-cards">
+<div class="row g-3">
   <div class="col-sm-6 col-lg-3">
     <a class="card card-link" href="{% url 'proyectos:lista' %}"><div class="card-body">
       <div class="fw-bold">Administrar los proyectos</div>

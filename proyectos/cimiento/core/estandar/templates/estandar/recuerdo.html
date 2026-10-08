@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load ayuda %}
-{% block titulo %}{% if recuerdo %}{{ recuerdo.nombre }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
-{% block cabecera %}{{ proyecto.nombre }} · {% if recuerdo %}{{ recuerdo.nombre }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
+{% block titulo %}{% if recuerdo %}{{ recuerdo.nombre_legible }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
+{% block cabecera %}{{ proyecto.nombre }} · {% if recuerdo %}{{ recuerdo.nombre_legible }}{% else %}Recuerdo nuevo{% endif %}{% endblock %}
 {% block contenido %}
 {% ayuda_pantalla "recuerdo" %}
 {% include "estandar/_mensajes.html" %}

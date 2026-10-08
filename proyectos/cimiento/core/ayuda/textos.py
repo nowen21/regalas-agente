@@ -167,6 +167,12 @@ CAMPOS.update({
     "gasto.dias": _campo("¿Qué período?", "Cuántos días hacia atrás se cuentan.", "«7 días» muestra la última semana."),
     "documento.ruta": _campo("¿Qué ruta?", "Dónde queda el documento dentro del estándar. Empieza por base/ y termina en .md.",
                              "base/17-guia-de-pantallas.md"),
+    "reglas_del_proyecto.texto": _campo("¿Qué texto?",
+                                        "Todas las reglas propias del proyecto. Cada una abre con su código y su "
+                                        "título, como «### P1 · Título», y puede ir bajo una sección «## Nombre». "
+                                        "Al guardar, cada regla pasa a su fila; la que se quita del texto queda "
+                                        "apartada, no se borra.",
+                                        "### P3 · Todo monto se guarda en centavos"),
     "documento.relaciones": _campo("¿Qué son las relaciones?",
                                    "Las otras reglas que tienen que ver con esta, en tres grupos: de cuáles depende "
                                    "(lo que la regla declara con «extiende», «depende de» o «deroga»), cuáles nombra "
@@ -219,6 +225,8 @@ PANTALLAS.update({
                            "Se abre F8, se lee su ejemplo y, en «Relaciones», se pulsa la regla de la que depende para leerla."),
     "git": _pantalla("Guardar en git lo que cambió en Cimiento, separado por sesión, y subirlo si se quiere.",
                      "Al terminar una tarea, se escribe el asunto y la idea, y se pulsa el botón de la sesión."),
+    "reglas_del_proyecto": _pantalla("Leer las reglas que solo valen para un proyecto y, quien administra, cambiarlas.",
+                                     "Se abre AgroSystem, se despliega P3 y se lee qué exige."),
     "estandar": _pantalla("Ver las reglas del estándar por capítulo, con su código y su nombre, y buscar en ellas.",
                           "Se abre el capítulo «02 · Flujo de trabajo» y se pulsa «F8» para leer la regla."),
     "recuerdo": _pantalla("Leer o proponer un recuerdo de la memoria del agente.",

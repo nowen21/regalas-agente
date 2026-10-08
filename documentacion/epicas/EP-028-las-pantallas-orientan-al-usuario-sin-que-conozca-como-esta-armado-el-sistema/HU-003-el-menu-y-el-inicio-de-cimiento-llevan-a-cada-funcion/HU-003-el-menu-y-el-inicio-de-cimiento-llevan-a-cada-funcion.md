@@ -79,6 +79,19 @@ Y sin nada pendiente, el inicio lo dice
 
 **Cómo validarlo:** correr `manage.py test core.inicio.tests_menu` → resultado esperado: el caso pasa.
 
+### CA-03 · Cada entrada del menú lleva su ícono
+
+**Sale de:** corrección del usuario del 2026-10-07 («los íconos en el menú no están»)
+
+```gherkin
+Dado una cuenta que entra a Cimiento
+Cuando mira el menú
+Entonces cada entrada principal lleva su ícono de Tabler Icons, en el lugar que le da la plantilla (nav-link-icon)
+Y el ícono es de adorno: el lector de pantalla no lo lee
+```
+
+**Cómo validarlo:** correr `manage.py test core.inicio.tests_menu` → resultado esperado: el caso pasa.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -111,6 +124,7 @@ Y sin nada pendiente, el inicio lo dice
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | `A-EP-028-HU-003-menu-e-inicio` |  | (vacío) | [plan_trabajo.md](A-EP-028-HU-003-menu-e-inicio/plan_trabajo.md) | [plan_pruebas.md](A-EP-028-HU-003-menu-e-inicio/plan_pruebas.md) | [resultado_pruebas.md](A-EP-028-HU-003-menu-e-inicio/resultado_pruebas.md) | Terminada |
+| `B-EP-028-HU-003-iconos-del-menu` | CA-03 | (vacío) | [plan_trabajo.md](B-EP-028-HU-003-iconos-del-menu/plan_trabajo.md) | [plan_pruebas.md](B-EP-028-HU-003-iconos-del-menu/plan_pruebas.md) | [resultado_pruebas.md](B-EP-028-HU-003-iconos-del-menu/resultado_pruebas.md) | Terminada |
 
 ---
 

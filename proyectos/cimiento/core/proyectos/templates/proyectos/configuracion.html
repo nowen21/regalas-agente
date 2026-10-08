@@ -33,7 +33,7 @@
              name="{{ campo.html_name }}" value="{{ campo.value|default_if_none:'' }}" type="number" min="1"{% if not puede_cambiar %} disabled{% endif %}>
       {% endif %}
       {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
-      {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
+      {% if campo.help_text %}<div class="form-text">{{ campo.help_text }}</div>{% endif %}
     </div>
     {% endfor %}
   </div>

@@ -9,7 +9,7 @@
 > | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> Catálogo de las reglas propias de este proyecto ([`13·DOC10`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md)) que sobrescriben o complementan la base común. Cada regla va numerada `P<N>` para poder citarse de forma estable desde especificaciones, planes y señales. Vive en `.agente/reglas-proyecto.md`, que es local y no se versiona porque es configuración del agente. Al llenarlo se reemplazan los `«…»` y se borran esta caja y las notas de cada sección.
+> Catálogo de las reglas propias de este proyecto ([`13·DOC10`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md)) que sobrescriben o complementan la base común. Cada regla va numerada `P<N>` para poder citarse de forma estable desde especificaciones, planes y señales. Vive en `.agente/reglas-proyecto.md`, que es local y no se versiona porque es configuración del agente, **solo mientras el proyecto no esté registrado en Cimiento**: el proyecto registrado tiene sus reglas en la tabla de reglas de Cimiento, y este archivo se lleva allá con `manage.py pasar_reglas_proyecto` (`EP-027·HU-006`). Al llenarlo se reemplazan los `«…»` y se borran esta caja y las notas de cada sección.
 
 ## Precedencia (dónde mandan estas reglas)
 

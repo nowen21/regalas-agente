@@ -13,8 +13,8 @@
   <a href="{% url 'historia:versiones' %}">Versiones</a></p>
 <form method="get" class="d-flex gap-2 mb-3">
   {% ayuda_campo "historia.tabla" %}<select class="form-select form-select-sm w-auto" name="tabla">
-    <option value="">Todas las tablas</option>
-    {% for t in tablas %}<option value="{{ t }}"{% if t == tabla %} selected{% endif %}>{{ t }}</option>{% endfor %}
+    <option value="">Todo lo que se guarda</option>
+    {% for t, nombre in tablas %}<option value="{{ t }}"{% if t == tabla %} selected{% endif %}>{{ nombre }}</option>{% endfor %}
   </select>
   {% ayuda_campo "historia.accion" %}<select class="form-select form-select-sm w-auto" name="accion">
     <option value="">Todas las acciones</option>
@@ -26,9 +26,9 @@
   {% comment %}`EP-028·HU-006` · Ordena y filtra lo que se ve; la base ya pagina (guía §6).{% endcomment %}
   <div id="tabla-historia" data-tabla-avanzada data-por-pagina="0">
   <div class="table-responsive">
-  <table class="table card-table table-vcenter">
+  <table class="table mb-0 align-middle">
     <thead>
-      <tr><th><button type="button" class="table-sort" data-sort="t-numero">#</button></th><th><button type="button" class="table-sort" data-sort="t-fecha">Fecha</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th><th><button type="button" class="table-sort" data-sort="t-tabla">Tabla</button></th><th><button type="button" class="table-sort" data-sort="t-fila">Fila</button></th><th><button type="button" class="table-sort" data-sort="t-accion">Acción</button></th><th>Antes</th><th>Después</th><th><button type="button" class="table-sort" data-sort="t-motivo">Por qué</button></th><th><button type="button" class="table-sort" data-sort="t-version">Versión</button></th><th></th></tr>
+      <tr><th><button type="button" class="table-sort" data-sort="t-numero">#</button></th><th><button type="button" class="table-sort" data-sort="t-fecha">Fecha</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th><th><button type="button" class="table-sort" data-sort="t-tabla">Qué se guarda</button></th><th><button type="button" class="table-sort" data-sort="t-fila">Cuál</button></th><th><button type="button" class="table-sort" data-sort="t-accion">Acción</button></th><th>Antes</th><th>Después</th><th><button type="button" class="table-sort" data-sort="t-motivo">Por qué</button></th><th><button type="button" class="table-sort" data-sort="t-version">Versión</button></th><th></th></tr>
       <tr><th></th><th></th><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por quién" data-filtro="t-quien"></th><th></th><th></th><th></th><th></th><th></th><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por motivo" data-filtro="t-motivo"></th><th></th><th></th></tr>
     </thead>
     <tbody class="table-tbody">
@@ -37,8 +37,8 @@
         <td class="t-numero">{{ cambio.pk }}</td>
         <td class="t-fecha">{{ cambio.fecha|date:"Y-m-d H:i" }}</td>
         <td class="t-quien">{{ cambio.quien_lo_hizo }}</td>
-        <td class="t-tabla"><code>{{ cambio.tabla }}</code></td>
-        <td class="t-fila">{{ cambio.fila }}</td>
+        <td class="t-tabla">{{ cambio.tabla_legible }}</td>
+        <td class="t-fila">{{ cambio.fila_legible }}</td>
         <td class="t-accion">{{ cambio.get_accion_display }}</td>
         <td><small>{{ cambio.antes|default_if_none:"" }}</small></td>
         <td><small>{{ cambio.despues|default_if_none:"" }}</small></td>
@@ -57,7 +57,7 @@
     </tbody>
   </table>
   </div>
-  {% if not pagina %}<div class="empty py-4"><p class="empty-title">Todavía no hay cambios</p></div>{% endif %}
+  {% if not pagina %}<div class="text-center py-5 py-4"><p class="fs-5 fw-semibold mb-1">Todavía no hay cambios</p></div>{% endif %}
   <div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún cambio de esta página coincide con los filtros.</div>
   </div>
 </div>

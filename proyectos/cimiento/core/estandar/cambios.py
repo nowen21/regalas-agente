@@ -17,7 +17,7 @@ from django.utils import timezone
 from core.comun import Proyecto as Carpeta
 from core.herramientas.mapa_tareas import MAPA, POR_TAREA, MapaDeTareas
 
-from . import en_base
+from . import en_base, reglas
 from .models import APROBADA, CAMBIAR, CREAR, DOCUMENTO, PENDIENTE, QUITAR, RECHAZADA, Documento, Recuerdo
 
 PREFIJO = "base/"
@@ -72,12 +72,14 @@ def guardar_documento(ruta, contenido, raiz=None):
         elif not _igual(documento.contenido, contenido):
             documento.contenido = contenido
             documento.save()
+        reglas.pasar_y_armar(documento)
         rearmar_mapa(raiz)
     return documento
 
 
 def quitar_documento(documento, raiz=None):
     with transaction.atomic():
+        reglas.soltar_reglas(documento)
         documento.delete()
         rearmar_mapa(raiz)
 

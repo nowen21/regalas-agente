@@ -12,6 +12,7 @@ from core.cuentas.permisos import es_administrador
 
 from .models import ACCIONES, ESTANDAR, Cambio, Version
 from .versiones import actual
+from .nombres import nombrar, nombre_de_tabla
 from .registro import NoSeDeshace, deshacer
 
 POR_PAGINA = 50
@@ -20,7 +21,7 @@ POR_PAGINA = 50
 class Lista(View):
 
     def get(self, peticion):
-        cambios = Cambio.objects.select_related("cuenta", "deshace")
+        cambios = Cambio.objects.select_related("cuenta", "deshace", "version")
         tabla = peticion.GET.get("tabla", "").strip()
         accion = peticion.GET.get("accion", "").strip()
         if tabla:
@@ -28,9 +29,11 @@ class Lista(View):
         if accion:
             cambios = cambios.filter(accion=accion)
         pagina = Paginator(cambios, POR_PAGINA).get_page(peticion.GET.get("pagina"))
+        pagina.object_list = nombrar(pagina.object_list)
+        tablas = Cambio.objects.order_by("tabla").values_list("tabla", flat=True).distinct()
         return render(peticion, "historia/lista.html", {
             "pagina": pagina, "tabla": tabla, "accion": accion, "acciones": ACCIONES,
-            "tablas": Cambio.objects.order_by("tabla").values_list("tabla", flat=True).distinct(),
+            "tablas": sorted(((t, nombre_de_tabla(t)) for t in tablas), key=lambda par: par[1]),
             "puede_deshacer": es_administrador(peticion.user)})
 
 

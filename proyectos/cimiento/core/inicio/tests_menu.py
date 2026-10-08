@@ -32,7 +32,7 @@ class ElMenu(ConCuenta):
         for vista in EN_EL_MENU:
             self.assertIn('href="%s"' % reverse(vista), pagina, vista)
         propuestas = self.client.get(reverse("estandar:propuestas")).content.decode()
-        self.assertIn('dropdown-item active" href="%s"' % reverse("estandar:propuestas"), propuestas)
+        self.assertIn('nav-link active" href="%s"' % reverse("estandar:propuestas"), propuestas)
 
 
 class ElInicio(ConCuenta):
@@ -51,7 +51,21 @@ class ElInicio(ConCuenta):
         self.assertIn("Reporte abierto", pagina)
         self.assertIn('href="%s"' % reverse("estandar:reportes"), pagina)
         self.assertIn('fs-3">2</span>', pagina)
-        self.assertIn('ms-auto">3</span>', pagina)          # el menú suma los dos
+        self.assertIn('text-bg-danger me-3">3</span>', pagina)          # el menú suma los dos
 
     def test_cp002_sin_pendientes_lo_dice(self):
         self.assertContains(self.client.get(reverse("inicio:inicio")), "No hay nada esperando una decisión")
+
+
+class LosIconos(ConCuenta):
+    """CP-003 · `EP-028·HU-003`, fase B; desde `EP-028·HU-007`, con Bootstrap Icons de AdminLTE."""
+
+    def test_cp003_cada_entrada_y_cada_item_lleva_su_icono(self):
+        import re
+
+        html = self.client.get("/").content.decode()
+        menu = html[html.index('class="nav sidebar-menu'):html.index("</nav>", html.index('class="nav sidebar-menu'))]
+        enlaces = re.findall(r'<a class="nav-link[^"]*"[^>]*>\s*<i class="nav-icon bi bi-[\w-]+" aria-hidden="true">', menu)
+        todos = re.findall(r'<a class="nav-link', menu)
+        self.assertEqual(len(todos), len(enlaces))
+        self.assertGreaterEqual(len(enlaces), 15)

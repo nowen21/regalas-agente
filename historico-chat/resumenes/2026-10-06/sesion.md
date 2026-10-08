@@ -186,6 +186,70 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 | Por qué importa | El resultado dice que la fase cumple con menos criterios de los que tiene la HU |
 | Pendiente | [139](../2026-10-07/pendientes/139-cerrar-fase-pierde-el-ca-con-dos-casos-y-anota-la-version-vieja/pendiente.md) |
 
+### H-23 · El freno detuvo una escritura fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 14:33, el freno detuvo una escritura sobre `proyectos/cimiento/core/estandar/molde.py`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Ninguno: el freno acertó. El agente escribió código antes de abrir la fase; se abrió la fase `A-EP-027-HU-001-las-casillas` con su plan y el archivo se escribió después |
+
+### H-24 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 14:41, el freno detuvo una orden de consola sobre `proyectos/cimiento/270)/self.assertGreaterEqual(vistas,`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | [113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md): el freno tomó el texto de un `sed` como ruta. El cambio se hizo con el editor |
+
+### H-25 · La regla opt-in de un capítulo que no es opt-in ya no se puede apagar
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al correr la regresión de `core.enganches` en la fase `A-EP-027-HU-002-el-paso`, falla `test_la_opt_in_apagada_no_autoriza_y_la_encendida_si`. Desde `041984a` (EP-026·HU-009), los opt-in se filtran a los capítulos 15, 16, 18, 19, 21 y 22, y `13·DOC5`, opt-in dentro del capítulo 13, ya no se apaga |
+| Por qué importa | Una regla opcional rige para todos, y una prueba en rojo pasó sin que nadie la viera |
+| Pendiente | [140](../2026-10-07/pendientes/140-la-regla-opt-in-de-un-capitulo-que-no-es-opt-in-no-se-apaga/pendiente.md) |
+
+### H-26 · AgroSystem tiene dos reglas con el código P45
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al probar el paso de las reglas de los proyectos (EP-027·HU-006, fase B) contra los archivos reales, AgroSystem trae dos reglas distintas con el código P45: «La última fase de una HU consolida TODO el entregable» (renglón 991) y «HU con múltiples fases muestra historial» (renglón 1010) |
+| Por qué importa | En la tabla el código no se repite (`20·M4`): pasar el archivo así perdería una de las dos. El paso se niega, lo dice y deja el archivo como está |
+| Pendiente | Ninguno en este repositorio: renumerar una regla de AgroSystem lo decide el usuario |
+
+### H-27 · El freno detuvo lo que escribió una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 21:24, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/package-lock.json`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
+### H-28 · El freno detuvo lo que escribió una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 21:24, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/package.json`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
+### H-29 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 21:49, el freno detuvo una orden de consola sobre `proyectos/cimiento/3`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
+### H-30 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-07 22:01, el freno detuvo una orden de consola sobre `proyectos/cimiento/$P`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

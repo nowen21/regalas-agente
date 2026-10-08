@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load ayuda static %}
 {% block titulo %}{% if nuevo %}Documento nuevo{% else %}{{ ficha.titulo }}{% endif %}{% endblock %}
-{% block cabecera %}{% if nuevo %}Documento nuevo del estándar{% else %}{% if ficha.codigo %}<span class="badge bg-blue-lt font-monospace me-2">{{ ficha.codigo }}</span>{% endif %}{{ ficha.nombre }}{% endif %}{% endblock %}
+{% block cabecera %}{% if nuevo %}Documento nuevo del estándar{% else %}{% if ficha.codigo %}<span class="badge bg-primary-subtle text-primary-emphasis font-monospace me-2">{{ ficha.codigo }}</span>{% endif %}{{ ficha.nombre }}{% endif %}{% endblock %}
 {% block contenido %}
 <link rel="stylesheet" href="{% static 'estandar.css' %}">
 {% ayuda_pantalla "documento" %}
@@ -60,19 +60,19 @@
     <div class="card mb-3">
       <div class="card-header"><h3 class="card-title">Relaciones</h3>{% ayuda_campo "documento.relaciones" %}</div>
       <div class="card-body">
-        <h4 class="subheader mb-2">De qué depende</h4>
+        <h4 class="text-uppercase small fw-semibold text-secondary mb-2">De qué depende</h4>
         {% if relaciones.dependencias %}
         <div class="list-group list-group-flush mb-3">
           {% for r in relaciones.dependencias %}{% include "estandar/_relacion.html" with r=r tipo=r.tipo %}{% endfor %}
         </div>
         {% else %}<p class="text-secondary">No declara dependencias.</p>{% endif %}
-        <h4 class="subheader mb-2">Reglas que nombra</h4>
+        <h4 class="text-uppercase small fw-semibold text-secondary mb-2">Reglas que nombra</h4>
         {% if relaciones.nombra %}
         <div class="list-group list-group-flush mb-3">
           {% for r in relaciones.nombra %}{% include "estandar/_relacion.html" with r=r %}{% endfor %}
         </div>
         {% else %}<p class="text-secondary">No nombra otras reglas.</p>{% endif %}
-        <h4 class="subheader mb-2">La nombran</h4>
+        <h4 class="text-uppercase small fw-semibold text-secondary mb-2">La nombran</h4>
         {% if relaciones.la_nombran %}
         <div class="list-group list-group-flush">
           {% for r in relaciones.la_nombran %}{% include "estandar/_relacion.html" with r=r %}{% endfor %}
@@ -93,9 +93,8 @@
 {% if puede_cambiar %}
 <div class="modal fade" id="quitar" tabindex="-1" aria-labelledby="quitar-titulo" aria-hidden="true">
   <div class="modal-dialog">
-    <form method="post" action="{% url 'estandar:quitar' documento.pk %}" class="modal-content">
+    <form method="post" action="{% url 'estandar:quitar' documento.pk %}" class="modal-content border-top border-4 border-danger">
       {% csrf_token %}
-      <div class="modal-status bg-danger"></div>
       <div class="modal-header"><h5 class="modal-title" id="quitar-titulo">¿Quitar «{{ ficha.titulo }}»?</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
       <div class="modal-body">
         <p>El documento sale del estándar. Su texto queda en la historia de cambios y se puede devolver desde ahí.</p>

@@ -19,7 +19,7 @@
   {% comment %}`EP-028·HU-006` · Ordena y filtra lo que se ve; la base ya pagina (guía §6).{% endcomment %}
   <div id="tabla-versiones" data-tabla-avanzada data-por-pagina="0">
   <div class="table-responsive">
-  <table class="table card-table table-vcenter">
+  <table class="table mb-0 align-middle">
     <thead><tr><th><button type="button" class="table-sort" data-sort="t-de">De</button></th><th><button type="button" class="table-sort" data-sort="t-numero">Versión</button></th><th><button type="button" class="table-sort" data-sort="t-tipo">Tipo</button></th><th><button type="button" class="table-sort" data-sort="t-fecha">Fecha</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th><th><button type="button" class="table-sort" data-sort="t-motivo">Por qué</button></th><th>Cambios</th></tr>
       <tr><th></th><th></th><th><select class="form-select form-select-sm" aria-label="Filtrar por tipo" data-filtro="t-tipo" data-exacto><option value="">Todos</option></select></th><th></th><th></th><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por motivo" data-filtro="t-motivo"></th><th></th></tr></thead>
     <tbody class="table-tbody">
@@ -37,7 +37,7 @@
     </tbody>
   </table>
   </div>
-  {% if not pagina %}<div class="empty py-4"><p class="empty-title">Todavía no hay versiones guardadas</p></div>{% endif %}
+  {% if not pagina %}<div class="text-center py-5 py-4"><p class="fs-5 fw-semibold mb-1">Todavía no hay versiones guardadas</p></div>{% endif %}
   <div class="card-body text-secondary" data-sin-coincidencias hidden>Ninguna versión de esta página coincide con los filtros.</div>
   </div>
 </div>

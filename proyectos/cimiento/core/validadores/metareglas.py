@@ -755,9 +755,29 @@ class CatalogoDelProyecto(Validador):
     regla = "20·M16, 20·M7"
     descripcion = "las reglas propias del proyecto y su respaldo en base/"
 
-    def __init__(self, proyecto, archivos=None, estandar=None):
+    def __init__(self, proyecto, archivos=None, estandar=None, ajustes=None):
         super().__init__(proyecto, archivos)
         self.estandar = estandar or Proyecto.estandar()
+        self.ajustes = ajustes      # de la base: las pruebas la cambian
+
+    _EN_LA_BASE = ("SELECT r.codigo, r.titulo, r.exigencia, r.excepcion, r.notas FROM estandar_regla r "
+                   "JOIN proyectos_proyecto p ON p.id = r.proyecto_id WHERE p.activo = 1 "
+                   "AND LOWER(p.ruta) = LOWER(%s) AND r.apartada = 0 ORDER BY r.orden, r.id")
+
+    def en_la_base(self):
+        """`EP-027·HU-006` · El texto de las reglas del proyecto armado desde la tabla,
+        o None si no tiene reglas en ella o no hay base: entonces se lee el archivo."""
+        from ..enganches.niveles import BaseSinRespuesta, NivelesDelProyecto
+
+        raiz = os.path.abspath(self.proyecto.raiz)
+        try:
+            filas = NivelesDelProyecto(raiz, ajustes=self.ajustes).consultar(self._EN_LA_BASE, [raiz])
+        except BaseSinRespuesta:
+            return None
+        if not filas:
+            return None
+        return "\n\n".join("### %s · %s\n\n%s" % (codigo, titulo, "\n\n".join(p for p in partes if p))
+                           for codigo, titulo, *partes in filas)
 
     @staticmethod
     def afloja_una_blindada(respaldo, blindadas):
@@ -773,14 +793,19 @@ class CatalogoDelProyecto(Validador):
 
     def validar(self):
         ruta = self.proyecto.ruta(CATALOGO_PROYECTO)
-        if not os.path.isfile(ruta):
+        texto = self.en_la_base()
+        if texto is not None:
+            ruta = "las reglas del proyecto en Cimiento"
+        elif not os.path.isfile(ruta):
             return [Hallazgo(AVISO, ruta, 0, "el proyecto no tiene `%s`" % CATALOGO_PROYECTO)]
+        else:
+            texto = self.archivos.leer(ruta)
         del_estandar = CuerpoDeReglas.leer(self.estandar, self.archivos)
         indice = {r.id for r in del_estandar}
         blindadas = {r.id for r in del_estandar if r.blindada}
         hallazgos = []
         actual, linea_actual, respaldo = None, 0, None
-        for n, linea in Markdown.lineas_utiles(self.archivos.leer(ruta)):
+        for n, linea in Markdown.lineas_utiles(texto):
             m = re.match(r"^#{2,4}\s+(P\d+)\s*·", linea)
             if m:
                 if actual is not None:

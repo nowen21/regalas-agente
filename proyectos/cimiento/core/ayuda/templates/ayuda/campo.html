@@ -3,6 +3,6 @@
     <label class="form-label mb-0{% if campo.field.required %} required{% endif %}" for="{{ campo.id_for_label }}">{{ campo.label }}</label>{{ ayuda }}
   </div>
   {{ campo }}
-  {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
+  {% if campo.help_text %}<div class="form-text">{{ campo.help_text }}</div>{% endif %}
   {% for error in campo.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}
 </div>

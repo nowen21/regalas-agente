@@ -115,7 +115,11 @@ STATIC_URL = "static/"
 NPM = RAIZ / "node_modules"
 STATICFILES_DIRS = [
     RAIZ / "static",
-    NPM / "@tabler" / "core" / "dist",     # css/tabler.min.css, js/tabler.min.js
+    # `EP-028·HU-007` · La plantilla de Cimiento es AdminLTE 4, sobre Bootstrap 5.
+    NPM / "admin-lte" / "dist",            # css/adminlte.min.css, js/adminlte.min.js
+    NPM / "bootstrap" / "dist",            # js/bootstrap.bundle.min.js
+    NPM / "bootstrap-icons" / "font",      # bootstrap-icons.min.css y fonts/
+    NPM / "list.js" / "dist",              # list.js: ordenar, filtrar y paginar las tablas
     NPM / "htmx.org" / "dist",             # htmx.min.js
     NPM / "apexcharts" / "dist",           # apexcharts.min.js
 ]

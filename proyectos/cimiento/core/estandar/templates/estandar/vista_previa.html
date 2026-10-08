@@ -26,7 +26,7 @@
     <a class="ms-auto" href="{% url 'proyectos:editar' proyecto.pk %}">Prender o apagar</a></div>
   <div class="card-body">
     {% for capitulo, tema, prendido in opt_in %}
-    <span class="badge {% if prendido %}bg-green-lt{% else %}bg-secondary-lt{% endif %} me-1">{{ capitulo }} · {{ tema }}: {% if prendido %}sí{% else %}no{% endif %}</span>
+    <span class="badge {% if prendido %}bg-success-subtle text-success-emphasis{% else %}bg-secondary-subtle text-secondary-emphasis{% endif %} me-1">{{ capitulo }} · {{ tema }}: {% if prendido %}sí{% else %}no{% endif %}</span>
     {% endfor %}
   </div>
 </div>

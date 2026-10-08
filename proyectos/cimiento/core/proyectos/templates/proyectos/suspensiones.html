@@ -13,10 +13,10 @@
 
 <div class="card mb-3">
   {% if suspensiones %}
-  {% comment %}`EP-028·HU-006` · Tabla avanzada de Tabler: ordena, filtra y pagina (guía §6).{% endcomment %}
+  {% comment %}`EP-028·HU-006` · Tabla avanzada con List.js: ordena, filtra y pagina (guía §6).{% endcomment %}
   <div id="tabla-suspensiones" data-tabla-avanzada data-por-pagina="10">
   <div class="table-responsive">
-  <table class="table card-table table-vcenter">
+  <table class="table mb-0 align-middle">
     <thead>
       <tr><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th>
         <th><button type="button" class="table-sort" data-sort="t-motivo">Motivo</button></th>
@@ -57,9 +57,9 @@
   {% include "includes/tabla_pie.html" with tabla="tabla-suspensiones" %}
   </div>
   {% else %}
-  <div class="empty py-4">
-    <p class="empty-title">Este proyecto no ha tenido suspensiones</p>
-    {% if puede_cambiar %}<p class="empty-subtitle text-secondary">Si el freno detiene algo legítimo, se suspende abajo, con su motivo.</p>{% endif %}
+  <div class="text-center py-5 py-4">
+    <p class="fs-5 fw-semibold mb-1">Este proyecto no ha tenido suspensiones</p>
+    {% if puede_cambiar %}<p class="text-secondary mb-0 text-secondary">Si el freno detiene algo legítimo, se suspende abajo, con su motivo.</p>{% endif %}
   </div>
   {% endif %}
 </div>

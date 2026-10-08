@@ -20,7 +20,8 @@ AJUSTES = {"NAME": "cimiento", "USER": "root", "PASSWORD": "",
            "HOST": "127.0.0.1", "PORT": "3307"}
 
 # Los que pide la plantilla común; vienen de `npm ci`.
-ESTATICOS = ("css/tabler.min.css", "js/tabler.min.js", "htmx.min.js", "apexcharts.min.js")
+ESTATICOS = ("css/adminlte.min.css", "js/adminlte.min.js", "js/bootstrap.bundle.min.js", "bootstrap-icons.min.css",
+             "list.js", "htmx.min.js", "apexcharts.min.js")
 
 
 class LaPaginaDeInicioUsaLaPlantillaComun(TestCase):
@@ -36,11 +37,11 @@ class LaPaginaDeInicioUsaLaPlantillaComun(TestCase):
     def test_responde_con_menu_y_cabecera(self):
         respuesta = self.pedir()
         self.assertEqual(respuesta.status_code, 200)
-        self.assertContains(respuesta, "navbar-vertical")
-        self.assertContains(respuesta, '<span class="nav-link-title">Inicio</span>', html=True)
-        self.assertContains(respuesta, "page-title")
+        self.assertContains(respuesta, "app-sidebar")
+        self.assertContains(respuesta, '<p>Inicio', html=True)
+        self.assertContains(respuesta, "app-content-header")
 
-    def test_carga_tabler_htmx_y_apexcharts(self):
+    def test_carga_adminlte_htmx_y_apexcharts(self):
         respuesta = self.pedir()
         for archivo in ESTATICOS:
             self.assertContains(respuesta, f"/static/{archivo}")

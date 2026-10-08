@@ -2,7 +2,7 @@
 {% load ayuda %}
 {% comment %}`EP-028·HU-004` · Cada propuesta dice qué cambia, se aprueba con las preguntas de versión
 claras y se rechaza con su motivo (`17·I7`; guía de diseño de pantallas §5, §8 y §11), con las
-tarjetas, alertas y el colapso de Tabler.{% endcomment %}
+tarjetas, alertas y el colapso de la plantilla.{% endcomment %}
 {% block titulo %}Propuestas por aprobar{% endblock %}
 {% block cabecera %}Propuestas por aprobar{% endblock %}
 {% block contenido %}
@@ -18,7 +18,7 @@ tarjetas, alertas y el colapso de Tabler.{% endcomment %}
 <div class="card mb-3">
   <div class="card-header">
     <div>
-      <h3 class="card-title">{{ p.get_accion_display }}: {{ p.destino }}</h3>
+      <h3 class="card-title">{{ p.get_accion_display }}: {{ p.nombre_legible }}</h3>
       <div class="text-secondary small">Propuesta {{ p.pk }} · la hizo {{ p.quien }} el {{ p.fecha|date:"Y-m-d H:i" }}</div>
     </div>
   </div>
@@ -31,7 +31,7 @@ tarjetas, alertas y el colapso de Tabler.{% endcomment %}
 {% elif tipo == "salto" %}<span class="text-secondary">{{ linea }}</span>
 {% else %}  {{ linea }}
 {% endif %}{% endfor %}</pre>
-    <div class="form-hint mb-2">En rojo con «−» lo que sale; en verde con «+» lo que entra.</div>
+    <div class="form-text mb-2">En rojo con «−» lo que sale; en verde con «+» lo que entra.</div>
     {% else %}
     <p class="text-secondary">No cambia ninguna línea.</p>
     {% endif %}
@@ -60,20 +60,20 @@ tarjetas, alertas y el colapso de Tabler.{% endcomment %}
 </div>
 {% empty %}
 <div class="card">
-  <div class="empty py-4">
-    <p class="empty-title">No hay propuestas por aprobar</p>
-    <p class="empty-subtitle text-secondary">Cuando el agente proponga un cambio al estándar o a la memoria, aparece aquí y el inicio lo avisa.</p>
+  <div class="text-center py-5 py-4">
+    <p class="fs-5 fw-semibold mb-1">No hay propuestas por aprobar</p>
+    <p class="text-secondary mb-0 text-secondary">Cuando el agente proponga un cambio al estándar o a la memoria, aparece aquí y el inicio lo avisa.</p>
   </div>
 </div>
 {% endfor %}
 {% if resueltas %}
 <h3 class="mt-4">Ya resueltas</h3>
-<div class="card" id="tabla-propuestas" data-tabla-avanzada data-por-pagina="10"><div class="table-responsive"><table class="table table-vcenter card-table">
+<div class="card" id="tabla-propuestas" data-tabla-avanzada data-por-pagina="10"><div class="table-responsive"><table class="table align-middle mb-0">
   <thead><tr><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th><th><button type="button" class="table-sort" data-sort="t-quien">Quién propuso</button></th><th><button type="button" class="table-sort" data-sort="t-estado">Cómo quedó</button></th><th><button type="button" class="table-sort" data-sort="t-resolvio">Quién resolvió</button></th><th><button type="button" class="table-sort" data-sort="t-cuando">Cuándo</button></th></tr>
   <tr><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo propuesto" data-filtro="t-que"></th><th></th><th><select class="form-select form-select-sm" aria-label="Filtrar por cómo quedó" data-filtro="t-estado" data-exacto><option value="">Todas</option></select></th><th></th><th></th></tr></thead>
   <tbody class="table-tbody">{% for p in resueltas %}<tr>
-    <td class="t-que">{{ p.get_accion_display }}: {{ p.destino }}</td><td class="t-quien">{{ p.quien }}</td>
-    <td><span class="badge t-estado {% if p.estado == 'aprobada' %}bg-green-lt{% else %}bg-red-lt{% endif %}">{{ p.get_estado_display }}</span>
+    <td class="t-que">{{ p.get_accion_display }}: {{ p.nombre_legible }}</td><td class="t-quien">{{ p.quien }}</td>
+    <td><span class="badge t-estado {% if p.estado == 'aprobada' %}bg-success-subtle text-success-emphasis{% else %}bg-danger-subtle text-danger-emphasis{% endif %}">{{ p.get_estado_display }}</span>
       {% if p.motivo_rechazo %}<div class="text-secondary small">{{ p.motivo_rechazo }}</div>{% endif %}</td>
     <td class="t-resolvio">{{ p.resuelta_por.get_username|default:"" }}</td><td class="t-cuando">{{ p.resuelta|date:"Y-m-d H:i" }}</td>
   </tr>{% endfor %}</tbody>

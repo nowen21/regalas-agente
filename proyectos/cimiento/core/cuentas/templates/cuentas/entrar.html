@@ -5,32 +5,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Entrar - Cimiento</title>
-  <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+  {% comment %}`EP-028·HU-007` · La página de entrada de AdminLTE 4.{% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'ayuda/ayuda.css' %}">
 </head>
-<body class="d-flex flex-column">
-  <div class="page page-center">
-    <div class="container container-tight py-4">
-      <h1 class="text-center mb-4">Cimiento</h1>
-      <form class="card card-md" method="post" action="{% url 'cuentas:entrar' %}">
+<body class="login-page bg-body-secondary">
+  <div class="login-box">
+    <div class="login-logo"><i class="bi bi-bricks me-2" aria-hidden="true"></i><b>Cimiento</b></div>
+    <div class="card">
+      <form class="card-body login-card-body" method="post" action="{% url 'cuentas:entrar' %}">
         {% csrf_token %}
-        <div class="card-body">
-          <h2 class="h2 text-center mb-4">Entrar</h2>
-          {% if form.errors %}
-          <div class="alert alert-danger" role="alert">El usuario o la contraseña no son correctos.</div>
-          {% endif %}
-          <div class="mb-3">
-            <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="id_username">Usuario</label>{% ayuda_campo "entrar.usuario" %}</div>
+        <p class="login-box-msg">Entrar</p>
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">El usuario o la contraseña no son correctos.</div>
+        {% endif %}
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="id_username">Usuario</label>{% ayuda_campo "entrar.usuario" %}</div>
+          <div class="input-group">
             <input class="form-control" type="text" name="username" id="id_username" autocomplete="username" required autofocus>
+            <span class="input-group-text"><i class="bi bi-person" aria-hidden="true"></i></span>
           </div>
-          <div class="mb-3">
-            <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="id_password">Contraseña</label>{% ayuda_campo "entrar.clave" %}</div>
-            <input class="form-control" type="password" name="password" id="id_password" autocomplete="current-password" required>
-          </div>
-          <input type="hidden" name="next" value="{{ next }}">
-          <button class="btn btn-primary w-100" type="submit">Entrar</button>
         </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="id_password">Contraseña</label>{% ayuda_campo "entrar.clave" %}</div>
+          <div class="input-group">
+            <input class="form-control" type="password" name="password" id="id_password" autocomplete="current-password" required>
+            <span class="input-group-text"><i class="bi bi-lock" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}">
+        <button class="btn btn-primary w-100" type="submit"><i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>Entrar</button>
       </form>
     </div>
   </div>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
+  <script src="{% static 'js/adminlte.min.js' %}" defer></script>
+  <script src="{% static 'ayuda/ayuda.js' %}" defer></script>
 </body>
 </html>

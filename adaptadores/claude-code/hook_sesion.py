@@ -46,6 +46,7 @@ from core.enganches import historico, recuerdos                  # noqa: E402
 from core.enganches.cargador import Cargador                     # noqa: E402
 from core.enganches.historico import Historico                   # noqa: E402
 from core.enganches.recuerdos import Recuerdos                   # noqa: E402
+from core.enganches.reglas_del_proyecto import ReglasDelProyecto  # noqa: E402
 from core.enganches.sesion import ArranqueDeSesion               # noqa: E402
 from core.historia import copia                                  # noqa: E402
 from core.herramientas.instalar import Instalador                # noqa: E402
@@ -87,20 +88,28 @@ def _memoria(proyecto, tope=None):
     return Recuerdos(proyecto).contexto(tope=tope)
 
 
+def _reglas_del_proyecto(proyecto, tope=None):
+    """`EP-027·HU-006` · El índice de las reglas propias del proyecto, si viven en la base."""
+    return ReglasDelProyecto(proyecto).contexto(tope=tope)
+
+
 def _historico(proyecto, tope=None):
     return Historico(proyecto).contexto(tope=tope)
 
 
 def _del_proyecto(proyecto, disponible):
-    """La memoria y el índice del histórico, recortados a `disponible`.
+    """La memoria, el índice de las reglas del proyecto y el del histórico,
+    recortados a `disponible`.
 
     Devuelve `(texto, avisos)`. Va primero la memoria, porque trae las
-    preferencias del usuario; el histórico toma lo que quede. Nunca rompe el
-    arranque.
+    preferencias del usuario; después las reglas propias del proyecto
+    (`EP-027·HU-006`); el histórico toma lo que quede. Nunca rompe el arranque.
     """
     partes, avisos = [], []
     for nombre, cargar, donde, modulo in (
             ("la memoria", _memoria, _ruta(recuerdos), "recuerdos"),
+            ("el índice de las reglas del proyecto", _reglas_del_proyecto, "manage.py ver_regla --proyecto",
+             "reglas_del_proyecto"),
             ("el índice del histórico", _historico, _ruta(historico), "historico")):
         try:
             entero = cargar(proyecto)

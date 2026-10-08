@@ -40,8 +40,9 @@ HERRAMIENTAS = ("las herramientas del estándar (análisis 1 del pendiente 110)"
 class Autorizaciones:
     """Las rutas que las reglas vigentes dejan escribir. Todo es de lectura."""
 
-    def __init__(self, archivos=None):
+    def __init__(self, archivos=None, ajustes=None):
         self.archivos = archivos or Archivos()
+        self.ajustes = ajustes      # de la base: las pruebas la cambian
 
     @staticmethod
     def patron(ruta):
@@ -124,7 +125,15 @@ class Autorizaciones:
         return salida
 
     def del_proyecto(self, proyecto):
-        """`[(regla, [rutas])]` de las reglas propias del proyecto."""
+        """`[(regla, [rutas])]` de las reglas propias del proyecto.
+
+        `EP-027·HU-006` · Si el proyecto tiene sus reglas en la base de Cimiento,
+        se leen de ahí; si no, de su archivo, como antes."""
+        from .reglas_del_proyecto import ReglasDelProyecto
+
+        en_base = ReglasDelProyecto(proyecto, ajustes=self.ajustes).autorizan()
+        if en_base is not None:
+            return [(codigo, rutas) for codigo, texto in en_base for _, _, rutas in self.lineas(texto)]
         archivo = os.path.join(proyecto, REGLAS_PROYECTO)
         if not os.path.isfile(archivo):
             return []
