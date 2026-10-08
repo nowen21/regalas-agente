@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Ninguno |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `eda8871` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan

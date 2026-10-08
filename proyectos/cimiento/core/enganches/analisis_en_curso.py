@@ -296,8 +296,10 @@ class AnalisisEnCurso:
 
     def carpeta_del_pendiente(self, numero):
         """La carpeta `N-<slug>/` que tiene el `pendiente.md` del pendiente N, o ""."""
+        # Se compara como número: el andamio nombra «033-...» y el usuario puede escribir «33» o «033».
         for carpeta in self._carpetas_con_pendiente():
-            if os.path.basename(carpeta).split("-", 1)[0] == str(numero):
+            prefijo = os.path.basename(carpeta).split("-", 1)[0]
+            if prefijo.isdigit() and str(numero).isdigit() and int(prefijo) == int(numero):
                 return carpeta
         return ""
 

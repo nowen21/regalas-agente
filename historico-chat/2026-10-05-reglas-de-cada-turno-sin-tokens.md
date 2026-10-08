@@ -381,3 +381,26 @@ Para hacer los dos se necesita «Hágalo».
 
 ### 20 · Usuario — 2026-10-06 12:55:29
 > Hágalo
+
+**Agente** — 2026-10-06 12:58:32
+<!-- agente: a786d476-ebef-45e3-8a7a-0fb39cd199d6 -->
+
+Hice el commit `559c880`. Entraron solo los archivos de esta sesión:
+
+- la transcripción;
+- el resumen, con las tres casillas de cierre marcadas;
+- los pendientes 133, 134 y 135;
+- el guion de apoyo;
+- de los dos índices compartidos, solo la línea de esta sesión.
+
+H-4 quedó así: fue un error del agente, el usuario decidió no tocar el freno y no deja pendiente.
+
+El control del commit dio tres avisos y ninguna falla:
+
+- **«Mezcla archivos de 4 sesiones».** Revisé que lo preparado fuera solo de esta sesión. Creo que el aviso viene de que los dos índices los tocaron otras sesiones antes, pero no lo comprobé.
+- **El asunto tiene 100 caracteres y la referencia es 72.** No lo corregí.
+- **CHANGELOG con dos entradas 15.4.0.** Es un aviso viejo, ya reconocido en el registro.
+
+`historico-chat/scripts/2026-10-06/README.md` sigue marcado como cambiado porque tiene filas de otras sesiones que no entraron en este commit.
+
+La sesión queda lista para cerrar. No hice push.

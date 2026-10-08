@@ -603,3 +603,30 @@ El pendiente recién creado se borró con la herramienta contraria (`andamio.py 
 
 ### 26 · Usuario — 2026-10-06 14:40:18
 > suba
+
+**Agente** — 2026-10-06 14:43:36
+<!-- agente: 3e948949-aafe-43bc-ad45-b4cdb9dbafd6 -->
+
+Quedó guardado y publicado: commit `0fd88a0`, subido a `main`. El commit lleva solo los cuatro archivos de esta sesión: la transcripción, el resumen, el pendiente 122 y su análisis.
+
+Los revisores no frenaron el commit ni la subida, pero dejaron avisos:
+- **El título del commit es largo.** Tiene 96 caracteres y lo recomendado son 72.
+- **Mezcla de sesiones.** El revisor dice que el commit mezcla archivos de 4 sesiones. Los cuatro archivos son de esta conversación, pero el revisor le asigna la transcripción también a otras sesiones. Puede ser un error del revisor; no se investigó.
+- **Pruebas del estándar.** La última vez que se corrieron (2026-10-05) quedó 1 falla. No es de este cambio.
+- **Avisos que ya estaban:** cuatro reglas pasan del largo que permite su molde, y el `CHANGELOG.md` tiene dos entradas con la versión 15.4.0.
+
+Quedan sin guardar, a propósito, el análisis principal y el índice del día. Los dos tienen también cambios de otra sesión.
+
+Con esto la sesión se puede cerrar.
+
+### 27 · Usuario — 2026-10-06 14:46:33
+> pregunta ya se puede cerrar la sesión?4
+
+**Agente** — 2026-10-06 14:46:51
+<!-- agente: 754e51f2-e744-40b4-aedb-58246e5eaf77 -->
+
+Sí, se puede cerrar. Lo de esta sesión quedó aprobado, guardado y publicado (commit `0fd88a0`).
+
+Quedan dos detalles, y ninguno impide cerrar:
+- **La transcripción sigue creciendo** con estos últimos mensajes. Eso es normal: entra sola en el próximo commit, sin pedirlo.
+- **La tercera casilla del resumen** («lo que se hizo está aprobado y guardado») quedó sin marcar, porque el commit se hizo antes. Si se quiere, se marca con «Hágalo», y ese cambio va en el próximo commit.

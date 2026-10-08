@@ -551,3 +551,42 @@ Falta el commit de la fase, que se pide aparte. Son siete archivos: el de prueba
 
 ### 30 · Usuario — 2026-10-06 17:35:09
 > suba
+
+**Agente** — 2026-10-06 17:38:46
+<!-- agente: 19a2ef1c-521b-4f83-b36e-e0b73ccf0157 -->
+
+Subido. `634b28a..8ec2ebf` en `origin/main`.
+
+**El commit.** Catorce archivos: los seis de la fase `C`, el archivo de pruebas, la celda del anexo, los índices de la historia, el registro con las entradas `56.2.0` y `56.2.1`, y el resumen de la sesión.
+
+**El freno paró dos veces, y las dos tenían razón.** La primera, por el archivo de pruebas con el plan sin aprobar. La segunda rechazó el commit porque cambiar el anexo pedía subir la versión. Las dos se arreglaron por la causa: registrar la aprobación, y publicar la `56.2.1` como PARCHE por la redacción de la celda. Nada se saltó.
+
+**Tres avisos.** Dos ya conocidos, el de las dos entradas de la `15.4.0` y el de las pruebas del estándar del 2026-10-05 con una falla sin revisar. El tercero es nuevo y es mío: el asunto del commit quedó en 80 caracteres y `G2` pide 72.
+
+**Un detalle que dejó el enganche.** Después de guardar, anotó el número `8ec2ebf` en la estación 12 de la fase, y ese archivo quedó sin guardar. El propio enganche dice que entra en el commit siguiente, así que lo dejé así.
+
+Las cuatro casillas del resumen están marcadas. La sesión se puede cerrar.
+
+### 31 · Usuario — 2026-10-06 17:39:49
+> repondo: resuma la respuesta aplicando 00 id7 y 00 id9
+
+**Agente** — 2026-10-06 17:40:02
+<!-- agente: 853a0d5d-53b9-40de-a0e4-5ca8297ff62b -->
+
+Llegó como «repondo», sin la s, y la lista solo tiene `Respondo`. Una palabra parecida no cuenta, así que acá no se hace nada: con `respondo` escrito así, va el resumen en palabras simples.
+
+### 32 · Usuario — 2026-10-06 17:40:43
+> respondo: resuma la respuesta aplicando 00 id7 y 00 id9
+
+**Agente** — 2026-10-06 17:40:56
+<!-- agente: 346ff2e0-4a18-45a8-93e3-86d3d9fa052a -->
+
+Todo quedó guardado y publicado.
+
+La lista de palabras ahora tiene `Liste` y `OK`. Escribir «ok» basta para decir que algo se entendió, y no autoriza nada más. Hay tres pruebas que lo comprueban, y las tres pasan.
+
+Quedó escrito con sus papeles: la fase `C` de la historia, con su plan, sus pruebas y su cierre. La versión subió a `56.2.1`.
+
+Un guardia del propio proyecto frenó el trabajo dos veces, por un plan sin aprobar y por un cambio sin versión. Las dos veces se arregló lo que faltaba, sin pasarlo por encima.
+
+La sesión se puede cerrar.

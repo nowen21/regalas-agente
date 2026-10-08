@@ -114,9 +114,9 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☑ H-2, H-4 a H-10 se corrigieron dentro de sus fases |
+| Todo hallazgo enlaza su pendiente | ☑ H-1, H-3 y H-11 enlazan los pendientes 120, 121 y 123; H-2 y H-4 a H-10 se corrigieron dentro de sus fases; H-12 no deja nada que corregir |
 | Todo pendiente enlazado existe | ☑ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Lo que se hizo está aprobado y guardado | ☑ Commit `eda8871`, del 2026-10-05 |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
