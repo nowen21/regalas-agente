@@ -59,3 +59,4 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 - [historico-chat/resumenes/2026-10-05/](2026-10-05/) — sin escribir todavía.
 - [historico-chat/resumenes/2026-10-06/](2026-10-06/): solo el pendiente 131, del hallazgo H-5 de la sesión 2 del 2026-10-05.
 - [historico-chat/resumenes/2026-10-07/](2026-10-07/): el pendiente 137, del hallazgo H-14 de la sesión del 2026-10-06.
+- [historico-chat/resumenes/2026-10-08/](2026-10-08/): el pendiente 141, del hallazgo H-1 de la sesión del 2026-10-07 sobre pruebas en Django, y el 142, los documentos de Cimiento pasan a su base.
