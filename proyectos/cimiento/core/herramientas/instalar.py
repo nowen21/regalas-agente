@@ -39,8 +39,8 @@ from datetime import datetime
 
 from ..comun import Proyecto
 from ..comun.consola import preparar_salida
-from ..comun.enganches import (CONFIG_AGENTE, ENGANCHES_GIT, HOOKS_CLAUDE,  # noqa: F401
-                                IGNORADOS, NO_SE_SUSPENDEN)
+from ..comun.enganches import (CONFIG_AGENTE, EN_SEGUNDO_PLANO, ENGANCHES_GIT,  # noqa: F401
+                                HOOKS_CLAUDE, IGNORADOS, NO_SE_SUSPENDEN)
 from ..enganches.recuerdos import CARPETA as CARPETA_RECUERDOS
 from ..enganches.recuerdos import INDICE as INDICE_RECUERDOS
 from ..enganches.recuerdos import Recuerdos
@@ -543,6 +543,8 @@ class Instalador:
         cambios = False
         for evento, matcher, guion, mensaje, argumentos in HOOKS_CLAUDE:
             nuevo = self.hook_claude(estandar, ruta.replace("\\", "/"), guion, mensaje, argumentos)
+            if (evento, guion) in EN_SEGUNDO_PLANO:
+                nuevo["async"] = True
 
             # Se respeta lo que ya hubiera; solo se toca el grupo propio.
             ganchos = datos.setdefault("hooks", {}).setdefault(evento, [])

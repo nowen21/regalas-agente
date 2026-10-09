@@ -100,6 +100,14 @@ HOOKS_CLAUDE = [
      "Comparando lo que cambió con el plan...", ""),
 ]
 
+# Pendiente 143, fase A · Lo que corre al cerrar el turno y nadie espera: se
+# instala con `async`, y la respuesta deja de esperar cerca de 6 s. Su salida se
+# descarta, y ninguno la necesita: lo que el turno siguiente lee queda en
+# archivos, y la medición de la redacción la repite `hook_reglas.py`.
+EN_SEGUNDO_PLANO = frozenset({
+    ("Stop", "hook_historico.py"), ("Stop", "hook_turno.py"),
+    ("Stop", "hook_redaccion.py"), ("Stop", "hook_presupuesto.py")})
+
 # Lo que ningún ajuste del proyecto suspende (acuerdo 12): el histórico de la
 # conversación, que además tapa las claves antes de guardarla (`00·N6`).
 NO_SE_SUSPENDEN = ("hook_historico.py",)

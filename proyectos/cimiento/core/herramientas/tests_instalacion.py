@@ -1159,6 +1159,19 @@ class InstaladorPorPartes(unittest.TestCase):
         self.assertEqual(1, len([c for c in comandos if "hook_md.py" in c]), "quedó duplicado")
         self.assertFalse([c for c in comandos if "/viejo/" in c], "quedó el viejo")
 
+    def test_lo_que_cierra_el_turno_corre_en_segundo_plano(self):
+        """Pendiente 143, fase A: los de `Stop` no se esperan; los que mandan
+        contexto al modelo, sí. Y volver a instalar no cambia nada."""
+        raiz = _espacio(self)
+        Instalador().instalar_claude(raiz, ESTANDAR.replace("\\", "/"), aplicar=True)
+        hooks = json.loads(leer(os.path.join(raiz, ".claude", "settings.json")))["hooks"]
+        for evento, grupos in hooks.items():
+            for h in (h for g in grupos for h in g["hooks"]):
+                with self.subTest(evento=evento, comando=h["command"][-40:]):
+                    self.assertEqual(evento == "Stop", h.get("async", False))
+        pasos = Instalador().instalar_claude(raiz, ESTANDAR.replace("\\", "/"), aplicar=True)
+        self.assertTrue(all("ya estaba puesto" in p for p in pasos), pasos)
+
     def test_el_historico_se_instala_en_dos_eventos(self):
         eventos = {e: args for e, _, g, _, args in HOOKS_CLAUDE if g == "hook_historico.py"}
         self.assertEqual(eventos, {"UserPromptSubmit": "--modo usuario", "Stop": "--modo agente"})
