@@ -766,3 +766,229 @@ No llevaría los archivos que otras sesiones dejaron modificados.
 
 ### 33 · Usuario — 2026-10-09 11:34:57
 > suba
+
+**Agente** — 2026-10-09 11:43:26
+<!-- agente: b4f86b19-62e1-4f5e-a105-997210b83c10 -->
+
+Primero separo qué archivos cambió esta sesión, con el comando de Cimiento que hace eso.
+
+Commit 1, el del pendiente 147.
+
+Commit 1 hecho. El aviso de sesiones mezcladas se refiere a la HU-004, que creó la sesión de ayer; lo que cambió en ella son mis 16 líneas. Sigue el commit 2, del pendiente 148.
+
+Commit 2 hecho. El asunto quedó largo; los siguientes los dejo por debajo de 72 caracteres. Sigue el commit 3, del pendiente 146.
+
+Commits 3 y 4 hechos. Antes del 5, el del pendiente 149, reviso que `suspensiones.html`, que la herramienta atribuyó a otra sesión, solo traiga mis cambios.
+
+Todo es mío. Hago el commit 5.
+
+El pre-commit rechazó el commit por una marca de redacción que dejé en el resultado de la fase C: unos puntos suspensivos de un solo carácter. La corrijo y vuelvo a intentar.
+
+El análisis principal aparece entero como cambiado: guardé la versión sin pasar por la conversión de fin de línea que git aplica a ese archivo. La vuelvo a preparar usando esa conversión.
+
+Los seis commits quedaron hechos. Ahora los subo; el enganche de git que corre antes de publicar revisa todo otra vez.
+
+Quedó subido. Reviso un cambio que apareció en `enganches.py` justo después del push.
+
+Los seis commits quedaron subidos a `origin/main` (de `46c602f` a `334744a`), uno por pendiente más uno con el registro de la sesión. Antes de subirlos, los revisaron los enganches de git: no hubo fallas, solo avisos que ya estaban. No se llevaron archivos de otras sesiones. En los archivos compartidos subí solo mis líneas; la fila del pendiente 133 y los cambios de versión quedaron por fuera.
+
+Hay algo que choca con lo que acabo de subir: otra sesión, la de la EP-005·HU-025, está cambiando `enganches.py` en este momento. Pasa `hook_senales.py` de cada mensaje al inicio de la sesión.
+
+Si lo guarda así, ese enganche queda sin nombre en el catálogo de lo que se puede suspender (`MOMENTOS`), y pasan dos cosas:
+
+- la pantalla de suspensiones falla al abrirse;
+- la prueba que exige un nombre para cada enganche queda en rojo.
+
+La corrección es una línea: agregar `("SessionStart", "hook_senales.py")` a `MOMENTOS` y quitar la entrada vieja. Ese archivo está en manos de la otra sesión ahora mismo, así que no lo toqué. Esa línea la debe agregar la otra sesión, o la agrego yo cuando termine.
+
+### 34 · Usuario — 2026-10-09 11:44:39
+> respondo: resuma aplicando 00id7 y 00id9
+
+**Agente** — 2026-10-09 11:44:52
+<!-- agente: cbd6117c-1c6a-4109-ad08-1b57b09d3fe2 -->
+
+Quedó guardado y publicado en git.
+
+Hay algo por cuidar. Otra sesión está cambiando en este momento el archivo que lista los enganches. Pasa el enganche de las señales del momento de cada mensaje al momento de abrir la sesión. Si lo guarda así, la pantalla de suspensiones deja de abrir, porque ese enganche queda sin nombre en la lista. La corrección es de una línea.
+
+No toqué ese archivo porque la otra sesión lo está usando. La línea la puede agregar esa sesión, o la agrego yo cuando termine.
+
+### 35 · Usuario — 2026-10-09 11:50:53
+> pregunta: qué falta para cerrar la sesión?
+
+**Agente** — 2026-10-09 11:51:09
+<!-- agente: 56bc4fb0-6827-40df-95b0-f3f72b95df5a -->
+
+Para cerrar la sesión faltan tres cosas:
+
+1. **Marcar el resumen.** Las tres casillas de «¿Se puede cerrar la sesión?» se pueden marcar: cada hallazgo ya tiene su pendiente (H-2 en el 150 y H-3 en el 149; H-1 no necesitaba uno), y todo lo hecho quedó aprobado y subido. Solo falta poner las marcas. Lo hago con su indicación.
+2. **Probar el 149 en scilit.** Cimiento pide que la corrección se pruebe en el proyecto que la pidió: suspender allá un enganche y ver que deja de correr.
+3. **El nombre del enganche de las señales.** Cuando la otra sesión guarde su cambio en la lista de enganches, falta agregar la línea con el nombre nuevo, o la pantalla de suspensiones no abre.
+
+### 36 · Usuario — 2026-10-09 11:58:20
+> pregunta: qué sigue
+
+**Agente** — 2026-10-09 11:58:32
+<!-- agente: 0e8bb32a-7c9b-4e5a-b39f-96fb5541f561 -->
+
+Lo siguiente es marcar las tres casillas del resumen, porque ya están cumplidas. Para hacerlo, escriba «Hágalo».
+
+Después quedan dos cosas que no dependen solo de esta sesión:
+
+- **Probar el 149 en scilit.** Hay que trabajarlo en ese proyecto: actualizarle el estándar, suspender un enganche desde Cimiento y comprobar que deja de correr.
+- **Agregar el nombre del enganche de las señales.** Se puede hacer cuando la otra sesión guarde su cambio en `enganches.py`.
+
+### 37 · Usuario — 2026-10-09 12:01:15
+> Hágalo
+
+**Agente** — 2026-10-09 12:01:38
+<!-- agente: 0423031e-c11f-45d0-9973-35180927986a -->
+
+Marqué las tres casillas del resumen de la sesión. El cambio está guardado en el archivo, pero todavía no está en git: entra en el próximo commit, porque ese archivo es parte del registro de la sesión.
+
+Por fuera de esta sesión quedan dos cosas:
+
+- **Probar el pendiente 149 en scilit.** Hay que actualizarle el estándar a ese proyecto, suspender un enganche desde Cimiento y comprobar que deja de correr.
+- **Agregar el nombre del enganche de las señales en `enganches.py`.** Se puede hacer cuando la otra sesión guarde su cambio en ese archivo; sin esa línea, la pantalla de suspensiones no abre.
+
+### 38 · Usuario — 2026-10-09 12:03:19
+> Explique como se hace en cimiento para suspender un enganche
+
+**Agente** — 2026-10-09 12:03:49
+<!-- agente: d7ff1bbe-782b-47f4-9935-cc867a09cef1 -->
+
+Para suspender un enganche desde Cimiento:
+
+1. Abrir Cimiento en el navegador y entrar a «Proyectos».
+2. En la fila del proyecto, hacer clic en «Suspensiones».
+3. Al final de la página está la tabla «Enganches y revisiones de git que se pueden suspender». Buscar ahí el nombre del enganche, por ejemplo `senales` o `git-marcas`. Si la tabla dice «No conviene suspenderlo», leer el motivo antes de seguir.
+4. En el formulario «Suspender»:
+   - En «Qué se suspende», escoger «Un enganche o una revisión de git».
+   - En el campo del nombre, escribir el nombre de la tabla. El campo lo sugiere mientras se escribe. Si se deja vacío, se suspende el freno entero.
+   - Escribir el motivo.
+   - Escoger la fecha de vencimiento, a lo sumo 30 días después.
+5. Hacer clic en «Suspender».
+
+Desde el mensaje siguiente, ese enganche ya no corre. Si es una revisión de git, el próximo commit no se detiene por ella y avisa que está suspendida.
+
+Para deshacerlo antes de que venza, hacer clic en «Levantar» en la fila de esa suspensión.
+
+Esto solo pueden hacerlo las cuentas de administrador. Las demás ven la página, pero sin el formulario.
+
+### 39 · Usuario — 2026-10-09 12:11:59
+> Corrija: La interfaz debe tener tres pestañas: «Suspensiones», activa por defecto, «Reglas» y «Enganches». En «Suspensiones», el formulario para suspender debe abrirse en un modal mediante un botón ubicado al principio de la tabla. En «Enganches», la información debe mostrarse en una tabla similar a la de suspensiones. Esta organización facilita el acceso a cada sección y mantiene una presentación uniforme.
+
+**Agente** — 2026-10-09 12:12:15
+<!-- agente: 79820b7c-e2e8-4112-9a56-303c1ca376d8 -->
+
+Ese cambio no se puede hacer con «Corrija». «Corrija» solo deja arreglar las herramientas del proceso (`validadores/` y `adaptadores/`) sin abrir un análisis, y la pantalla de suspensiones es código de Cimiento: tiene que pasar por el análisis y la fase. Como es la misma pantalla del pendiente 149, entra en su análisis 3 y se construye en una fase D de la EP-025·HU-032.
+
+**Para seguir, escriba «Analicemos: el pendiente 149».** En el análisis se deja anotado lo que pidió:
+
+- tres pestañas: «Suspensiones» (abierta al entrar), «Reglas» y «Enganches»;
+- en «Suspensiones», un botón al principio de la tabla que abre el formulario en una ventana encima de la página;
+- en «Enganches», la tabla con el mismo estilo que la de suspensiones.
+
+Queda una sola cosa por decidir en el análisis: qué se muestra en la pestaña «Reglas».
+
+### 40 · Usuario — 2026-10-09 12:15:13
+> Analicemos: el pendiente 149
+
+**Agente** — 2026-10-09 12:16:28
+<!-- agente: 03e3abd7-37d5-492f-8144-58d76560500a -->
+
+Reviso qué hay ya en Cimiento para pestañas, ventanas de formulario y listas de reglas, para reusarlo.
+
+Ya existen los dos patrones que hacen falta: pestañas de Bootstrap en `reglas_del_proyecto.html` y una ventana de formulario (modal) en `documento.html`. Escribo el análisis 3.
+
+El análisis 3 quedó escrito en [analisis-3.md](historico-chat/resumenes/2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/analisis-3.md). Falta una decisión: **¿qué se muestra en la pestaña «Reglas»?**
+
+Recomiendo una tabla igual a la de «Enganches», con las reglas que se pueden suspender: su código, su título y su capítulo. Hoy hay que saberse el código de memoria para suspender una regla, y con la tabla basta con buscarla.
+
+Hay un paso más antes de poder aprobar. Su pedido de las pestañas fue el turno 39, pero el análisis empezó a copiar la conversación en el turno 40. Para que ese pedido quede dentro del análisis, escriba también «Analicemos: el pendiente 149 desde el turno 39».
+
+### 41 · Usuario — 2026-10-09 12:32:31
+> Respondo:
+>  ¿qué se muestra en la pestaña «Reglas»?
+> una tabla con las reglas lo mismo como la de suspensiones
+
+**Agente** — 2026-10-09 12:33:06
+<!-- agente: 55039662-5687-40a8-b16d-3dc74cd5a488 -->
+
+Quedó anotado en el análisis 3. Los acuerdos son tres:
+
+1. **Las pestañas:** «Suspensiones» abierta al entrar, «Reglas» y «Enganches». En «Suspensiones», un botón al principio de la tabla abre el formulario en un modal.
+2. **La pestaña «Reglas»:** una tabla igual a la de suspensiones, con las reglas que se pueden suspender.
+3. **Dónde se construye:** una fase D de la EP-025·HU-032.
+
+**Escriba «Analicemos: el pendiente 149 desde el turno 39»**, para que su pedido de las pestañas quede dentro del análisis. Después, «Apruebo el análisis», y construyo la fase D.
+
+### 42 · Usuario — 2026-10-09 12:36:02
+> Analicemos: el pendiente 149 desde el turno 39
+
+**Agente** — 2026-10-09 12:36:07
+<!-- agente: 5e5b57ea-80ed-49c1-8435-f26dacfef896 -->
+
+El análisis 3 ya copia la conversación desde el turno 39, así que su pedido de las pestañas queda incluido. Puede que se vea después de esta respuesta, cuando el enganche copie los turnos que faltan.
+
+**Escriba «Apruebo el análisis»**, y construyo la fase D.
+
+### 43 · Usuario — 2026-10-09 12:44:38
+> Apruebo el análisis
+
+**Agente** — 2026-10-09 12:45:06
+<!-- agente: fa500634-dd6e-4178-b537-19b4c89e93ec -->
+
+No quedó aprobado: el análisis tiene que nombrar su hallazgo con un número (H-N). Anoto el pedido como H-4 en el resumen de la sesión y le pongo ese número al análisis.
+
+El análisis ya tiene su hallazgo, H-4, anotado también en el resumen de la sesión. **Escriba otra vez «Apruebo el análisis».**
+
+### 44 · Usuario — 2026-10-09 12:58:45
+> Apruebo el análisis
+
+**Agente** — 2026-10-09 12:59:12
+<!-- agente: d1451692-d0a5-4f68-a1ad-d9b6bd6f41d3 -->
+
+Tampoco quedó aprobado: falta agregar H-4 al origen del pendiente 149, pasándolo a su versión siguiente. Lo hago, y agrego esa fila a «Lo que se tiene que hacer» del análisis.
+
+El pendiente 149 ya incluye H-4 entre sus orígenes. **Escriba otra vez «Apruebo el análisis».**
+
+### 45 · Usuario — 2026-10-09 13:02:06
+> Apruebo el análisis
+
+**Agente** — 2026-10-09 13:09:02
+<!-- agente: bedffe6f-7958-4cf7-b5eb-c3e80cbf4edb -->
+
+Aprobado. Registro la lección y miro qué datos trae cada regla para armar la tabla.
+
+Puse el número de la señal equivocado: es S-371, no S-369. Lo corrijo, y sumo a la HU-032 el criterio CA-04 para la fase D.
+
+Escribo los planes de la fase D.
+
+El enlace roto que avisa el enganche está en el pendiente 152, que es de otra sesión, así que no lo toco. Reviso con qué versión quedó aprobado el análisis 3, para usar la misma en el plan.
+
+Enlazo ese H-5 con el pendiente 144, que es el que trata este defecto del freno. Después sigo con el código de la fase D.
+
+Ahora la fase D. Leo la pantalla completa para reescribirla en pestañas.
+
+Compruebo que la plantilla base cargue Bootstrap, porque el modal lo necesita.
+
+Bootstrap carga antes de que se abra el modal, así que funciona. Actualizo la prueba que buscaba la tabla vieja y agrego los casos CP-008 y CP-009.
+
+Pasan las 39. Cierro la fase D.
+
+La pantalla de suspensiones ya funciona en tres pestañas. Los cambios no tienen commit todavía.
+
+- **Suspensiones:** es la pestaña que se abre al entrar. Al principio tiene el botón «Suspender», que abre el formulario en una ventana encima de la página. Si el formulario tiene un error, la página vuelve con esa ventana abierta y el error a la vista.
+- **Reglas:** muestra las reglas que se pueden suspender, con su código, su título y su capítulo. La tabla funciona igual que la de suspensiones: ordena, filtra y pagina.
+- **Enganches:** muestra los momentos de cada enganche y las revisiones de git, con su recomendación, en una tabla igual.
+- **Permisos:** quien solo consulta no ve el botón ni el formulario.
+
+Pasan las 39 pruebas y los validadores no dan ninguna falla. Las pruebas revisan lo que devuelve el servidor: no abrí la pantalla en un navegador ni probé el botón ni el modal.
+
+Al abrir el plan de esta fase, el freno detuvo una orden porque tomó la palabra «el» como si fuera un archivo. Lo anoté como H-5 dentro del pendiente 144, que ya trata ese defecto.
+
+**¿Hago el commit y lo subo?** Llevaría la fase D, el análisis 3 y el pendiente 149 en su versión 3, y el resumen de la sesión con H-4, H-5 y las casillas marcadas.
+
+### 46 · Usuario — 2026-10-09 13:11:00
+> suba

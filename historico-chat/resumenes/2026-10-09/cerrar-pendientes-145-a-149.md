@@ -34,6 +34,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-09-cerrar-pendient
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | [Pendiente 149](../2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/pendiente.md), en su [análisis 2](../2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/analisis-2.md) |
 
+### H-4 · La pantalla de suspensiones pone todo en una sola página
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El usuario pidió (turno 39) ordenar la pantalla de suspensiones en tres pestañas, «Suspensiones», «Reglas» y «Enganches», con el formulario en un modal que abre un botón al principio de la tabla |
+| Por qué importa | La tabla de enganches quedaba al final de la página, debajo del formulario, y las reglas no se veían: había que saber su código |
+| Pendiente | [Pendiente 149](../2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/pendiente.md), en su [análisis 3](../2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/analisis-3.md) |
+
+### H-5 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-09 13:04, el freno detuvo una orden de consola sobre `el`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](../2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md): la orden era un `sed` y el freno tomó la palabra «el» de su texto como una ruta |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -42,9 +58,9 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☐ |
-| Todo pendiente enlazado existe | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo enlaza su pendiente | ☑ |
+| Todo pendiente enlazado existe | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
