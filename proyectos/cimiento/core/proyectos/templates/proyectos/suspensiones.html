@@ -9,114 +9,178 @@
 {% for mensaje in messages %}
 <div class="alert alert-{% if mensaje.tags == 'error' %}danger{% else %}success{% endif %}" role="alert">{{ mensaje }}</div>
 {% endfor %}
-<p class="text-secondary">Una regla, un enganche o una revisión de git deja de actuar en este proyecto hasta que vence o se levanta. Lleva motivo y dura a lo sumo {{ dias }} días. El núcleo del estándar no se suspende; lo que no conviene suspender lleva su advertencia abajo.</p>
+<p class="text-secondary">Una regla, un enganche o una revisión de git deja de actuar en este proyecto hasta que vence o se levanta. Lleva motivo y dura a lo sumo {{ dias }} días. El núcleo del estándar no se suspende; lo que no conviene suspender lleva su advertencia en «Enganches».</p>
 
+{% comment %}`EP-025·HU-032`, fase D · Tres pestañas: lo suspendido, las reglas y los enganches que se pueden suspender
+(análisis 3 del pendiente 149).{% endcomment %}
 <div class="card mb-3">
-  {% if suspensiones %}
-  {% comment %}`EP-028·HU-006` · Tabla avanzada con List.js: ordena, filtra y pagina (guía §6).{% endcomment %}
-  <div id="tabla-suspensiones" data-tabla-avanzada data-por-pagina="10">
-  <div class="table-responsive">
-  <table class="table mb-0 align-middle">
-    <thead>
-      <tr><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th>
-        <th><button type="button" class="table-sort" data-sort="t-motivo">Motivo</button></th>
-        <th><button type="button" class="table-sort" data-sort="t-vence">Vence</button></th>
-        <th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th>
-        <th><button type="button" class="table-sort" data-sort="t-estado">Estado</button></th><th></th></tr>
-      <tr><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo suspendido" data-filtro="t-que"></th>
-        <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por motivo" data-filtro="t-motivo"></th>
-        <th></th><th></th>
-        <th><select class="form-select form-select-sm" aria-label="Filtrar por estado" data-filtro="t-estado-corto" data-exacto><option value="">Todos</option></select></th><th></th></tr>
-    </thead>
-    <tbody class="table-tbody">
-      {% for suspension in suspensiones %}
-      <tr>
-        <td class="t-que">{% if suspension.tipo == "enganche" and suspension.nombre == "freno" %}El freno entero{% else %}<code>{{ suspension.nombre }}</code>{% endif %}</td>
-        <td class="t-motivo">{{ suspension.motivo }}</td>
-        <td class="t-vence">{{ suspension.vence|date:"Y-m-d H:i" }}</td>
-        <td class="t-quien">{{ suspension.creada_por.get_username|default:"(cuenta borrada)" }}</td>
-        <td class="t-estado">
-          {% if suspension.levantada %}<span class="t-estado-corto">Levantada</span> el {{ suspension.levantada|date:"Y-m-d H:i" }} por {{ suspension.levantada_por.get_username|default:"(cuenta borrada)" }}
-          {% elif suspension.vence <= ahora %}<span class="t-estado-corto">Vencida</span>
-          {% else %}<span class="t-estado-corto">Vigente</span>{% endif %}
-        </td>
-        <td>
-          {% if puede_cambiar and not suspension.levantada and suspension.vence > ahora %}
-          <form method="post" action="{% url 'proyectos:levantar' proyecto.pk suspension.pk %}">
-            {% csrf_token %}
-            <button class="btn btn-outline-primary btn-sm" type="submit" {% ayuda_corta "Termina la suspensión ya; queda quién la levantó" %}>Levantar</button>
-          </form>
-          {% endif %}
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" role="tablist" id="pestanas-suspensiones">
+      <li class="nav-item" role="presentation"><a href="#pestana-suspensiones" class="nav-link active" data-bs-toggle="tab" role="tab" aria-selected="true">Suspensiones</a></li>
+      <li class="nav-item" role="presentation"><a href="#pestana-reglas" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Reglas</a></li>
+      <li class="nav-item" role="presentation"><a href="#pestana-enganches" class="nav-link" data-bs-toggle="tab" role="tab" aria-selected="false">Enganches</a></li>
+    </ul>
   </div>
-  <div class="card-body text-secondary" data-sin-coincidencias hidden>Ninguna suspensión coincide con los filtros.</div>
-  {% include "includes/tabla_pie.html" with tabla="tabla-suspensiones" %}
+  <div class="tab-content">
+
+    <div class="tab-pane active show" id="pestana-suspensiones" role="tabpanel">
+      {% if puede_cambiar %}
+      <div class="card-body pb-0">
+        <button type="button" class="btn btn-primary" id="abrir-suspender" data-bs-toggle="modal" data-bs-target="#suspender">Suspender</button>
+      </div>
+      {% endif %}
+      {% if suspensiones %}
+      {% comment %}`EP-028·HU-006` · Tabla avanzada con List.js: ordena, filtra y pagina (guía §6).{% endcomment %}
+      <div id="tabla-suspensiones" data-tabla-avanzada data-por-pagina="10">
+      <div class="table-responsive">
+      <table class="table mb-0 align-middle">
+        <thead>
+          <tr><th><button type="button" class="table-sort" data-sort="t-que">Qué</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-motivo">Motivo</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-vence">Vence</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-quien">Quién</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-estado">Estado</button></th><th></th></tr>
+          <tr><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo suspendido" data-filtro="t-que"></th>
+            <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por motivo" data-filtro="t-motivo"></th>
+            <th></th><th></th>
+            <th><select class="form-select form-select-sm" aria-label="Filtrar por estado" data-filtro="t-estado-corto" data-exacto><option value="">Todos</option></select></th><th></th></tr>
+        </thead>
+        <tbody class="table-tbody">
+          {% for suspension in suspensiones %}
+          <tr>
+            <td class="t-que">{% if suspension.tipo == "enganche" and suspension.nombre == "freno" %}El freno entero{% else %}<code>{{ suspension.nombre }}</code>{% endif %}</td>
+            <td class="t-motivo">{{ suspension.motivo }}</td>
+            <td class="t-vence">{{ suspension.vence|date:"Y-m-d H:i" }}</td>
+            <td class="t-quien">{{ suspension.creada_por.get_username|default:"(cuenta borrada)" }}</td>
+            <td class="t-estado">
+              {% if suspension.levantada %}<span class="t-estado-corto">Levantada</span> el {{ suspension.levantada|date:"Y-m-d H:i" }} por {{ suspension.levantada_por.get_username|default:"(cuenta borrada)" }}
+              {% elif suspension.vence <= ahora %}<span class="t-estado-corto">Vencida</span>
+              {% else %}<span class="t-estado-corto">Vigente</span>{% endif %}
+            </td>
+            <td>
+              {% if puede_cambiar and not suspension.levantada and suspension.vence > ahora %}
+              <form method="post" action="{% url 'proyectos:levantar' proyecto.pk suspension.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-primary btn-sm" type="submit" {% ayuda_corta "Termina la suspensión ya; queda quién la levantó" %}>Levantar</button>
+              </form>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <div class="card-body text-secondary" data-sin-coincidencias hidden>Ninguna suspensión coincide con los filtros.</div>
+      {% include "includes/tabla_pie.html" with tabla="tabla-suspensiones" %}
+      </div>
+      {% else %}
+      <div class="text-center py-5 py-4">
+        <p class="fs-5 fw-semibold mb-1">Este proyecto no ha tenido suspensiones</p>
+        {% if puede_cambiar %}<p class="text-secondary mb-0 text-secondary">Si algo estorba, se suspende con el botón «Suspender», con su motivo.</p>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="tab-pane" id="pestana-reglas" role="tabpanel">
+      <div id="tabla-reglas" data-tabla-avanzada data-por-pagina="10">
+      <div class="table-responsive">
+      <table class="table mb-0 align-middle">
+        <thead>
+          <tr><th><button type="button" class="table-sort" data-sort="r-codigo">Código</button></th>
+            <th><button type="button" class="table-sort" data-sort="r-titulo">Regla</button></th>
+            <th><button type="button" class="table-sort" data-sort="r-capitulo">Capítulo</button></th></tr>
+          <tr><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por código" data-filtro="r-codigo"></th>
+            <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por regla" data-filtro="r-titulo"></th>
+            <th><select class="form-select form-select-sm" aria-label="Filtrar por capítulo" data-filtro="r-capitulo" data-exacto><option value="">Todos</option></select></th></tr>
+        </thead>
+        <tbody class="table-tbody">
+          {% for regla in reglas %}
+          <tr><td class="r-codigo"><code>{{ regla.id }}</code></td><td class="r-titulo">{{ regla.titulo }}</td><td class="r-capitulo">{{ regla.capitulo }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <div class="card-body text-secondary" data-sin-coincidencias hidden>Ninguna regla coincide con los filtros.</div>
+      {% include "includes/tabla_pie.html" with tabla="tabla-reglas" %}
+      </div>
+    </div>
+
+    <div class="tab-pane" id="pestana-enganches" role="tabpanel">
+      <div id="tabla-enganches" data-tabla-avanzada data-por-pagina="10">
+      <div class="table-responsive">
+      <table class="table mb-0 align-middle">
+        <thead>
+          <tr><th><button type="button" class="table-sort" data-sort="e-nombre">Nombre</button></th>
+            <th><button type="button" class="table-sort" data-sort="e-que">Qué hace</button></th>
+            <th><button type="button" class="table-sort" data-sort="e-recomendacion">Recomendación</button></th></tr>
+          <tr><th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por nombre" data-filtro="e-nombre"></th>
+            <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por lo que hace" data-filtro="e-que"></th>
+            <th><select class="form-select form-select-sm" aria-label="Filtrar por recomendación" data-filtro="e-recomendacion-corta" data-exacto><option value="">Todas</option></select></th></tr>
+        </thead>
+        <tbody class="table-tbody">
+          {% for nombre, que_hace, motivo in suspendibles %}
+          <tr>
+            <td class="e-nombre"><code>{{ nombre }}</code></td>
+            <td class="e-que">{{ que_hace }}</td>
+            <td class="e-recomendacion">{% if motivo %}<span class="e-recomendacion-corta text-danger">No conviene suspenderlo</span>. {{ motivo }}{% else %}<span class="e-recomendacion-corta text-secondary">Se puede suspender</span>{% endif %}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún enganche coincide con los filtros.</div>
+      {% include "includes/tabla_pie.html" with tabla="tabla-enganches" %}
+      </div>
+    </div>
+
   </div>
-  {% else %}
-  <div class="text-center py-5 py-4">
-    <p class="fs-5 fw-semibold mb-1">Este proyecto no ha tenido suspensiones</p>
-    {% if puede_cambiar %}<p class="text-secondary mb-0 text-secondary">Si el freno detiene algo legítimo, se suspende abajo, con su motivo.</p>{% endif %}
-  </div>
-  {% endif %}
 </div>
 
 {% if puede_cambiar %}
-<form class="card" method="post">
-  {% csrf_token %}
-  <div class="card-header"><h3 class="card-title">Suspender</h3></div>
-  <div class="card-body">
-    {% for error in form.non_field_errors %}
-    <div class="alert alert-danger" role="alert">{{ error }}</div>
-    {% endfor %}
-    <div class="mb-3">
-      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.tipo.id_for_label }}">Qué se suspende</label>{% ayuda_campo "suspension.tipo" %}</div>
-      <select class="form-select" id="{{ form.tipo.id_for_label }}" name="tipo">
-        {% for valor, texto in form.fields.tipo.choices %}
-        <option value="{{ valor }}"{% if form.tipo.value == valor %} selected{% endif %}>{{ texto }}</option>
+<div class="modal fade" id="suspender" tabindex="-1" aria-labelledby="suspender-titulo" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form class="modal-content" method="post">
+      {% csrf_token %}
+      <div class="modal-header"><h5 class="modal-title" id="suspender-titulo">Suspender</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body">
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
         {% endfor %}
-      </select>
-    </div>
-    <div class="mb-3">
-      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>{% ayuda_campo "suspension.nombre" %}</div>
-      <input class="form-control" id="{{ form.nombre.id_for_label }}" name="nombre" list="enganches-suspendibles" value="{{ form.nombre.value|default_if_none:'' }}">
-      <datalist id="enganches-suspendibles">{% for nombre, que_hace, _motivo in suspendibles %}<option value="{{ nombre }}">{{ que_hace }}</option>{% endfor %}</datalist>
-    </div>
-    <div class="mb-3">
-      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.motivo.id_for_label }}">Motivo</label>{% ayuda_campo "suspension.motivo" %}</div>
-      <input class="form-control" id="{{ form.motivo.id_for_label }}" name="motivo" value="{{ form.motivo.value|default_if_none:'' }}" required>
-    </div>
-    <div class="mb-3">
-      <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.vence.id_for_label }}">Vence</label>{% ayuda_campo "suspension.vence" %}</div>
-      <input class="form-control" id="{{ form.vence.id_for_label }}" name="vence" type="datetime-local" required>
-    </div>
-  </div>
-  <div class="card-body pt-0">{% include "historia/_tipo_de_version.html" with sin_motivo=True %}</div>
-  <div class="card-footer">
-    <button class="btn btn-primary" type="submit">Suspender</button>
-  </div>
-</form>
-{% endif %}
-{% comment %}`EP-025·HU-032` · Lo que se puede suspender, con la recomendación junto a lo que no conviene.{% endcomment %}
-<div class="card mt-3" id="lo-que-se-puede-suspender">
-  <div class="card-header"><h3 class="card-title">Enganches y revisiones de git que se pueden suspender</h3></div>
-  <div class="table-responsive">
-  <table class="table mb-0 align-middle">
-    <thead><tr><th>Nombre</th><th>Qué hace</th><th>Recomendación</th></tr></thead>
-    <tbody>
-      {% for nombre, que_hace, motivo in suspendibles %}
-      <tr>
-        <td><code>{{ nombre }}</code></td>
-        <td>{{ que_hace }}</td>
-        <td>{% if motivo %}<span class="text-danger">No conviene suspenderlo.</span> {{ motivo }}{% else %}<span class="text-secondary">Se puede suspender.</span>{% endif %}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.tipo.id_for_label }}">Qué se suspende</label>{% ayuda_campo "suspension.tipo" %}</div>
+          <select class="form-select" id="{{ form.tipo.id_for_label }}" name="tipo">
+            {% for valor, texto in form.fields.tipo.choices %}
+            <option value="{{ valor }}"{% if form.tipo.value == valor %} selected{% endif %}>{{ texto }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>{% ayuda_campo "suspension.nombre" %}</div>
+          <input class="form-control" id="{{ form.nombre.id_for_label }}" name="nombre" list="enganches-suspendibles" value="{{ form.nombre.value|default_if_none:'' }}">
+          <datalist id="enganches-suspendibles">{% for nombre, que_hace, _motivo in suspendibles %}<option value="{{ nombre }}">{{ que_hace }}</option>{% endfor %}</datalist>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.motivo.id_for_label }}">Motivo</label>{% ayuda_campo "suspension.motivo" %}</div>
+          <input class="form-control" id="{{ form.motivo.id_for_label }}" name="motivo" value="{{ form.motivo.value|default_if_none:'' }}" required>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.vence.id_for_label }}">Vence</label>{% ayuda_campo "suspension.vence" %}</div>
+          <input class="form-control" id="{{ form.vence.id_for_label }}" name="vence" type="datetime-local" required>
+        </div>
+        {% include "historia/_tipo_de_version.html" with sin_motivo=True %}
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-link" data-bs-dismiss="modal">Volver</button><button class="btn btn-primary" type="submit">Suspender</button></div>
+    </form>
   </div>
 </div>
+{% if con_errores %}
+{% comment %}Si el formulario volvió con errores, el modal se abre solo para que se vean.{% endcomment %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    bootstrap.Modal.getOrCreateInstance(document.getElementById("suspender")).show();
+  });
+</script>
+{% endif %}
+{% endif %}
 <p class="mt-3"><a href="{% url 'proyectos:lista' %}">Volver a los proyectos</a></p>
 {% endblock %}

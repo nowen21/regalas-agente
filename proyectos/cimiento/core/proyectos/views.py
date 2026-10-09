@@ -17,6 +17,7 @@ from core.cuentas.permisos import SoloAdministrador, es_administrador
 
 from . import ajustes as catalogo
 from .forms import ConfiguracionForm, ProyectoForm, SuspensionForm
+from core.niveles.catalogo import reglas_configurables
 from .models import Proyecto
 
 
@@ -75,7 +76,9 @@ class Suspensiones(View):
                 "suspensiones": proyecto.suspensiones.select_related("creada_por", "levantada_por"),
                 "ahora": timezone.now(), "dias": catalogo.DIAS_MAXIMOS,
                 # `EP-025·HU-032` · Lo que se puede suspender, con la recomendación junto a lo que no conviene.
-                "suspendibles": catalogo.suspendibles()}
+                "suspendibles": catalogo.suspendibles(),
+                # Fase D · La pestaña «Reglas», y el modal que vuelve abierto si el formulario trae errores.
+                "reglas": reglas_configurables(), "con_errores": form.is_bound and bool(form.errors)}
 
     def get(self, peticion, pk):
         proyecto = get_object_or_404(Proyecto, pk=pk)

@@ -54,7 +54,49 @@ class LaPantallaDejaSuspenderCualquiera(ConCuentas):
     def test_la_pantalla_muestra_la_recomendacion(self):
         self.entrar()
         respuesta = self.client.get("/proyectos/%d/suspensiones/" % self.proyecto.pk)
-        self.assertContains(respuesta, 'id="lo-que-se-puede-suspender"')
+        self.assertContains(respuesta, 'id="tabla-enganches"')
         self.assertContains(respuesta, "<code>historico-del-usuario</code>")
         self.assertContains(respuesta, NO_CONVIENE["historico-del-usuario"])
         self.assertContains(respuesta, '<option value="git-marcas">')
+
+
+class LaPantallaEnPestanas(ConCuentas):
+    """`EP-025·HU-032`, fase D · CP-008 y CP-009."""
+
+    def pagina(self):
+        return self.client.get("/proyectos/%d/suspensiones/" % self.proyecto.pk)
+
+    def test_tres_pestanas_con_suspensiones_abierta(self):
+        self.entrar()
+        respuesta = self.pagina()
+        self.assertContains(respuesta, '<a href="#pestana-suspensiones" class="nav-link active"')
+        self.assertContains(respuesta, '<a href="#pestana-reglas" class="nav-link"')
+        self.assertContains(respuesta, '<a href="#pestana-enganches" class="nav-link"')
+
+    def test_reglas_y_enganches_en_tablas_como_la_de_suspensiones(self):
+        self.entrar()
+        respuesta = self.pagina()
+        self.assertContains(respuesta, '<div id="tabla-reglas" data-tabla-avanzada')
+        self.assertContains(respuesta, '<td class="r-codigo"><code>02·F8</code></td>')
+        self.assertContains(respuesta, '<div id="tabla-enganches" data-tabla-avanzada')
+        self.assertContains(respuesta, '<td class="e-nombre"><code>historico-del-usuario</code></td>')
+
+    def test_el_boton_abre_el_modal_y_con_errores_vuelve_abierto(self):
+        self.entrar()
+        respuesta = self.pagina()
+        self.assertContains(respuesta, 'data-bs-toggle="modal" data-bs-target="#suspender"')
+        self.assertContains(respuesta, '<div class="modal fade" id="suspender"')
+        self.assertNotContains(respuesta, "bootstrap.Modal.getOrCreateInstance")
+        vence = timezone.localtime(timezone.now() + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M")
+        con_error = self.client.post("/proyectos/%d/suspensiones/" % self.proyecto.pk,
+                                     {"tipo": "enganche", "nombre": "no-existe", "motivo": "x", "vence": vence})
+        self.assertContains(con_error, "bootstrap.Modal.getOrCreateInstance")
+        self.assertContains(con_error, "no es un enganche ni una revisión de git del catálogo")
+
+    def test_quien_solo_consulta_no_ve_el_boton_ni_el_modal(self):
+        from core.cuentas.permisos import CONSULTA
+        self.entrar(CONSULTA)
+        respuesta = self.pagina()
+        self.assertNotContains(respuesta, 'id="abrir-suspender"')
+        self.assertNotContains(respuesta, 'id="suspender"')
+        self.assertContains(respuesta, 'id="tabla-reglas"')

@@ -1,11 +1,11 @@
-# Estado de fase · Fase `A-EP-025-HU-032-catalogo-y-pantalla` (módulo Las suspensiones de Cimiento: `proyectos/cimiento/core/proyectos/`)   ·   `[CAPA 3]`
+# Estado de fase · Fase `D-EP-025-HU-032-pantalla-en-pestanas` (módulo Las suspensiones de Cimiento: `proyectos/cimiento/core/proyectos/`)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `A-EP-025-HU-032-catalogo-y-pantalla` |
-| **Módulo** | Las suspensiones de Cimiento: `proyectos/cimiento/core/proyectos/`, con el catálogo de `core/comun/enganches.py` y sus ayudas |
+| **Fase** (identificador · `02·F12.6`) | `D-EP-025-HU-032-pantalla-en-pestanas` |
+| **Módulo** | Las suspensiones de Cimiento: `proyectos/cimiento/core/proyectos/` |
 | **Planteamiento / Épica / HU** | [EP-025](../../epica.md) · [HU-032](../HU-032-cada-momento-de-cada-enganche-y-cada-revision-de-git-se-puede-suspender.md) |
 | **Última actualización** | 2026-10-09 |
 
@@ -15,7 +15,7 @@
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Explorador · análisis | contexto entendido | ☑ [Análisis 1 del pendiente 149](../../../../../historico-chat/resumenes/2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/analisis-1.md) |
+| 1 | Explorador · análisis | contexto entendido | ☑ [Análisis 3 del pendiente 149](../../../../../historico-chat/resumenes/2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/analisis-3.md) |
 | 2 | Proponente · alcance | 👤 alcance aprobado | ☑ Con el análisis de origen |
 | 3 | Escritor de épica | 👤 épica aprobada | ☑ EP-025 |
 | 4 | Escritor de historia | 👤 HUs aprobadas | ☑ HU-032, aprobada con el análisis |
@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Hallazgos: los del cierre del plan |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica |
-| 12 | Commit | 👤 autorizado | ✅ `28d21fb` |
+| 12 | Commit | 👤 autorizado | ☐ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan
@@ -46,7 +46,7 @@
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
-| El nombre del momento sale de `(evento, guion)`, no de un campo más en `HOOKS_CLAUDE` | `S-365` |
+| Pestañas y modal de Bootstrap, como en `estandar/`; las tablas de «Reglas» y «Enganches» con List.js | `S-371` |
 
 ## 3. Pendiente / preguntas abiertas
 

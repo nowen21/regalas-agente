@@ -96,6 +96,21 @@ Y las demás corren igual, con una sola consulta a la base por guardado
 
 **Cómo validarlo:** correr `manage.py test core.herramientas.tests_validar_suspendida` → resultado esperado: los casos pasan.
 
+### CA-04 · La pantalla de suspensiones va en tres pestañas
+
+**Sale de:** análisis 3 del pendiente 149, punto 2 de «Lo que se tiene que hacer»
+
+```gherkin
+Dada la pantalla de suspensiones de un proyecto
+Cuando se abre
+Entonces muestra tres pestañas, con «Suspensiones» abierta: «Suspensiones», «Reglas» y «Enganches»
+Y en «Suspensiones», un botón al principio de la tabla abre el formulario en un modal, que vuelve abierto si hay errores
+Y en «Reglas» y en «Enganches», una tabla igual a la de suspensiones
+Y el botón solo sale a quien puede cambiar
+```
+
+**Cómo validarlo:** correr `manage.py test core.proyectos.tests_suspender_enganches` → resultado esperado: los casos pasan.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -130,6 +145,7 @@ Y las demás corren igual, con una sola consulta a la base por guardado
 | `A-EP-025-HU-032-catalogo-y-pantalla` | CA-01 | (vacío) | [plan_trabajo.md](A-EP-025-HU-032-catalogo-y-pantalla/plan_trabajo.md) | [plan_pruebas.md](A-EP-025-HU-032-catalogo-y-pantalla/plan_pruebas.md) | [resultado_pruebas.md](A-EP-025-HU-032-catalogo-y-pantalla/resultado_pruebas.md) | Terminada |
 | `B-EP-025-HU-032-enganches-leen-lo-suspendido` | CA-02 | (vacío) | [plan_trabajo.md](B-EP-025-HU-032-enganches-leen-lo-suspendido/plan_trabajo.md) | [plan_pruebas.md](B-EP-025-HU-032-enganches-leen-lo-suspendido/plan_pruebas.md) | [resultado_pruebas.md](B-EP-025-HU-032-enganches-leen-lo-suspendido/resultado_pruebas.md) | Terminada |
 | `C-EP-025-HU-032-revisiones-de-git` | CA-03 | (vacío) | [plan_trabajo.md](C-EP-025-HU-032-revisiones-de-git/plan_trabajo.md) | [plan_pruebas.md](C-EP-025-HU-032-revisiones-de-git/plan_pruebas.md) | [resultado_pruebas.md](C-EP-025-HU-032-revisiones-de-git/resultado_pruebas.md) | Terminada |
+| `D-EP-025-HU-032-pantalla-en-pestanas` | CA-04 | (vacío) | [plan_trabajo.md](D-EP-025-HU-032-pantalla-en-pestanas/plan_trabajo.md) | [plan_pruebas.md](D-EP-025-HU-032-pantalla-en-pestanas/plan_pruebas.md) | [resultado_pruebas.md](D-EP-025-HU-032-pantalla-en-pestanas/resultado_pruebas.md) | Terminada |
 
 ---
 
@@ -174,3 +190,4 @@ Y las demás corren igual, con una sola consulta a la base por guardado
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-10-09 | El agente | Creación de la HU, desde el análisis 1 del pendiente 149 |
+| 2026-10-09 | El agente | Se suma el CA-04, del análisis 3 del pendiente 149: la pantalla en tres pestañas |
