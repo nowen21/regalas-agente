@@ -38,10 +38,10 @@ HOOKS_CLAUDE = [
     ("UserPromptSubmit", None, "hook_checklist.py",
      "Revisando la instalación del agente...", ""),
     # Al abrir la sesión no se cargan las reglas: la herramienta acepta 10.000
-    # caracteres por enganche (`EP-005 · HU-009 · CA-04`). Este enganche
-    # entrega con cada mensaje las reglas de las tareas que pide
-    # (`recuperar.py`), recuerda las de cada turno, y devuelve al turno
-    # siguiente la cuenta que `hook_redaccion.py` imprime donde nadie la ve.
+    # caracteres por enganche (`EP-005 · HU-009 · CA-04`). Desde la
+    # `EP-005·HU-025`, con el mensaje llega solo lo que falta de `responder` y
+    # `recibir-pedido`, y vuelve al turno siguiente la cuenta que
+    # `hook_redaccion.py` imprime donde nadie la ve.
     ("UserPromptSubmit", None, "hook_reglas.py",
      "Recordando las reglas de cada turno...", ""),
     # `EP-023 · HU-002 · CA-04`: los acuerdos de la fase en curso y del
@@ -57,7 +57,12 @@ HOOKS_CLAUDE = [
      "Preparando el resumen de la sesión...", "--modo inicio"),
     ("UserPromptSubmit", None, "hook_resumen.py",
      "Revisando el resumen de la sesión...", "--modo aviso"),
-    ("UserPromptSubmit", None, "hook_senales.py",
+    # `EP-005·HU-027` · El núcleo llega al abrir; después de un resumen, lo
+    # entregado vuelve a llegar.
+    ("SessionStart", None, "hook_reglas_sesion.py",
+     "Trayendo el núcleo del estándar...", ""),
+    # `EP-005·HU-025` · El aviso de las señales llega una vez, al abrir la sesión.
+    ("SessionStart", None, "hook_senales.py",
      "Revisando las señales del proyecto...", ""),
     ("PostToolUse", "Write|Edit", "hook_relacionadas.py",
      "Buscando las reglas relacionadas...", ""),
@@ -99,6 +104,10 @@ HOOKS_CLAUDE = [
      "Revisando la acción contra el plan y lo autorizado...", "--modo accion"),
     ("PostToolUse", "Bash|PowerShell", "hook_despues.py",
      "Comparando lo que cambió con el plan...", ""),
+    # `EP-005·HU-025` · Antes de cada acción llegan las reglas de su tarea, una
+    # sola vez en la sesión. Va aparte del freno para suspenderse por su nombre.
+    ("PreToolUse", None, "hook_reglas_accion.py",
+     "Trayendo las reglas de la tarea...", ""),
 ]
 
 # `EP-025·HU-032` · El nombre fijo de cada momento, para suspenderlo desde Cimiento
@@ -120,7 +129,8 @@ MOMENTOS = {
     ("PostToolUse", "hook_recuerdos.py"): "memoria-al-escribir",
     ("SessionStart", "hook_resumen.py"): "resumen-al-abrir",
     ("UserPromptSubmit", "hook_resumen.py"): "resumen-en-cada-mensaje",
-    ("UserPromptSubmit", "hook_senales.py"): "senales",
+    ("SessionStart", "hook_senales.py"): "senales",
+    ("SessionStart", "hook_reglas_sesion.py"): "nucleo-al-abrir",
     ("PostToolUse", "hook_relacionadas.py"): "reglas-relacionadas",
     ("Stop", "hook_turno.py"): "registro-del-turno",
     ("Stop", "hook_redaccion.py"): "redaccion",
@@ -133,6 +143,7 @@ MOMENTOS = {
     # Los dos del freno se suspenden juntos, como hasta ahora; el núcleo lo sigue frenando.
     ("PreToolUse", "hook_antes.py"): FRENO,
     ("PostToolUse", "hook_despues.py"): FRENO,
+    ("PreToolUse", "hook_reglas_accion.py"): "reglas-de-la-accion",
 }
 
 # Las revisiones de git, por la orden de `validar.py` que las corre (acuerdo 4):
@@ -157,6 +168,8 @@ NO_CONVIENE = {
     "historico-del-usuario": "Deja de guardar lo que escribe el usuario: la sesión se pierde al borrar el chat.",
     "historico-del-agente": "Deja de guardar lo que responde el agente: la sesión se pierde al borrar el chat.",
     "reglas-de-cada-turno": "Las reglas no se cargan al abrir: sin él, el agente trabaja sin ellas.",
+    "reglas-de-la-accion": "Las reglas de cada tarea dejan de llegar antes de la acción.",
+    "nucleo-al-abrir": "El núcleo deja de llegar al abrir y después de un resumen de la conversación.",
     "registro-del-turno": "Sin él, un commit puede llevarse el trabajo de otra sesión sin aviso.",
     "lo-que-llega-de-afuera": "Lo que llega de una página o un archivo deja de marcarse como dato, no orden.",
     FRENO: "Deja pasar lo que el plan no declara. El núcleo se sigue frenando.",
@@ -190,4 +203,4 @@ CONFIG_AGENTE = ["stack.md", "dominio.md", "mapeo-nombres.md",
 
 # Lo que no es del repositorio: configuración local y el estado de trabajo que
 # escriben los enganches. El instalador la pone y el checklist la revisa.
-IGNORADOS = ["CLAUDE.md", ".agente/", "historico-chat/.tocado/"]
+IGNORADOS = ["CLAUDE.md", ".agente/", "historico-chat/.tocado/", "historico-chat/.estado/"]

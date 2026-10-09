@@ -193,7 +193,7 @@ La respuesta, tal como se dio.
 - Lo que quedó sin cerrar, o "nada".
 ```
 
-<!-- huella: 29387570ce96 · estandar 51.0.0 -->
+<!-- huella: 29387570ce96 · estandar 59.0.0 -->
 - [2026-08-28-sesion.md](2026-08-28-sesion.md) — sesión del 2026-08-28.
 - [2026-08-28-plantilla-manual-instalacion.md](2026-08-28-plantilla-manual-instalacion.md) — Se creó la plantilla base del manual de instalación y se adaptó a la norma de redacción del estándar. · [historico-chat/resumenes/2026-08-28/plantilla-manual-instalacion.md](resumenes/2026-08-28/plantilla-manual-instalacion.md)
 - [2026-08-31-la-palabra-clave-que-dice-que-hacer.md](2026-08-31-la-palabra-clave-que-dice-que-hacer.md) — «Liste» y «OK» entran a la lista de palabras de 01·C28, sale la fila que no servía, y la versión queda en 56.2.0. · [historico-chat/resumenes/2026-08-31/la-palabra-clave-que-dice-que-hacer.md](resumenes/2026-08-31/la-palabra-clave-que-dice-que-hacer.md)
@@ -213,3 +213,4 @@ La respuesta, tal como se dio.
 - [2026-10-08-los-documentos-de-cimiento-pasan-a-su-base.md](2026-10-08-los-documentos-de-cimiento-pasan-a-su-base.md) — si guardar en archivos .md gasta más que guardar en la base, y la decisión de pasar todos los documentos de Cimiento a la base. · [historico-chat/resumenes/2026-10-08/los-documentos-de-cimiento-pasan-a-su-base.md](resumenes/2026-10-08/los-documentos-de-cimiento-pasan-a-su-base.md)
 - [2026-10-08-guiones-que-pasan-a-cimiento.md](2026-10-08-guiones-que-pasan-a-cimiento.md) — cuáles guiones repetidos de historico-chat/scripts pueden pasar a Cimiento. · [historico-chat/resumenes/2026-10-08/guiones-que-pasan-a-cimiento.md](resumenes/2026-10-08/guiones-que-pasan-a-cimiento.md)
 - [2026-10-09-cerrar-pendientes-145-a-149.md](2026-10-09-cerrar-pendientes-145-a-149.md) — análisis y construcción de los pendientes 145 a 149. · [historico-chat/resumenes/2026-10-09/cerrar-pendientes-145-a-149.md](resumenes/2026-10-09/cerrar-pendientes-145-a-149.md)
+- [2026-10-09-sesion-2.md](2026-10-09-sesion-2.md) — sesión del 2026-10-09.

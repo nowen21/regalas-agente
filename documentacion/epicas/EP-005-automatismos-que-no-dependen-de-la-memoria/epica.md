@@ -157,6 +157,9 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-022](HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md) | andamio.py impone un orden de trabajo incorrecto | Must | 3 pts |
 | [HU-023](HU-023-cada-tarea-sabe-que-reglas-le-aplican/HU-023-cada-tarea-sabe-que-reglas-le-aplican.md) | Cada tarea sabe qué reglas le aplican | Must | L |
 | [HU-024](HU-024-el-historico-anota-los-avisos-internos-con-su-remitente/HU-024-el-historico-anota-los-avisos-internos-con-su-remitente.md) | El histórico anota los avisos internos con su remitente | Must | En curso |
+| [HU-025](HU-025-las-reglas-de-cada-tarea-llegan-antes-de-la-accion/HU-025-las-reglas-de-cada-tarea-llegan-antes-de-la-accion.md) | Las reglas de cada tarea llegan antes de la acción, una sola vez, y nada se repite | Must | Terminada |
+| [HU-026](HU-026-las-reglas-de-cambiar-codigo-llegan-partidas-segun-lo-que-se-toca/HU-026-las-reglas-de-cambiar-codigo-llegan-partidas-segun-lo-que-se-toca.md) | Las reglas de cambiar código llegan partidas según lo que se toca | Must | Terminada |
+| [HU-027](HU-027-el-nucleo-llega-completo-y-lo-entregado-vuelve-despues-de-un-resumen/HU-027-el-nucleo-llega-completo-y-lo-entregado-vuelve-despues-de-un-resumen.md) | El núcleo llega completo, y lo entregado vuelve después de un resumen | Must | Terminada |
 
 ## 10. Consideraciones técnicas
 

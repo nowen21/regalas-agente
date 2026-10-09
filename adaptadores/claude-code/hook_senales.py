@@ -4,7 +4,7 @@
 
 Se conecta en `.claude/settings.json`:
 
-    UserPromptSubmit -> python hook_senales.py --raiz <proyecto>
+    SessionStart -> python hook_senales.py --raiz <proyecto>
 
 **Por qué existe.** [`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
 manda registrar como señal lo que no se recupera del código, y el archivo donde
@@ -16,7 +16,8 @@ se acuerde, no pasa.** El histórico dejó de perderse cuando lo escribió un
 programa; el resumen, cuando un enganche lo creó y avisó de lo que le faltaba.
 
 **Al cerrar la sesión no sirve.** Un chat no tiene final: nadie sabe cuál fue el
-último mensaje hasta mucho después. Por eso el aviso va en el turno, no al final.
+último mensaje hasta mucho después. Por eso el aviso va al abrir la sesión, no al
+final (`EP-005·HU-025`, análisis 1 del pendiente 133, acuerdo 2).
 
 **Lo que este enganche NO hace, y es deliberado.** No escribe señales ni decide
 qué merece serlo — eso es criterio y es del agente. Tampoco repite el aviso en
@@ -27,6 +28,7 @@ Siempre sale con código 0. Un enganche que detiene el trabajo es peor que el
 problema que resuelve.
 """
 import argparse
+import json
 import os
 import sys
 
@@ -58,9 +60,18 @@ Lo que **falta hacer** no es una señal: eso va a `pendientes/`. Los dos salen
 del mismo momento y por eso se confunden."""
 
 
-def _sesion(argv=None):
-    """El identificador de sesión que la herramienta pasa por el entorno."""
-    return os.environ.get("CLAUDE_SESSION_ID", "")
+def _sesion(entrada=None):
+    """La sesión que Claude Code pasa por la entrada estándar.
+
+    `EP-005·HU-025` · Se leía de `CLAUDE_SESSION_ID`, que Claude Code no llena:
+    sin sesión no había marca, y el aviso salía con cada mensaje.
+    """
+    if entrada is None:
+        try:
+            entrada = json.loads(sys.stdin.buffer.read().decode("utf-8", "replace") or "{}")
+        except (AttributeError, ValueError):
+            entrada = {}
+    return (entrada or {}).get("session_id") or os.environ.get("CLAUDE_SESSION_ID", "")
 
 
 def ya_avisado(texto, sesion):

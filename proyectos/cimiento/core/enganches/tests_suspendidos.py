@@ -88,7 +88,7 @@ class ElSuspendidoSale(ConUnProyecto):
         sys.stdin = io.TextIOWrapper(io.BytesIO(json.dumps(datos).encode("utf-8")), encoding="utf-8")
         try:
             try:
-                salir_si_esta_suspendido("hook_senales.py", ["--raiz", self.raiz], consultar=consultar)
+                salir_si_esta_suspendido("hook_acuerdos.py", ["--raiz", self.raiz], consultar=consultar)
                 salio = False
             except SystemExit as fin:
                 self.assertEqual(0, fin.code)
@@ -101,10 +101,10 @@ class ElSuspendidoSale(ConUnProyecto):
         return {"hook_event_name": "UserPromptSubmit", "session_id": "s-1", "prompt": prompt}
 
     def test_suspendido_sale_con_cero(self):
-        self.assertTrue(self.correr(self.datos(), [["senales", MANANA, "estorba"]])[0])
+        self.assertTrue(self.correr(self.datos(), [["acuerdos", MANANA, "estorba"]])[0])
 
     def test_vencido_o_sin_base_corre(self):
-        self.assertFalse(self.correr(self.datos("a"), [["senales", time.time() - 10, "ya venció"]])[0])
+        self.assertFalse(self.correr(self.datos("a"), [["acuerdos", time.time() - 10, "ya venció"]])[0])
         self.assertFalse(self.correr(self.datos("b"), falla=True)[0])
 
     def test_sin_suspension_el_programa_lee_la_misma_entrada(self):

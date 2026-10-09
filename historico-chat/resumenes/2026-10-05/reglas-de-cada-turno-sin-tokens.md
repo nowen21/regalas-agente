@@ -10,14 +10,15 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-05-reglas-de-cada-
 
 ## Hallazgos de esta sesión
 
-### H-1 · El recordatorio de reglas se paga en cada mensaje
+### H-1 · Las reglas llegan repetidas en cada mensaje y no llegan cuando se actúa
+
+V2, según el [análisis 1 del pendiente 133](pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/analisis-1.md).
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El usuario preguntó cómo dejar de gastar tokens en el bloque «LAS REGLAS DE CADA TURNO». Se encontró que repite seis reglas del bloque recuperado, que en un turno agregó unos 2.567 tokens contra un límite de 2.000 y que ningún enganche aprovecha el aviso de Claude Code después de resumir la conversación. Se habló también de revisar con un modelo de lenguaje local y de ensayarlo antes contra las correcciones del usuario |
-| Por qué importa | Se paga en todos los mensajes de todos los proyectos, y la mayor parte se repite |
-| Qué se decidió | El usuario dejó la propuesta para análisis |
-| Pendiente | [Pendiente 133: el recordatorio de reglas se paga en cada mensaje](pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md) |
+| Qué pasó | Con cada mensaje llegan las mismas listas de reglas, y seis de ellas dos veces. Antes de cada acción no llega ninguna: `base/tareas.md` lo describe, pero ningún enganche lo hace. Por eso `cambiar-codigo`, `tocar-datos`, `ir-afuera` y `cambiar-estandar`, que no tienen palabra clave, no entregan sus reglas en ningún momento |
+| Por qué importa | Se gastan tokens en cada mensaje de todos los proyectos, y aun así el agente cambia código y el estándar sin sus reglas |
+| Pendiente | [Pendiente 133: las reglas llegan cuando se actúa, una sola vez, y nada se repite](pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md) |
 
 ### H-2 · El enganche de redacción dice que no puede detener
 

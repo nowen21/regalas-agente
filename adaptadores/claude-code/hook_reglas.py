@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Enganche `UserPromptSubmit`: recuerda en cada turno las reglas de cada turno.
+"""Enganche `UserPromptSubmit`: entrega con el mensaje las reglas que le faltan.
 
     python hook_reglas.py --raiz "C:/ruta/del/proyecto"
 
@@ -15,8 +15,12 @@ vez perdía de dos maneras:
     automático del contexto, y lo primero que se resume es lo que se inyectó
     al arrancar.
 
-Así que este enganche entrega las reglas donde sí sirven: **en cada turno**,
-un recordatorio corto y las que pide el mensaje.
+**Desde la `EP-005·HU-025`, con el mensaje llega solo lo que falta**
+(análisis 1 del pendiente 133, acuerdos 1 y 2): las reglas de `responder`, y
+las de `recibir-pedido` cuando la palabra autoriza cambiar algo, una sola vez
+en la sesión, más la regla que el mensaje cita. Las de cada tarea llegan antes
+de la acción, con `hook_reglas_accion.py`. El bloque «LAS REGLAS DE CADA TURNO»
+salió: repetía seis reglas que `responder` ya trae.
 
 **Y devuelve la medición.** `hook_redaccion.py` ya cuenta las marcas de lo que
 el agente acaba de escribir, pero corre en `Stop` e imprime donde nadie lo ve:
@@ -25,21 +29,8 @@ respuesta anterior y entra al turno siguiente, que es donde todavía sirve para
 corregir. Mide la misma función (`redaccion.linea_de_cierre`), así que las dos
 dicen siempre lo mismo.
 
-**No duplica el texto de las reglas.** Del archivo de cada una se saca su
-encabezado, y nada más. Si el estándar reescribe una regla, el recordatorio
-cambia solo; si la renombra, también. Un resumen escrito a mano acá se
-convertiría en una segunda versión de la norma, y la que manda es la del
-capítulo (`20·M2`).
-
-**Y recupera las reglas que pide el mensaje.** Una orden de leer el archivo
-antes de tocar el tema depende de que el agente se acuerde, y cuando no se
-acuerda trabaja sin la regla. `recuperar.py` lee el mensaje y trae el texto
-completo de las que ese mensaje pide, con su presupuesto y diciendo por qué
-entró cada una.
-
-**El recordatorio va al agente, no a la pantalla.** Es contexto, no alerta: por
-eso sale por `additionalContext` en todos los turnos sin cansar a nadie. Por
-`systemMessage` sale **solo** la medición, y solo cuando hay algo que decir —
+**Las reglas van al agente, no a la pantalla.** Es contexto, no alerta: por
+eso salen por `additionalContext`. Por `systemMessage` sale **solo** la medición, y solo cuando hay algo que decir —
 que es la regla de oro de los avisos de esta casa.
 
 Sale siempre con código 0: recordar una regla no puede costarle el turno a
@@ -55,40 +46,10 @@ import sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-from core.comun import Archivos                                      # noqa: E402
 from core.comun.consola import preparar_salida                       # noqa: E402
 from core.enganches.historico import Transcript                      # noqa: E402
-from core.herramientas.recuperar import RecuperadorDeReglas          # noqa: E402
+from core.herramientas.entrega_de_reglas import EntregaDeReglas      # noqa: E402
 from core.validadores.redaccion import Redaccion                     # noqa: E402
-
-# Las reglas que gobiernan **todos** los turnos, sin importar el tema. No es
-# una selección de gusto: son las que hablan de cómo queda escrito cualquier
-# mensaje, así que ninguna sesión las puede tener por ajenas.
-#
-# Cada una se nombra por su archivo y su encabezado. El texto sale de allá.
-CADA_TURNO = (
-    ("01·C5",  "base/01-conducta.md", "## C5 "),
-    ("00·ID8", "base/00-identidad-y-rol/reglas/"
-               "ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md",
-     "## ID8 "),
-    ("00·ID9", "base/00-identidad-y-rol/reglas/"
-               "ID9-di-lo-mismo-en-menos-palabras.md", "## ID9 "),
-    ("00·ID10", "base/00-identidad-y-rol/reglas/"
-                "ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-"
-                "y-en-infinitivo.md", "## ID10 "),
-    ("00·ID11", "base/00-identidad-y-rol/reglas/"
-                "ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md",
-     "## ID11 "),
-    ("00·ID12", "base/00-identidad-y-rol/reglas/"
-                "ID12-el-agente-no-conserva-el-espanol-colombiano.md",
-     "## ID12 "),
-)
-
-# La lista cerrada que exige `ID8`. Se nombra aparte porque es un anexo y no una
-# regla: el recordatorio dice dónde está, y el agente la lee cuando va a
-# entregar algo escrito.
-ANEXO_ID8 = "base/00-identidad-y-rol/marcadores-de-ia.md"
-
 
 def opcion(argv, nombre, por_defecto=""):
     if nombre in argv:
@@ -108,49 +69,6 @@ def _entrada():
         return json.loads(crudo.decode("utf-8", "replace"))
     except (json.JSONDecodeError, ValueError):
         return {}
-
-
-def _encabezado(estandar, relativo, ancla):
-    """La línea de encabezado de una regla, tal como la escribió el estándar.
-
-    Se saca del archivo y no de una copia escrita acá para que no envejezca
-    (`20·M2`: el dueño del texto es el capítulo). Si el archivo no está o
-    cambió de forma, devuelve `""` y el recordatorio sigue con las demás: un
-    recordatorio incompleto sirve más que ninguno.
-    """
-    ruta = os.path.join(estandar, relativo.replace("/", os.sep))
-    if not os.path.isfile(ruta):
-        return ""
-    try:
-        texto = Archivos().leer(ruta)
-    except Exception:                     # noqa: BLE001 — nunca romper el turno
-        return ""
-    for linea in texto.splitlines():
-        if linea.startswith(ancla):
-            # Se quita el `## ` del molde y el sello de derogación si lo trae.
-            return linea[3:].split("  ·  ")[0].strip()
-    return ""
-
-
-def recordatorio(estandar):
-    """El texto corto que entra en cada turno. `""` si no se pudo armar nada."""
-    lineas = []
-    for cita, relativo, ancla in CADA_TURNO:
-        titulo = _encabezado(estandar, relativo, ancla)
-        if titulo:
-            lineas.append(f"  `{cita}` · {titulo}")
-    if not lineas:
-        return ""
-    return (
-        "[LAS REGLAS DE CADA TURNO — RIGEN ESTA RESPUESTA]\n"
-        "Se recuerdan en cada mensaje porque al abrir la sesión no se cargan "
-        "las reglas, y porque lo de hace rato es lo primero que el contexto "
-        "resume.\n"
-        + "\n".join(lineas) + "\n"
-        f"La lista cerrada que exige `00·ID8`, incluido el español colombiano "
-        f"de su sección 5, está en `{ANEXO_ID8}`: se relee **antes** de "
-        f"entregar cualquier texto, no después."
-    )
 
 
 def medicion(raiz, entrada):
@@ -173,17 +91,17 @@ def medicion(raiz, entrada):
 
 
 def reglas_del_mensaje(entrada, raiz):
-    """Las reglas que pide este mensaje, o `""`.
+    """Las reglas que le faltan al agente con este mensaje, o `""`.
 
-    `raiz` es la del **proyecto**, y hace falta para descartar los capítulos
-    opt-in que ese proyecto dejó apagados. Las reglas salen del estándar
-    (`RAIZ`); qué rige acá lo dice el `CLAUDE.md` de allá.
+    `raiz` es la del **proyecto**: ahí se guarda lo ya entregado en la sesión, y
+    de ahí salen los capítulos opt-in apagados. Las reglas salen del estándar
+    (`RAIZ`).
 
-    Nunca cuesta el turno: si el recuperador falla, el turno sigue con el
-    recordatorio fijo, que es lo que no puede faltar.
+    Nunca cuesta el turno: si la entrega falla, el turno sigue sin ella.
     """
     try:
-        return RecuperadorDeReglas(RAIZ).como_texto(entrada.get("prompt", ""), proyecto=raiz)
+        return EntregaDeReglas(raiz, estandar=RAIZ).para_el_mensaje(
+            entrada.get("session_id") or "", entrada.get("prompt", ""))
     except Exception:                     # noqa: BLE001
         return ""
 
@@ -198,10 +116,6 @@ def main():
     raiz = os.path.abspath(raiz)
 
     partes = []
-    aviso = recordatorio(RAIZ)
-    if aviso:
-        partes.append(aviso)
-
     pedidas = reglas_del_mensaje(entrada, raiz)
     if pedidas:
         partes.append(pedidas)
@@ -223,9 +137,9 @@ def main():
     }
 
     # Por la pantalla del usuario sale **solo** la medición, y solo cuando hay
-    # algo que decir. El recordatorio es contexto del agente: como banner en
-    # cada turno, se dejaría de leer a los dos días y se llevaría puesto el
-    # aviso que sí importaba.
+    # algo que decir. Las reglas son contexto del agente: como banner se
+    # dejarían de leer a los dos días y se llevarían puesto el aviso que sí
+    # importaba.
     if cuenta:
         salida["systemMessage"] = cuenta
 
