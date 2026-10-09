@@ -151,6 +151,9 @@ Una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-
 | [HU-027](HU-027-la-pantalla-se-entera-en-el-momento/HU-027-la-pantalla-se-entera-en-el-momento.md) | La pantalla se entera en el momento de lo que guarda el vigilante | Must | N/A | N/A | En curso |
 | [HU-028](HU-028-el-trabajo-de-cada-mensaje-sale-de-lo-que-esta-abierto/HU-028-el-trabajo-de-cada-mensaje-sale-de-lo-que-esta-abierto.md) | El trabajo de cada mensaje sale de lo que está abierto | Must | N/A | N/A | Terminada |
 | [HU-029](HU-029-el-vigilante-se-reinicia-solo-cuando-cambia-su-codigo/HU-029-el-vigilante-se-reinicia-solo-cuando-cambia-su-codigo.md) | El vigilante se reinicia solo cuando cambia su código | Must | N/A | N/A | Terminada |
+| [HU-030](HU-030-el-resumen-del-gasto-responde-en-la-mitad-del-tiempo-y-no-se-recalcula-con-cada-aviso/HU-030-el-resumen-del-gasto-responde-en-la-mitad-del-tiempo-y-no-se-recalcula-con-cada-aviso.md) | El Resumen del gasto responde en la mitad del tiempo y no se recalcula con cada aviso | Should | S | N/A | Terminada |
+| [HU-031](HU-031-cerrar-fase-entiende-los-formatos-de-las-plantillas-y-marca-todo-lo-que-cierra/HU-031-cerrar-fase-entiende-los-formatos-de-las-plantillas-y-marca-todo-lo-que-cierra.md) | `cerrar_fase` entiende los formatos de las plantillas y marca todo lo que cierra | Must | M | N/A | Terminada |
+| [HU-032](HU-032-cada-momento-de-cada-enganche-y-cada-revision-de-git-se-puede-suspender/HU-032-cada-momento-de-cada-enganche-y-cada-revision-de-git-se-puede-suspender.md) | Cada momento de cada enganche y cada revisión de git se puede suspender desde Cimiento | Must | L | N/A | Terminada |
 
 ## 10. Consideraciones técnicas
 
@@ -282,3 +285,6 @@ Ninguna aparte: las decisiones están en «Lo acordado» del análisis 1 del pen
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-10-04 | Agente | Creación de la épica desde el análisis aprobado |
+| 2026-10-09 | Agente | Suma la HU-030, del análisis 1 del pendiente 146 |
+| 2026-10-09 | Agente | Suma la HU-031, del análisis 1 del pendiente 150 |
+| 2026-10-09 | Agente | Suma la HU-032, del análisis 1 del pendiente 149 |
