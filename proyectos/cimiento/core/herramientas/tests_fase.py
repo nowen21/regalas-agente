@@ -115,7 +115,8 @@ def _llenar(ruta):
     _escribir(ruta, texto.replace(MARCA, "lleno"))
 
 
-class CerrarYReabrirUnaFase(unittest.TestCase):
+class ConUnaFase(unittest.TestCase):
+    """Una fase de juguete en una carpeta temporal, con los planes en el formato viejo."""
 
     def setUp(self):
         carpeta = tempfile.TemporaryDirectory()
@@ -143,6 +144,9 @@ class CerrarYReabrirUnaFase(unittest.TestCase):
 
     def epica_md(self):
         return _leer(os.path.join(self.epica, "epica.md"))
+
+
+class CerrarYReabrirUnaFase(ConUnaFase):
 
     # CP-001 · Cerrar
     def test_la_primera_pasada_escribe_y_dice_que_falta(self):
@@ -235,6 +239,136 @@ class CerrarYReabrirUnaFase(unittest.TestCase):
         self.assertTrue(faltan)
         self.assertEqual(3, len(tocados))
         self.assertIn("«", _leer(self.doc("estado-fase.md")).split("\n")[0])
+
+
+# ── `EP-025·HU-031` · Los planes en el formato de las plantillas ──────────────
+# Copiados de `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md` y `08-plan-pruebas.md`:
+# varios casos por fila, con enlace; una fila de RNF; CA sin nombre y como enlace.
+
+PLAN_PLANTILLA = """# Plan de Trabajo · Fase `%s` (módulo `m/`)   ·   `[CAPA 3]`
+
+| Campo | Valor |
+|---|---|
+| **Módulo** | `m/` |
+
+**Aprobación** (`02·F4`): [análisis 1](x.md), el 2026-10-05, con la versión 1.0.0
+
+| CA de `HU-001` que cierra esta fase | Estado |
+|---|---|
+| CA-01 | ☐ |
+| [CA-02](../%s.md#ca-02--dos) | ☐ |
+
+## 3. Desglose
+
+| ID | Tarea | Capa | Est. | Depende de | Ev. |
+|---|---|---|:--:|---|---|
+| T-01 | Hacer | Lógica | 1 h | — | EV-01 |
+
+## 5. Verificación de criterios de aceptación
+
+| CA | Método de verificación | Evidencia | Verificado | Estado |
+|---|---|---|---|---|
+| CA-01 | Pruebas | EV-01 | | ☐ |
+| CA-02 | Pruebas | EV-01 | | ☐ |
+
+## 11. Definition of Done
+
+- [ ] Todos los CA de la sección 0 verificados con evidencia en la sección 5
+- [ ] Pruebas en verde
+- [ ] Rama lista para el commit único de la fase
+
+## 13. Cierre
+
+**Hallazgos al ejecutar:** «se llena al cerrar»
+""" % (FASE, HU)
+
+PRUEBAS_PLANTILLA = """# Plan de Pruebas · Fase `%s`   ·   `[CAPA 3]`
+
+## 5. Matriz de trazabilidad
+
+| HU | CA | Caso(s) de prueba | Tipo | Prioridad | Automatizado | Estado |
+|---|---|---|---|---|:--:|---|
+| HU-001 | CA-01 | [CP-001](#cp-001--uno), [CP-002](#cp-002--uno-negativo) | Funcional | Crítica | Sí | ☐ |
+| HU-001 | CA-02 | CP-003 | Funcional | Alta | Sí | ☐ |
+| HU-001 | RNF-01 | CP-004 | Seguridad | Crítica | No | ☐ |
+
+## 6. Casos
+""" % FASE
+
+HU_PLANTILLA = HU_MD.replace("## 8. Fases", """### CA-01 · Uno
+
+### CA-02 · Dos
+
+## 7. Tareas técnicas derivadas
+
+- [ ] Hacer.
+
+## 8. Fases""").replace("## 9. Dependencias y riesgos", """## 9. Dependencias y riesgos
+
+## 11. Poscondiciones (Definition of Done - DoD)
+
+- [ ] Todos los criterios de aceptación verificados
+""")
+
+
+class LosFormatosDeLasPlantillas(ConUnaFase):
+
+    def setUp(self):
+        super().setUp()
+        _escribir(os.path.join(self.hu, HU + ".md"), HU_PLANTILLA)
+        _escribir(self.doc("plan_trabajo.md"), PLAN_PLANTILLA)
+        _escribir(self.doc("plan_pruebas.md"), PRUEBAS_PLANTILLA)
+
+    def cerrar(self):
+        Fase(self.fase).cerrar(escribir=True)
+        self.llenar_todo()
+        return Fase(self.fase).cerrar(escribir=True)
+
+    # CP-001 · Lee la matriz y los CA de la plantilla
+    def test_lee_todos_los_casos_y_los_ca_sin_nombre(self):
+        fase = Fase(self.fase)
+        self.assertEqual(["CP-001", "CP-002", "CP-003", "CP-004"], [cp for _ca, cp, _t, _p in fase.casos()])
+        self.assertEqual([("CA-01", "Uno"), ("CA-02", "Dos")], fase.plan()["cas"])
+        fase.cerrar(escribir=True)
+        resultado = _leer(self.doc("resultado_pruebas.md"))
+        for fila in ("| CP-001 | CA-01 | Crítica |", "| CP-002 | CA-01 | Crítica |", "| CP-003 | CA-02 | Alta |",
+                     "| CP-004 | RNF-01 | Crítica |", "| CA-01 | CP-001, CP-002 |", "| RNF-01 | CP-004 |"):
+            self.assertIn(fila, resultado)
+        self.assertIn("| CA-02 |", _leer(self.doc("funcionalidad_implementada.md")))
+
+    # CP-002 · Al cerrar marca todo
+    def test_al_cerrar_marca_todo(self):
+        self.assertEqual("cerrada", self.cerrar()[0])
+        self.assertNotIn("☐", _leer(self.doc("plan_pruebas.md")))
+        plan = _leer(self.doc("plan_trabajo.md"))
+        self.assertIn("| CA-01 | ☑ |", plan)
+        self.assertIn("| [CA-02](../%s.md#ca-02--dos) | ☑ |" % HU, plan)
+        hoy = Fase(self.fase).hoy
+        self.assertIn("| CA-01 | Pruebas | EV-01 | %s | ☑ |" % hoy, plan)
+        self.assertIn("- [x] Pruebas en verde", plan)
+        self.assertIn("- [ ] Rama lista para el commit", plan)
+        hu = self.hu_md()
+        self.assertIn("- [x] Hacer.", hu)
+        self.assertIn("- [x] Todos los criterios de aceptación verificados", hu)
+
+    # CP-003 · Al reabrir desmarca lo mismo
+    def test_al_reabrir_desmarca_lo_mismo(self):
+        self.cerrar()
+        Fase(self.fase).reabrir("falló", escribir=True)
+        self.assertNotIn("☑", _leer(self.doc("plan_pruebas.md")))
+        plan = _leer(self.doc("plan_trabajo.md"))
+        self.assertIn("| CA-01 | ☐ |", plan)
+        self.assertIn("| CA-01 | Pruebas | EV-01 |  | ☐ |", plan)
+        self.assertNotIn("- [x]", plan)
+        self.assertNotIn("- [x]", self.hu_md())
+
+    def test_con_la_hu_en_curso_no_desmarca_lo_marcado_a_mano(self):
+        _escribir(os.path.join(self.hu, HU + ".md"), HU_PLANTILLA.replace("- [ ] Hacer.", "- [x] Hacer.").replace(
+            "|---|---|---|---|---|---|---|\n", "|---|---|---|---|---|---|---|\n| `B-EP-001-HU-001-otra` | CA-02 | (vacío) "
+            "| a | b | c | En curso |\n"))
+        self.cerrar()
+        self.assertIn("| **Estado** | En curso |", self.hu_md())
+        self.assertIn("- [x] Hacer.", self.hu_md())
 
 
 if __name__ == "__main__":

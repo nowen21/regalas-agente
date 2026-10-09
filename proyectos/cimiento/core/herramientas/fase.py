@@ -35,6 +35,13 @@ _FASE = re.compile(r"^([A-Z]{1,3})-EP-\d+-HU-\d+-")
 _HU = re.compile(r"^HU-(\d+)-")
 _ESTACION = re.compile(r"(?m)^\*\*Estación actual:\*\*.*$")
 
+# `EP-025·HU-031` · Los formatos de las plantillas, además del viejo: varios casos por fila de la
+# matriz, con enlace o sin él, filas de RNF, y los CA del plan con nombre, sin él o como enlace.
+_FILA_MATRIZ = r"\| HU-\d+ \| (?:CA|RNF)-\d+ \| [^|]*CP-\d+[^|]*\|.*\| "
+_MATRIZ = re.compile(r"(?m)^\| HU-\d+ \| ((?:CA|RNF)-\d+) \| ([^|]*CP-\d+[^|]*) \| ([^|]+) \| ([^|]+) \| [^|]+ \| [☐☑] \|$")
+_CA_DEL_PLAN = r"\| (?:\[(CA-\d+)\]\([^)]*\)|(CA-\d+)(?: · (.+?))?) \| "
+_CASILLA_CA = r"\| (?:\[CA-\d+\]\([^)]*\)|CA-\d+(?: · .+?)?) \| "
+
 
 def _leer(ruta):
     if not os.path.isfile(ruta):
@@ -136,8 +143,11 @@ class Fase:
                     for parte in celda.split(", "):
                         if parte.strip() not in donde.setdefault(m.group(1), []):
                             donde[m.group(1)].append(parte.strip())
+        nombres = dict(re.findall(r"(?m)^### (CA-\d+) · (.+)$", self.leer(self.hu_md)))
+        cas = [(enlace or suelto, nombre or nombres.get(enlace or suelto, ""))
+               for enlace, suelto, nombre in re.findall(r"(?m)^" + _CA_DEL_PLAN + r"[☐☑] \|$", t)]
         return {
-            "cas": re.findall(r"(?m)^\| (CA-\d+) · (.+?) \| [☐☑] \|$", t),
+            "cas": cas,
             "tareas": sorted(set(re.findall(r"(?m)^\| (T-\d+) \|", t))),
             "modulo": modulo.group(1) if modulo else MARCA,
             "aprobacion": aprobacion.group(1).strip() if aprobacion else MARCA,
@@ -148,8 +158,8 @@ class Fase:
     def casos(self):
         """`[(CA, CP, tipo, prioridad)]` de la matriz del plan de pruebas."""
         t = self.leer(self.ruta("plan_pruebas.md"))
-        return [(ca, cp, tipo.strip(), prioridad.strip()) for ca, cp, tipo, prioridad in re.findall(
-            r"(?m)^\| HU-\d+ \| (CA-\d+) \| (CP-\d+) \| ([^|]+) \| ([^|]+) \| [^|]+ \| [☐☑] \|$", t)]
+        return [(ca, cp, tipo.strip(), prioridad.strip()) for ca, celda, tipo, prioridad in _MATRIZ.findall(t)
+                for cp in re.findall(r"CP-\d+", celda)]
 
     @staticmethod
     def version():
@@ -324,10 +334,12 @@ class Fase:
         self.poner(ruta, self.leer(ruta).replace(AL_CERRAR, concepto))
         # Plan de pruebas: la matriz.
         ruta = self.ruta("plan_pruebas.md")
-        self.poner(ruta, re.sub(r"(?m)^(\| HU-\d+ \| CA-\d+ \| CP-\d+ \|.*\| )☐( \|)$", r"\g<1>☑\2", self.leer(ruta)))
-        # Plan de trabajo: los CA y el cierre.
+        self.poner(ruta, re.sub(r"(?m)^(" + _FILA_MATRIZ + r")☐( \|)$", r"\g<1>☑\2", self.leer(ruta)))
+        # Plan de trabajo: los CA, su verificación, su Definition of Done y el cierre.
         ruta = self.ruta("plan_trabajo.md")
-        t = re.sub(r"(?m)^(\| CA-\d+ · .+ \| )☐( \|)$", r"\g<1>☑\2", self.leer(ruta))
+        t = re.sub(r"(?m)^(" + _CASILLA_CA + r")☐( \|)$", r"\g<1>☑\2", self.leer(ruta))
+        t = _verificacion(t, self.hoy)
+        t = _definition_of_done(t, "## 11.", True)
         tramo = _seccion(t, "## 13.")
         if tramo:
             cuerpo = t[tramo[0]:tramo[1]]
@@ -359,6 +371,11 @@ class Fase:
         fases = [_celdas(l)[-1] for l in t[tramo[0]:tramo[1]].split("\n") if re.match(r"^\| `[A-Z]", l)]
         de_la_hu = "Terminada" if fases and all(e == "Terminada" for e in fases) else "En curso"
         t = re.sub(r"(?m)^(\| \*\*Estado\*\* \| ).*$", r"\g<1>%s |" % de_la_hu, t, count=1)
+        # `EP-025·HU-031` · Con la HU terminada, sus tareas y su Definition of Done; al reabrir, al revés.
+        # Cerrar una fase con la HU en curso no desmarca lo que alguien marcó a mano.
+        if de_la_hu == "Terminada" or estado == "En curso":
+            for encabezado in ("## 7.", "## 11."):
+                t = _definition_of_done(t, encabezado, de_la_hu == "Terminada")
         self.poner(self.hu_md, t)
         enlace_hu = "](%s/%s.md)" % (self.hu_dir, self.hu_dir)
         orden = re.compile(r"^\| \d+ \| %s \|" % re.escape(self.hu_id))
@@ -426,12 +443,39 @@ class Fase:
         self.poner(ruta, _agregar_a_tabla(r, "## 8.", "| %d | %s | %s | %s | Reabierta: %s |" % (
             siguiente, self.hoy, MARCA, MARCA, motivo)))
         ruta = self.ruta("plan_pruebas.md")
-        self.poner(ruta, re.sub(r"(?m)^(\| HU-\d+ \| CA-\d+ \| CP-\d+ \|.*\| )☑( \|)$", r"\g<1>☐\2", self.leer(ruta)))
+        self.poner(ruta, re.sub(r"(?m)^(" + _FILA_MATRIZ + r")☑( \|)$", r"\g<1>☐\2", self.leer(ruta)))
         ruta = self.ruta("plan_trabajo.md")
-        t = re.sub(r"(?m)^(\| CA-\d+ · .+ \| )☑( \|)$", r"\g<1>☐\2", self.leer(ruta))
+        t = re.sub(r"(?m)^(" + _CASILLA_CA + r")☑( \|)$", r"\g<1>☐\2", self.leer(ruta))
+        t = _verificacion(t, None)
+        t = _definition_of_done(t, "## 11.", False)
         self.poner(ruta, t.rstrip("\n") + "\n\n**Reabierta** el %s: %s.\n" % (self.hoy, motivo))
         self._poner_estado("En curso")
         return "reabierta", self.guardar(escribir)
+
+
+def _verificacion(texto, hoy):
+    """La sección 5 del plan: con `hoy`, cada CA o RNF verificado ese día y ☑; sin él, vacío y ☐."""
+    tramo = _seccion(texto, "## 5.")
+    if not tramo:
+        return texto
+    lineas = texto[tramo[0]:tramo[1]].split("\n")
+    for i, linea in enumerate(lineas):
+        celdas = _celdas(linea)
+        if re.match(r"^\| (?:CA|RNF)-\d+ \|", linea) and len(celdas) == 5 and celdas[-1] in ("☐", "☑"):
+            fecha = (celdas[3] or hoy) if hoy else ""
+            lineas[i] = "| %s | %s | %s | %s | %s |" % (celdas[0], celdas[1], celdas[2], fecha, "☑" if hoy else "☐")
+    return texto[:tramo[0]] + "\n".join(lineas) + texto[tramo[1]:]
+
+
+def _definition_of_done(texto, encabezado, marcar):
+    """Las casillas `- [ ]` de la sección, marcadas o no. La del commit no: es la estación 12."""
+    tramo = _seccion(texto, encabezado)
+    if not tramo:
+        return texto
+    antes, despues = ("- [ ] ", "- [x] ") if marcar else ("- [x] ", "- [ ] ")
+    lineas = [despues + l[len(antes):] if l.startswith(antes) and "commit" not in l.lower() else l
+              for l in texto[tramo[0]:tramo[1]].split("\n")]
+    return texto[:tramo[0]] + "\n".join(lineas) + texto[tramo[1]:]
 
 
 def _agregar_parrafo(texto, encabezado, parrafo):
