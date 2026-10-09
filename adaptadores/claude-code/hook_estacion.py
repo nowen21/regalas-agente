@@ -33,6 +33,10 @@ def main():
     # razón por la que lo llaman los otros quince.
     preparar_salida()
     raiz = raiz_pedida(sys.argv[1:], os.getcwd())
+    # `EP-025·HU-032` · Si esta revisión de git está suspendida en Cimiento, no anota nada.
+    from core.herramientas.validar import revision_git_suspendida
+    if revision_git_suspendida("estacion", raiz):
+        return 0
 
     hash_corto = _git(raiz, "rev-parse", "--short", "HEAD").stdout.strip()
     if not hash_corto:

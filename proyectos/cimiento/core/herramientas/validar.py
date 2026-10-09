@@ -844,10 +844,42 @@ class Consola:
         # revisaba el proyecto: silencioso, y el resultado decía que sí había corrido.
         if getattr(a, "raiz", "") is None:
             a.raiz = raiz_del_proyecto()
+        # `EP-025·HU-032` · La revisión de git suspendida en Cimiento no detiene y lo dice.
+        orden = (sys.argv[1:] if argv is None else list(argv))[:1]
+        suspendida = revision_git_suspendida(orden[0], getattr(a, "raiz", None) or raiz_del_proyecto()) if orden else None
+        if suspendida:
+            motivo, vence = suspendida
+            print("validar.py %s: suspendida en Cimiento hasta el %s. Motivo: %s. No se revisa." % (
+                orden[0], datetime.datetime.fromtimestamp(vence).strftime("%Y-%m-%d %H:%M"), motivo), file=sys.stderr)
+            return 0
         for pedida in (getattr(a, "raiz", None), getattr(a, "catalogo", None)):
             if pedida:
                 self.reporte.pedidas.append(os.path.abspath(pedida))
         return a.func(a)
+
+
+def revision_git_suspendida(orden, raiz, consultar=None, ahora=None):
+    """`(motivo, vence)` si la revisión de git que corre `orden` está suspendida en el proyecto, o None.
+
+    `EP-025·HU-032` · Una sola consulta por guardado (análisis 1 del pendiente 149,
+    acuerdo 4): la primera revisión que llega gana el turno de la lista de git de
+    ese minuto y les cuenta a las demás. Sin base, o si algo falla, no hay nada
+    suspendido y la revisión corre como siempre."""
+    import time
+
+    from ..comun.enganches import REVISIONES_GIT
+    from ..enganches.suspendidos import Suspendidos
+    if orden not in REVISIONES_GIT or not raiz:
+        return None
+    nombre, ahora = REVISIONES_GIT[orden][0], ahora or time.time
+    try:
+        lista = Suspendidos(raiz, "git", consultar=consultar, ahora=ahora).lista("git-%d" % (ahora() // 60))
+    except Exception:       # noqa: BLE001
+        return None
+    for suspendida, vence, motivo in lista:
+        if suspendida == nombre and vence > ahora():
+            return motivo, vence
+    return None
 
 
 def main(argv=None):

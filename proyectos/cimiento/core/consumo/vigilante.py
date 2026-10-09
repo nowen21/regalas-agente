@@ -30,10 +30,23 @@ from .avisos import avisar_a_cimiento
 from .guardar import GuardadoDeConsumo, leer_lo_nuevo
 
 
-def archivo_del_numero():
-    """Donde queda el número del proceso: `.agente/` de Cimiento, local e ignorado."""
-    cimiento = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    return os.path.join(cimiento, ".agente", "vigilar-consumo.pid")
+def archivo_del_numero(cimiento=None):
+    """Donde queda el número del proceso: la `.agente/` de la raíz del estándar, local e ignorada.
+
+    `.agente/` es hermana de `proyectos/` y de `.git` (análisis 2 del pendiente 149,
+    acuerdo 2). Antes iba en `proyectos/cimiento/.agente/`: si el número sigue ahí,
+    se pasa al sitio nuevo, para no arrancar un segundo vigilante."""
+    cimiento = cimiento or os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    nuevo = os.path.join(os.path.dirname(os.path.dirname(cimiento)), ".agente", "vigilar-consumo.pid")
+    viejo = os.path.join(cimiento, ".agente", "vigilar-consumo.pid")
+    if os.path.isfile(viejo) and not os.path.isfile(nuevo):
+        try:
+            os.makedirs(os.path.dirname(nuevo), exist_ok=True)
+            os.replace(viejo, nuevo)
+            os.rmdir(os.path.dirname(viejo))        # solo si quedó vacía
+        except OSError:
+            pass
+    return nuevo
 
 
 def proceso_vivo(numero):

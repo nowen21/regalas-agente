@@ -73,7 +73,9 @@ class Suspensiones(View):
     def contexto(self, peticion, proyecto, form):
         return {"proyecto": proyecto, "form": form, "puede_cambiar": es_administrador(peticion.user),
                 "suspensiones": proyecto.suspensiones.select_related("creada_por", "levantada_por"),
-                "ahora": timezone.now(), "dias": catalogo.DIAS_MAXIMOS}
+                "ahora": timezone.now(), "dias": catalogo.DIAS_MAXIMOS,
+                # `EP-025·HU-032` · Lo que se puede suspender, con la recomendación junto a lo que no conviene.
+                "suspendibles": catalogo.suspendibles()}
 
     def get(self, peticion, pk):
         proyecto = get_object_or_404(Proyecto, pk=pk)

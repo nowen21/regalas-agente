@@ -172,6 +172,9 @@ def _produjo_algo(raiz):
 
 
 def main():
+    # `EP-025·HU-032` · Si este momento está suspendido en Cimiento, sale sin hacer nada.
+    from core.enganches.suspendidos import salir_si_esta_suspendido
+    salir_si_esta_suspendido(__file__)
     # Su texto lleva acentos y comillas angulares. Sin esto sale en la página de
     # códigos de la consola y quien lo lea recibe mojibake — o, si la salida va a
     # una tubería, no se puede ni decodificar. Era el único enganche que no lo

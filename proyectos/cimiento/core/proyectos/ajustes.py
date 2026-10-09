@@ -9,12 +9,13 @@ una regla o del freno, con motivo y vencimiento.
 **Sin Django**: lo usan también los enganches, que leen la base con PyMySQL.
 
 **Lo que nunca se suspende**: el núcleo (`00·N1` a `00·N8`), porque es lo que
-protege los datos y las claves (`00·N6`), y el histórico, que además tapa las
-claves antes de guardar la conversación.
+protege los datos y las claves (`00·N6`). Desde la `EP-025·HU-032` se suspende
+cualquier momento de un enganche o revisión de git, el histórico incluido: lo
+que no conviene lo advierte la pantalla (análisis 1 del pendiente 149, acuerdo 2).
 """
 from collections import namedtuple
 
-from ..comun.enganches import NO_SE_SUSPENDEN
+from ..comun.enganches import FRENO, suspendibles
 from .limites import LIMITE_ARCHIVO, LIMITE_ENGANCHE
 
 Ajuste = namedtuple("Ajuste", "titulo opciones fabrica ayuda")
@@ -65,11 +66,8 @@ for _capitulo, _tema in CAPITULOS_OPT_IN.items():
         "Patrón opt-in %s (%s)" % (_capitulo, _tema), (SI, NO), NO,
         "Si las reglas del capítulo %s rigen en el proyecto." % _capitulo)
 
-# Lo que se suspende como «el freno»: los dos enganches que detienen acciones.
-FRENO = "freno"
-ENGANCHES_DEL_FRENO = ("hook_antes.py", "hook_despues.py")
 REGLA, ENGANCHE = "regla", "enganche"
-TIPOS = [(REGLA, "Una regla"), (ENGANCHE, "El freno entero")]
+TIPOS = [(REGLA, "Una regla"), (ENGANCHE, "Un enganche o una revisión de git")]
 DIAS_MAXIMOS = 30
 
 
@@ -79,11 +77,11 @@ def es_del_nucleo(id_completo):
 
 
 def se_puede_suspender(tipo, nombre):
-    """¿Se ofrece y se acepta suspender esto? El núcleo y el histórico, nunca."""
+    """¿Se acepta suspender esto? El núcleo, nunca; un enganche, si está en el catálogo."""
     if tipo == REGLA:
         return bool(nombre) and not es_del_nucleo(nombre)
     if tipo == ENGANCHE:
-        return nombre == FRENO and not set(ENGANCHES_DEL_FRENO) & set(NO_SE_SUSPENDEN)
+        return nombre in {n for n, _que, _motivo in suspendibles()}
     return False
 
 

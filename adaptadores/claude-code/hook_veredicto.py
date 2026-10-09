@@ -29,6 +29,9 @@ from core.enganches.veredicto import CopiaDelVeredicto           # noqa: E402
 
 
 def main():
+    # `EP-025·HU-032` · Si este momento está suspendido en Cimiento, sale sin hacer nada.
+    from core.enganches.suspendidos import salir_si_esta_suspendido
+    salir_si_esta_suspendido(__file__)
     preparar_salida()
     raiz = raiz_pedida(sys.argv[1:], os.getcwd())
     try:

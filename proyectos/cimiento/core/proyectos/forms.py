@@ -72,22 +72,28 @@ class ConfiguracionForm(forms.Form):
 
 
 class SuspensionForm(forms.ModelForm):
-    """Capa 3: una regla, o el freno entero, apagada con motivo y hasta una fecha."""
+    """Capa 3: una regla, o un enganche o una revisión de git, apagada con motivo y hasta una fecha."""
 
     class Meta:
         model = Suspension
         fields = ["tipo", "nombre", "motivo", "vence"]
         widgets = {"vence": forms.DateTimeInput(attrs={"type": "datetime-local"}, format="%Y-%m-%dT%H:%M")}
-        labels = {"nombre": "Regla (p. ej. 02·F8), o «freno»", "vence": "Vence"}
+        labels = {"nombre": "La regla (p. ej. 02·F8) o el enganche (p. ej. freno)", "vence": "Vence"}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["nombre"].required = False      # un enganche sin nombre es el freno; una regla vacía, `clean` la rechaza
 
     def clean(self):
         datos = super().clean()
         tipo, nombre = datos.get("tipo"), (datos.get("nombre") or "").strip()
-        if tipo == catalogo.ENGANCHE:
-            nombre = catalogo.FRENO
+        if tipo == catalogo.ENGANCHE and not nombre:
+            nombre = catalogo.FRENO          # sin nombre, el freno: lo de antes de la `EP-025·HU-032`
         datos["nombre"] = nombre
         if not catalogo.se_puede_suspender(tipo, nombre):
-            raise forms.ValidationError("Eso no se suspende: el núcleo y el histórico protegen los datos y las claves.")
+            raise forms.ValidationError(
+                "Eso no se suspende: el núcleo protege los datos y las claves." if tipo == catalogo.REGLA
+                else "«%s» no es un enganche ni una revisión de git del catálogo." % nombre)
         if tipo == catalogo.REGLA:
             from core.niveles.catalogo import ids_configurables
             if nombre not in ids_configurables():

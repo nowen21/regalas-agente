@@ -62,17 +62,20 @@ CAMPOS = {
         "titulo": "¿Qué se puede suspender?",
         "secciones": [
             ("Las opciones", ["Una regla: deja de frenar solo esa regla en este proyecto.",
-                              "El freno entero: deja pasar todo lo que frena, menos el núcleo."]),
+                              "Un enganche o una revisión de git: deja de correr ese momento, o esa revisión al "
+                              "guardar en git. «freno» deja pasar todo lo que frena, menos el núcleo."]),
         ],
-        "consejo": "El núcleo del estándar y el histórico no se suspenden nunca: protegen los datos y las claves.",
+        "consejo": "El núcleo del estándar no se suspende nunca. Lo que no conviene suspender, como el histórico, "
+                   "lleva su advertencia en la tabla de abajo.",
     },
     "suspension.nombre": {
-        "titulo": "¿Qué regla se escribe?",
+        "titulo": "¿Qué se escribe?",
         "secciones": [
-            ("¿Qué es?", "El código de la regla, tal como sale en el aviso del freno."),
-            ("Ejemplo", "02·F8"),
+            ("¿Qué es?", "Para una regla, su código, tal como sale en el aviso del freno. Para un enganche o una "
+                         "revisión de git, su nombre de la tabla de abajo."),
+            ("Ejemplo", "02·F8, o git-marcas"),
         ],
-        "consejo": "Si se suspende el freno entero, este campo no se llena.",
+        "consejo": "Un enganche sin nombre se guarda como «freno».",
     },
     "suspension.motivo": {
         "titulo": "¿Por qué se pide el motivo?",

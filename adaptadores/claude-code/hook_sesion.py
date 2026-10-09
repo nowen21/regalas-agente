@@ -150,6 +150,9 @@ def _con(aviso, resumen):
 
 
 def main():
+    # `EP-025·HU-032` · Si este momento está suspendido en Cimiento, sale sin hacer nada.
+    from core.enganches.suspendidos import salir_si_esta_suspendido
+    salir_si_esta_suspendido(__file__)
     preparar_salida()
     proyecto = raiz_pedida(sys.argv[1:], os.getcwd())
     aviso = _con(_copia_del_dia(), _reportes(proyecto))

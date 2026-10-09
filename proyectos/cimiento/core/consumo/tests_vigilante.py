@@ -143,6 +143,24 @@ class LaTelemetriaYaNoEsta(TestCase):
         self.assertFalse(os.path.exists(os.path.join(os.path.dirname(__file__), "telemetria.py")))
 
 
+class ElNumeroVaEnLaRaiz(TestCase):
+    """Análisis 2 del pendiente 149, acuerdo 2: `.agente/` es hermana de `proyectos/`."""
+
+    def test_el_numero_va_en_la_raiz_y_el_del_sitio_viejo_se_pasa(self):
+        from core.consumo.vigilante import archivo_del_numero
+        raiz = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, raiz, True)
+        cimiento = os.path.join(raiz, "proyectos", "cimiento")
+        os.makedirs(os.path.join(cimiento, ".agente"))
+        with open(os.path.join(cimiento, ".agente", "vigilar-consumo.pid"), "w", encoding="utf-8") as f:
+            f.write("4321")
+        archivo = archivo_del_numero(cimiento)
+        self.assertEqual(os.path.join(raiz, ".agente", "vigilar-consumo.pid"), archivo)
+        with open(archivo, encoding="utf-8") as f:
+            self.assertEqual("4321", f.read())
+        self.assertFalse(os.path.exists(os.path.join(cimiento, ".agente")))
+
+
 class SeArrancaYSeDetiene(TestCase):
     """CP-002, pasos 1 y 2."""
 

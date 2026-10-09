@@ -189,6 +189,9 @@ def reglas_del_mensaje(entrada, raiz):
 
 
 def main():
+    # `EP-025·HU-032` · Si este momento está suspendido en Cimiento, sale sin hacer nada.
+    from core.enganches.suspendidos import salir_si_esta_suspendido
+    salir_si_esta_suspendido(__file__)
     preparar_salida()
     entrada = _entrada()
     raiz = opcion(sys.argv[1:], "--raiz") or entrada.get("cwd") or os.getcwd()

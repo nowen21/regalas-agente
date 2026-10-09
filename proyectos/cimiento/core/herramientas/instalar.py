@@ -40,7 +40,7 @@ from datetime import datetime
 from ..comun import Proyecto
 from ..comun.consola import preparar_salida
 from ..comun.enganches import (CONFIG_AGENTE, EN_SEGUNDO_PLANO, ENGANCHES_GIT,  # noqa: F401
-                                HOOKS_CLAUDE, IGNORADOS, NO_SE_SUSPENDEN)
+                                HOOKS_CLAUDE, IGNORADOS)
 from ..enganches.recuerdos import CARPETA as CARPETA_RECUERDOS
 from ..enganches.recuerdos import INDICE as INDICE_RECUERDOS
 from ..enganches.recuerdos import Recuerdos

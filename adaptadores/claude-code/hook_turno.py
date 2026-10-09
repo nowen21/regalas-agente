@@ -28,6 +28,9 @@ from core.validadores.sesiones import Sesiones                   # noqa: E402
 
 
 def main():
+    # `EP-025·HU-032` · Si este momento está suspendido en Cimiento, sale sin hacer nada.
+    from core.enganches.suspendidos import salir_si_esta_suspendido
+    salir_si_esta_suspendido(__file__)
     preparar_salida()
     try:
         datos = entrada_json()

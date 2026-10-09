@@ -14,7 +14,7 @@ proyectos/*/.venv/
 proyectos/*/staticfiles/
 proyectos/*/node_modules/
 proyectos/*/CLAUDE.md
-proyectos/*/.agente/
+.agente/
 proyectos/*/.claude/
 proyectos/*/historico-chat/.tocado/
 

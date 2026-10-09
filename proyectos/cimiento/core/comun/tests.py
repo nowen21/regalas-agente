@@ -152,11 +152,11 @@ class ElCatalogoDeEnganchesNoArmaCiclos(unittest.TestCase):
             self.assertEqual(0, corrida.returncode, "%s no carga solo: %s" % (modulo, corrida.stderr[-300:]))
 
     def test_el_instalador_y_el_catalogo_nombran_los_mismos_enganches(self):
-        from core.comun.enganches import ENGANCHES_GIT, HOOKS_CLAUDE, NO_SE_SUSPENDEN
+        from core.comun.enganches import ENGANCHES_GIT, HOOKS_CLAUDE, MOMENTOS
         from core.herramientas.instalar import HOOKS
         self.assertEqual(ENGANCHES_GIT, tuple(nombre for nombre, _, _ in HOOKS))
-        guiones = {guion for _, _, guion, _, _ in HOOKS_CLAUDE}
-        self.assertTrue(set(NO_SE_SUSPENDEN) <= guiones)
+        # `EP-025·HU-032` · Todo enganche instalado tiene nombre para suspenderlo.
+        self.assertEqual(set(MOMENTOS), {(evento, guion) for evento, _, guion, _, _ in HOOKS_CLAUDE})
 
 if __name__ == "__main__":
     unittest.main()

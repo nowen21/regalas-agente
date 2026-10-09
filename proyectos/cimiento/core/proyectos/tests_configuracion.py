@@ -44,10 +44,12 @@ class ConProyecto:
 
 class ElCatalogo(SimpleTestCase):
 
-    def test_el_nucleo_y_el_historico_no_se_suspenden(self):
+    def test_el_nucleo_no_se_suspende_y_el_enganche_va_por_su_nombre(self):
+        # `EP-025·HU-032` · El histórico se suspende por el nombre de su momento; el guion no es un nombre.
         self.assertFalse(catalogo.se_puede_suspender(catalogo.REGLA, "00·N6"))
         self.assertFalse(catalogo.se_puede_suspender(catalogo.REGLA, "00·N1"))
         self.assertFalse(catalogo.se_puede_suspender(catalogo.ENGANCHE, "hook_historico.py"))
+        self.assertTrue(catalogo.se_puede_suspender(catalogo.ENGANCHE, "historico-del-usuario"))
         self.assertTrue(catalogo.se_puede_suspender(catalogo.REGLA, "02·F8"))
         self.assertTrue(catalogo.se_puede_suspender(catalogo.ENGANCHE, catalogo.FRENO))
 
@@ -190,9 +192,9 @@ class SuspenderYLevantar(ConCuentas):
         self.assertFalse(suspension.vigente())
         self.assertFalse(self.hay_copia())
 
-    def test_el_freno_entero_se_guarda_como_freno(self):
+    def test_el_enganche_sin_nombre_se_guarda_como_freno(self):
         self.entrar()
-        self.suspension(tipo="enganche", nombre="hook_historico.py")
+        self.suspension(tipo="enganche", nombre="")
         self.assertEqual("freno", Suspension.objects.get().nombre)
 
     def test_lo_que_no_se_suspende(self):

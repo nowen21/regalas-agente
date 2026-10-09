@@ -6,8 +6,9 @@ la carga solo cerraba en un orden (análisis 1 del pendiente 116, fila 23). Acá
 no depende de nadie.
 
 Es la lista de lo que **existe**. Qué tiene prendido cada proyecto lo decide su
-configuración en la pantalla «Proyectos» (acuerdo 12 del mismo análisis); lo que
-este catálogo marca es lo que ningún proyecto puede suspender.
+configuración en la pantalla «Proyectos» (acuerdo 12 del mismo análisis). Desde la
+`EP-025·HU-032`, cada momento y cada revisión de git tiene acá su nombre para
+suspenderlo; lo que no conviene suspender lleva su motivo en `NO_CONVIENE`.
 """
 
 # Los enganches de git, por su nombre. Sus plantillas viven con el instalador,
@@ -100,6 +101,80 @@ HOOKS_CLAUDE = [
      "Comparando lo que cambió con el plan...", ""),
 ]
 
+# `EP-025·HU-032` · El nombre fijo de cada momento, para suspenderlo desde Cimiento
+# (análisis 1 del pendiente 149, acuerdo 1). Se suspende el momento, no el guion:
+# cuatro guiones corren en dos momentos. El nombre sale de `(evento, guion)`, que
+# Claude Code le dice a cada enganche, y no de un campo más en `HOOKS_CLAUDE`, que
+# el instalador, el desinstalador y el checklist desarman en cinco.
+FRENO = "freno"
+MOMENTOS = {
+    ("PostToolUse", "hook_md.py"): "enlaces-al-escribir",
+    ("SessionStart", "hook_sesion.py"): "estandar-al-abrir",
+    ("UserPromptSubmit", "hook_historico.py"): "historico-del-usuario",
+    ("Stop", "hook_historico.py"): "historico-del-agente",
+    ("UserPromptSubmit", "hook_analisis.py"): "analisis-en-curso",
+    ("UserPromptSubmit", "hook_checklist.py"): "instalacion",
+    ("UserPromptSubmit", "hook_reglas.py"): "reglas-de-cada-turno",
+    ("UserPromptSubmit", "hook_acuerdos.py"): "acuerdos",
+    ("SessionStart", "hook_recuerdos.py"): "memoria-al-abrir",
+    ("PostToolUse", "hook_recuerdos.py"): "memoria-al-escribir",
+    ("SessionStart", "hook_resumen.py"): "resumen-al-abrir",
+    ("UserPromptSubmit", "hook_resumen.py"): "resumen-en-cada-mensaje",
+    ("UserPromptSubmit", "hook_senales.py"): "senales",
+    ("PostToolUse", "hook_relacionadas.py"): "reglas-relacionadas",
+    ("Stop", "hook_turno.py"): "registro-del-turno",
+    ("Stop", "hook_redaccion.py"): "redaccion",
+    ("Stop", "hook_presupuesto.py"): "consumo-al-terminar",
+    ("UserPromptSubmit", "hook_presupuesto.py"): "consumo-en-cada-mensaje",
+    ("PostToolUse", "hook_checkpoint.py"): "checkpoint",
+    ("PostToolUse", "hook_veredicto.py"): "veredicto",
+    ("PostToolUse", "hook_rutas.py"): "rutas",
+    ("PostToolUse", "hook_externo.py"): "lo-que-llega-de-afuera",
+    # Los dos del freno se suspenden juntos, como hasta ahora; el núcleo lo sigue frenando.
+    ("PreToolUse", "hook_antes.py"): FRENO,
+    ("PostToolUse", "hook_despues.py"): FRENO,
+}
+
+# Las revisiones de git, por la orden de `validar.py` que las corre (acuerdo 4):
+# «versionado» se suspende igual en `pre-commit` que en `pre-push`.
+REVISIONES_GIT = {
+    "commit": ("git-mensaje", "Revisa el mensaje del commit"),
+    "versionado": ("git-versionado", "Que no entren secretos ni artefactos"),
+    "marcas": ("git-marcas", "Que no suban las marcas de redacción"),
+    "plan": ("git-plan", "Lo que entra contra el plan aprobado"),
+    "sesiones": ("git-sesiones", "Que el commit no se lleve el trabajo de otra sesión"),
+    "pruebas": ("git-pruebas", "La revisión de pruebas al día"),
+    "estandar": ("git-enlaces", "Enlaces rotos e índices, antes de publicar"),
+    "ejecutable": ("git-ejecutable", "Quién hace cumplir cada regla del núcleo, antes de publicar"),
+    "tareas": ("git-tareas", "A qué tareas aplica cada regla, antes de publicar"),
+    "metareglas": ("git-metareglas", "Las reglas contra su molde, antes de publicar"),
+    "internas": ("git-pruebas-del-estandar", "Si hay commits que las pruebas del estándar no vieron"),
+    "estacion": ("git-estacion", "Anota el commit en el estado de la fase"),
+}
+
+# Lo que no conviene suspender, y por qué (acuerdo 2): se puede, pero la pantalla lo advierte.
+NO_CONVIENE = {
+    "historico-del-usuario": "Deja de guardar lo que escribe el usuario: la sesión se pierde al borrar el chat.",
+    "historico-del-agente": "Deja de guardar lo que responde el agente: la sesión se pierde al borrar el chat.",
+    "reglas-de-cada-turno": "Las reglas no se cargan al abrir: sin él, el agente trabaja sin ellas.",
+    "registro-del-turno": "Sin él, un commit puede llevarse el trabajo de otra sesión sin aviso.",
+    "lo-que-llega-de-afuera": "Lo que llega de una página o un archivo deja de marcarse como dato, no orden.",
+    FRENO: "Deja pasar lo que el plan no declara. El núcleo se sigue frenando.",
+    "git-versionado": "Pueden entrar al repositorio claves o archivos que no van.",
+}
+
+
+def suspendibles():
+    """`[(nombre, qué hace, por qué no conviene o "")]`: los momentos y después las revisiones de git."""
+    que_hace = {}
+    for evento, _filtro, guion, mensaje, _argumentos in HOOKS_CLAUDE:
+        nombre = MOMENTOS[(evento, guion)]
+        que_hace.setdefault(nombre, "Revisando la acción contra el plan, antes y después" if nombre == FRENO
+                            else mensaje.rstrip("."))
+    que_hace.update((nombre, texto) for nombre, texto in REVISIONES_GIT.values())
+    return [(nombre, texto, NO_CONVIENE.get(nombre, "")) for nombre, texto in que_hace.items()]
+
+
 # Pendiente 143, fase A · Lo que corre al cerrar el turno y nadie espera: se
 # instala con `async`, y la respuesta deja de esperar cerca de 6 s. Su salida se
 # descarta, y ninguno la necesita: lo que el turno siguiente lee queda en
@@ -107,10 +182,6 @@ HOOKS_CLAUDE = [
 EN_SEGUNDO_PLANO = frozenset({
     ("Stop", "hook_historico.py"), ("Stop", "hook_turno.py"),
     ("Stop", "hook_redaccion.py"), ("Stop", "hook_presupuesto.py")})
-
-# Lo que ningún ajuste del proyecto suspende (acuerdo 12): el histórico de la
-# conversación, que además tapa las claves antes de guardarla (`00·N6`).
-NO_SE_SUSPENDEN = ("hook_historico.py",)
 
 # Los 4 archivos de configuración del proyecto. Los pone el instalador y el
 # checklist revisa que estén; los dos los leen de acá (`20·M2`).

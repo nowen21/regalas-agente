@@ -114,6 +114,9 @@ class NivelesDelProyecto:
             filas, suspendidas = self.consultar_juntas((_CONSULTA, None), (_SUSPENDIDAS, None))
             niveles = dict(filas)
             for tipo, nombre in suspendidas:
+                # `EP-025·HU-032` · Desde que se suspende cualquier momento, solo «freno» apaga el freno entero.
+                if tipo == "enganche" and nombre != "freno":
+                    continue
                 niveles[TODAS if tipo == "enganche" else nombre] = "apagada"
             self._niveles = niveles
         return self._niveles

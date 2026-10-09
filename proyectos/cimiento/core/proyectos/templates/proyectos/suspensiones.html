@@ -9,7 +9,7 @@
 {% for mensaje in messages %}
 <div class="alert alert-{% if mensaje.tags == 'error' %}danger{% else %}success{% endif %}" role="alert">{{ mensaje }}</div>
 {% endfor %}
-<p class="text-secondary">Una regla, o el freno entero, deja de frenar en este proyecto hasta que vence o se levanta. Lleva motivo y dura a lo sumo {{ dias }} días. El núcleo del estándar y el histórico no se suspenden.</p>
+<p class="text-secondary">Una regla, un enganche o una revisión de git deja de actuar en este proyecto hasta que vence o se levanta. Lleva motivo y dura a lo sumo {{ dias }} días. El núcleo del estándar no se suspende; lo que no conviene suspender lleva su advertencia abajo.</p>
 
 <div class="card mb-3">
   {% if suspensiones %}
@@ -31,7 +31,7 @@
     <tbody class="table-tbody">
       {% for suspension in suspensiones %}
       <tr>
-        <td class="t-que">{% if suspension.tipo == "enganche" %}El freno entero{% else %}<code>{{ suspension.nombre }}</code>{% endif %}</td>
+        <td class="t-que">{% if suspension.tipo == "enganche" and suspension.nombre == "freno" %}El freno entero{% else %}<code>{{ suspension.nombre }}</code>{% endif %}</td>
         <td class="t-motivo">{{ suspension.motivo }}</td>
         <td class="t-vence">{{ suspension.vence|date:"Y-m-d H:i" }}</td>
         <td class="t-quien">{{ suspension.creada_por.get_username|default:"(cuenta borrada)" }}</td>
@@ -82,7 +82,8 @@
     </div>
     <div class="mb-3">
       <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>{% ayuda_campo "suspension.nombre" %}</div>
-      <input class="form-control" id="{{ form.nombre.id_for_label }}" name="nombre" value="{{ form.nombre.value|default_if_none:'' }}">
+      <input class="form-control" id="{{ form.nombre.id_for_label }}" name="nombre" list="enganches-suspendibles" value="{{ form.nombre.value|default_if_none:'' }}">
+      <datalist id="enganches-suspendibles">{% for nombre, que_hace, _motivo in suspendibles %}<option value="{{ nombre }}">{{ que_hace }}</option>{% endfor %}</datalist>
     </div>
     <div class="mb-3">
       <div class="d-flex align-items-center gap-1 mb-1"><label class="form-label mb-0" for="{{ form.motivo.id_for_label }}">Motivo</label>{% ayuda_campo "suspension.motivo" %}</div>
@@ -99,5 +100,23 @@
   </div>
 </form>
 {% endif %}
+{% comment %}`EP-025·HU-032` · Lo que se puede suspender, con la recomendación junto a lo que no conviene.{% endcomment %}
+<div class="card mt-3" id="lo-que-se-puede-suspender">
+  <div class="card-header"><h3 class="card-title">Enganches y revisiones de git que se pueden suspender</h3></div>
+  <div class="table-responsive">
+  <table class="table mb-0 align-middle">
+    <thead><tr><th>Nombre</th><th>Qué hace</th><th>Recomendación</th></tr></thead>
+    <tbody>
+      {% for nombre, que_hace, motivo in suspendibles %}
+      <tr>
+        <td><code>{{ nombre }}</code></td>
+        <td>{{ que_hace }}</td>
+        <td>{% if motivo %}<span class="text-danger">No conviene suspenderlo.</span> {{ motivo }}{% else %}<span class="text-secondary">Se puede suspender.</span>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
 <p class="mt-3"><a href="{% url 'proyectos:lista' %}">Volver a los proyectos</a></p>
 {% endblock %}
