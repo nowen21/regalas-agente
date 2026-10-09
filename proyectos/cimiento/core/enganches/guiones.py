@@ -34,7 +34,7 @@ FUNCIONALIDADES = [
      re.compile(r"\.claude[/\\]+projects|\bmessage\.usage\b|cache_read_input_tokens")),
 ]
 
-PARECIDO = 0.7      # parte del texto igual desde la que dos guiones son la misma tarea
+PARECIDO = 0.4      # parte de las líneas iguales desde la que dos guiones son la misma tarea
 TOPE = 200_000      # un guion más grande no se compara: no es un guion de apoyo
 
 
@@ -83,7 +83,8 @@ def parecido_a(raiz, rel, texto):
                 anterior = f.read()
         except OSError:
             continue
-        comparar = difflib.SequenceMatcher(None, anterior, texto, autojunk=False)
+        # Por líneas: letra por letra crece con el cuadrado del tamaño (minutos con 9.000 caracteres)
+        comparar = difflib.SequenceMatcher(None, anterior.splitlines(), texto.splitlines(), autojunk=False)
         if comparar.real_quick_ratio() >= PARECIDO and comparar.quick_ratio() >= PARECIDO \
                 and comparar.ratio() >= PARECIDO:
             return mostrado

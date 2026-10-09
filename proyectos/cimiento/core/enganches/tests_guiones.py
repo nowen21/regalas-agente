@@ -9,6 +9,7 @@ import io
 import os
 import shutil
 import tempfile
+import time
 import unittest
 
 from . import guiones
@@ -90,6 +91,23 @@ class LosGuionesRepetidos(unittest.TestCase):
         decision, porque, _ruta = self.guion("contar_capitulos.py", ANTERIOR.replace('"base"', '"plantillas"'))
         self.assertEqual("avisa", decision)
         self.assertIn("2026-10-05/medir_reglas_1.py", porque)
+
+    def test_la_mitad_de_las_lineas_iguales_avisa(self):
+        # Calibrado con los 105 guiones de scilit (2026-10-08): el par menos parecido
+        # de los que antes se avisaban comparte 0,40 de sus líneas.
+        lineas = ANTERIOR.splitlines()
+        texto = "\n".join(lineas[:len(lineas) // 2] + ["x = %d" % i for i in range(len(lineas) // 2)])
+        decision, _porque, _ruta = self.guion("otra_tarea.py", texto)
+        self.assertEqual("avisa", decision)
+
+    def test_un_guion_grande_se_compara_rapido(self):
+        grande = "\n".join("valor_%d = %d" % (i, i) for i in range(800))
+        _escribir(os.path.join(self.raiz, "historico-chat", "scripts", "2026-10-05", "grande.py"), grande)
+        inicio = time.monotonic()
+        decision, porque, _ruta = self.guion("copia.py", grande)
+        self.assertLess(time.monotonic() - inicio, 2)
+        self.assertEqual("avisa", decision)
+        self.assertIn("grande.py", porque)
 
     def test_uno_distinto_pasa(self):
         self.assertIsNone(self.guion("migrar_fechas.py", "import datetime\nprint(datetime.date.today())\n"))
