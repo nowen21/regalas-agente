@@ -29,3 +29,17 @@ Ningún proyecto tiene que cambiar nada y no se agrega nada opcional: es una cor
 ## Por qué importa
 
 Cada respuesta espera entre 4 y 9 segundos antes de que el modelo empiece, y escribir un guion puede frenar la sesión casi cinco minutos. El tiempo se pierde en todos los proyectos que usan el estándar.
+
+## Avance (sesión del 2026-10-08 de scilit, «comparar-guiones-por-lineas»)
+
+| Paso | Qué quedó | Commit |
+|---|---|---|
+| 1 · Comparación de guiones | `parecido_a` compara por líneas y `PARECIDO` baja a 0,4, calibrado con los 105 guiones de scilit. El caso de 257,8 s tarda 0,23 s. | `ba17419` |
+| Fase A · Segundo plano | Los 4 enganches de `Stop` se instalan con `async` (`EN_SEGUNDO_PLANO`). | `cd95db4` |
+| Acuerdos | `hook_acuerdos` era el que frenaba cada mensaje: recorría la épica por cada fase en curso. De 7,64 s a 1,21 s. | `db0c6d7` |
+| Juntar enganches en un proceso | Se probó y salió más lento (6,26 s contra 2,19 s en paralelo): pesa lo que hace cada uno, no arrancar Python. Se descartó. | — |
+| Guardar el resultado del consumo y del checklist | Se descartó: solos tardan 0,83 s y 0,31 s. | — |
+
+Medidos solos al enviar cada mensaje (mediana de 5): reglas 1,33 s, acuerdos 1,21 s, consumo 0,83 s, análisis 0,63 s, checklist 0,31 s.
+
+Sigue abierto: `hook_acuerdos` da 208 fases de scilit por «en curso». Si muchas ya cerraron, `Acuerdos.en_curso` las cuenta mal.
