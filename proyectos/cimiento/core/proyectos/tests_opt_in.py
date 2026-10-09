@@ -16,7 +16,6 @@ from core.cuentas.permisos import ADMINISTRADOR
 from core.enganches.configuracion import ConfiguracionDelProyecto
 from core.herramientas.recuperar import RecuperadorDeReglas
 from core.historia.models import PROYECTO, Cambio, Version
-from core.proyectos import copia
 from core.proyectos.models import AjusteDelProyecto, Proyecto
 from core.proyectos.opt_in import pasar_a_la_base
 
@@ -42,7 +41,7 @@ CLAUDE_MD = ("- **Patrón opt-in `15` (registros inmutables):** no\n"
 class LosOptInSonAjustes(TestCase):
     """CP-001."""
 
-    def test_prender_uno_guarda_historia_version_y_copia(self):
+    def test_prender_uno_guarda_historia_y_version_sin_copia(self):
         proyecto = Proyecto.objects.create(nombre="uno", ruta=_carpeta(self))
         cuenta = get_user_model().objects.create_user("admin")
         cuenta.groups.add(Group.objects.get(name=ADMINISTRADOR))
@@ -53,8 +52,8 @@ class LosOptInSonAjustes(TestCase):
         self.assertEqual("sí", AjusteDelProyecto.objects.get(proyecto=proyecto, clave="opt_in_15").valor)
         self.assertTrue(Cambio.objects.filter(tabla="proyectos.ajustedelproyecto").exists())
         self.assertGreater(Version.objects.filter(ambito=PROYECTO, proyecto=proyecto).count(), antes)
-        with open(os.path.join(proyecto.ruta, copia.ARCHIVO), encoding="utf-8") as f:
-            self.assertIn("| Patrón opt-in 15 (registros inmutables) | sí | proyecto |", f.read())
+        # `EP-029·HU-004` · La configuración vive en la base: ya no se escribe la copia local.
+        self.assertFalse(os.path.exists(os.path.join(proyecto.ruta, ".agente", "configuracion.md")))
 
 
 class LasReglasSeEligenConLaBase(TransactionTestCase):

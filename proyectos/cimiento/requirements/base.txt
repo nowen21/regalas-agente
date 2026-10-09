@@ -5,3 +5,5 @@ mysqlclient>=2.2,<3.0
 PyMySQL>=1.1,<2
 # El vigilante del consumo se despierta cuando cambia un .jsonl (EP-025·HU-011).
 watchdog>=6,<7
+# Las pruebas de navegador de Cimiento y de los proyectos (EP-029·HU-005).
+playwright>=1.63,<2

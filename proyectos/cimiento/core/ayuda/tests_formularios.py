@@ -30,6 +30,8 @@ FORMULARIOS = {
     "proyectos/templates/proyectos/formulario.html": ("proyecto", []),
     "proyectos/templates/proyectos/configuracion.html": ("configuracion", []),
     "proyectos/templates/proyectos/suspensiones.html": ("suspensiones", []),
+    "pruebas/templates/pruebas/lista.html": ("pruebas", []),
+    "pruebas/templates/pruebas/detalle.html": ("pruebas_detalle", []),
 }
 
 

@@ -209,4 +209,4 @@ La respuesta, tal como se dio.
 - [2026-10-05-reglas-de-cada-turno-sin-tokens.md](2026-10-05-reglas-de-cada-turno-sin-tokens.md) — cómo bajar el costo del recordatorio de reglas de cada mensaje. · [historico-chat/resumenes/2026-10-05/reglas-de-cada-turno-sin-tokens.md](resumenes/2026-10-05/reglas-de-cada-turno-sin-tokens.md)
 - [2026-10-06-sesion.md](2026-10-06-sesion.md) — sesión del 2026-10-06.
 - [2026-10-06-sesion-2.md](2026-10-06-sesion-2.md) — sesión del 2026-10-06.
-- [2026-10-07-sesion.md](2026-10-07-sesion.md) — sesión del 2026-10-07.
+- [2026-10-07-instalar-desde-cimiento-y-pruebas-en-django.md](2026-10-07-instalar-desde-cimiento-y-pruebas-en-django.md) — si la pantalla de Cimiento instala proyectos, y qué sistemas de pruebas sirven en Django. · [historico-chat/resumenes/2026-10-07/instalar-desde-cimiento-y-pruebas-en-django.md](resumenes/2026-10-07/instalar-desde-cimiento-y-pruebas-en-django.md)

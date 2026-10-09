@@ -21,6 +21,12 @@ Ajuste = namedtuple("Ajuste", "titulo opciones fabrica ayuda")
 
 RELATIVAS, COMPLETAS = "relativas", "completas"
 
+# `EP-029·HU-001` · Qué tan estricta es la revisión de pruebas de un proyecto.
+# Se guarda con las palabras que ve el usuario (acuerdo 8 del análisis 1 del
+# pendiente 141): el formulario las muestra tal cual.
+SOLO_AVISAR, NO_DEJAR_GUARDAR, NADA = "solo avisar", "no dejar guardar", "nada"
+DIAS_DE_REVISION = 7
+
 AJUSTES = {
     "rutas_en_avisos": Ajuste(
         "Rutas en los avisos", (RELATIVAS, COMPLETAS), RELATIVAS,
@@ -31,6 +37,12 @@ AJUSTES = {
     "limite_archivo": Ajuste(
         "Límite por archivo", int, LIMITE_ARCHIVO,
         "Tokens que puede ocupar un archivo leído antes de avisar."),
+    "revision_pruebas": Ajuste(
+        "Revisión de pruebas: qué tan estricto ser", (SOLO_AVISAR, NO_DEJAR_GUARDAR, NADA), SOLO_AVISAR,
+        "Qué hace Cimiento cuando toca revisar qué partes del programa no tienen pruebas."),
+    "dias_revision": Ajuste(
+        "Revisión de pruebas: cada cuántos días", int, DIAS_DE_REVISION,
+        "Cuántos días pueden pasar entre una revisión de pruebas y la siguiente."),
 }
 
 # `EP-026·HU-009` · Los capítulos opt-in se prenden por proyecto, como un ajuste

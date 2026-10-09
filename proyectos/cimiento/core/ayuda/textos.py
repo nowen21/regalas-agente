@@ -40,6 +40,24 @@ CAMPOS = {
             ("Ejemplo", "Con 10.000, leer un análisis de 14.000 tokens queda avisado en el mensaje siguiente."),
         ],
     },
+    "configuracion.revision_pruebas": {
+        "titulo": "¿Qué es la revisión de pruebas?",
+        "secciones": [
+            ("¿Qué es?", "Cimiento revisa qué partes del programa no tiene quién las pruebe, y avisa cuando toca hacerlo otra vez."),
+            ("Las opciones", ["Solo avisar: al empezar a trabajar sale un aviso, y se puede seguir.",
+                              "No dejar guardar: no deja guardar los cambios hasta que se haga la revisión.",
+                              "Nada: no avisa ni detiene."]),
+        ],
+        "consejo": "Vacío, vale el de fábrica: solo avisar. La revisión se hace con el botón «Revisar».",
+    },
+    "configuracion.dias_revision": {
+        "titulo": "¿Cada cuántos días toca revisar?",
+        "secciones": [
+            ("¿Qué es?", "Cuántos días pueden pasar desde la última revisión de pruebas antes de que toque hacer otra."),
+            ("Ejemplo", "Con 7, si la última revisión fue hace 12 días, Cimiento avisa que toca revisar."),
+        ],
+        "consejo": "Vacío, vale el de fábrica: 7 días.",
+    },
     "suspension.tipo": {
         "titulo": "¿Qué se puede suspender?",
         "secciones": [
@@ -110,7 +128,7 @@ PANTALLAS = {
             "texto": "Fijar el valor común de cada ajuste para todos los proyectos que no tienen el suyo.",
             "ejemplo": "Se quiere ver las rutas completas en todos los proyectos: se elige «Completas» aquí, "
                        "y solo el proyecto que dijo otra cosa en su edición la conserva.",
-            "por_que": "Cambiar aquí cambia todos los proyectos sin valor propio, y su copia en .agente/configuracion.md.",
+            "por_que": "Cambiar aquí cambia todos los proyectos sin valor propio: cada uno lo consulta en Cimiento.",
         },
         "donde_mas": {
             "texto": "Estos ajustes también se ven y se cambian en otras pantallas:",
@@ -328,4 +346,9 @@ PANTALLAS.update({
                         "Una regla que estorba se pone en «avisa» en vez de «frena»."),
     "proyecto": _pantalla("Registrar un proyecto o cambiar sus datos y su configuración propia.",
                           "Se registra la carpeta de un proyecto nuevo y se prenden los capítulos opt-in que necesita."),
+    "pruebas": _pantalla("Ver, en cada proyecto, qué partes del programa no tienen pruebas y cuándo se revisó.",
+                         "Un proyecto dice «Vencida»: se da clic en «Revisar» y, cuando termina, "
+                         "su fila muestra la revisión nueva."),
+    "pruebas_detalle": _pantalla("Ver qué archivos de un proyecto tienen menos pruebas, y revisarlo otra vez.",
+                                 "El primer archivo de la lista es el que más necesita pruebas: por ahí se empieza."),
 })

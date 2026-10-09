@@ -21,7 +21,6 @@ from core.enganches.freno import Freno
 from core.enganches.niveles import TODAS, NivelesDelProyecto
 from core.niveles.models import NivelDeRegla
 from core.proyectos import ajustes as catalogo
-from core.proyectos import copia
 from core.proyectos.models import AjusteBase, AjusteDelProyecto, Proyecto, Suspension
 
 
@@ -128,9 +127,9 @@ class ConCuentas(ConProyecto, TestCase):
         self.client.force_login(cuenta)
         return cuenta
 
-    def copia(self):
-        with open(os.path.join(self.proyecto.ruta, copia.ARCHIVO), encoding="utf-8") as f:
-            return f.read()
+    def hay_copia(self):
+        """`EP-029·HU-004` · La copia local ya no se escribe: la configuración vive en la base."""
+        return os.path.exists(os.path.join(self.proyecto.ruta, ".agente", "configuracion.md"))
 
 
 class LasPantallas(ConCuentas):
@@ -144,7 +143,7 @@ class LasPantallas(ConCuentas):
         self.assertRedirects(respuesta, "/proyectos/configuracion/", fetch_redirect_response=False)
         self.assertEqual({"rutas_en_avisos": "completas", "limite_enganche": "300"},
                          dict(AjusteBase.objects.values_list("clave", "valor")))
-        self.assertIn("| Límite por enganche | 300 | base |", self.copia())
+        self.assertFalse(self.hay_copia())
 
     def test_la_consulta_solo_mira(self):
         self.entrar(CONSULTA)
@@ -159,7 +158,7 @@ class LasPantallas(ConCuentas):
         self.client.post("/proyectos/%d/editar/" % self.proyecto.pk, datos)
         self.assertEqual({"limite_archivo": "700", "rutas_en_avisos": "completas"},
                          dict(self.proyecto.ajustes_propios.values_list("clave", "valor")))
-        self.assertIn("| Límite por archivo | 700 | proyecto |", self.copia())
+        self.assertFalse(self.hay_copia())
         self.client.post("/proyectos/%d/editar/" % self.proyecto.pk, dict(datos, limite_archivo=""))
         self.assertEqual(10000, self.proyecto.ajuste("limite_archivo"))
 
@@ -184,12 +183,12 @@ class SuspenderYLevantar(ConCuentas):
         self.assertEqual(302, self.suspension().status_code)
         suspension = Suspension.objects.get()
         self.assertEqual((cuenta, "02·F8"), (suspension.creada_por, suspension.nombre))
-        self.assertIn("| 02·F8 | el plan se corrige |", self.copia())
+        self.assertFalse(self.hay_copia())
         self.client.post("/proyectos/%d/suspensiones/%d/levantar/" % (self.proyecto.pk, suspension.pk))
         suspension.refresh_from_db()
         self.assertEqual(cuenta, suspension.levantada_por)
         self.assertFalse(suspension.vigente())
-        self.assertIn("Ninguna.", self.copia())
+        self.assertFalse(self.hay_copia())
 
     def test_el_freno_entero_se_guarda_como_freno(self):
         self.entrar()

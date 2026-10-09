@@ -13,7 +13,7 @@ from core.proyectos.models import Proyecto
 # Toda pantalla que no es el detalle de un registro (`17·I7`).
 EN_EL_MENU = ["inicio:inicio", "proyectos:lista", "proyectos:registrar", "proyectos:configuracion",
               "estandar:lista", "estandar:propuestas", "estandar:reportes", "estandar:vista_previa",
-              "estandar:git", "consumo:tablero", "historia:lista", "historia:versiones", "ayuda:manual"]
+              "estandar:git", "consumo:tablero", "pruebas:lista", "historia:lista", "historia:versiones", "ayuda:manual"]
 
 
 class ConCuenta(TestCase):

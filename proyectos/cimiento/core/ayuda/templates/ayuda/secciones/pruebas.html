@@ -1,0 +1,19 @@
+<h4>Para qué sirve</h4>
+<p>Ver, en cada proyecto, qué partes del programa no tienen pruebas que las revisen, y cuándo se revisó por última vez.</p>
+<h4>Dónde está</h4>
+<p>«Revisión de pruebas» en el menú de la izquierda. También desde «Todos los proyectos», con el enlace «Pruebas» de cada uno.</p>
+<h4>Qué hacer</h4>
+<ol>
+  <li>Mirar la columna «Cómo va»: «Al día», «Vencida» o «Nunca se ha revisado». La columna «Navegador» dice si pasaron las pruebas que abren las pantallas en un navegador, si el proyecto las tiene.</li>
+  <li>Dar clic en «Revisar» en el proyecto que toca. La revisión corre aparte y puede tardar varios minutos; mientras tanto la fila dice «Revisando» y la página se actualiza sola.</li>
+  <li>Al terminar, abrir el proyecto: sus archivos salen ordenados del que tiene menos pruebas al que tiene más. Por el primero se empieza.</li>
+  <li>Una revisión que ya no sirve se quita con «Borrar», en la lista de revisiones guardadas del proyecto.</li>
+</ol>
+<h4>Qué debe pasar</h4>
+<p>Cimiento reconoce solo en qué está hecho cada proyecto (Python, Django, Laravel o Angular) y lo revisa con la herramienta que le corresponde. Cada cuántos días toca revisar se elige en la página de cada proyecto, en «Editar».</p>
+<h4>Si algo falla</h4>
+<ul>
+  <li>Si dice «Sin medición», Cimiento todavía no sabe revisar proyectos de ese tipo.</li>
+  <li>Si dice «Falló», el mensaje de la revisión dice qué falta y qué hacer; casi siempre es volver a instalar Cimiento en el proyecto.</li>
+  <li>La misma revisión se puede correr desde la consola: <code>python manage.py revisar_pruebas --proyecto «nombre»</code>.</li>
+</ul>

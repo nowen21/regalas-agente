@@ -12,6 +12,7 @@ SECCIONES = [
     ("configuracion", "Configuración", ("proyectos:configuracion",)),
     ("suspensiones", "Suspensiones", ("proyectos:suspensiones",)),
     ("gasto", "Gasto de tokens", ("consumo:tablero",)),
+    ("pruebas", "Revisión de pruebas", ("pruebas:lista", "pruebas:detalle")),
     ("historia", "Historia de los cambios", ("historia:lista", "historia:versiones")),
     ("estandar", "El estándar y la memoria", ("estandar:lista", "estandar:documento", "estandar:nuevo",
                                               "estandar:memoria", "estandar:recuerdo", "estandar:recuerdo_nuevo",
@@ -27,6 +28,7 @@ _POR_VISTA = {v: s for s, _, vistas in SECCIONES for v in vistas}
 NO_SON_PANTALLAS = {"cuentas:salir", "consumo:franja", "consumo:pestana", "consumo:aviso", "consumo:eventos",
                     "proyectos:levantar", "historia:deshacer", "estandar:quitar", "estandar:aprobar", "estandar:rechazar",
                     "estandar:resolver_reporte",
+                    "pruebas:revisar", "pruebas:borrar",
                     "ayuda:manual", "ayuda:pantalla", "ayuda:panel"}
 
 

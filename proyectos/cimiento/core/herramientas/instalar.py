@@ -115,6 +115,13 @@ PLANTILLA_PRE_COMMIT = _PREAMBULO + """
 # pasar**: retomar lo que otra dejo a medias a veces es lo correcto; hacerlo
 # sin darse cuenta, no. Por eso no lleva `|| exit`.
 "$PY" "$ESTANDAR/validadores/validar.py" sesiones --raiz "$(pwd)" || true
+# `EP-029·HU-003` - La revision de pruebas al dia. Solo detiene si el proyecto
+# eligio «no dejar guardar» en Cimiento; si no, avisa y deja pasar.
+"$PY" "$ESTANDAR/validadores/validar.py" pruebas --raiz "$(pwd)" || {{
+    echo "" >&2
+    echo "Commit rechazado: toca revisar las pruebas con el boton Revisar de Cimiento." >&2
+    exit 1
+}}
 """
 
 # `09·08` · **Publicar es lo que no se deshace**: la batería completa corre antes
@@ -956,6 +963,46 @@ class Instalador:
             capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
         return r.returncode == 0
 
+    def manage_de_cimiento(self, *argumentos):
+        """Corre `manage.py` de Cimiento con su Python; `None` si Cimiento no tiene su ambiente."""
+        cimiento = os.path.join(self.estandar, "proyectos", "cimiento")
+        manage = os.path.join(cimiento, "manage.py")
+        python = self.python_de_cimiento(cimiento)
+        if not (os.path.isfile(manage) and python):
+            return None
+        return subprocess.run([python, manage, *argumentos], capture_output=True, text=True,
+                              encoding="utf-8", errors="replace", timeout=120)
+
+    def en_el_registro_real(self, ruta):
+        """Solo los proyectos del registro real, fuera de la carpeta temporal: así una
+        prueba nunca instala paquetes ni escribe en la base de verdad (pendiente 110, acuerdo 3)."""
+        temporal = os.path.normcase(os.path.realpath(tempfile.gettempdir())) + os.sep
+        return self._registro_real() and not os.path.normcase(os.path.realpath(ruta)).startswith(temporal)
+
+    @staticmethod
+    def quitar_copia_de_configuracion(ruta, aplicar):
+        """`EP-029·HU-004` · Borra `.agente/configuracion.md`, la copia que Cimiento
+        escribía y nadie leía: la configuración vive solo en la base (análisis 1 del
+        pendiente 141, acuerdo 10)."""
+        copia = os.path.join(ruta, ".agente", "configuracion.md")
+        if not os.path.isfile(copia):
+            return []
+        if aplicar:
+            os.remove(copia)
+        return ["borrar .agente/configuracion.md: la configuración vive en Cimiento"]
+
+    def instalar_pruebas(self, ruta, aplicar, parte=None):
+        """`EP-029·HU-003` · Pone la parte que revisa las pruebas y lo anota en Cimiento
+        (análisis 1 del pendiente 141, acuerdo 7)."""
+        if not self.en_el_registro_real(ruta):
+            return []
+        from ..pruebas.parte import ParteQueRevisa
+        pasos, tiene, puesta = (parte or ParteQueRevisa()).poner(ruta, aplicar)
+        if aplicar:
+            self.manage_de_cimiento("marcar_pruebas", "--ruta", ruta, "--tiene" if tiene else "--no-tiene",
+                                    *(["--puesta"] if puesta else []))
+        return pasos
+
     def instalar_registro(self, ruta, aplicar):
         """Anota el proyecto en `plantillas/proyectos.md`, la lista única. El
         stack queda «por detectar»: es un dato y lo completa el agente."""
@@ -1216,6 +1263,33 @@ class Instalador:
             pasos.append("OMITIDO: " + ultima_linea(r).removeprefix("CommandError: "))
         return pasos
 
+    PLAYWRIGHT = "playwright==1.63.0"
+
+    def preparar_playwright(self, aplicar, ejecutar=subprocess.run):
+        """`EP-029·HU-005` · Deja instalado Playwright y su Chromium en el ambiente de
+        Cimiento (análisis 1 del pendiente 141, acuerdo 6). La versión es la de
+        `requirements/lock.txt` (`10·DEP2`)."""
+        cimiento = os.path.join(self.estandar, "proyectos", "cimiento")
+        python = self.python_de_cimiento(cimiento)
+        if python is None:
+            return []
+        if not aplicar:
+            return ["Playwright y su Chromium en el ambiente de Cimiento, si faltan"]
+
+        def correr(*orden):
+            return ejecutar([python, *orden], cwd=cimiento, capture_output=True, text=True,
+                            encoding="utf-8", errors="replace", timeout=900)
+        pasos = []
+        if correr("-c", "import playwright").returncode != 0:
+            r = correr("-m", "pip", "install", self.PLAYWRIGHT)
+            if r.returncode != 0:
+                return ["OMITIDO: no se pudo instalar Playwright; las pruebas de navegador no corren"]
+            pasos.append("instalar %s en el ambiente de Cimiento" % self.PLAYWRIGHT)
+        r = correr("-m", "playwright", "install", "chromium")
+        pasos.append("Chromium para Playwright" if r.returncode == 0
+                     else "OMITIDO: no se pudo bajar Chromium para Playwright")
+        return pasos
+
     @staticmethod
     def asegurar_pymysql(aplicar, ejecutar=subprocess.run, importar=importlib.import_module):
         """`EP-025·HU-005` · PyMySQL en el Python que corre los enganches.
@@ -1270,6 +1344,7 @@ class Instalador:
             print("  · es la carpeta del propio estándar: se ponen los enganches, "
                   "el histórico y la memoria; nada de configuración de proyecto")
             for paso in (self.preparar_cimiento(aplicar) + self.asegurar_pymysql(aplicar)
+                         + self.preparar_playwright(aplicar)
                          + self.programar_vigilante(aplicar) + self.retirar_telemetria(aplicar)):
                 print(f"  {marca} {paso}")
         else:
@@ -1301,6 +1376,9 @@ class Instalador:
             for instalador in (self.instalar_stack, self.instalar_agente_config,
                                self.instalar_claude_md, self.instalar_registro, self.instalar_ci):
                 pasos += instalador(ruta, aplicar)
+        # Después del registro: la anotación va al proyecto que ya está en Cimiento.
+        pasos += self.instalar_pruebas(ruta, aplicar)
+        pasos += self.quitar_copia_de_configuracion(ruta, aplicar)
 
         for paso in pasos:
             print(f"  {marca} {paso}")

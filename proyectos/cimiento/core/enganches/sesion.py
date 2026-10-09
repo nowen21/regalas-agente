@@ -138,7 +138,16 @@ class ArranqueDeSesion(Validador):
         # llegaba nunca a un proyecto instalado (pendiente 83).
         return (self.revisar_claude_md()
                 + self.revisar_enganches()
-                + VersionDelEstandar(self.proyecto, estandar=self.estandar).validar())
+                + VersionDelEstandar(self.proyecto, estandar=self.estandar).validar()
+                + self.revisar_pruebas())
+
+    def revisar_pruebas(self):
+        """`EP-029·HU-003` · Si la revisión de pruebas falta o está vencida, se
+        avisa como se avisa lo de la instalación (análisis 1 del pendiente 141,
+        acuerdo 7)."""
+        from ..pruebas.aviso import RevisionDelProyecto
+        textos, _ = RevisionDelProyecto(self.proyecto.raiz, self.estandar).avisos()
+        return [Hallazgo(AVISO, self.proyecto.raiz, 0, texto) for texto in textos]
 
     revisar = validar
 

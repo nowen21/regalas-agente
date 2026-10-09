@@ -22,6 +22,8 @@ TABLAS = {
     "estandar/templates/estandar/reportes.html": True,
     "historia/templates/historia/lista.html": False,
     "historia/templates/historia/versiones.html": False,
+    "pruebas/templates/pruebas/lista.html": True,
+    "pruebas/templates/pruebas/detalle.html": True,
 }
 
 

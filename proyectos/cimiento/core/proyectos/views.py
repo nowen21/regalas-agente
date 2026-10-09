@@ -3,7 +3,8 @@
 `EP-025·HU-013` · Los ajustes van en tres capas: la base de Cimiento en
 «Configuración», los del proyecto en su formulario, y las suspensiones en la
 pantalla de cada proyecto. Las ve cualquier cuenta; las cambia el administrador.
-Cada cambio vuelve a escribir la copia `.agente/configuracion.md`.
+`EP-029·HU-004` · La configuración vive solo en la base: cada proyecto la consulta
+ahí, y ya no se le escribe una copia (análisis 1 del pendiente 141, acuerdos 9 y 10).
 """
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
@@ -15,7 +16,6 @@ from django.views.generic import CreateView, ListView, UpdateView
 from core.cuentas.permisos import SoloAdministrador, es_administrador
 
 from . import ajustes as catalogo
-from . import copia
 from .forms import ConfiguracionForm, ProyectoForm, SuspensionForm
 from .models import Proyecto
 
@@ -33,16 +33,7 @@ class Lista(ListView):
         return contexto
 
 
-class ConCopia:
-    """Después de guardar el proyecto y sus ajustes, su copia."""
-
-    def form_valid(self, form):
-        respuesta = super().form_valid(form)
-        copia.escribir(self.object)
-        return respuesta
-
-
-class Registrar(SoloAdministrador, ConCopia, CreateView):
+class Registrar(SoloAdministrador, CreateView):
     model = Proyecto
     form_class = ProyectoForm
     template_name = "proyectos/formulario.html"
@@ -50,7 +41,7 @@ class Registrar(SoloAdministrador, ConCopia, CreateView):
     extra_context = {"titulo": "Registrar un proyecto"}
 
 
-class Editar(SoloAdministrador, ConCopia, UpdateView):
+class Editar(SoloAdministrador, UpdateView):
     model = Proyecto
     form_class = ProyectoForm
     template_name = "proyectos/formulario.html"
@@ -72,8 +63,7 @@ class Configuracion(View):
         if not form.is_valid():
             return render(peticion, "proyectos/configuracion.html", {"form": form, "puede_cambiar": True})
         form.guardar()
-        escritas = copia.escribir_todas()
-        messages.success(peticion, "Configuración guardada; %d copia(s) de proyectos al día." % len(escritas))
+        messages.success(peticion, "Configuración guardada.")
         return redirect("proyectos:configuracion")
 
 
@@ -99,7 +89,6 @@ class Suspensiones(View):
         suspension = form.save(commit=False)
         suspension.proyecto, suspension.creada_por = proyecto, peticion.user
         suspension.save()
-        copia.escribir(proyecto)
         messages.success(peticion, "Suspendido hasta el %s." % timezone.localtime(suspension.vence).strftime("%Y-%m-%d %H:%M"))
         return redirect("proyectos:suspensiones", pk=pk)
 
@@ -115,6 +104,5 @@ class Levantar(View):
         if objetivo.levantada is None:
             objetivo.levantada, objetivo.levantada_por = timezone.now(), peticion.user
             objetivo.save(update_fields=["levantada", "levantada_por"])
-            copia.escribir(proyecto)
             messages.success(peticion, "Suspensión levantada.")
         return redirect("proyectos:suspensiones", pk=pk)

@@ -4,4 +4,4 @@ Resúmenes de las sesiones de este día. Uno por sesión.
 
 | Sesión | Qué dejó |
 |---|---|
-| [sesion.md](sesion.md) | Sin escribir todavía. |
+| [instalar-desde-cimiento-y-pruebas-en-django.md](instalar-desde-cimiento-y-pruebas-en-django.md) | Sin escribir todavía. |

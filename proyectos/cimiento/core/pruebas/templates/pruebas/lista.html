@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load ayuda %}
+
+{% block titulo %}Revisión de pruebas{% endblock %}
+{% block cabecera %}Revisión de pruebas{% endblock %}
+
+{% block contenido %}
+{% comment %}`EP-029·HU-002` · Todos los proyectos, uno por fila. Mientras alguno se revisa, la caja se
+vuelve a pedir cada 15 segundos (htmx), para que «Revisando» cambie solo.{% endcomment %}
+<div id="contenido-pruebas"{% if revisando %} hx-get="{% url 'pruebas:lista' %}" hx-trigger="every 15s" hx-select="#contenido-pruebas" hx-swap="outerHTML"{% endif %}>
+{% ayuda_pantalla "pruebas" %}
+{% for mensaje in messages %}
+<div class="alert {% if mensaje.level_tag == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="alert">{{ mensaje }}</div>
+{% endfor %}
+<p class="text-secondary">
+  Qué parte del programa de cada proyecto no tiene pruebas, según su última revisión.
+  Cada cuántos días toca revisar se elige en la página de cada proyecto.
+</p>
+<div class="card">
+  <div id="tabla-pruebas" data-tabla-avanzada data-por-pagina="10">
+    <div class="table-responsive">
+      <table class="table mb-0 align-middle">
+        <thead>
+          <tr>
+            <th><button type="button" class="table-sort" data-sort="t-nombre">Proyecto</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-lenguaje">Hecho en</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-fecha">Última revisión</button></th>
+            <th class="text-end"><button type="button" class="table-sort" data-sort="t-porcentaje">Con pruebas</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-navegador">Navegador</button></th>
+            <th><button type="button" class="table-sort" data-sort="t-estado">Cómo va</button></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th><input type="search" class="form-control form-control-sm" placeholder="Filtrar" aria-label="Filtrar por proyecto" data-filtro="t-nombre"></th>
+            <th><select class="form-select form-select-sm" aria-label="Filtrar por lenguaje" data-filtro="t-lenguaje" data-exacto><option value="">Todos</option></select></th>
+            <th></th><th></th><th></th>
+            <th><select class="form-select form-select-sm" aria-label="Filtrar por cómo va" data-filtro="t-estado" data-exacto><option value="">Todos</option></select></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="table-tbody">
+          {% for fila in filas %}
+          <tr>
+            <td class="t-nombre"><a href="{% url 'pruebas:detalle' fila.proyecto.pk %}">{{ fila.proyecto.nombre }}</a></td>
+            <td class="t-lenguaje">{{ fila.lenguaje }}</td>
+            <td class="text-secondary t-fecha">{% if fila.ultima %}{{ fila.ultima.fecha|date:"Y-m-d H:i" }}{% else %}-{% endif %}</td>
+            <td class="text-end t-porcentaje">{% if fila.ultima.porcentaje is not None %}{{ fila.ultima.porcentaje }}%{% elif fila.ultima %}{{ fila.ultima.get_resultado_display }}{% else %}-{% endif %}</td>
+            <td class="t-navegador">{% if fila.ultima.navegador %}{{ fila.ultima.get_navegador_display }}{% else %}-{% endif %}</td>
+            <td class="t-estado">{% if fila.revisando %}Revisando{% else %}{{ fila.como_va }}{% endif %}</td>
+            <td class="text-nowrap">
+              {% if puede_cambiar and not fila.revisando %}
+              <form method="post" action="{% url 'pruebas:revisar' fila.proyecto.pk %}" class="d-inline">
+                {% csrf_token %}
+                <button class="btn btn-sm btn-primary" type="submit">Revisar</button>
+              </form>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún proyecto coincide con los filtros.</div>
+    {% include "includes/tabla_pie.html" with tabla="tabla-pruebas" %}
+  </div>
+</div>
+</div>
+{% endblock %}

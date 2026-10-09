@@ -46,7 +46,8 @@
             <td class="t-estado">{% if proyecto.activo %}Activo{% else %}Inactivo{% endif %}</td>
             <td class="text-nowrap">
               <a href="{% url 'niveles:reglas' proyecto.pk %}">Reglas</a> ·
-              <a href="{% url 'proyectos:suspensiones' proyecto.pk %}">Suspensiones</a>
+              <a href="{% url 'proyectos:suspensiones' proyecto.pk %}">Suspensiones</a> ·
+              <a href="{% url 'pruebas:detalle' proyecto.pk %}">Pruebas</a>
               {% if puede_cambiar %} · <a href="{% url 'proyectos:editar' proyecto.pk %}">Editar</a>{% endif %}
             </td>
           </tr>

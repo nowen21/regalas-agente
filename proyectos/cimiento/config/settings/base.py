@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "core.ayuda",
     "core.historia",
     "core.estandar",
+    "core.pruebas",
 ]
 
 MIDDLEWARE = [

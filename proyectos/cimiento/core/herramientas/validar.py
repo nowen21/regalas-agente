@@ -501,6 +501,17 @@ class Consola:
         return self.reportar(SesionesMezcladas(raiz, self.archivos).validar(),
                              f"Sesiones mezcladas en el commit · {self.relativo(raiz)}")
 
+    def cmd_pruebas(self, a):
+        """`EP-029·HU-003` · Si la revisión de pruebas falta o está vencida. Con
+        «no dejar guardar» es falla y el `pre-commit` rechaza; si no, avisa."""
+        from ..comun import AVISO, FALLA, Hallazgo
+        from ..pruebas.aviso import RevisionDelProyecto
+        raiz = os.path.abspath(a.raiz)
+        textos, detiene = RevisionDelProyecto(raiz).avisos()
+        nivel = FALLA if detiene else AVISO
+        return self.reportar([Hallazgo(nivel, raiz, 0, texto) for texto in textos],
+                             f"Revisión de pruebas · {self.relativo(raiz)}")
+
     def cmd_expediente(self, a):
         """El mapa de completitud del expediente de un proyecto. **Nunca falla.**"""
         raiz = os.path.abspath(a.raiz)
@@ -724,6 +735,9 @@ class Consola:
 
         agregar("sesiones", "que el commit no mezcle el trabajo de dos sesiones · avisa",
                 self.cmd_sesiones, RAIZ, help="carpeta del estándar")
+
+        agregar("pruebas", "que la revisión de pruebas esté al día · EP-029·HU-003",
+                self.cmd_pruebas, RAIZ, help="carpeta del proyecto")
 
         ma = agregar("marcas", "marcas de generación automática en lo que se hereda · 00·ID8",
                      self.cmd_marcas, RAIZ, help="carpeta del estándar")

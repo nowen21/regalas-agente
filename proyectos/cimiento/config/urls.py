@@ -12,4 +12,5 @@ urlpatterns = [
     path("ayuda/", include("core.ayuda.urls")),
     path("historia/", include("core.historia.urls")),
     path("estandar/", include("core.estandar.urls")),
+    path("pruebas/", include("core.pruebas.urls")),
 ]

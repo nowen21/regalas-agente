@@ -241,6 +241,30 @@ class Desinstalador:
 
     # ── todo junto ───────────────────────────────────────────────────────
 
+    def quitar_pruebas(self, ruta, aplicar, parte=None):
+        """`EP-029·HU-003` · La contraria de `instalar_pruebas`: quita la herramienta
+        solo si la puso Cimiento, y borra la anotación (`02·F30`)."""
+        if not self.instalador.en_el_registro_real(ruta):
+            return []
+        from ..pruebas.parte import ParteQueRevisa
+        if not aplicar:
+            return ["revisión de pruebas: quitar lo que puso Cimiento"]
+        r = self.instalador.manage_de_cimiento("marcar_pruebas", "--ruta", ruta, "--quitar")
+        puesta = bool(r and r.returncode == 0 and "puesta=1" in (r.stdout or ""))
+        return (parte or ParteQueRevisa()).quitar(ruta, puesta, aplicar)
+
+    def quitar_playwright(self, aplicar, ejecutar=subprocess.run):
+        """`EP-029·HU-005` · La contraria de `preparar_playwright`: quita los navegadores.
+        El paquete se queda, porque es una dependencia declarada de Cimiento (`10·DEP2`)."""
+        cimiento = os.path.join(self.instalador.estandar, "proyectos", "cimiento")
+        python = Instalador.python_de_cimiento(cimiento)
+        if python is None:
+            return []
+        if aplicar:
+            ejecutar([python, "-m", "playwright", "uninstall", "--all"], cwd=cimiento, capture_output=True,
+                     text=True, encoding="utf-8", errors="replace", timeout=300)
+        return ["quitar los navegadores de Playwright"]
+
     def desinstalar(self, ruta, aplicar):
         """Lo que quita, en orden. Lo propio del proyecto no se toca."""
         ruta = os.path.abspath(ruta)
@@ -250,8 +274,11 @@ class Desinstalador:
         for repo in Instalador.repositorios_git(ruta):
             pasos += self.quitar_git(repo, aplicar)
         pasos += self.quitar_claude(ruta, aplicar)
+        # Antes del registro: la anotación vive en el proyecto registrado.
+        pasos += self.quitar_pruebas(ruta, aplicar)
         if self.instalador.es_el_estandar(ruta):
-            pasos += self.quitar_vigilante(aplicar) + self.quitar_lectura(aplicar) + self.quitar_telemetria(aplicar)
+            pasos += (self.quitar_vigilante(aplicar) + self.quitar_lectura(aplicar) + self.quitar_telemetria(aplicar)
+                      + self.quitar_playwright(aplicar))
         else:
             pasos += (self.quitar_copias(ruta, aplicar) + self.quitar_ci(ruta, aplicar)
                       + self.quitar_registro(ruta, aplicar) + self.quitar_estructura(ruta, aplicar))
