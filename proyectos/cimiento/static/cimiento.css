@@ -11,3 +11,6 @@
 
 /* La columna que solo ocupa lo que necesita. */
 .w-1 { width: 1%; white-space: nowrap; }
+
+/* `EP-028·HU-007`, fase B · En las tablas del gasto, el título de la columna y su «?» van en una línea. */
+#pestana th { white-space: nowrap; }

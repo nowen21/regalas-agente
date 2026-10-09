@@ -1,0 +1,13 @@
+al abrir: {"direccion":"","activa":"Resumen","contenido":"/gasto/pestana/resumen/?dias=7","cargando":false,"tablas":2,"graficas":2,"ayudas":6,"ayudas_con_globo":6,"htmx":true,"bootstrap":true}
+pulsada «Resumen»: {"direccion":"","activa":"Resumen","contenido":"/gasto/pestana/resumen/?dias=7","cargando":false,"tablas":2,"graficas":2,"ayudas":6,"ayudas_con_globo":6,"htmx":true,"bootstrap":true}
+pulsada «Dónde se gasta»: {"direccion":"?dias=7&pestana=donde","activa":"Dónde se gasta","contenido":"/gasto/pestana/donde/?dias=7&agrupar=proyecto","cargando":false,"tablas":1,"graficas":0,"ayudas":4,"ayudas_con_globo":4,"htmx":true,"bootstrap":true}
+pulsada «Contexto»: {"direccion":"?dias=7&pestana=contexto","activa":"Contexto","contenido":"/gasto/pestana/contexto/?dias=7","cargando":false,"tablas":3,"graficas":0,"ayudas":16,"ayudas_con_globo":16,"htmx":true,"bootstrap":true}
+pulsada «Ahorro»: {"direccion":"?dias=7&pestana=ahorro","activa":"Ahorro","contenido":"/gasto/pestana/ahorro/?dias=7","cargando":false,"tablas":3,"graficas":0,"ayudas":9,"ayudas_con_globo":9,"htmx":true,"bootstrap":true}
+pulsada «Actividad»: {"direccion":"?dias=7&pestana=actividad","activa":"Actividad","contenido":"/gasto/pestana/actividad/?dias=7","cargando":false,"tablas":2,"graficas":0,"ayudas":8,"ayudas_con_globo":8,"htmx":true,"bootstrap":true}
+el «?» de la última pestaña: abre: ¿Qué son las sesiones?
+pulsada «Dónde se gasta» mientras cargaba el Resumen: {"direccion":"?dias=7&pestana=donde","activa":"Dónde se gasta","contenido":"/gasto/pestana/donde/?dias=7&agrupar=proyecto","cargando":false,"tablas":1,"graficas":0,"ayudas":4,"ayudas_con_globo":4,"htmx":true,"bootstrap":true}
+pulsada «Ahorro» justo después del aviso de gasto nuevo: {"direccion":"?dias=7&pestana=ahorro","activa":"Ahorro","contenido":"/gasto/pestana/ahorro/?dias=7","cargando":false,"tablas":3,"graficas":0,"ayudas":9,"ayudas_con_globo":9,"htmx":true,"bootstrap":true}
+agrupado por el segundo botón: {"direccion":"?dias=7&pestana=donde","activa":"Dónde se gasta","contenido":"/gasto/pestana/donde/?dias=7&agrupar=palabra","cargando":false,"tablas":1,"graficas":0,"ayudas":4,"ayudas_con_globo":4,"htmx":true,"bootstrap":true}
+pulsada «Contexto» después de agrupar: {"direccion":"?dias=7&pestana=contexto","activa":"Contexto","contenido":"/gasto/pestana/contexto/?dias=7","cargando":false,"tablas":3,"graficas":0,"ayudas":16,"ayudas_con_globo":16,"htmx":true,"bootstrap":true}
+lo que recibe el clic sobre una pestaña: la pestaña
+errores de la consola: ninguno

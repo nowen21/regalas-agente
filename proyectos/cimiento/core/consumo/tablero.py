@@ -140,7 +140,7 @@ class GastoDelPeriodo:
             consulta = consulta.filter(proyecto=self.proyecto)
         return list(consulta.annotate(n_llamadas=Count("llamadas"), total=Sum(
             F("llamadas__entrada") + F("llamadas__cache_creada") + F("llamadas__cache_leida")
-            + F("llamadas__salida"))).values("fecha", "palabra", "trabajo", "proyecto__nombre", "n_llamadas", "total")
+            + F("llamadas__salida"))).values("fecha", "palabra", "trabajo", "origen", "proyecto__nombre", "n_llamadas", "total")
             .order_by("-fecha")[:CUANTOS])
 
     def todo(self):

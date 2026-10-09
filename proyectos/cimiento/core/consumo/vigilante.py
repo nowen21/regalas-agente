@@ -14,6 +14,9 @@ escrito con el vigilante apagado no se pierde. **Espera sin despertar**: se
 detiene con `--parar`, que cierra el proceso por su número.
 
 **Guarda su número de proceso** (`04·S10`), para cerrarlo por él con `--parar`.
+
+**Se reinicia solo cuando cambia el código de Cimiento** (`EP-025·HU-029`): el
+mismo `watchdog` avisa, y `reinicio.py` hace el relevo.
 """
 import os
 import threading
@@ -66,11 +69,14 @@ def numero_guardado(archivo=None):
 class VigilanteDeConsumo:
     """Guarda lo nuevo de cada `.jsonl` en el momento en que Windows avisa que cambió."""
 
-    def __init__(self, base=None):
+    def __init__(self, base=None, reiniciar_solo=False):
         self.base = os.path.abspath(base or proyectos_de_claude())
         self.candado = threading.Lock()
         self.proyectos = {}
         self.ultimo_error = ""
+        # `EP-025·HU-029` · Lo prende `vigilar_consumo`: un cambio del código de Cimiento lo releva.
+        self.reiniciar_solo = reiniciar_solo
+        self.reinicio = None
 
     def leer_proyectos(self):
         """`{carpeta de Claude Code en minúsculas: proyecto}` de los activos."""
@@ -153,6 +159,16 @@ class VigilanteDeConsumo:
 
         observador = Observer()
         observador.schedule(Aviso(), self.base, recursive=True)
+        if self.reinicio is not None:
+            # `EP-025·HU-029` · El código de Cimiento avisa igual que los `.jsonl`: sin relojes.
+            reinicio = self.reinicio
+
+            class AvisoDeCodigo(FileSystemEventHandler):
+                def on_any_event(self, evento):
+                    if not evento.is_directory and evento.event_type in ("modified", "created", "moved"):
+                        reinicio.aviso(getattr(evento, "dest_path", "") or evento.src_path)
+
+            observador.schedule(AvisoDeCodigo(), reinicio.raiz, recursive=True)
         observador.start()
         return observador
 
@@ -160,6 +176,9 @@ class VigilanteDeConsumo:
         """Vigila hasta que `parar` (un `threading.Event`) se active; sin él, hasta que
         se cierre el proceso. Espera sin despertar: no hay nada que revisar entre avisos."""
         parar = parar or threading.Event()
+        if self.reiniciar_solo:
+            from .reinicio import Reinicio
+            self.reinicio = Reinicio(parar)
         self.arrancar()
         observador = self.observador()
         try:

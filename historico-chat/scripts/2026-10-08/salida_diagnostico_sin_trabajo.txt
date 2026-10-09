@@ -1,0 +1,29 @@
+== recalcular_trabajo (2026-10-08, después de traer las líneas con leer_consumo --desde-cero)
+3.669 mensaje(s) de 39 archivo(s) recalculados. Sin trabajo: 1.170 antes, 0 ahora, de 3.669.
+
+== Diagnóstico
+Mensajes sin trabajo en 30 días: 0
+
+Por causa:
+
+Por palabra clave: []
+
+Lo que más tocaron sin ser de una fase: []
+
+Conversaciones (0), con su título si Claude Code lo dejó:
+
+== Sin trabajo en toda la base
+
+0 de 3669
+[{'origen': 'sesion', 'n': 1513}, {'origen': 'titulo', 'n': 1170}, {'origen': 'analisis', 'n': 697}, {'origen': 'archivos', 'n': 289}]
+
+177 Estándar de Agente (este repo) | Conversación «Buenos días»
+141 AgroSystem | Conversación «TipoAporteManager distribución de movimientos»
+139 AgroSystem | Conversación 5e654bfc
+93 master-ciberseguridad | Conversación «Laboratorio 1 en Docker»
+73 Estándar de Agente (este repo) | Conversación «Regla del español colombiano»
+64 RNI (Defensoría) | Conversación «manual-instalacion.md tercera persona infinitivo»
+61 master-ciberseguridad | Conversación «Transcribir imágenes clase 15-09-2026»
+58 Estándar de Agente (este repo) | Conversación «EP-023 y siete HU desde análisis 103»
+52 dp_card | Conversación «Pull del back y del front»
+46 Estándar de Agente (este repo) | Conversación «Cimiento olvida las reglas»

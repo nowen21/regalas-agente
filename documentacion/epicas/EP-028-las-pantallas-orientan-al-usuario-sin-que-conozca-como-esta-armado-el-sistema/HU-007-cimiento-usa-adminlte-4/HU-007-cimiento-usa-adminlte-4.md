@@ -91,6 +91,30 @@ Entonces no queda ninguna
 
 **Cómo validarlo:** correr `manage.py test core.inicio.tests_adminlte` → resultado esperado: el caso pasa.
 
+### CA-04 · Las pestañas del gasto funcionan
+
+**Sale de:** corrección del usuario del 2026-10-08 («en gastos de tokens los tabs no están funcionando»)
+
+```gherkin
+Dado una cuenta en la pantalla del gasto
+Cuando pulsa una pestaña
+Entonces se ve el contenido de esa pestaña y queda marcada
+```
+
+**Cómo validarlo:** correr `manage.py test core.consumo.tests_pestanas` y `node historico-chat/scripts/2026-10-08/ver_pestanas.mjs` → resultado esperado: los casos pasan y cada pestaña muestra su contenido.
+
+### CA-05 · Las pestañas del gasto tienen su ayuda
+
+**Sale de:** corrección del usuario del 2026-10-08 («tampoco se agregó el sistema de ayuda»)
+
+```gherkin
+Dado una cuenta en la pantalla del gasto
+Cuando mira cualquier pestaña o la franja de arriba
+Entonces cada título, cifra y columna con nombre tiene su «?», y al pulsarlo abre su explicación
+```
+
+**Cómo validarlo:** correr `manage.py test core.consumo.tests_pestanas` → resultado esperado: los casos pasan.
+
 ### Criterios de aceptación transversales
 
 - [ ] No regresión: las suites de todas las apps con pantallas quedan verdes.
@@ -129,6 +153,7 @@ Entonces no queda ninguna
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | `A-EP-028-HU-007-adminlte` | CA-01, CA-02, CA-03 | (vacío) | [plan_trabajo.md](A-EP-028-HU-007-adminlte/plan_trabajo.md) | [plan_pruebas.md](A-EP-028-HU-007-adminlte/plan_pruebas.md) | [resultado_pruebas.md](A-EP-028-HU-007-adminlte/resultado_pruebas.md) | Terminada |
+| `B-EP-028-HU-007-pestanas-y-ayuda-del-gasto` | CA-04, CA-05 | `A-EP-028-HU-007-adminlte` | [plan_trabajo.md](B-EP-028-HU-007-pestanas-y-ayuda-del-gasto/plan_trabajo.md) | [plan_pruebas.md](B-EP-028-HU-007-pestanas-y-ayuda-del-gasto/plan_pruebas.md) | [resultado_pruebas.md](B-EP-028-HU-007-pestanas-y-ayuda-del-gasto/resultado_pruebas.md) | Terminada |
 
 ---
 

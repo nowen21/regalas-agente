@@ -25,6 +25,8 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime
 
+from .trabajo import trabajo_del_aviso
+
 # Estimación: el español con Markdown da entre 3 y 4 caracteres por token.
 CARACTERES_POR_TOKEN = 3.5
 
@@ -129,6 +131,10 @@ class Lectura:
     # `{pedido: [ruta]}` de lo que leyó o escribió cada turno, también del que
     # empezó en una lectura anterior. De ahí sale el trabajo; no se guarda.
     rutas: dict = field(default_factory=dict)
+    # `EP-025·HU-028` · `{pedido: trabajo}` del análisis que el aviso del mensaje dice prendido.
+    avisos: dict = field(default_factory=dict)
+    # `EP-025·HU-028`, fase B · `{sesión: título}` que Claude Code le puso a la conversación.
+    titulos: dict = field(default_factory=dict)
     ultimo_pedido: str = ""
     hasta: int = 0
     # `EP-025·HU-025` · `[(posición, texto)]` de las líneas leídas, sin tocar.
@@ -299,8 +305,12 @@ class LectorDeClaudeCode:
                 self._llamada(dato, sesion, fecha, llamadas, lecturas_pedidas, usos, lectura)
             elif tipo == "user":
                 self._resultado(dato, sesion, fecha, lecturas_pedidas, lectura.archivos, usos, lectura.herramientas)
+            elif tipo == "ai-title":
+                if sesion and (dato.get("aiTitle") or "").strip():
+                    lectura.titulos[sesion] = dato["aiTitle"].strip()
             elif tipo == "attachment":
                 adjunto = dato.get("attachment") or {}
+                self._aviso_del_analisis(adjunto, lectura)
                 if adjunto.get("type") in ("hook_success", "hook_blocking_error"):
                     # `EP-025·HU-015` · Cada corrida, entregue o no algo al modelo.
                     bloqueo = adjunto.get("blockingError")
@@ -320,6 +330,18 @@ class LectorDeClaudeCode:
         return lectura
 
     @staticmethod
+    def _aviso_del_analisis(adjunto, lectura):
+        """`EP-025·HU-028` · El aviso de cada mensaje llega justo después de él: si dice que
+        la conversación entra a un análisis, ese es el trabajo del mensaje."""
+        if adjunto.get("hookEvent") != "UserPromptSubmit" or not lectura.ultimo_pedido:
+            return
+        texto = _texto(adjunto.get("content")) if adjunto.get("type") == "hook_additional_context" \
+            else _contexto_del_stdout(adjunto.get("stdout")) or (adjunto.get("stdout") or "")
+        trabajo = trabajo_del_aviso(texto)
+        if trabajo:
+            lectura.avisos[lectura.ultimo_pedido] = trabajo
+
+    @staticmethod
     def _llamada(dato, sesion, fecha, llamadas, lecturas_pedidas, usos, lectura):
         mensaje = dato.get("message") or {}
         for bloque in mensaje.get("content") or []:
@@ -329,6 +351,9 @@ class LectorDeClaudeCode:
             ruta = entrada.get("file_path") or entrada.get("notebook_path") or ""
             nombre = bloque.get("name") or ""
             usos[bloque.get("id")] = (nombre, orden_de(entrada.get("command")) if nombre in _CONSOLA else "")
+            # `EP-025·HU-028` · La orden de consola también dice qué fase toca (`cerrar_fase "…/B-EP-…"`).
+            if nombre in _CONSOLA and not ruta:
+                ruta = entrada.get("command") or ""
             if ruta and lectura.ultimo_pedido and not dato.get("isSidechain"):
                 lectura.rutas.setdefault(lectura.ultimo_pedido, []).append(ruta)
             if bloque.get("name") == "Read":

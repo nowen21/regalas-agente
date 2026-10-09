@@ -1,21 +1,22 @@
-{% load gasto %}
-<div hx-get="{% url 'consumo:pestana' 'resumen' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML">
+{% load gasto ayuda %}
+<div hx-get="{% url 'consumo:pestana' 'resumen' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML" hx-sync="#pestana:drop">
 {{ datos_graficas|json_script:"datos-resumen" }}
 <div class="row g-3 mb-3">
   <div class="col-lg-8">
-    <h3 class="card-title">Gasto por día, por tipo de token</h3>
+    <h3 class="h6 d-flex align-items-center gap-1">Gasto por día, por tipo de token {% ayuda_campo "gasto.por_dia" %}</h3>
     <div id="grafica-dias"></div>
   </div>
   <div class="col-lg-4">
-    <h3 class="card-title">Por tipo de token</h3>
+    <h3 class="h6 d-flex align-items-center gap-1">Por tipo de token {% ayuda_campo "gasto.por_tipo" %}</h3>
     <div id="grafica-tipos"></div>
   </div>
 </div>
 <div class="row g-3">
   <div class="col-lg-6">
-    <h3 class="card-title">Candidatos a automatizar · se ahorrarían {{ ahorro_total|miles }} tokens</h3>
+    <h3 class="h6 d-flex align-items-center gap-1">Candidatos a automatizar · se ahorrarían {{ ahorro_total|miles }} tokens {% ayuda_campo "gasto.candidatos" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
-      <thead><tr><th>Qué</th><th class="text-end">Veces</th><th class="text-end">Se ahorrarían</th></tr></thead>
+      <thead><tr><th>Qué</th><th class="text-end">Veces {% ayuda_campo "gasto.veces" %}</th><th class="text-end">Se ahorrarían {% ayuda_campo "gasto.se_ahorrarian" %}</th></tr></thead>
       <tbody>
         {% for fila in candidatos %}
         <tr><td><span class="text-secondary">{{ fila.tipo }}</span> · {{ fila.nombre|truncatechars:60 }}</td>
@@ -25,21 +26,24 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
     <div class="text-secondary small">El ahorro es estimado. El detalle está en la pestaña Ahorro.</div>
   </div>
   <div class="col-lg-6">
-    <h3 class="card-title">Dónde se gasta más · por {{ agrupado_por|lower }}</h3>
+    <h3 class="h6 d-flex align-items-center gap-1">Dónde se gasta más · por {{ agrupado_por|lower }} {% ayuda_campo "gasto.donde" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
       <tbody>
         {% for fila in donde %}
         <tr><td>{{ fila.nombre|truncatechars:50 }}</td>
             <td class="w-50"><div class="progress progress-sm"><div class="progress-bar" style="width: {{ fila.pct }}%"></div></div></td>
-            <td class="text-end">{{ fila.pct }} %</td></tr>
+            <td class="text-end text-nowrap">{{ fila.pct }} %</td></tr>
         {% empty %}
         <tr><td class="text-secondary">Sin gasto en el período.</td></tr>
         {% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 </div>

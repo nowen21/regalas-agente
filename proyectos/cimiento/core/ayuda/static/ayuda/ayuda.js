@@ -31,6 +31,14 @@ function activarAyudaDeCampos(raiz = document) {
 }
 window.addEventListener('load', () => activarAyudaDeCampos());
 
+// `EP-028·HU-007`, fase B · Lo que llega por htmx (las pestañas del gasto) trae sus «?»: se activan al llegar,
+// y los globos de lo que se va se cierran antes, para que no queden flotando sin su «?».
+document.addEventListener('htmx:load', e => activarAyudaDeCampos(e.target));
+document.addEventListener('htmx:beforeSwap', e => {
+  if (typeof bootstrap === 'undefined' || !e.detail.target) return;
+  e.detail.target.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => bootstrap.Popover.getInstance(el)?.dispose());
+});
+
 // En pantallas táctiles el «?» no recibe el foco solo: al tocarlo se le da, y el globo abre
 document.addEventListener('click', e => {
   const icono = e.target.closest('.ayuda-icono[data-bs-toggle="popover"]');

@@ -1,16 +1,19 @@
-{% load gasto %}
-<div hx-get="{% url 'consumo:pestana' 'contexto' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML">
+{% load gasto ayuda %}
+<div hx-get="{% url 'consumo:pestana' 'contexto' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML" hx-sync="#pestana:drop">
 <p class="text-secondary">Lo que entra al contexto se mide en caracteres y se pasa a tokens: las cifras de esta pestaña son estimadas. El límite es el que avisa en cada mensaje{% if not proyecto %}, el común de Cimiento; cada proyecto puede tener el suyo{% endif %}.</p>
 <div class="row mb-3">
-  <div class="col-sm-4"><div class="text-secondary">Enganches</div><div class="h3 mb-0">{{ resumen.enganches|miles }}</div></div>
-  <div class="col-sm-4"><div class="text-secondary">Archivos leídos</div><div class="h3 mb-0">{{ resumen.archivos|miles }}</div></div>
-  <div class="col-sm-4"><div class="text-secondary">Otras herramientas</div><div class="h3 mb-0">{{ resumen.otras|miles }}</div></div>
+  <div class="col-sm-4"><div class="text-secondary d-flex align-items-center gap-1">Enganches {% ayuda_campo "gasto.enganches" %}</div><div class="h3 mb-0">{{ resumen.enganches|miles }}</div></div>
+  <div class="col-sm-4"><div class="text-secondary d-flex align-items-center gap-1">Archivos leídos {% ayuda_campo "gasto.archivos" %}</div><div class="h3 mb-0">{{ resumen.archivos|miles }}</div></div>
+  <div class="col-sm-4"><div class="text-secondary d-flex align-items-center gap-1">Otras herramientas {% ayuda_campo "gasto.otras_herramientas" %}</div><div class="h3 mb-0">{{ resumen.otras|miles }}</div></div>
 </div>
 <div class="row g-3">
-  <div class="col-lg-6">
-    <h3 class="card-title">Enganches · límite {{ limite_enganche|miles }} por vez</h3>
+  <div class="col-12">
+    <h3 class="h6 d-flex align-items-center gap-1">Enganches · límite {{ limite_enganche|miles }} por vez {% ayuda_campo "gasto.limite_enganche" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
-      <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Promedio</th><th class="text-end">Máximo</th><th class="text-end">Total</th></tr></thead>
+      <thead><tr><th>Enganche</th><th class="text-end">Veces {% ayuda_campo "gasto.veces" %}</th>
+        <th class="text-end">Promedio {% ayuda_campo "gasto.promedio" %}</th><th class="text-end">Máximo {% ayuda_campo "gasto.maximo" %}</th>
+        <th class="text-end">Total {% ayuda_campo "gasto.total_fila" %}</th></tr></thead>
       <tbody>
         {% for fila in enganches %}
         <tr><td>{{ fila.nombre|truncatechars:50 }}</td><td class="text-end">{{ fila.veces|miles }}</td>
@@ -21,11 +24,15 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
-  <div class="col-lg-6">
-    <h3 class="card-title">Archivos leídos · límite {{ limite_archivo|miles }} por vez</h3>
+  <div class="col-12">
+    <h3 class="h6 d-flex align-items-center gap-1">Archivos leídos · límite {{ limite_archivo|miles }} por vez {% ayuda_campo "gasto.limite_archivo" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
-      <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Promedio</th><th class="text-end">Máximo</th><th class="text-end">Total</th></tr></thead>
+      <thead><tr><th>Archivo</th><th class="text-end">Veces {% ayuda_campo "gasto.veces" %}</th>
+        <th class="text-end">Promedio {% ayuda_campo "gasto.promedio" %}</th><th class="text-end">Máximo {% ayuda_campo "gasto.maximo" %}</th>
+        <th class="text-end">Total {% ayuda_campo "gasto.total_fila" %}</th></tr></thead>
       <tbody>
         {% for fila in archivos %}
         <tr><td title="{{ fila.nombre }}">{{ fila.nombre|truncatechars:50 }}</td><td class="text-end">{{ fila.veces|miles }}</td>
@@ -36,11 +43,13 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
-  <div class="col-lg-6">
-    <h3 class="card-title">Por herramienta</h3>
+  <div class="col-xl-6">
+    <h3 class="h6 d-flex align-items-center gap-1">Por herramienta {% ayuda_campo "gasto.por_herramienta" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
-      <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Resultado</th></tr></thead>
+      <thead><tr><th>Herramienta</th><th class="text-end">Veces {% ayuda_campo "gasto.veces" %}</th><th class="text-end">Resultado {% ayuda_campo "gasto.resultado" %}</th></tr></thead>
       <tbody>
         {% for fila in herramientas %}
         <tr><td>{{ fila.nombre }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.tokens|miles }}</td></tr>
@@ -49,6 +58,7 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 </div>

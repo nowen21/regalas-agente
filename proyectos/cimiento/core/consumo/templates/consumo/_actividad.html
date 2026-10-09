@@ -1,34 +1,40 @@
-{% load gasto %}
-<div hx-get="{% url 'consumo:pestana' 'actividad' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML">
+{% load gasto ayuda %}
+<div hx-get="{% url 'consumo:pestana' 'actividad' %}?{{ consulta }}" hx-trigger="actualizar from:body" hx-swap="outerHTML" hx-sync="#pestana:drop">
 <div class="row g-3">
-  <div class="col-lg-5">
-    <h3 class="card-title">Últimas sesiones</h3>
+  <div class="col-xl-5">
+    <h3 class="h6 d-flex align-items-center gap-1">Últimas sesiones {% ayuda_campo "gasto.sesiones" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
-      <thead><tr><th>Sesión</th><th>Proyecto</th><th>Última llamada</th><th class="text-end">Tokens</th></tr></thead>
+      <thead><tr><th>Sesión {% ayuda_campo "gasto.sesion" %}</th><th>Proyecto</th>
+        <th>Última llamada {% ayuda_campo "gasto.ultima_llamada" %}</th><th class="text-end">Tokens {% ayuda_campo "gasto.tokens" %}</th></tr></thead>
       <tbody>
         {% for fila in sesiones %}
         <tr><td class="text-secondary">{{ fila.sesion|slice:":8" }}</td><td>{{ fila.proyecto__nombre }}</td>
-            <td>{{ fila.fin|date:"d/m H:i" }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
+            <td class="text-nowrap">{{ fila.fin|date:"d/m H:i" }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
         {% empty %}
         <tr><td colspan="4" class="text-secondary">Sin sesiones en el período.</td></tr>
         {% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
-  <div class="col-lg-7">
-    <h3 class="card-title">Últimos mensajes</h3>
+  <div class="col-xl-7">
+    <h3 class="h6 d-flex align-items-center gap-1">Últimos mensajes {% ayuda_campo "gasto.mensajes" %}</h3>
+    <div class="table-responsive">
     <table class="table align-middle">
-      <thead><tr><th>Cuándo</th><th>Proyecto</th><th>Palabra clave</th><th>Trabajo</th><th class="text-end">Tokens</th></tr></thead>
+      <thead><tr><th>Cuándo</th><th>Proyecto</th><th>Palabra clave {% ayuda_campo "gasto.palabra" %}</th>
+        <th>Trabajo {% ayuda_campo "gasto.trabajo" %}</th><th class="text-end">Tokens {% ayuda_campo "gasto.tokens" %}</th></tr></thead>
       <tbody>
         {% for fila in mensajes %}
-        <tr><td>{{ fila.fecha|date:"d/m H:i" }}</td><td>{{ fila.proyecto__nombre }}</td>
-            <td>{{ fila.palabra|default:"(sin palabra)" }}</td><td class="text-secondary">{{ fila.trabajo|default:"(sin trabajo)"|truncatechars:40 }}</td>
+        <tr><td class="text-nowrap">{{ fila.fecha|date:"d/m H:i" }}</td><td>{{ fila.proyecto__nombre }}</td>
+            <td>{{ fila.palabra|default:"(sin palabra)" }}</td><td class="text-secondary">{{ fila.trabajo|default:"(sin trabajo)"|truncatechars:40 }}{% if fila.origen == "sesion" %} <span class="small fst-italic">· sigue la conversación</span>{% endif %}</td>
             <td class="text-end">{{ fila.total|miles }}</td></tr>
         {% empty %}
         <tr><td colspan="5" class="text-secondary">Sin mensajes en el período.</td></tr>
         {% endfor %}
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 </div>

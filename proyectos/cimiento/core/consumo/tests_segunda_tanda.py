@@ -109,7 +109,7 @@ class ElGastoQuedaPorMensajePalabraYTrabajo(ConProyecto):
         self.leer()
         pedidos = {p.identificador: (p.palabra, p.trabajo) for p in Pedido.objects.all()}
         self.assertEqual({"p-1": ("Hágalo", "A-EP-025-HU-010-segunda-tanda"),
-                          "p-2": ("Analicemos", "análisis 2 del pendiente 119"), "p-3": ("", "")}, pedidos)
+                          "p-2": ("Analicemos", "análisis 2 del pendiente 119"), "p-3": ("", "Conversación s-2")}, pedidos)
         self.assertEqual({"m-1": "p-1", "m-2": "p-1", "m-3": "p-2", "m-4": "p-2", "m-5": "p-3"},
                          dict(Llamada.objects.values_list("mensaje", "pedido__identificador")))
 
@@ -176,7 +176,7 @@ class ElTableroMuestraLosSieteNiveles(ConProyecto):
         niveles = {titulo: {f["nombre"]: f["llamadas"] for f in filas} for titulo, filas in todo["niveles"]}
         self.assertEqual({"Hágalo": 2, "Analicemos": 2, "(sin palabra clave)": 1}, niveles["Por palabra clave"])
         self.assertEqual({"A-EP-025-HU-010-segunda-tanda": 2, "análisis 2 del pendiente 119": 2,
-                          "(sin trabajo)": 1}, niveles["Por trabajo"])
+                          "Conversación s-2": 1}, niveles["Por trabajo"])
         self.assertEqual({"claude-opus-5-5": 4, "claude-haiku-4-5": 1}, niveles["Por modelo"])
         self.assertEqual({"Entrada nueva": 50, "Escrita en caché": 10, "Releída de caché": 500, "Salida": 25},
                          {t["nombre"]: t["total"] for t in todo["tipos"]})

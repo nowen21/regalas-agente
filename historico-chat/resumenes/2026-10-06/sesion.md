@@ -224,7 +224,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 |---|---|
 | Qué pasó | El 2026-10-07 21:24, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/package-lock.json`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Pendiente | Ninguno: el freno acertó. `npm install admin-lte` se corrió antes de abrir la fase de la HU-007 de la EP-028; `package.json` y `package-lock.json` quedaron declarados después en su plan. |
 
 ### H-28 · El freno detuvo lo que escribió una orden de consola fuera del plan
 
@@ -232,7 +232,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 |---|---|
 | Qué pasó | El 2026-10-07 21:24, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/package.json`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Pendiente | Ninguno: el freno acertó. `npm install admin-lte` se corrió antes de abrir la fase de la HU-007 de la EP-028; `package.json` y `package-lock.json` quedaron declarados después en su plan. |
 
 ### H-29 · El freno detuvo una orden de consola fuera del plan
 
@@ -240,7 +240,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 |---|---|
 | Qué pasó | El 2026-10-07 21:49, el freno detuvo una orden de consola sobre `proyectos/cimiento/3`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Pendiente | Falso positivo: tomó como ruta el texto que iba después de un `>`. Va al [pendiente 144](../2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md). |
 
 ### H-30 · El freno detuvo una orden de consola fuera del plan
 
@@ -248,7 +248,111 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-06-sesion.md](../.
 |---|---|
 | Qué pasó | El 2026-10-07 22:01, el freno detuvo una orden de consola sobre `proyectos/cimiento/$P`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Pendiente | Falso positivo: no resolvió la variable `$P` de la misma orden. Va al [pendiente 144](../2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md). |
+
+### H-31 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 09:06, el freno detuvo una orden de consola sobre `C:/Users/user/AppData/Local/Temp/claude/c--Ing--Jose-ia-agente/dad10286-79ce-4758-a237-c9cfbabca21d/scratchpad/sesion.txt`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Ninguno: el freno acertó. El agente iba a guardar fuera del proyecto el código de una sesión de prueba de Cimiento, y no hacía falta guardarlo: la orden se repitió sin ese paso (fase `B-EP-028-HU-007-pestanas-y-ayuda-del-gasto`). |
+
+### H-32 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 09:13, el freno detuvo una orden de consola sobre `/c/Ing.\`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta uno nuevo: es el caso del [pendiente 113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md): el freno leyó como ruta un pedazo de una ruta del proyecto con el espacio escapado (`/c/Ing.\ Jose/...`). Es el mismo caso del 113; la orden se repitió con la ruta relativa. |
+
+### H-33 · Las pestañas del gasto se tapaban unas a otras, y el Resumen es lento
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08, con Chrome sin ventana: al pulsar una pestaña mientras el Resumen cargaba (cerca de 1,5 s), la pestaña quedaba marcada y el Resumen llegaba después y la tapaba. Con cada mensaje nuevo el Resumen se vuelve a pedir, así que con el agente trabajando pasaba seguido. |
+| Por qué importa | Para el usuario, «las pestañas no funcionan». La carrera se corrigió en la fase `B-EP-028-HU-007-pestanas-y-ayuda-del-gasto`; la lentitud del Resumen sigue. |
+| Pendiente | [Pendiente 146: el Resumen del gasto tarda y se pide con cada mensaje](../2026-10-08/pendientes/146-el-resumen-del-gasto-tarda-y-se-pide-con-cada-mensaje/pendiente.md), por decisión del usuario del 2026-10-08 |
+
+### H-34 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 09:40, el freno detuvo una orden de consola sobre `$D/plan_trabajo.md`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta uno nuevo: es el caso del [pendiente 113](../2026-10-04/pendientes/113-el-freno-toma-texto-de-los-comandos-como-rutas/pendiente.md). El archivo sí está declarado; el freno no reconoce la variable. Se editó con el editor. |
+
+### H-35 · La primera corrección del gasto se entregó sin probar los botones de agrupar
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 el usuario reportó `htmx:targetError, #pestana` al pulsar los botones de «Dónde se gasta». Heredaban `hx-swap="outerHTML"` del div que los envuelve, reemplazaban la caja `#pestana` entera y después ninguna pestaña cargaba. El guion del navegador solo pulsaba las pestañas, no lo que hay dentro de ellas. |
+| Por qué importa | Probablemente es la falla original que vio el usuario: después de agrupar, ninguna pestaña volvía a cargar. |
+| Pendiente | Ninguno: se corrigió en el ciclo 2 de la fase `B-EP-028-HU-007-pestanas-y-ayuda-del-gasto`, con su prueba y con el caso agregado a `ver_pestanas.mjs`. |
+
+### H-36 · El 93 % de los mensajes quedaba «(sin trabajo)»
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08, al responder qué significa «(sin trabajo)»: el trabajo salía solo de los archivos del turno y solo de fases `A-`. Primero se leyó como «dos vigilantes»; es uno solo: el `pythonw` del venv arranca al del sistema, con la misma hora. |
+| Por qué importa | La agrupación por trabajo no servía. |
+| Pendiente | Ninguno: se corrigió en `A-EP-025-HU-028-el-trabajo-abierto` y en `B-EP-025-HU-028-ningun-mensaje-sin-trabajo` (0 sin trabajo). |
+
+### H-37 · El vigilante del consumo corre con código de hace tres días y no guardó las líneas de sesión
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08, el diagnóstico de «(sin trabajo)» encontró conversaciones sin líneas en la base. El vigilante arrancó el 2026-10-05 a las 18:00, antes de la HU-025 (2026-10-06 00:49), y sigue con ese código: guarda el gasto pero ninguna línea desde el 2026-10-06 05:42. Se trajeron con `leer_consumo --desde-cero` (124.017 líneas). |
+| Por qué importa | Claude Code borra sus `.jsonl` a los 30 días: lo que el vigilante no guarda se pierde. Le pasa a todo proyecto: cualquier cambio de Cimiento no le llega al vigilante hasta reiniciarlo, y nada avisa. |
+| Pendiente | Ninguno: el usuario aprobó que se reinicie solo, y se hizo en `A-EP-025-HU-029-reinicio-solo`. El viejo se detuvo el 2026-10-08; el usuario lo arranca una última vez a mano. |
+
+### H-38 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 13:24, el freno detuvo una orden de consola sobre una orden: deja un proceso corriendo después del turno (04·S10). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Ninguno: el freno acertó. El usuario ordenó arrancar el vigilante, pero `04·S10` no deja que el agente lance un proceso que queda corriendo, aunque se lo pidan. Lo arranca el usuario, o se suspende `04·S10` en Cimiento. |
+
+### H-39 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 13:45, el freno detuvo una orden de consola sobre `proyectos/cimiento/.agente/prueba_stdout.txt`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Ninguno: el freno acertó. El agente iba a escribir un archivo de prueba que el plan no declaraba; la causa se sacó leyendo el código. |
+
+### H-40 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 13:46, el freno detuvo una orden de consola sobre una orden: deja un proceso corriendo después del turno (04·S10). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Falso positivo. La orden era `Start-Process ... -Wait`, que espera a que el proceso termine; el freno ve `Start-Process` y no mira `-Wait`. Va al [pendiente 144](../2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md). |
+
+### H-41 · El vigilante no arranca al iniciar sesión: sin consola se cae
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 el usuario abrió `Cimiento vigilar consumo.cmd` y el vigilante escribió su número (29300) y murió enseguida. Con `pythonw` y sin consola, `sys.stdout` es `None`, y el primer mensaje («vigilando el consumo») lo tumbaba antes de entrar a su `try`. El que corría desde el 2026-10-05 lo había lanzado el instalador con la salida a `DEVNULL`, por eso sí funcionaba. |
+| Por qué importa | El arranque al iniciar sesión nunca funcionó: después de reiniciar el equipo, el consumo quedaba sin vigilante y sin aviso. Le pasa a todo equipo donde se instale. |
+| Pendiente | Ninguno: se corrigió en `A-EP-025-HU-029-reinicio-solo` (`sin_consola` en `vigilar_consumo.py`, con su prueba). |
+
+### H-42 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 15:04, el freno detuvo una orden de consola sobre una orden: deja un proceso corriendo después del turno (04·S10). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Falso positivo, el mismo caso del H-40: la orden era `cerrar_fase`, y el freno leyó como orden las palabras «Start-Process -Wait» que iban dentro del texto de los hallazgos. Se repitió con otras palabras. Va al [pendiente 144](../2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md). |
+
+### H-43 · El freno detuvo lo que escribió una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 21:41, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/enganches/guiones.py`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta uno nuevo: la orden solo leía (`git diff`); `guiones.py` lo cambió la otra sesión abierta al mismo tiempo. Es el caso del [pendiente 123](../2026-10-05/pendientes/123-el-freno-le-cobra-a-una-sesion-lo-que-escribe-otra/pendiente.md). |
 
 ---
 

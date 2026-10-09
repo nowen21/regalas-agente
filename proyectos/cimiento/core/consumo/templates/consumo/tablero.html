@@ -32,19 +32,27 @@
 
 <div class="card">
   <div class="card-header">
+    {# `EP-028·HU-007`, fase B · La pestaña que se pulsa cancela lo que estaba cargando en #pestana: #}
+    {# sin eso, el Resumen, que tarda, llegaba después y tapaba la pestaña escogida. #}
     <ul class="nav nav-tabs card-header-tabs" id="pestanas">
       {% for clave, nombre in pestanas %}
       <li class="nav-item">
         <a class="nav-link{% if clave == pestana %} active{% endif %}" href="?{{ consulta }}&amp;pestana={{ clave }}"
            hx-get="{% url 'consumo:pestana' clave %}?{{ consulta }}" hx-target="#pestana"
-           hx-push-url="?{{ consulta }}&amp;pestana={{ clave }}">{{ nombre }}</a>
+           hx-sync="#pestana:replace" hx-indicator="#pestana-cargando"
+           hx-push-url="?{{ consulta }}&amp;pestana={{ clave }}"{% if clave == pestana %} aria-current="page"{% endif %}>{{ nombre }}</a>
       </li>
       {% endfor %}
+      <li class="nav-item ms-auto align-self-center">
+        <span id="pestana-cargando" class="htmx-indicator spinner-border spinner-border-sm text-secondary" role="status">
+          <span class="visually-hidden">Cargando...</span></span>
+      </li>
     </ul>
   </div>
   <div class="card-body" id="pestana"
-       hx-get="{% url 'consumo:pestana' pestana %}?{{ consulta }}" hx-trigger="load">
-    <div class="text-secondary">Cargando...</div>
+       hx-get="{% url 'consumo:pestana' pestana %}?{{ consulta }}" hx-trigger="load"
+       hx-sync="this:replace" hx-indicator="#pestana-cargando">
+    <div class="text-secondary"><span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Cargando...</div>
   </div>
 </div>
 
@@ -68,8 +76,12 @@
     document.getElementById("pestanas").addEventListener("click", function (evento) {
       var enlace = evento.target.closest("a.nav-link");
       if (!enlace) { return; }
-      document.querySelectorAll("#pestanas a.nav-link").forEach(function (a) { a.classList.remove("active"); });
+      document.querySelectorAll("#pestanas a.nav-link").forEach(function (a) {
+        a.classList.remove("active");
+        a.removeAttribute("aria-current");
+      });
       enlace.classList.add("active");
+      enlace.setAttribute("aria-current", "page");
     });
 
     function dibujar() {

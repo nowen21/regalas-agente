@@ -1,9 +1,9 @@
-{% load gasto %}
+{% load gasto ayuda %}
 <div id="franja" class="row g-3 mb-3" hx-get="{% url 'consumo:franja' %}?{{ consulta }}"
      hx-trigger="actualizar from:body" hx-swap="outerHTML">
   <div class="col-sm-6 col-lg">
     <div class="card"><div class="card-body">
-      <div class="text-secondary">Total del período</div>
+      <div class="text-secondary d-flex align-items-center gap-1">Total del período {% ayuda_campo "gasto.total" %}</div>
       <div class="h1 mb-0" id="franja-total">{{ franja.total|miles }}</div>
       {% if franja.variacion is None %}
       <div class="text-secondary small">Sin gasto en el tramo anterior para comparar</div>
@@ -18,20 +18,20 @@
   </div>
   <div class="col-sm-6 col-lg">
     <div class="card"><div class="card-body">
-      <div class="text-secondary">Llamadas</div>
+      <div class="text-secondary d-flex align-items-center gap-1">Llamadas {% ayuda_campo "gasto.llamadas" %}</div>
       <div class="h2 mb-0">{{ franja.llamadas|miles }}</div>
     </div></div>
   </div>
   <div class="col-sm-6 col-lg">
     <div class="card"><div class="card-body">
-      <div class="text-secondary">Releído de caché</div>
+      <div class="text-secondary d-flex align-items-center gap-1">Releído de caché {% ayuda_campo "gasto.cache" %}</div>
       <div class="h2 mb-0">{{ franja.cache_pct }} %</div>
       <div class="text-secondary small">del total, lo más barato</div>
     </div></div>
   </div>
   <div class="col-sm-6 col-lg">
     <div class="card"><div class="card-body">
-      <div class="text-secondary">Contexto más grande de una llamada</div>
+      <div class="text-secondary d-flex align-items-center gap-1">Contexto más grande de una llamada {% ayuda_campo "gasto.contexto_maximo" %}</div>
       <div class="h2 mb-0">{{ franja.maximo|miles }}</div>
     </div></div>
   </div>

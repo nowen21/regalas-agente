@@ -165,6 +165,89 @@ CAMPOS.update({
     "gasto.proyecto": _campo("¿De qué proyecto?", "El proyecto cuyo gasto de tokens se quiere ver; «Todos» los suma.",
                              "Escoger «scilit» para ver solo lo que gastó ese proyecto."),
     "gasto.dias": _campo("¿Qué período?", "Cuántos días hacia atrás se cuentan.", "«7 días» muestra la última semana."),
+    # `EP-028·HU-007`, fase B · La ayuda de la franja y de las cinco pestañas del gasto.
+    "gasto.total": _campo("¿Qué es el total del período?",
+                          "Todos los tokens del período: los que entran, los que se escriben y se releen de caché, "
+                          "y los que responde el modelo. Debajo, cuánto subió o bajó frente al tramo anterior, "
+                          "cortado a la misma hora.", "Con «7 días», se compara con los 7 días de antes."),
+    "gasto.llamadas": _campo("¿Qué son las llamadas?",
+                             "Cuántas veces se le pidió algo al modelo. Un solo mensaje del usuario hace varias "
+                             "llamadas: una por cada paso que da el agente."),
+    "gasto.cache": _campo("¿Qué es lo releído de caché?",
+                          "La parte del total que el modelo ya tenía guardada y volvió a leer. Es lo más barato.",
+                          "Un 90 % quiere decir que casi todo lo que entra ya estaba guardado.",
+                          "Si baja de golpe, algo está cambiando el comienzo de cada mensaje."),
+    "gasto.contexto_maximo": _campo("¿Qué es el contexto más grande?",
+                                    "La llamada que más tokens tuvo a la vista a la vez en el período.",
+                                    consejo="Si se acerca al límite del modelo, la conversación se resume y se pierde detalle."),
+    "gasto.por_dia": _campo("¿Qué muestra la gráfica por día?",
+                            "Los tokens de cada día, apilados por tipo: entrada nueva, escrita en caché, "
+                            "releída de caché y salida.", "Una barra muy alta muestra el día que más se gastó."),
+    "gasto.por_tipo": _campo("¿Qué muestra la gráfica por tipo?",
+                             "Cómo se reparte el total del período entre los cuatro tipos de token."),
+    "gasto.candidatos": _campo("¿Qué es un candidato a automatizar?",
+                               "Algo que se repite y gasta tokens cada vez: un archivo que se lee 3 veces o más, "
+                               "un comando que se corre 3 veces o más, o un enganche que agrega texto en casi "
+                               "todos los mensajes. Si lo hiciera un programa, ese gasto se ahorraría.",
+                               "Un archivo leído 6 veces: con una lectura bastaría."),
+    "gasto.veces": _campo("¿Qué son las veces?", "Cuántas veces pasó en el período."),
+    "gasto.se_ahorrarian": _campo("¿Qué se ahorraría?",
+                                  "Los tokens que dejarían de gastarse si un programa hiciera esto. Es un cálculo "
+                                  "aproximado.", "Un archivo leído 4 veces ahorraría las 3 lecturas de más."),
+    "gasto.gasta_hoy": _campo("¿Qué gasta hoy?", "Los tokens que esto gastó en el período, sumadas todas las veces."),
+    "gasto.donde": _campo("¿Dónde se gasta más?",
+                          "Las partes que más tokens gastaron, con su porcentaje del total.",
+                          consejo="La pestaña «Dónde se gasta» deja agrupar de otras maneras."),
+    "gasto.agrupar": _campo("¿Cómo se agrupa?",
+                            "Escoge por qué se reparte el gasto: proyecto, palabra clave del mensaje, trabajo, "
+                            "modelo o agente auxiliar.", "«Palabra clave» muestra cuánto gastan los «Hágalo» frente a las «pregunta»."),
+    "gasto.porcentaje": _campo("¿Qué es el % del total?", "La parte del gasto del período que se llevó esta fila."),
+    "gasto.tokens": _campo("¿Qué son los tokens?",
+                           "Los pedacitos de texto que el modelo lee y escribe; por ellos se paga. Aquí van "
+                           "todos sumados: entrada, caché y salida.", "Una palabra en español son más o menos 2 tokens."),
+    "gasto.enganches": _campo("¿Qué son los enganches?",
+                              "Los programas que corren solos en ciertos momentos (al enviar un mensaje, antes de "
+                              "una acción) y le agregan texto al agente, como las reglas de cada mensaje. La cifra "
+                              "es lo que agregaron en el período, estimado."),
+    "gasto.archivos": _campo("¿Qué son los archivos leídos?",
+                             "Lo que entró al contexto porque el agente leyó un archivo, estimado."),
+    "gasto.otras_herramientas": _campo("¿Qué son las otras herramientas?",
+                                       "Lo que entró al contexto por la respuesta de un comando, una búsqueda u otra "
+                                       "herramienta que no es leer un archivo, estimado."),
+    "gasto.limite_enganche": _campo("¿Qué es el límite por enganche?",
+                                    "Cuántos tokens puede agregar un enganche en un mensaje antes de que Cimiento avise.",
+                                    consejo="El límite se cambia en «Configuración», o en cada proyecto."),
+    "gasto.limite_archivo": _campo("¿Qué es el límite por archivo?",
+                                   "Cuántos tokens puede ocupar un archivo al leerlo antes de que Cimiento avise.",
+                                   consejo="El límite se cambia en «Configuración», o en cada proyecto."),
+    "gasto.promedio": _campo("¿Qué es el promedio?", "Lo que ocupó, en tokens, una vez cualquiera."),
+    "gasto.maximo": _campo("¿Qué es el máximo?", "La vez que más tokens ocupó. Se compara con el límite."),
+    "gasto.total_fila": _campo("¿Qué es el total?", "Todos los tokens que ocupó en el período, sumadas todas las veces."),
+    "gasto.por_herramienta": _campo("¿Qué muestra por herramienta?",
+                                    "Cada herramienta que usó el agente (leer, buscar, correr un comando...) con "
+                                    "cuántas veces la usó y cuánto ocupó su respuesta."),
+    "gasto.resultado": _campo("¿Qué es el resultado?", "Los tokens que ocupó la respuesta de la herramienta, estimados."),
+    "gasto.enganche_gasta": _campo("¿Qué enganches gastan tokens?",
+                                   "Los que agregan texto al agente: ese texto se paga en cada mensaje."),
+    "gasto.enganche_no_gasta": _campo("¿Qué enganches no gastan tokens?",
+                                      "Los que corren y no le agregan nada al agente, como el que guarda el histórico.",
+                                      consejo="Pasar trabajo a un enganche de estos es lo que ahorra."),
+    "gasto.corrio": _campo("¿Cuántas veces corrió?", "Las veces que el enganche se ejecutó en el período."),
+    "gasto.tokens_agregados": _campo("¿Qué tokens agregó?", "Todo lo que el enganche le agregó al agente en el período, estimado."),
+    "gasto.sesiones": _campo("¿Qué son las sesiones?", "Las conversaciones con el agente, de la más reciente a la más vieja."),
+    "gasto.sesion": _campo("¿Qué es la sesión?", "Los primeros caracteres del código de la conversación, para reconocerla."),
+    "gasto.ultima_llamada": _campo("¿Qué es la última llamada?", "El día y la hora en que esa sesión gastó por última vez."),
+    "gasto.mensajes": _campo("¿Qué son los mensajes?", "Lo último que el usuario le escribió al agente, con lo que gastó cada mensaje."),
+    "gasto.palabra": _campo("¿Qué palabra clave?", "La palabra con que empezó el mensaje, la que dice qué hacer.",
+                            "«Hágalo», «pregunta», «corrija»"),
+    "gasto.trabajo": _campo("¿Qué trabajo?",
+                            "La fase o el análisis en que se estaba. Sale, en este orden, del análisis que estaba "
+                            "prendido, de los archivos y órdenes que tocó la respuesta, o del mensaje anterior de la "
+                            "misma conversación («sigue la conversación»). Si nada de eso da una fase o un análisis, "
+                            "el trabajo es la conversación misma, con el título que le puso Claude Code.",
+                            "Un «Apruebo» después de trabajar en una fase queda en esa fase; un «Buenos días» al "
+                            "comenzar queda en «Conversación «Buenos días»».",
+                            "Mucho gasto en «Conversación ...» es trabajo hecho por fuera de una fase o un análisis."),
     "documento.ruta": _campo("¿Qué ruta?", "Dónde queda el documento dentro del estándar. Empieza por base/ y termina en .md.",
                              "base/17-guia-de-pantallas.md"),
     "reglas_del_proyecto.texto": _campo("¿Qué texto?",

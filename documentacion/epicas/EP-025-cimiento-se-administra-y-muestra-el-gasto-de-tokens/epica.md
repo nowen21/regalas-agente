@@ -149,6 +149,8 @@ Una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-
 | [HU-025](HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento/HU-025-cada-linea-del-jsonl-queda-en-la-base-en-el-momento.md) | Cada línea del `.jsonl` queda en la base en el momento | Must | N/A | N/A | En curso |
 | [HU-026](HU-026-la-pantalla-gasto-dice-primero-lo-importante/HU-026-la-pantalla-gasto-dice-primero-lo-importante.md) | La pantalla «Gasto» dice primero lo importante | Must | N/A | N/A | Terminada |
 | [HU-027](HU-027-la-pantalla-se-entera-en-el-momento/HU-027-la-pantalla-se-entera-en-el-momento.md) | La pantalla se entera en el momento de lo que guarda el vigilante | Must | N/A | N/A | En curso |
+| [HU-028](HU-028-el-trabajo-de-cada-mensaje-sale-de-lo-que-esta-abierto/HU-028-el-trabajo-de-cada-mensaje-sale-de-lo-que-esta-abierto.md) | El trabajo de cada mensaje sale de lo que está abierto | Must | N/A | N/A | Terminada |
+| [HU-029](HU-029-el-vigilante-se-reinicia-solo-cuando-cambia-su-codigo/HU-029-el-vigilante-se-reinicia-solo-cuando-cambia-su-codigo.md) | El vigilante se reinicia solo cuando cambia su código | Must | N/A | N/A | Terminada |
 
 ## 10. Consideraciones técnicas
 

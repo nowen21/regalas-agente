@@ -1,0 +1,7 @@
+== El relevo del vigilante en esta máquina (2026-10-08)
+El usuario arrancó el vigilante con «Cimiento vigilar consumo.cmd» a las 15:01:57: número 29208.
+Se le cambió la fecha a core/consumo/reinicio.py y, 30 segundos después:
+  número antes: 29208; después: 36248
+  procesos vigilar_consumo: 12160 (lanzador, hijo de 29208) y 36248 (hijo de 12160), creados a las 15:02:24
+El viejo (29208) ya no corre; queda uno solo.
+3.720 mensaje(s) de 39 archivo(s) recalculados. Sin trabajo: 0 antes, 0 ahora, de 3.720.

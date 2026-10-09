@@ -1,0 +1,13 @@
+== Antes (2026-10-08)
+32 objects imported automatically (use -v 2 for details).
+
+7 días: 1983 mensajes; 1839 sin trabajo
+  Applying consumo.0006_origen_del_trabajo... OK
+== recalcular_trabajo
+3.238 mensaje(s) de 33 archivo(s) recalculados. Sin trabajo: 3.487 antes, 1.480 ahora, de 3.667.
+== Después
+32 objects imported automatically (use -v 2 for details).
+
+7 días: 1983 mensajes; 597 sin trabajo
+[{'origen': 'sesion', 'n': 678}, {'origen': '', 'n': 647}, {'origen': 'analisis', 'n': 539}, {'origen': 'archivos', 'n': 119}]
+[{'trabajo': 'análisis 1 del pendiente 116', 'n': 137}, {'trabajo': 'D-EP-023-HU-001-el-analisis-abre-todos-los-casos-y-ordena-las-hu', 'n': 108}, {'trabajo': 'análisis 14 del pendiente 103', 'n': 87}, {'trabajo': 'análisis 1 del pendiente 1', 'n': 80}, {'trabajo': 'A-EP-023-HU-002-cada-punto-dice-de-donde-sale', 'n': 56}, {'trabajo': 'análisis 16 del pendiente 103', 'n': 48}, {'trabajo': 'análisis 1 del pendiente 119', 'n': 43}, {'trabajo': 'análisis 10 del pendiente 103', 'n': 39}]

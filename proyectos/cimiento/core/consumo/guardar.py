@@ -35,7 +35,53 @@ from core.proyectos.models import Proyecto
 from .lector import LectorDeClaudeCode
 from .models import (AvanceDeLectura, EjecucionDeEnganche, GastoDeArchivo, GastoDeEnganche, GastoDeHerramienta,
                      LineaDeSesion, Llamada, Pedido)
-from .trabajo import trabajo_de
+from .trabajo import (DE_LA_CONVERSACION, DE_LO_QUE_TOCO, DEL_ANALISIS, DEL_TITULO, trabajo_de,
+                      trabajo_de_la_conversacion)
+
+
+def poner_trabajo(pedidos, lectura, nuevos):
+    """`EP-025·HU-028` · El trabajo de cada mensaje, por orden de fuentes.
+
+    1. El análisis que el aviso del mensaje dice prendido: manda sobre lo demás.
+    2. Lo que tocó el turno, si el mensaje no tenía trabajo o lo traía de la conversación.
+    3. A los `nuevos` que siguen sin trabajo, el del mensaje anterior de su conversación.
+    4. Fase B: al que ni así tiene, la conversación misma, por su título. Cuando el título
+       llega, los mensajes que quedaron con el código de la conversación pasan a él.
+    """
+    cambiados = {}
+    for identificador, trabajo in lectura.avisos.items():
+        pedido = pedidos.get(identificador)
+        if pedido and (pedido.trabajo, pedido.origen) != (trabajo[:200], DEL_ANALISIS):
+            pedido.trabajo, pedido.origen = trabajo[:200], DEL_ANALISIS
+            cambiados[pedido.pk] = pedido
+    for identificador, rutas in lectura.rutas.items():
+        pedido = pedidos.get(identificador)
+        trabajo = trabajo_de(rutas)[:200]
+        if pedido and trabajo and pedido.origen in ("", DE_LA_CONVERSACION, DEL_TITULO) \
+                and (pedido.trabajo, pedido.origen) != (trabajo, DE_LO_QUE_TOCO):
+            pedido.trabajo, pedido.origen = trabajo, DE_LO_QUE_TOCO
+            cambiados[pedido.pk] = pedido
+    # Se guardan antes de heredar: el anterior de un mensaje nuevo puede venir en esta misma lectura.
+    for pedido in cambiados.values():
+        pedido.save(update_fields=["trabajo", "origen"])
+    for pedido in sorted(nuevos, key=lambda p: (p.fecha is None, p.fecha)):
+        if pedido.trabajo or pedido.fecha is None:
+            continue
+        anterior = (Pedido.objects.filter(sesion=pedido.sesion, fecha__lt=pedido.fecha)
+                    .exclude(pk=pedido.pk).order_by("-fecha").first())
+        if anterior and anterior.trabajo:
+            # Lo que sigue a un mensaje que solo tenía la conversación, también es la conversación.
+            origen = DEL_TITULO if anterior.origen == DEL_TITULO else DE_LA_CONVERSACION
+            pedido.trabajo, pedido.origen = anterior.trabajo, origen
+            pedido.save(update_fields=["trabajo", "origen"])
+    for pedido in nuevos:
+        if not pedido.trabajo:
+            pedido.trabajo = trabajo_de_la_conversacion(pedido.sesion, lectura.titulos.get(pedido.sesion))
+            pedido.origen = DEL_TITULO
+            pedido.save(update_fields=["trabajo", "origen"])
+    for sesion, titulo in lectura.titulos.items():
+        nombre = trabajo_de_la_conversacion(sesion, titulo)
+        Pedido.objects.filter(sesion=sesion, origen=DEL_TITULO).exclude(trabajo=nombre).update(trabajo=nombre)
 
 
 @lru_cache(maxsize=1)
@@ -143,20 +189,17 @@ class GuardadoDeConsumo:
 
     def guardar_pedidos(self, lectura):
         """`{identificador: Pedido}` de los mensajes de la lectura y de los que siguen de antes."""
-        pedidos = {}
+        pedidos, nuevos = {}, []
         for p in lectura.pedidos:
-            pedidos[p.identificador], _ = Pedido.objects.get_or_create(
+            pedidos[p.identificador], creado = Pedido.objects.get_or_create(
                 sesion=p.sesion, identificador=p.identificador[:64],
                 defaults={"proyecto": self.proyecto, "fecha": p.fecha, "palabra": palabra_clave(p.texto)})
-        faltan = {ll.pedido for ll in lectura.llamadas if ll.pedido} | set(lectura.rutas)
+            if creado:
+                nuevos.append(pedidos[p.identificador])
+        faltan = {ll.pedido for ll in lectura.llamadas if ll.pedido} | set(lectura.rutas) | set(lectura.avisos)
         for pedido in Pedido.objects.filter(proyecto=self.proyecto, identificador__in=faltan - set(pedidos)):
             pedidos[pedido.identificador] = pedido
-        for identificador, rutas in lectura.rutas.items():
-            pedido = pedidos.get(identificador)
-            trabajo = trabajo_de(rutas)[:200]
-            if pedido and trabajo and not pedido.trabajo:
-                pedido.trabajo = trabajo
-                pedido.save(update_fields=["trabajo"])
+        poner_trabajo(pedidos, lectura, nuevos)
         return pedidos
 
     def guardar(self, lectura, agente=""):

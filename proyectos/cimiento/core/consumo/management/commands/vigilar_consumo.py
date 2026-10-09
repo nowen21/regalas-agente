@@ -5,12 +5,14 @@
     python manage.py vigilar_consumo --parar    lo detiene por su número de proceso
 
 La instalación del estándar lo arranca al iniciar sesión. Si ya hay uno
-corriendo, no arranca otro.
+corriendo, no arranca otro. Cuando cambia el código de Cimiento, arranca uno
+nuevo y se va (`EP-025·HU-029`).
 """
 import os
 import signal
+import sys
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, OutputWrapper
 
 from core.comun.consola import preparar_salida
 
@@ -31,6 +33,17 @@ def parar(archivo=None):
     return texto
 
 
+def sin_consola(comando=None):
+    """`EP-025·HU-029` · Arrancado con `pythonw` desde el inicio de sesión no hay consola:
+    `sys.stdout` es `None` y el primer mensaje tumbaba al vigilante justo después de
+    escribir su número. Sin consola, lo que diga se va a `os.devnull`."""
+    for nombre in ("stdout", "stderr"):
+        if getattr(sys, nombre) is None:
+            setattr(sys, nombre, open(os.devnull, "w", encoding="utf-8"))
+    if comando is not None:
+        comando.stdout, comando.stderr = OutputWrapper(sys.stdout), OutputWrapper(sys.stderr)
+
+
 class Command(BaseCommand):
     help = "Guarda el gasto de los .jsonl de los proyectos activos en cuanto cambian."
 
@@ -38,6 +51,8 @@ class Command(BaseCommand):
         parser.add_argument("--parar", action="store_true", help="detiene el que está corriendo")
 
     def handle(self, *args, **opciones):
+        if self.stdout._out is None or sys.stdout is None:
+            sin_consola(self)       # el `OutputWrapper` se armó antes, con `None`
         preparar_salida()
         archivo = archivo_del_numero()
         if opciones["parar"]:
@@ -52,7 +67,7 @@ class Command(BaseCommand):
             f.write(str(os.getpid()))
         self.stdout.write("vigilando el consumo (proceso %d); se detiene con --parar" % os.getpid())
         try:
-            VigilanteDeConsumo().correr()
+            VigilanteDeConsumo(reiniciar_solo=True).correr()
         except KeyboardInterrupt:
             pass
         finally:

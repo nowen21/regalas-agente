@@ -23,6 +23,9 @@ class Pedido(models.Model):
     fecha = models.DateTimeField(null=True, db_index=True)
     palabra = models.CharField("palabra clave", max_length=40, blank=True)
     trabajo = models.CharField(max_length=200, blank=True)
+    # `EP-025·HU-028` · De dónde salió el trabajo: «analisis» (el aviso del mensaje),
+    # «archivos» (lo que tocó el turno) o «sesion» (sigue del mensaje anterior).
+    origen = models.CharField(max_length=10, blank=True)
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=["sesion", "identificador"], name="un_pedido_por_mensaje")]
