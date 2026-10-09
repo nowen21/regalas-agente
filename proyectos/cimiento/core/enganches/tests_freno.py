@@ -969,6 +969,20 @@ class LosAcuerdosDeLaFase(ConAcuerdos):
         self.escribir(FASE_A + "/funcionalidad_implementada.md", "# Cierre\n")
         self.assertEqual([], self.acuerdos.fases_en_curso())
 
+    def test_la_epica_se_recorre_una_vez_aunque_tenga_varias_fases(self):
+        """Pendiente 143: con 208 fases en curso, recorrer la épica por cada una tardaba 5 s."""
+        otra = HU_A + "/B-EP-009-HU-001-otra-fase"
+        os.makedirs(self.ruta(otra))
+        recorridos = []
+        original = Acuerdos.analisis_de_la_epica
+        with mock.patch.object(Acuerdos, "analisis_de_la_epica",
+                               side_effect=lambda e: recorridos.append(e) or original(e)):
+            primera = self.acuerdos.de_la_fase(self.ruta(FASE_A))
+            segunda = self.acuerdos.de_la_fase(self.ruta(otra))
+        self.assertEqual(1, len(recorridos))
+        self.assertEqual(primera, segunda)
+        self.assertEqual(2, len(primera))
+
     def test_la_fase_nueva_con_cierre_y_sin_commit_sigue_en_curso(self):
         self.escribir(FASE_A + "/plan_trabajo.md", plan_con_decisiones())
         self.escribir(FASE_A + "/funcionalidad_implementada.md", "# Cierre\n")

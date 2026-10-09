@@ -57,6 +57,9 @@ class Acuerdos:
         # La transcripción dice de qué sesión es el análisis prendido: cada
         # sesión tiene el suyo.
         self.transcripcion = transcripcion
+        # Pendiente 143 · Los análisis de cada épica, recorridos una vez: varias
+        # fases comparten épica, y recorrerla por cada una tardaba 5 s en scilit.
+        self._analisis = {}
 
     def _leer(self, ruta):
         return self.archivos.leer(ruta)
@@ -109,7 +112,10 @@ class Acuerdos:
         ruta_hu = os.path.dirname(ruta_fase)
         hu = self._leer(os.path.join(ruta_hu, os.path.basename(ruta_hu) + ".md"))
         pedidos = set(_CA_DEL_PLAN.findall(self._leer(os.path.join(ruta_fase, "plan_trabajo.md"))))
-        analisis = self.analisis_de_la_epica(os.path.dirname(ruta_hu))
+        epica = os.path.dirname(ruta_hu)
+        if epica not in self._analisis:
+            self._analisis[epica] = self.analisis_de_la_epica(epica)
+        analisis = self._analisis[epica]
         leidos, salida, vistos = {}, [], set()
         partes = CRITERIO.split(hu)
         for i in range(1, len(partes), 2):
