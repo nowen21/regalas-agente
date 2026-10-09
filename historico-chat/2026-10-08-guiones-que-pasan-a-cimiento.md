@@ -244,3 +244,67 @@ Encontré un error mío en este commit. Corregirlo cambia la historia de git, as
 
 ### 16 · Usuario — 2026-10-08 23:17:50
 > corrija
+
+**Agente** — 2026-10-08 23:21:15
+<!-- agente: 9825766c-d584-4a56-9d81-fd37d627e28b -->
+
+El commit nuevo lleva solo los 3 archivos, y el borrado de la otra sesión sigue marcado como estaba. Ahora el push.
+
+El commit quedó corregido, pero todavía no está publicado.
+
+- **Commit:** el nuevo, `8a470e6`, lleva solo los 3 archivos de esta sesión. El borrado de `interfaz/` que tenía marcado la otra sesión sigue marcado como estaba.
+- **Push:** sigue rechazado. La revisión que corre antes de publicar mira toda la carpeta, no el commit, y en la carpeta `interfaz/` ya no está. Quedan seis enlaces rotos que vienen de ese borrado, y no son de esta sesión.
+
+Lo anoté en el resumen como H-6, con su pendiente sin decidir.
+
+Lo que falta, en orden:
+1. Publicar `8a470e6`. Hay dos caminos:
+   - **Esperar** a que la otra sesión arregle los enlaces o guarde su borrado. Lo recomiendo, porque no toca trabajo ajeno.
+   - Publicar saltándose la revisión con `--no-verify`. Solo con autorización expresa, por `00·N3`.
+2. Decidir el pendiente del H-6: cada commit guarda todo lo que haya marcado en git, también lo de otras sesiones. Recomiendo agregarlo al [pendiente 144](historico-chat/resumenes/2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md), porque el 144 ya recoge los problemas de varias sesiones trabajando al mismo tiempo.
+
+¿Cuál camino se toma para el push?
+
+### 17 · Usuario — 2026-10-09 07:35:31
+> revise si ya puede hacer el push
+
+**Agente** — 2026-10-09 07:36:37
+<!-- agente: 230319de-cc93-41a5-b22f-be1579abbc47 -->
+
+El push de esta sesión ya no hace falta: el commit `8a470e6` está publicado. Otra sesión guardó su borrado de `interfaz/` encima (`a2cc5b9`) y, al publicar lo suyo, publicó también este commit.
+
+El commit que queda en este computador sin publicar, `ae5bae0`, es de otra sesión; esta no lo toca.
+
+Lo que falta, en orden:
+1. **Decidir dónde queda el H-6**, el commit que se llevó lo que otra sesión tenía marcado en git. Recomiendo agregarlo al [pendiente 144](historico-chat/resumenes/2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md). Mientras no se decida, la sesión no se puede cerrar.
+2. **Guardar en git el resumen de la sesión**, que cambió después del último commit.
+3. **Analizar el pendiente 147**, el primero para construir.
+
+### 18 · Usuario — 2026-10-09 07:40:38
+> pregunta: ya se puede cerrar la sesión, se cumpló su proposito?
+
+**Agente** — 2026-10-09 07:40:51
+<!-- agente: e8d085d9-aa55-4f4d-826b-5aa0c49726eb -->
+
+El propósito sí se cumplió, pero la sesión todavía no se puede cerrar.
+
+**Propósito:** se revisaron los guiones de `historico-chat/scripts/` para ver cuáles se pueden convertir en comandos de Cimiento. Se abrieron los pendientes 147 y 148, y los dos ya están publicados en git. Construirlos no era parte de esta sesión.
+
+**Cierre:** faltan dos cosas.
+1. **El H-6 no tiene pendiente.** Es el commit que se llevó lo que otra sesión tenía marcado en git. La recomendación sigue siendo agregarlo al pendiente 144.
+2. **El resumen de la sesión no está guardado en git:** cambió después del último commit.
+
+Con esas dos, la sesión queda lista para cerrar.
+
+### 19 · Usuario — 2026-10-09 07:43:46
+> continúe
+
+**Agente** — 2026-10-09 07:44:17
+<!-- agente: b46f3cc9-1146-4441-88c8-fd3cca5d3310 -->
+
+Agregué el H-6 al [pendiente 144](historico-chat/resumenes/2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md). Con eso, todos los hallazgos del [resumen](historico-chat/resumenes/2026-10-08/guiones-que-pasan-a-cimiento.md) enlazan su pendiente.
+
+Para cerrar la sesión falta guardar en git tres archivos: el pendiente 144, el resumen y la transcripción. El commit llevaría solo esos tres, con `git commit --only`, para que no se cuele nada de otra sesión. Se necesita una respuesta que empiece con «Suba».
+
+### 20 · Usuario — 2026-10-09 07:44:50
+> suba

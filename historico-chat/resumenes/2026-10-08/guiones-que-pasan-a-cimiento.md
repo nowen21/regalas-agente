@@ -50,6 +50,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-08-guiones-que-pas
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md) |
 
+### H-6 · Un commit de esta sesión se llevó lo que otra sesión tenía marcado en git
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08, `git add` de tres archivos y `git commit` guardaron 53: otra sesión tenía marcado en git el borrado de `interfaz/`. Se deshizo con `git reset --soft HEAD~1`, aprobado por el usuario, y se rehízo con `git commit --only` (`8a470e6`). El push sigue rechazado: la revisión de antes de publicar mira la carpeta, donde `interfaz/` ya no está, y encuentra seis enlaces rotos que son de esa otra sesión |
+| Por qué importa | `git commit` guarda todo lo marcado, no solo lo que esta sesión agregó; el aviso de «sesiones mezcladas» salió y no detuvo el commit |
+| Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -60,7 +68,7 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 |---|---|
 | Todo hallazgo enlaza su pendiente | ☑ |
 | Todo pendiente enlazado existe | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ commit `f7a13f8` |
+| Lo que se hizo está aprobado y guardado | ☑ commits `f7a13f8` y `8a470e6`, los dos publicados; el segundo lo publicó el push de otra sesión |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
