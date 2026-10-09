@@ -16,7 +16,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-08-guiones-que-pas
 |---|---|
 | Qué pasó | El 2026-10-08 22:19, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/herramientas/tests_instalacion.py`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | No hace falta: la orden solo leía archivos. `tests_instalacion.py` ya estaba cambiado y sin guardar desde otra sesión; el freno le atribuyó ese cambio a esta orden |
+| Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md) |
 
 ### H-2 · Completar el cierre de una fase se hace con un guion suelto
 
@@ -42,6 +42,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-08-guiones-que-pas
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | No hace falta: el archivo era el mensaje del commit, escrito fuera del proyecto; el commit se hizo con el mensaje dentro de la orden |
 
+### H-5 · El freno detuvo lo que escribió una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 23:06, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/herramientas/desinstalar.py`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -50,11 +58,12 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☐ |
-| Todo pendiente enlazado existe | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo enlaza su pendiente | ☑ |
+| Todo pendiente enlazado existe | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ commit `f7a13f8` |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
 _(Si la sesión no dejó nada, se escribe «nada»: es un dato, no un olvido.)_
 
+<!-- aviso: falta decir si la sesión se puede cerrar -->
