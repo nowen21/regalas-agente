@@ -1,0 +1,29 @@
+### Hallazgo V2 de H-1. El freno le carga a una sesión lo que hizo otra
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Otra sesión cambió `.gitignore` mientras esta corría una orden que solo leía, y el freno la detuvo. La foto de antes y después no distingue quién cambió cada archivo |
+| Por qué importa | Con dos sesiones abiertas, el freno detiene trabajo permitido y anota hallazgos que no son de la sesión |
+
+### Hallazgo V2 de H-5. El freno corta las órdenes por los separadores que están dentro de comillas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Un `sed` cambiaba una fila de tabla, con `|` dentro de las comillas. El freno partió la orden por esos `|` y tomó los pedazos como archivos |
+| Por qué importa | Detiene cambios permitidos cada vez que una orden lleva `|` o `;` dentro de un texto |
+
+### Pendiente V5. Las reglas llegan cuando se actúa, los análisis se llenan sin guiones y el freno no detiene sin motivo
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | Los hallazgos de las versiones anteriores, y los hallazgos V2 de H-1 y H-5 del 2026-10-09 |
+| El problema | Además de lo de la versión 4: el freno le carga a una sesión lo que hizo otra, y corta las órdenes por separadores que están dentro de comillas |
+| Por qué importa | Además de lo de la versión 4: el trabajo permitido se detiene sin motivo |
+
+### Épica y HU que salen del análisis
+
+Se suma a la [EP-023: lo que se construye es lo que se analizó](../../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/epica.md), donde vive el freno.
+
+| Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|---|
+| 1 | HU-009 | El freno no detiene lo que hizo otra sesión ni lo que lee mal de una orden | El freno detiene trabajo permitido | Ninguna | Es la única | 2 y 3 |

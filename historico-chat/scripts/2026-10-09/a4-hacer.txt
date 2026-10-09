@@ -1,0 +1,5 @@
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
+|---|---|---|---|
+| 1 | Pasar el pendiente a su versión siguiente | `13·DOC26` | Este análisis, de una y sin fase: `historico-chat/resumenes/2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md` |
+| 2 | Antes de detener por un archivo que cambió durante una orden, el freno lee las transcripciones de las otras sesiones del proyecto escritas en los últimos minutos; si alguna escribió ese archivo, no detiene ni anota hallazgo | 1 | EP-023·HU-009 |
+| 3 | `Freno.partes` corta la orden solo por `|`, `;`, `&&`, `||` y saltos de línea que están fuera de comillas | 2 | EP-023·HU-009 |

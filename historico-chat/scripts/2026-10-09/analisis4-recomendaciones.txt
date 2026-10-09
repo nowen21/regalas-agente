@@ -1,0 +1,8 @@
+Se leyeron las [recomendaciones de Cimiento](../../../../../plantillas/recomendaciones-del-analisis.md); el proyecto no tiene `analisis/recomendaciones.md` propio.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| R-1 | Se revisan las otras formas en que el freno lee mal una orden, y todos los proyectos con varias sesiones a la vez |
+| R-2 | Se leyó el código del freno: `Freno.partes`, `Freno.destinos`, `Freno.cambiados` y `fuera_del_plan` |
+| R-10 | Se explica con los dos casos de esta sesión |
+| Las demás | Se aplican al escribir lo acordado |

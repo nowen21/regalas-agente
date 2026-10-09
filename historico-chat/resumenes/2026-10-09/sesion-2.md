@@ -24,14 +24,15 @@ V2, según el [análisis 3 del pendiente 133](../2026-10-05/pendientes/133-el-re
 - **Por qué importa.** Según `04·S18`, lo que se repite va como funcionalidad de Cimiento; cada guion nuevo gasta trabajo y puede traer un error distinto.
 - **Dónde queda.** [Pendiente 133: las reglas llegan cuando se actúa, por temas, y los análisis se llenan sin guiones](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md).
 
-### H-1 · El freno detuvo lo que escribió una orden de consola fuera del plan
+### H-1 · El freno le carga a una sesión lo que hizo otra
+
+V2, según el [análisis 4 del pendiente 133](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/analisis-4.md).
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El 2026-10-09 11:24, el freno detuvo lo que escribió una orden de consola sobre `.gitignore`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
-| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Lo que se encontró | Esta sesión no escribió `.gitignore`: la orden que se detuvo solo leía (`sed` y `grep`). El cambio (`proyectos/*/.agente/` pasó a `.agente/`) lo hizo otra sesión abierta al mismo tiempo, a las 11:24:18. El freno compara la foto de antes y la de después de cada orden, y le carga a esta sesión lo que cambió otra |
-| Pendiente | Por crear, y lo decide el usuario: el freno no distingue los cambios de otra sesión simultánea. No es de la EP-005, así que no detiene la construcción del pendiente 133 |
+| Qué pasó | Otra sesión cambió `.gitignore` mientras esta corría una orden que solo leía, y el freno la detuvo. La foto de antes y después no distingue quién cambió cada archivo |
+| Por qué importa | Con dos sesiones abiertas, el freno detiene trabajo permitido y anota hallazgos que no son de la sesión |
+| Pendiente | [Pendiente 133](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md) |
 
 ### H-2 · El freno detuvo una orden de consola fuera del plan
 
@@ -60,14 +61,15 @@ V2, según el [análisis 3 del pendiente 133](../2026-10-05/pendientes/133-el-re
 | Lo que se encontró | La orden escribía el README de la HU-025 con la ruta guardada en una variable de la consola (`$R`). El freno lee la ruta tal como está escrita y no resuelve variables, así que vio `$R`. La ruta real sí estaba autorizada (`documentacion/epicas/**/README.md`). Fue un error de forma del agente: se repitió con la ruta escrita |
 | Pendiente | No hace falta |
 
-### H-5 · El freno detuvo una orden de consola fuera del plan
+### H-5 · El freno corta las órdenes por los separadores que están dentro de comillas
+
+V2, según el [análisis 4 del pendiente 133](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/analisis-4.md).
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El 2026-10-09 12:05, el freno detuvo una orden de consola sobre `documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/después`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
-| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Lo que se encontró | La orden era un `sed -i` que cambiaba «Sin empezar» por «Terminada» en la HU-027 y en la épica, las dos autorizadas. El freno toma como archivos las palabras sueltas de la expresión de `sed` («después» salió de «vuelve después de un resumen»). Es el mismo tropiezo de leer la orden de consola que el de `$R` (H-4): el agente lo evitó usando la herramienta de edición |
-| Pendiente | Por crear, y lo decide el usuario: el freno lee como archivos las palabras de una expresión de `sed` que tiene espacios |
+| Qué pasó | Un `sed` cambiaba una fila de tabla, con barras verticales dentro de las comillas. El freno partió la orden por esas barras y tomó los pedazos como archivos |
+| Por qué importa | Detiene cambios permitidos cada vez que una orden lleva una barra vertical o un punto y coma dentro de un texto |
+| Pendiente | [Pendiente 133](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md) |
 
 ### H-6 · Partir `cambiar-codigo` se hace por temas
 

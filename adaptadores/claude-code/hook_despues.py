@@ -52,7 +52,9 @@ def main():
         if (datos.get("tool_name") or "") not in CONSOLA:
             return 0
         # `EP-025·HU-024` · Con su sesión, el freno lee el análisis prendido de ella.
-        freno = Freno(proyecto, sesion=datos.get("session_id") or "")
+        # `EP-023·HU-009` · Con su transcripción, el freno sabe cuáles son las otras sesiones.
+        freno = Freno(proyecto, sesion=datos.get("session_id") or "",
+                      transcripcion_cc=datos.get("transcript_path") or "")
         # `EP-025·HU-005` · Con el nivel de cada regla: lo que frena bloquea, lo
         # que avisa solo se cuenta, lo apagado no aparece.
         fuera, avisan = freno.despues_por_nivel((datos.get("tool_input") or {}).get("command") or "")

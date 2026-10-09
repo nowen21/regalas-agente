@@ -1,0 +1,3 @@
+| # | Lección | Tipo | Señal | Recomendación |
+|---|---|---|---|---|
+| 1 | Cuando el freno detiene algo, revisar primero si la orden o el archivo eran de esta sesión antes de tomarlo como hallazgo | Funcionó | Se escribe al aprobar | Complementa R-15 |

@@ -1,0 +1,3 @@
+**Resultado:** amplía.
+
+**Lo que suma al análisis principal:** El freno no detiene lo que hizo otra sesión abierta al mismo tiempo, y lee las órdenes respetando las comillas.

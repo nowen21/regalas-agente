@@ -36,6 +36,7 @@ import json
 import os
 import re
 import shlex
+import time
 
 from ..comun import Archivos, Git, Proyecto
 from ..niveles.catalogo import es_del_nucleo
@@ -88,6 +89,11 @@ _PS_RUTA = re.compile(r"-(?:FilePath|Path|LiteralPath|Destination)\s+(\"[^\"]+\"
 _PS_ESCRIBE = re.compile(r"\b(?:Out-File|Set-Content|Add-Content|New-Item|Remove-Item|Copy-Item|Move-Item|Rename-Item)\b", re.I)
 _INSTALA = re.compile(r"(?:\bpip3?(?:\.exe)?|-m\s+pip)\s+install\b", re.I)
 _OTROS_INSTALADORES = re.compile(r"\b(?:npm|apt|apt-get|brew|choco|winget|gem)\b", re.I)
+# `EP-023·HU-009` · Cuánto atrás se mira lo que hicieron las otras sesiones, y
+# cuánto se lee de cada transcripción: el freno corre en cada orden.
+OTRA_SESION_SEGUNDOS = 10 * 60
+COLA_DE_OTRA_SESION = 2 * 1024 * 1024
+
 _HEREDOC = re.compile(r"<<-?\s*(['\"]?)(\w+)\1[^\n]*\n.*?^\s*\2\s*$", re.S | re.M)
 
 # Las órdenes de git que solo registran lo que ya cambió. No escriben contenido:
@@ -102,13 +108,17 @@ _H = re.compile(r"^### H-(\d+)\b", re.M)
 class Freno:
     """Decide sobre cada acción del agente en un proyecto."""
 
-    def __init__(self, proyecto, archivos=None, niveles=None, sesion=""):
+    def __init__(self, proyecto, archivos=None, niveles=None, sesion="", transcripcion_cc=""):
         self.proyecto = proyecto if isinstance(proyecto, Proyecto) else Proyecto(proyecto)
         self.archivos = archivos or Archivos()
         self.niveles = niveles or NivelesDelProyecto(self.proyecto.raiz)
         # `EP-025·HU-024` · La sesión que actúa: el análisis prendido que cuenta es
         # el suyo, no el más reciente del proyecto (H-8 del 2026-10-04, sesión 3).
         self.sesion = sesion or ""
+        # `EP-023·HU-009` · La transcripción de Claude Code de esta sesión: al lado
+        # están las de las otras sesiones del proyecto.
+        self.transcripcion_cc = transcripcion_cc or ""
+        self._colas_de_otras = None
         self._estado = None
 
     @property
@@ -228,7 +238,34 @@ class Freno:
 
     @staticmethod
     def partes(orden):
-        return [p.strip() for p in re.split(r"&&|\|\||;|\n|(?<!\|)\|(?!\|)", orden) if p.strip()]
+        """Los pedazos de la orden, cortados por `|`, `;`, `&&`, `||` y saltos de línea
+        que están fuera de comillas: dentro, son texto (`EP-023·HU-009`)."""
+        salida, actual, comilla, i = [], [], "", 0
+        while i < len(orden):
+            c = orden[i]
+            if comilla:
+                actual.append(c)
+                if c == comilla:
+                    comilla = ""
+                elif c == "\\" and comilla == '"' and i + 1 < len(orden):
+                    actual.append(orden[i + 1])
+                    i += 1
+            elif c in "'\"":
+                comilla = c
+                actual.append(c)
+            elif c == "\\" and i + 1 < len(orden):
+                actual.append(c + orden[i + 1])
+                i += 1
+            elif orden.startswith(("&&", "||"), i) or c in ";|\n":
+                salida.append("".join(actual))
+                actual = []
+                if orden.startswith(("&&", "||"), i):
+                    i += 1
+            else:
+                actual.append(c)
+            i += 1
+        salida.append("".join(actual))
+        return [p.strip() for p in salida if p.strip()]
 
     @staticmethod
     def palabras(parte):
@@ -534,9 +571,34 @@ class Freno:
             if antes.get(rel) == firma:
                 continue
             porque = self.motivo(os.path.realpath(self.proyecto.ruta(rel)), lo_permitido)
-            if porque:
+            if porque and not self.de_otra_sesion(rel):
                 salida.append((rel, porque))
         return salida
+
+    def de_otra_sesion(self, rel):
+        """`EP-023·HU-009` · ¿Lo nombra lo que hizo otra sesión del proyecto en los
+        últimos minutos? Entonces no se le carga a esta: la foto de antes y después
+        no sabe quién cambió cada archivo."""
+        propia = self.transcripcion_cc
+        if not propia or not os.path.isfile(propia):
+            return False
+        carpeta, limite = os.path.dirname(propia), time.time() - OTRA_SESION_SEGUNDOS
+        buscada = rel.replace("\\", "/")
+        if self._colas_de_otras is None:
+            self._colas_de_otras = []
+            for nombre in os.listdir(carpeta):
+                ruta = os.path.join(carpeta, nombre)
+                try:
+                    if (not nombre.endswith(".jsonl") or os.path.samefile(ruta, propia)
+                            or os.path.getmtime(ruta) < limite):
+                        continue
+                    with open(ruta, "rb") as f:
+                        f.seek(max(0, os.path.getsize(ruta) - COLA_DE_OTRA_SESION))
+                        cola = f.read().decode("utf-8", "replace")
+                except OSError:
+                    continue
+                self._colas_de_otras.append(cola.replace("\\\\", "/").replace("\\", "/"))
+        return any(buscada in cola for cola in self._colas_de_otras)
 
     # ── el hallazgo ───────────────────────────────────────────────────────
 

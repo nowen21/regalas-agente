@@ -103,6 +103,7 @@ N/A: la épica no trata de una entidad con campos, estados y operaciones. Su alc
 | [HU-006](HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md) | Lo aprendido incluye las lecciones | Análisis 1: 9 | 7 | Terminada el 2026-10-03 |
 | [HU-007](HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) | Nada se escribe fuera del plan aprobado | Análisis 1: 25, 26, 27, 31 | 6 | Terminada el 2026-10-03 |
 | [HU-008](HU-008-aprobar-el-analisis-aprueba-lo-que-sale-de-el/HU-008-aprobar-el-analisis-aprueba-lo-que-sale-de-el.md) | «Título» | «Prioridad» | «Estimación» | «…» |
+| [HU-009](HU-009-el-freno-no-detiene-lo-que-hizo-otra-sesion-ni-lo-que-lee-mal-de-una-orden/HU-009-el-freno-no-detiene-lo-que-hizo-otra-sesion-ni-lo-que-lee-mal-de-una-orden.md) | El freno no detiene lo que hizo otra sesión ni lo que lee mal de una orden | Análisis 4 del pendiente 133: 1, 2 | 1 | Terminada el 2026-10-09 |
 
 ## 10. Consideraciones técnicas
 

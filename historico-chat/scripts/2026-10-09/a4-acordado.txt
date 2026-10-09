@@ -1,0 +1,4 @@
+1. El freno no le carga a una sesión lo que hizo otra: antes de detener por un archivo que cambió durante una orden de consola, mira si otra sesión abierta del mismo proyecto lo tocó en los últimos minutos; si fue otra, no detiene a esta ni lo anota como hallazgo suyo (turno 57).
+2. El freno parte una orden de consola solo por los separadores (`|`, `;`, `&&`, `||`) que están fuera de las comillas; dentro de las comillas son texto (turno 57).
+
+Siguen abiertas: ninguna.

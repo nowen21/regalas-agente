@@ -1,0 +1,37 @@
+> Cada subsección es obligatoria: el validador detiene el cierre si falta una.
+
+### Cimiento: las reglas que aplican y las que chocan
+
+Aplican `02·F8` (lo que el plan no declara se detiene: el freno lo hace cumplir), `13·DOC22` (el hallazgo del freno va al resumen de la sesión que actúa) y `13·DOC26`. No choca ninguna.
+
+### El proyecto: lo que existe, lo que funciona y lo que falta
+
+| Qué | Lo que hay hoy |
+|---|---|
+| La foto de antes y después | `Freno.tomar_foto` y `Freno.cambiados` (`core/enganches/freno.py`) comparan lo que `git status` ve cambiado; todo lo nuevo se le carga a la orden |
+| Partir la orden | `Freno.partes` la corta con una expresión que no mira las comillas |
+| Leer las palabras | `Freno.palabras` ya usa `shlex`, que sí respeta las comillas, pero recibe pedazos ya cortados |
+| Las otras sesiones | Claude Code guarda la transcripción de cada sesión en la misma carpeta; cada escritura queda ahí con su ruta |
+
+### Lo aprendido: señales, lecciones y análisis anteriores
+
+| Fuente | Qué aporta |
+|---|---|
+| H-1 y H-5 del 2026-10-09 | Los dos casos: `.gitignore`, cambiado por otra sesión, y la tabla dentro de un `sed` |
+| H-4 del 2026-10-09 | Otro caso de leer mal una orden (una variable `$R`), que no se trata acá: el agente lo evitó escribiendo la ruta |
+
+### El entorno: normas, herramientas y proyectos que heredan
+
+| Qué | Efecto |
+|---|---|
+| Proyectos que heredan | PARCHE (`20·M10`): corrige el freno sin pedirles nada |
+| Normas y leyes | Ninguna |
+| Herramientas | Claude Code permite varias sesiones del mismo proyecto a la vez |
+
+### Dónde más puede pasar
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| Otra sesión cambia un archivo mientras esta corre una orden | Cualquier proyecto con dos sesiones abiertas | Detiene trabajo permitido y ensucia el resumen | Acuerdo 1 |
+| Un `|` o un `;` dentro de comillas en cualquier orden, no solo `sed` | Cualquier orden con texto entre comillas | Toma texto como archivo | Acuerdo 2 |
+| Una sesión abierta pero quieta | Un proyecto con una sesión olvidada | Ninguno: solo cuenta la que escribió en los últimos minutos | Acuerdo 1 |
