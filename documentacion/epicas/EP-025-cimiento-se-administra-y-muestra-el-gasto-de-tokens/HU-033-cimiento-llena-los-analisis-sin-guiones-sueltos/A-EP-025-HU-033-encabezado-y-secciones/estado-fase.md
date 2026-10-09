@@ -1,12 +1,12 @@
-# Estado de fase · Fase `B-EP-005-HU-025-el-estandar-lo-dice` (módulo Estándar: `base/tareas.md`)   ·   `[CAPA 3]`
+# Estado de fase · Fase `A-EP-025-HU-033-encabezado-y-secciones` (módulo Análisis en curso: `proyectos/cimiento/core/enganches/` y un comando de `core/proyectos/`)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `B-EP-005-HU-025-el-estandar-lo-dice` |
-| **Módulo** | Estándar: `base/tareas.md`, que vive en la base de Cimiento |
-| **Planteamiento / Épica / HU** | [EP-005](../../epica.md) · [HU-025](../HU-025-las-reglas-de-cada-tarea-llegan-antes-de-la-accion.md) |
+| **Fase** (identificador · `02·F12.6`) | `A-EP-025-HU-033-encabezado-y-secciones` |
+| **Módulo** | Análisis en curso: `proyectos/cimiento/core/enganches/` y un comando de `core/proyectos/` |
+| **Planteamiento / Épica / HU** | [EP-025](../../epica.md) · [HU-033](../HU-033-cimiento-llena-los-analisis-sin-guiones-sueltos.md) |
 | **Última actualización** | 2026-10-09 |
 
 ## 1. En qué estación va
@@ -15,30 +15,30 @@
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Explorador · análisis | contexto entendido | ☑ Análisis 1 del pendiente 133 |
+| 1 | Explorador · análisis | contexto entendido | ☑ Análisis 3 del pendiente 133 |
 | 2 | Proponente · alcance | 👤 alcance aprobado | ☑ Con el análisis de origen |
-| 3 | Escritor de épica | 👤 épica aprobada | ☑ EP-005 |
-| 4 | Escritor de historia | 👤 HUs aprobadas | ☑ HU-025, aprobada con el análisis |
+| 3 | Escritor de épica | 👤 épica aprobada | ☑ EP-025 |
+| 4 | Escritor de historia | 👤 HUs aprobadas | ☑ HU-033, aprobada con el análisis |
 | 5 | Escritor de especificación | 👤 especificación aprobada | N/A: la especificación son los CA |
 | 6 | Diseñador | diseño coherente | ☑ |
 | 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☑ Aprobados por el análisis |
-| 8 | Implementador | implementado + pruebas verdes | ☑ Las 2 tareas |
+| 8 | Implementador | implementado + pruebas verdes | ☑ Las 3 tareas |
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Hallazgos: los del cierre del plan |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica |
-| 12 | Commit | 👤 autorizado | ✅ `33e248d` |
+| 12 | Commit | 👤 autorizado | ☐ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan
 
-**Hechas:** 2 de 2. **Bloqueadas:** ninguna.
+**Hechas:** 3 de 3. **Bloqueadas:** ninguna.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | Cumple |
-| **CA cumplidos** | 1 de 1 |
+| **CA cumplidos** | 2 de 2 |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | `resultado_pruebas.md` |
 
@@ -46,7 +46,7 @@
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
-| Cimiento sube la versión al aprobar la propuesta | No hace falta registrarla |
+| La copia del hallazgo solo en el análisis 1 | Está en el plan, §2.6 |
 
 ## 3. Pendiente / preguntas abiertas
 

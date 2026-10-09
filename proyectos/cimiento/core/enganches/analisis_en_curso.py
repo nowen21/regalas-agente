@@ -396,7 +396,14 @@ class AnalisisEnCurso:
         plantilla = os.path.join(Proyecto.estandar(), PLANTILLA)
         texto = _leer(plantilla) if os.path.isfile(plantilla) else (
             "# Análisis «N»\n\n## Conversación\n\n> La escribe el enganche.\n\n" + FIN + "\n")
-        _escribir(ruta, texto.replace("# Análisis «N»", "# Análisis %d" % numero, 1))
+        texto = texto.replace("# Análisis «N»", "# Análisis %d" % numero, 1)
+        # `EP-025·HU-033` · Lo que siempre es igual lo pone Cimiento; si falla, queda la plantilla.
+        try:
+            from .llenar_analisis import llenar_encabezado
+            texto = llenar_encabezado(texto, carpeta, numero, Proyecto.estandar())
+        except Exception:                 # noqa: BLE001 — llenar no puede impedir prender
+            pass
+        _escribir(ruta, texto)
         return ruta
 
     # ── los tres controles ────────────────────────────────────────────────

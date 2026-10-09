@@ -16,11 +16,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-09-sesion-2.md](..
 - **Por qué importa.** `cambiar-codigo`, `tocar-datos`, `ir-afuera` y `cambiar-estandar` no tienen palabra clave. Hoy sus reglas no le llegan al agente en ningún momento, ni siquiera cuando cambia código o el estándar.
 - **Dónde queda.** En el [análisis 1 del pendiente 133: el recordatorio de reglas se paga en cada mensaje](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/analisis-1.md), que lo vuelve su hallazgo V2.
 
-### 2 · Llenar un análisis sigue siendo un guion suelto
+### H-7 · Llenar un análisis lo hace Cimiento, sin guiones sueltos
 
-- **Qué pasó.** Para llenar las secciones del análisis 1 del pendiente 133 se escribió `historico-chat/scripts/2026-10-09/llenar_analisis_133.py`. El freno avisó que se parece a `historico-chat/scripts/2026-10-05/llenar_analisis_124.py`.
-- **Por qué importa.** Según `04·S18`, lo que se repite va como funcionalidad de Cimiento, no como otro guion. Es el mismo caso del pendiente 147, pero para los análisis en vez de las fases.
-- **Dónde queda.** Sin pendiente todavía. Lo decide el usuario.
+V2, según el [análisis 3 del pendiente 133](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/analisis-3.md).
+
+- **Qué pasó.** Para llenar los análisis del pendiente 133 se escribieron guiones sueltos, y ya hay 49 en `historico-chat/scripts/`. Se decidió que Cimiento llene solo la parte que siempre es igual y que la parte que cambia se guarde con un comando fijo.
+- **Por qué importa.** Según `04·S18`, lo que se repite va como funcionalidad de Cimiento; cada guion nuevo gasta trabajo y puede traer un error distinto.
+- **Dónde queda.** [Pendiente 133: las reglas llegan cuando se actúa, por temas, y los análisis se llenan sin guiones](../2026-10-05/pendientes/133-el-recordatorio-de-reglas-se-paga-en-cada-mensaje/pendiente.md).
 
 ### H-1 · El freno detuvo lo que escribió una orden de consola fuera del plan
 

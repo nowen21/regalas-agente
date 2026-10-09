@@ -154,6 +154,7 @@ Una regla fija puede bloquear a Cimiento para corregirse, como pasó el 2026-10-
 | [HU-030](HU-030-el-resumen-del-gasto-responde-en-la-mitad-del-tiempo-y-no-se-recalcula-con-cada-aviso/HU-030-el-resumen-del-gasto-responde-en-la-mitad-del-tiempo-y-no-se-recalcula-con-cada-aviso.md) | El Resumen del gasto responde en la mitad del tiempo y no se recalcula con cada aviso | Should | S | N/A | Terminada |
 | [HU-031](HU-031-cerrar-fase-entiende-los-formatos-de-las-plantillas-y-marca-todo-lo-que-cierra/HU-031-cerrar-fase-entiende-los-formatos-de-las-plantillas-y-marca-todo-lo-que-cierra.md) | `cerrar_fase` entiende los formatos de las plantillas y marca todo lo que cierra | Must | M | N/A | Terminada |
 | [HU-032](HU-032-cada-momento-de-cada-enganche-y-cada-revision-de-git-se-puede-suspender/HU-032-cada-momento-de-cada-enganche-y-cada-revision-de-git-se-puede-suspender.md) | Cada momento de cada enganche y cada revisión de git se puede suspender desde Cimiento | Must | L | N/A | Terminada |
+| [HU-033](HU-033-cimiento-llena-los-analisis-sin-guiones-sueltos/HU-033-cimiento-llena-los-analisis-sin-guiones-sueltos.md) | Cimiento llena los análisis sin guiones sueltos | Must | S | N/A | Terminada |
 
 ## 10. Consideraciones técnicas
 
