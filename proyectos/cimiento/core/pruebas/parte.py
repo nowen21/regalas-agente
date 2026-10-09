@@ -19,7 +19,7 @@ import os
 import shutil
 import subprocess
 
-from .lenguaje import ANGULAR, DJANGO, LARAVEL, PYTHON, python_del_proyecto, reconocer
+from .lenguaje import DJANGO, LARAVEL, PYTHON, python_del_proyecto, reconocer_todos
 
 SIN_LENGUAJE = "revisión de pruebas: Cimiento todavía no sabe revisar proyectos de este tipo"
 SIN_PYTHON = "revisión de pruebas: falta el Python del proyecto (.venv o venv); crearlo y volver a instalar"
@@ -48,10 +48,20 @@ class ParteQueRevisa:
                              encoding="utf-8", errors="replace", timeout=600)
 
     def poner(self, ruta, aplicar):
-        """`(pasos, tiene, puesta)`: qué se hizo, si el proyecto quedó con la parte y si la puso Cimiento."""
-        lenguaje = reconocer(ruta)
-        if lenguaje is None:
+        """`(pasos, tiene, puesta)`: qué se hizo, si el proyecto quedó con la parte en todos
+        sus programas y si Cimiento puso alguna (`EP-029·HU-007`: uno por programa)."""
+        programas = reconocer_todos(ruta)
+        if not programas:
             return [SIN_LENGUAJE], False, False
+        pasos, tiene, puesta = [], True, False
+        for lenguaje in programas:
+            suyos, ese_tiene, esa_puesta = self.poner_programa(lenguaje, ruta, aplicar)
+            nombre = os.path.relpath(lenguaje.carpeta, ruta).replace("\\", "/")
+            pasos += suyos if len(programas) == 1 else ["%s (%s)" % (p, nombre) for p in suyos]
+            tiene, puesta = tiene and ese_tiene, puesta or esa_puesta
+        return pasos, tiene, puesta
+
+    def poner_programa(self, lenguaje, ruta, aplicar):
         if lenguaje.nombre in (DJANGO, PYTHON):
             return self.poner_coverage(lenguaje.carpeta, ruta, aplicar)
         if lenguaje.nombre == LARAVEL:
@@ -93,11 +103,13 @@ class ParteQueRevisa:
         return [SIN_KARMA], False, False
 
     def quitar(self, ruta, puesta, aplicar):
-        """Los pasos de quitar: solo desinstala si la puso Cimiento."""
+        """Los pasos de quitar: solo desinstala si la puso Cimiento, en cada programa de Python."""
         if not puesta:
             return [SE_QUEDA]
-        lenguaje = reconocer(ruta)
-        py = python_del_proyecto(lenguaje.carpeta, ruta) if lenguaje else None
-        if py and aplicar:
-            self.correr([py, "-m", "pip", "uninstall", "-y", "coverage"], lenguaje.carpeta)
+        for lenguaje in reconocer_todos(ruta):
+            if lenguaje.nombre not in (DJANGO, PYTHON):
+                continue
+            py = python_del_proyecto(lenguaje.carpeta, ruta)
+            if py and aplicar:
+                self.correr([py, "-m", "pip", "uninstall", "-y", "coverage"], lenguaje.carpeta)
         return [QUITAR]

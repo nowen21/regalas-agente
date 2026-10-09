@@ -24,7 +24,7 @@ import xml.etree.ElementTree as ET
 
 from django.utils import timezone
 
-from .lenguaje import ANGULAR, DJANGO, LARAVEL, PYTHON, python_del_proyecto, reconocer
+from .lenguaje import ANGULAR, DJANGO, LARAVEL, PYTHON, python_del_proyecto, reconocer, reconocer_todos
 from .models import PruebasDelProyecto, Revision
 from .navegador import Navegador
 
@@ -75,11 +75,25 @@ class Revisor:
         lineas = [l for l in (salida or "").strip().splitlines() if l.strip()]
         return " ".join(lineas[-3:])[:500] or "nada"
 
+    @staticmethod
+    def sin_medicion():
+        return {"herramienta": "", "resultado": Revision.SIN_MEDICION, "porcentaje": None,
+                "archivos": [], "mensaje": SIN_MEDICION}
+
     def revisar(self, raiz):
+        """El primer programa del proyecto; la página usa `revisar_todos`."""
         lenguaje = reconocer(raiz)
-        if lenguaje is None:
-            return {"herramienta": "", "resultado": Revision.SIN_MEDICION, "porcentaje": None,
-                    "archivos": [], "mensaje": SIN_MEDICION}
+        return self.sin_medicion() if lenguaje is None else self.revisar_programa(lenguaje, raiz)
+
+    def revisar_todos(self, raiz):
+        """`EP-029·HU-007` · `[(lenguaje o None, campos)]`, uno por programa del proyecto
+        (análisis 4 del pendiente 141, acuerdo 2)."""
+        programas = reconocer_todos(raiz)
+        if not programas:
+            return [(None, self.sin_medicion())]
+        return [(l, self.revisar_programa(l, raiz)) for l in programas]
+
+    def revisar_programa(self, lenguaje, raiz):
         hacer = {DJANGO: self.django, PYTHON: self.python, LARAVEL: self.laravel, ANGULAR: self.angular}
         try:
             return hacer[lenguaje.nombre](lenguaje.carpeta, raiz)
@@ -174,16 +188,23 @@ class Revisor:
 
 
 def revisar_y_guardar(proyecto, revisor=None):
-    """Revisa el proyecto, guarda su `Revision` y apaga «Revisando». Devuelve la revisión."""
+    """Revisa cada programa del proyecto, guarda una `Revision` por programa con la
+    misma fecha y apaga «Revisando». Devuelve la de menos pruebas (`EP-029·HU-007`)."""
     estado = PruebasDelProyecto.de(proyecto)
     estado.revisando_desde = estado.revisando_desde or timezone.now()
     estado.save()
     try:
         revisor = revisor or Revisor()
-        campos = revisor.revisar(proyecto.ruta)
-        # `EP-029·HU-005` · Y las pruebas de navegador del proyecto, si las tiene.
-        campos.update(Navegador(revisor.correr, revisor.buscar).revisar(proyecto.ruta))
-        return Revision.objects.create(proyecto=proyecto, **campos)
+        navegador = Navegador(revisor.correr, revisor.buscar)
+        ahora, guardadas = timezone.now(), []
+        for lenguaje, campos in revisor.revisar_todos(proyecto.ruta):
+            carpeta = lenguaje.carpeta if lenguaje else proyecto.ruta
+            # `EP-029·HU-005` · Y las pruebas de navegador de ese programa, si las tiene.
+            campos.update(navegador.revisar(carpeta))
+            programa = os.path.relpath(carpeta, proyecto.ruta).replace("\\", "/")
+            guardadas.append(Revision.objects.create(proyecto=proyecto, fecha=ahora,
+                                                     programa="" if programa == "." else programa, **campos))
+        return Revision.la_de_menos_pruebas(guardadas)
     finally:
         estado.revisando_desde = None
         estado.save()

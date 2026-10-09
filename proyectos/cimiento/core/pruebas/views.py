@@ -21,7 +21,7 @@ from django.views import View
 from core.cuentas.permisos import SoloAdministrador, es_administrador
 from core.proyectos.models import Proyecto
 
-from .lenguaje import reconocer
+from .lenguaje import reconocer_todos
 from .models import PruebasDelProyecto, Revision, como_va
 
 
@@ -35,10 +35,13 @@ def lanzar(proyecto):
 
 
 def _fila(proyecto):
-    ultima = Revision.ultima(proyecto)
+    # `EP-029·HU-007` · La fila muestra el programa con menos pruebas de la última vez.
+    ultimas = Revision.ultimas(proyecto)
+    ultima = Revision.la_de_menos_pruebas(ultimas)
     estado = PruebasDelProyecto.objects.filter(proyecto=proyecto).first()
-    lenguaje = reconocer(proyecto.ruta)
-    return {"proyecto": proyecto, "ultima": ultima, "lenguaje": lenguaje.nombre if lenguaje else "No reconocido",
+    nombres = sorted({l.nombre for l in reconocer_todos(proyecto.ruta)})
+    return {"proyecto": proyecto, "ultima": ultima, "programas": ultimas,
+            "lenguaje": " y ".join(nombres) if nombres else "No reconocido",
             "como_va": como_va(ultima, proyecto.ajuste("dias_revision")),
             "revisando": bool(estado and estado.revisando_desde)}
 

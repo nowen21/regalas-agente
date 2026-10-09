@@ -912,3 +912,311 @@ Falta, en orden:
 
 ### 34 · Usuario — 2026-10-08 22:17:24
 > hágalo: haga comit y suba
+
+**Agente** — 2026-10-08 22:24:21
+<!-- agente: 44cc03b7-8077-46c9-9241-250c0f62b377 -->
+
+Antes de preparar el commit reviso los archivos compartidos, para no llevarme cambios de otras sesiones.
+
+El análisis principal mezcla mis líneas (pendiente 141) con las de otra sesión (pendiente 145). Miro qué agregó cada una al párrafo para guardar solo lo mío.
+
+Estoy preparando el commit solo con los archivos de esta sesión. El índice del histórico también está mezclado, así que de él tomo solo mi línea.
+
+Reviso que en los archivos de código preparados no se haya colado nada de las otras sesiones.
+
+`instalar.py` tiene dos cambios que no reconozco (cerca de las líneas 42 y 538). Los reviso.
+
+Esos dos cambios (`EN_SEGUNDO_PLANO`) son de otra sesión. Preparo para el commit una versión de `instalar.py` sin ellos; el archivo de trabajo queda intacto.
+
+Lo preparado es solo de esta sesión. Hago el commit; el mensaje empieza con la idea del usuario y no lleva `Co-Authored-By`, como pide el proyecto.
+
+Quedaron hechos el commit `7abfed6` y la subida a GitHub: `main` pasó de `7b47c23` a `7abfed6`.
+
+- **Qué entró:** solo el trabajo de esta sesión. Del análisis principal, del índice del histórico y de `instalar.py`, que también tenían cambios de otras sesiones, solo entraron mis líneas. Lo demás sigue sin guardar en la carpeta, para que esas sesiones lo suban.
+- **Avisos del commit:** dos, y ninguno lo detuvo. Uno dice que el asunto del mensaje es largo (96 caracteres). El otro dice que se mezclan sesiones: ese control cuenta qué sesiones tocaron cada archivo, no qué líneas entraron.
+- **Al subir:** salieron cuatro avisos de reglas que ya existían. Tampoco detuvieron nada.
+- **El número del commit:** la herramienta lo anotó sola en el estado de las cinco fases. Esas anotaciones entran en el próximo commit.
+
+Falta, en orden:
+1. Volver a instalar Cimiento en cada proyecto, porque es una versión MAYOR. Con eso cada proyecto recibe la herramienta que revisa, el aviso al guardar cambios y el borrado de la copia vieja.
+2. Volver a instalar Cimiento en su propia carpeta, para que baje Playwright y Chromium.
+3. Dar clic en «Revisar» en cada proyecto, en «Revisión de pruebas».
+
+### 35 · Usuario — 2026-10-08 22:26:35
+> hagalo
+
+**Agente** — 2026-10-08 22:32:05
+<!-- agente: 3437cc00-4ae7-4c33-8894-dd65ca9537b4 -->
+
+Lo hago en tres pasos. Primero simulo la instalación en todos los proyectos para ver qué cambiaría antes de aplicarla.
+
+El freno lo detuvo por mi culpa: quise guardar la salida en un archivo que no estaba autorizado. Corro la instalación sin ese archivo y leo la salida directamente.
+
+La instalación quedó aplicada en 12 proyectos; la carpeta de «plataforma» no existe. Chromium no se pudo bajar. Reviso por qué.
+
+Me detuve por un hallazgo, después de dejar la instalación aplicada en 12 proyectos.
+
+**Qué quedó hecho:**
+- Ya tienen la herramienta que revisa: LocalHub, shopnest-mesa, scilit (ya la tenía) y RNI.
+- Se borró la copia vieja de la configuración en master-ciberseguridad.
+- Playwright quedó instalado en Cimiento.
+
+**Lo que no se pudo y depende de cada proyecto:**
+- AgroSystem necesita PCOV.
+- dp_card necesita karma-coverage.
+- matematica no tiene pip en su Python.
+- Gestión de Servicios Tecnológicos no tiene Python propio.
+- La carpeta de «plataforma» no existe.
+
+**Chromium no bajó.** Desde esta consola falla la descarga. Hay dos salidas, y elegir es lo único que necesito:
+- a) Correr a mano, en `proyectos/cimiento`: `.venv\Scripts\python -m playwright install chromium`.
+- b) Que yo lo reintente con permiso para salir del entorno protegido de la consola.
+
+**El hallazgo (H-7).** En el repositorio del estándar hay dos programas, `interfaz/` y Cimiento. Cimiento reconoce solo el primero, así que coverage.py quedó en `interfaz/` y Cimiento mismo no se revisaría. La épica supuso un programa por proyecto. Lo anoté en el resumen de la sesión con su pendiente, el 141. También anoté el H-6: el freno me detuvo con razón cuando quise guardar un registro donde no debía.
+
+No di clic en «Revisar» en ningún proyecto: el hallazgo detiene la ejecución.
+
+Falta, en orden:
+1. Elegir a) o b) para Chromium.
+2. Abrir el análisis 4 con «Analicemos: el pendiente 141».
+3. Revisar cada proyecto.
+
+### 36 · Usuario — 2026-10-08 22:48:49
+> respondo: resuma aplicando 00 id7 y 00 id9
+
+**Agente** — 2026-10-08 22:48:57
+<!-- agente: 7ce24833-7852-474a-87e2-06e0cd1db7dd -->
+
+Cimiento quedó instalado otra vez en 12 proyectos. Cuatro ya pueden revisar sus pruebas: LocalHub, shopnest-mesa, scilit y RNI. A otros cuatro les falta algo que cada proyecto tiene que poner por su cuenta, y la carpeta de «plataforma» no existe.
+
+El trabajo se detuvo por dos cosas.
+
+1. **El navegador para las pruebas no se pudo bajar.** Esta consola no logra descargarlo. Hay dos caminos:
+   - a) Correr a mano en `proyectos/cimiento`: `.venv\Scripts\python -m playwright install chromium`.
+   - b) Que yo vuelva a intentarlo con permiso para salir de la protección de la consola.
+2. **En el repositorio del estándar hay dos programas, y Cimiento solo revisa uno.** Revisa `interfaz/` y deja a Cimiento sin revisar. Hay que decidir cómo revisar los proyectos que tienen más de un programa. Eso se hace en un análisis nuevo, que se abre escribiendo «Analicemos: el pendiente 141».
+
+Mientras no se resuelva el segundo punto, no le doy clic a «Revisar» en ningún proyecto.
+
+¿Qué camino prefiere para el navegador: a o b?
+
+### 37 · Usuario — 2026-10-08 22:55:05
+> respondo: 
+> - esto: "interfaz/" se tiene que borrar
+> - ya quedó instalado
+
+**Agente** — 2026-10-08 22:58:13
+<!-- agente: 403ed96a-a551-4ab6-88f6-cbcd9608a730 -->
+
+Antes de proponer cómo borrar `interfaz/`, reviso qué es, qué la nombra y si git la guarda. También compruebo que Chromium quedó instalado.
+
+La búsqueda en todo el repositorio tarda. Mientras termina, hago las consultas rápidas por separado.
+
+Anotado: Chromium ya quedó instalado.
+
+Sobre `interfaz/`: es el visor viejo del estándar, que Cimiento reemplazó. No se toca desde el 2026-08-22 y git guarda 50 archivos suyos. Borrarlo resuelve el caso de este repositorio. Pero RNI tiene el mismo problema: tiene un frente en Angular y un servidor en Python, y Cimiento también revisaría solo uno de los dos.
+
+Por eso propongo abrir el análisis 4 del pendiente 141, con dos puntos:
+
+1. Borrar `interfaz/`, con su ambiente de Python, y quitar sus menciones del repositorio.
+2. Decidir cómo revisar los proyectos que tienen más de un programa, como RNI.
+
+Para abrirlo, escriba:
+
+```
+Analicemos: el pendiente 141
+```
+
+### 38 · Aviso del sistema — 2026-10-08 22:59:19
+> <task-notification>
+> <task-id>b4f00yzy7</task-id>
+> <tool-use-id>toolu_01KW4CHPtHZvLdYqs32yekaB</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\63aeada8-3454-4d0e-89aa-ae32efe5c0fa\tasks\b4f00yzy7.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Inspect the interfaz folder, its references and the Chromium install" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-10-08 22:59:50
+<!-- agente: d082627c-4992-482d-90dc-593c33cf697b -->
+
+La búsqueda que corría aparte terminó. Esto le sirve al análisis 4:
+
+- `interfaz/` ocupa 72 MB.
+- La nombran `.claude/settings.json`, `anatomia/componentes-del-agente.md`, `anatomia/mapa-del-sitio.md`, `cvds/cumplimiento.md` y `CHANGELOG.md`.
+- También aparece en documentos de fases ya cerradas (EP-008, EP-009 y EP-025). Esos se dejan como están, porque son historia.
+
+Sigo esperando a que escriba «Analicemos: el pendiente 141» para abrir el análisis 4.
+
+### 39 · Usuario — 2026-10-08 23:00:53
+> Analicemos: el pendiente 141
+
+**Agente** — 2026-10-08 23:02:02
+<!-- agente: 59c58166-c1dd-4443-96e1-a58df8c54cce -->
+
+Abrí el análisis 4: [analisis-4.md](historico-chat/resumenes/2026-10-08/pendientes/141-cimiento-no-mide-que-codigo-queda-sin-probar-ni-prueba-sus-pantallas/analisis-4.md).
+
+Al revisar todos los proyectos encontré que RNI tiene el mismo problema: tiene un frente en Angular y un servidor en Python, y Cimiento revisa solo el frente.
+
+Necesito dos respuestas, cada una con SÍ o NO:
+
+1. **¿Se borra `interfaz/`?** Se borrarían la carpeta y su Python. También se quitarían sus menciones en el permiso de `.claude/settings.json` y en las dos guías de `anatomia/`. Los documentos de fases viejas que la nombran se dejan como están, porque son historia. Si algún día hace falta, se recupera desde git. Recomiendo SÍ.
+2. **¿Se revisa cada programa por separado?** Cimiento encontraría todos los programas de un proyecto y revisaría cada uno con su herramienta. La página mostraría una fila por proyecto con el programa que tenga menos pruebas, y el detalle mostraría cada programa. Recomiendo SÍ.
+
+### 40 · Usuario — 2026-10-08 23:04:04
+> Respondo:
+> 1. si
+> 2. si
+
+**Agente** — 2026-10-08 23:05:48
+<!-- agente: 71ad2896-ade4-4699-8e19-e9f667078580 -->
+
+El freno volvió a cobrarme `core/comun/enganches.py`, que cambió otra sesión. Es el mismo defecto del pendiente 123. Lo reporto aquí porque hay un análisis abierto, y sigo.
+
+Los dos acuerdos quedaron anotados en el análisis 4. De ahí salen dos HU nuevas en la EP-029:
+
+- **HU-006:** borrar `interfaz/` y quitar sus menciones.
+- **HU-007:** revisar cada programa de un proyecto.
+
+El pendiente y el hallazgo ya quedaron actualizados.
+
+El análisis no tiene preguntas abiertas. Para aprobarlo, escriba:
+
+```
+Apruebo el análisis
+```
+
+### 41 · Usuario — 2026-10-08 23:08:31
+> Apruebo el análisis
+
+**Agente** — 2026-10-08 23:16:37
+<!-- agente: dee6f158-7c7a-4fce-863b-e442a39a3ba3 -->
+
+El análisis 4 quedó aprobado. Sigo con la HU-006, que borra `interfaz/`. Antes reviso cómo compara el freno las rutas, para saber si acepta una carpeta entera en el plan.
+
+El freno deja borrar la carpeta si el plan nombra sus archivos. Armo la HU-006 con la lista exacta que guarda git.
+
+Escribo los documentos de la HU-006. La tabla de archivos del plan la armo desde git.
+
+Otra vez la consola no acepta el texto largo. Uso el camino que pide la regla `04·S18`: guardo el guion de apoyo en `historico-chat/scripts/2026-10-08/` y lo corro desde ahí.
+
+Mejor escribo los documentos de la HU-006 directamente con el editor. Primero saco de git la lista de archivos.
+
+Borro `interfaz/`: primero lo que guarda git y después lo que queda suelto, como su Python.
+
+Carpeta borrada: 50 archivos de git y el resto. Ahora quito sus menciones en `.claude/settings.json` y en `anatomia/`.
+
+La HU-006 pasa: 3 de 3 pruebas. Escribo su cierre.
+
+El hallazgo quedó anotado como H-8. La HU-006 está hecha, salvo esos enlaces rotos; la HU-007 todavía no empieza.
+
+Para el análisis 5 propongo esto: en esos seis archivos, convertir el enlace roto en texto normal. El nombre `interfaz/` sigue ahí como historia, pero ya no apunta a nada. Así no se reescribe la historia y el control de enlaces pasa.
+
+Para abrirlo, escriba:
+
+```
+Analicemos: el pendiente 141
+```
+
+### 42 · Usuario — 2026-10-08 23:19:03
+> Analicemos: el pendiente 141
+
+**Agente** — 2026-10-08 23:21:13
+<!-- agente: bc858f06-2055-4fca-8c0d-548d8a0d4015 -->
+
+Primero busco todos los enlaces que apuntan a `interfaz/`, esta vez sin cortar la búsqueda.
+
+El control de enlaces confirma que son exactamente esos 6 y ningún otro. Lleno el análisis 5.
+
+El análisis 5 está abierto: [analisis-5.md](historico-chat/resumenes/2026-10-08/pendientes/141-cimiento-no-mide-que-codigo-queda-sin-probar-ni-prueba-sus-pantallas/analisis-5.md). El control de enlaces confirma que los enlaces rotos son exactamente 6.
+
+Necesito dos respuestas, cada una con SÍ o NO:
+
+1. **¿Los 6 enlaces se vuelven texto normal?** El nombre `interfaz/` queda escrito como historia, pero ya no apunta a nada. Recomiendo SÍ.
+2. **¿Se amplía la R-19 para que no se repita?** Antes de borrar una carpeta, se corre el control de enlaces para ver quién la enlaza, y esos archivos entran al plan. Recomiendo SÍ.
+
+### 43 · Usuario — 2026-10-08 23:25:25
+> apruebo si a las dos
+
+**Agente** — 2026-10-08 23:26:45
+<!-- agente: c97c591c-468b-4830-8282-c7ba8c745a66 -->
+
+Los dos acuerdos quedaron anotados. Ya hice lo que se hace de una vez: el pendiente pasó a su V6, el hallazgo H-8 a su V2 y amplié la R-19. El análisis 5 no tiene preguntas abiertas.
+
+Para aprobarlo, escriba:
+
+```
+Apruebo el análisis
+```
+
+### 44 · Usuario — 2026-10-08 23:30:22
+> Apruebo el análisis
+
+**Agente** — 2026-10-08 23:49:58
+<!-- agente: 19f54777-0b8e-4f64-9ced-57980eff70d0 -->
+
+El análisis 5 quedó aprobado. Sumo los 6 archivos al plan de la HU-006 y convierto sus enlaces en texto normal.
+
+Ya no queda ningún enlace roto a `interfaz/`. Anoto en el resultado de la HU-006 que hubo un segundo ciclo.
+
+Paso a la HU-007, que revisa cada programa de un proyecto. Siguiendo la R-19, primero agrego al modelo el dato «programa» y le pregunto a Django qué migración pide.
+
+Escribo la HU-007 y su plan, que declara todos los archivos que toca.
+
+Ahora el código. Primero la migración declarada y `reconocer_todos`.
+
+Ahora `revisar.py`: una revisión por programa.
+
+Ahora `parte.py`: pone y quita la herramienta en cada programa.
+
+Ahora la vista y el detalle: la fila muestra el programa con menos pruebas y el detalle muestra cada uno.
+
+Escribo las pruebas de la HU-007.
+
+La página funciona bien: muestra «30,0%» con coma, como se escribe en Colombia. La que estaba mal era la prueba, que esperaba el punto. La corrijo.
+
+La regresión tarda más de diez minutos y siguió corriendo aparte. Espero a que termine para escribir el resultado.
+
+### 45 · Aviso del sistema — 2026-10-08 23:53:21
+> <task-notification>
+> <task-id>b4hrjl0js</task-id>
+> <tool-use-id>toolu_01De8hkDEHTDZogt3UY2YNCx</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\63aeada8-3454-4d0e-89aa-ae32efe5c0fa\tasks\b4hrjl0js.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Fix the test expectation and run the regression suites" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-10-09 00:03:33
+<!-- agente: e94f010f-3768-4d26-ae9b-08509e77f083 -->
+
+Hay 5 errores en `core.proyectos`. Reviso si los causa este cambio.
+
+La salida guardada solo tiene el resumen. Corro otra vez solo los cuatro módulos que fallaron, para ver el error.
+
+Solo, `tests_rutas` pasa. Falla cuando corre junto con `tests_analisis_prendido`. Vuelvo a correr el par para ver si siempre falla o solo a veces.
+
+Otra vez fue error mío: quise guardar la salida fuera del proyecto. El freno lo anotó. La corro mostrando la salida directamente.
+
+Ahora el par pasa: 10 de 10. Lo más probable es que al mismo tiempo corrieran pruebas de la otra sesión sobre la misma base de pruebas y chocaran. Para confirmarlo, corro `core.proyectos` completo.
+
+Pasan las 118. Los errores de antes no eran de este cambio. Completo en el resumen el hallazgo H-10 que dejó el freno.
+
+Cierro los documentos de la HU-007.
+
+Las siete HU quedaron cerradas. Lleno las filas de la HU-006 y la HU-007 en la épica y en sus índices.
+
+Quedaron hechas las dos HU nuevas.
+
+- **HU-006:** `interfaz/` salió del estándar. Sus menciones vivas se quitaron, y sus 6 enlaces viejos quedaron como texto sin enlace.
+- **HU-007:** Cimiento revisa cada programa de un proyecto. RNI ya aparece como «Angular y Python», cada uno con su revisión.
+- Coverage.py quedó en el Python de Cimiento.
+- El estándar va en la versión 59.1.0, que es MENOR.
+- Pasan las 118 pruebas de las suites tocadas.
+
+En el camino me equivoqué dos veces y el freno me detuvo con razón. Las dos quedaron anotadas: H-9, por cambiar un archivo antes de escribir su plan, y H-10, por guardar una salida fuera del proyecto.
+
+Falta, en orden:
+1. ¿Hago el commit y lo subo, SÍ o NO?
+2. Revisar cada proyecto. Cada revisión corre todas las pruebas de ese proyecto y puede tardar varios minutos. Lo más simple es dar clic en «Revisar» en la página «Revisión de pruebas» de Cimiento, porque desde aquí no puedo dejar procesos corriendo aparte.
+
+### 46 · Usuario — 2026-10-09 07:21:55
+> hágalo: suba

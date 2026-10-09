@@ -50,6 +50,9 @@ class Revision(models.Model):
 
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, related_name="revisiones")
     fecha = models.DateTimeField(default=timezone.now)
+    # `EP-029·HU-007` · El programa revisado, como carpeta dentro del proyecto
+    # (`proyectos/rni-back`); vacío si el proyecto es uno solo en su raíz.
+    programa = models.CharField(max_length=300, blank=True)
     herramienta = models.CharField(max_length=100, blank=True,
                                    help_text="Con qué se revisó: coverage.py, PHPUnit, ng test…")
     resultado = models.CharField(max_length=20, choices=RESULTADOS, default=HECHA)
@@ -74,6 +77,19 @@ class Revision(models.Model):
     def ultima(cls, proyecto):
         """La revisión más reciente del proyecto, o `None` si nunca se revisó."""
         return cls.objects.filter(proyecto=proyecto).first()
+
+    @classmethod
+    def ultimas(cls, proyecto):
+        """`EP-029·HU-007` · Las revisiones de la última vez, una por programa."""
+        ultima = cls.ultima(proyecto)
+        return list(cls.objects.filter(proyecto=proyecto, fecha=ultima.fecha).order_by("programa")) if ultima else []
+
+    @staticmethod
+    def la_de_menos_pruebas(revisiones):
+        """La que tiene menos pruebas: primero las que no se pudieron medir (acuerdo 2 del análisis 4)."""
+        if not revisiones:
+            return None
+        return min(revisiones, key=lambda r: -1 if r.porcentaje is None else r.porcentaje)
 
 
 AL_DIA, VENCIDA, NUNCA = "Al día", "Vencida", "Nunca se ha revisado"

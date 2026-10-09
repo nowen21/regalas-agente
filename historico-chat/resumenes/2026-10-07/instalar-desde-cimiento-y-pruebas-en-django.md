@@ -56,6 +56,50 @@ V2, según el [análisis 3 del pendiente 141](../2026-10-08/pendientes/141-cimie
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | [Pendiente 123: el freno le cobra a una sesión lo que escribe otra](../2026-10-05/pendientes/123-el-freno-le-cobra-a-una-sesion-lo-que-escribe-otra/pendiente.md) |
 
+### H-6 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 22:27, el freno detuvo una orden de consola sobre `historico-chat/.estado/instalacion-ep029.log`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). El agente quiso guardar ahí la salida de la instalación; el freno acertó |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: la instalación se corrió sin escribir ese archivo |
+
+### H-7 · En un proyecto con dos programas, Cimiento revisa solo el primero que encuentra
+
+V2, según el [análisis 4 del pendiente 141](../2026-10-08/pendientes/141-cimiento-no-mide-que-codigo-queda-sin-probar-ni-prueba-sus-pantallas/analisis-4.md).
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Cimiento reconoce un solo programa por proyecto. En el estándar tomó `interfaz/`, el visor viejo, y dejó a Cimiento sin revisar; en RNI tomó el frente y dejó el servidor |
+| Por qué importa | Un proyecto con varios programas queda revisado a medias, y la página dice que está al día |
+| Pendiente | El mismo [pendiente 141](../2026-10-08/pendientes/141-cimiento-no-mide-que-codigo-queda-sin-probar-ni-prueba-sus-pantallas/pendiente.md): se trata en su análisis 4 |
+
+### H-8 · Borrar `interfaz/` dejó enlaces rotos en archivos que el plan no nombra
+
+V2, según el [análisis 5 del pendiente 141](../2026-10-08/pendientes/141-cimiento-no-mide-que-codigo-queda-sin-probar-ni-prueba-sus-pantallas/analisis-5.md).
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al borrar `interfaz/` quedaron 6 enlaces rotos en archivos que el plan de la HU-006 no nombraba. La búsqueda de quién enlazaba la carpeta se recortó y no los mostró |
+| Por qué importa | Los enlaces rotos detienen la publicación, y le puede pasar a cualquier fase que borre algo |
+| Pendiente | El mismo [pendiente 141](../2026-10-08/pendientes/141-cimiento-no-mide-que-codigo-queda-sin-probar-ni-prueba-sus-pantallas/pendiente.md): se trata en su análisis 5 |
+
+### H-9 · El freno detuvo lo que escribió una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 23:32, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/pruebas/models.py`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). El agente cambió el modelo antes de escribir el plan de la EP-029·HU-007, que lo declara y que aprobó el análisis 4 del pendiente 141 |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el plan de la HU-007 se escribió enseguida y declara el archivo |
+
+### H-10 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 23:56, el freno detuvo una orden de consola sobre `C:/Users/user/AppData/Local/Temp/claude/c--Ing--Jose-ia-agente/63aeada8-3454-4d0e-89aa-ae32efe5c0fa/scratchpad/par.txt`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el agente quiso guardar ahí la salida de unas pruebas; el freno acertó y se corrieron mostrando la salida |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -64,7 +108,7 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☑ H-1, H-2 y H-3 al 141; H-4 al 143; H-5 al 123 |
+| Todo hallazgo enlaza su pendiente | ☑ H-1, H-2, H-3, H-7 y H-8 al 141; H-4 al 143; H-5 al 123; H-6, H-9 y H-10 no lo necesitan |
 | Todo pendiente enlazado existe | ☑ |
 | Lo que se hizo está aprobado y guardado | ☐ Aprobado por los análisis 1 a 3; falta el commit |
 

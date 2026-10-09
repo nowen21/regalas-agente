@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin faltantes |
 | 10 | Crítico | sin hallazgos graves | ☑ El H-2, resuelto por el análisis 2 |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica; S-353 |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `7abfed6` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan

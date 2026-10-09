@@ -100,7 +100,7 @@ Herramientas activables que aplican el estándar:
 
 ## Visor (interfaz local)
 
-[`interfaz/`](interfaz/) — app local (Django + Bootstrap 5 + AdminLTE 4) para **leer todo lo que hace el agente** (reglas, roles, plantillas, notas) y **ver la memoria** (panel + tabla de señales con filtro dinámico, colores por tipo, orden, detalle, registro y export CSV). Funciona sin internet.
+`interfaz/` (salió del estándar el 2026-10-08; la reemplazó Cimiento) — app local (Django + Bootstrap 5 + AdminLTE 4) para **leer todo lo que hace el agente** (reglas, roles, plantillas, notas) y **ver la memoria** (panel + tabla de señales con filtro dinámico, colores por tipo, orden, detalle, registro y export CSV). Funciona sin internet.
 
 **Cómo se corre** (desde la raíz del proyecto):
 

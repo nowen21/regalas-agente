@@ -23,15 +23,16 @@
 {% endif %}
 
 {% if ultima %}
+{% for ultima in programas %}
 <div class="card mb-3">
-  <div class="card-header"><h3 class="card-title">Última revisión, {{ ultima.fecha|date:"Y-m-d H:i" }}</h3></div>
+  <div class="card-header"><h3 class="card-title">{% if ultima.programa %}{{ ultima.programa }}: {% endif %}última revisión, {{ ultima.fecha|date:"Y-m-d H:i" }}</h3></div>
   <div class="card-body">
     <p class="mb-1">Resultado: {{ ultima.get_resultado_display }}{% if ultima.porcentaje is not None %}. Con pruebas: {{ ultima.porcentaje }}%{% endif %}{% if ultima.herramienta %}. Revisado con {{ ultima.herramienta }}{% endif %}.</p>
     {% if ultima.mensaje %}<p class="mb-1">{{ ultima.mensaje }}</p>{% endif %}
     {% if ultima.navegador %}<p class="mb-0">Pruebas en el navegador: {{ ultima.get_navegador_display }}.{% if ultima.navegador_detalle %} {{ ultima.navegador_detalle }}{% endif %}</p>{% endif %}
   </div>
   {% if ultima.archivos %}
-  <div id="tabla-archivos" data-tabla-avanzada data-por-pagina="20">
+  <div id="tabla-archivos-{{ forloop.counter }}" data-tabla-avanzada data-por-pagina="20">
     <div class="table-responsive">
       <table class="table mb-0 align-middle">
         <thead>
@@ -57,10 +58,11 @@
       </table>
     </div>
     <div class="card-body text-secondary" data-sin-coincidencias hidden>Ningún archivo coincide con el filtro.</div>
-    {% include "includes/tabla_pie.html" with tabla="tabla-archivos" %}
+    {% with n=forloop.counter|stringformat:"s" %}{% include "includes/tabla_pie.html" with tabla="tabla-archivos-"|add:n %}{% endwith %}
   </div>
   {% endif %}
 </div>
+{% endfor %}
 {% else %}
 <p>Este proyecto nunca se ha revisado.</p>
 {% endif %}

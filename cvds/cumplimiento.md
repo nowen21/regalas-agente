@@ -106,7 +106,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 | 1 | la arquitectura está en las tres capas del [README.md](../README.md) pero sin dibujo ni contrato entre componentes |
 | 2 | el porqué de las decisiones vive en [notas/README.md/](../notas/README.md), que no es el molde de decisión y no lista alternativas descartadas |
 | 3 | el modelo de datos existe como [memoria/esquema.sql](../memoria/esquema.sql) sin diccionario de campos |
-| 4 | la interfaz tiene su [README](../interfaz/README.md) pero no documento de diseño |
+| 4 | la interfaz tenía su README (`interfaz/README.md`, que salió del estándar el 2026-10-08) pero no documento de diseño |
 | 5 | la trazabilidad requisito a módulo no está escrita |
 
 **No existe**
@@ -124,7 +124,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 | Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
 |---|---|---|
 | Cómo se parte el trabajo | 119 fases, cada una con su plan, sus pruebas y su cierre | [documentacion/epicas/README.md/](../documentacion/epicas/README.md) |
-| Con qué se trabaja | Versiones exactas fijadas, y estáticos con huella verificada | [interfaz/README.md/](../interfaz/README.md) |
+| Con qué se trabaja | Versiones exactas fijadas, y estáticos con huella verificada | `interfaz/README.md` (salió del estándar el 2026-10-08) |
 | Orden y dependencias | Mapa de dependencias, que se actualiza al cerrar cada unidad | `13·DOC18` |
 | Cómo se escribe el código | Capítulos de calidad y de estructura, comprobados por programa | [validadores/codigo.py](../validadores/codigo.py) y [validadores/calidad.py](../validadores/calidad.py) |
 | Documentar mientras se construye | El estado de la fase se escribe en el repositorio, no en el chat | `13·DOC1` y el molde 10 del ciclo |

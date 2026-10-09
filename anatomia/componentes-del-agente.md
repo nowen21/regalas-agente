@@ -31,7 +31,6 @@ Por eso el estándar puede exigir cosas y además comprobarlas. La regla vive en
 | [`validadores/`](../validadores/) | 23 comprobaciones + 5 enganches automáticos + el instalador. | **Sí** |
 | [`memoria/`](../memoria/) | Memoria por señales (SQLite + FTS5) y búsqueda semántica local. | **Sí** |
 | [`metricas/`](../metricas/) | Lector de métricas del proceso. | **Sí** |
-| [`interfaz/`](../interfaz/) | Visor web local (Django) del estándar y de la memoria. | **Sí** |
 | [`notas/`](../notas/) | 12 notas de diseño: **por qué** se decidió algo así. | No — es texto |
 | [`pendientes/`](../pendientes/) | 4 mejoras acordadas y todavía no hechas. | No — es texto |
 | [`historico-chat/`](../historico-chat/) | Transcripción literal de cada sesión de trabajo. | Lo **escribe** un enganche |
@@ -133,13 +132,7 @@ Una métrica visible se convierte en objetivo y deja de medir: "cero fases reabi
 
 ### 3.5 · Visor — el estándar y la memoria en el navegador
 
-```sh
-python interfaz/manage.py runserver
-```
-
-Luego abrir **http://127.0.0.1:8000**.
-
-Django + Bootstrap 5 + AdminLTE 4, con todo el vendor incluido: **funciona sin internet**. Muestra las reglas, las skills, las plantillas y las notas renderizadas, y una tabla de la memoria con filtro dinámico y detalle por señal. Modo oscuro incluido.
+Lo muestra Cimiento (`proyectos/cimiento/`). El visor viejo que hacía esto salió del estándar el 2026-10-08 (EP-029·HU-006).
 
 ### 3.6 · Instalador — cómo llega el agente a otro proyecto
 

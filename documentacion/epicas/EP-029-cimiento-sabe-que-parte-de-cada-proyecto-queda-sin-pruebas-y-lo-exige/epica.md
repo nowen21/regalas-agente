@@ -12,7 +12,7 @@
 | **Producto / Sistema** | Cimiento y el instalador |
 | **Tipo** | Funcional |
 | **Prioridad** | Must |
-| **Estimación** | XL: cinco HU |
+| **Estimación** | XL: siete HU |
 | **Horizonte** | N/A |
 | **Product Owner** | Ing. José Dúmar Jiménez Ruíz |
 | **Tech Lead / Arquitecto** | N/A |
@@ -103,6 +103,8 @@ Un hueco sin medir no se ve, y lo que corre en el navegador se puede dañar sin 
 | [HU-003](HU-003-al-empezar-a-trabajar-cimiento-avisa-si-la-revision-falta-o-esta-vencida/HU-003-al-empezar-a-trabajar-cimiento-avisa-si-la-revision-falta-o-esta-vencida.md) | Al empezar a trabajar, Cimiento avisa si la revisión falta o está vencida | Must | M | No aplica | Terminada |
 | [HU-004](HU-004-cada-proyecto-consulta-su-configuracion-en-cimiento-y-la-copia-local-desaparece/HU-004-cada-proyecto-consulta-su-configuracion-en-cimiento-y-la-copia-local-desaparece.md) | Cada proyecto consulta su configuración en Cimiento y la copia local desaparece | Must | S | No aplica | Terminada |
 | [HU-005](HU-005-cimiento-corre-las-pruebas-de-navegador-de-cada-proyecto/HU-005-cimiento-corre-las-pruebas-de-navegador-de-cada-proyecto.md) | Cimiento corre las pruebas de navegador de cada proyecto | Must | M | No aplica | Terminada |
+| [HU-006](HU-006-el-visor-viejo-interfaz-sale-del-estandar/HU-006-el-visor-viejo-interfaz-sale-del-estandar.md) | El visor viejo `interfaz/` sale del estándar | Must | S | No aplica | Terminada |
+| [HU-007](HU-007-cimiento-revisa-cada-programa-de-un-proyecto/HU-007-cimiento-revisa-cada-programa-de-un-proyecto.md) | Cimiento revisa cada programa de un proyecto | Must | M | No aplica | Terminada |
 
 ## 10. Consideraciones técnicas
 
@@ -173,6 +175,8 @@ N/A.
 | 3 | HU-003 | HU-001, HU-002 | Compara las opciones con el resultado | Terminada |
 | 4 | HU-004 | HU-001 | Sale cuando la configuración nueva ya vive en la base | Terminada |
 | 5 | HU-005 | HU-002 | Acuerdo 2: va de última | Terminada |
+| 6 | HU-006 | Ninguna | Análisis 4: sin el visor viejo, el estándar es un solo programa | Terminada |
+| 7 | HU-007 | HU-006 | Análisis 4: cada programa de un proyecto se revisa | Terminada |
 
 ## 16. Estrategia de entrega
 
@@ -212,3 +216,4 @@ N/A.
 |---|---|---|
 | 2026-10-08 | Agente | Creación de la épica desde el análisis aprobado |
 | 2026-10-08 | Agente | Terminadas las cinco HU, con los análisis 2 y 3 del pendiente 141: la épica queda terminada |
+| 2026-10-09 | Agente | Suman las HU-006 y HU-007, de los análisis 4 y 5 del pendiente 141 |

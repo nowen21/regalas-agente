@@ -15,7 +15,7 @@ El repositorio se divide en **cuatro zonas**. Toda carpeta pertenece a una:
 | Zona | Qué guarda | Carpetas |
 |---|---|---|
 | 🟦 **Norma** | Lo que se exige y con qué molde se escribe. Es lo que heredan los proyectos. | `base/` · `plantillas/` · `skills/` · `cvds/` |
-| 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `adaptadores/` · `memoria/` · `metricas/` · `interfaz/` · `evals/` · `plataforma/` |
+| 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `adaptadores/` · `memoria/` · `metricas/` · `evals/` · `plataforma/` |
 | 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` · `documentacion/` · `analisis/` · `manuales/` |
 | ⬜ **Apoyo** | Configuración y empaquetado. | `.claude/` · `.claude-plugin/` · `.githooks/` |
 
@@ -197,21 +197,6 @@ agente/
 │   ├── pruebas.py
 │   └── README.md ..................... qué reporta y qué falta instrumentar
 │
-├── 🟩 interfaz/ ...................... VISOR WEB LOCAL (Django; sin internet tras instalar)
-│   ├── manage.py ..................... python interfaz/manage.py runserver
-│   ├── descargar_estaticos.py ........ trae Bootstrap/AdminLTE/iconos/Chart.js pineados por huella (vendor/ no se versiona)
-│   ├── requirements/ ................. base.txt · local.txt · lock.txt (10-DEP2)
-│   ├── .env.example .................. las variables, sin valores (.env no se versiona)
-│   ├── config/ ....................... urls, wsgi, asgi y settings/ (base.py + local.py)
-│   ├── static/cimiento/ .............. SOLO lo propio (visor.css)
-│   ├── terceros/ ..................... Bootstrap, AdminLTE, iconos, Chart.js descargados (NO se versiona)
-│   ├── templates/ .................... base.html, la plantilla de todo el proyecto
-│   └── cimiento/ ..................... el paquete: un módulo por carpeta (estructura-proyecto-django.md)
-│       ├── visor/ .................... core.py lee el estándar y la memoria · views · templates/visor/ · templatetags
-│       └── proyectos/ ................ EL REGISTRO DE PROYECTOS: modelo, pantallas, medir (expediente), importar/exportar el .md
-│   ├── README.md
-│   └── (la base de Cimiento es MariaDB, puerto 3307, base `cimiento`; credenciales en .env)
-│
 ├── 🟩 plataforma/ .................... CIMIENTO COMO APLICACIÓN (Django; índice SQLite local)
 │   ├── manage.py ...................... python plataforma/manage.py runserver
 │   ├── config/ ........................ urls, wsgi, asgi y settings/
@@ -289,7 +274,6 @@ El mapa de arriba dice *dónde está*. Este dice *qué depende de qué*:
 | `validadores/instalar.py` | `plantillas/CLAUDE.md.plantilla` · `plantillas/stack-instalacion.md` · `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/proyectos.md` | Es lo que deja el agente instalado y operativo en otro proyecto, sin pasos manuales. |
 | `proyectos/cimiento/core/enganches/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |
 | `metricas/metricas.py` | `memoria/senales.db` | Solo agrega lo que ya se registró; no instrumenta nada nuevo. |
-| `interfaz/cimiento/visor/core.py` | `base/` · `skills/` · `plantillas/` · `notas/` · `senales.db` | Lee los archivos y la base **reales**, no una copia. |
 | `.githooks/commit-msg` | `validadores/validar.py commit` | El hook es una cáscara; la regla está en el validador. |
 | Todos los `hook_*.py` | `validadores/*.py` | Los enganches no tienen lógica propia: llaman al validador que corresponde. |
 
@@ -331,7 +315,7 @@ Para comprobar que el árbol coincide con la realidad:
 
 ```sh
 find . -not -path "./.git/*" -not -path "*/__pycache__/*" \
-       -not -path "./interfaz/visor/static/vendor/*" | sort
+       | sort
 ```
 
 Y para que no queden enlaces rotos después de editar:

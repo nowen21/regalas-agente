@@ -57,6 +57,28 @@ def reconocer(raiz):
     return None
 
 
+# Un programa de estos no tiene otro adentro: su `requirements.txt` o su
+# `package.json` son suyos (`EP-029·HU-007`).
+CONTIENEN = {DJANGO, LARAVEL, ANGULAR}
+
+
+def reconocer_todos(raiz):
+    """`EP-029·HU-007` · Todos los programas del proyecto en `raiz`, de afuera hacia
+    adentro (análisis 4 del pendiente 141, acuerdo 2): un frente y un servidor son dos."""
+    if not raiz or not os.path.isdir(raiz):
+        return []
+    encontrados = []
+    for carpeta in _carpetas(raiz):
+        if any(l.nombre in CONTIENEN and (carpeta == l.carpeta or carpeta.startswith(l.carpeta + os.sep))
+               for l in encontrados):
+            continue
+        for nombre, archivos in SENALES:
+            if all(os.path.isfile(os.path.join(carpeta, a)) for a in archivos):
+                encontrados.append(Lenguaje(nombre, carpeta))
+                break
+    return encontrados
+
+
 def python_del_proyecto(*carpetas):
     """El Python del proyecto (`.venv` o `venv`) en la primera carpeta que lo tenga, o `None`.
 

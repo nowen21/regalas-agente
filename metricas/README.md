@@ -28,4 +28,4 @@ Estas no se derivan sin instrumentar algo nuevo; quedan anotadas para cuando hay
 - **Uso real de la memoria** — cuántas búsquedas encuentran algo útil: necesita registrar las búsquedas.
 - **Retrabajo por spec incompleta** — cambios de spec tras empezar a implementar: necesita correlacionar `git log` con la fase.
 
-El [visor](../interfaz/) ya lee la base y los archivos reales; exponer estas métricas ahí es la extensión natural cuando se quiera verlas sin la terminal.
+El visor (`interfaz/`, que reemplazó Cimiento el 2026-10-08) ya lee la base y los archivos reales; exponer estas métricas ahí es la extensión natural cuando se quiera verlas sin la terminal.

@@ -29,7 +29,7 @@ Decidir y construir la interfaz de administración. Piezas visibles desde hoy, e
 
 ## La decisión del usuario — 2026-08-21
 
-**La interfaz ya existe y es [`interfaz/`](../../interfaz/README.md)**: la aplicación Django del visor (panel, memoria, documentos). Y el usuario fijó su segunda exigencia: **debe tener la estructura de la plantilla [../plantillas/estructura-proyecto-django.md](../../plantillas/estructura-proyecto-django.md)** — la misma que el estándar le exige a cualquier proyecto Django heredero.
+**La interfaz ya existe y es `interfaz/`**: la aplicación Django del visor (panel, memoria, documentos). Y el usuario fijó su segunda exigencia: **debe tener la estructura de la plantilla [../plantillas/estructura-proyecto-django.md](../../plantillas/estructura-proyecto-django.md)** — la misma que el estándar le exige a cualquier proyecto Django heredero.
 
 Hoy no la tiene. Verificado el 2026-08-21 contra lo versionado:
 
