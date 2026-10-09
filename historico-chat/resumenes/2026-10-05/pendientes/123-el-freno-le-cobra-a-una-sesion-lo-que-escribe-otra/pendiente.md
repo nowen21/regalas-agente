@@ -2,13 +2,15 @@
 
 | | |
 |---|---|
-| **De dónde sale** | [H-11 · El freno le cobra a esta sesión lo que otra escribe al mismo tiempo](../../../2026-10-04/sesion-3.md), en el resumen de la sesión del 2026-10-04 |
+| **De dónde sale** | [H-11 · El freno le cobra a esta sesión lo que otra escribe al mismo tiempo](../../../2026-10-04/sesion-3.md), en el resumen de la sesión del 2026-10-04; H-1 y H-5 de la [sesión del 2026-10-08](../../../2026-10-08/guiones-que-pasan-a-cimiento.md) |
 
 ## El problema
 
 Antes de cada orden de consola, el freno toma una foto de lo que git ve cambiado (`Freno.tomar_foto`, en `proyectos/cimiento/core/enganches/freno.py:474`). Después de la orden compara con esa foto (`Freno.despues_por_nivel`, línea 495), y todo archivo que cambió en el medio lo trata como escrito por la orden. No mira quién lo cambió.
 
 El 2026-10-05, entre las 18:56 y las 18:58, otra sesión editaba 17 archivos: `base/00-identidad-y-rol/marcadores-de-ia.md`, la regla `ID8`, los pendientes 91 y 92, seis de `pendientes/hecho/`, cuatro de `validadores/` y dos de `plantillas/`. Esta sesión corrió dos órdenes que no escriben ahí: `cerrar_fase` y una lectura con `ls` y `grep`. El freno le atribuyó los 17 archivos a esta sesión, pidió detener la ejecución y escribió 17 hallazgos iguales en su resumen.
+
+Se repitió el 2026-10-08: a las 22:19 una orden que solo listaba carpetas cargó con `proyectos/cimiento/core/herramientas/tests_instalacion.py`, y a las 23:06 un `git status` cargó con `proyectos/cimiento/core/herramientas/desinstalar.py`. Los dos archivos los estaba cambiando otra sesión.
 
 Además, la foto es un solo archivo para todas las sesiones (`.git/cimiento-freno.json`, línea 63). Si dos sesiones corren órdenes casi al mismo tiempo, una pisa la foto de la otra.
 

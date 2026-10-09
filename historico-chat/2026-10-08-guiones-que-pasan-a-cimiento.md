@@ -308,3 +308,66 @@ Para cerrar la sesión falta guardar en git tres archivos: el pendiente 144, el 
 
 ### 20 · Usuario — 2026-10-09 07:44:50
 > suba
+
+**Agente** — 2026-10-09 07:46:41
+<!-- agente: 27663823-7665-4a91-9d4d-a10fdf6acbe9 -->
+
+Solo hay cambios de esta sesión y no queda ningún commit ajeno sin publicar. Hago el commit y el push.
+
+Hice el commit `3d959e5` con los tres archivos de esta sesión y lo publiqué. La rama `main` quedó igual que la publicada.
+
+La sesión ya se puede cerrar: cada hallazgo enlaza su pendiente y todo lo hecho quedó guardado y publicado.
+
+Lo que sigue, cuando se decida retomarlo, es analizar el pendiente 147, el primero de los dos para construir.
+
+### 21 · Usuario — 2026-10-09 07:50:46
+> pregunta: ya se puede cerrar la sesión, se cumpló su proposito?
+
+**Agente** — 2026-10-09 07:50:54
+<!-- agente: 07146b4d-798f-47bf-aa9c-ad138dd633a1 -->
+
+Sí a las dos cosas.
+
+- **Propósito cumplido.** Se revisaron los guiones repetidos de `historico-chat/scripts/` y se abrieron los pendientes 147 y 148 para convertirlos en comandos de Cimiento. Construirlos no era parte de esta sesión.
+- **Se puede cerrar.** Cada hallazgo enlaza su pendiente. Todo lo hecho quedó guardado en git y publicado; el último commit es `3d959e5`.
+
+Lo que sigue, en otra sesión, es analizar el pendiente 147.
+
+### 22 · Usuario — 2026-10-09 07:53:49
+> pregunta: cuántos pendientes hay?
+
+**Agente** — 2026-10-09 07:54:56
+<!-- agente: 00e08f7b-060a-4294-9652-ad27b25170ca -->
+
+Hay **32 pendientes abiertos** en los que ya usan carpeta propia, de 44 que existen; los otros 12 están cerrados. Esas cifras las calcula Cimiento con su validador de pendientes, no se contaron a mano.
+
+Aparte quedan **21** con la forma vieja, un archivo suelto en [pendientes/](pendientes/), del 10 al 107. El programa no calcula su estado y no los revisé uno por uno, así que no sé cuántos siguen abiertos. Hay otros 85 en `pendientes/hecho/`, que ya se terminaron.
+
+Al contarlos encontré un error mío. El [pendiente 123](historico-chat/resumenes/2026-10-05/), «el freno le cobra a una sesión lo que escribe otra», es justo el caso de los hallazgos H-1 y H-5, y yo los agregué al 144. Lo correcto era llevarlos al 123. ¿Los paso del 144 al 123?
+
+### 23 · Usuario — 2026-10-09 07:55:46
+> respondo: solo los que tienen la nueva forma
+
+**Agente** — 2026-10-09 07:56:02
+<!-- agente: 84ccf85c-b001-4c0a-a5f1-8827bd141365 -->
+
+Con la forma nueva hay **32 pendientes abiertos**. Los cuenta Cimiento con su validador de pendientes.
+
+Del 108 al 149, todos siguen abiertos menos 110 al 115, 131, 132, 136, 137, 143 (el de la guía de Tabler) y 145.
+
+Queda sin responder lo del [pendiente 123](historico-chat/resumenes/2026-10-05/): ¿se pasan ahí el H-1 y el H-5, que ahora están en el 144?
+
+### 24 · Usuario — 2026-10-09 07:58:09
+> pregunta: ya se puede cerrar la sesión, se cumpló su proposito?
+
+**Agente** — 2026-10-09 07:58:20
+<!-- agente: 78ecdeb1-49ff-4dfe-a8ea-21ccd2d72dbd -->
+
+El propósito sí se cumplió: se revisaron los guiones repetidos y quedaron abiertos los pendientes 147 y 148, guardados y publicados.
+
+Cerrarla todavía no conviene. La lista de cierre está completa, pero el H-1 y el H-5 quedaron enlazados al pendiente 144, y el que les corresponde es el [pendiente 123](historico-chat/resumenes/2026-10-05/), «el freno le cobra a una sesión lo que escribe otra». Si se cierra así, ese caso queda partido entre dos pendientes.
+
+Para dejarla lista falta una sola cosa: pasar el H-1 y el H-5 al 123 y hacer el commit. ¿Se hace? La respuesta tiene que empezar con «Corrija».
+
+### 25 · Usuario — 2026-10-09 07:58:42
+> corrija

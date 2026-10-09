@@ -16,7 +16,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-08-guiones-que-pas
 |---|---|
 | Qué pasó | El 2026-10-08 22:19, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/herramientas/tests_instalacion.py`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md) |
+| Pendiente | [Pendiente 123: el freno le cobra a una sesión lo que escribe otra al mismo tiempo](../2026-10-05/pendientes/123-el-freno-le-cobra-a-una-sesion-lo-que-escribe-otra/pendiente.md) |
 
 ### H-2 · Completar el cierre de una fase se hace con un guion suelto
 
@@ -48,7 +48,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-08-guiones-que-pas
 |---|---|
 | Qué pasó | El 2026-10-08 23:06, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/herramientas/desinstalar.py`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md) |
+| Pendiente | [Pendiente 123: el freno le cobra a una sesión lo que escribe otra al mismo tiempo](../2026-10-05/pendientes/123-el-freno-le-cobra-a-una-sesion-lo-que-escribe-otra/pendiente.md) |
 
 ### H-6 · Un commit de esta sesión se llevó lo que otra sesión tenía marcado en git
 
