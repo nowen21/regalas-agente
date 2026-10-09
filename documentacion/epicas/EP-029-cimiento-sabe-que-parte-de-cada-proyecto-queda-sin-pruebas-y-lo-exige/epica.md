@@ -105,6 +105,7 @@ Un hueco sin medir no se ve, y lo que corre en el navegador se puede dañar sin 
 | [HU-005](HU-005-cimiento-corre-las-pruebas-de-navegador-de-cada-proyecto/HU-005-cimiento-corre-las-pruebas-de-navegador-de-cada-proyecto.md) | Cimiento corre las pruebas de navegador de cada proyecto | Must | M | No aplica | Terminada |
 | [HU-006](HU-006-el-visor-viejo-interfaz-sale-del-estandar/HU-006-el-visor-viejo-interfaz-sale-del-estandar.md) | El visor viejo `interfaz/` sale del estándar | Must | S | No aplica | Terminada |
 | [HU-007](HU-007-cimiento-revisa-cada-programa-de-un-proyecto/HU-007-cimiento-revisa-cada-programa-de-un-proyecto.md) | Cimiento revisa cada programa de un proyecto | Must | M | No aplica | Terminada |
+| [HU-008](HU-008-un-comando-dana-el-codigo-a-proposito-y-dice-que-danos-no-detectan-las-pruebas/HU-008-un-comando-dana-el-codigo-a-proposito-y-dice-que-danos-no-detectan-las-pruebas.md) | Un comando de Cimiento daña el código a propósito y dice qué daños no detectan las pruebas | Should | M | No aplica | Terminada |
 
 ## 10. Consideraciones técnicas
 
@@ -177,6 +178,7 @@ N/A.
 | 5 | HU-005 | HU-002 | Acuerdo 2: va de última | Terminada |
 | 6 | HU-006 | Ninguna | Análisis 4: sin el visor viejo, el estándar es un solo programa | Terminada |
 | 7 | HU-007 | HU-006 | Análisis 4: cada programa de un proyecto se revisa | Terminada |
+| 8 | HU-008 | Ninguna | Pendiente 148: si las pruebas detectan un error | Terminada |
 
 ## 16. Estrategia de entrega
 
@@ -217,3 +219,4 @@ N/A.
 | 2026-10-08 | Agente | Creación de la épica desde el análisis aprobado |
 | 2026-10-08 | Agente | Terminadas las cinco HU, con los análisis 2 y 3 del pendiente 141: la épica queda terminada |
 | 2026-10-09 | Agente | Suman las HU-006 y HU-007, de los análisis 4 y 5 del pendiente 141 |
+| 2026-10-09 | Agente | Suma la HU-008, del análisis 1 del pendiente 148; la épica se reabre |
