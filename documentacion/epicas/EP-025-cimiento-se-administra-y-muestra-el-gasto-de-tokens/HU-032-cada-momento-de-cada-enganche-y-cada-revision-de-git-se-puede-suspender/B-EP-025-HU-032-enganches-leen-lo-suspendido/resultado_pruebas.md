@@ -76,3 +76,4 @@ Ninguno.
 | Ciclo | Fecha | Aprobados | Fallidos | Qué cambió entre ciclos |
 |---|---|---:|---:|---|
 | 1 | 2026-10-09 | 3 | 0 | Primera ejecución |
+| 2 | 2026-10-09 | 10 | 0 | Reabierta: H-7, la hora del vencimiento salía en UTC (análisis 4 del pendiente 149). La consulta lee el vencimiento con `TIMESTAMPDIFF`, y `test_el_vencimiento_vuelve_en_la_misma_hora_que_se_guardo` la corre contra la base de pruebas; dañada a propósito con `UNIX_TIMESTAMP`, la prueba falla |

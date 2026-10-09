@@ -50,6 +50,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-09-cerrar-pendient
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | [Pendiente 144: el freno sigue tomando texto de los comandos como rutas u órdenes](../2026-10-08/pendientes/144-el-freno-sigue-tomando-texto-de-los-comandos-como-rutas-u-ordenes/pendiente.md): la orden era un `sed` y el freno tomó la palabra «el» de su texto como una ruta |
 
+### H-6 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-09 13:28, el freno detuvo una orden de consola sobre `/tmp/x`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el agente quiso guardar en `/tmp` la salida de la prueba en scilit; la repitió guardándola en una variable, sin archivos |
+
+### H-7 · La revisión de git suspendida dice la hora de vencimiento en UTC
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | En la prueba en scilit (2026-10-09), `validar.py marcas` suspendida dijo «hasta el 2026-10-09 19:29»; en Colombia eran las 14:29. `suspendidos.py` lee el vencimiento con `UNIX_TIMESTAMP`, que toma la hora UTC guardada como si fuera de Colombia y le suma cinco horas |
+| Por qué importa | Quien lee el aviso cree que la suspensión dura cinco horas más de lo que dura; la prueba en el proyecto quedó en «falla» y scilit no recibe el aviso de resuelto |
+| Pendiente | [Pendiente 149](../2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/pendiente.md), en su [análisis 4](../2026-10-08/pendientes/149-cada-enganche-se-puede-suspender-desde-cimiento/analisis-4.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

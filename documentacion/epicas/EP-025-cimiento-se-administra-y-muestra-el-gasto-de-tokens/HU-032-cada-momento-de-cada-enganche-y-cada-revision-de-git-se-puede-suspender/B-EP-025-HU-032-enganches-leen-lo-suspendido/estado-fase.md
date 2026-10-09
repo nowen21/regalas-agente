@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Hallazgos: los del cierre del plan |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica |
-| 12 | Commit | 👤 autorizado | ✅ `28d21fb` |
+| 12 | Commit | 👤 autorizado | ☐ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan
@@ -50,7 +50,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-Ninguna.
+Reabierta el 2026-10-09: H-7, la hora del vencimiento salía en UTC (análisis 4 del pendiente 149).
 
 ## 4. Si se bloqueó
 

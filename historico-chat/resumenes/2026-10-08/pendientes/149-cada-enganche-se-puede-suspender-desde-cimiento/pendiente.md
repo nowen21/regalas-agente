@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **De dónde sale** | Proyecto scilit: [hallazgo 1 del resumen del 2026-10-08](C:/DesarrollosClaude/personales/scilit/historico-chat/resumenes/2026-10-08/suspender-enganches.md); seguimiento en scilit: [pendiente 037](C:/DesarrollosClaude/personales/scilit/historico-chat/resumenes/2026-10-08/pendientes/037-esperando-a-cimiento-cada-enganche-se-puede-suspender/pendiente.md); y [H-3 · El freno detuvo lo que escribió una orden de consola fuera del plan](../../../2026-10-09/cerrar-pendientes-145-a-149.md), según el [análisis 2](analisis-2.md); y [H-4 · La pantalla de suspensiones pone todo en una sola página](../../../2026-10-09/cerrar-pendientes-145-a-149.md), según el [análisis 3](analisis-3.md) |
+| **De dónde sale** | Proyecto scilit: [hallazgo 1 del resumen del 2026-10-08](C:/DesarrollosClaude/personales/scilit/historico-chat/resumenes/2026-10-08/suspender-enganches.md); seguimiento en scilit: [pendiente 037](C:/DesarrollosClaude/personales/scilit/historico-chat/resumenes/2026-10-08/pendientes/037-esperando-a-cimiento-cada-enganche-se-puede-suspender/pendiente.md); y [H-3 · El freno detuvo lo que escribió una orden de consola fuera del plan](../../../2026-10-09/cerrar-pendientes-145-a-149.md), según el [análisis 2](analisis-2.md); y [H-4 · La pantalla de suspensiones pone todo en una sola página](../../../2026-10-09/cerrar-pendientes-145-a-149.md), según el [análisis 3](analisis-3.md); y [H-7 · La revisión de git suspendida dice la hora de vencimiento en UTC](../../../2026-10-09/cerrar-pendientes-145-a-149.md), según el [análisis 4](analisis-4.md) |
 
 ## El problema
 

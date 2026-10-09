@@ -157,3 +157,7 @@ No aplica: no cambia la base.
 Las 4 tareas quedaron hechas el 2026-10-09, con la versión 56.8.0. Detalle en [`funcionalidad_implementada.md`](funcionalidad_implementada.md).
 
 **Hallazgos al ejecutar:** el freno tomaba toda suspensión de enganche como el freno entero; se corrigió en la fase.
+
+**Reabierta** el 2026-10-09: H-7, la hora del vencimiento salía en UTC (análisis 4 del pendiente 149).
+
+Cerrada otra vez el 2026-10-09, con la versión 56.8.0.

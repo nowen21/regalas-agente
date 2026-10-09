@@ -125,6 +125,38 @@ class ElSuspendidoSale(ConUnProyecto):
         self.assertEqual(b"", proceso.stdout)
 
 
+try:
+    from django.test import TestCase as _ConLaBase
+except ImportError:         # sin Django instalado
+    _ConLaBase = unittest.TestCase
+
+
+class LaHoraDelVencimientoSaleDeLaBase(_ConLaBase):
+    """CP-004 · Análisis 4 del pendiente 149: la consulta de verdad, contra la base de pruebas de Django.
+
+    Corre con `manage.py test core.enganches.tests_suspendidos`; lo que crea se deshace al terminar."""
+
+    def test_el_vencimiento_vuelve_en_la_misma_hora_que_se_guardo(self):
+        from datetime import timedelta
+
+        from django.db import connection
+        from django.utils import timezone
+
+        from core.proyectos.models import Proyecto, Suspension
+
+        from .suspendidos import _CONSULTA
+        ruta = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, ruta, True)
+        proyecto = Proyecto.objects.create(nombre="hora", ruta=ruta)
+        vence = timezone.now().replace(microsecond=0) + timedelta(hours=1)
+        Suspension.objects.create(proyecto=proyecto, tipo="enganche", nombre="senales", motivo="x", vence=vence)
+        with connection.cursor() as cursor:
+            cursor.execute(_CONSULTA, [ruta])
+            ((nombre, segundos, _motivo),) = cursor.fetchall()
+        self.assertEqual("senales", nombre)
+        self.assertEqual(vence.timestamp(), float(segundos))
+
+
 class SoloFrenoApagaElFreno(unittest.TestCase):
     """CP-005."""
 

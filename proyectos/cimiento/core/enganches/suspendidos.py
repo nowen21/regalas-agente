@@ -28,7 +28,9 @@ ESPERA = 2.0            # segundos que se espera la lista de quien ganó el turn
 TURNO_VIEJO = 5.0       # un turno sin lista después de esto se da por caído
 GUARDADAS = 24 * 3600   # las listas de sesiones viejas se borran pasado un día
 
-_CONSULTA = ("SELECT s.nombre, UNIX_TIMESTAMP(s.vence), s.motivo FROM proyectos_suspension s "
+# `vence` se guarda en UTC. `UNIX_TIMESTAMP` lo leería como hora de la zona de MySQL, que es la del
+# sistema (Colombia), y le sumaría cinco horas; contar los segundos desde 1970 no convierte nada (S-373).
+_CONSULTA = ("SELECT s.nombre, TIMESTAMPDIFF(SECOND, '1970-01-01', s.vence), s.motivo FROM proyectos_suspension s "
              "JOIN proyectos_proyecto p ON p.id = s.proyecto_id "
              "WHERE p.activo = 1 AND LOWER(p.ruta) = LOWER(%s) AND s.tipo = 'enganche' "
              "AND s.levantada IS NULL AND s.vence > UTC_TIMESTAMP()")
