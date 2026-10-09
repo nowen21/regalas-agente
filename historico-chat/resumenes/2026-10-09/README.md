@@ -5,3 +5,5 @@ Resúmenes de las sesiones de este día. Uno por sesión.
 | Sesión | Qué dejó |
 |---|---|
 | [cerrar-pendientes-145-a-149.md](cerrar-pendientes-145-a-149.md) | Sin escribir todavía. |
+| [sesion-2.md](sesion-2.md) | Sin escribir todavía. |
+| [sesion-3.md](sesion-3.md) | Pendiente 152: los programas se encienden y se apagan desde Cimiento. |
