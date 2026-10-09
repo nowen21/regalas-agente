@@ -87,6 +87,21 @@ Entonces leen y escriben la base
 
 **Cómo validarlo:** se define en el plan de pruebas de la fase.
 
+### CA-04 · Cerrar una fase dice qué falta y se llena con un comando de Cimiento
+
+**Sale de:** análisis 1 del pendiente 147, punto 1 de «Lo que se tiene que hacer»
+
+```gherkin
+Dada una fase que se cierra o se reabre
+Cuando queda algo que un programa no puede saber
+Entonces queda como un campo con el nombre de lo que pide
+Y cerrar_fase y reabrir_fase dicen por nombre cuáles faltan
+Y se llenan con el comando documento, que rechaza el texto que dañe el documento
+Y no hace falta ningún guion fuera de Cimiento
+```
+
+**Cómo validarlo:** se define en el plan de pruebas de la fase.
+
 ---
 
 ## 8. Fases que la implementan
@@ -109,3 +124,4 @@ Entonces leen y escriben la base
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-10-08 | El agente | Creación de la HU, desde el análisis 1 del pendiente 142 |
+| 2026-10-09 | El agente | Se suma el CA-04, del análisis 1 del pendiente 147: cerrar una fase dice qué falta y se llena con un comando de Cimiento |
