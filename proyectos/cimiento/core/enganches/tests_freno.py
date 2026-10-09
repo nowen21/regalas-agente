@@ -867,13 +867,14 @@ class LoAutorizanLasReglas(unittest.TestCase):
         os.makedirs(self.proyecto)
         self.regla("DOC90-escribe-notas.md", "## DOC90 · Escribe notas", "`notas/*.md`")
         self.regla("DOC91-escribe-actas.md", "## DOC91 · Escribe actas  ·  `[DEROGADA en 9.0.0 → ver 13·DOC90]`", "`actas/**`")
-        self.regla("DOC92-escribe-senales.md", "## DOC92 · Escribe señales — *opt-in*", "`senales/*.md`")
+        self.regla("DOC92-escribe-senales.md", "## DOC92 · Escribe señales — *opt-in*", "`senales/*.md`",
+                   capitulo="15-registros-inmutables")
         self.regla("DOC93-con-ejemplo.md", "## DOC93 · Muestra un ejemplo", None,
                    "```\n**Autoriza escribir:** `ejemplo/**`\n```\n")
 
-    def regla(self, nombre, titulo, rutas, cuerpo=""):
+    def regla(self, nombre, titulo, rutas, cuerpo="", capitulo="13-documentacion"):
         linea = "**Aplica a:** escribir-documento\n\n" + ("**Autoriza escribir:** %s\n" % rutas if rutas else "")
-        escribir(os.path.join(self.estandar, "base", "13-documentacion", "reglas", nombre),
+        escribir(os.path.join(self.estandar, "base", capitulo, "reglas", nombre),
                  "%s\n\nTexto.\n\n%s\n%s" % (titulo, linea, cuerpo))
 
     def reglas(self):
@@ -888,9 +889,10 @@ class LoAutorizanLasReglas(unittest.TestCase):
         self.assertNotIn("13·DOC91", self.reglas())
 
     def test_la_opt_in_apagada_no_autoriza_y_la_encendida_si(self):
-        self.assertIn("13·DOC92", self.reglas())
-        escribir(os.path.join(self.proyecto, "CLAUDE.md"), "- Patrón opt-in `13` (documentación): no\n")
-        self.assertNotIn("13·DOC92", self.reglas())
+        # Con un capítulo que sigue siendo opt-in: el 13 no lo es (`EP-028·HU-001`).
+        self.assertIn("15·DOC92", self.reglas())
+        escribir(os.path.join(self.proyecto, "CLAUDE.md"), "- Patrón opt-in `15` (registros inmutables): no\n")
+        self.assertNotIn("15·DOC92", self.reglas())
 
     def test_el_ejemplo_dentro_de_un_bloque_de_codigo_no_cuenta(self):
         self.assertNotIn("13·DOC93", self.reglas())
