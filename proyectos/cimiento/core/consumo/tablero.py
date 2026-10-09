@@ -6,15 +6,18 @@ cada 10 segundos. La definición es la de `presupuesto.py`: la entrada cuenta
 la caché creada.
 
 **El día se arma en Python**, con la hora de Colombia: agruparlo en MariaDB
-pide sus tablas de zonas horarias, que WAMP no trae.
+pide sus tablas de zonas horarias, que WAMP no trae. Lo que sí suma la base
+es la hora en UTC, que no necesita conversión: Python recibe una fila por hora
+y la pasa a su día (`EP-025·HU-030`; antes recibía una fila por llamada).
 
 **Enganches y archivos son estimación**: se guardan en caracteres
 (`lector.CARACTERES_POR_TOKEN`).
 """
 from collections import OrderedDict
-from datetime import timedelta
+from datetime import timedelta, timezone as zona
 
 from django.db.models import Avg, Count, F, Max, Min, Sum
+from django.db.models.functions import TruncHour
 from django.utils import timezone
 
 from core.proyectos import ajustes
@@ -65,15 +68,24 @@ class GastoDelPeriodo:
     def por_proyecto(self):
         return list(_sumas(self.llamadas().values("proyecto__id", "proyecto__nombre")).order_by("-total"))
 
+    def _por_dia_y_tipo(self):
+        """`{día: [entrada, creada, leída, salida]}`, un día por clave, también los que no tuvieron gasto.
+
+        La base suma por hora en UTC; cada hora va a su día local. Exacto mientras la zona
+        tenga horas enteras de diferencia con UTC, como Colombia (`EP-025·HU-030`, RN-01)."""
+        dias = OrderedDict(((self.desde + timedelta(days=n)).date(), [0, 0, 0, 0]) for n in range(self.dias))
+        horas = self.llamadas().annotate(hora=TruncHour("fecha", tzinfo=zona.utc)).values("hora").annotate(
+            e=Sum("entrada"), c=Sum("cache_creada"), l=Sum("cache_leida"), s=Sum("salida")).order_by()
+        for fila in horas:
+            dia = timezone.localtime(fila["hora"]).date()
+            if dia in dias:
+                for i, clave in enumerate("ecls"):
+                    dias[dia][i] += fila[clave] or 0
+        return dias
+
     def por_dia(self):
         """`[(fecha, total)]`, un día por fila, también los que no tuvieron gasto."""
-        dias = OrderedDict(((self.desde + timedelta(days=n)).date(), 0) for n in range(self.dias))
-        for fecha, entrada, creada, leida, salida in self.llamadas().values_list(
-                "fecha", "entrada", "cache_creada", "cache_leida", "salida").iterator():
-            dia = timezone.localtime(fecha).date()
-            if dia in dias:
-                dias[dia] += entrada + creada + leida + salida
-        return list(dias.items())
+        return [(dia, sum(valores)) for dia, valores in self._por_dia_y_tipo().items()]
 
     def por_sesion(self):
         consulta = self.llamadas().values("sesion", "proyecto__nombre")
@@ -235,13 +247,7 @@ class GastoDelPeriodo:
 
     def por_dia_por_tipo(self):
         """`{"fechas", "entrada", "creada", "leida", "salida"}`, un día por posición."""
-        dias = OrderedDict(((self.desde + timedelta(days=n)).date(), [0, 0, 0, 0]) for n in range(self.dias))
-        for fecha, entrada, creada, leida, salida in self.llamadas().values_list(
-                "fecha", "entrada", "cache_creada", "cache_leida", "salida").iterator():
-            dia = timezone.localtime(fecha).date()
-            if dia in dias:
-                for i, valor in enumerate((entrada, creada, leida, salida)):
-                    dias[dia][i] += valor
+        dias = self._por_dia_y_tipo()
         series = list(zip(*dias.values()))
         return {"fechas": [d.strftime("%d/%m") for d in dias], "entrada": list(series[0]),
                 "creada": list(series[1]), "leida": list(series[2]), "salida": list(series[3])}

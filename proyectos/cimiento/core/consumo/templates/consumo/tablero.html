@@ -67,10 +67,28 @@
 
     // `EP-025·HU-027` · Cada vez que el vigilante guarda algo, Cimiento avisa por SSE
     // y se vuelve a pedir lo que se ve, que sale de la base.
+    // `EP-025·HU-030` · Los avisos se juntan: como máximo un refresco cada 30 segundos,
+    // ninguno con la pantalla escondida, y uno al volver a verla si llegó algo.
+    var ESPERA_ENTRE_REFRESCOS = 30000;
+    var ultimoRefresco = 0, refrescoPendiente = null, llegoAviso = false;
+    function refrescarPorAviso() {
+      refrescoPendiente = null;
+      if (document.hidden) { return; }
+      llegoAviso = false;
+      ultimoRefresco = Date.now();
+      document.body.dispatchEvent(new Event("actualizar"));
+    }
+    function alLlegarAviso() {
+      llegoAviso = true;
+      if (document.hidden || refrescoPendiente) { return; }
+      refrescoPendiente = setTimeout(refrescarPorAviso,
+                                     Math.max(0, ultimoRefresco + ESPERA_ENTRE_REFRESCOS - Date.now()));
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && llegoAviso) { alLlegarAviso(); }
+    });
     if (typeof EventSource !== "undefined") {
-      new EventSource("{% url 'consumo:eventos' %}").addEventListener("gasto", function () {
-        document.body.dispatchEvent(new Event("actualizar"));
-      });
+      new EventSource("{% url 'consumo:eventos' %}").addEventListener("gasto", alLlegarAviso);
     }
 
     document.getElementById("pestanas").addEventListener("click", function (evento) {
