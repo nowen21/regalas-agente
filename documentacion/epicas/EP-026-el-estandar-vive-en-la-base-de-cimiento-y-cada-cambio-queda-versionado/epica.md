@@ -136,6 +136,7 @@ Ninguno.
 | [HU-008](HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente/HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente.md) | Lo que un proyecto reporta llega al estándar como pendiente | Should | N/A | N/A | Terminada |
 | [HU-009](HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in/HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in.md) | La pantalla muestra qué reglas llegarían con un mensaje y prende los capítulos opt-in | Should | N/A | N/A | Terminada |
 | [HU-010](HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente/HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente.md) | La base se copia sola en una carpeta hermana de `agente` | Must | N/A | N/A | Terminada |
+| [HU-011](HU-011-manage-py-se-abre-siempre-con-el-python-de-cimiento/HU-011-manage-py-se-abre-siempre-con-el-python-de-cimiento.md) | `manage.py` se abre siempre con el Python de Cimiento y escribe bien las tildes | Must | N/A | N/A | Terminada |
 
 ## 10. Consideraciones técnicas
 

@@ -210,3 +210,4 @@ La respuesta, tal como se dio.
 - [2026-10-06-sesion.md](2026-10-06-sesion.md) — sesión del 2026-10-06.
 - [2026-10-06-sesion-2.md](2026-10-06-sesion-2.md) — sesión del 2026-10-06.
 - [2026-10-07-instalar-desde-cimiento-y-pruebas-en-django.md](2026-10-07-instalar-desde-cimiento-y-pruebas-en-django.md) — si la pantalla de Cimiento instala proyectos, y qué sistemas de pruebas sirven en Django. · [historico-chat/resumenes/2026-10-07/instalar-desde-cimiento-y-pruebas-en-django.md](resumenes/2026-10-07/instalar-desde-cimiento-y-pruebas-en-django.md)
+- [2026-10-08-los-documentos-de-cimiento-pasan-a-su-base.md](2026-10-08-los-documentos-de-cimiento-pasan-a-su-base.md) — si guardar en archivos .md gasta más que guardar en la base, y la decisión de pasar todos los documentos de Cimiento a la base. · [historico-chat/resumenes/2026-10-08/los-documentos-de-cimiento-pasan-a-su-base.md](resumenes/2026-10-08/los-documentos-de-cimiento-pasan-a-su-base.md)

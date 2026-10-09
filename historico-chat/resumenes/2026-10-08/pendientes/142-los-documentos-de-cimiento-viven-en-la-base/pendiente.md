@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **De dónde sale** | [H-1 · Los documentos de Cimiento pasan a la base y dejan de ser archivos .md](../../sesion.md), en el resumen de la sesión del 2026-10-08 |
+| **De dónde sale** | [H-1 · Los documentos de Cimiento pasan a la base y dejan de ser archivos .md](../../los-documentos-de-cimiento-pasan-a-su-base.md), en el resumen de la sesión del 2026-10-08 |
 
 ## El problema
 
