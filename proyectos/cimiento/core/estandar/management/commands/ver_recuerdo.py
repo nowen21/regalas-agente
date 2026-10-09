@@ -2,13 +2,13 @@
 
     manage.py ver_recuerdo aprobar-antes-de-commit.md --proyecto "C:/Ing. Jose/ia/agente"
     manage.py ver_recuerdo --lista --proyecto "C:/Ing. Jose/ia/agente"
-"""
-import os
 
+Lee por el camino único de los documentos (`EP-030·HU-001`).
+"""
 from django.core.management.base import BaseCommand, CommandError
 
-from core.estandar.models import Recuerdo
-from core.proyectos.models import Proyecto
+from core.estandar import documentos
+from core.estandar.cambios import CambioInvalido
 
 
 class Command(BaseCommand):
@@ -20,14 +20,13 @@ class Command(BaseCommand):
         parser.add_argument("--lista", action="store_true")
 
     def handle(self, *args, nombre="memory.md", proyecto="", lista=False, **opciones):
-        registrado = Proyecto.objects.filter(ruta__iexact=os.path.abspath(proyecto)).first()
-        if registrado is None:
-            raise CommandError("el proyecto %s no está registrado en Cimiento" % proyecto)
-        if lista:
-            for n in Recuerdo.objects.filter(proyecto=registrado).values_list("nombre", flat=True):
-                self.stdout.write(n)
-            return
-        recuerdo = Recuerdo.objects.filter(proyecto=registrado, nombre=nombre).first()
-        if recuerdo is None:
-            raise CommandError("%s no está en la memoria de %s" % (nombre, registrado))
-        self.stdout.write(recuerdo.contenido, ending="")
+        try:
+            registrado = documentos.proyecto_de(proyecto)
+            if lista:
+                for n in documentos.listar("recuerdo", "", registrado):
+                    self.stdout.write(n)
+                return
+            texto = documentos.ver("recuerdo", nombre, registrado)
+        except CambioInvalido as razon:
+            raise CommandError(str(razon))
+        self.stdout.write(texto, ending="")

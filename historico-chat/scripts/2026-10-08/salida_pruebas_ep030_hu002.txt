@@ -1,0 +1,17 @@
+Creating test database for alias 'default'...
+System check identified some issues:
+
+WARNINGS:
+consumo.AvanceDeLectura.archivo: (mysql.W003) MariaDB may not allow unique CharFields to have a max_length > 255.
+	HINT: See: https://docs.djangoproject.com/en/5.2/ref/databases/#mysql-character-fields
+proyectos.Proyecto.ruta: (mysql.W003) MariaDB may not allow unique CharFields to have a max_length > 255.
+	HINT: See: https://docs.djangoproject.com/en/5.2/ref/databases/#mysql-character-fields
+
+System check identified 2 issues (0 silenced).
+........................
+----------------------------------------------------------------------
+Ran 24 tests in 26.523s
+
+OK
+Destroying test database for alias 'default'...
+Found 24 test(s).

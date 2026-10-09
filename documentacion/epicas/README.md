@@ -40,6 +40,7 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-025](EP-025-cimiento-se-administra-y-muestra-el-gasto-de-tokens/) | Que Cimiento se administre desde sus pantallas y muestre en vivo el gasto de tokens | En curso: sus 10 historias salen del análisis 1 del pendiente 119, aprobado el 2026-10-04 |
 | [EP-026](EP-026-el-estandar-vive-en-la-base-de-cimiento-y-cada-cambio-queda-versionado/) | Que el estándar viva en la base de Cimiento y todo lo que cambia tenga historia y versión | En curso: sus 10 historias salen del análisis 1 del pendiente 132, aprobado el 2026-10-06 |
 | [EP-029](EP-029-cimiento-sabe-que-parte-de-cada-proyecto-queda-sin-pruebas-y-lo-exige/) | Que Cimiento sepa qué parte de cada proyecto queda sin pruebas y lo exija desde su configuración | Terminada el 2026-10-09: sus 7 historias cumplen; salen de los análisis 1 a 5 del pendiente 141 |
+| [EP-030](EP-030-los-documentos-de-cimiento-viven-en-su-base/) | Que los documentos de Cimiento y de cada proyecto vivan en su base, partidos en campos y con un comando fijo por tipo | En curso: 9 historias; sale del análisis 1 del pendiente 142 |
 
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 

@@ -9,6 +9,10 @@
 | `salida_diagnostico_sin_trabajo.txt` | El diagnóstico después de traer las líneas y recalcular: 0 sin trabajo | La misma |
 | `salida_reinicio.txt` | El vigilante relevándose solo al cambiar un archivo de código | `A-EP-025-HU-029-reinicio-solo` |
 | `salida_recalcular_trabajo.txt` | Los mensajes sin trabajo antes y después de `recalcular_trabajo` en la base real | `A-EP-025-HU-028-el-trabajo-abierto` |
+| `escribir_hu_ep030.py` | Escribe las nueve HU de la EP-030 y su tabla en la épica, desde el análisis 1 del pendiente 142 | EP-030, creación de las HU |
+| `salida_pruebas_ep030_hu001.txt` | Las pruebas de la fase de la HU-001 de la EP-030 y las vecinas; las vecinas fallan al crear la base de prueba compartida | `A-EP-030-HU-001-camino-unico-y-comando-documento` |
+| `salida_pruebas_ep030_hu001_solas.txt` | `tests_texto_desde_tablas` sola, sin el cambio de la fase: falla igual al crear la base de prueba | La misma |
+| `salida_pruebas_ep030_hu002.txt` | Las pruebas de la fase de la HU-002 de la EP-030 y las vecinas: 24 OK | `A-EP-030-HU-002-la-pantalla-sirve-a-cada-tipo` |
 
 Antes de corregir, la salida decía: `pulsada «Dónde se gasta» mientras cargaba el Resumen: … "activa":"Dónde se gasta","contenido":"/gasto/pestana/resumen/…"`: la pestaña marcada era una y el contenido, otro.
 

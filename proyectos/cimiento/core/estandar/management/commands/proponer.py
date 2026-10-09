@@ -8,15 +8,12 @@ Sin `--archivo`, el texto se lee de la entrada estándar. Nada cambia hasta que
 el administrador aprueba la propuesta en «Estándar» → «Propuestas» (acuerdo 3).
 """
 import io
-import os
 import sys
 
 from django.core.management.base import BaseCommand, CommandError
 
-from core.estandar.cambios import CambioInvalido, accion_para, ruta_valida
-from core.estandar.models import DOCUMENTO, QUITAR, RECUERDO, Documento, Propuesta, Recuerdo
-from core.historia.registro import quien_y_por_que
-from core.proyectos.models import Proyecto
+from core.estandar import documentos
+from core.estandar.cambios import CambioInvalido
 
 
 class Command(BaseCommand):
@@ -40,27 +37,17 @@ class Command(BaseCommand):
                     contenido = f.read()
             else:
                 contenido = sys.stdin.read()
-        datos = {"motivo": motivo, "quien": quien, "contenido": contenido}
-        if ruta:
-            try:
-                datos["ruta"] = ruta_valida(ruta)
-            except CambioInvalido as razon:
-                raise CommandError(str(razon))
-            datos.update(objeto=DOCUMENTO,
-                         accion=accion_para(DOCUMENTO, Documento.objects.filter(ruta=datos["ruta"]).exists(), quitar))
-        elif proyecto and recuerdo:
-            registrado = Proyecto.objects.filter(ruta__iexact=os.path.abspath(proyecto)).first()
-            if registrado is None:
-                raise CommandError("el proyecto %s no está registrado en Cimiento" % proyecto)
-            existe = Recuerdo.objects.filter(proyecto=registrado, nombre=recuerdo).exists()
-            datos.update(objeto=RECUERDO, proyecto=registrado, nombre=recuerdo,
-                         accion=accion_para(RECUERDO, existe, quitar))
-        else:
-            raise CommandError("falta --ruta, o --proyecto con --recuerdo")
-        if datos["accion"] == QUITAR and not (ruta and Documento.objects.filter(ruta=datos["ruta"]).exists()
-                                              or recuerdo and datos.get("nombre")):
-            raise CommandError("no hay qué quitar")
-        with quien_y_por_que(quien=quien, motivo=motivo):
-            propuesta = Propuesta.objects.create(**datos)
+        # `EP-030·HU-001` · Propone por el camino único de los documentos.
+        accion = documentos.QUITAR_ if quitar else None
+        try:
+            if ruta:
+                propuesta = documentos.proponer("estandar", accion, ruta, contenido, motivo, quien)
+            elif proyecto and recuerdo:
+                registrado = documentos.proyecto_de(proyecto)
+                propuesta = documentos.proponer("recuerdo", accion, recuerdo, contenido, motivo, quien, registrado)
+            else:
+                raise CommandError("falta --ruta, o --proyecto con --recuerdo")
+        except CambioInvalido as razon:
+            raise CommandError(str(razon))
         self.stdout.write("Propuesta %d: %s %s. Se aprueba en Cimiento → Estándar → Propuestas." % (
             propuesta.pk, propuesta.get_accion_display().lower(), propuesta.destino()))

@@ -57,6 +57,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-08-los-documentos-
 |---|---|
 | Qué pasó | El 2026-10-08 22:17, el freno detuvo lo que escribió una orden de consola sobre `proyectos/cimiento/core/comun/enganches.py`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el cambio lo escribió otra sesión, que trabaja la EP-029, a las 22:17; esta sesión no tocó el archivo |
+
+### H-7 · El freno detuvo lo que escribió una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 22:29, el freno detuvo lo que escribió una orden de consola sobre `.githooks/pre-commit`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | No hace falta: el cambio es de la EP-029·HU-003, que trabaja otra sesión; esta sesión no tocó el archivo |
+
+### H-8 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-08 23:52, el freno detuvo una orden de consola sobre una orden: corre en segundo plano y deja su salida fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
 
 ---

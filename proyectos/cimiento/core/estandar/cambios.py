@@ -101,20 +101,11 @@ def aplicar(propuesta, cuenta, raiz=None):
     """Aplica una propuesta pendiente y la deja aprobada, a nombre de `cuenta`."""
     if propuesta.estado != PENDIENTE:
         raise CambioInvalido("la propuesta ya está %s" % propuesta.get_estado_display().lower())
+    # `EP-030·HU-002` · La aplica el tipo que la atiende, sea cual sea.
+    from .documentos import de_la_propuesta
+
     with transaction.atomic():
-        if propuesta.objeto == DOCUMENTO:
-            if propuesta.accion == QUITAR:
-                documento = Documento.objects.filter(ruta=propuesta.ruta).first()
-                if documento is None:
-                    raise CambioInvalido("el documento ya no existe")
-                quitar_documento(documento, raiz)
-            else:
-                guardar_documento(propuesta.ruta, propuesta.contenido, raiz)
-        else:
-            if propuesta.accion == QUITAR:
-                Recuerdo.objects.filter(proyecto=propuesta.proyecto, nombre=propuesta.nombre).delete()
-            else:
-                guardar_recuerdo(propuesta.proyecto, propuesta.nombre, propuesta.contenido)
+        de_la_propuesta(propuesta).aplicar(propuesta, raiz)
         _resolver(propuesta, cuenta, APROBADA)
 
 
@@ -126,12 +117,11 @@ def rechazar(propuesta, cuenta, motivo=""):
 
 
 def actual_de(propuesta):
-    """El texto que hay hoy en el lugar que la propuesta cambia; "" si es nuevo."""
-    if propuesta.objeto == DOCUMENTO:
-        documento = Documento.objects.filter(ruta=propuesta.ruta).only("contenido").first()
-        return documento.contenido if documento else ""
-    recuerdo = Recuerdo.objects.filter(proyecto=propuesta.proyecto, nombre=propuesta.nombre).only("contenido").first()
-    return recuerdo.contenido if recuerdo else ""
+    """El texto que hay hoy en el lugar que la propuesta cambia; "" si es nuevo.
+    Lo da el tipo que la atiende (`EP-030·HU-002`)."""
+    from .documentos import de_la_propuesta
+
+    return de_la_propuesta(propuesta).actual(propuesta)
 
 
 def que_cambia(propuesta, contexto=2):

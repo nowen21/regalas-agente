@@ -2,10 +2,13 @@
 
     manage.py ver_estandar base/reglas-por-tarea/responder.md
     manage.py ver_estandar --lista base/01-conducta
+
+Lee por el camino único de los documentos (`EP-030·HU-001`).
 """
 from django.core.management.base import BaseCommand, CommandError
 
-from core.estandar.models import Documento
+from core.estandar import documentos
+from core.estandar.cambios import CambioInvalido
 
 
 class Command(BaseCommand):
@@ -18,10 +21,10 @@ class Command(BaseCommand):
     def handle(self, *args, ruta="", lista=False, **opciones):
         ruta = ruta.replace("\\", "/").strip()
         if lista:
-            for r in Documento.objects.filter(ruta__startswith=ruta).values_list("ruta", flat=True):
+            for r in documentos.listar("estandar", ruta):
                 self.stdout.write(r)
             return
-        documento = Documento.objects.filter(ruta=ruta).first()
-        if documento is None:
+        try:
+            self.stdout.write(documentos.ver("estandar", ruta), ending="")
+        except CambioInvalido:
             raise CommandError("%s no está en el estándar" % ruta)
-        self.stdout.write(documento.contenido, ending="")

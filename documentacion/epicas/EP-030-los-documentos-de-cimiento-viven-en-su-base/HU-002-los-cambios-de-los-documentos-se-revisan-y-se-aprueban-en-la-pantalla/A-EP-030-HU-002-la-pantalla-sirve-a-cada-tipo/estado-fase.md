@@ -1,13 +1,13 @@
-# Estado de fase · Fase `A-EP-026-HU-011-manage-py-busca-su-python` (módulo arranque de Cimiento)   ·   `[CAPA 3]`
+# Estado de fase · Fase `A-EP-030-HU-002-la-pantalla-sirve-a-cada-tipo` (módulo Estándar de Cimiento)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `A-EP-026-HU-011-manage-py-busca-su-python` |
-| **Módulo** | Arranque de Cimiento, `proyectos/cimiento/manage.py` |
-| **Planteamiento / Épica / HU** | [EP-026](../../epica.md) · [HU-011](../HU-011-manage-py-se-abre-siempre-con-el-python-de-cimiento.md) |
-| **Última actualización** | 2026-10-08 |
+| **Fase** (identificador · `02·F12.6`) | `A-EP-030-HU-002-la-pantalla-sirve-a-cada-tipo` |
+| **Módulo** | Estándar de Cimiento, `proyectos/cimiento/core/estandar/` |
+| **Planteamiento / Épica / HU** | [EP-030](../../epica.md) · [HU-002](../HU-002-los-cambios-de-los-documentos-se-revisan-y-se-aprueban-en-la-pantalla.md) |
+| **Última actualización** | 2026-10-09 |
 
 ## 1. En qué estación va
 
@@ -15,18 +15,18 @@
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Explorador · análisis | contexto entendido | ☑ (análisis 1 y 2 del pendiente 145) |
+| 1 | Explorador · análisis | contexto entendido | ☑ (análisis 1 del pendiente 142) |
 | 2 | Proponente · alcance | 👤 alcance aprobado | ☑ Con el análisis de origen |
-| 3 | Escritor de épica | 👤 épica aprobada | ☑ EP-026 |
-| 4 | Escritor de historia | 👤 HUs aprobadas | ☑ HU-011, aprobada con el análisis 2 |
+| 3 | Escritor de épica | 👤 épica aprobada | ☑ EP-030 |
+| 4 | Escritor de historia | 👤 HUs aprobadas | ☑ HU-002, aprobada con el análisis |
 | 5 | Escritor de especificación | 👤 especificación aprobada | N/A: la especificación son los CA |
 | 6 | Diseñador | diseño coherente | ☑ |
-| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☑ Aprobados por el análisis 2 |
+| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☑ Aprobados por el análisis |
 | 8 | Implementador | implementado + pruebas verdes | ☑ Las 3 tareas |
 | 9 | Verificador | trazabilidad sin faltantes | ☑ Sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Ninguno |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado, funcionalidad, HU y épica |
-| 12 | Commit | 👤 autorizado | ✅ `215469b` |
+| 12 | Commit | 👤 autorizado | ☐ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.1 Veredicto de las pruebas
@@ -34,7 +34,7 @@
 | Campo | Valor |
 |---|---|
 | **Concepto** | Cumple |
-| **CA cumplidos** | 3 de 3 |
+| **CA cumplidos** | 2 de 2 |
 | **CA en "No"** | Ninguno |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | `resultado_pruebas.md` |
@@ -53,8 +53,7 @@
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
-| Antes de poner un comando en un aviso, correrlo como lo va a correr quien lo lee | S-355 |
-| Si la HU todavía no existe, el análisis le pone su número antes de aprobarse | S-356 |
+| Se reusó la pantalla de propuestas; cada tipo aplica la suya | S-359 |
 
 ## 3. Pendiente / preguntas abiertas
 
